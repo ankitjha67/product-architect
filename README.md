@@ -130,4 +130,4 @@ Contributions welcome — new agents, deeper frameworks, industry-specific exten
 
 ---
 
-*Built through iterative human-AI collaboration using Claude (Anthropic). Compliant with [Anthropic's official skill guide](https://docs.anthropic.com/en/docs/agents-and-tools/skills). 25/25 skill compliance checks passed.*
+*Built through iterative human-AI collaboration using Claude (Anthropic). Compliant with [Anthropic's official skill guide](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf). 25/25 skill compliance checks passed.*
