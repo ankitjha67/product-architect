@@ -10,50 +10,171 @@ compaction, session limits, or new conversations.
 
 ## STEP 1: Classify the Request
 
-Read the user's message. Match to ONE of these patterns:
+Read the user's message. Classify into ONE pattern:
 
 ```
-PATTERN A — SINGLE TOPIC: "Write a PRD / Design an app / Financial model / etc."
+PATTERN A — SINGLE TOPIC: "Write a PRD" / "Design an app" / "Financial model"
 → Load: 1-2 agents + 1 framework. Done in 1 turn.
 
-PATTERN B — MULTI-TOPIC: "Product roadmap / Marketing strategy / Launch plan"
+PATTERN B — MULTI-TOPIC: "Product roadmap" / "Marketing strategy" / "Launch plan"
 → Load: 3-4 agents + 1-2 frameworks. Done in 1-2 turns.
 
-PATTERN C — FULL PRODUCT: "Build me a complete product / Full product from scratch"
+PATTERN C — FULL PRODUCT: "Build me a complete product" / "Full product from scratch"
 → Phased execution across 5-6 turns. See Phase Plan below.
 
 PATTERN D — CONTINUE PREVIOUS: User references past work or pastes a KDR/MKDR.
 → Read the KDR. Resume from where they left off. Don't reload completed phases.
 
-PATTERN E — CHECKLIST/QUICK ANSWER: "Checklist for X / How much to raise / etc."
+PATTERN E — CHECKLIST/QUICK ANSWER: "Checklist for X" / "How much to raise"
 → Load: 1 framework only. Quick response. No multi-phase needed.
+
+PATTERN F — MULTI-INTENT: Request contains 2+ distinct topics.
+→ Decompose into separate intents. Prioritize. Execute sequentially.
+  Example: "Write a PRD and estimate the cost" = PRD (Agent 04) THEN Finance (Agent 18).
+  Load the primary intent first. Address secondary after primary is delivered.
+
+PATTERN G — AMBIGUOUS: Can't confidently classify.
+→ Ask ONE clarifying question: "I can help with that — are you looking for
+  [interpretation A] or [interpretation B]?" Then route based on answer.
 ```
 
-## STEP 2: Agent Routing Table
+## STEP 2: Agent Routing Engine
+
+### 2a. Keyword → Agent Scoring
+
+Don't just keyword-match. SCORE each potential agent 0-10 based on relevance,
+then load the top-scoring agents up to the context budget.
 
 ```
-REQUEST CONTAINS          → LOAD THESE AGENTS           → LOAD THESE FRAMEWORKS
-─────────────────────────────────────────────────────────────────────────────────
-"PRD" / "requirements"    → 04                          → prd-framework
-"design" / "UI" / "app"   → 05                          → (anti-slop-design skill)
-"roadmap" / "strategy"    → 02 + 03                     → roadmap + consulting
-"MVP" / "build"           → 03 + 04                     → mvp-framework
-"financial" / "pricing"   → 18                          → compensation-bands
-"security" / "audit"      → 09 + 11                     → global-compliance
-"marketing" / "growth"    → 15 + 14                     → ab-testing
-"hiring" / "team"         → 22                          → compensation-bands
-"legal" / "compliance"    → 10 + 11                     → global-compliance
-"launch" / "go-to-market" → 14 + 07                     → stress-test
-"operations" / "SOP"      → 19 + 20                     → sop-process-maps
-"IPO" / "board"           → 26 + 18                     → corporate-scaling
-"trust" / "moderation"    → 12                          → —
-"fraud"                   → 13                          → —
-"AI" / "ML" / "data"      → 29                          → —
-"ESG" / "sustainability"  → 27                          → —
-"checklist for"           → (none)                      → universal-checklists
-"how to start" / "day 0"  → (none)                      → founders-playbook
-"review" / "audit all"    → 00 + 01                     → coverage-audit
-"complete product"        → PHASE PLAN (see below)      →
+SCORING METHOD:
+For each agent, score = keyword_match + intent_match + context_bonus
+
+keyword_match (0-5):
+  5 = Exact topic word ("PRD", "security audit", "financial model")
+  3 = Related topic word ("requirements" → PRD, "money" → Finance)
+  1 = Tangential relevance
+  0 = No match
+
+intent_match (0-3):
+  3 = The agent PRODUCES what the user is asking for
+  2 = The agent VALIDATES/REVIEWS what the user is asking for
+  1 = The agent provides SUPPORTING context
+  0 = Not relevant to this request
+
+context_bonus (0-2):
+  +2 = User explicitly mentioned this agent's domain
+  +1 = Previous KDR shows this agent's work is incomplete/relevant
+  +0 = No additional context signal
+
+LOAD DECISION:
+  Score 8-10: PRIMARY agent — load first, this produces the deliverable
+  Score 5-7:  SECONDARY agent — load if budget allows, validates/enriches
+  Score 3-4:  TERTIARY — mention in output ("you may also want Agent X for Y")
+  Score 0-2:  SKIP — not relevant to this request
+```
+
+### 2b. Primary Routing Table
+
+```
+REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → SECONDARY
+─────────────────────────────────────────────────────────────────────────────────────
+"PRD" / "requirements"    → 04 (PRD)          → prd-framework          → 07 (Testing)
+"design" / "UI" / "app"   → 05 (Design)       → (anti-slop-design)     → 04 (PRD)
+"roadmap" / "strategy"    → 02+03 (Disc+Str)  → roadmap+consulting     → 18 (Finance)
+"MVP" / "build"           → 03+04 (Str+PRD)   → mvp-framework          → 06 (Engineering)
+"financial" / "pricing"   → 18 (Finance)       → compensation-bands     → 03 (Strategy)
+"security" / "audit"      → 09+11 (Sec+Comp)  → global-compliance      → 06 (Engineering)
+"marketing" / "growth"    → 15+14 (Mkt+Launch) → 30-day-launch-engine   → 16 (Analytics)
+"hiring" / "team"         → 22 (People)        → compensation-bands     → 18 (Finance)
+"legal" / "compliance"    → 10+11 (Legal+Comp) → global-compliance      → 09 (Security)
+"launch" / "go-to-market" → 14+07 (Launch+QA)  → stress-test            → 15 (Marketing)
+"operations" / "SOP"      → 19+20 (Ops+BAU)   → sop-process-maps       → 18 (Finance)
+"IPO" / "board"           → 26+18 (Gov+Fin)   → corporate-scaling      → 10 (Legal)
+"trust" / "moderation"    → 12 (Trust)         → —                      → 11 (Compliance)
+"fraud"                   → 13 (Fraud)         → —                      → 09 (Security)
+"AI" / "ML" / "data"      → 29 (Data/AI)       → —                      → 06 (Engineering)
+"ESG" / "sustainability"  → 27 (ESG)           → —                      → 25 (PR)
+"platform" / "API" / "eco"→ 30 (Platform)      → —                      → 06 (Engineering)
+"crisis" / "incident"     → 25 (PR)            → scenario-playbooks     → 09 (Security)
+"checklist for"           → (none)             → universal-checklists   → —
+"how to start" / "day 0"  → (none)             → founders-playbook      → —
+"review" / "audit all"    → 00+01 (Review+Adv) → coverage-audit         → —
+"complete product"        → PHASE PLAN (below) →                        → —
+```
+
+### 2c. Fallback When No Pattern Matches
+
+```
+IF the request doesn't match ANY routing pattern:
+
+1. CHECK: Is it a general knowledge question? → Answer directly, no agent needed.
+2. CHECK: Is it about the Product Architect system itself? → Reference SKILL.md.
+3. CHECK: Is it a continuation of previous work? → Look for KDR context.
+4. IF STILL UNCLEAR: Ask the user ONE question:
+   "I want to give you the best help. Could you tell me which of these
+   is closest to what you need?
+   A) Product spec or design
+   B) Business/financial planning
+   C) Technical/engineering
+   D) Legal/compliance
+   E) Team/operations
+   F) Something else — describe in one sentence"
+
+NEVER: Load 5 random agents and hope one is relevant.
+NEVER: Say "I don't know which agent to use." Route or ask.
+```
+
+### 2d. Multi-Intent Decomposition
+
+```
+WHEN a request contains multiple distinct intents:
+
+EXAMPLE: "Write a PRD for the payment feature and estimate how much it will cost
+to build, and also what compliance requirements apply."
+
+DECOMPOSE:
+  Intent 1: PRD for payment feature → Agent 04 (PRD) + prd-framework
+  Intent 2: Cost estimation → Agent 18 (Finance) + Agent 06 (Engineering)
+  Intent 3: Compliance requirements → Agent 11 (Compliance) + global-compliance
+
+EXECUTION ORDER:
+  Priority = which intent enables the others?
+  PRD first (defines what we're costing and compliance-checking)
+  → Cost second (needs PRD scope to estimate)
+  → Compliance third (needs feature spec to assess)
+
+CONTEXT BUDGET CHECK:
+  Can all 4 agents fit in one turn? (04 + 18 + 06 + 11 = 4 agents)
+  4 ≤ 5 limit → YES, load all in one turn.
+  If >5 agents needed → Split into 2 turns, output mini-KDR between.
+
+OUTPUT: Address each intent in sequence, clearly labeled:
+  "## Payment Feature PRD [Agent 04]"
+  "## Cost Estimation [Agent 18]"
+  "## Compliance Requirements [Agent 11]"
+```
+
+### 2e. Dynamic Mid-Conversation Loading
+
+```
+DURING a conversation, new agent needs may emerge that weren't in the original request.
+
+TRIGGERS FOR DYNAMIC LOADING:
+□ User asks a follow-up in a different domain
+  ("Now what about the legal implications?" → Load Agent 10)
+□ Current agent's output reveals a dependency
+  (PRD specs payment flow → "This needs Security Agent 09 review for PCI compliance")
+□ Conflict detected between current output and previous KDR decisions
+  (→ Load the conflicting agent for resolution)
+
+DYNAMIC LOADING RULES:
+1. ANNOUNCE before loading: "I'm bringing in Agent 09 (Security) to review
+   the payment flow for PCI compliance."
+2. Don't reload agents already in context (check what's loaded)
+3. If loading a new agent would exceed 5-agent limit:
+   Summarize least-relevant agent's contribution, unload it, load new one
+4. Record dynamic load in KDR: "Agent 09 dynamically loaded during Phase B
+   to review payment PCI compliance."
 ```
 
 ## STEP 3: Context Budget Rules
@@ -61,18 +182,33 @@ REQUEST CONTAINS          → LOAD THESE AGENTS           → LOAD THESE FRAMEWO
 ```
 HARD RULES:
 □ NEVER load more than 5 agent files in a single turn
-□ NEVER load SKILL.md + SMART-LOADER.md + 5 agents (too much context waste)
+□ NEVER load SKILL.md + SMART-LOADER.md + 5 agents simultaneously
 □ SMART-LOADER is the ONLY file always in context
 □ For Pattern C (full product): Execute in phases, output KDR between each
-□ Reserve 40% of context for conversation history + user's files/input
-□ If user is on free tier: Be MORE aggressive about phasing (smaller chunks per turn)
+□ If user is on free tier: Maximum 3 agents per turn (not 5)
 
-LOADING PRIORITY:
-1. SMART-LOADER.md (always — you're reading it now)
-2. The PRIMARY agent for the task (the one that produces the main deliverable)
-3. The relevant framework (template/structure for the deliverable)
-4. SECONDARY agents (validation, review, suggestions)
-5. Agent 01 (Proactive Advisor) — if context budget allows
+TOKEN ESTIMATION:
+  SMART-LOADER.md ≈ 4,500 tokens (always loaded)
+  Average agent file ≈ 3,000-6,000 tokens
+  Average framework file ≈ 2,000-5,000 tokens
+  User's conversation history ≈ varies (reserve 40% of total budget)
+
+  FREE TIER (~100K tokens):
+    Budget: 60K for files (after 40% conversation reserve)
+    Max: SMART-LOADER (4.5K) + 3 agents (15K) + 1 framework (4K) = ~23.5K
+    Remaining: ~36K for response generation — comfortable
+
+  PRO TIER (~200K tokens):
+    Budget: 120K for files
+    Max: SMART-LOADER (4.5K) + 5 agents (25K) + 2 frameworks (8K) = ~37.5K
+    Remaining: ~82K for response generation — very comfortable
+
+LOADING PRIORITY (when budget is tight):
+1. SMART-LOADER.md (always — non-negotiable)
+2. PRIMARY agent (the one producing the main deliverable)
+3. The relevant framework (template/structure)
+4. SECONDARY agent (validation/enrichment — only if budget allows)
+5. Agent 01 (Proactive Advisor) — only if budget allows after all of the above
 ```
 
 ## STEP 4: Full Product Phase Plan
