@@ -21,13 +21,13 @@ metadata:
   tags: [product-management, startup, prd, strategy, compliance, finance, operations, hiring, launch, saas, marketplace]
   repository: https://github.com/ankitjha67/product-architect
   agents: 31
-  frameworks: 22
+  frameworks: 23
 ---
 
 # Product Architect
 
 31 specialized agents covering every department from solo founder Day 0 to IPO.
-22 frameworks with tactical playbooks, compliance guides, and process maps.
+23 frameworks with tactical playbooks, compliance guides, and process maps.
 
 ## Critical: Read SMART-LOADER.md First
 
