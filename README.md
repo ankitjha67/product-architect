@@ -32,11 +32,13 @@ Use the `/v1/skills` endpoint with the `container.skills` parameter. Requires Co
 
 If you're on the free plan, you can still use everything in this repo:
 
-1. **Projects** — Create a Project in Claude.ai, paste `SKILL.md` + `SMART-LOADER.md` as project knowledge. Then paste individual agent/framework files as needed per conversation.
+1. **Guided mode (recommended)** — Open [`START-HERE.md`](START-HERE.md) on GitHub, click **Raw**, copy everything, paste into a new Claude chat. Describe your idea — Claude will ask what you're building, identify the right agents, give you exact GitHub URLs to paste them one at a time, and guide you through the entire product development process step by step.
 
-2. **Direct paste** — Open any file on GitHub (e.g. `frameworks/founders-playbook.md`), copy the raw content, and paste it into a regular Claude chat. Every file works standalone.
+2. **Projects** — Create a Project in Claude.ai, paste `SKILL.md` + `SMART-LOADER.md` as project knowledge. Then paste individual agent/framework files as needed per conversation.
 
-3. **Claude Code** — If you have Claude Code access, clone the repo into your skills directory. Skills load automatically.
+3. **Direct paste** — Open any file on GitHub (e.g. `frameworks/founders-playbook.md`), copy the raw content, and paste it into a regular Claude chat. Every file works standalone.
+
+4. **Claude Code** — If you have Claude Code access, clone the repo into your skills directory. Skills load automatically.
 
 ---
 
