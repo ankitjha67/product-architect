@@ -1,27 +1,14 @@
 ---
 name: product-architect
-description: |
-  Complete product development system with 31 specialized agents and 22 frameworks.
-  Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP,
-  design an app, do a security audit, create a financial model, plan hiring, launch a
-  product, set up operations, prepare for IPO, write a compliance policy, or asks
-  "how do I start a company". Also use when user says "help me plan", "product strategy",
-  "go-to-market", "fundraising", "pitch deck", "unit economics", "competitive analysis",
-  "user personas", "sprint planning", "SOP", "checklist for", or any product-related request.
-  Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated
-  to product development.
+description: Complete product development system with 31 specialized agents and 23 frameworks. Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP, design an app, do a security audit, create a financial model, plan hiring, launch a product, set up operations, prepare for IPO, or write a compliance policy. Also triggers on help me plan, product strategy, go-to-market, fundraising, pitch deck, unit economics, competitive analysis, user personas, sprint planning, SOP, checklist for, or how do I start a company. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
-compatibility: |
-  Works on Claude.ai, Claude Code, and API. No external dependencies required.
-  Enhanced when used with anti-slop-design skill for UI/UX work.
+compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
   author: ankitjha67
-  version: 2.0.0
+  version: "2.0.0"
   category: product-development
   tags: [product-management, startup, prd, strategy, compliance, finance, operations, hiring, launch, saas, marketplace]
   repository: https://github.com/ankitjha67/product-architect
-  agents: 31
-  frameworks: 22
 ---
 
 # Product Architect
