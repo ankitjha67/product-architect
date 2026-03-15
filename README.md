@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development skill for Claude.**
 
-31 agents · 23 frameworks · 14,800+ lines · Solo founder Day 0 → IPO
+31 agents · 23 frameworks · 15,100+ lines · Solo founder Day 0 → IPO
 
 > **This is a [Claude Skill](https://docs.anthropic.com/en/docs/agents-and-tools/skills).** Claude reads `SKILL.md`. This README is for human visitors.
 
@@ -100,8 +100,8 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 |--------|-------|
 | Agents | 31 |
 | Frameworks | 23 |
-| Total files | 68 |
-| Total lines | 14,800+ |
+| Total files | 69 |
+| Total lines | 15,100+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
@@ -117,6 +117,7 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 product-architect/
 ├── SKILL.md                     ← Claude reads this (skill entry point)
 ├── SMART-LOADER.md              ← Context router + memory engine
+├── START-HERE.md                ← Free tier entry point (paste into Claude)
 ├── README.md                    ← You are here (for humans)
 ├── LICENSE                      ← MIT
 ├── agents/                      ← 31 agent files (00-30)
