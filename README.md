@@ -10,7 +10,10 @@
 
 ## Install
 
-### Claude.ai
+### Claude.ai (Pro, Max, Team, or Enterprise)
+
+> **Skills require a paid plan.** Free tier does not have access to Skills, including "Add from GitHub."
+
 1. Download this repo as ZIP (Code → Download ZIP)
 2. Go to Claude.ai → Settings → Capabilities → Skills
 3. Upload the ZIP
@@ -19,11 +22,21 @@
 ### Claude Code
 ```bash
 git clone https://github.com/ankitjha67/product-architect.git
-# Place in your Claude Code skills directory
+# Place in your Claude Code skills directory (~/.claude/skills/)
 ```
 
 ### API
 Use the `/v1/skills` endpoint with the `container.skills` parameter. Requires Code Execution Tool beta.
+
+### Free Tier Workarounds
+
+If you're on the free plan, you can still use everything in this repo:
+
+1. **Projects** — Create a Project in Claude.ai, paste `SKILL.md` + `SMART-LOADER.md` as project knowledge. Then paste individual agent/framework files as needed per conversation.
+
+2. **Direct paste** — Open any file on GitHub (e.g. `frameworks/founders-playbook.md`), copy the raw content, and paste it into a regular Claude chat. Every file works standalone.
+
+3. **Claude Code** — If you have Claude Code access, clone the repo into your skills directory. Skills load automatically.
 
 ---
 
