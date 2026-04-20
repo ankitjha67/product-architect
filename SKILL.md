@@ -1,35 +1,26 @@
 ---
 name: product-architect
-description: Complete product development system with 31 specialized agents and 23 frameworks. Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP, design an app, do a security audit, create a financial model, plan hiring, launch a product, set up operations, prepare for IPO, or write a compliance policy. Also triggers on help me plan, product strategy, go-to-market, fundraising, pitch deck, unit economics, competitive analysis, user personas, sprint planning, SOP, checklist for, or how do I start a company. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: "Complete product development system with 31 specialized agents and 23 frameworks. Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP, design an app, do a security audit, create a financial model, plan hiring, launch a product, set up operations, prepare for IPO, or write a compliance policy. Also triggers on help me plan, product strategy, go-to-market, fundraising, pitch deck, unit economics, competitive analysis, user personas, sprint planning, SOP, checklist for, or how do I start a company. Do NOT use for general knowledge questions, coding tutorials, creative writing unrelated to product development, standalone code security scanning (use a dedicated SAST/DAST skill), pure accounting or bookkeeping (use a finance-specific skill), or generic project management without a product development context."
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
   author: ankitjha67
   version: "2.0.0"
   category: product-development
-  tags: [product-management, startup, prd, strategy, compliance, finance, operations, hiring, launch, saas, marketplace]
+  tags: "product-management, startup, prd, strategy, compliance, finance, operations, hiring, launch, saas, marketplace"
   repository: https://github.com/ankitjha67/product-architect
 ---
 
 # Product Architect
 
 31 specialized agents covering every department from solo founder Day 0 to IPO.
-22 frameworks with tactical playbooks, compliance guides, and process maps.
-
-## Critical: Read SMART-LOADER.md First
-
-Before loading any agent files, consult `SMART-LOADER.md`. It contains:
-- Request classification and agent routing (which agents to load)
-- Context budget rules (never load more than 5 agents per turn)
-- Multi-intent decomposition (handling complex requests)
-- KDR memory system (Key Decision Records that survive chat compaction)
-- Conflict detection protocol (what to do when agents disagree)
+23 frameworks with tactical playbooks, compliance guides, and process maps.
 
 ## Instructions
 
-### Step 1: Route the Request
+### Step 1: Route the Request via SMART-LOADER
 
-Read `SMART-LOADER.md` to classify the request and identify which agents to load.
+Read `SMART-LOADER.md` first — it contains request classification, agent routing, context budget rules (max 5 agents per turn), multi-intent decomposition, the KDR memory system, and conflict detection. Use it to identify which agents to load.
 
 ```
 QUICK ROUTING:
@@ -81,35 +72,29 @@ If two agents produce conflicting recommendations:
 
 ### Step 4: Output Key Decision Records
 
-After every phase, output a structured KDR block capturing all decisions,
-specs, open items, and artifacts. KDRs survive chat compaction.
-Full KDR format is in `SMART-LOADER.md`.
+After every phase, output a structured KDR block. KDRs survive chat compaction and enable session resumption. Full format in `SMART-LOADER.md`. Minimal example:
+
+```
+╔══════════════════════════════════════════════════╗
+║ KDR: [PRODUCT] — PHASE [X] COMPLETE              ║
+╠══════════════════════════════════════════════════╣
+║ DECISIONS:                                       ║
+║  #1 [Decision with rationale]                    ║
+║ SPECS: [Key technical choices]                   ║
+║ OPEN: [Unresolved items]                         ║
+║ NEXT: Phase [X+1] — [What it covers]             ║
+╚══════════════════════════════════════════════════╝
+```
 
 ## Agent Directory
 
-Audit: `00-chief-reviewer` `01-proactive-advisor`
-Product: `02-discovery` `03-strategy` `04-prd` `05-design` `06-engineering`
-Build: `07-testing-qa` `08-devops-sre`
-Protect: `09-security` `10-legal-ip` `11-compliance-ethics` `12-trust-safety` `13-fraud-operations`
-Launch: `14-launch-gtm` `15-marketing-sales` `16-analytics` `17-customer-success`
-Operate: `18-finance` `19-operations` `20-bau` `21-innovation-programs`
-People: `22-people-hr` `23-learning-development` `24-wellness-performance`
-Corporate: `25-pr-communications` `26-governance-ipo` `27-esg-sustainability` `28-government-relations`
-Specialized: `29-data-ai-strategy` `30-platform-ecosystem`
-
-All agent files are in `agents/` directory.
+31 agents in `agents/` (numbered `00` – `30`), grouped by domain: Audit (00–01), Product (02–06), Build (07–08), Protect (09–13), Launch (14–17), Operate (18–21), People (22–24), Corporate (25–28), Specialized (29–30). Use the routing table in Step 1 or `SMART-LOADER.md` scoring to pick the right agents.
 
 ## Framework Directory
 
-All framework files are in `frameworks/` directory:
-`founders-playbook` `30-day-launch-engine` `scenario-playbooks` `sop-process-maps`
-`compensation-bands` `consulting-frameworks` `stress-test-framework` `universal-checklists`
-`global-compliance` `corporate-scaling` `institutional-memory` `prd-framework`
-`mvp-framework` `roadmap-framework` `user-flows-framework` `risk-matrix`
-`ab-testing-framework` `accessibility-i18n` `product-lifecycle` `competitive-war-room`
-`continuous-improvement` `physical-ops-pmi` `coverage-audit`
+23 frameworks in `frameworks/` — covering PRDs, MVPs, roadmaps, user flows, risk matrices, SOPs, compliance, A/B testing, accessibility, product lifecycle, competitive analysis, and more. See `references/agent-standards.md` cross-reference table for which frameworks support which agents.
 
-Country compliance: `references/compliance/` — india, us, eu, uk, sea.
+Country compliance deep-dives: `references/compliance/` — india, us, eu, uk, sea.
 
 ## Examples
 
@@ -117,8 +102,19 @@ Example 1: Single-topic request
 ```
 User: "Write a PRD for a payment feature"
 → Load agents/04-prd.md + frameworks/prd-framework.md
-→ Produce PRD with: happy path, error states, edge cases, acceptance criteria
-→ Output KDR with all decisions
+→ Produce PRD sections: Problem statement, user stories, happy path,
+  error states, edge cases, acceptance criteria, success metrics
+→ Output KDR:
+  ╔══════════════════════════════════════════════════╗
+  ║ KDR: PAYFLOW — PHASE B COMPLETE                  ║
+  ╠══════════════════════════════════════════════════╣
+  ║ DECISIONS:                                       ║
+  ║  #1 Razorpay over Stripe (INR-first, lower MDR) ║
+  ║  #2 UPI as primary method (85% of target users)  ║
+  ║ SPECS: REST API, idempotent, webhook-driven      ║
+  ║ OPEN: Refund policy TBD, auto-retry threshold    ║
+  ║ NEXT: Phase C — Engineering + Security review     ║
+  ╚══════════════════════════════════════════════════╝
 ```
 
 Example 2: Full product build
@@ -141,24 +137,12 @@ User: "What salary should I pay a senior engineer in Bangalore?"
 
 ## Troubleshooting
 
-Skill triggers on unrelated queries:
-- This skill scopes to product development only
-- Should NOT trigger for general coding, creative writing, or factual queries
-- Description includes negative triggers for common false positives
-
-Context window fills up:
-- Never load more than 5 agent files per turn
-- Free tier: max 3 agents per turn
-- Use phased execution in SMART-LOADER.md for complex requests
-
 Inconsistent outputs across agents:
 - Apply cross-agent governance hierarchy (Step 3)
 - Chief Reviewer (Agent 00) runs 6-pass consistency audit with 14 cross-checks
-- Conflict detection protocol prevents contradictions
 
 Context lost after chat compaction:
-- KDR system outputs structured state after every phase
-- User pastes MASTER KDR into new conversation to restore full context
+- User pastes the most recent KDR or MASTER KDR into a new conversation to restore full context (see `SMART-LOADER.md` memory rules)
 
 ## Important
 
