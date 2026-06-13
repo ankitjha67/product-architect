@@ -1,6 +1,6 @@
 ---
 name: product-architect
-description: Complete product development system with 31 specialized agents and 23 frameworks. Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP, design an app, do a security audit, create a financial model, plan hiring, launch a product, set up operations, prepare for IPO, or write a compliance policy. Also triggers on help me plan, product strategy, go-to-market, fundraising, pitch deck, unit economics, competitive analysis, user personas, sprint planning, SOP, checklist for, or how do I start a company. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 47 specialized agents and 32 frameworks. Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP, design an app, do a security audit, create a financial model, plan hiring, launch a product, set up operations, prepare for IPO, or write a compliance policy. Also triggers on product marketing, positioning, pricing, packaging, sales playbook, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, on-call, OKRs, technical program management, documentation, localization, investor relations, M&A, procurement, help me plan, product strategy, go-to-market, fundraising, pitch deck, unit economics, competitive analysis, user personas, sprint planning, SOP, checklist for, or how do I start a company. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
@@ -13,8 +13,8 @@ metadata:
 
 # Product Architect
 
-31 specialized agents covering every department from solo founder Day 0 to IPO.
-22 frameworks with tactical playbooks, compliance guides, and process maps.
+47 specialized agents covering every department from solo founder Day 0 to IPO.
+32 frameworks with tactical playbooks, compliance guides, and process maps.
 
 ## Critical: Read SMART-LOADER.md First
 
@@ -41,6 +41,25 @@ QUICK ROUTING:
 "Marketing plan"        → agents/15-marketing-sales.md + frameworks/30-day-launch-engine.md
 "How to start"          → frameworks/founders-playbook.md
 "Checklist for [X]"     → frameworks/universal-checklists.md
+"Positioning/messaging" → agents/31-product-marketing.md + frameworks/brand-messaging.md
+"Pricing/packaging"     → agents/36-pricing-monetization.md + frameworks/pricing-packaging.md
+"Sales motion/RevOps"   → agents/32-sales-revops.md + frameworks/sales-playbook.md
+"Partnerships"          → agents/33-partnerships-bizdev.md + frameworks/partnership-framework.md
+"Growth/PLG"            → agents/37-growth.md + frameworks/growth-model.md
+"User research"         → agents/35-user-research.md
+"Developer relations"   → agents/34-developer-relations.md + agents/30-platform-ecosystem.md
+"Docs/tech writing"     → agents/42-content-docs.md
+"Localization/i18n"     → agents/43-localization-i18n.md + frameworks/accessibility-i18n.md
+"Data pipelines"        → agents/38-data-engineering.md + frameworks/data-governance.md
+"Privacy/DSAR/DPO"      → agents/39-privacy-dpo.md + references/compliance/*.md
+"Internal IT/SSO"       → agents/40-it-corporate-engineering.md
+"Program management"    → agents/41-technical-program-management.md
+"OKRs/goals"            → frameworks/okr-goal-setting.md
+"Incident/on-call"      → frameworks/incident-management.md + agents/08-devops-sre.md
+"Investor updates"      → agents/44-investor-relations.md
+"M&A/acquisition"       → agents/45-corporate-development.md + frameworks/physical-ops-pmi.md
+"Procurement/vendors"   → agents/46-procurement-supply-chain.md
+"Customer journey"      → frameworks/customer-journey.md + agents/17-customer-success.md
 "Full product"          → Phased execution (see SMART-LOADER.md Phase Plan)
 ```
 
@@ -66,11 +85,17 @@ LOADING PRIORITY:
 When multiple agents are active, apply the authority hierarchy:
 
 ```
-Level 4 (highest): Agent 11 (Compliance) — OVERRIDE on legal/regulatory risk
+Level 5 (highest): Agent 11 (Compliance) — OVERRIDE on legal/regulatory risk
+Level 4: Agent 39 (Privacy/DPO) — OVERRIDE on personal-data processing & rights
 Level 3: Agent 09 (Security) — OVERRIDE on security vulnerabilities
 Level 2: Agent 18 (Finance) — VETO on budget/cost violations
 Level 1: Agent 00 (Chief Reviewer) — VETO on quality/consistency
 ```
+
+Note: Privacy (39) and Compliance (11) are adjacent authorities. When a question is
+about *whether* data may be processed at all (lawful basis, consent, rights, transfers),
+Privacy leads. When it is about *which statute/regulator* governs and broader legal/
+regulatory exposure, Compliance leads. If they disagree, the stricter control wins.
 
 If two agents produce conflicting recommendations:
 1. STOP — do not proceed with either
@@ -96,6 +121,11 @@ Operate: `18-finance` `19-operations` `20-bau` `21-innovation-programs`
 People: `22-people-hr` `23-learning-development` `24-wellness-performance`
 Corporate: `25-pr-communications` `26-governance-ipo` `27-esg-sustainability` `28-government-relations`
 Specialized: `29-data-ai-strategy` `30-platform-ecosystem`
+Commercial: `31-product-marketing` `32-sales-revops` `33-partnerships-bizdev` `36-pricing-monetization` `37-growth`
+Developer & Research: `34-developer-relations` `35-user-research` `42-content-docs` `43-localization-i18n`
+Data & Privacy: `38-data-engineering` `39-privacy-dpo`
+Internal & Delivery: `40-it-corporate-engineering` `41-technical-program-management`
+Corporate Finance: `44-investor-relations` `45-corporate-development` `46-procurement-supply-chain`
 
 All agent files are in `agents/` directory.
 
@@ -108,6 +138,9 @@ All framework files are in `frameworks/` directory:
 `mvp-framework` `roadmap-framework` `user-flows-framework` `risk-matrix`
 `ab-testing-framework` `accessibility-i18n` `product-lifecycle` `competitive-war-room`
 `continuous-improvement` `physical-ops-pmi` `coverage-audit`
+`okr-goal-setting` `pricing-packaging` `growth-model` `sales-playbook`
+`data-governance` `incident-management` `partnership-framework` `brand-messaging`
+`customer-journey`
 
 Country compliance: `references/compliance/` — india, us, eu, uk, sea.
 

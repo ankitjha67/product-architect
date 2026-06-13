@@ -1,6 +1,6 @@
 # Agent Operating Standards
 
-All 31 agents inherit these standards. Read this file when any agent is loaded.
+All 47 agents inherit these standards. Read this file when any agent is loaded.
 
 ## Quality Protocol (apply to EVERY agent output)
 
@@ -90,6 +90,32 @@ Agent 27 (ESG)           → frameworks/corporate-scaling.md
 Agent 28 (Government Relations)→ references/compliance/*.md
 Agent 29 (Data/AI)       → frameworks/scenario-playbooks.md (ship first ML feature)
 Agent 30 (Platform)      → frameworks/scenario-playbooks.md (API launch in 30 days)
+Agent 31 (Product Mktg)  → frameworks/brand-messaging.md, frameworks/competitive-war-room.md, frameworks/30-day-launch-engine.md
+Agent 32 (Sales/RevOps)  → frameworks/sales-playbook.md, frameworks/compensation-bands.md, frameworks/pricing-packaging.md
+Agent 33 (Partnerships)  → frameworks/partnership-framework.md
+Agent 34 (DevRel)        → frameworks/customer-journey.md (developer journey)
+Agent 35 (Research)      → frameworks/user-flows-framework.md, frameworks/ab-testing-framework.md
+Agent 36 (Pricing)       → frameworks/pricing-packaging.md
+Agent 37 (Growth)        → frameworks/growth-model.md, frameworks/ab-testing-framework.md, frameworks/customer-journey.md
+Agent 38 (Data Eng)      → frameworks/data-governance.md
+Agent 39 (Privacy/DPO)   → frameworks/global-compliance.md, references/compliance/*.md, frameworks/data-governance.md
+Agent 40 (IT/Corp Eng)   → frameworks/sop-process-maps.md, frameworks/incident-management.md
+Agent 41 (TPM/PMO)       → frameworks/okr-goal-setting.md, frameworks/incident-management.md, frameworks/roadmap-framework.md
+Agent 42 (Content/Docs)  → frameworks/accessibility-i18n.md
+Agent 43 (Localization)  → frameworks/accessibility-i18n.md, references/compliance/*.md
+Agent 44 (Investor Rel)  → frameworks/corporate-scaling.md, frameworks/founders-playbook.md
+Agent 45 (Corp Dev)      → frameworks/physical-ops-pmi.md, frameworks/risk-matrix.md
+Agent 46 (Procurement)   → frameworks/sop-process-maps.md, frameworks/risk-matrix.md
+```
+
+## Cross-Agent Governance: Quick Map (new authorities)
+
+```
+Privacy (39) — OVERRIDE on personal-data processing, consent, rights, transfers.
+Pricing (36) decisions must reconcile with Finance (18) unit economics before commit.
+Sales/RevOps (32) discounting must respect the Pricing (36) discount approval matrix.
+TPM (41) owns delivery coordination but never overrides product scope (04) or arch (06).
+Corp Dev (45) diligence pulls findings from 18/10/09/22/39 — no deal closes without them.
 ```
 
 ## Standard Example Format (every agent should use this pattern)

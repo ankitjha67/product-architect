@@ -115,25 +115,36 @@ const phases = [
 ];
 
 const agentMap = {
-  "00": "Chief Reviewer", "01": "Discovery", "02": "Strategy", "03": "PRD",
-  "04": "Design", "05": "Engineering", "06": "Security", "07": "Launch",
-  "08": "Proactive Advisor", "09": "Testing", "10": "Marketing",
-  "11": "Analytics", "12": "Customer Success", "13": "Legal", "14": "DevOps",
-  "15": "Finance", "16": "Operations", "17": "BAU", "18": "People & HR",
-  "19": "PR & Comms", "20": "Governance & IPO", "21": "L&D",
-  "22": "Innovation", "23": "Wellness", "24": "Compliance",
-  "25": "Trust & Safety", "26": "Fraud", "27": "Data & AI",
-  "28": "ESG", "29": "Govt Relations", "30": "Platform",
+  "00": "Chief Reviewer", "01": "Proactive Advisor", "02": "Discovery", "03": "Strategy",
+  "04": "PRD", "05": "Design", "06": "Engineering", "07": "Testing & QA",
+  "08": "DevOps & SRE", "09": "Security", "10": "Legal & IP", "11": "Compliance & Ethics",
+  "12": "Trust & Safety", "13": "Fraud Operations", "14": "Launch & GTM", "15": "Marketing & Sales",
+  "16": "Analytics", "17": "Customer Success", "18": "Finance", "19": "Operations",
+  "20": "BAU", "21": "Innovation Programs", "22": "People & HR", "23": "Learning & Development",
+  "24": "Wellness & Performance", "25": "PR & Communications", "26": "Governance & IPO",
+  "27": "ESG & Sustainability", "28": "Government Relations", "29": "Data & AI Strategy",
+  "30": "Platform & Ecosystem", "31": "Product Marketing", "32": "Sales & RevOps",
+  "33": "Partnerships & BizDev", "34": "Developer Relations", "35": "User Research",
+  "36": "Pricing & Monetization", "37": "Growth", "38": "Data Engineering",
+  "39": "Privacy & DPO", "40": "IT & Corporate Engineering", "41": "Technical Program Mgmt",
+  "42": "Content & Docs", "43": "Localization & i18n", "44": "Investor Relations",
+  "45": "Corporate Development", "46": "Procurement & Supply Chain",
 };
 
 const quickLinks = [
-  { label: "Write a PRD", agents: "03", framework: "prd-framework.md" },
-  { label: "Financial Model", agents: "15", framework: "founders-playbook.md" },
-  { label: "Security Audit", agents: "06,24", framework: "global-compliance.md" },
-  { label: "Hiring Plan", agents: "18", framework: "compensation-bands.md" },
-  { label: "Marketing Strategy", agents: "10,11", framework: "ab-testing-framework.md" },
-  { label: "Compliance Check", agents: "24,13", framework: "global-compliance.md" },
-  { label: "IPO Readiness", agents: "20,15", framework: "corporate-scaling.md" },
+  { label: "Write a PRD", agents: "04", framework: "prd-framework.md" },
+  { label: "Financial Model", agents: "18", framework: "founders-playbook.md" },
+  { label: "Pricing & Packaging", agents: "36", framework: "pricing-packaging.md" },
+  { label: "Security Audit", agents: "09,11", framework: "global-compliance.md" },
+  { label: "Privacy / DSAR", agents: "39", framework: "global-compliance.md" },
+  { label: "Hiring Plan", agents: "22", framework: "compensation-bands.md" },
+  { label: "Marketing & Positioning", agents: "31,15", framework: "brand-messaging.md" },
+  { label: "Growth & Activation", agents: "37", framework: "growth-model.md" },
+  { label: "Sales Playbook", agents: "32", framework: "sales-playbook.md" },
+  { label: "Compliance Check", agents: "11,10", framework: "global-compliance.md" },
+  { label: "Incident / On-Call", agents: "08", framework: "incident-management.md" },
+  { label: "OKRs & Goals", agents: "03", framework: "okr-goal-setting.md" },
+  { label: "IPO Readiness", agents: "26,44", framework: "corporate-scaling.md" },
   { label: "Any Checklist", agents: "", framework: "universal-checklists.md" },
 ];
 
@@ -178,11 +189,11 @@ export default function ProductArchitectUI() {
           <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: -0.5 }}>
             <span style={{ color: C.accent }}>Product</span> Architect
           </div>
-          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>31 agents. 20 frameworks. Zero to legend.</div>
+          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>47 agents. 32 frameworks. Zero to legend.</div>
         </div>
         <div style={{ display: "flex", gap: 4 }}>
           <div className={`tab ${view === "journey" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("journey")}>Journey</div>
-          <div className={`tab ${view === "agents" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("agents")}>All 31 Agents</div>
+          <div className={`tab ${view === "agents" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("agents")}>All 47 Agents</div>
           <div className={`tab ${view === "quick" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("quick")}>Quick Start</div>
         </div>
       </div>
@@ -308,7 +319,7 @@ export default function ProductArchitectUI() {
         {/* Agents View */}
         {view === "agents" && (
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, marginBottom: 6 }}>All 31 Agents</h2>
+            <h2 style={{ fontSize: 22, fontWeight: 600, marginBottom: 6 }}>All 47 Agents</h2>
             <p style={{ fontSize: 14, color: C.textMid, marginBottom: 20, lineHeight: 1.6 }}>
               Each agent is a specialized department head. Tell Claude which one you need,
               or say "build me a complete product" to activate them all in sequence.
