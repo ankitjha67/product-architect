@@ -210,20 +210,20 @@ HARD RULES:
 □ If user is on free tier: Maximum 3 agents per turn (not 5)
 
 TOKEN ESTIMATION:
-  SMART-LOADER.md ≈ 4,500 tokens (always loaded)
+  SMART-LOADER.md ≈ 6,500 tokens (always loaded)
   Average agent file ≈ 3,000-6,000 tokens
   Average framework file ≈ 2,000-5,000 tokens
   User's conversation history ≈ varies (reserve 40% of total budget)
 
   FREE TIER (~100K tokens):
     Budget: 60K for files (after 40% conversation reserve)
-    Max: SMART-LOADER (4.5K) + 3 agents (15K) + 1 framework (4K) = ~23.5K
-    Remaining: ~36K for response generation — comfortable
+    Max: SMART-LOADER (6.5K) + 3 agents (15K) + 1 framework (4K) = ~25.5K
+    Remaining: ~34K for response generation — comfortable
 
   PRO TIER (~200K tokens):
     Budget: 120K for files
-    Max: SMART-LOADER (4.5K) + 5 agents (25K) + 2 frameworks (8K) = ~37.5K
-    Remaining: ~82K for response generation — very comfortable
+    Max: SMART-LOADER (6.5K) + 5 agents (25K) + 2 frameworks (8K) = ~39.5K
+    Remaining: ~80K for response generation — very comfortable
 
 LOADING PRIORITY (when budget is tight):
 1. SMART-LOADER.md (always — non-negotiable)

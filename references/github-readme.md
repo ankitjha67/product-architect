@@ -10,7 +10,7 @@
 
 Product Architect is a multi-agent skill system for [Claude](https://claude.ai) that transforms any product idea into a complete, executable blueprint. It covers **every department, function, process, and policy** that exists in a world-class company.
 
-Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 39 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
+Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 37 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
 
 ### Who Is This For?
 
@@ -98,7 +98,7 @@ Organized by lifecycle phase — the natural order of building a company:
 | # | Agent | What It Does |
 |---|-------|-------------|
 | 18 | Finance | P&L modeling, unit economics, pricing, fundraising |
-| 19 | Operations | 20+ SOPs with process maps, vendor management |
+| 19 | Operations | 24 SOPs with process maps, vendor management |
 | 20 | BAU | Daily/weekly/monthly rhythms, governance, BCP |
 | 21 | Innovation | Hackathons, bug bounty, R&D, procurement |
 
@@ -171,7 +171,7 @@ Organized by lifecycle phase — the natural order of building a company:
 
 **Founder's Playbook** — A week-by-week guide from Day 0 with exact costs at each stage, fundraising amounts by round, pitch deck structure, website legal requirements, and scaling milestones.
 
-**20+ SOPs with Process Maps** — Step-by-step processes for every department with automation opportunities flagged and recommended tools.
+**24 SOPs with Process Maps** — Step-by-step processes for every department with automation opportunities flagged and recommended tools.
 
 **14 Complete Policies** — Code of conduct, anti-harassment (POSH), whistleblower, information security, data protection, anti-bribery, conflict of interest, insider trading, and more. Not templates — actual policies ready to customize.
 
@@ -182,12 +182,17 @@ Organized by lifecycle phase — the natural order of building a company:
 ```
 product-architect/
 ├── README.md                    You are here
-├── LICENSE                      MIT License
-├── SKILL.md                     Master orchestrator
+├── SKILL.md                     Master orchestrator (skill entry point)
 ├── SMART-LOADER.md              Context router + memory engine
+├── START-HERE.md                Free-tier guided entry point
+├── ENHANCEMENTS.md              Enhancement roadmap (what was added & why)
+├── LICENSE                      MIT License
 ├── agents/                      48 specialized agents (00-47)
 ├── frameworks/                  33 strategic & operational frameworks
 ├── references/
+│   ├── agent-standards.md       Quality + Depth Doctrine inherited by all agents
+│   ├── DISCLAIMER.md            Professional-review requirements
+│   ├── github-readme.md         Extended documentation (this file)
 │   ├── industry-references.md   Best-in-class by function & industry
 │   └── compliance/              Country deep-dives (IN, US, EU, UK, SEA)
 └── tools/

@@ -24,7 +24,7 @@ const phases = [
       "Create basic brand identity (logo, colors, fonts)",
     ],
     framework: "founders-playbook.md", cost: "₹15-50K one-time" },
-  { id: "validate", icon: "◇", label: "Week 1-2: Validate", color: "#34C759", agent: "01",
+  { id: "validate", icon: "◇", label: "Week 1-2: Validate", color: "#34C759", agent: "47,02",
     desc: "Talk to 30+ users, competitive research, market sizing",
     checklist: [
       "Interview 30+ potential users (strangers, not friends)",
@@ -36,7 +36,7 @@ const phases = [
       "Decision gate: GO (20+ passionate) / PIVOT (10-20) / KILL (<10)",
     ],
     framework: "consulting-frameworks.md", cost: "₹0-5K (your time)" },
-  { id: "design", icon: "△", label: "Week 3-4: Design MVP", color: "#FF9F0A", agent: "02,03,04",
+  { id: "design", icon: "△", label: "Week 3-4: Design MVP", color: "#FF9F0A", agent: "03,04,05",
     desc: "Define core loop, cut features ruthlessly, design 3-5 screens",
     checklist: [
       "Define core value loop: [User action] → [System value] → [Outcome]",
@@ -47,7 +47,7 @@ const phases = [
       "Get feedback on designs from 5 target users before building",
     ],
     framework: "mvp-framework.md + prd-framework.md", cost: "₹0-30K" },
-  { id: "build", icon: "□", label: "Week 5-10: Build", color: "#BF5AF2", agent: "05,14",
+  { id: "build", icon: "□", label: "Week 5-10: Build", color: "#BF5AF2", agent: "06,08,09",
     desc: "Build MVP, integrate payments, set up analytics, deploy",
     checklist: [
       "Choose tech stack (use what you know — speed > perfection)",
@@ -60,7 +60,7 @@ const phases = [
       "Test with 5-10 people internally before any external user sees it",
     ],
     framework: "stress-test-framework.md", cost: "₹0-5L" },
-  { id: "launch", icon: "○", label: "Week 11-14: Launch", color: "#FF453A", agent: "07,09",
+  { id: "launch", icon: "○", label: "Week 11-14: Launch", color: "#FF453A", agent: "14,07,16",
     desc: "Soft launch to 50-200 users, measure, iterate, fix top 3 issues",
     checklist: [
       "Soft launch to 50-200 hand-picked users",
@@ -73,7 +73,7 @@ const phases = [
       "Set up support channel (email at minimum, chat if possible)",
     ],
     framework: "sop-process-maps.md", cost: "₹5-20K" },
-  { id: "grow", icon: "◎", label: "Month 4-6: Grow", color: "#30D158", agent: "10,11,15",
+  { id: "grow", icon: "◎", label: "Month 4-6: Grow", color: "#30D158", agent: "15,18,37",
     desc: "Marketing, unit economics, fundraising prep, hire first people",
     checklist: [
       "Calculate unit economics: CAC, LTV, LTV/CAC ratio (target >3x)",
@@ -86,7 +86,7 @@ const phases = [
       "Start talking to investors 6 months before you NEED money",
     ],
     framework: "compensation-bands.md + founders-playbook.md", cost: "₹3-8L/month" },
-  { id: "scale", icon: "◉", label: "Month 7-12: Scale", color: "#5E5CE6", agent: "16,17,18,24",
+  { id: "scale", icon: "◉", label: "Month 7-12: Scale", color: "#5E5CE6", agent: "19,22,11",
     desc: "Formalize operations, hire team, compliance, governance",
     checklist: [
       "Hire department heads (Engineering, Product, Marketing)",
@@ -99,7 +99,7 @@ const phases = [
       "Implement OKRs for goal alignment across growing team",
     ],
     framework: "corporate-scaling.md + sop-process-maps.md", cost: "₹20-50L/month" },
-  { id: "dominate", icon: "★", label: "Year 2+: Dominate", color: "#FFD60A", agent: "20,28",
+  { id: "dominate", icon: "★", label: "Year 2+: Dominate", color: "#FFD60A", agent: "26,27,30",
     desc: "Market leadership, international expansion, IPO preparation",
     checklist: [
       "Establish competitive moat (network effects, data, brand, switching costs)",
