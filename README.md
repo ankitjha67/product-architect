@@ -143,7 +143,8 @@ product-architect/
 │   ├── github-readme.md         ← Extended documentation
 │   └── industry-references.md   ← Best-in-class by function
 └── tools/
-    └── navigator.jsx            ← Interactive web UI for founders
+    ├── navigator.jsx            ← Interactive web UI for founders
+    └── validate_repo.py         ← Structure validator (counts, numbering, doc-consistency)
 ```
 
 ## Disclaimer

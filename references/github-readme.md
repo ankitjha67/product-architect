@@ -196,7 +196,8 @@ product-architect/
 │   ├── industry-references.md   Best-in-class by function & industry
 │   └── compliance/              Country deep-dives (IN, US, EU, UK, SEA)
 └── tools/
-    └── navigator.jsx            Interactive web UI for founders
+    ├── navigator.jsx            Interactive web UI for founders
+    └── validate_repo.py         Structure validator (counts, numbering, doc-consistency)
 ```
 
 ## Numbers
