@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development skill for Claude.**
 
-31 agents · 23 frameworks · 15,100+ lines · Solo founder Day 0 → IPO
+47 agents · 32 frameworks · Solo founder Day 0 → IPO → public company
 
 > **This is a [Claude Skill](https://docs.anthropic.com/en/docs/agents-and-tools/skills).** Claude reads `SKILL.md`. This README is for human visitors.
 
@@ -44,23 +44,25 @@ If you're on the free plan, you can still use everything in this repo:
 
 ## What's Inside
 
-### 31 Specialized Agents
+### 47 Specialized Agents
 
 Organized by product lifecycle — each operates at department-head depth:
 
 | Phase | Agents |
 |-------|--------|
 | **Audit & Advisory** | 00 Chief Reviewer (6-pass audit, veto power) · 01 Proactive Advisor (blind spots) |
-| **Product** | 02 Discovery · 03 Strategy · 04 PRD · 05 Design · 06 Engineering |
-| **Build & Test** | 07 Testing & QA · 08 DevOps & SRE |
-| **Protect** | 09 Security · 10 Legal & IP · 11 Compliance (14 policies) · 12 Trust & Safety · 13 Fraud |
-| **Launch & Grow** | 14 Launch & GTM · 15 Marketing & Sales · 16 Analytics · 17 Customer Success |
-| **Operate & Scale** | 18 Finance · 19 Operations (24 SOPs) · 20 BAU · 21 Innovation |
+| **Product** | 02 Discovery · 03 Strategy · 04 PRD · 05 Design · 06 Engineering · 35 User Research |
+| **Build & Test** | 07 Testing & QA · 08 DevOps & SRE · 41 Technical Program Management |
+| **Protect** | 09 Security · 10 Legal & IP · 11 Compliance (14 policies) · 12 Trust & Safety · 13 Fraud · 39 Privacy & Data Protection (DPO) |
+| **Launch & Grow** | 14 Launch & GTM · 15 Marketing & Sales · 16 Analytics · 17 Customer Success · 31 Product Marketing · 37 Growth |
+| **Commercial** | 32 Sales & RevOps · 33 Partnerships & BizDev · 36 Pricing & Monetization |
+| **Operate & Scale** | 18 Finance · 19 Operations (24 SOPs) · 20 BAU · 21 Innovation · 46 Procurement & Supply Chain |
 | **People** | 22 People & HR · 23 L&D · 24 Wellness & Performance |
-| **Corporate** | 25 PR & Comms · 26 Governance & IPO · 27 ESG · 28 Govt Relations |
-| **Specialized** | 29 Data & AI Strategy · 30 Platform & Ecosystem |
+| **Corporate** | 25 PR & Comms · 26 Governance & IPO · 27 ESG · 28 Govt Relations · 44 Investor Relations · 45 Corporate Development & M&A |
+| **Data & Platform** | 29 Data & AI Strategy · 30 Platform & Ecosystem · 34 Developer Relations · 38 Data Engineering |
+| **Enablement** | 40 IT & Corporate Engineering · 42 Content & Docs · 43 Localization & i18n |
 
-### 23 Frameworks
+### 32 Frameworks
 
 | Framework | What It Does |
 |-----------|-------------|
@@ -71,11 +73,19 @@ Organized by product lifecycle — each operates at department-head depth:
 | **Compensation Bands** | Salary by role/level/geography + equity + maintenance process |
 | **Consulting Frameworks** | McKinsey 7S, Porter's, Blue Ocean, BCG, JTBD, PESTEL |
 | **Stress-Test Framework** | 200+ edge cases across 12 categories |
-| **Universal Checklists** | Dynamic generator for any scenario |
+| **OKRs & Goal-Setting** | North Star metric, metrics tree, OKR cascade & cadence |
+| **Pricing & Packaging** | Price-metric selection, Van Westendorp, discount governance |
+| **Growth Model** | AARRR, growth loops, activation/retention, experiment engine |
+| **Sales Playbook** | Sales stages, MEDDICC, discovery scripts, objection handling |
+| **Data Governance** | Data contracts, quality SLAs, classification, lineage, catalog |
+| **Incident Management** | Severity matrix, on-call, comms, blameless postmortems |
+| **Partnership Framework** | Partner tiers, deal structures, co-sell, partner economics |
+| **Brand & Messaging** | Positioning statement, messaging house, voice & tone, narrative |
+| **Customer Journey** | Lifecycle map, moments of truth, retention/expansion loops |
 | **Institutional Memory** | Decision archaeology, knowledge maps, context handoffs |
 | **Corporate Scaling** | Solo founder → IPO with org charts per stage |
 | **Global Compliance** | Regulatory overview for 30+ countries |
-| *+ 12 more* | PRD, MVP, roadmap, user-flows, risk-matrix, A/B testing, accessibility, product lifecycle, competitive intel, continuous improvement, physical ops, coverage audit |
+| *+ 13 more* | PRD, MVP, roadmap, user-flows, risk-matrix, A/B testing, accessibility, product lifecycle, competitive intel, continuous improvement, physical ops, coverage audit, universal checklists |
 
 ### Country Compliance Deep-Dives
 India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietnam, Philippines, Malaysia)
@@ -86,7 +96,7 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 **Smart Loading** — `SMART-LOADER.md` routes each request to only the relevant agents. Scores agents 0-10 on relevance, handles multi-intent requests, supports dynamic mid-conversation loading. Never loads everything at once. Free tier: 3 agents/turn. Pro: 5 agents/turn.
 
-**Cross-Agent Governance** — 4-level authority hierarchy prevents contradictions: Compliance (override) → Security (override) → Finance (veto) → Chief Reviewer (veto). 5-step conflict protocol: stop, state, apply hierarchy, document, flag.
+**Cross-Agent Governance** — 5-level authority hierarchy prevents contradictions: Compliance (override) → Privacy/DPO (override) → Security (override) → Finance (veto) → Chief Reviewer (veto). 5-step conflict protocol: stop, state, apply hierarchy, document, flag.
 
 **KDR Memory** — Key Decision Records with sequential numbering, conflict detection (scan-before-record), and SUPERSEDED mechanism. Survives chat compaction. Works on free tier. Paste MASTER KDR into new conversations to resume.
 
@@ -98,10 +108,10 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 | Metric | Value |
 |--------|-------|
-| Agents | 31 |
-| Frameworks | 23 |
-| Total files | 69 |
-| Total lines | 15,100+ |
+| Agents | 47 |
+| Frameworks | 32 |
+| Total files | 95 |
+| Total lines | 23,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
@@ -119,9 +129,10 @@ product-architect/
 ├── SMART-LOADER.md              ← Context router + memory engine
 ├── START-HERE.md                ← Free tier entry point (paste into Claude)
 ├── README.md                    ← You are here (for humans)
+├── ENHANCEMENTS.md              ← Enhancement roadmap (what was added & why)
 ├── LICENSE                      ← MIT
-├── agents/                      ← 31 agent files (00-30)
-├── frameworks/                  ← 23 framework files
+├── agents/                      ← 47 agent files (00-46)
+├── frameworks/                  ← 32 framework files
 ├── references/
 │   ├── compliance/              ← Country deep-dives (5 files)
 │   ├── agent-standards.md       ← Quality protocol for all agents

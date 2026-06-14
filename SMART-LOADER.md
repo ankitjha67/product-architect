@@ -94,8 +94,27 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "fraud"                   → 13 (Fraud)         → —                      → 09 (Security)
 "AI" / "ML" / "data"      → 29 (Data/AI)       → —                      → 06 (Engineering)
 "ESG" / "sustainability"  → 27 (ESG)           → —                      → 25 (PR)
-"platform" / "API" / "eco"→ 30 (Platform)      → —                      → 06 (Engineering)
+"platform" / "API" / "eco"→ 30 (Platform)      → —                      → 34 (DevRel)
 "crisis" / "incident"     → 25 (PR)            → scenario-playbooks     → 09 (Security)
+"positioning"/"messaging" → 31 (PMM)           → brand-messaging        → 15 (Marketing)
+"pricing" / "packaging"   → 36 (Pricing)       → pricing-packaging      → 18 (Finance)
+"sales" / "RevOps"/"CRM"  → 32 (Sales/RevOps)  → sales-playbook         → 18 (Finance)
+"partner" / "channel"     → 33 (Partnerships)  → partnership-framework  → 10 (Legal)
+"developer relations"/"SDK"→ 34 (DevRel)       → —                      → 42 (Docs)
+"user research"/"usability"→ 35 (Research)     → user-flows-framework   → 02 (Discovery)
+"growth" / "PLG"/"activation"→ 37 (Growth)     → growth-model           → 16 (Analytics)
+"data pipeline"/"warehouse"→ 38 (Data Eng)     → data-governance        → 16 (Analytics)
+"privacy"/"DSAR"/"DPO"     → 39 (Privacy)      → global-compliance      → 11 (Compliance)
+"internal IT"/"SSO"/"MDM"  → 40 (IT/Corp Eng)  → —                      → 09 (Security)
+"program mgmt"/"TPM"/"PMO" → 41 (TPM)          → —                      → 04 (PRD)
+"docs"/"technical writing" → 42 (Content/Docs) → —                      → 34 (DevRel)
+"localization"/"i18n"/"l10n"→ 43 (Localization)→ accessibility-i18n     → 06 (Engineering)
+"investor update"/"IR"     → 44 (Investor Rel) → corporate-scaling      → 18 (Finance)
+"M&A"/"acquisition"/"corp dev"→ 45 (Corp Dev)  → physical-ops-pmi       → 18 (Finance)
+"procurement"/"vendor"/"RFP"→ 46 (Procurement) → —                      → 18 (Finance)
+"OKR" / "goals" / "north star"→ (none)         → okr-goal-setting       → 03 (Strategy)
+"on-call"/"postmortem"/"SLO"→ 08 (DevOps)      → incident-management    → 41 (TPM)
+"customer journey"/"lifecycle"→ 17 (Cust Succ) → customer-journey       → 37 (Growth)
 "checklist for"           → (none)             → universal-checklists   → —
 "how to start" / "day 0"  → (none)             → founders-playbook      → —
 "review" / "audit all"    → 00+01 (Review+Adv) → coverage-audit         → —
@@ -254,6 +273,43 @@ PHASE F — FINAL AUDIT (Turn 6):
 
 Between phases, ASK: "Phase [X] complete. Ready for Phase [X+1]?"
 This gives the user control and lets them ask questions or adjust before continuing.
+```
+
+### Extended Phases (deeper builds — load only when the product needs them)
+
+For products that are commercial-heavy (B2B SaaS, platforms, marketplaces) or
+maturing toward scale, the core A–F plan is followed by these optional phases.
+Insert them where relevant or run after Phase F. Output a KDR after each.
+
+```
+PHASE G — RESEARCH & GROWTH MODEL (before/with Phase B):
+  Load: Agent 35 (User Research) + Agent 37 (Growth) + okr-goal-setting + growth-model
+  Output: Research plan + activation/retention model + North Star & OKRs
+  → Insert here when the product is consumer/PLG; validates Discovery (02) assumptions
+
+PHASE H — COMMERCIAL ENGINE (after Phase D):
+  Load: Agent 31 (Product Mktg) + Agent 36 (Pricing) + Agent 32 (Sales/RevOps)
+  Frameworks: brand-messaging + pricing-packaging + sales-playbook
+  Output: Positioning + pricing/packaging + sales motion + RevOps stack
+  → Required for any product that monetizes; reconcile pricing with Finance (18)
+
+PHASE I — DATA, PRIVACY & PLATFORM (after Phase C):
+  Load: Agent 38 (Data Eng) + Agent 39 (Privacy/DPO) + Agent 34 (DevRel, if API)
+  Frameworks: data-governance + incident-management
+  Output: Data platform + privacy program (RoPA/DPIA/DSAR) + DevEx (if platform)
+  → Privacy (39) has OVERRIDE authority — run before any data-collecting feature ships
+
+PHASE J — DELIVERY & SCALE OPS (continuous):
+  Load: Agent 41 (TPM) + Agent 40 (IT/Corp Eng) + Agent 46 (Procurement)
+  Frameworks: incident-management + sop-process-maps
+  Output: Program/delivery system + internal IT + procurement/vendor management
+  → Activates as the team grows past ~15 people
+
+PHASE K — CAPITAL & CORPORATE (fundraising / inorganic growth):
+  Load: Agent 44 (Investor Relations) + Agent 45 (Corp Dev) + Agent 26 (Governance)
+  Frameworks: corporate-scaling + physical-ops-pmi (for M&A integration)
+  Output: IR program + M&A thesis/diligence + governance structure
+  → Activates when raising, acquiring, or approaching IPO
 ```
 
 ---
@@ -497,6 +553,22 @@ SCENARIO: Session is about to hit token limit.
 28 GovRelations  → Regulatory Strategy (landscape, sandboxes, engagement, risk)
 29 Data/AI       → AI Strategy (ML lifecycle, responsible AI, LLM integration, governance)
 30 Platform      → Platform Strategy (API, marketplace dynamics, dev ecosystem)
+31 Product Mktg  → PMM Plan (positioning, messaging house, launch tiers, battlecards, enablement)
+32 Sales/RevOps  → Revenue Engine (sales motion, pipeline stages, quota/comp, forecasting, CRM)
+33 Partnerships  → Partnership Strategy (partner types, deal structures, program, co-sell)
+34 DevRel        → Developer Experience Plan (funnel, TTFHW, docs/SDK/sandbox, advocacy, community)
+35 Research      → Research Plan (method matrix, ResearchOps, studies, synthesis, insights repo)
+36 Pricing       → Monetization Plan (price metric, packaging, WTP, discounting, expansion)
+37 Growth        → Growth Plan (loops, AARRR, activation, retention, experiments, PLG)
+38 Data Eng      → Data Platform (stack, pipelines, modeling, quality, contracts, semantic layer)
+39 Privacy/DPO   → Privacy Program (RoPA, DPIA, consent, DSAR runbook, transfers, retention)
+40 IT/Corp Eng   → IT Plan (identity/SSO, MDM, zero-trust, SaaS mgmt, helpdesk, on/offboarding)
+41 TPM/PMO       → Program Plan (dependency/RAID map, cadences, launch readiness, RACI, health)
+42 Content/Docs  → Content System (Diátaxis docs, API reference, UX writing, style guide, KB)
+43 Localization  → l10n Plan (i18n readiness, locale strategy, TMS, cultural adaptation, locale QA)
+44 Investor Rel  → IR Plan (investor updates, board pack, data room, fundraise funnel, earnings)
+45 Corp Dev      → M&A Plan (build-buy-partner, thesis, valuation, diligence, deal, integration)
+46 Procurement   → Procurement Plan (P2P, sourcing, contracts, vendor risk, supply chain, savings)
 01 Advisor       → Proactive Suggestions (runs parallel — blind spots, ideas, best practices)
 00 Chief Review  → Final Audit (cross-agent consistency, gaps, risks, recommendations)
 ```

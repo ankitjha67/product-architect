@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development system ever built.**
 
-31 specialized AI agents. 20 strategic frameworks. 5 country compliance deep-dives. 12,000+ lines of actionable content. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
+47 specialized AI agents. 32 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
 
 ---
 
@@ -10,7 +10,7 @@
 
 Product Architect is a multi-agent skill system for [Claude](https://claude.ai) that transforms any product idea into a complete, executable blueprint. It covers **every department, function, process, and policy** that exists in a world-class company.
 
-Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CISO, GC, CHRO, and 22 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
+Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 38 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
 
 ### Who Is This For?
 
@@ -51,7 +51,7 @@ Every file is self-contained. Browse `agents/` and `frameworks/` for any topic:
 
 ---
 
-## The 31 Agents
+## The 47 Agents
 
 Organized by lifecycle phase — the natural order of building a company:
 
@@ -122,11 +122,47 @@ Organized by lifecycle phase — the natural order of building a company:
 | 29 | Data & AI | ML lifecycle, responsible AI, LLM integration strategy |
 | 30 | Platform & Ecosystem | API-as-product, marketplace dynamics, dev ecosystems |
 
+### 💼 Commercial & Revenue
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 31 | Product Marketing | Positioning, messaging house, launch tiers, sales enablement, battlecards |
+| 32 | Sales & RevOps | Sales motion, MEDDICC, quota/comp, forecasting, CRM architecture |
+| 33 | Partnerships & BizDev | Alliances, channel, OEM, co-sell, integration partnerships |
+| 36 | Pricing & Monetization | Price-metric selection, packaging, WTP research, discount governance |
+| 37 | Growth | PLG, AARRR, activation, retention, referral loops, experiment engine |
+
+### 🧪 Developer & Research
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 34 | Developer Relations | DevRel/DevEx, SDKs, docs portal, sandbox, advocacy, community |
+| 35 | User Research | Generative/evaluative research, ResearchOps, usability, JTBD |
+| 42 | Content & Docs | Diátaxis docs, API reference, UX writing, style guide, knowledge base |
+| 43 | Localization & i18n | i18n readiness, l10n ops, locale strategy, TMS, cultural adaptation |
+
+### 🗄️ Data & Privacy
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 38 | Data Engineering | Pipelines, warehouse/lakehouse, dbt, data quality, contracts, semantic layer |
+| 39 | Privacy & DPO | Privacy-by-design, RoPA, DPIA, consent, DSAR runbook, cross-border transfers |
+
+### 🛠️ Internal & Delivery
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 40 | IT & Corporate Engineering | Identity/SSO, MDM, zero-trust, SaaS management, helpdesk, on/offboarding |
+| 41 | Technical Program Management | Cross-team delivery, RAID, launch readiness, RACI, program health |
+
+### 💰 Corporate Finance
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 44 | Investor Relations | Investor updates, board pack, data room, fundraise funnel, earnings cycle |
+| 45 | Corporate Development | M&A, build-buy-partner, valuation, diligence, integration thesis |
+| 46 | Procurement & Supply Chain | P2P, sourcing, contracts, vendor risk, SaaS spend, supply chain |
+
 ---
 
 ## Key Features
 
-**Smart Loading** — The system is 12,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
+**Smart Loading** — The system is 23,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
 
 **Memory That Survives** — The KDR (Key Decision Record) system outputs structured state summaries after every phase. These survive chat compaction and can be pasted into new conversations to resume exactly where you left off. Works on free tier.
 
@@ -148,8 +184,8 @@ product-architect/
 ├── LICENSE                      MIT License
 ├── SKILL.md                     Master orchestrator
 ├── SMART-LOADER.md              Context router + memory engine
-├── agents/                      31 specialized agents (00-30)
-├── frameworks/                  20 strategic & operational frameworks
+├── agents/                      47 specialized agents (00-46)
+├── frameworks/                  32 strategic & operational frameworks
 ├── references/
 │   ├── industry-references.md   Best-in-class by function & industry
 │   └── compliance/              Country deep-dives (IN, US, EU, UK, SEA)
@@ -161,11 +197,11 @@ product-architect/
 
 | Metric | Value |
 |--------|-------|
-| Agents | 31 |
-| Frameworks | 20 |
+| Agents | 47 |
+| Frameworks | 32 |
 | Country deep-dives | 5 (covering 11 countries) |
-| Total files | 62 |
-| Total lines | 12,000+ |
+| Total files | 95 |
+| Total lines | 23,000+ |
 | Coverage areas audited | 250+ |
 | Complete policies | 14 |
 | SOPs with process maps | 20+ |
