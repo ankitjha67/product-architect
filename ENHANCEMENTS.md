@@ -59,6 +59,7 @@ absent as first-class agents and have been added at department-head depth.
 | `references/compliance/sea.md` | Expanded: per-country PDPA, data localization, fintech licensing | ✅ |
 | `frameworks/coverage-audit.md` | Expanded into a real gap-analysis instrument across all departments | ✅ |
 | `frameworks/risk-matrix.md` | Expanded: scoring rubric, register template, treatment strategies | ✅ |
+| `frameworks/scenario-playbooks.md` | Extended from 20 playbooks/14 departments to **54 playbooks across 31 departments** — added tactical, do-it-today guides for all 17 new departments (Agents 31–47): Tier-1 launch, MEDDICC discovery call, integration/reseller deals, DevEx sprint, usability test, WTP study, price-increase rollout, activation/aha, growth experiment, modern data stack, data-incident, DSAR runbook, DPIA, secure offboarding, SSO/SCIM rollout, launch readiness/go-no-go, RAID unblock, API docs, i18n locale launch, investor update, bad-news comms, M&A diligence, RFP/vendor selection, SaaS renewal, and the deep-research existence-scan + dossier | ✅ |
 
 ## 4. System Wiring (so everything actually works)
 

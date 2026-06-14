@@ -69,7 +69,7 @@ Organized by product lifecycle — each operates at department-head depth:
 | **Deep Research Protocol** | End-to-end market existence/novelty engine: exists-vs-novel verdict, citation hygiene, anti-hallucination gate, per-agent depth map |
 | **Founder's Playbook** | Week-by-week from Day 0 with costs, fundraising, IP, legal |
 | **30-Day Launch Engine** | Positioning, channel selection, day-by-day execution |
-| **Scenario Playbooks** | 20 tactical guides (breach response, pivot, first 5 hires, fundraise sprint, etc.) |
+| **Scenario Playbooks** | 54 tactical guides across 31 departments (breach response, pivot, MEDDICC discovery call, DSAR runbook, secure offboarding, price increase, launch readiness, investor update, etc.) |
 | **SOP & Process Maps** | 24 SOPs across 10 departments with automation opportunities |
 | **Compensation Bands** | Salary by role/level/geography + equity + maintenance process |
 | **Consulting Frameworks** | McKinsey 7S, Porter's, Blue Ocean, BCG, JTBD, PESTEL |
@@ -118,7 +118,7 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
-| Tactical scenario playbooks | 20 |
+| Tactical scenario playbooks | 54 (across 31 departments) |
 | Stress-test edge cases | 200+ |
 | Salary bands | 5 functions × 6 levels × 2 geographies |
 

@@ -124,23 +124,23 @@ Agent 27 (ESG)           → frameworks/corporate-scaling.md
 Agent 28 (Government Relations)→ references/compliance/*.md
 Agent 29 (Data/AI)       → frameworks/scenario-playbooks.md (ship first ML feature)
 Agent 30 (Platform)      → frameworks/scenario-playbooks.md (API launch in 30 days)
-Agent 31 (Product Mktg)  → frameworks/brand-messaging.md, frameworks/competitive-war-room.md, frameworks/30-day-launch-engine.md
-Agent 32 (Sales/RevOps)  → frameworks/sales-playbook.md, frameworks/compensation-bands.md, frameworks/pricing-packaging.md
-Agent 33 (Partnerships)  → frameworks/partnership-framework.md
-Agent 34 (DevRel)        → frameworks/customer-journey.md (developer journey)
-Agent 35 (Research)      → frameworks/user-flows-framework.md, frameworks/ab-testing-framework.md
-Agent 36 (Pricing)       → frameworks/pricing-packaging.md
-Agent 37 (Growth)        → frameworks/growth-model.md, frameworks/ab-testing-framework.md, frameworks/customer-journey.md
-Agent 38 (Data Eng)      → frameworks/data-governance.md
-Agent 39 (Privacy/DPO)   → frameworks/global-compliance.md, references/compliance/*.md, frameworks/data-governance.md
-Agent 40 (IT/Corp Eng)   → frameworks/sop-process-maps.md, frameworks/incident-management.md
-Agent 41 (TPM/PMO)       → frameworks/okr-goal-setting.md, frameworks/incident-management.md, frameworks/roadmap-framework.md
-Agent 42 (Content/Docs)  → frameworks/accessibility-i18n.md
-Agent 43 (Localization)  → frameworks/accessibility-i18n.md, references/compliance/*.md
-Agent 44 (Investor Rel)  → frameworks/corporate-scaling.md, frameworks/founders-playbook.md
-Agent 45 (Corp Dev)      → frameworks/physical-ops-pmi.md, frameworks/risk-matrix.md
-Agent 46 (Procurement)   → frameworks/sop-process-maps.md, frameworks/risk-matrix.md
-Agent 47 (Deep Research) → frameworks/deep-research-protocol.md (owns it; all agents invoke it)
+Agent 31 (Product Mktg)  → frameworks/brand-messaging.md, frameworks/competitive-war-room.md, frameworks/30-day-launch-engine.md, frameworks/scenario-playbooks.md (Agent 31 section)
+Agent 32 (Sales/RevOps)  → frameworks/sales-playbook.md, frameworks/compensation-bands.md, frameworks/pricing-packaging.md, frameworks/scenario-playbooks.md (Agent 32 section)
+Agent 33 (Partnerships)  → frameworks/partnership-framework.md, frameworks/scenario-playbooks.md (Agent 33 section)
+Agent 34 (DevRel)        → frameworks/customer-journey.md (developer journey), frameworks/scenario-playbooks.md (Agent 34 section)
+Agent 35 (Research)      → frameworks/user-flows-framework.md, frameworks/ab-testing-framework.md, frameworks/scenario-playbooks.md (Agent 35 section)
+Agent 36 (Pricing)       → frameworks/pricing-packaging.md, frameworks/scenario-playbooks.md (Agent 36 section)
+Agent 37 (Growth)        → frameworks/growth-model.md, frameworks/ab-testing-framework.md, frameworks/customer-journey.md, frameworks/scenario-playbooks.md (Agent 37 section)
+Agent 38 (Data Eng)      → frameworks/data-governance.md, frameworks/scenario-playbooks.md (Agent 38 section)
+Agent 39 (Privacy/DPO)   → frameworks/global-compliance.md, references/compliance/*.md, frameworks/data-governance.md, frameworks/scenario-playbooks.md (Agent 39 section)
+Agent 40 (IT/Corp Eng)   → frameworks/sop-process-maps.md, frameworks/incident-management.md, frameworks/scenario-playbooks.md (Agent 40 section)
+Agent 41 (TPM/PMO)       → frameworks/okr-goal-setting.md, frameworks/incident-management.md, frameworks/roadmap-framework.md, frameworks/scenario-playbooks.md (Agent 41 section)
+Agent 42 (Content/Docs)  → frameworks/accessibility-i18n.md, frameworks/scenario-playbooks.md (Agent 42 section)
+Agent 43 (Localization)  → frameworks/accessibility-i18n.md, references/compliance/*.md, frameworks/scenario-playbooks.md (Agent 43 section)
+Agent 44 (Investor Rel)  → frameworks/corporate-scaling.md, frameworks/founders-playbook.md, frameworks/scenario-playbooks.md (Agent 44 section)
+Agent 45 (Corp Dev)      → frameworks/physical-ops-pmi.md, frameworks/risk-matrix.md, frameworks/scenario-playbooks.md (Agent 45 section)
+Agent 46 (Procurement)   → frameworks/sop-process-maps.md, frameworks/risk-matrix.md, frameworks/scenario-playbooks.md (Agent 46 section)
+Agent 47 (Deep Research) → frameworks/deep-research-protocol.md (owns it; all agents invoke it), frameworks/scenario-playbooks.md (Agent 47 section)
 
 EVERY AGENT → frameworks/deep-research-protocol.md (research-first gate, Rule A above)
               Each agent's domain-specific depth requirements are in §10 (Per-Agent Depth Map).
