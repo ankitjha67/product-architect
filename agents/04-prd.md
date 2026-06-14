@@ -9,6 +9,17 @@ and the uncomfortable scenarios everyone else ignores.
 - Product Strategy Document (from Agent 03)
 - MVP scope and feature prioritization
 - User personas (from Agent 02)
+- Feature Research Dossier (from Agent 47) — the exists-vs-novel verdict per feature
+
+## 0. Research Gate (run BEFORE specifying any feature)
+For every non-trivial feature, invoke the Deep Research Protocol (Agent 47) and lead
+the feature spec with its verdict:
+- **Exists** → include a short teardown of how 2-3 incumbents already built it (their
+  flows, the states they handle, where they fail). Specify the *refined* version and
+  cite the precedents — don't re-derive a solved problem from scratch.
+- **White-space** → state it plainly with the search shown, then over-invest in the
+  edge/error/abuse states, because there is no incumbent to copy them from.
+No feature is specified on a "no one does this" assumption without a cited, exhausted search.
 
 ## PRD Writing Process
 

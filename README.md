@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development skill for Claude.**
 
-47 agents · 32 frameworks · Solo founder Day 0 → IPO → public company
+48 agents · 33 frameworks · Research-first, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
 
 > **This is a [Claude Skill](https://docs.anthropic.com/en/docs/agents-and-tools/skills).** Claude reads `SKILL.md`. This README is for human visitors.
 
@@ -44,13 +44,13 @@ If you're on the free plan, you can still use everything in this repo:
 
 ## What's Inside
 
-### 47 Specialized Agents
+### 48 Specialized Agents
 
 Organized by product lifecycle — each operates at department-head depth:
 
 | Phase | Agents |
 |-------|--------|
-| **Audit & Advisory** | 00 Chief Reviewer (6-pass audit, veto power) · 01 Proactive Advisor (blind spots) |
+| **Research & Audit** | 47 Deep Research (exists-vs-novel verdict, research-first gate) · 00 Chief Reviewer (6-pass audit, veto power) · 01 Proactive Advisor (blind spots) |
 | **Product** | 02 Discovery · 03 Strategy · 04 PRD · 05 Design · 06 Engineering · 35 User Research |
 | **Build & Test** | 07 Testing & QA · 08 DevOps & SRE · 41 Technical Program Management |
 | **Protect** | 09 Security · 10 Legal & IP · 11 Compliance (14 policies) · 12 Trust & Safety · 13 Fraud · 39 Privacy & Data Protection (DPO) |
@@ -62,13 +62,14 @@ Organized by product lifecycle — each operates at department-head depth:
 | **Data & Platform** | 29 Data & AI Strategy · 30 Platform & Ecosystem · 34 Developer Relations · 38 Data Engineering |
 | **Enablement** | 40 IT & Corporate Engineering · 42 Content & Docs · 43 Localization & i18n |
 
-### 32 Frameworks
+### 33 Frameworks
 
 | Framework | What It Does |
 |-----------|-------------|
+| **Deep Research Protocol** | End-to-end market existence/novelty engine: exists-vs-novel verdict, citation hygiene, anti-hallucination gate, per-agent depth map |
 | **Founder's Playbook** | Week-by-week from Day 0 with costs, fundraising, IP, legal |
 | **30-Day Launch Engine** | Positioning, channel selection, day-by-day execution |
-| **Scenario Playbooks** | 20 tactical guides (breach response, pivot, first 5 hires, fundraise sprint, etc.) |
+| **Scenario Playbooks** | 54 tactical guides across 31 departments (breach response, pivot, MEDDICC discovery call, DSAR runbook, secure offboarding, price increase, launch readiness, investor update, etc.) |
 | **SOP & Process Maps** | 24 SOPs across 10 departments with automation opportunities |
 | **Compensation Bands** | Salary by role/level/geography + equity + maintenance process |
 | **Consulting Frameworks** | McKinsey 7S, Porter's, Blue Ocean, BCG, JTBD, PESTEL |
@@ -94,6 +95,8 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 ## Key Architecture
 
+**Research-First Depth** — Before recommending building anything, agents run the **Deep Research Protocol** (Agent 47): an end-to-end market investigation that returns a grounded verdict — *"this already exists, here are the competitors + citations, refine it"* or *"this is white-space, no competition/citations in this niche"* (with the honest caveat that absence of evidence isn't proof of novelty, plus a "why is it empty?" analysis). Every agent inherits a Depth Rubric (L0 surface → L4 Mariana Trench), must grade itself L3+, and never fabricates a company, statistic, study, patent, or URL.
+
 **Smart Loading** — `SMART-LOADER.md` routes each request to only the relevant agents. Scores agents 0-10 on relevance, handles multi-intent requests, supports dynamic mid-conversation loading. Never loads everything at once. Free tier: 3 agents/turn. Pro: 5 agents/turn.
 
 **Cross-Agent Governance** — 5-level authority hierarchy prevents contradictions: Compliance (override) → Privacy/DPO (override) → Security (override) → Finance (veto) → Chief Reviewer (veto). 5-step conflict protocol: stop, state, apply hierarchy, document, flag.
@@ -108,14 +111,14 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 | Metric | Value |
 |--------|-------|
-| Agents | 47 |
-| Frameworks | 32 |
-| Total files | 95 |
-| Total lines | 23,000+ |
+| Agents | 48 |
+| Frameworks | 33 |
+| Total files | 97 |
+| Total lines | 24,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
-| Tactical scenario playbooks | 20 |
+| Tactical scenario playbooks | 54 (across 31 departments) |
 | Stress-test edge cases | 200+ |
 | Salary bands | 5 functions × 6 levels × 2 geographies |
 
@@ -131,8 +134,8 @@ product-architect/
 ├── README.md                    ← You are here (for humans)
 ├── ENHANCEMENTS.md              ← Enhancement roadmap (what was added & why)
 ├── LICENSE                      ← MIT
-├── agents/                      ← 47 agent files (00-46)
-├── frameworks/                  ← 32 framework files
+├── agents/                      ← 48 agent files (00-47)
+├── frameworks/                  ← 33 framework files
 ├── references/
 │   ├── compliance/              ← Country deep-dives (5 files)
 │   ├── agent-standards.md       ← Quality protocol for all agents
@@ -140,7 +143,8 @@ product-architect/
 │   ├── github-readme.md         ← Extended documentation
 │   └── industry-references.md   ← Best-in-class by function
 └── tools/
-    └── navigator.jsx            ← Interactive web UI for founders
+    ├── navigator.jsx            ← Interactive web UI for founders
+    └── validate_repo.py         ← Structure validator (counts, numbering, doc-consistency)
 ```
 
 ## Disclaimer

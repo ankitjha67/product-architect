@@ -1,11 +1,41 @@
 # Agent Operating Standards
 
-All 47 agents inherit these standards. Read this file when any agent is loaded.
+All 48 agents inherit these standards. Read this file when any agent is loaded.
+
+## Depth Doctrine (READ FIRST — applies to EVERY agent, every output)
+
+The system's promise is depth "until the Mariana Trench" — never surface-level
+scaffolding. Two rules are non-negotiable for all agents:
+
+```
+RULE A — RESEARCH-FIRST GATE:
+Before producing ANY build/bet output (a feature, product, strategy, spec, pricing,
+architecture, GTM, or any claim of "first/only/novel"), run the Deep Research Protocol
+(frameworks/deep-research-protocol.md) at the tier the stakes demand. You may not
+recommend building something without first establishing whether it already exists.
+  → If it exists: say so, cite competitors, and pivot to REFINEMENT.
+  → If no evidence found: say "white-space — but absence ≠ proof" and answer WHY it's empty.
+Agent 47 (Deep Research) owns this protocol; every other agent invokes it for its domain
+using its row in the Per-Agent Depth Map (§10 of the protocol).
+
+RULE B — DEPTH RUBRIC (grade yourself before delivering; L3 is the floor):
+  L0 Surface (REJECT) · L1 Shallow · L2 Working · L3 Deep (minimum) · L4 Trench (target)
+  L3 means: every non-obvious claim is cited or labeled, real numbers, prior-art/
+  competitor reality, edge cases + failure modes + second-order effects covered.
+  L4 adds: the non-consensus insight, quantified trade-offs, and an explicit
+  "what would make this wrong" + the test that would reveal it.
+
+NEVER FABRICATE. No invented company, product, statistic, study, patent, or URL.
+"Unverified — confirm with a live search" always beats a confident fake.
+If live research tools are unavailable, SAY SO and label market claims as hypotheses.
+```
 
 ## Quality Protocol (apply to EVERY agent output)
 
 ### Before Starting
 ```
+0. RESEARCH-FIRST: If this is a build/bet, run the Deep Research Protocol now (Rule A).
+   Establish exists-vs-novel BEFORE designing the solution. Capture citations.
 1. VERIFY you have enough context to produce quality output
    If missing critical information → ASK the user (max 3 questions)
    If context is from a previous KDR → trust it, don't re-ask
@@ -29,10 +59,14 @@ PERFORMANCE RULES (apply to every agent, every time):
 ### After Completing
 ```
 QUALITY CHECK (every agent runs this before delivering output):
+□ DEPTH SELF-GRADE: Is this L3+ on the Depth Rubric? If L0-L2, do not deliver — go deeper.
+□ CITATIONS: Is every non-obvious market/technical claim cited or labeled "unverified"?
+□ NO FABRICATION: Did I invent any company, number, study, patent, or URL? (must be no)
+□ RESEARCH GATE: For a build/bet, did I establish exists-vs-novel with evidence?
 □ Does the output actually answer what the user asked?
 □ Are there any assumptions that should be stated explicitly?
 □ Would this survive review by a domain expert?
-□ Are edge cases and error states addressed?
+□ Are edge cases, error states, failure modes, AND second-order effects addressed?
 □ Does this conflict with any previous KDR decisions? (check if KDR exists)
 □ Is there a related agent that should validate this? (see cross-reference below)
 ```
@@ -90,22 +124,26 @@ Agent 27 (ESG)           → frameworks/corporate-scaling.md
 Agent 28 (Government Relations)→ references/compliance/*.md
 Agent 29 (Data/AI)       → frameworks/scenario-playbooks.md (ship first ML feature)
 Agent 30 (Platform)      → frameworks/scenario-playbooks.md (API launch in 30 days)
-Agent 31 (Product Mktg)  → frameworks/brand-messaging.md, frameworks/competitive-war-room.md, frameworks/30-day-launch-engine.md
-Agent 32 (Sales/RevOps)  → frameworks/sales-playbook.md, frameworks/compensation-bands.md, frameworks/pricing-packaging.md
-Agent 33 (Partnerships)  → frameworks/partnership-framework.md
-Agent 34 (DevRel)        → frameworks/customer-journey.md (developer journey)
-Agent 35 (Research)      → frameworks/user-flows-framework.md, frameworks/ab-testing-framework.md
-Agent 36 (Pricing)       → frameworks/pricing-packaging.md
-Agent 37 (Growth)        → frameworks/growth-model.md, frameworks/ab-testing-framework.md, frameworks/customer-journey.md
-Agent 38 (Data Eng)      → frameworks/data-governance.md
-Agent 39 (Privacy/DPO)   → frameworks/global-compliance.md, references/compliance/*.md, frameworks/data-governance.md
-Agent 40 (IT/Corp Eng)   → frameworks/sop-process-maps.md, frameworks/incident-management.md
-Agent 41 (TPM/PMO)       → frameworks/okr-goal-setting.md, frameworks/incident-management.md, frameworks/roadmap-framework.md
-Agent 42 (Content/Docs)  → frameworks/accessibility-i18n.md
-Agent 43 (Localization)  → frameworks/accessibility-i18n.md, references/compliance/*.md
-Agent 44 (Investor Rel)  → frameworks/corporate-scaling.md, frameworks/founders-playbook.md
-Agent 45 (Corp Dev)      → frameworks/physical-ops-pmi.md, frameworks/risk-matrix.md
-Agent 46 (Procurement)   → frameworks/sop-process-maps.md, frameworks/risk-matrix.md
+Agent 31 (Product Mktg)  → frameworks/brand-messaging.md, frameworks/competitive-war-room.md, frameworks/30-day-launch-engine.md, frameworks/scenario-playbooks.md (Agent 31 section)
+Agent 32 (Sales/RevOps)  → frameworks/sales-playbook.md, frameworks/compensation-bands.md, frameworks/pricing-packaging.md, frameworks/scenario-playbooks.md (Agent 32 section)
+Agent 33 (Partnerships)  → frameworks/partnership-framework.md, frameworks/scenario-playbooks.md (Agent 33 section)
+Agent 34 (DevRel)        → frameworks/customer-journey.md (developer journey), frameworks/scenario-playbooks.md (Agent 34 section)
+Agent 35 (Research)      → frameworks/user-flows-framework.md, frameworks/ab-testing-framework.md, frameworks/scenario-playbooks.md (Agent 35 section)
+Agent 36 (Pricing)       → frameworks/pricing-packaging.md, frameworks/scenario-playbooks.md (Agent 36 section)
+Agent 37 (Growth)        → frameworks/growth-model.md, frameworks/ab-testing-framework.md, frameworks/customer-journey.md, frameworks/scenario-playbooks.md (Agent 37 section)
+Agent 38 (Data Eng)      → frameworks/data-governance.md, frameworks/scenario-playbooks.md (Agent 38 section)
+Agent 39 (Privacy/DPO)   → frameworks/global-compliance.md, references/compliance/*.md, frameworks/data-governance.md, frameworks/scenario-playbooks.md (Agent 39 section)
+Agent 40 (IT/Corp Eng)   → frameworks/sop-process-maps.md, frameworks/incident-management.md, frameworks/scenario-playbooks.md (Agent 40 section)
+Agent 41 (TPM/PMO)       → frameworks/okr-goal-setting.md, frameworks/incident-management.md, frameworks/roadmap-framework.md, frameworks/scenario-playbooks.md (Agent 41 section)
+Agent 42 (Content/Docs)  → frameworks/accessibility-i18n.md, frameworks/scenario-playbooks.md (Agent 42 section)
+Agent 43 (Localization)  → frameworks/accessibility-i18n.md, references/compliance/*.md, frameworks/scenario-playbooks.md (Agent 43 section)
+Agent 44 (Investor Rel)  → frameworks/corporate-scaling.md, frameworks/founders-playbook.md, frameworks/scenario-playbooks.md (Agent 44 section)
+Agent 45 (Corp Dev)      → frameworks/physical-ops-pmi.md, frameworks/risk-matrix.md, frameworks/scenario-playbooks.md (Agent 45 section)
+Agent 46 (Procurement)   → frameworks/sop-process-maps.md, frameworks/risk-matrix.md, frameworks/scenario-playbooks.md (Agent 46 section)
+Agent 47 (Deep Research) → frameworks/deep-research-protocol.md (owns it; all agents invoke it), frameworks/scenario-playbooks.md (Agent 47 section)
+
+EVERY AGENT → frameworks/deep-research-protocol.md (research-first gate, Rule A above)
+              Each agent's domain-specific depth requirements are in §10 (Per-Agent Depth Map).
 ```
 
 ## Cross-Agent Governance: Quick Map (new authorities)
