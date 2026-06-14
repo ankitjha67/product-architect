@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development system ever built.**
 
-47 specialized AI agents. 32 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
+48 specialized AI agents. 33 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
 
 ---
 
@@ -10,7 +10,7 @@
 
 Product Architect is a multi-agent skill system for [Claude](https://claude.ai) that transforms any product idea into a complete, executable blueprint. It covers **every department, function, process, and policy** that exists in a world-class company.
 
-Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 38 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
+Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 39 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
 
 ### Who Is This For?
 
@@ -51,13 +51,14 @@ Every file is self-contained. Browse `agents/` and `frameworks/` for any topic:
 
 ---
 
-## The 47 Agents
+## The 48 Agents
 
 Organized by lifecycle phase — the natural order of building a company:
 
-### 🔍 Audit & Advisory
+### 🔍 Research & Audit
 | # | Agent | What It Does |
 |---|-------|-------------|
+| 47 | Deep Research | Exists-vs-novel market verdict with citations; research-first gate; depth enforcer |
 | 00 | Chief Reviewer | Final audit with veto — reviews ALL other agents |
 | 01 | Proactive Advisor | Surfaces ideas and blind spots you didn't think of |
 
@@ -162,7 +163,7 @@ Organized by lifecycle phase — the natural order of building a company:
 
 ## Key Features
 
-**Smart Loading** — The system is 23,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
+**Smart Loading** — The system is 24,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
 
 **Memory That Survives** — The KDR (Key Decision Record) system outputs structured state summaries after every phase. These survive chat compaction and can be pasted into new conversations to resume exactly where you left off. Works on free tier.
 
@@ -184,8 +185,8 @@ product-architect/
 ├── LICENSE                      MIT License
 ├── SKILL.md                     Master orchestrator
 ├── SMART-LOADER.md              Context router + memory engine
-├── agents/                      47 specialized agents (00-46)
-├── frameworks/                  32 strategic & operational frameworks
+├── agents/                      48 specialized agents (00-47)
+├── frameworks/                  33 strategic & operational frameworks
 ├── references/
 │   ├── industry-references.md   Best-in-class by function & industry
 │   └── compliance/              Country deep-dives (IN, US, EU, UK, SEA)
@@ -197,11 +198,11 @@ product-architect/
 
 | Metric | Value |
 |--------|-------|
-| Agents | 47 |
-| Frameworks | 32 |
+| Agents | 48 |
+| Frameworks | 33 |
 | Country deep-dives | 5 (covering 11 countries) |
-| Total files | 95 |
-| Total lines | 23,000+ |
+| Total files | 97 |
+| Total lines | 24,000+ |
 | Coverage areas audited | 250+ |
 | Complete policies | 14 |
 | SOPs with process maps | 20+ |

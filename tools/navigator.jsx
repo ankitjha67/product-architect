@@ -129,9 +129,11 @@ const agentMap = {
   "39": "Privacy & DPO", "40": "IT & Corporate Engineering", "41": "Technical Program Mgmt",
   "42": "Content & Docs", "43": "Localization & i18n", "44": "Investor Relations",
   "45": "Corporate Development", "46": "Procurement & Supply Chain",
+  "47": "Deep Research",
 };
 
 const quickLinks = [
+  { label: "Does this exist / is it novel?", agents: "47", framework: "deep-research-protocol.md" },
   { label: "Write a PRD", agents: "04", framework: "prd-framework.md" },
   { label: "Financial Model", agents: "18", framework: "founders-playbook.md" },
   { label: "Pricing & Packaging", agents: "36", framework: "pricing-packaging.md" },
@@ -189,11 +191,11 @@ export default function ProductArchitectUI() {
           <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: -0.5 }}>
             <span style={{ color: C.accent }}>Product</span> Architect
           </div>
-          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>47 agents. 32 frameworks. Zero to legend.</div>
+          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>48 agents. 33 frameworks. Research-first. Zero to legend.</div>
         </div>
         <div style={{ display: "flex", gap: 4 }}>
           <div className={`tab ${view === "journey" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("journey")}>Journey</div>
-          <div className={`tab ${view === "agents" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("agents")}>All 47 Agents</div>
+          <div className={`tab ${view === "agents" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("agents")}>All 48 Agents</div>
           <div className={`tab ${view === "quick" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("quick")}>Quick Start</div>
         </div>
       </div>
@@ -319,7 +321,7 @@ export default function ProductArchitectUI() {
         {/* Agents View */}
         {view === "agents" && (
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, marginBottom: 6 }}>All 47 Agents</h2>
+            <h2 style={{ fontSize: 22, fontWeight: 600, marginBottom: 6 }}>All 48 Agents</h2>
             <p style={{ fontSize: 14, color: C.textMid, marginBottom: 20, lineHeight: 1.6 }}>
               Each agent is a specialized department head. Tell Claude which one you need,
               or say "build me a complete product" to activate them all in sequence.

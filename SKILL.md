@@ -1,6 +1,6 @@
 ---
 name: product-architect
-description: Complete product development system with 47 specialized agents and 32 frameworks. Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP, design an app, do a security audit, create a financial model, plan hiring, launch a product, set up operations, prepare for IPO, or write a compliance policy. Also triggers on product marketing, positioning, pricing, packaging, sales playbook, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, on-call, OKRs, technical program management, documentation, localization, investor relations, M&A, procurement, help me plan, product strategy, go-to-market, fundraising, pitch deck, unit economics, competitive analysis, user personas, sprint planning, SOP, checklist for, or how do I start a company. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 48 specialized agents and 33 frameworks. Use when user asks to build a product, write a PRD, create a roadmap, plan an MVP, design an app, research a market, check if a feature already exists, validate a novel idea, do competitive analysis, do a security audit, create a financial model, plan hiring, launch a product, set up operations, prepare for IPO, or write a compliance policy. Also triggers on does this exist, is this novel, who else does this, market research, product marketing, positioning, pricing, packaging, sales playbook, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, on-call, OKRs, technical program management, documentation, localization, investor relations, M&A, procurement, help me plan, product strategy, go-to-market, fundraising, pitch deck, unit economics, competitive analysis, user personas, sprint planning, SOP, checklist for, or how do I start a company. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
@@ -13,8 +13,21 @@ metadata:
 
 # Product Architect
 
-47 specialized agents covering every department from solo founder Day 0 to IPO.
-32 frameworks with tactical playbooks, compliance guides, and process maps.
+48 specialized agents covering every department from solo founder Day 0 to IPO.
+33 frameworks with tactical playbooks, compliance guides, and process maps.
+
+## Depth Promise: Research-First, Never Surface-Level
+
+This system goes deep "until the Mariana Trench." Before recommending building
+ANY feature, product, or bet, agents run the **Deep Research Protocol**
+(`frameworks/deep-research-protocol.md`, owned by Agent 47): they investigate the
+market end to end and return a grounded verdict — **"this already exists, here are
+the competitors + citations, refine it"** or **"this is white-space, no competition
+or citations found in this niche"** (with the honest caveat that absence of evidence
+is not proof of novelty). Every agent inherits this via `references/agent-standards.md`
+and must grade its output L3+ on the Depth Rubric. Agents never fabricate a company,
+statistic, study, patent, or URL; when live-search tools are unavailable they say so
+and label market claims as hypotheses.
 
 ## Critical: Read SMART-LOADER.md First
 
@@ -26,6 +39,15 @@ Before loading any agent files, consult `SMART-LOADER.md`. It contains:
 - Conflict detection protocol (what to do when agents disagree)
 
 ## Instructions
+
+### Step 0: Research Gate (for any build/bet)
+
+If the request is to build a feature/product, validate an idea, or make a market/
+pricing/architecture bet, load `agents/47-deep-research.md` +
+`frameworks/deep-research-protocol.md` FIRST. Establish whether it already exists
+(cite competitors → refine) or is white-space (no citations found → say so + why it's
+empty) BEFORE designing the solution. Then proceed to Step 1. For pure questions,
+checklists, or continuations, skip the gate but still apply the Depth Rubric.
 
 ### Step 1: Route the Request
 
@@ -60,6 +82,10 @@ QUICK ROUTING:
 "M&A/acquisition"       → agents/45-corporate-development.md + frameworks/physical-ops-pmi.md
 "Procurement/vendors"   → agents/46-procurement-supply-chain.md
 "Customer journey"      → frameworks/customer-journey.md + agents/17-customer-success.md
+"Does this exist?"      → agents/47-deep-research.md + frameworks/deep-research-protocol.md
+"Is this novel?"        → agents/47-deep-research.md + frameworks/deep-research-protocol.md
+"Market research"       → agents/47-deep-research.md + agents/02-discovery.md
+"Build [any feature]"   → agents/47-deep-research.md FIRST (research gate), then route
 "Full product"          → Phased execution (see SMART-LOADER.md Phase Plan)
 ```
 
@@ -126,6 +152,7 @@ Developer & Research: `34-developer-relations` `35-user-research` `42-content-do
 Data & Privacy: `38-data-engineering` `39-privacy-dpo`
 Internal & Delivery: `40-it-corporate-engineering` `41-technical-program-management`
 Corporate Finance: `44-investor-relations` `45-corporate-development` `46-procurement-supply-chain`
+Research: `47-deep-research` (research-first gate — invoked before any build/bet)
 
 All agent files are in `agents/` directory.
 
@@ -140,7 +167,7 @@ All framework files are in `frameworks/` directory:
 `continuous-improvement` `physical-ops-pmi` `coverage-audit`
 `okr-goal-setting` `pricing-packaging` `growth-model` `sales-playbook`
 `data-governance` `incident-management` `partnership-framework` `brand-messaging`
-`customer-journey`
+`customer-journey` `deep-research-protocol`
 
 Country compliance: `references/compliance/` — india, us, eu, uk, sea.
 

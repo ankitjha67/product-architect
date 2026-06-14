@@ -115,6 +115,9 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "OKR" / "goals" / "north star"→ (none)         → okr-goal-setting       → 03 (Strategy)
 "on-call"/"postmortem"/"SLO"→ 08 (DevOps)      → incident-management    → 41 (TPM)
 "customer journey"/"lifecycle"→ 17 (Cust Succ) → customer-journey       → 37 (Growth)
+"does this exist"/"is this novel"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
+"market research"/"who else does"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
+"build [any feature/product]"→ 47 FIRST (gate) → deep-research-protocol → then route normally
 "checklist for"           → (none)             → universal-checklists   → —
 "how to start" / "day 0"  → (none)             → founders-playbook      → —
 "review" / "audit all"    → 00+01 (Review+Adv) → coverage-audit         → —
@@ -236,8 +239,16 @@ LOADING PRIORITY (when budget is tight):
 For "build me a complete product" requests:
 
 ```
+PHASE 0 — RESEARCH GATE (Turn 0, before anything is designed):
+  Load: Agent 47 (Deep Research) + deep-research-protocol
+  Output: Feature/Product Research Dossier — exists-vs-novel verdict with citations.
+    If it EXISTS → carry the competitor teardown + differentiation wedge into Phase A.
+    If WHITE-SPACE → carry the "why is it empty?" findings + validation plan into Phase A.
+  → Output KDR-0. No product gets designed before its market reality is established.
+
 PHASE A — FOUNDATION (Turn 1):
   Load: Agent 02 (Discovery) + Agent 03 (Strategy) + consulting-frameworks
+  Input: KDR-0 (the research verdict grounds the strategy)
   Output: Discovery Brief + Product Strategy
   → Output KDR-A at end of turn
 
@@ -569,6 +580,7 @@ SCENARIO: Session is about to hit token limit.
 44 Investor Rel  → IR Plan (investor updates, board pack, data room, fundraise funnel, earnings)
 45 Corp Dev      → M&A Plan (build-buy-partner, thesis, valuation, diligence, deal, integration)
 46 Procurement   → Procurement Plan (P2P, sourcing, contracts, vendor risk, supply chain, savings)
+47 Deep Research → Feature Research Dossier (exists-vs-novel verdict + citations + refine/validate)
 01 Advisor       → Proactive Suggestions (runs parallel — blind spots, ideas, best practices)
 00 Chief Review  → Final Audit (cross-agent consistency, gaps, risks, recommendations)
 ```
