@@ -97,9 +97,27 @@ skill are present, agents run real queries and cite real URLs. When they are not
 protocol requires agents to **say so** and label market claims as hypotheses to verify —
 never to fabricate competitors, statistics, or citations to manufacture confidence.
 
+## 6. AI-Native Layer (LangGraph, RAG & modern AI across every department)
+
+Brings the current AI-engineering stack into the system and applies it to all 48 departments.
+
+| Addition | What it does | Status |
+|----------|--------------|--------|
+| **`ai-engineering-stack.md`** | The flagship technical reference: the L0→L5 maturity ladder (prompt→RAG→tools→workflow→agent→multi-agent), **RAG** deep-dive (chunking, embeddings, vector DBs, hybrid retrieval + RRF, reranking, query transforms, contextual retrieval, CRAG/self-RAG, agentic RAG, GraphRAG, RAGAS evals), **LangGraph** deep-dive (StateGraph, conditional edges/loops, checkpointing, human-in-the-loop, memory, multi-agent patterns) with an honest orchestrator comparison incl. Anthropic-native options (Agent SDK, Managed Agents, Tool Runner, MCP), a reference agentic-RAG architecture, production concerns (observability, evals-in-CI, guardrails, cost/latency, prompt caching), and the **OWASP LLM Top 10** risk surface | ✅ |
+| **`ai-department-playbooks.md`** | "AI for every department" — a specific, grounded LLM/RAG/agent use case for **each of the 48 agents** (00–47) with the pattern, stack, and guardrail/metric, so every department gets a concrete AI upgrade without bloating each agent file | ✅ |
+| Inline AI sections | Agent 29 (Modern GenAI & Agent Strategy), Agent 06 (AI-Native Architecture), Agent 38 (AI/Embeddings Data Pipeline), Agent 16 (LLM-Powered Analytics), Agent 17 (AI Support & Deflection), Agent 34 (AI-Assisted DevEx), Agent 09 (Securing AI Features / OWASP LLM Top 10), Agent 39 (Privacy in AI/LLM Systems) | ✅ |
+| Wiring | SKILL.md (35 frameworks, AI triggers, routing, directory, v3.1.0), SMART-LOADER routing, agent-standards (every agent → AI playbooks), README/START-HERE/github-readme/navigator counts, ENHANCEMENTS | ✅ |
+
+**How it stays accurate & safe:** the stack defaults to the latest Claude models
+(Opus 4.8, Sonnet 5, Haiku 4.5) with adaptive thinking and MCP for integrations, and
+flags version-sensitive claims with "verify current provider docs" (the GenAI stack moves
+fast). Every LLM feature that touches untrusted input or personal data requires sign-off
+from Agent 09 (Security) and Agent 39 (Privacy/DPO); Agent 29 owns responsible-AI
+governance and the eval-first discipline. Absence of a guardrail or eval set is a failed AI feature.
+
 ---
 
 *Every new agent inherits `references/agent-standards.md`, participates in the
 KDR memory system, respects the cross-agent governance hierarchy, runs the
-research-first Depth Doctrine, and carries professional-review disclaimers where the
-domain is regulated.*
+research-first Depth Doctrine, applies the AI Department Playbooks where useful, and
+carries professional-review disclaimers where the domain is regulated.*

@@ -144,6 +144,10 @@ Agent 47 (Deep Research) → frameworks/deep-research-protocol.md (owns it; all 
 
 EVERY AGENT → frameworks/deep-research-protocol.md (research-first gate, Rule A above)
               Each agent's domain-specific depth requirements are in §10 (Per-Agent Depth Map).
+EVERY AGENT → frameworks/ai-department-playbooks.md (how THIS department applies LLMs/RAG/agents)
+              + frameworks/ai-engineering-stack.md for the how (LangGraph, RAG, evals, guardrails).
+Agent 06/29/38 own the AI stack; Agent 09/39 sign off on any LLM feature touching
+untrusted input or personal data.
 ```
 
 ## Cross-Agent Governance: Quick Map (new authorities)

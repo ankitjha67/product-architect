@@ -262,6 +262,50 @@ BREACH RESPONSE (SEV1):
 5. Review: Post-mortem, improve defenses (within 1 week)
 ```
 
+### 8. Securing AI Features (OWASP LLM Top 10)
+
+Any LLM-powered feature in the product is a new attack surface you must audit — and AI is
+also a tool you can use in security operations. Treat all model output and retrieved content
+as UNTRUSTED. See `frameworks/ai-engineering-stack.md` §5 for the full risk surface; you and
+Agent 39 own sign-off on any LLM feature touching untrusted input or personal data.
+
+```
+(a) DEFEND THE PRODUCT'S OWN LLM FEATURES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LLM01 PROMPT INJECTION:
+□ Treat retrieved docs, tool output, and user content as data, NEVER as instructions
+□ RAG chunks / API responses cannot override the system prompt or issue commands
+□ Segregate trusted instructions from untrusted content; least-privilege on everything
+
+LLM02 INSECURE OUTPUT HANDLING:
+□ Validate & escape model output before it flows into eval(), SQL, shell, or HTML
+□ Never pass raw LLM text to a code interpreter, DB query, or DOM without sanitization
+□ Structured/typed outputs + schema validation on anything downstream
+
+LLM08 EXCESSIVE AGENCY:
+□ Scope tools to the minimum needed; no broad filesystem/network/admin grants
+□ Human-in-the-loop approval for high-impact or irreversible actions
+□ Audit-log every tool call; confirm destructive operations
+
+LLM06 SENSITIVE-INFO DISCLOSURE:
+□ PII/secrets scrubbed from prompts, logs, embeddings, and memory (coordinate Agent 39)
+□ No system-prompt / key leakage; don't embed regulated PII without a lawful basis
+
+LLM10 UNBOUNDED CONSUMPTION:
+□ Token budgets, step/recursion caps, rate limits, cost caps (guard against runaway loops/DoS)
+
+RED-TEAM:
+□ Adversarial / LLM pentest before launch: jailbreaks, injection via RAG poisoning,
+  data-exfil prompts, tool-abuse chains. Nothing ships un-red-teamed.
+
+(b) USE AI IN SECURITY OPS (with human verification — the model assists, it does not decide):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+□ Alert triage & enrichment: summarize and prioritize; analyst confirms before action
+□ Log summarization: distill noisy logs into candidate findings (verify against raw logs)
+□ Detection-rule drafting: propose SIEM/Sigma/YARA rules for a human to review and tune
+□ RULE: AI accelerates the analyst; it never auto-remediates or closes an incident alone
+```
+
 ## Output: Security Audit Report
 
 ```markdown

@@ -327,6 +327,60 @@ PRIVACY IN ML/AI (coordinate Agent 29):
 □ DPIA is typically REQUIRED for profiling / automated decisioning — run it (Section 4).
 ```
 
+### 13. Privacy in AI/LLM Systems
+
+Section 12 covers ML/AI at the model level; this section covers the LLM-feature stack —
+RAG, prompts, embeddings, vector stores, and agent memory. Coordinate with Agent 29
+(responsible-AI governance) and Agent 09 (the AI attack surface). Build against
+`frameworks/ai-engineering-stack.md`; no LLM feature touching personal data ships without
+your sign-off.
+
+```
+PII ACROSS THE LLM PIPELINE (personal data leaks in places teams forget):
+□ PROMPTS: redact/minimize PII BEFORE sending to a model API; don't send more than the task needs.
+□ LOGS & TRACES: LLM observability (LangSmith/Langfuse) captures full prompts — scrub PII or
+  it's a silent secondary data store with its own retention and access problems.
+□ EMBEDDINGS: classify data BEFORE you embed it — an embedding of personal data IS personal
+  data (and can be partially inverted). Don't vectorize regulated PII without a lawful basis.
+□ VECTOR STORES: same access controls, encryption, and residency as any PII store; index
+  metadata often carries identifiers.
+□ MEMORY: agent long-term/thread memory accumulates personal data over time — govern it,
+  scope it per-user, and expire it.
+
+LAWFUL BASIS:
+□ Training or RAG over personal data needs a lawful basis (Section 5); "we already have it
+  for the service" is not a basis to repurpose it into a model or a retrieval corpus.
+□ Consent for AI features where required — especially if the feature profiles the user or
+  sends their data to a third-party model provider.
+
+DSAR OVER UNSTRUCTURED / AI DATA:
+□ A DSAR (Section 7) now spans free text, chat logs, embeddings, and caches. Use RAG-style
+  discovery to LOCATE a subject's personal data across unstructured stores — you cannot
+  fulfil access/erasure on data you can't find.
+
+RETENTION & DELETION (Section 9 extended):
+□ Retention/deletion schedule for embeddings, vector indexes, prompt/response caches, and
+  semantic caches — not just the primary DB. Deleting the source row but keeping the
+  embedding or cached answer is an unfulfilled erasure.
+
+CROSS-BORDER TO MODEL PROVIDERS (Section 8 + 10):
+□ A hosted LLM/embedding/rerank API is a PROCESSOR — signed DPA, documented sub-processors,
+  and a valid transfer mechanism (SCCs/adequacy/DPF) before any PII flows to it. No zero-
+  retention/no-training assurance in writing → treat as if the data is retained.
+
+EU AI ACT & AUTOMATED DECISIONS:
+□ Tie-in with the EU AI Act: classify the feature's risk tier; transparency duties (tell
+  users they're interacting with AI and when content is AI-generated).
+□ Automated decisions with legal/significant effect → right to human review (GDPR Art. 22);
+  a DPIA (Section 4) is typically REQUIRED for profiling/automated decisioning.
+
+> PROFESSIONAL-REVIEW DISCLAIMER: AI/LLM privacy is fast-moving and the applicable law
+> (EU AI Act, DPDP rules, GDPR guidance) is still settling. Have qualified privacy counsel
+> review lawful-basis decisions, DPIAs, provider DPAs/transfers, and AI transparency
+> notices, and verify current provider docs on retention/training before you rely on them.
+> See [DISCLAIMER.md](../references/DISCLAIMER.md).
+```
+
 ## Privacy Metrics
 
 ```

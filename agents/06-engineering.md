@@ -214,6 +214,63 @@ ALERTING:
 - P2 (fix within 1 day): Slow queries detected, Certificate expiry < 30 days
 ```
 
+### 6. AI-Native Architecture (LLM / RAG / Agents)
+
+When the product ships intelligence, add these components to the stack. This is the
+implementation view; the deep reference (RAG internals, LangGraph, evals, OWASP LLM Top
+10) is `frameworks/ai-engineering-stack.md`. Climb the maturity ladder only as far as the
+problem needs: **L0 prompt → L1 RAG → L2 tools → L3 workflow → L4 agent → L5 multi-agent.**
+Most value is a grounded workflow (L1–L3), not an autonomous agent.
+
+```
+REFERENCE ARCHITECTURE (AI feature, layered onto the system above):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Client] ──▶ [API] ──▶ LLM GATEWAY   (routing, keys, rate-limit, cost caps, fallback, PII redaction)
+                           │
+                           ▼
+                     ORCHESTRATOR    (workflow OR agent — owns control flow, state, retries)
+                       │        │
+              ┌────────┘        └────────┐
+              ▼                          ▼
+        RAG PIPELINE               TOOLS (fn calling / MCP servers: sql, api, calc, retrieve)
+     retrieve → rerank → cite            │
+              │                          │
+              ▼                          ▼
+      VECTOR STORE (+BM25)        GUARDRAILS in+out  ·  OBSERVABILITY (traces, tokens, cost)
+```
+
+| Component | Where it lives in the stack table | Notes |
+|-----------|-----------------------------------|-------|
+| **LLM gateway** | API Gateway / Application Layer | Routing, keys, rate-limit, cost caps, fallback, PII redaction — one chokepoint |
+| **RAG pipeline** | Application Layer service | chunk→embed→index offline (Agent 38); retrieve→rerank→cite online |
+| **Vector store** | Data Layer | pgvector on the existing Postgres, or a dedicated vector DB |
+| **Orchestrator** | Application Layer service | LangGraph, Anthropic Agent SDK/Tool Runner, or plain code |
+| **Guardrails** | Application Layer (in + out) | injection/PII/jailbreak filter in; schema + citation + toxicity checks out |
+| **Observability** | Monitoring (§5) | LangSmith/Langfuse/Phoenix traces + evals-in-CI, alongside Sentry/Datadog |
+
+```
+KEY BUILD DECISIONS:
+- pgvector vs dedicated vector DB: START with pgvector — you already run Postgres, one
+  system, transactional joins to your data, fine to millions of vectors. Move to a
+  dedicated DB (Qdrant/Pinecone/Weaviate/Milvus) only when scale, filtered-ANN latency,
+  or hybrid-search ergonomics demand it. Don't add a database you don't yet need.
+- Orchestrator: plain code for a FIXED pipeline (L3 — the loop you own is trivial and
+  fully testable); LangGraph for cycles/branching/human-in-the-loop/durable long-running
+  or multi-agent; Anthropic Agent SDK/Tool Runner when you want the loop handled on your
+  infra. Choose deliberately — see ai-engineering-stack.md §2c. (Verify current provider docs.)
+- Prompt caching: cache the stable prefix (system prompt, retrieved context) — large cost
+  cut on repeated context. Structured outputs: constrain to a schema and validate before
+  use downstream. Streaming: stream tokens (and intermediate steps) to the UI for latency.
+
+SECURITY — treat model output AND retrieved content as UNTRUSTED input (OWASP LLM Top 10):
+- Prompt injection: RAG chunks / tool output must never issue commands; scope tools
+  least-privilege; confirm destructive actions; human-in-the-loop on irreversible ones.
+- Insecure output handling: model output flowing into SQL/shell/eval()/HTML must be
+  validated & escaped like any user input — it is user input.
+- Evals-in-CI: a versioned eval set gates every prompt/model/index change. "Looked fine in
+  the demo" is not a release gate. Coordinate Agent 09 (Security) + Agent 39 (Privacy).
+```
+
 ## Output: Technical Architecture Document
 Deliver as `.md` file with diagrams (Mermaid for architecture, ERD for database).
 

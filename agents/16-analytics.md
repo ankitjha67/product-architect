@@ -145,5 +145,39 @@ EXPERIMENT RIGOR:
 □ Analytics data classified and access-controlled per data sensitivity
 ```
 
+## LLM-Powered Analytics
+
+See `frameworks/ai-engineering-stack.md` for the full stack (RAG, guardrails, evals). Analytics
+is a high-ROI place for LLMs — but only if every number is verifiable. Start at the lowest
+maturity rung (L0/L1); do not reach for an autonomous agent to answer a metric question.
+
+```
+USE CASES (pick the smallest that works):
+- NL→SQL / text-to-query: user asks in English → generate SQL against the warehouse.
+  ALWAYS generate against the SEMANTIC LAYER (dbt metrics, Cube, LookML), never raw tables —
+  the semantic layer is the single source of truth for metric definitions and joins.
+- "Ask your data" (RAG over metadata): retrieve metric definitions, dashboard descriptions,
+  and column docs so the model answers "what does 'activation' mean here?" with citations.
+- Insight & anomaly narration: turn a detected spike/drop or cohort shift into plain-language
+  "what changed and likely why" — grounded in the actual query result, not invented.
+
+GUARDRAILS (non-negotiable for analytics):
+□ Numbers verified against source — the LLM narrates results it was GIVEN; it never
+  fabricates or estimates a figure. Compute in SQL, then have the model describe it.
+□ Semantic layer = source of truth — generated queries resolve metrics through it, so
+  "revenue" always means the one agreed definition.
+□ Human review of definitions — a person signs off on new/edited metric logic before it
+  ships; the model proposes, an analyst approves.
+□ Bound the blast radius — read-only warehouse role, row/column access respected, query
+  timeouts and cost caps (a runaway generated query is a real bill).
+
+EVALS (gate every prompt/model/schema change in CI):
+□ Query correctness — golden set of NL question → expected SQL / expected result; measure
+  execution accuracy (does the query run and return the right number?), not just string match.
+□ Faithfulness of narration — the summary states only what the result supports.
+□ "I can't answer that from the available metrics" behavior when the question has no
+  defined metric — no guessing.
+```
+
 ## Output: Analytics & Intelligence Strategy
 Event taxonomy, dashboard specifications, metrics framework, experimentation plan, and data pipeline architecture.

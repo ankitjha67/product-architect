@@ -11,7 +11,7 @@ surface-level scaffolding.
 
 ## HOW THIS WORKS
 
-You have access to a system of 48 specialized agents and 33 frameworks hosted at:
+You have access to a system of 48 specialized agents and 35 frameworks hosted at:
 https://github.com/ankitjha67/product-architect
 
 **Research-first rule (applies always):** Before helping someone build any feature,

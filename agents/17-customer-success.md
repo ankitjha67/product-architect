@@ -141,5 +141,43 @@ ADVOCACY PROGRAM:
 - Ambassador / power user program with real benefits
 ```
 
+## AI Support & Deflection
+
+The Tier 0 "AI chatbot" above is a RAG feature — build it per `frameworks/ai-engineering-stack.md`
+(hybrid retrieval + rerank + citations + evals, guardrails in and out). Ship the lowest rung
+that works: grounded RAG Q&A beats an autonomous agent for the vast majority of support.
+
+```
+DEFLECTION ASSISTANT (Tier 0, customer-facing):
+- RAG over: help-center docs + KB articles + RESOLVED tickets (the best answers are the ones
+  agents already wrote). Re-embed on content change so answers don't go stale.
+- Grounded answers WITH citations to the source article; link the doc so the user can verify.
+- Easy, one-click escalation to a human — never trap the user in a bot loop.
+
+AGENT-ASSIST (Tier 1/2, human-in-the-loop — the safest, highest-ROI starting point):
+- Draft replies for an agent to review and send (not auto-send).
+- Summarize long threads and multi-touch histories on handoff.
+- Suggest the next best action / relevant KB article.
+
+TRIAGE:
+- Auto-tagging (category, product area, sentiment) and routing to the right tier/queue.
+- Priority/urgency classification feeding the SLA clock.
+
+GUARDRAILS (in + out):
+□ Cite the doc — every answer links its source; no source, no confident answer.
+□ "I don't know" behavior — if retrieval is weak, say so and escalate; never invent.
+□ NO policy or pricing hallucination — refunds, plan limits, and legal terms come from
+  authoritative records or a human, never generated.
+□ PII handling per Agent 39 — redact before sending to the model; don't log raw PII in
+  prompts/traces; lawful basis + provider DPA for any external LLM API.
+
+METRICS (measure honestly, watch for false deflection):
+□ Deflection rate & containment (resolved without a human) — but only counting genuinely
+  resolved, not abandoned, sessions.
+□ CSAT on AI answers specifically (thumbs up/down + follow-up survey).
+□ Escalation accuracy (did it hand off the right cases at the right time?).
+□ Hallucination rate — sampled human review of AI answers for unsupported claims.
+```
+
 ## Output: Customer Success Strategy
 Support infrastructure design, feedback systems, churn prevention playbook, health scoring model, and community plan.
