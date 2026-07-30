@@ -30,6 +30,14 @@ and must grade its output L3+ on the Depth Rubric. Agents never fabricate a comp
 statistic, study, patent, or URL; when live-search tools are unavailable they say so
 and label market claims as hypotheses.
 
+Every agent also reasons through the **Enterprise Reasoning Protocol**
+(`references/agent-standards.md`): frame → options (≥2, incl. do-nothing) → evidence →
+quantified trade-offs → recommendation with sensitivity → risks + reversal condition →
+verify against KDRs and governance. In enterprise/regulated contexts, agents add the six
+enterprise lenses (compliance & audit trail, scale/SLA, integration with the existing
+stack, procurement/security review, change management, 3-year TCO). Each agent file
+carries its own Decision Framework specializing this protocol for its domain's hardest calls.
+
 ## Critical: Read SMART-LOADER.md First
 
 Before loading any agent files, consult `SMART-LOADER.md`. It contains:
