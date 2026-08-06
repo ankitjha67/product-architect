@@ -235,6 +235,129 @@ TOOL AUDIT (quarterly):
 □ Is every tool properly secured (SSO, access controls)?
 ```
 
+### 7. Innovation Portfolio: Decision Framework
+
+```
+ALLOCATION (the 70/20/10 split popularized by Google; Nagji & Tuff, HBR 2012):
+| Bucket           | Spend | Horizon | Return profile                                    |
+|------------------|-------|---------|---------------------------------------------------|
+| Core             | 70%   | 0-12 mo | High hit rate, low multiple — protects today      |
+| Adjacent         | 20%   | 1-3 yr  | New segments/use cases — medium risk, medium gain |
+| Transformational | 10%   | 3-10 yr | ~90% fail; Nagji & Tuff found ~70% of long-run innovation RETURNS come from this bucket. Don't starve it. |
+
+STAGE-GATE FUNDING (fund evidence, not plans; kill criteria written AT the gate, never renegotiated mid-flight):
+| Gate               | Evidence to pass                                | Unlocks             | Kill if                            |
+|--------------------|-------------------------------------------------|---------------------|------------------------------------|
+| G0 Idea→Experiment | Named customer problem + falsifiable hypothesis | ₹0-1L, 1-2 wk       | Can't state what would disprove it |
+| G1 Exp→Prototype   | Problem confirmed with ≥20 target users         | ₹2-10L, 2-4 wk      | <20% problem resonance             |
+| G2 Proto→Pilot     | Working demo + 3-5 committed design partners    | ₹10-50L, 4-8 wk     | No one will pilot even for free    |
+| G3 Pilot→Build     | Retention (D30 >20%) or paid pilot / LOI        | Roadmap slot + team | Only politeness signals            |
+
+WHY COMMITTEES KILL GOOD IDEAS — AND THE FIX:
+- Committees optimize for defensibility: one credible objection kills, so consensus filters
+  out exactly the non-consensus ideas that produce outsized returns.
+- Big asks invite big scrutiny. Fix: shrink the bet below the scrutiny threshold — many
+  ₹1-5L experiments, ONE accountable sponsor, decision in <1 week, evidence in 30 days,
+  scale/kill criteria pre-committed. Small bets + fast evidence > big bets + long debates.
+- What everyone gets wrong: judging the portfolio by hit rate. A healthy early-gate kill
+  rate is 60-80%. A low kill rate means zombie projects, not skill.
+```
+
+### 8. Program ROI Measurement
+
+```
+HACKATHONS: cost/event ≈ headcount × 2 days × loaded daily cost + logistics
+  (50 eng × 2 × ₹15K ≈ ₹15L + ₹2-3L logistics). North star = HACK→SHIPPED RATE
+  (in production within 2 quarters): healthy 5-15%. <5% three events running → themes too
+  far from the roadmap; add a directed track. Secondary returns (measure, don't hand-wave):
+  participant vs non-participant attrition, cross-team ties formed, recruiting content.
+
+BUG BOUNTY (payout table §2 vs breach cost): annual cost ≈ platform ₹8-25L + payouts
+  ₹10-50L for a mid-size scope. Compare: IBM Cost of a Data Breach 2023 — $4.45M global
+  average, ₹17.9Cr India average. One prevented critical at a ₹1-5L payout pays for the
+  program many times over. Track: valid/total reports (>20% healthy), mean time to bounty,
+  % of criticals found by bounty vs internal — if bounty finds most, the real problem is
+  your SDLC (Agent 09), not the program.
+```
+
+### 9. Enterprise Innovation (1,000+ org / regulated / multi-entity)
+
+```
+INNOVATION ACCOUNTING FOR THE BOARD (report the ladder, never just activity):
+| Level    | Metric                                                      | Board question         |
+|----------|-------------------------------------------------------------|------------------------|
+| Activity | Experiments/quarter, cycle time idea→evidence               | Is the engine running? |
+| Output   | Gate graduation rate, kill rate, cost per validated learning | Is it disciplined?     |
+| Outcome  | % revenue from products <3 yrs old (3M's famous target: 30% from <4 yrs), NPV of graduated bets | Is it paying? |
+
+CORPORATE VENTURING vs M&A vs INTERNAL INCUBATION:
+| Dimension           | Internal incubation   | CVC minority stake      | M&A (Agent 45)         |
+|---------------------|-----------------------|-------------------------|------------------------|
+| Capability distance | Close to core         | Far / foggy space       | Proven, named gap      |
+| Time to impact      | 12-36 mo              | 3-7 yr option value     | 6-18 mo post-close     |
+| Control / capital   | Full / opex, killable | Observer / ₹5-50Cr each | Full / 10-100x larger  |
+India note: inter-corporate investments hit Companies Act 2013 §186 limits (special
+resolution beyond 60% of paid-up capital + free reserves) — structure a fund at scale.
+
+PROTECTING EXPLORE TEAMS FROM EXPLOIT METRICS:
+□ Ring-fenced annual explore budget — never re-fought quarterly
+□ Different scorecard: validated learning + graduations, never in-quarter revenue/margin
+□ Separate calibration pool — or your best people flee the lab to protect their ratings
+□ Named C-level sponsor whose job includes refusing mid-quarter raids from the core business
+□ Graduated bets transfer WITH their team — a handoff without the team kills the bet
+
+REGULATED / MULTI-ENTITY MACHINERY:
+□ Bounty PoC data = personal data — DPDP/GDPR applies; align disclosure SLAs with CERT-In
+  6-hour incident reporting (India)
+□ IP from hacks/incubation assigned to the RIGHT entity at creation (invention assignment +
+  entity IP register) — wrong-entity IP is a transfer-pricing and exit-diligence bomb (Agent 10)
+□ Fintech/health: experiments touching real user data need production-grade Agent 09/39
+  sign-off — "it's just a pilot" is not a compliance category
+```
+
+## Failure Modes
+```
+⛔ INNOVATION THEATER: labs, hackathons, posters — no graduation path. If you don't measure
+   hack→shipped and % revenue from new products, stop pretending.
+⛔ COMMITTEE FILTRATION: 9 approvers, 0 sponsors — the outlier idea dies politely.
+⛔ ZOMBIE PORTFOLIO: early-gate kill rate <30% means criteria are theater; the pilot
+   graveyard eats the entire explore budget.
+⛔ EXPLOIT CAPTURE: an explore team judged on quarterly revenue becomes a feature factory
+   within 2 quarters.
+⛔ BOUNTY BEFORE TRIAGE: public launch with no response staffing → SLA blowouts → researchers
+   go full-disclosure on X. Start private, staff triage first.
+⛔ PARTNERSHIP SPRAWL: 20 signed MOUs, 0 owners, 0 revenue. Every partnership gets a named
+   owner and a 12-month review-or-exit.
+```
+
+## Example
+**User says:** "We're a 1,200-person fintech. Leadership wants an 'AI innovation lab' with a
+₹20Cr budget. Set it up?"
+
+**Reasoning:**
+1. CONSTRAINTS: RBI-supervised — experiments on real customer data need compliance sign-off;
+   a 1,200-person org's exploit metrics will capture the lab; ₹20Cr is a committee-scale
+   number that invites committee-scale scrutiny.
+2. OPTIONS: (a) standalone lab, full ₹20Cr; (b) gated portfolio engine (70/20/10 +
+   stage-gates); (c) CVC positions in AI startups instead of building.
+3. TRADE-OFFS: (a) fastest to announce, highest theater risk — labs with no graduation path
+   are the #1 failure pattern; (c) buys options but builds no in-house capability; (b) the
+   slowest headline and the only one that compounds.
+4. RECOMMENDATION: (b). Year 1: ₹6Cr into 15-20 gated small bets (G0-G2), ₹2Cr
+   transformational reserve, remainder unlocked ONLY by graduation rate. Separate scorecard
+   and calibration pool, C-level sponsor, Agent 09/39 pre-cleared sandbox (synthetic data
+   for anything touching customer records). Board reporting = the §9 accounting ladder.
+5. RISKS: kill-rate discomfort (pre-brief the board: 60-80% early kills = health); exploit
+   capture (ring-fenced pool); regulatory drift (quarterly compliance review of every
+   active experiment).
+
+**Result:** A gated portfolio with kill criteria and board-grade innovation accounting,
+instead of a ₹20Cr lab that demos well and ships nothing.
+
+**Quality check:** Can the board see graduation rate, kill rate, and cost per validated
+learning for the last quarter? If the only slide is activity counts, it's theater.
+
 ## Output: Innovation & Programs Strategy
-Hackathon playbook, bug bounty program design, R&D pipeline, partnership strategy,
-procurement framework, and internal tooling plan.
+Hackathon playbook, bug bounty program design, R&D pipeline, innovation portfolio with
+stage-gates and kill criteria, program ROI dashboard, enterprise innovation accounting,
+partnership strategy, procurement framework, and internal tooling plan.
