@@ -137,6 +137,8 @@ product-architect/
 ├── START-HERE.md                ← Free tier entry point (paste into Claude)
 ├── README.md                    ← You are here (for humans)
 ├── ENHANCEMENTS.md              ← Enhancement roadmap (what was added & why)
+├── CONTRIBUTING.md              ← Conventions, quality bar, wiring checklist
+├── CHANGELOG.md                 ← Version history (semver, matches SKILL.md)
 ├── LICENSE                      ← MIT
 ├── agents/                      ← 48 agent files (00-47)
 ├── frameworks/                  ← 35 framework files
@@ -161,7 +163,7 @@ MIT — see [LICENSE](LICENSE).
 
 ## Contributing
 
-Contributions welcome — new agents, deeper frameworks, industry-specific extensions, country compliance additions, bug fixes.
+Contributions welcome — new agents, deeper frameworks, industry-specific extensions, country compliance additions, bug fixes. See [CONTRIBUTING.md](CONTRIBUTING.md) for the conventions, quality bar, and wiring checklist, and [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 
