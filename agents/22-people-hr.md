@@ -182,6 +182,209 @@ EXIT PROCESS:
 □ Alumni network: Stay connected — they might come back, refer others, or become customers
 ```
 
+### 7. Decision Framework: Org Design (Spans, Layers, and the Reorg Decision)
+
+```
+SPANS & LAYERS MATH (run before every headcount plan):
+□ Target span: 5-8 directs per IC-manager; 4-6 for director+ (coordination load rises)
+□ Warning at <4: a manager with 2-3 reports is a coordination tax, not leverage —
+  merge teams or return them to IC work (with a face-saving path)
+□ Layers: ≤3 for <150 people (CEO → lead → IC); ≤5 up to ~1,000. Every added layer
+  halves information fidelity per hop and adds weeks of decision latency
+□ Quick audit: total headcount ÷ managers = average span. Below 5 → you have a layer
+  problem; above 9 sustained → 1:1s and feedback quality are silently dying
+
+FUNCTIONAL vs PRODUCT-LINE vs MATRIX (criteria, not fashion):
+| Structure | Choose when | Breaks when (= switch trigger) |
+|-----------|-------------|--------------------------------|
+| Functional (all eng under VP Eng) | <~150 people, one product, craft depth matters | Cross-team dependencies dominate; every feature waits on 3 teams |
+| Product-line (GM owns eng+PM+design per line) | ≥2 products with distinct customers/P&L | Duplicated platform work >20% of eng; infra diverges per line |
+| Matrix (functional home + product assignment) | 500+, shared platform + multiple lines | Accountability blurs; escalations spike — needs explicit RACI to survive |
+Rule: organize around the DOMINANT coordination flow. Your structure decides which
+collaboration is cheap and which needs process — you are choosing your pain, not removing it.
+
+THE REORG DECISION:
+JUSTIFIED when: strategy genuinely changed (new line/market), the spans-and-layers
+audit fails badly, or the same cross-team escalation has recurred 3+ quarters despite
+process fixes. NOT justified: a new exec importing their old org chart, or a
+performance problem with ONE person (fix the person, not 200 reporting lines).
+TRUE COST: ~3 months of measurably lost productivity — teams re-form, context is
+re-learned, politics churn — plus your best people quietly interviewing during the
+uncertainty. Price that against the coordination cost removed; many reorgs lose the math.
+EXECUTION: design in private with a small group (leaks roughly double the damage);
+announce ONCE, completely, with names — "your manager is X, effective Monday" — never
+pre-announce a reorg "coming soon"; ambiguity is where regretted attrition happens.
+Run a 30-day follow-up to fix the ~10% you got wrong; do not re-litigate the design.
+
+⚠️ WHAT EVERYONE GETS WRONG: treating the org chart as strategy and reorgs as therapy.
+Structure only sets coordination prices. If two leaders can't collaborate, no reporting
+line fixes it — and an annual reorg teaches the org that nothing you announce is permanent.
+```
+
+### 8. Talent Density: Calibration That Resists Inflation
+
+```
+CALIBRATION MECHANICS (unmanaged ratings drift to "everyone exceeds" within 2 cycles):
+□ Facilitated cross-team sessions: each manager presents evidence; PEERS challenge.
+  The manager is the advocate — the room is the judge
+□ Evidence, not adjectives: shipped outcomes, scope handled, verbatim peer feedback
+□ Guardrail distribution, not forced ranking: expect ~10-20% top / 60-75% solid /
+  5-10% below. A team rated 80% "exceeds" gets challenged in the room — but no fixed
+  quota per team (stack-ranking at fixed % breeds sabotage; guided bands keep honesty)
+□ Calibrate the MANAGERS too: track each manager's rating distribution and promotion
+  hit-rate across cycles; chronic inflators lose calibration credibility
+□ Comp lands in the SAME cycle as ratings — ratings without money consequences become
+  theater, and everyone knows it
+
+NINE-BOX, USED HONESTLY (performance × potential):
+□ A succession/development conversation tool — never a public label on people
+□ "Potential" = evidence of scope growth (absorbed ambiguity, grew others), not charisma
+□ High-performance/low-potential is a VALID, honored box: master craftspeople carry
+  teams — stop pretending everyone must want management
+□ Low-performance/high-potential = wrong role or wrong manager; investigate before PIP
+
+MANAGING OUT (the kindness of clarity):
+□ The 90-day improve-or-exit rule: from the first documented "below expectations"
+  conversation to resolution — improved, moved, or exited — within 90 days. Longer
+  helps no one: the person stagnates publicly, the team carries the load, and the
+  manager's credibility erodes
+□ The PIP (§5) is the formal middle; the honest conversation always precedes paper
+□ Dignified exits (notice, agreed reference, severance per policy): how you exit
+  people is watched closely by everyone who stays
+
+ATTRITION TARGETS (split regretted vs non-regretted or the number means nothing):
+□ Regretted attrition (people you fought to keep): target <5%/yr; above ~8% is a
+  manager-quality or comp-competitiveness alarm — run stay interviews immediately
+□ Non-regretted + managed attrition: 8-12%/yr is HEALTHY; 0% means calibration isn't
+  working and talent density is quietly falling
+□ Always cut by performance tier: losing top-tier people faster than bottom-tier is
+  the death spiral — your best people notice exactly who stays
+```
+
+### 9. Enterprise HR Operations (1000+ org, multi-country, regulated)
+
+```
+HRIS ARCHITECTURE (system of record — pick by scale, not by demo):
+| Tier | Typical tools | Fit |
+|------|---------------|-----|
+| <200 | Keka, Zoho People, BambooHR, Rippling | Fast setup, all-in-one, limited configurability |
+| 200-2,000 | Darwinbox, HiBob, Personio, SuccessFactors (mid-market) | Multi-entity payroll, workflow engine; India-strong: Darwinbox/Keka |
+| 2,000+ / public co | Workday, SAP SuccessFactors, Oracle HCM | Position management, audited controls, 6-18 month implementations |
+□ ONE system of record for people/org data; payroll, IT provisioning, comp, and LMS
+  integrate FROM it — dual-maintained org data is a guaranteed audit finding
+□ Joiner-mover-leaver events drive IT access (SCIM) same-day; leaver revocation within
+  hours is a SOC 2 control, not a courtesy
+
+WORKS COUNCILS & UNIONS (EU — especially DE/FR/NL):
+□ Consultation duties are LEGAL obligations: works councils must be informed/consulted
+  BEFORE reorgs, monitoring tools, or mass changes to working conditions; German
+  co-determination (Betriebsrat) can block unilateral rollouts outright
+□ Budget 2-6 months of consultation into any EU-touching reorg or any tool that
+  monitors employees (yes — analytics on work tools counts)
+□ Never announce an EU-affecting change globally before consultation completes;
+  announce-first is itself a violation, not just bad manners
+
+MULTI-COUNTRY EMPLOYMENT (EOR vs OWN ENTITY):
+□ EOR (Deel, Remote, Papaya, Multiplier): hire in-country in days at roughly
+  $400-700/employee/month on top of payroll. Right answer for 1-9 heads per country
+  or when testing a market
+□ Own entity: incorporation + registered payroll + local counsel + annual filings —
+  typically $15-40K setup plus recurring compliance. CROSSOVER: at ~10-15 heads in one
+  country the entity becomes cheaper AND removes EOR structural risks (co-employment
+  ambiguity, IP assignment chain, benefits ceilings)
+□ Long-term full-time "contractors" = misclassification exposure in most jurisdictions;
+  audit annually, convert or restructure before a regulator or lawsuit forces it
+
+PAY EQUITY & ANTI-DISCRIMINATION MACHINERY:
+□ Annual pay-equity audit: regress comp on level/function/geo; investigate unexplained
+  gaps by gender/protected class; remediate in the NEXT comp cycle and document the
+  remediation (EU Pay Transparency Directive forces gap reporting for 100+ employee
+  orgs phasing in from 2026-27; several US states already require ranges in postings —
+  assume your bands become public and keep them defensible)
+□ POSH (India, >10 employees): Internal Committee with external member, annual report
+  filing, 90-day time-bound inquiry — constitute the committee BEFORE the first complaint
+□ ADA/RPD Act accommodations: documented interactive process, a file per case
+□ Every termination: documented cause trail; counsel review in any unfamiliar
+  jurisdiction — "at-will" exists almost nowhere outside the US
+```
+
+### 10. People Metrics & Benchmarks
+
+```
+HIRING FUNNEL:
+□ Offer-accept rate: >85%. Below 80% = comp bands off-market or a broken candidate
+  experience — diagnose with declined-offer interviews, not guesses
+□ Time-to-fill: 30-45 days for IC roles, 45-60 senior/leadership, 90+ executive.
+  Beyond band = the req is mis-scoped or the bar is miscalibrated for the comp offered
+□ Stage pass-through: screen→onsite 25-40%, onsite→offer 20-33%; outside these bands,
+  the EARLIER stage is filtering on the wrong signal
+□ Quality-of-hire proxies: % of hires rated solid+ at first calibration; 90-day attrition
+
+ENGAGEMENT & RETENTION:
+□ eNPS quarterly: >20 good, >40 excellent, <0 emergency. Track by team AND manager,
+  and always report response rate next to the score (<60% response is itself the finding)
+□ Attrition: regretted <5%, non-regretted 8-12% (§8), always cut by performance tier
+□ Manager quality index: team eNPS + 1:1 cadence + top-tier retention, per manager
+□ Internal mobility: >10%/yr of openings filled internally proves the ladders are real
+
+CADENCE: monthly dashboard to leadership; quarterly deep-dive alongside calibration.
+Segment every metric by function, level, gender, and tenure — averages hide the problem.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ REORG AS THERAPY: restructuring to avoid one hard conversation — 200 people pay for 1
+⛔ GRADE INFLATION: 80% "exceeds" → comp spread thin → the actual top performers leave
+⛔ SPAN COLLAPSE: every senior IC promoted to manage 2 people → layers bloat, ICs starve
+⛔ PIP THEATER: PIPs used only as pre-written exits — word spreads, honest feedback dies
+⛔ CONTRACTOR TIME-BOMB: multi-year "contractors" in DE/UK/CA → misclassification liability
+⛔ EU ANNOUNCE-FIRST: global reorg email sent before works-council consultation → legal halt
+⛔ AVERAGED METRICS: healthy company-wide attrition hiding 30% attrition on one team
+⛔ COMP SURPRISE: pay-equity gap surfaced by a regulator or leak instead of your own audit
+```
+
+## Example: The 120-Person Engineering Reorg
+
+**User says:** "Our 120-person engineering org has 6 layers and every feature crosses
+3 teams. The new CTO wants to reorg into product lines this month. Should we?"
+
+**Reasoning:**
+1. CONSTRAINTS: 120 people / 6 layers = a spans-and-layers failure on its face (§7 says
+   ≤3-4 layers at this size); one product line today, second launching in ~2 quarters;
+   attrition currently normal — a botched reorg is the biggest retention risk in view.
+2. OPTIONS: (a) full product-line reorg now; (b) spans-and-layers repair only — collapse
+   to 4 layers, merge sub-4-span teams, keep functional structure; (c) do nothing until
+   the second product ships; (d) matrix overlay with product leads.
+3. TRADE-OFFS: (a) pays the ~3-month productivity cost NOW for a structure justified
+   only when product #2 exists — and with one P&L, "product lines" have nothing to own;
+   (b) attacks the actual measured problem (latency through 6 layers) at maybe a third
+   of the disruption; (c) leaves a failing audit in place for 2 more quarters; (d) adds
+   coordination roles to an org whose problem is already too many hops.
+4. RECOMMENDATION: (b) now — collapse layers to 4, merge the sub-scale teams, return
+   reluctant managers of 2 to senior IC roles with a face-saving path — then (a) as a
+   SINGLE further reorg timed to the second product's staffing, announced once with
+   names. Two planned cuts beat one premature one; three reorgs in a year is fatal.
+5. RISKS / REVERSAL: displaced managers may leave — pre-wire the top 5 individually
+   before announcement. If cross-team escalations persist 2 quarters AFTER the layer
+   fix, the diagnosis was wrong: revisit product-line structure early. Employment-law
+   review before any role is made redundant — mandatory, per the disclaimer.
+
+**Result:** Decision latency attacked this quarter at ~1/3 of the disruption; the
+product-line reorg lands once, with real P&Ls to own, instead of twice on guesswork.
+**Quality check:** Post-fix audit shows ≤4 layers and average span ≥5; regretted
+attrition in the 90 days post-announcement stays <2%; the 30-day follow-up fixed
+placements without reopening the whole design.
+
 ## Output: People & HR Strategy
-Org design, hiring plan with timeline, compensation framework, culture definition,
-performance management system, and retention strategy.
+Org design with spans-and-layers audit, hiring plan with funnel benchmarks, compensation
+framework, culture definition, performance management with calibration mechanics,
+retention strategy with attrition targets by tier, enterprise HR architecture (HRIS,
+multi-country employment, pay-equity machinery), and the people metrics dashboard.
+
+> **⚠️ REMINDER:** Spans, attrition targets, EOR crossover points, and audit mechanics
+> above are operating heuristics, not legal advice, and cost figures are approximations
+> that change. Employment, works-council, POSH, pay-equity, and termination rules vary
+> sharply by jurisdiction — have qualified employment counsel review any reorg,
+> termination, PIP, classification decision, or pay-equity remediation before acting.
+> See [DISCLAIMER.md](../references/DISCLAIMER.md).

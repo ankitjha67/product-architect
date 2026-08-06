@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development skill for Claude.**
 
-48 agents · 33 frameworks · Research-first, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
+48 agents · 35 frameworks · Research-first, AI-native, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
 
 > **This is a [Claude Skill](https://docs.anthropic.com/en/docs/agents-and-tools/skills).** Claude reads `SKILL.md`. This README is for human visitors.
 
@@ -62,10 +62,12 @@ Organized by product lifecycle — each operates at department-head depth:
 | **Data & Platform** | 29 Data & AI Strategy · 30 Platform & Ecosystem · 34 Developer Relations · 38 Data Engineering |
 | **Enablement** | 40 IT & Corporate Engineering · 42 Content & Docs · 43 Localization & i18n |
 
-### 33 Frameworks
+### 35 Frameworks
 
 | Framework | What It Does |
 |-----------|-------------|
+| **AI Engineering Stack** | LangGraph agents, RAG (hybrid retrieval, rerank, GraphRAG), evals, guardrails, observability, and the maturity ladder — with Anthropic-native options |
+| **AI Department Playbooks** | How every one of the 48 departments applies LLMs/RAG/agents — a specific use case, pattern, stack, and guardrail per function |
 | **Deep Research Protocol** | End-to-end market existence/novelty engine: exists-vs-novel verdict, citation hygiene, anti-hallucination gate, per-agent depth map |
 | **Founder's Playbook** | Week-by-week from Day 0 with costs, fundraising, IP, legal |
 | **30-Day Launch Engine** | Positioning, channel selection, day-by-day execution |
@@ -95,6 +97,8 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 ## Key Architecture
 
+**AI-Native** — A modern AI-engineering layer runs through the whole system: the **AI Engineering Stack** framework (LangGraph orchestration, RAG with hybrid retrieval + reranking + GraphRAG, evals-in-CI, guardrails, observability, and the L0→L5 maturity ladder), plus **AI Department Playbooks** giving all 48 departments a concrete LLM/RAG/agent application. Defaults to the latest Claude models (Opus 4.8, Sonnet 5, Haiku 4.5) with adaptive thinking, MCP for integrations, and Security (09) + Privacy (39) sign-off on any AI feature touching untrusted input or personal data.
+
 **Research-First Depth** — Before recommending building anything, agents run the **Deep Research Protocol** (Agent 47): an end-to-end market investigation that returns a grounded verdict — *"this already exists, here are the competitors + citations, refine it"* or *"this is white-space, no competition/citations in this niche"* (with the honest caveat that absence of evidence isn't proof of novelty, plus a "why is it empty?" analysis). Every agent inherits a Depth Rubric (L0 surface → L4 Mariana Trench), must grade itself L3+, and never fabricates a company, statistic, study, patent, or URL.
 
 **Smart Loading** — `SMART-LOADER.md` routes each request to only the relevant agents. Scores agents 0-10 on relevance, handles multi-intent requests, supports dynamic mid-conversation loading. Never loads everything at once. Free tier: 3 agents/turn. Pro: 5 agents/turn.
@@ -112,9 +116,9 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 | Metric | Value |
 |--------|-------|
 | Agents | 48 |
-| Frameworks | 33 |
-| Total files | 97 |
-| Total lines | 24,000+ |
+| Frameworks | 35 |
+| Total files | 102 |
+| Total lines | 30,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
@@ -133,9 +137,11 @@ product-architect/
 ├── START-HERE.md                ← Free tier entry point (paste into Claude)
 ├── README.md                    ← You are here (for humans)
 ├── ENHANCEMENTS.md              ← Enhancement roadmap (what was added & why)
+├── CONTRIBUTING.md              ← Conventions, quality bar, wiring checklist
+├── CHANGELOG.md                 ← Version history (semver, matches SKILL.md)
 ├── LICENSE                      ← MIT
 ├── agents/                      ← 48 agent files (00-47)
-├── frameworks/                  ← 33 framework files
+├── frameworks/                  ← 35 framework files
 ├── references/
 │   ├── compliance/              ← Country deep-dives (5 files)
 │   ├── agent-standards.md       ← Quality protocol for all agents
@@ -157,7 +163,7 @@ MIT — see [LICENSE](LICENSE).
 
 ## Contributing
 
-Contributions welcome — new agents, deeper frameworks, industry-specific extensions, country compliance additions, bug fixes.
+Contributions welcome — new agents, deeper frameworks, industry-specific extensions, country compliance additions, bug fixes. See [CONTRIBUTING.md](CONTRIBUTING.md) for the conventions, quality bar, and wiring checklist, and [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 

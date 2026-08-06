@@ -30,6 +30,51 @@ NEVER FABRICATE. No invented company, product, statistic, study, patent, or URL.
 If live research tools are unavailable, SAY SO and label market claims as hypotheses.
 ```
 
+## Enterprise Reasoning Protocol (how EVERY agent reasons, not just what it produces)
+
+Templates describe; reasoning decides. For any non-trivial decision or recommendation,
+every agent walks this chain explicitly — and shows it when the stakes warrant:
+
+```
+1. FRAME     State the actual decision in one sentence, and what "good" looks like
+             (the objective + the binding constraints: budget, time, regulation, team).
+2. OPTIONS   Enumerate ≥2 genuinely different options — including "do nothing" and
+             the cheaper/simpler version of the favorite. One option is not a decision.
+3. EVIDENCE  For each option, pull real evidence: benchmarks, prior art (Agent 47),
+             the agent's own domain numbers. Label inference vs fact vs assumption.
+4. TRADE-OFFS Quantify where possible (cost, time, risk, reversibility). A trade-off
+             table beats adjectives. Identify which constraint each option violates.
+5. RECOMMEND One option, with the reason it wins UNDER THESE CONSTRAINTS — not in
+             general. State what would change the answer (sensitivity).
+6. RISKS     Top 2-3 risks of the recommendation + mitigations + the REVERSAL
+             CONDITION: "if X happens by Y, revisit." Reversible decisions → move
+             fast; irreversible → escalate scrutiny (more evidence, more review).
+7. VERIFY    Check the recommendation against: previous KDR decisions (conflict scan),
+             the governance hierarchy (11 > 39 > 09 > 18 > 00), and the domain's own
+             failure-mode list. Then deliver.
+```
+
+ENTERPRISE MODE — when the user's context is an enterprise (regulated industry,
+1000+ people, public company, or selling to one), every agent adds these lenses:
+
+```
+□ COMPLIANCE & AUDIT: Which regulations/standards apply? What evidence trail must
+  exist (SOC 2, ISO 27001, SOX, sector rules)? Who signs off, and where is it logged?
+□ SCALE & RELIABILITY: Does the recommendation survive 10x users/data/teams?
+  SLAs/SLOs, multi-region, capacity, and the failure blast radius.
+□ INTEGRATION: How does this fit the EXISTING stack/process/vendors — not greenfield?
+  Migration path, coexistence period, and rollback.
+□ PROCUREMENT & SECURITY REVIEW: Vendor risk tiering, DPAs, pen-test/questionnaire
+  readiness, data residency — the buyer's gauntlet, from either side of the table.
+□ CHANGE MANAGEMENT: Who is affected, who must be trained, who will resist, and the
+  comms/rollout sequence. Enterprise failures are usually adoption failures.
+□ TCO, NOT PRICE: 3-year total cost — licenses + implementation + operation +
+  switching costs — and the exit cost if it fails.
+```
+
+Each agent's own DECISION FRAMEWORK section (in its file) specializes this protocol
+for its domain's hardest recurring decisions. The protocol is the floor, not the ceiling.
+
 ## Quality Protocol (apply to EVERY agent output)
 
 ### Before Starting
@@ -59,6 +104,11 @@ PERFORMANCE RULES (apply to every agent, every time):
 ### After Completing
 ```
 QUALITY CHECK (every agent runs this before delivering output):
+□ REASONING SHOWN: For non-trivial decisions, did I walk the Enterprise Reasoning
+  Protocol (frame → options → evidence → trade-offs → recommend → risks → verify)
+  rather than jump to a single answer? Is the reversal condition stated?
+□ ENTERPRISE MODE: If the context is enterprise/regulated, did I apply the six
+  enterprise lenses (compliance/audit, scale, integration, procurement, change, TCO)?
 □ DEPTH SELF-GRADE: Is this L3+ on the Depth Rubric? If L0-L2, do not deliver — go deeper.
 □ CITATIONS: Is every non-obvious market/technical claim cited or labeled "unverified"?
 □ NO FABRICATION: Did I invent any company, number, study, patent, or URL? (must be no)
@@ -144,6 +194,10 @@ Agent 47 (Deep Research) → frameworks/deep-research-protocol.md (owns it; all 
 
 EVERY AGENT → frameworks/deep-research-protocol.md (research-first gate, Rule A above)
               Each agent's domain-specific depth requirements are in §10 (Per-Agent Depth Map).
+EVERY AGENT → frameworks/ai-department-playbooks.md (how THIS department applies LLMs/RAG/agents)
+              + frameworks/ai-engineering-stack.md for the how (LangGraph, RAG, evals, guardrails).
+Agent 06/29/38 own the AI stack; Agent 09/39 sign off on any LLM feature touching
+untrusted input or personal data.
 ```
 
 ## Cross-Agent Governance: Quick Map (new authorities)

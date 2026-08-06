@@ -163,6 +163,171 @@ TRACKING:
 □ Non-compliance escalation: If not completed within 30 days, manager notified → HR escalation
 ```
 
+### 6. Decision Framework: Build vs Buy vs Borrow (Skills Strategy)
+
+```
+THREE ROUTES TO A CAPABILITY (decide per skill gap, not per person):
+| Route | Cost (typical) | Time to productive | Retention effect | Choose when |
+|-------|----------------|--------------------|--------------------|-------------|
+| BUILD (upskill internal) | ₹1-5L/person program + ~10-15% of work time for months | 3-9 months | Strong positive — development is a top-2 retention lever | Skill is adjacent to the existing base; need is durable; you have 6+ months of runway |
+| BUY (hire it in) | 15-25% of CTC if agency-sourced; senior specialists often 20-40% above internal bands; 45-60+ day search | 2-4 months incl. ramp | Neutral-to-negative — insiders passed over notice | Skill is far from the current base; need is immediate AND long-term; market has supply |
+| BORROW (contract/consult) | 1.5-3x employee day-rate | Days-weeks | None — the knowledge leaves with them | Need is spiky or short-term — or you need an expert for others to LEARN from |
+Rule: BUILD for durable adjacent skills, BUY for foundational new capability, BORROW
+for spikes. The most cost-effective pattern: BORROW one expert to BUILD ten people —
+put teaching deliverables in the contract, not just delivery.
+
+SKILLS-GAP ANALYSIS → INVESTMENT ALLOCATION:
+1. Map required skills from the 12-18 month product/tech strategy (not today's stack)
+2. Score the current bench on the §2 skill matrix (self + manager, calibrated)
+3. Gap = required level − bench level, weighted by business criticality
+4. Allocate deliberately: ~70% of L&D spend on the top 3 strategy-critical gaps;
+   ~20% on manager capability (§7 — the highest-ROI line); ~10% individual electives
+   (retention value). Anti-pattern: spreading budget evenly — everyone gets a course
+   seat, no capability actually moves.
+
+WHY MOST L&D FAILS — NO APPLICATION LOOP:
+Untrained-on knowledge decays within weeks (the forgetting curve — most of it gone
+without use). Training without scheduled application is entertainment. Every program
+names, BEFORE it runs: the real task where the skill is used within 14 days, the
+artifact produced, and the manager who reviews it. No application loop → don't run it.
+
+70-20-10 DONE HONESTLY (70% doing / 20% coaching / 10% courses):
+A design ratio, not an excuse to buy nothing. For every course hour, engineer ~7 hours
+of applied practice (stretch assignment, rotation, real project) and ~2 hours of
+feedback (mentor review, work review). Most orgs invert it — 90% content licenses,
+0% engineered practice — and then blame the LMS for the numbers.
+```
+
+### 7. Measurement: Kirkpatrick Done Honestly
+
+```
+KIRKPATRICK LEVELS 1-4 — WHAT'S ACTUALLY MEASURABLE AT EACH:
+| Level | Question | Honest instrument | Trap |
+|-------|----------|-------------------|------|
+| L1 Reaction | Did they like it? | Post-session survey (>4/5 target) | Correlates ≈0 with learning — necessary, never sufficient |
+| L2 Learning | Can they do it now? | Pre/post skill assessment, work-sample test | Quiz completion ≠ capability; test the skill, not recall |
+| L3 Behavior | Do they use it at work? | Manager observation at 30/60 days; artifact review; the §6 application loop | Where ~80% of programs die — nobody ever checks |
+| L4 Results | Did the business move? | The metric the program named up front (ramp time, quality escapes, win rate) | Attribution is fuzzy — use cohort comparison, accept directional evidence |
+Discipline: every program declares its L3 behavior and L4 metric BEFORE launch or it
+doesn't run. Reporting L1 alone ("happy sheets") is how L&D gets cut in the next downturn.
+
+RAMP TIME — THE NORTH STAR FOR ONBOARDING PROGRAMS:
+□ Define "productive" per role BEFORE measuring: eng = merged PRs / independent
+  on-call; sales = first self-sourced closed deal or % of quota; support = solo queue
+  at target CSAT
+□ Baseline, then attack: typical eng ramp 3-6 months, sales 4-6. Compressing ramp from
+  5 months to 3.5 recovers ~30% of a first-year's productivity per hire, multiplied by
+  every hire — the easiest L&D ROI math you will ever present to a CFO
+□ Instrument per cohort: compare ramp before/after each program change, not anecdotes
+
+MANAGER-CAPABILITY PROGRAMS — THE HIGHEST-ROI L&D INVESTMENT:
+A manager's capability multiplies across 5-8 reports; one poor manager degrades ~7
+people's output and drives regretted attrition (Agent 22 §6: manager = the #1 reason
+people leave).
+□ Mandatory BEFORE the first direct report, not after: feedback delivery, 1:1s,
+  interviewing, performance conversations, employment-law basics
+□ Practice-based: role-play the hard conversation — do not slide-deck it
+□ Measure at L3/L4: the manager's team eNPS, top-tier retention, feedback latency
+□ Budget signal: manager development below ~15-20% of L&D spend = misallocation (§6)
+```
+
+### 8. Enterprise L&D (1000+ org, regulated, succession-managed)
+
+```
+LMS/LXP ARCHITECTURE (by scale and need):
+| Tier | Typical tools | Fit |
+|------|---------------|-----|
+| <200 | Notion + Udemy Business/Coursera licenses, TalentLMS | Curated paths + light tracking; don't buy an enterprise LMS yet |
+| 200-2,000 | 360Learning, Docebo, LearnUpon, Absorb | Collaborative authoring, compliance tracking, HRIS integration |
+| 2,000+ / regulated | Cornerstone, SAP SuccessFactors Learning, Docebo enterprise | Audit-grade records, recertification cycles, multi-entity, SSO/SCIM |
+□ LMS vs LXP: LMS = assign/track/certify (the compliance backbone); LXP = discover/
+  recommend (the engagement layer). Regulated orgs need the LMS first; LXP is polish.
+□ Integrate FROM the HRIS (Agent 22 §9): role/manager/location drive auto-assignment —
+  manual enrollment breaks somewhere around 500 people
+
+COMPLIANCE-TRAINING MACHINERY (what a regulator or auditor will actually ask for):
+□ The audit trail: who was assigned what, when, under which rule; completion timestamp
+  + score; and the VERSION of the content they saw — regulators ask "what did the
+  training say in March?", so version and archive every revision
+□ Recertification cycles: annual (POSH, security, code of conduct) with 30-day
+  windows; escalation ladder = reminder → manager → HR → access consequence (§5)
+□ Targets: 100% is the goal; >95% within window is the enforceable floor. Report
+  exceptions BY NAME to leadership — 70% POSH completion is a legal exposure, not a metric
+□ Evidence exports: auditor-ready report per training per period, retained per sector
+  rules (commonly 3-7 years); confirm the mandatory list per jurisdiction with counsel
+
+LEADERSHIP PIPELINE & SUCCESSION DEPTH:
+□ For every critical role (executives + single-point-of-failure roles): a slate of
+  READY-NOW / READY-1YR / READY-2YR successors, reviewed twice yearly with CEO/board
+□ Ready-1yr/2yr candidates carry NAMED development actions (stretch scope, rotation,
+  coaching) — a slate without development plans between reviews is a wish list
+□ Depth target: ≥1 ready-now or ready-1yr successor per critical role; roles with an
+  empty slate get external-market monitoring as the explicit mitigation
+□ Honest health signal: % of leadership vacancies filled internally (>60% at maturity)
+
+APPRENTICESHIP & ROTATION MODELS:
+□ Rotations (6-12 months across 2-3 teams) for high-potentials and new grads: build
+  cross-functional bench and succession depth. Cost ≈ 10-20% productivity dip per
+  switch — worth it for future leaders, not for everyone
+□ Apprenticeship: junior paired to a named senior with explicit teaching accountability
+  that counts in the senior's performance review — otherwise it won't happen
+□ Internal gigs: 10-20% time on another team's project — the cheapest borrow-to-build loop
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ CONTENT-LIBRARY THEATER: 10,000 licensed courses, logins measured, nothing changes (no L3)
+⛔ HAPPY-SHEET METRICS: programs judged on L1 satisfaction → budget cut at the first downturn
+⛔ EVEN-SPREAD BUDGET: equal ₹ for everyone → the strategy-critical gaps stay unfunded
+⛔ TRAINING AS PUNISHMENT OR PERK: courses assigned as PIP filler or reward, not to a gap
+⛔ COMPLIANCE WITHOUT VERSIONING: completion logged, content unversioned → the audit fails
+⛔ SUCCESSION ON PAPER: slates named annually, zero development actions between reviews
+⛔ MANAGER TRAINING AFTER THE FACT: first-time managers practice feedback on live humans
+⛔ ONBOARDING ≠ ORIENTATION: a week-1 HR paperwork tour mistaken for a ramp program
+```
+
+## Example: Closing a GenAI Skills Gap in Two Quarters
+
+**User says:** "Product strategy needs LLM-app engineering across 4 squads within 6
+months. We have 40 backend engineers and zero shipped LLM features. Hire or train?"
+
+**Reasoning:**
+1. CONSTRAINTS: 6 months to working capability (not research-grade expertise) in 4
+   squads; LLM-engineer hiring runs a 20-40% comp premium at 45-60+ day time-to-fill;
+   the skill is ADJACENT for strong backend engineers (APIs, data pipelines, evals).
+2. OPTIONS: (a) BUY four senior LLM engineers, one per squad; (b) BUILD a 10-person
+   internal cohort via program + project; (c) BORROW a consultancy to ship v1;
+   (d) hybrid — BORROW one expert-teacher + BUILD the cohort + BUY one senior anchor.
+3. TRADE-OFFS: (a) ≈4 premium hires with 3-4 month ramp risk each, and insiders
+   passed over; (b) cheapest (~₹15-25L all-in) but no expert feedback loop — risk of
+   confidently wrong patterns in evals and prompt-injection security; (c) fastest v1
+   at 2-3x day-rates, but the capability walks out at contract end; (d) one hire + one
+   teaching contract + program cost, and it gives the §6 application loop a real
+   project with expert review.
+4. RECOMMENDATION: (d). Contract one practitioner-teacher for ~3 months (deliverables:
+   a working reference app + weekly review of squad work), hire ONE senior anchor for
+   the long term, and run a 10-person cohort gated by a work sample, with one named
+   production feature per squad as the L3 application. Course content: weeks 1-2 only
+   (70-20-10 honestly applied).
+5. RISKS / REVERSAL: if no squad has an LLM feature in staging by month 3, the build
+   thesis failed — escalate to BUY (2 more seniors); that is the pre-agreed trigger.
+   Retention risk of newly-skilled engineers is real: run the Agent 22 comp review
+   BEFORE the cohort finishes, not after the first outside offer lands.
+
+**Result:** Working capability in 4 squads at roughly 40% of the all-hire cost, with a
+compounding internal bench instead of four external single points of failure.
+**Quality check:** The L4 metric was named before launch (LLM features live per squad
+by month 6); L3 verified by the borrowed expert's weekly reviews; comp adjusted before
+the market noticed the new skills.
+
 ## Output: L&D Strategy
 Training programs by function, skill matrices, career ladders, knowledge management system,
-continuous learning culture plan, and compliance training calendar.
+continuous learning culture plan, compliance training calendar with audit-trail design,
+build/buy/borrow decisions per skills gap, Kirkpatrick measurement plan with ramp-time
+baselines, and leadership pipeline with succession slates.
+
+> **Note:** Mandatory-training obligations (POSH, sector-specific rules) and record-
+> retention periods vary by jurisdiction — have HR/legal counsel confirm the compliance
+> list and audit-trail requirements before relying on them. See
+> [DISCLAIMER.md](../references/DISCLAIMER.md).

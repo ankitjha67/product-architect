@@ -300,6 +300,55 @@ THE DATA ENGINEER'S PRIVACY DUTIES (you build it; Agent 39 governs it):
   Agent 39 (Privacy & Data Protection). You implement the technical controls they define.
 ```
 
+### 13. The AI/Embeddings Data Pipeline
+
+RAG lives or dies on data engineering. The embedding pipeline is a **first-class data
+product** — it gets the same medallion discipline, tests, lineage, SLAs, and on-call as any
+gold mart. Strategy/eval policy is Agent 29; the RAG internals are `frameworks/ai-engineering-stack.md`.
+
+```
+PIPELINE (a data product, not a notebook): UNSTRUCTURED → PARSE → CHUNK → EMBED → INDEX → SERVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[UNSTRUCTURED] docs/PDF/HTML/code/tickets/Confluence/S3 drops
+      │
+      ▼
+[PARSE]   extract text + structure; OCR scans        Unstructured, LlamaParse, Docling
+[CHUNK]   split into retrievable units               ~300–800 tokens, 10–20% overlap;
+          + carry metadata                            SEMANTIC/STRUCTURAL > fixed-size; keep headings
+[EMBED]   text → vectors (batch job)                 Voyage / OpenAI text-embedding-3 / Cohere / BGE-M3(OSS)
+[INDEX]   upsert vectors + metadata + source id      pgvector (start here) / Qdrant / Pinecone / Weaviate
+[SERVE]   hybrid retrieve + rerank at query time     dense + BM25 (RRF) → rerank top-50 → keep 5–8
+      │
+      └── orchestrate in the SAME Airflow/Dagster DAG family as ELT; test & alert like gold models
+```
+
+```
+OPERATING DISCIPLINE (this is what makes it a product, not a demo):
+□ CHUNKING & METADATA: attach source_id, doc title, section/heading, permissions/tenant,
+  timestamp, version to every chunk. Metadata drives filtered retrieval and access control.
+□ EMBEDDING MODEL CHOICE: pick by domain + dimensions + cost; PIN the model+version — changing
+  it means RE-EMBEDDING the whole corpus (vectors from different models are incomparable).
+□ FRESHNESS SLA / RE-EMBED ON CHANGE: source changed → re-parse, re-chunk, re-embed, re-index
+  that document. Drive off CDC / updated_at, not a full nightly rebuild. Stale index = wrong
+  answers with confidence. Track index lag as an SLA (like warehouse freshness in §7).
+□ VECTOR STORE OPS: pgvector (HNSW/IVFFlat index, tune ef/lists) for one-system simplicity;
+  Qdrant/Pinecone when scale, filtered-ANN latency, or hybrid ergonomics demand it. Monitor
+  recall, p95 latency, index size. Hybrid search (dense+sparse) + reranking beats vectors alone.
+□ FEATURE / EMBEDDING STORE: register embeddings + features (Feast/Tecton/§ serve layer) so the
+  same vectors serve retrieval, dedup, and ML — computed once, versioned, reused (coordinate Agent 29).
+□ DATA QUALITY & LINEAGE for the RAG CORPUS: which source doc → which chunks → which vectors →
+  which answer. Test for empty/garbage parses, duplicate chunks, orphaned vectors, and drift in
+  chunk-size distribution. A poisoned/wrong source is a data-quality incident (Agent 09 for vetting).
+□ PII BEFORE EMBEDDING: CLASSIFY and mask/tokenize PII BEFORE it is embedded — vectors are hard
+  to "delete" and can leak source text. Don't embed regulated PII without lawful basis. Keep a
+  source→chunk→vector deletion map so a DSAR delete propagates into the index (hand to Agent 39).
+□ GraphRAG DATA PREP: extract entities + relationships from the corpus into a knowledge graph
+  (nodes/edges + provenance) alongside vectors — for "connect the dots" and global-summary queries.
+□ COST CONTROLS: embedding API calls and re-embeds cost money — batch them, embed only changed
+  docs (incremental, not full-refresh), cache embeddings, right-size dimensions, and track
+  cost-per-1k-chunks + vector-store spend the same way §11 tracks warehouse cost.
+```
+
 ## Example
 
 **User says:** "Our dashboards are slow, the numbers don't match between Looker and the

@@ -115,6 +115,9 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "OKR" / "goals" / "north star"→ (none)         → okr-goal-setting       → 03 (Strategy)
 "on-call"/"postmortem"/"SLO"→ 08 (DevOps)      → incident-management    → 41 (TPM)
 "customer journey"/"lifecycle"→ 17 (Cust Succ) → customer-journey       → 37 (Growth)
+"RAG"/"LangGraph"/"AI agent"→ (none)     → ai-engineering-stack     → 29 (Data/AI)+06 (Eng)
+"LLM feature"/"embeddings"/"vector"→ (none) → ai-engineering-stack     → 38 (Data Eng)
+"AI for [department]"     → (that agent)     → ai-department-playbooks  → 29 (Data/AI)
 "does this exist"/"is this novel"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "market research"/"who else does"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "build [any feature/product]"→ 47 FIRST (gate) → deep-research-protocol → then route normally

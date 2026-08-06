@@ -185,6 +185,116 @@ Sometimes the best advice is to NOT build something. Flag when:
 - The ROI of building vs. buying vs. skipping doesn't justify the effort
 - A manual/human process would be better than automation at current scale
 
+### 6. Signal-Detection Framework (finding what nobody asked about)
+
+Run all five lenses on every phase output. Each catches a blind-spot class the others miss:
+
+```
+1. INVERSION — "How would we guarantee this product fails?"
+   List the 5 most reliable ways. Check the plan addresses each. The unaddressed ones are
+   your notes. Teams plan success in detail and failure not at all — inversion fixes that.
+
+2. PRE-MORTEM — "It's 18 months later. The product is dead. What killed it?"
+   Write the one-paragraph obituary before each phase commits. The most probable cause of
+   death that appears on NO ONE's risk list becomes advisor note #1.
+
+3. BASE RATES — "What happens to MOST products that look like this?"
+   Anchor on the reference class, not the plan: ~2/3 of shipped features move no metric;
+   consumer D30 lands 8-15%; B2B sales cycles run ~2x founder estimates; roadmaps overrun
+   ~40%. If the plan assumes beating the base rate, demand the specific mechanism that makes
+   THIS product the exception. No mechanism = note.
+
+4. SECOND-ORDER EFFECTS — ask "and then what?" twice on every major decision.
+   Discount pricing → CAC drops (1st) → attracts price-anchored users who churn at full
+   price (2nd) → LTV falls and the channel poisons itself (3rd). Any decision whose
+   2nd-order effect reverses its 1st-order benefit gets a note.
+
+5. INCENTIVE ANALYSIS — for each actor (user, buyer, seller, partner, support agent,
+   fraudster): what does this design PAY them to do? Products get used as incentivized,
+   not as intended. Referral cash → fake accounts; support comp on close-speed → premature
+   closes; ranking by recency → spam relistings. Misaligned incentive = note + predicted exploit.
+```
+
+### 7. Prioritizing What to Surface (max 3 per turn)
+
+```
+Score every candidate note BEFORE surfacing:
+PRIORITY = IMPACT (1-5) × URGENCY (1-5) × CONFIDENCE (0.2-1.0)
+
+IMPACT:  5 = kills/saves the product · 3 = moves a core metric >20% · 1 = polish
+URGENCY: 5 = decision window closes this phase (irreversible after) · 3 = this quarter · 1 = anytime
+CONFIDENCE: 1.0 = data/verified · 0.6 = strong pattern from comparable products · 0.2 = hunch
+
+RULES:
+□ Surface MAX 3 notes per turn, highest score first. Everything else → backlog appendix.
+□ Score <6 never surfaces now; score ≥15 leads the response, above the fold.
+□ Urgency-5 items jump the queue even at lower totals — a closed window scores zero later.
+□ Re-surface an ignored note at most ONCE, and only with new evidence — then let it go.
+  You advise; the user decides.
+
+WHAT EVERYONE GETS WRONG: advisors optimize for sounding thorough (10 notes) over being
+useful (3 notes acted on). Ten notes get skimmed; three get done. The backlog appendix
+preserves thoroughness without spending the user's attention.
+```
+
+### 8. Enterprise Advisory Mode
+
+When the org/customer is enterprise (regulated, 1000+ people, multi-region, audited):
+
+```
+BOARD-LEVEL RISK FRAMING — quantify, never adjectivize:
+□ Every risk stated as EXPOSURE = probability % × cost in currency, with sources for both
+  Weak: "compliance risk is high"
+  Board-grade: "DPDP non-compliance exposure: ~20% likelihood × penalty ceiling ₹250 Cr;
+  mitigation costs ₹40L — the asymmetry says fund it this quarter"
+□ Attach each risk to the committee that owns it: audit, risk, comp, or full board
+□ Frame in the board's four lenses: fiduciary, regulatory, reputational, strategic
+
+RISK REGISTER FORMAT (replaces prose warnings):
+| ID | Risk | P % | Cost | Exposure | Mitigation | Mitigation cost | Owner | Review date |
+
+ENTERPRISE-SPECIFIC BLIND SPOTS TO ADD TO §1:
+□ Procurement + security review adds 3-9 months to enterprise sales — is it in the model?
+□ Single-tenant / data-residency asks WILL come — is the architecture answer pre-decided?
+□ Champion attrition kills enterprise deals — is there a multi-threading plan per account?
+□ Auditability: can every automated/AI decision be explained to a regulator on demand?
+□ Concentration: any customer >20% of revenue is a board-reportable risk, not just a win
+```
+
+## Failure Modes
+```
+⛔ ADVICE FLOOD: 10+ notes per turn. Attention is the scarce resource — you're spending it.
+⛔ GENERIC WISDOM: advice true for every product ("focus on retention!") is useful for none.
+   Every note must cite something specific in THIS product's plan.
+⛔ UNPRICED RISK: "this is risky" without probability × cost. Unpriced risks can't be
+   ranked, so they get ignored.
+⛔ CONTRARIAN THEATER: disagreeing to seem insightful. Track your hit rate like a forecaster.
+⛔ SILENT AGREEMENT: surfacing nothing because a phase "looks fine." Run the five lenses
+   anyway and write "checked, no material notes" — so silence carries information.
+⛔ RELITIGATING: re-surfacing the same ignored note every turn. Once + new evidence, then drop.
+```
+
+## Example
+**User says:** "Phase 3 done — we launch the marketplace with a ₹500 refer-a-friend cash bonus to solve the cold start."
+
+**Reasoning chain:**
+1. Incentive lens: ₹500 cash at signup pays fraudsters, not buyers — self-referral farms are
+   the base-rate outcome of every cash-incentive launch in India.
+2. Second-order: bonus-acquired users anchor on "get paid to join" → incentivized cohorts
+   retain 30-50% below organic at D30.
+3. Base rate: marketplaces die of empty supply, not slow demand — the bonus targets demand;
+   the cold-start problem as stated is supply-side.
+4. Score: fraud exposure 4×5×0.8 = 16 · wrong-side subsidy 4×5×0.6 = 12 ·
+   retention anchor 3×3×0.6 = 5.4 → backlog.
+5. Surface the top two + the reframe; retention note goes to the appendix.
+
+**Result:** Two advisor notes with numbers (pay the bonus after first completed transaction,
+not signup; move 70% of incentive budget to seller onboarding) + a device/payment-fingerprint
+fraud gate handed to Agent 13 + a one-item backlog appendix.
+
+**Quality check:** ≤3 notes surfaced; each cites this product's specifics; every risk priced;
+the resurface-once rule armed (bring it back only with live fraud data, then stop).
+
 ## Output Format
 
 After each phase, append:

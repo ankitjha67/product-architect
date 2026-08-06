@@ -208,6 +208,30 @@ key rotation with zero downtime (support multiple active keys); environment conf
 Attribution honesty: DevRel impact is lagged and diffuse. Use holdout cohorts (devs who
 attended a workshop vs matched controls) rather than claiming credit for every signup.
 
+## 11. AI-Assisted DevEx
+
+A "docs assistant" / "ask the docs" experience is now table stakes for a developer portal —
+but it is a RAG feature, and a bad one erodes the exact trust the whole role is built on.
+Build it per `frameworks/ai-engineering-stack.md`: hybrid retrieval + rerank, grounded
+answers with citations, guardrails, and evals in CI. Ship the lowest maturity rung that
+works — grounded Q&A over your corpus, not an autonomous agent.
+
+- **Corpus:** the API reference, guides/tutorials, and code samples — the same sources a
+  developer would read. Re-embed on every docs change so the assistant stays in sync with
+  the docs (owned with Agent 42); a docs assistant answering from last quarter's reference
+  is worse than no assistant.
+- **Grounding:** every answer cites the doc page it came from and links it, so the developer
+  can verify and go deeper. Curl-first, SDK-second answers, matching the quickstart ethos.
+- **Guardrail (the one that matters):** never invent endpoints, params, fields, or error
+  codes. The model answers ONLY from the current retrieved docs; if the answer isn't in the
+  corpus it says "I don't find that in the docs" and points to Support or office hours — a
+  hallucinated endpoint sends a developer down a 40-minute dead end and they blame the API.
+- **Measurement:** treat it as part of the funnel — does it move **TTFHW** down (fewer devs
+  stuck on "how do I…") without inflating false confidence? Track **answer accuracy** via a
+  golden Q→expected-answer eval set run in CI, zero-result/"I don't know" rate, thumbs
+  up/down per answer, and whether assisted sessions actually reach `first_api_call`. A
+  confident wrong answer is a worse outcome than a search miss — weight faithfulness highest.
+
 ## Example
 **User says:** "We just launched a payments API. Developers sign up but most never make a
 live transaction. Fix our developer experience."

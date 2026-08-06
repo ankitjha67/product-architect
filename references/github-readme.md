@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development system ever built.**
 
-48 specialized AI agents. 33 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
+48 specialized AI agents. 35 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
 
 ---
 
@@ -163,7 +163,7 @@ Organized by lifecycle phase — the natural order of building a company:
 
 ## Key Features
 
-**Smart Loading** — The system is 24,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
+**Smart Loading** — The system is 30,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
 
 **Memory That Survives** — The KDR (Key Decision Record) system outputs structured state summaries after every phase. These survive chat compaction and can be pasted into new conversations to resume exactly where you left off. Works on free tier.
 
@@ -188,7 +188,7 @@ product-architect/
 ├── ENHANCEMENTS.md              Enhancement roadmap (what was added & why)
 ├── LICENSE                      MIT License
 ├── agents/                      48 specialized agents (00-47)
-├── frameworks/                  33 strategic & operational frameworks
+├── frameworks/                  35 strategic & operational frameworks
 ├── references/
 │   ├── agent-standards.md       Quality + Depth Doctrine inherited by all agents
 │   ├── DISCLAIMER.md            Professional-review requirements
@@ -205,10 +205,10 @@ product-architect/
 | Metric | Value |
 |--------|-------|
 | Agents | 48 |
-| Frameworks | 33 |
+| Frameworks | 35 |
 | Country deep-dives | 5 (covering 11 countries) |
-| Total files | 97 |
-| Total lines | 24,000+ |
+| Total files | 102 |
+| Total lines | 30,000+ |
 | Coverage areas audited | 250+ |
 | Complete policies | 14 |
 | SOPs with process maps | 20+ |

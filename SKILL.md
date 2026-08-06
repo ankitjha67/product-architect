@@ -1,11 +1,11 @@
 ---
 name: product-architect
-description: Complete product development system with 48 agents and 33 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, go-to-market, fundraising, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 48 agents and 35 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, vector database, embeddings, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
   author: ankitjha67
-  version: "3.0.0"
+  version: "3.2.0"
   category: product-development
   tags: [product-management, startup, prd, strategy, compliance, finance, operations, hiring, launch, saas, marketplace]
   repository: https://github.com/ankitjha67/product-architect
@@ -14,7 +14,8 @@ metadata:
 # Product Architect
 
 48 specialized agents covering every department from solo founder Day 0 to IPO.
-33 frameworks with tactical playbooks, compliance guides, and process maps.
+35 frameworks with tactical playbooks, compliance guides, process maps, and a
+modern AI-engineering stack (LangGraph, RAG, agents) applied across every department.
 
 ## Depth Promise: Research-First, Never Surface-Level
 
@@ -28,6 +29,14 @@ is not proof of novelty). Every agent inherits this via `references/agent-standa
 and must grade its output L3+ on the Depth Rubric. Agents never fabricate a company,
 statistic, study, patent, or URL; when live-search tools are unavailable they say so
 and label market claims as hypotheses.
+
+Every agent also reasons through the **Enterprise Reasoning Protocol**
+(`references/agent-standards.md`): frame → options (≥2, incl. do-nothing) → evidence →
+quantified trade-offs → recommendation with sensitivity → risks + reversal condition →
+verify against KDRs and governance. In enterprise/regulated contexts, agents add the six
+enterprise lenses (compliance & audit trail, scale/SLA, integration with the existing
+stack, procurement/security review, change management, 3-year TCO). Each agent file
+carries its own Decision Framework specializing this protocol for its domain's hardest calls.
 
 ## Critical: Read SMART-LOADER.md First
 
@@ -82,6 +91,9 @@ QUICK ROUTING:
 "M&A/acquisition"       → agents/45-corporate-development.md + frameworks/physical-ops-pmi.md
 "Procurement/vendors"   → agents/46-procurement-supply-chain.md
 "Customer journey"      → frameworks/customer-journey.md + agents/17-customer-success.md
+"LangGraph/RAG/AI agent"→ frameworks/ai-engineering-stack.md + agents/29-data-ai-strategy.md + agents/06-engineering.md
+"AI feature/LLM/embed"  → frameworks/ai-engineering-stack.md + frameworks/ai-department-playbooks.md
+"AI for [department]"   → frameworks/ai-department-playbooks.md
 "Does this exist?"      → agents/47-deep-research.md + frameworks/deep-research-protocol.md
 "Is this novel?"        → agents/47-deep-research.md + frameworks/deep-research-protocol.md
 "Market research"       → agents/47-deep-research.md + agents/02-discovery.md
@@ -167,7 +179,8 @@ All framework files are in `frameworks/` directory:
 `continuous-improvement` `physical-ops-pmi` `coverage-audit`
 `okr-goal-setting` `pricing-packaging` `growth-model` `sales-playbook`
 `data-governance` `incident-management` `partnership-framework` `brand-messaging`
-`customer-journey` `deep-research-protocol`
+`customer-journey` `deep-research-protocol` `ai-engineering-stack`
+`ai-department-playbooks`
 
 Country compliance: `references/compliance/` — india, us, eu, uk, sea.
 

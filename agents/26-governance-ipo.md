@@ -224,6 +224,190 @@ US (SEC / SOX):
 □ Regulation FD: Fair disclosure — no selective disclosure to analysts/investors
 ```
 
+### 7. Governance Decision Framework (Stage-Appropriate Governance)
+
+```
+CORE PRINCIPLE: governance is a dial, not a switch. Over-governing early kills speed;
+under-governing late kills the IPO. Match the dial to the stage:
+
+| Stage      | Must have                                        | Explicitly skip (for now)          |
+|------------|--------------------------------------------------|------------------------------------|
+| Seed       | Clean cap table, SHA, quarterly board, ROC filings| Committees, internal audit, DoA    |
+| Series A   | + board pack discipline, ESOP hygiene, begin      | SOX-style controls, subsidiary     |
+|            |   independent-director search                     |   governance                       |
+| Series C   | + audit committee, internal financial controls,   | Full LODR-grade compliance         |
+|            |   D&O cover, whistleblower policy, DoA matrix     |                                    |
+| Pre-IPO    | + majority-independent board, all 4 committees,   | — (T-24 months: everything on)     |
+|            |   internal audit, RPT policy, secretarial audit   |                                    |
+| Public     | Full SEBI LODR / SOX + continuous disclosure      | —                                  |
+
+COST OF OVER-GOVERNING EARLY: a seed company running committee theater burns scarce
+founder-hours, adds decision latency, and impresses no serious investor — they read it
+as misallocated attention. Governance exists to serve decisions, not to decorate them.
+COST OF UNDER-GOVERNING LATE: remediation under an IPO clock costs 3-5x doing it on
+time — restated financials, dead-equity disputes surfacing in DRHP diligence, and
+independent directors recruited in a rush (the strongest candidates decline rushed seats).
+
+BOARD COMPOSITION MATH (by rule, not vibes):
+INDIA — SEBI LODR (verify current text before relying):
+□ ≥50% non-executive directors; independents ≥1/3 (non-executive chair) or ≥1/2
+  (executive/promoter chair) — Reg 17
+□ ≥1 woman director; top-1000 listed: ≥1 INDEPENDENT woman director
+□ Audit committee: ≥3 members, 2/3 independent, independent chair, financially literate
+□ NRC: ≥3 non-executive directors, ≥2/3 independent; Risk Mgmt Committee: top-1000
+US — NYSE/NASDAQ + SOX:
+□ Majority-independent board; audit committee ≥3, ALL independent, ≥1 financial expert
+□ Compensation and nominating committees fully independent (NYSE)
+□ Controlled-company exemption exists (>50% voting) — but proxy advisors punish its use
+
+WORKED MATH: 9-seat pre-IPO board, founder-CEO as executive chair, India listing →
+≥5 independents (the 1/2 rule rounds up), incl. ≥1 independent woman → only 4 seats
+remain for founders + investors combined. Series A-D investors holding 4+ board seats
+must consolidate or step off — negotiate this at T-18 months, not T-3.
+
+WHAT EVERYONE GETS WRONG: treating independence as a checkbox. The founder's
+ex-colleague labeled "independent" fails ISS/Glass Lewis scrutiny and SEBI's
+materiality test at the worst possible moment. Recruit true outsiders 18+ months
+early — they must know the business before they sign a prospectus.
+```
+
+### 8. IPO Path & Readiness Decision Framework
+
+```
+READINESS SCORECARD (score 1-5; HARD gates must reach 4 before filing):
+| Dimension                     | Gate | What 4/5 looks like                             |
+|-------------------------------|------|--------------------------------------------------|
+| Financial-reporting maturity  | HARD | Monthly close ≤5 days; 3yr audited Ind AS/IFRS, |
+|                               |      | no qualifications; quarterly-close dry runs done |
+| Internal controls (SOX 404 /  | HARD | Controls documented AND tested; material         |
+| IFC readiness)                |      | weaknesses remediated ≥2 quarters pre-filing     |
+| Governance                    | HARD | §7 board math satisfied; committees running with |
+|                               |      | real minutes for ≥4 quarters                     |
+| Equity story                  | HARD | Thesis survives a 50-question hostile Q&A; peer  |
+|                               |      | set and valuation range defensible               |
+| Legal/IP hygiene              | Soft | Material contracts assignable; IP registered;    |
+|                               |      | litigation quantified and reserved               |
+| IR infrastructure             | Soft | IR lead hired; disclosure controls; earnings-    |
+|                               |      | call dry runs completed                          |
+RULE: any HARD gate below 4 → the IPO date moves, not the bar. Filing anyway converts
+a private remediation into a public restatement.
+
+PATH DECISION MATRIX (IPO vs direct listing vs SPAC vs stay private):
+|                  | IPO (book-built)      | Direct listing        | SPAC                  | Stay private        |
+| Primary capital  | Yes                   | Traditionally no (US  | Yes (trust + PIPE)    | Via private rounds  |
+|                  |                       | now permits, rare)    |                       |                     |
+| Cost             | ~3-7% fees + expenses | Lower; no underwriter | Sponsor promote ~20%  | Lowest              |
+|                  |                       | spread                | — often the costliest |                     |
+| Price discovery  | Banker-set band;      | Market-set opening    | Negotiated — certainty| N/A                 |
+|                  | first-day pop risk    |                       | upfront               |                     |
+| Best when        | Need capital + brand  | Known brand, no       | Rarely — window       | Metrics not ready;  |
+|                  | event; strong story   | capital need; employee| largely shut, high    | private capital     |
+|                  |                       | liquidity is the goal | scrutiny              | available           |
+INDIA NOTE: mainboard listing requires the IPO/OFS route (no US-style direct listing);
+SPACs are not recognized under Indian law — Indian companies pursuing them use overseas
+structures with FEMA and tax complexity. Promoter lock-in: 18 months on the minimum 20%
+contribution (post-2021 SEBI reform); verify current rules.
+REAL TRADE-OFF: an IPO is a permanent quarterly-guidance treadmill purchased with one
+day of liquidity. Go public when PREDICTABILITY is proven, not merely scale.
+```
+
+### 9. Enterprise Governance
+
+```
+SUBSIDIARY GOVERNANCE:
+□ Every subsidiary: its own board per local law, parent-nominated directors, standing
+  agenda, minutes flowing up to the parent board pack
+□ India: "material subsidiary" (income or net worth >10% of consolidated) triggers
+  enhanced LODR obligations; above 20%, an independent director of the listed parent
+  must sit on an unlisted material subsidiary's board (Reg 24 — verify thresholds)
+□ Intercompany agreements at arm's length; transfer pricing documented (Agent 18)
+□ One consolidated compliance calendar — a subsidiary's missed filing is the parent's miss
+
+DELEGATION-OF-AUTHORITY (DoA) MATRIX (illustrative — calibrate to revenue scale):
+| Commitment                | Manager | Function head | CEO      | Board            |
+|---------------------------|---------|---------------|----------|------------------|
+| Opex (budgeted)           | ≤₹5L    | ≤₹25L         | ≤₹1Cr    | >₹1Cr            |
+| Unbudgeted spend          | —       | ≤₹10L         | ≤₹50L    | >₹50L            |
+| Contracts (annual value)  | ≤₹10L   | ≤₹50L         | ≤₹2Cr    | >₹2Cr or >3yr    |
+| Litigation settlement     | —       | —             | ≤₹25L    | >₹25L            |
+| M&A, investments, equity  | —       | —             | —        | Always           |
+□ Two-signature rule above function-head thresholds; DoA reviewed annually;
+  violations reported to the audit committee — an unenforced DoA is an audit finding
+
+RELATED-PARTY TRANSACTION (RPT) CONTROLS:
+□ Related-party register refreshed quarterly: directors, KMPs, relatives, entities
+  with significant ownership or common control
+□ Every RPT: PRIOR audit committee approval; material RPTs (India: lower of ₹1,000Cr
+  or 10% of consolidated turnover) need shareholder approval, related parties abstaining
+□ Arm's-length testing documented; omnibus approvals permitted but reviewed quarterly
+□ The founder's spouse's agency doing the company's marketing IS an RPT — disclose it
+  or unwind it before diligence finds it
+
+D&O INSURANCE SIZING LOGIC (broker-validated; heuristics only):
+□ Private growth stage: cover ≈ the larger of 1-2x annual revenue or the last round
+  size — investors' nominee directors will demand adequacy before joining
+□ Pre-IPO: add prospectus liability (Side C / POSI); a US listing needs materially
+  higher limits than India-only (securities class-action exposure)
+□ Sizing drivers: market cap, US exposure/ADRs, sector litigation history, insider
+  ownership %; check exclusions — fraud carve-outs, insured-vs-insured, fines cover
+□ Policies must be bound BEFORE the prospectus is signed — never lapse at listing
+```
+
+## Failure Modes
+```
+⛔ GOVERNANCE THEATER: committees that exist on paper, minutes drafted after the fact.
+   Diligence reads minutes for texture — empty ones read as fabricated ones.
+⛔ STAGE MISMATCH: SOX-grade controls at seed, or no audit committee at Series C.
+   Both directions destroy value (§7).
+⛔ CAPTIVE INDEPENDENTS: friends-of-founder labeled independent — fails proxy-advisor
+   and regulator scrutiny precisely when it matters most.
+⛔ IPO-DATE WORSHIP: filing with a HARD gate at 3/5 because "the window is open."
+   Windows reopen; restatements don't un-happen.
+⛔ RPT BLINDNESS: undisclosed related-party dealings surfacing in DRHP/S-1 diligence —
+   the cheapest finding to prevent and the costliest to explain.
+⛔ CAP TABLE ROT: postponing dead-equity and note cleanup until the bankers find it.
+⛔ DoA VACUUM: everything escalates to the CEO (bottleneck) or nothing does (audit
+   finding). Either extreme means the matrix isn't real.
+```
+
+## Example
+**User says:** "We're a Series C fintech, ₹220Cr revenue. Our investors want us to file
+the DRHP in 12 months. Are we ready?"
+
+**Reasoning chain:**
+1. Constraints: fintech = RBI + SEBI dual scrutiny; 12-month demand vs the 18-24 month
+   standard runway (§3); investor pressure is real but not a readiness criterion.
+2. Score the §8 scorecard: equity story 4/5; financial reporting 3/5 (monthly close at
+   12 days, FY-2 audit carries a revenue-recognition qualification); governance 2/5
+   (zero independents, no committees); IFC 2/5. THREE hard gates below 4.
+3. Options: (a) file in 12 months anyway; (b) 18-month countdown with gate remediation;
+   (c) pre-IPO/late private round and file in ~24 months.
+4. Trade-offs: (a) risks SEBI observations, a public restatement, and rush-recruited
+   independents — worst of all worlds; (b) hits the next fiscal window with gates met;
+   (c) safest but adds dilution and may misprice vs a strong window.
+5. Recommend (b): months 1-6 — remediate the close process and the audit qualification,
+   recruit 3 true independents (§7 math: they need 4+ quarters of real minutes before
+   filing), stand up audit + NRC committees; months 7-18 — run §3's documentation and
+   regulatory phases. Tell investors the date moved because two HARD gates were at 2/5 —
+   with the scorecard attached.
+6. Risks + reversal: window closes → bridge with a pre-IPO placement; if the audit
+   qualification cannot be cleared by the next FY audit, shift to option (c) — that is
+   the pre-agreed reversal condition, decided now, not renegotiated under pressure.
+
+**Result:** An 18-month gated countdown with named owners per gate, a board-approved
+scorecard, and an investor memo explaining the date in evidence, not vibes.
+
+**Quality check:** Every hard gate has a numeric score, an owner, and a remediation date;
+the reversal condition is written down; no gate was waived for the window.
+
 ## Output: Corporate Governance & IPO Readiness
-Governance framework by stage, board composition plan, IPO timeline and checklist,
-roadshow preparation guide, cap table management, and regulatory compliance calendar.
+Governance framework by stage, board composition plan (with LODR/exchange math), IPO
+readiness scorecard and path decision, IPO timeline and checklist, roadshow preparation
+guide, enterprise governance (subsidiary/DoA/RPT/D&O), cap table management, and
+regulatory compliance calendar.
+
+Note: Securities law, listing obligations, board composition rules, and RPT/materiality
+thresholds change and vary by exchange and jurisdiction. Everything above must be
+reviewed by qualified securities counsel, a practicing company secretary, and the
+merchant banker/underwriters before real-world use — figures cited (SEBI LODR, SOX,
+lock-ins, thresholds) must be verified against current regulations at the time of filing.
