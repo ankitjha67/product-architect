@@ -293,6 +293,84 @@ BCP TEST: Conduct a tabletop exercise EVERY 6 MONTHS.
 Walk through each scenario. Find the gaps. Fix them before they're real.
 ```
 
+### 9. Operating-Cadence Decision Framework
+
+```
+MEETING-ROI AUDIT (run quarterly on every recurring meeting):
+Cost = attendees × duration × loaded hourly rate. Value = decisions made + blockers
+cleared + information that changed someone's next action. Status that could be read
+async counts as zero.
+
+| Verdict | Rule                                                                    |
+|---------|-------------------------------------------------------------------------|
+| KILL    | 0 decisions in the last 4 occurrences, or pure status → async doc       |
+| MERGE   | >50% attendee overlap with another meeting on adjacent topics           |
+| SHORTEN | Agenda consistently finishes early; default to 25/50 min, not 30/60     |
+| SHRINK  | Anyone silent for 3 consecutive occurrences becomes optional            |
+| KEEP    | Decision velocity justifies cost; has a DRI, an agenda, and notes       |
+
+Worked check: weekly 60-min status, 12 attendees × ₹2,500 loaded ≈ ₹30K/week ≈ ₹15L/yr.
+Did it change ₹15L worth of decisions this year? If not: async doc + 15-min exception review.
+
+CADENCE STACK BY STAGE (each layer REPLACES ad-hoc meetings, never stacks on them):
+| Stage    | Daily            | Weekly                  | Monthly            | Quarterly          |
+|----------|------------------|-------------------------|--------------------|--------------------|
+| <10 ppl  | Standup          | One all-team review     | Metrics + finance  | Light OKR check    |
+| 10-50    | Per-team standups| Leads sync + fn reviews | MBR-lite + all-hands| OKR + board       |
+| 50-250   | Team-level only  | Function reviews        | Full MBR + all-hands| QBR + planning    |
+| 250+     | Exception-driven | Exec staff + fn ops     | MBR per BU + exec MBR| QBR + talent review|
+Guardrail: audit total meeting hours/person/week — if ICs exceed ~8h recurring, the
+stack has become sediment; re-run the ROI audit.
+
+THE DRI MODEL (Directly Responsible Individual):
+□ Every metric, meeting, SOP, and action item has exactly ONE named owner —
+  "the team owns it" means nobody owns it
+□ DRI ≠ does all the work; DRI = accountable it happens, escalates when off-track
+□ The DRI's name lives ON the dashboard/agenda itself; orphaned items surface at MBR
+WHAT EVERYONE GETS WRONG: co-owners. Two DRIs halve the accountability, not the work.
+```
+
+### 10. Enterprise BAU
+
+```
+MBR/QBR MECHANICS (reviews that change decisions, not slide theater):
+□ Pre-read circulated 48h prior; never presented page-by-page — 10 min silent
+  reading at the start if people arrive unread
+□ Exception-based: green metrics get zero airtime; the agenda is reds/ambers +
+  decisions needed
+□ Any variance >10% vs plan: owner states cause + corrective action + date — not narrative
+□ Action items logged with DRI + due date; closure rate tracked. <80% closed by the
+  next review → the review itself escalates to the exec sponsor
+□ QBR adds a resource reallocation decision (kill/fund something) — not just retrospective
+
+ESCALATION PATHS WITH SLAs:
+| Level              | Trigger                            | Respond | Resolve or escalate |
+|--------------------|------------------------------------|---------|---------------------|
+| L1 team lead       | Blocker within team scope          | Same day| 3 biz days → L2     |
+| L2 function head   | Cross-team, or budget <₹10L        | 24h     | 5 biz days → L3     |
+| L3 exec sponsor    | Cross-function, policy conflict    | 48h     | 10 biz days → CEO   |
+| CEO / exec staff   | Strategy, >₹50L, external risk     | Next exec staff | Decision logged |
+□ Escalation is a service, not a failure: punish sitting on blockers, never raising them
+
+POLICY-EXCEPTION GOVERNANCE:
+□ Every exception: written, approver named per decision framework (§6), business
+  justification, and an EXPIRY DATE (max 90 days) — no evergreen exceptions
+□ Exception register reviewed monthly; expired = auto-revoked; a 3rd renewal means
+  change the policy or stop granting the exception
+□ Security/compliance policy exceptions additionally require Agent 09/11 sign-off
+
+BCP TESTING CADENCE (extends §8):
+□ Scenario ROTATION: each 6-monthly tabletop covers 2 DIFFERENT §8 scenarios, so all
+  5 are exercised within 18 months — never the same comfortable scenario twice
+□ Annually: one LIVE test (actual failover or backup restore), not tabletop —
+  a DR plan never executed is a hypothesis
+□ Every test outputs: gaps found → owner + fix date → fix VERIFIED at the next test
+□ Enterprise: retain test records as audit evidence (ISO 22301-style) for customer
+  security reviews and regulators
+```
+
 ## Output: BAU Operations Manual
-Daily/weekly/monthly/quarterly/annual routine checklists, governance framework (RACI),
-change management process, business continuity plan, and operational calendar.
+Daily/weekly/monthly/quarterly/annual routine checklists, meeting-ROI and cadence-stack
+audit, DRI register, governance framework (RACI), MBR/QBR mechanics, escalation SLAs,
+policy-exception register, change management process, business continuity plan (with
+test rotation), and operational calendar.

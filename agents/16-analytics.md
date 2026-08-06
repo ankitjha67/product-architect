@@ -145,6 +145,138 @@ EXPERIMENT RIGOR:
 □ Analytics data classified and access-controlled per data sensitivity
 ```
 
+### 6. Metric Design: Leading/Lagging Pairs & the Gameability Test
+
+```
+WHAT EVERYONE GETS WRONG: metrics get chosen for how well they REPORT, not how well
+they PREDICT. A lagging metric (revenue, churn) is the score after the game; a leading
+metric moves while you can still act. Every lagging metric needs a named leading partner.
+
+LEADING ↔ LAGGING PAIRS (design them together):
+| Lagging (the outcome) | Leading (the predictor, actionable now) |
+|-----------------------|------------------------------------------|
+| MRR churn | % of accounts below usage threshold for 3+ weeks |
+| LTV | Month-2 retention × ARPU trend |
+| NPS | Time-to-first-value + support-resolution CSAT |
+| Enterprise renewal | QBR attendance + exec engagement (Agent 17) |
+VALIDATE the pair: does the leading metric actually predict the lagging one in YOUR
+historical cohorts? If not, it's a hopeful proxy — replace it.
+
+THE GAMEABILITY TEST — run on EVERY metric before it ships:
+Ask: "If my bonus depended on this number, how would I fake it?"
+- "Weekly active users" → auto-login pings, notification spam → tighten to "users
+  performing [core action] ≥1×/week"
+- "Tickets resolved" → close-and-reopen, premature closes → pair with reopen rate + CSAT
+- "Trial signups" → incentivized junk traffic → pair with week-2 activation of the cohort
+If you can name the exploit, so will the team being measured. Goodhart's law is not
+a risk on a targeted metric — it is a guarantee.
+
+GOODHART GUARDRAILS (every TARGET metric ships with):
+□ A COUNTER-METRIC that breaks if the target is gamed (speed↔quality, volume↔refund
+  rate, deflection↔CSAT, growth↔D30 retention)
+□ A precise semantic-layer definition (who counts, what window, what threshold)
+□ A named owner + review date — metrics expire; re-validate the pair quarterly
+□ Segment views by default — an aggregate can improve while every segment worsens (§7)
+```
+
+### 7. Experiment Analysis: When NOT to Trust the Result
+
+```
+NOVELTY & PRIMACY EFFECTS:
+New things get clicked BECAUSE they're new (novelty) or resisted because they're
+unfamiliar (primacy/change aversion). Detect: plot treatment effect by user-day; a
+decaying lift curve = novelty. Fix: run ≥2 full business cycles and read the effect
+on the second-week cohort, or on new users only (they have no "old" to compare).
+
+SIMPSON'S PARADOX:
+An aggregate can show the OPPOSITE of every segment when the traffic mix shifts.
+Example: variant wins overall (+3%) yet loses on mobile (−2%) AND desktop (−1%),
+because the variant's mobile share differed. ALWAYS check the 2-3 pre-declared
+segments before shipping; when aggregate and segments disagree, the mix is the story.
+
+CUPED VARIANCE REDUCTION:
+Use each user's PRE-experiment behavior as a covariate to strip predictable variance:
+adjusted = metric − θ × (pre_metric − mean(pre_metric)). Typically 30-50% variance
+reduction on retention/engagement metrics → same power at roughly half the sample or
+runtime. Free rigor for returning users; useless for brand-new users (no pre-period).
+
+PEEKING & SEQUENTIAL TESTING:
+Checking a fixed-horizon test daily and stopping "when significant" inflates the false
+positive rate from 5% to roughly 25-40%. Either (a) fix the sample size and look once,
+or (b) use methods built for peeking — mSPRT / always-valid p-values (Statsig and Eppo
+implement these). Never "we peeked, but it was really significant."
+
+DO-NOT-TRUST CHECKLIST — the result is suspect if ANY hold:
+□ Sample ratio mismatch (actual split ≠ declared split — a bucketing bug voids all)
+□ Stopped early on a peek without a sequential correction
+□ Effect driven by one segment or one whale account (recompute without the top 1%)
+□ Lift decays week over week, or vanishes in the second-week cohort (novelty)
+□ Primary metric moved but its upstream causal-chain metrics didn't — how, exactly?
+□ >5 variants/metrics with no multiple-comparison correction — 1-in-20 wins are free
+□ It contradicts strong priors AND barely clears p<0.05 — replicate before shipping
+RULE: an unbelievable result is a bug until replicated. Re-run before you celebrate.
+```
+
+### 8. Decision-Quality Discipline: Pre-Registered Decision Rules
+
+```
+THE RULE: write the decision BEFORE the analysis runs. Post-hoc, humans rationalize
+any number into the decision they already wanted ("directionally positive", "flat but
+strategic"). The analysis exists to trigger a pre-committed decision, not to decorate
+one already made.
+
+PRE-REGISTRATION TEMPLATE (filled in BEFORE data collection starts):
+- DECISION: "We will [ship X / kill X / raise price to Y] IF [primary metric] moves
+  ≥[Z] at [stat threshold] over [window]."
+- OTHERWISE: [the default action — usually "do not ship"].
+- GUARDRAILS: the decision reverses regardless of the primary if [guardrail metric]
+  worsens by ≥[W].
+- SEGMENTS THAT MUST NOT BE HARMED: [list].
+- SIGNED BY: [decision-maker], dated, before the experiment/analysis begins.
+
+ENFORCEMENT:
+□ The rule lives in the experiment doc, timestamped — not in anyone's memory
+□ Changing the rule mid-flight = a new experiment (log the old rule and why it moved)
+□ "Interesting but off-rule" findings → the hypothesis backlog, not this decision
+□ Quarterly audit: % of shipped changes that had a pre-registered rule (target >80%)
+WHY IT WORKS: it converts arguments about numbers (endless) into arguments about
+thresholds — held before the data arrived, when nobody knew which side they'd be on.
+```
+
+### 9. Enterprise Analytics: Governance, Certification & Cost
+
+```
+GOVERNED SELF-SERVE (the only model that scales past ~50 data consumers):
+Central team owns the semantic layer, certified metrics, and data quality; domain
+teams build their own dashboards ON TOP of certified definitions. Fully central =
+bottleneck; fully self-serve = 40 versions of "revenue". Govern the definitions,
+free the consumption.
+
+METRIC CERTIFICATION WORKFLOW:
+DRAFT (anyone) → REVIEW (analytics eng: definition, grain, edge cases, tested SQL in
+the semantic layer) → CERTIFY (a named business owner signs the definition) → PUBLISH
+(badged "certified" in the BI tool; everything else visibly labeled "exploratory") →
+RE-CERTIFY every 6-12 months or on schema change. Exec dashboards and board reporting
+use CERTIFIED metrics only.
+
+DATA SLAs WITH CONSUMING TEAMS (written, like any other SLA):
+| Tier | Example datasets | Freshness | Availability | Support |
+|------|------------------|-----------|--------------|---------|
+| T1 (revenue/board/regulatory) | finance marts, billing | by 06:00 daily | 99.9% | on-call, pages |
+| T2 (product/growth decisions) | events, cohorts | < 24h | 99.5% | business hours |
+| T3 (exploratory) | scratch, sandbox | best effort | none | none |
+□ Breach protocol: who is notified, when, and the "do not use for decisions" banner
+□ Upstream contracts: schema changes to T1/T2 sources need notice + a migration window
+
+BI & WAREHOUSE COST GOVERNANCE (the silent 3x bill):
+□ Per-team/query cost attribution via warehouse tags — published monthly, by name
+□ Auto-suspend idle warehouses; timeouts + cost caps on all human-issued queries
+□ Dashboard hygiene: no views in 90 days → archive; every scheduled refresh has a
+  named owner or dies
+□ Materialize the top-10 most-queried patterns instead of rescanning raw events —
+  typically the single biggest saving
+```
+
 ## LLM-Powered Analytics
 
 See `frameworks/ai-engineering-stack.md` for the full stack (RAG, guardrails, evals). Analytics
@@ -178,6 +310,47 @@ EVALS (gate every prompt/model/schema change in CI):
 □ "I can't answer that from the available metrics" behavior when the question has no
   defined metric — no guessing.
 ```
+
+## ⛔ Analytics Failure Modes
+
+```
+⛔ TARGETED METRIC, NO COUNTER-METRIC — Goodhart executes; the number improves, the business doesn't.
+⛔ DASHBOARD OF LAGGING METRICS — a scoreboard, not a steering wheel; by the time it moves, it's over.
+⛔ PEEK-AND-STOP — daily significance checks on a fixed-horizon test; 5% error becomes ~30%.
+⛔ AGGREGATE-ONLY READS — Simpson's paradox ships a change that loses in every segment.
+⛔ POST-HOC DECISION RULES — the analysis decorates a decision that was already made.
+⛔ 40 DEFINITIONS OF REVENUE — ungoverned self-serve; every meeting opens with "whose number?"
+⛔ TRUSTING THE UNBELIEVABLE — a p=0.049 miracle shipped without replication.
+```
+
+## Example
+
+**User says:** "Our checkout-redesign A/B shows +4% conversion, p=0.03 after 6 days.
+Ship it?"
+
+**Actions:**
+1. **Constraints:** planned runtime was 14 days (two business cycles); the §8
+   pre-registered rule says "ship if ≥+2% at the fixed horizon with guardrails flat";
+   the team has been peeking daily.
+2. **Options:** (a) ship now — banks the win, but a 6-day read on a 14-day design
+   with daily peeking carries a ~25-40% false-positive rate and no weekend cohort;
+   (b) restart under a sequential test — statistically cleanest, costs 2+ weeks;
+   (c) run to the pre-registered horizon and read once, with the §7 checklist.
+3. **Trade-offs → recommendation:** (c) — the rule was pre-registered for exactly
+   this moment; honoring it costs 8 days. At day 14: sample-ratio check, mobile vs
+   desktop segments (Simpson's), second-week-cohort lift (novelty), guardrails (AOV,
+   refund rate, support tickets). Apply CUPED with pre-period purchase behavior to
+   shrink the wide error bars around the +4% point estimate.
+4. **Risks / reversal condition:** the effect is novelty → the second-week cohort
+   read is the tiebreaker; revenue pressure to ship early → the cost of a false +4%
+   (a rebuilt checkout masking a regression) dwarfs 8 days of waiting. REVERSAL:
+   day-14 lift <+2% or any degraded guardrail → do not ship; log the near-miss.
+
+**Result:** A decision made by the pre-registered rule at the pre-registered horizon,
+with SRM, segment, and novelty checks — not by the most exciting interim number.
+
+**Quality check:** Was the decision rule written before the data existed? Did anyone
+stop early on a peek? Do the segments agree with the aggregate? Would this replicate?
 
 ## Output: Analytics & Intelligence Strategy
 Event taxonomy, dashboard specifications, metrics framework, experimentation plan, and data pipeline architecture.
