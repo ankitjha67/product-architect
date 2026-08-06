@@ -117,8 +117,8 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 |--------|-------|
 | Agents | 48 |
 | Frameworks | 35 |
-| Total files | 100 |
-| Total lines | 26,000+ |
+| Total files | 102 |
+| Total lines | 30,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |

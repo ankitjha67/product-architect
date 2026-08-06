@@ -163,7 +163,7 @@ Organized by lifecycle phase — the natural order of building a company:
 
 ## Key Features
 
-**Smart Loading** — The system is 26,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
+**Smart Loading** — The system is 30,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
 
 **Memory That Survives** — The KDR (Key Decision Record) system outputs structured state summaries after every phase. These survive chat compaction and can be pasted into new conversations to resume exactly where you left off. Works on free tier.
 
@@ -207,8 +207,8 @@ product-architect/
 | Agents | 48 |
 | Frameworks | 35 |
 | Country deep-dives | 5 (covering 11 countries) |
-| Total files | 100 |
-| Total lines | 26,000+ |
+| Total files | 102 |
+| Total lines | 30,000+ |
 | Coverage areas audited | 250+ |
 | Complete policies | 14 |
 | SOPs with process maps | 20+ |

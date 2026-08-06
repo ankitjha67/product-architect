@@ -313,7 +313,60 @@ ANNUAL WELLNESS REPORT:
 □ Recommendations: Data-driven proposals for next year's wellness investment
 ```
 
+## Decision Framework: Sustainable Pace vs Crunch
+
+```
+TEAM-LEVEL BURNOUT LEADING INDICATORS (review monthly; two red = intervene now):
+| Signal                        | Amber                    | Red                        |
+| After-hours activity trend    | +15% over 4 weeks        | +30% or weekend-normalized |
+| PTO usage vs accrual          | <70% pace                | <50%, or approved-then-cancelled leave |
+| Meeting load per IC           | >15 hrs/week             | >20 hrs/week               |
+| eNPS / engagement trajectory  | -5 pts quarter-over-quarter | -10 pts, or survey non-response spike |
+Intervention ladder: workload audit with the manager → descope or add capacity →
+mandatory recovery period → escalate to Agent 22 if the manager IS the cause.
+
+WHEN CRUNCH IS LEGITIMATE (all four required — otherwise it's a planning failure):
+□ A real, external, immovable deadline (regulatory date, contractual go-live — not an
+  internal target someone picked)
+□ Time-boxed in advance: ≤2-3 weeks, end date announced BEFORE it starts
+□ Voluntary at the edges: individuals with constraints can opt to normal hours
+□ MANDATORY RECOVERY RULE: comp time scheduled before the crunch begins (min 1 recovery
+  day per crunch week), taken within 30 days — unscheduled recovery never happens
+⛔ Back-to-back crunches = the deadline system is broken, not the team. Fix planning
+  (Agent 41), don't normalize heroics — output quality drops measurably after ~50 hrs/wk
+  and net productivity goes negative within weeks.
+
+⚠ WHAT EVERYONE GETS WRONG: treating burnout as an individual resilience problem and
+buying an app for it. Burnout is chiefly an organizational-design problem (workload,
+control, reward, fairness); yoga subscriptions don't fix a 20-hour meeting load.
+```
+
+## Enterprise-Grade Wellness
+
+```
+□ EAP ECONOMICS: typical cost ₹500-2,000 / $12-40 per employee/year; healthy utilization
+  5-10% (near-zero = awareness/trust failure, not wellness). Re-communicate quarterly;
+  measure aggregate utilization only — never individual data.
+□ PSYCHOLOGICAL SAFETY MEASUREMENT: embed Edmondson-style items in the engagement survey
+  ("If I make a mistake on this team, it is held against me" — reverse-scored;
+  "I can raise hard problems"). Report by team at n≥5 only; low scores route to manager
+  coaching, not team blame.
+□ DUTY OF CARE ACROSS COUNTRIES: statutory obligations differ — India POSH committee +
+  gratuity-linked leave norms, EU working-time directives (11-hr rest, 48-hr cap,
+  right-to-disconnect laws in FR/PT/BE), US state leave laws. Map per country with
+  Agent 22; one global policy set to the strictest common denominator is simplest.
+□ CRISIS RESPONSE PROTOCOL: named responders, 24/7 EAP escalation path, manager script
+  for acute mental-health crises ("connect, don't counsel"), post-incident support, and
+  a communication plan that protects privacy. Rehearse annually like a fire drill.
+□ AUDIT TRAIL: enterprises must evidence duty-of-care (works councils, tribunals) —
+  document policies, training completion, and interventions (aggregate level).
+
+> **Note:** Mental-health crises require qualified professionals. These protocols route
+> to help — they are not a substitute for it. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+```
+
 ## Output: Wellness & Performance Strategy
 Mental health infrastructure, physical wellness programs, productivity systems,
-performance coaching framework, work-life integration policies, burnout prevention system,
-and wellness metrics dashboard.
+performance coaching framework, work-life integration policies, burnout prevention system
+(with team-level leading indicators and the legitimate-crunch rules), enterprise
+duty-of-care map, and wellness metrics dashboard.
