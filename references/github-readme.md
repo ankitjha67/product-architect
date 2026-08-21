@@ -207,7 +207,7 @@ product-architect/
 | Agents | 48 |
 | Frameworks | 35 |
 | Country deep-dives | 5 (covering 11 countries) |
-| Total files | 102 |
+| Total files | 106 |
 | Total lines | 30,000+ |
 | Coverage areas audited | 250+ |
 | Complete policies | 14 |

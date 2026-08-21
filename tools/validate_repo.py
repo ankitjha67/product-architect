@@ -90,6 +90,43 @@ def cross_check_docs(agent_count, framework_count):
             errors.append(f"{doc} says {f} frameworks but {framework_count} framework files exist.")
 
 
+def all_markdown_files():
+    """Every .md file in the repo, excluding .git."""
+    found = []
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = [d for d in dirnames if d != ".git"]
+        for name in filenames:
+            if name.endswith(".md"):
+                found.append(os.path.join(dirpath, name))
+    return sorted(found)
+
+
+def check_code_fences(paths):
+    """Every ``` must be closed — an unbalanced fence silently swallows content."""
+    for path in paths:
+        with open(path, encoding="utf-8") as fh:
+            count = sum(1 for line in fh if line.startswith("```"))
+        if count % 2 != 0:
+            rel = os.path.relpath(path, ROOT)
+            errors.append(f"Unbalanced code fences ({count}) in {rel} — every ``` must be closed.")
+
+
+# Markdown links to local .md targets. Skips URLs (http:, mailto:) and pure anchors.
+LINK_RE = re.compile(r"\]\((?!https?:|mailto:|#)([^)\s#]+\.md)(?:#[^)\s]*)?\)")
+
+
+def check_internal_links(paths):
+    """Every relative link to a .md file must resolve — catches renames and typos."""
+    for path in paths:
+        with open(path, encoding="utf-8") as fh:
+            content = fh.read()
+        base = os.path.dirname(path)
+        for link in set(LINK_RE.findall(content)):
+            if not os.path.isfile(os.path.normpath(os.path.join(base, link))):
+                rel = os.path.relpath(path, ROOT)
+                errors.append(f"Broken link in {rel} -> {link}")
+
+
 def main():
     print("\n--- Product Architect: Repository Validation ---\n")
 
@@ -97,9 +134,11 @@ def main():
     framework_files = md_files(FRAMEWORKS_DIR)
     agent_count = len(agent_files)
     framework_count = len(framework_files)
+    markdown = all_markdown_files()
 
     print(f"Agents detected:     {agent_count}")
     print(f"Frameworks detected: {framework_count}")
+    print(f"Markdown files:      {len(markdown)}")
 
     numbers = validate_agent_numbering()
     if numbers:
@@ -108,6 +147,8 @@ def main():
     check_files_well_formed(AGENTS_DIR, "Agent")
     check_files_well_formed(FRAMEWORKS_DIR, "Framework")
     cross_check_docs(agent_count, framework_count)
+    check_code_fences(markdown)
+    check_internal_links(markdown)
 
     print()
     for w in warnings:

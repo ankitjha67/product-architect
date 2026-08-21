@@ -5,7 +5,7 @@ license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
   author: ankitjha67
-  version: "3.2.0"
+  version: "3.2.1"
   category: product-development
   tags: [product-management, startup, prd, strategy, compliance, finance, operations, hiring, launch, saas, marketplace]
   repository: https://github.com/ankitjha67/product-architect
