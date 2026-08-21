@@ -1,11 +1,11 @@
 ---
 name: product-architect
-description: Complete product development system with 48 agents and 35 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, vector database, embeddings, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 64 agents and 35 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, vector database, embeddings, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
   author: ankitjha67
-  version: "3.2.1"
+  version: "4.0.0"
   category: product-development
   tags: [product-management, startup, prd, strategy, compliance, finance, operations, hiring, launch, saas, marketplace]
   repository: https://github.com/ankitjha67/product-architect
@@ -13,7 +13,7 @@ metadata:
 
 # Product Architect
 
-48 specialized agents covering every department from solo founder Day 0 to IPO.
+64 specialized agents covering every department from solo founder Day 0 to IPO.
 35 frameworks with tactical playbooks, compliance guides, process maps, and a
 modern AI-engineering stack (LangGraph, RAG, agents) applied across every department.
 
@@ -91,6 +91,22 @@ QUICK ROUTING:
 "M&A/acquisition"       → agents/45-corporate-development.md + frameworks/physical-ops-pmi.md
 "Procurement/vendors"   → agents/46-procurement-supply-chain.md
 "Customer journey"      → frameworks/customer-journey.md + agents/17-customer-success.md
+"Mobile/iOS/Android"    → agents/48-mobile-engineering.md
+"ML model/MLOps/deploy" → agents/49-ml-engineering.md + frameworks/ai-engineering-stack.md
+"Frontend/web perf/SEO" → agents/50-frontend-web-platform.md
+"Demo/POC/RFP/security questionnaire" → agents/51-solutions-engineering.md
+"Implementation/onboarding/SOW" → agents/52-professional-services.md
+"Customer training/certification" → agents/53-customer-education.md
+"Community/forum/ambassadors" → agents/54-community.md
+"Billing/subscriptions/usage metering" → agents/55-billing-monetization-engineering.md
+"Revenue recognition/close/audit" → agents/56-revenue-accounting.md
+"Tax/GST/VAT/nexus"     → agents/57-tax.md
+"Cash/FX/runway/banking"→ agents/58-treasury.md
+"Internal audit/SOX/ERM"→ agents/59-internal-audit-risk.md + frameworks/risk-matrix.md
+"Recruiting/hiring process" → agents/60-talent-acquisition.md
+"Compensation/equity/benefits" → agents/61-total-rewards.md + frameworks/compensation-bands.md
+"Chief of staff/BizOps/operating cadence" → agents/62-chief-of-staff-bizops.md
+"AI evals/red-team/is it safe to ship" → agents/63-ai-evaluation-red-teaming.md
 "LangGraph/RAG/AI agent"→ frameworks/ai-engineering-stack.md + agents/29-data-ai-strategy.md + agents/06-engineering.md
 "AI feature/LLM/embed"  → frameworks/ai-engineering-stack.md + frameworks/ai-department-playbooks.md
 "AI for [department]"   → frameworks/ai-department-playbooks.md
@@ -165,6 +181,13 @@ Data & Privacy: `38-data-engineering` `39-privacy-dpo`
 Internal & Delivery: `40-it-corporate-engineering` `41-technical-program-management`
 Corporate Finance: `44-investor-relations` `45-corporate-development` `46-procurement-supply-chain`
 Research: `47-deep-research` (research-first gate — invoked before any build/bet)
+Engineering Specialisms: `48-mobile-engineering` `49-ml-engineering` `50-frontend-web-platform`
+Customer-Facing Delivery: `51-solutions-engineering` `52-professional-services` `53-customer-education` `54-community`
+Revenue Systems: `55-billing-monetization-engineering`
+Finance Specialisms: `56-revenue-accounting` `57-tax` `58-treasury`
+Risk & People: `59-internal-audit-risk` `60-talent-acquisition` `61-total-rewards`
+Executive: `62-chief-of-staff-bizops`
+AI Assurance: `63-ai-evaluation-red-teaming` (gates whether an AI feature is good/safe enough to ship)
 
 All agent files are in `agents/` directory.
 

@@ -1,6 +1,6 @@
 # Agent Operating Standards
 
-All 48 agents inherit these standards. Read this file when any agent is loaded.
+All 64 agents inherit these standards. Read this file when any agent is loaded.
 
 ## Depth Doctrine (READ FIRST — applies to EVERY agent, every output)
 
@@ -191,9 +191,27 @@ Agent 44 (Investor Rel)  → frameworks/corporate-scaling.md, frameworks/founder
 Agent 45 (Corp Dev)      → frameworks/physical-ops-pmi.md, frameworks/risk-matrix.md, frameworks/scenario-playbooks.md (Agent 45 section)
 Agent 46 (Procurement)   → frameworks/sop-process-maps.md, frameworks/risk-matrix.md, frameworks/scenario-playbooks.md (Agent 46 section)
 Agent 47 (Deep Research) → frameworks/deep-research-protocol.md (owns it; all agents invoke it), frameworks/scenario-playbooks.md (Agent 47 section)
+Agent 48 (Mobile Eng)    → frameworks/stress-test-framework.md, frameworks/accessibility-i18n.md
+Agent 49 (ML Eng/MLOps)  → frameworks/ai-engineering-stack.md, frameworks/data-governance.md
+Agent 50 (Frontend)      → frameworks/accessibility-i18n.md, frameworks/ab-testing-framework.md
+Agent 51 (Solutions Eng) → frameworks/sales-playbook.md, frameworks/pricing-packaging.md
+Agent 52 (Prof Services) → frameworks/customer-journey.md, frameworks/sop-process-maps.md
+Agent 53 (Cust Education)→ frameworks/customer-journey.md, frameworks/accessibility-i18n.md
+Agent 54 (Community)     → frameworks/customer-journey.md, frameworks/scenario-playbooks.md
+Agent 55 (Billing Eng)   → frameworks/pricing-packaging.md, frameworks/data-governance.md
+Agent 56 (Rev Accounting)→ frameworks/risk-matrix.md, references/compliance/*.md
+Agent 57 (Tax)           → frameworks/global-compliance.md, references/compliance/*.md
+Agent 58 (Treasury)      → frameworks/risk-matrix.md, frameworks/founders-playbook.md
+Agent 59 (Internal Audit)→ frameworks/risk-matrix.md, frameworks/coverage-audit.md
+Agent 60 (Talent Acq)    → frameworks/compensation-bands.md, frameworks/scenario-playbooks.md
+Agent 61 (Total Rewards) → frameworks/compensation-bands.md, frameworks/corporate-scaling.md
+Agent 62 (Chief of Staff)→ frameworks/okr-goal-setting.md, frameworks/continuous-improvement.md
+Agent 63 (AI Evaluation) → frameworks/ai-engineering-stack.md, frameworks/incident-management.md
 
 EVERY AGENT → frameworks/deep-research-protocol.md (research-first gate, Rule A above)
               Each agent's domain-specific depth requirements are in §10 (Per-Agent Depth Map).
+              Agents 48-63 (specialisms added in v4.0) follow the same doctrine; where the map
+              lacks a row, apply the nearest parent domain's depth requirements.
 EVERY AGENT → frameworks/ai-department-playbooks.md (how THIS department applies LLMs/RAG/agents)
               + frameworks/ai-engineering-stack.md for the how (LangGraph, RAG, evals, guardrails).
 Agent 06/29/38 own the AI stack; Agent 09/39 sign off on any LLM feature touching

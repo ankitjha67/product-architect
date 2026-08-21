@@ -118,6 +118,22 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "RAG"/"LangGraph"/"AI agent"→ (none)     → ai-engineering-stack     → 29 (Data/AI)+06 (Eng)
 "LLM feature"/"embeddings"/"vector"→ (none) → ai-engineering-stack     → 38 (Data Eng)
 "AI for [department]"     → (that agent)     → ai-department-playbooks  → 29 (Data/AI)
+"mobile"/"iOS"/"Android"/"app store"→ 48 (Mobile) → stress-test-framework   → 06 (Engineering)
+"ML model"/"MLOps"/"training"→ 49 (ML Eng)     → ai-engineering-stack     → 38 (Data Eng)+29
+"frontend"/"web perf"/"Core Web Vitals"→ 50 (FE)→ accessibility-i18n       → 05 (Design)
+"demo"/"POC"/"RFP"/"questionnaire"→ 51 (SE)    → sales-playbook           → 32 (Sales)+09
+"implementation"/"onboarding"/"SOW"→ 52 (PS)   → customer-journey         → 17 (CS)
+"customer training"/"certification"→ 53 (Educ) → customer-journey         → 42 (Docs)
+"community"/"forum"/"ambassador"→ 54 (Community)→ customer-journey        → 34 (DevRel)
+"billing"/"subscription"/"metering"→ 55 (Billing)→ pricing-packaging      → 36 (Pricing)+18
+"revenue recognition"/"close"/"ASC 606"→ 56 (RevAcct)→ —                  → 18 (Finance)
+"tax"/"GST"/"VAT"/"nexus" → 57 (Tax)            → global-compliance        → 56 (RevAcct)
+"cash"/"FX"/"treasury"/"banking"→ 58 (Treasury) → —                        → 18 (Finance)
+"internal audit"/"SOX"/"ERM"→ 59 (Audit)        → risk-matrix              → 11 (Compliance)
+"recruiting"/"hiring"/"interview"→ 60 (TA)      → compensation-bands       → 22 (People)
+"compensation"/"equity"/"benefits"→ 61 (Rewards)→ compensation-bands       → 22 (People)+18
+"chief of staff"/"BizOps"/"cadence"→ 62 (CoS)   → okr-goal-setting         → 20 (BAU)+03
+"AI eval"/"red team"/"safe to ship"→ 63 (AI Eval)→ ai-engineering-stack    → 29 (AI)+09
 "does this exist"/"is this novel"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "market research"/"who else does"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "build [any feature/product]"→ 47 FIRST (gate) → deep-research-protocol → then route normally
@@ -584,6 +600,22 @@ SCENARIO: Session is about to hit token limit.
 45 Corp Dev      → M&A Plan (build-buy-partner, thesis, valuation, diligence, deal, integration)
 46 Procurement   → Procurement Plan (P2P, sourcing, contracts, vendor risk, supply chain, savings)
 47 Deep Research → Feature Research Dossier (exists-vs-novel verdict + citations + refine/validate)
+48 Mobile Eng    → Mobile Plan (native-vs-cross-platform, release trains, store submission, crash/ANR budgets)
+49 ML Eng/MLOps  → ML Engineering Plan (baseline ladder, feature store/skew, deploy pattern, drift + retraining)
+50 Frontend      → Web Platform Plan (rendering strategy, Core Web Vitals budgets, design-system impl, a11y, edge)
+51 Solutions Eng → Pre-Sales Playbook (discovery, demo env, POC gates, security questionnaires, technical win)
+52 Prof Services → Implementation Plan (engagement model, SOW + change control, migration, TTFV, utilization)
+53 Cust Education→ Education Program (curriculum by role, format matrix, certification, academy platform, adoption)
+54 Community     → Community Plan (the one job, platform choice, cold start, health metrics, champions, moderation)
+55 Billing Eng   → Billing Architecture (build-vs-buy, entitlements, metering, proration, dunning, tax, rev-rec hooks)
+56 Rev Accounting→ Controller Package (ASC 606 policy, close calendar, reconciliations, audit readiness, controls)
+57 Tax           → Tax Position (indirect-tax registrations, PE risk, transfer pricing, withholding, tax calendar)
+58 Treasury      → Treasury Policy (cash & liquidity, banking/counterparty limits, investment policy, FX, working capital)
+59 Internal Audit→ Assurance Plan (three lines, risk-based audit plan, findings, SOX/ICFR readiness, AC reporting)
+60 Talent Acq    → Recruiting Engine (funnel/capacity math, structured interviews, debrief discipline, hiring compliance)
+61 Total Rewards → Comp & Benefits Framework (philosophy, job architecture, bands, comp cycle, equity, pay equity)
+62 Chief of Staff→ Operating System (charter, cadence stack, planning process, decision rights, BizOps portfolio)
+63 AI Evaluation → AI Safety Case (golden sets, judge calibration, CI gates, red-team findings, ship/hold verdict)
 01 Advisor       → Proactive Suggestions (runs parallel — blind spots, ideas, best practices)
 00 Chief Review  → Final Audit (cross-agent consistency, gaps, risks, recommendations)
 ```

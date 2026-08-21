@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development skill for Claude.**
 
-48 agents · 35 frameworks · Research-first, AI-native, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
+64 agents · 35 frameworks · Research-first, AI-native, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
 
 > **This is a [Claude Skill](https://docs.anthropic.com/en/docs/agents-and-tools/skills).** Claude reads `SKILL.md`. This README is for human visitors.
 
@@ -13,7 +13,7 @@
 **Product Architect turns Claude into an entire product organization.**
 
 Most AI product advice is one generalist answering everything at surface level. This
-is the opposite: **48 specialized department heads** — Discovery, PRD, Engineering,
+is the opposite: **64 specialized department heads** — Discovery, PRD, Engineering,
 Security, Privacy, Pricing, Growth, RevOps, Legal, Finance, Governance, and more —
 each with a department-head-depth playbook, routed to your question by a context
 engine that loads only what's relevant.
@@ -30,7 +30,7 @@ each from the agent that owns that domain, cross-checked against the others.
 | 🔍 **Research-first** | Before recommending you build anything, it investigates the market and returns a verdict: *"this exists — here are the competitors, refine it"* or *"white-space — and here's why the niche may be empty."* It never fabricates a company, statistic, or URL. |
 | 🧠 **Reasons, doesn't template** | Every agent works through frame → options → evidence → quantified trade-offs → recommendation → risks + the condition that would reverse it. Each carries its own decision framework for its hardest calls. |
 | 🏢 **Enterprise-grade** | Regulated-industry, 1000+ person, multi-region depth: audit trails, SLAs, procurement gauntlets, change management, 3-year TCO — not just startup advice. |
-| 🤖 **AI-native** | A full LangGraph + RAG engineering stack, plus a concrete LLM/agent application mapped to all 48 departments. |
+| 🤖 **AI-native** | A full LangGraph + RAG engineering stack, plus a concrete LLM/agent application mapped to all 64 departments. |
 | ⚖️ **Governed** | A 5-level authority hierarchy (Compliance → Privacy → Security → Finance → Review) resolves conflicts between agents instead of letting them contradict each other. |
 | 💾 **Remembers** | Key Decision Records survive chat compaction — paste one into a new conversation and pick up exactly where you left off. |
 
@@ -82,7 +82,7 @@ If you're on the free plan, you can still use everything in this repo:
 
 ## What's Inside
 
-### 48 Specialized Agents
+### 64 Specialized Agents
 
 Organized by product lifecycle — each operates at department-head depth:
 
@@ -99,13 +99,19 @@ Organized by product lifecycle — each operates at department-head depth:
 | **Corporate** | 25 PR & Comms · 26 Governance & IPO · 27 ESG · 28 Govt Relations · 44 Investor Relations · 45 Corporate Development & M&A |
 | **Data & Platform** | 29 Data & AI Strategy · 30 Platform & Ecosystem · 34 Developer Relations · 38 Data Engineering |
 | **Enablement** | 40 IT & Corporate Engineering · 42 Content & Docs · 43 Localization & i18n |
+| **Engineering Specialisms** | 48 Mobile Engineering · 49 ML Engineering (MLOps) · 50 Frontend & Web Platform |
+| **Customer-Facing Delivery** | 51 Solutions Engineering (Pre-Sales) · 52 Professional Services · 53 Customer Education · 54 Community |
+| **Revenue Systems** | 55 Billing & Monetization Engineering |
+| **Finance Specialisms** | 56 Revenue Accounting & Controller · 57 Tax · 58 Treasury |
+| **Risk & Talent** | 59 Internal Audit & Enterprise Risk · 60 Talent Acquisition · 61 Total Rewards |
+| **Executive & AI Assurance** | 62 Chief of Staff & BizOps · 63 AI Evaluation & Red-Teaming |
 
 ### 35 Frameworks
 
 | Framework | What It Does |
 |-----------|-------------|
 | **AI Engineering Stack** | LangGraph agents, RAG (hybrid retrieval, rerank, GraphRAG), evals, guardrails, observability, and the maturity ladder — with Anthropic-native options |
-| **AI Department Playbooks** | How every one of the 48 departments applies LLMs/RAG/agents — a specific use case, pattern, stack, and guardrail per function |
+| **AI Department Playbooks** | How every one of the 64 departments applies LLMs/RAG/agents — a specific use case, pattern, stack, and guardrail per function |
 | **Deep Research Protocol** | End-to-end market existence/novelty engine: exists-vs-novel verdict, citation hygiene, anti-hallucination gate, per-agent depth map |
 | **Founder's Playbook** | Week-by-week from Day 0 with costs, fundraising, IP, legal |
 | **30-Day Launch Engine** | Positioning, channel selection, day-by-day execution |
@@ -135,7 +141,7 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 ## Key Architecture
 
-**AI-Native** — A modern AI-engineering layer runs through the whole system: the **AI Engineering Stack** framework (LangGraph orchestration, RAG with hybrid retrieval + reranking + GraphRAG, evals-in-CI, guardrails, observability, and the L0→L5 maturity ladder), plus **AI Department Playbooks** giving all 48 departments a concrete LLM/RAG/agent application. Defaults to the latest Claude models (Opus 4.8, Sonnet 5, Haiku 4.5) with adaptive thinking, MCP for integrations, and Security (09) + Privacy (39) sign-off on any AI feature touching untrusted input or personal data.
+**AI-Native** — A modern AI-engineering layer runs through the whole system: the **AI Engineering Stack** framework (LangGraph orchestration, RAG with hybrid retrieval + reranking + GraphRAG, evals-in-CI, guardrails, observability, and the L0→L5 maturity ladder), plus **AI Department Playbooks** giving all 64 departments a concrete LLM/RAG/agent application. Defaults to the latest Claude models (Opus 4.8, Sonnet 5, Haiku 4.5) with adaptive thinking, MCP for integrations, and Security (09) + Privacy (39) sign-off on any AI feature touching untrusted input or personal data.
 
 **Research-First Depth** — Before recommending building anything, agents run the **Deep Research Protocol** (Agent 47): an end-to-end market investigation that returns a grounded verdict — *"this already exists, here are the competitors + citations, refine it"* or *"this is white-space, no competition/citations in this niche"* (with the honest caveat that absence of evidence isn't proof of novelty, plus a "why is it empty?" analysis). Every agent inherits a Depth Rubric (L0 surface → L4 Mariana Trench), must grade itself L3+, and never fabricates a company, statistic, study, patent, or URL.
 
@@ -153,10 +159,10 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 | Metric | Value |
 |--------|-------|
-| Agents | 48 |
+| Agents | 64 |
 | Frameworks | 35 |
-| Total files | 106 |
-| Total lines | 30,000+ |
+| Total files | 122 |
+| Total lines | 38,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
@@ -179,7 +185,7 @@ product-architect/
 ├── CHANGELOG.md                 ← Version history (semver, matches SKILL.md)
 ├── LICENSE                      ← MIT
 ├── .github/                     ← CI (validator on every PR), issue & PR templates
-├── agents/                      ← 48 agent files (00-47)
+├── agents/                      ← 64 agent files (00-63)
 ├── frameworks/                  ← 35 framework files
 ├── references/
 │   ├── compliance/              ← Country deep-dives (5 files)

@@ -1,6 +1,6 @@
 # AI for Every Department — Applied LLM / RAG / Agent Playbooks
 
-This is the concrete, department-by-department map of how each of the 48 agents applies
+This is the concrete, department-by-department map of how each of the 64 agents applies
 modern AI (LLMs, RAG, LangGraph/agents) in real work — so "every department gets an AI
 upgrade" means something specific. For the **how** (the maturity ladder, RAG pipeline,
 LangGraph, evals, guardrails, OWASP LLM Top 10), see `frameworks/ai-engineering-stack.md`;
@@ -182,6 +182,30 @@ A department is "AI-upgraded" when it has (1) a grounded feature in production, 
 set gating changes, (3) guardrails in and out, and (4) a metric trending the right way —
 **not** when it has an impressive demo. Regulated departments add a required human sign-off
 gate at STEP 5 (see disclaimer below).
+
+## Specialist departments (Agents 48–63)
+
+*Added in v4.0. Same discipline: lowest rung that solves it, guardrails + evals always,
+Security (09) and Privacy (39) sign off on untrusted input or personal data.*
+
+| Agent | High-value AI use case (specific, real) | Pattern | Stack / tools | Guardrail & metric |
+|-------|------------------------------------------|---------|---------------|--------------------|
+| **48 Mobile Engineering** | Triage crash/ANR clusters into likely root cause + suspect commit from stack traces and release diffs | RAG + workflow | Crashlytics/Sentry traces + RAG over the repo and release notes | Never auto-file a fix; engineer confirms. Metric: triage time, false-attribution rate |
+| **49 ML Engineering** | Diagnose a drift alert — summarize which features shifted, when, and the likely upstream cause | tool + workflow | Feature store + monitoring metrics as tools; LLM narrates, does not decide | Numbers come from the monitoring system, never generated. Metric: time-to-diagnosis |
+| **50 Frontend & Web Platform** | Explain a Core Web Vitals regression from RUM + bundle diff and propose the specific fix | RAG + tool | CrUX/RUM data + bundle analyzer output + RAG over the design system | Verify against a lab run before acting. Metric: regression-to-fix cycle time |
+| **51 Solutions Engineering** | Auto-draft security-questionnaire answers from the approved answer library | RAG | pgvector over past responses + policy docs; human approves every answer | Never invent a control you don't have — an unverified "yes" is a contract risk. Metric: turnaround, edit rate |
+| **52 Professional Services** | Draft the SOW and surface scope-creep risk by comparing against past over-run projects | RAG | RAG over historical SOWs, change orders, and post-mortems | Legal reviews every SOW (contract). Metric: change-order rate, margin variance |
+| **53 Customer Education** | Generate first-draft course modules and assessment items from product docs + release notes | RAG | RAG over docs (Agent 42) + LMS; SME reviews before publish | SME sign-off mandatory; test items validated for psychometrics. Metric: time-to-course, pass-rate validity |
+| **54 Community** | Surface unanswered questions and auto-suggest an answer to a human moderator | RAG + workflow | RAG over forum history + docs; suggestion queue, never auto-post as staff | Disclose AI assistance; never impersonate a community member. Metric: time-to-first-response, member-answered rate |
+| **55 Billing & Monetization Eng** | Explain "why is this invoice this amount" in plain language from the billing event log | RAG + tool | Query the metering/invoice records as tools; LLM narrates only | Every figure read from the ledger — zero generated numbers. Metric: billing-dispute deflection |
+| **56 Revenue Accounting** | Draft the ASC 606 memo for a non-standard contract, citing the clause and the five-step analysis | RAG | RAG over the contract, policy manual, and prior memos | Controller and auditor review; never a filing without human sign-off. Metric: close-cycle days, audit adjustments |
+| **57 Tax** | Map a new market's registration and filing obligations from the product's actual transaction flows | RAG | RAG over compliance references (`references/compliance/*`) + the transaction model | Tax counsel verifies before any registration or position is taken. Metric: missed-deadline count (target 0) |
+| **58 Treasury** | Narrate the 13-week cash forecast — what changed, which assumptions drive it | tool + workflow | Bank/ERP balances as tools; LLM explains the delta, never forecasts unaided | All figures sourced; no generated projections. Metric: forecast accuracy vs actual |
+| **59 Internal Audit & Risk** | Draft the audit work programme and sample selection from the risk register and prior findings | RAG | RAG over risk register, prior audits, control matrix | Auditor owns scope and conclusions; AI drafts, never opines. Metric: repeat-finding rate |
+| **60 Talent Acquisition** | Structure interview scorecards and summarize debrief notes against the job scorecard | workflow | Structured output over interviewer notes; ATS integration | **Never score or rank candidates** (bias + EU AI Act high-risk). Human decides. Metric: time-to-fill, scorecard completeness |
+| **61 Total Rewards** | Draft compensation-review talking points per manager from band position and performance inputs | RAG + workflow | RAG over comp philosophy + band data; manager edits before delivery | Pay decisions are human; AI never sets numbers. Privacy-critical data (Agent 39). Metric: cycle time, manager confidence |
+| **62 Chief of Staff & BizOps** | Turn meeting transcripts into a decision log with owners, dates, and open questions | workflow | Transcription → structured extraction → decision-log system | Attendees confirm decisions before the log is authoritative. Metric: decision cycle time, action closure |
+| **63 AI Evaluation & Red-Teaming** | Automated red-teaming and LLM-as-judge scoring of the org's own AI features | agent (L4) | garak / PyRIT / promptfoo / Inspect; judge calibrated against human labels | The judge itself is calibrated (Cohen's κ) — an unchecked judge is not evidence. Metric: attack success rate, judge-human agreement |
 
 ## Cross-cutting rules
 
