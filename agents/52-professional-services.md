@@ -55,15 +55,13 @@ metric reported to product quarterly — falling from 60% to 20% beats growing t
 | Fixed fee | You | High if scoped well; catastrophic on scope creep | Repeatable, well-understood implementations with a proven estimate history |
 | Time & materials (T&M) | Customer | Predictable, low variance | Genuinely unknown scope, discovery work, ongoing advisory |
 | Capped T&M ("not to exceed") | Shared, but tail risk is yours | Compresses on overrun | Buyer wants T&M flexibility with budget certainty; use only with a change-order clause |
-| Milestone / deliverable-based | Shared, tied to acceptance | Good, if acceptance criteria are objective | Enterprise buyers whose procurement requires payment on outcomes |
-| Prepaid credits / blocks of hours | Customer | Good; watch breakage and revenue-recognition treatment | Post-go-live enhancements, long-tail admin support |
+| Milestone / deliverable-based | Shared, tied to acceptance | Good, if acceptance criteria are objective | Enterprise procurement that requires payment on outcomes |
+| Prepaid credits / hour blocks | Customer | Good; watch breakage and rev-rec treatment | Post-go-live enhancements, long-tail admin support |
 | Retainer / managed service | You | Steady; erodes if scope is undefined | Customers with no internal admin capacity |
 
 ```
 RATE CARD & PRICING DISCIPLINE:
-□ Role-based rates (architect > senior consultant > consultant > analyst) with a published blended rate. Onshore
-  US/EU blended rates commonly land in the $150-250/hr band, offshore/GCC delivery centres far lower — verify
-  against a current market survey, and never mix rate bases inside one SOW.
+□ Role-based rates (architect > senior consultant > consultant > analyst) with a published blended rate. Onshore US/EU blended rates commonly land in the $150-250/hr band, offshore delivery centres far lower — verify against a current market survey, and never mix rate bases inside one SOW.
 □ SERVICES ATTACH: enterprise SaaS implementations commonly quote 15-30% of first-year ACV (data platforms and ERP-adjacent products higher); below ~10% on a complex product usually means you are absorbing the work.
 □ NEVER discount services first — it teaches procurement the implementation is worthless, guarantees margin loss
   and re-anchors every renewal. If a concession is required, trade services SCOPE (fewer environments, fewer
@@ -76,7 +74,7 @@ RATE CARD & PRICING DISCIPLINE:
 | Phase | Purpose | Exit gate | SMB | Mid-market | Enterprise |
 |---|---|---|---|---|---|
 | Kickoff | Align on outcomes, plan, RACI, risks | Signed project plan + named owners both sides | 1 day | 1 week | 1-2 weeks |
-| Discovery | Validate the as-sold design against reality | Solution design doc + assumptions confirmed | — | 1-2 weeks | 2-4 weeks |
+| Discovery | Validate the as-sold design against reality | Solution design + assumptions confirmed | — | 1-2 weeks | 2-4 weeks |
 | Configure | Build the product to the design | Config complete in a non-prod environment | 1 week | 2-4 weeks | 4-8 weeks |
 | Integrate | Connect the surrounding systems | Each integration passing an agreed test suite | — | 2-3 weeks | 4-10 weeks |
 | Migrate | Move historical data (see §5) | Reconciliation passed on a full dry run | — | 1-3 weeks | 3-8 weeks |
@@ -138,8 +136,7 @@ PROFILE, never a description. THE SEQUENCE (skip a step and you do the whole thi
 5 DRY RUNS — minimum two, ideally three, into a production-like environment: run 1 finds the structural breaks,
   run 2 proves the fixes and gives the real elapsed time for the cutover window, run 3 is the rehearsal with the
   actual runbook and the actual people.
-6 RECONCILE — control totals agreed in advance: record counts per object, sums of financial fields, sampled
-  record-level comparison, a signed reconciliation report. "It looks right" is not reconciliation.
+6 RECONCILE — control totals agreed in advance: record counts per object, sums of financial fields, sampled record-level comparison, a signed reconciliation report. "It looks right" is not reconciliation.
 7 CUTOVER RUNBOOK — a T-minus schedule (T−7 freeze source changes, T−2 final delta extract, T−0 load, T+2
   reconcile, T+4 open to users), every step with an owner, duration and verification.
 8 ROLLBACK — the decision point, the criteria, who is authorised to call it, and how long rollback itself takes.
@@ -239,8 +236,7 @@ decision, or the numbers will always argue for doing it yourself.
 | Product-led (self-serve onboarding) | n/a | Improves it | Fastest | Medium | The real long-run answer for standard patterns — invest here continuously |
 
 ```
-THE DECISION RULE: pick the posture that minimises TIME-TO-VALUE per dollar of gross profit, not the one that
-maximises services revenue — then set thresholds so the choice is revisited on evidence, not preference:
+THE DECISION RULE: pick the posture that minimises TIME-TO-VALUE per dollar of gross profit, not the one that maximises services revenue — then set thresholds so the choice is revisited on evidence, not preference:
 □ Services revenue >~25-30% of total and growing faster than ARR → a product-debt finding for Agents 03/04/06,
   not a services win. □ Backlog >8-10 weeks for two consecutive months → enable partners or hire (both 8-12 weeks
   of lead time). □ Estimate accuracy worse than ±25% on a project type → stop quoting it fixed-fee until the
