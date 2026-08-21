@@ -1,0 +1,25 @@
+name: Validate
+
+# Enforces the structural contract described in CONTRIBUTING.md so a PR can't
+# silently drift the counts, numbering, links, or documentation out of sync.
+# Everything here also runs locally: `python3 tools/validate_repo.py`
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Repository structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Validate structure, numbering, links, and doc-consistency
+        run: python3 tools/validate_repo.py

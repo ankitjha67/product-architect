@@ -56,8 +56,12 @@ cross-reference row of any agent it supports.
 
 ## Before you open a PR
 
+CI runs `tools/validate_repo.py` on every push and PR
+(`.github/workflows/validate.yml`) — a red check blocks the merge. Run it locally first:
+
 ```
-□ python3 tools/validate_repo.py passes (counts, numbering, doc-consistency)
+□ python3 tools/validate_repo.py passes (counts, numbering, internal links,
+  code-fence balance, doc-consistency)
 □ Counts updated everywhere if you added files (README, SKILL.md, START-HERE,
   references/github-readme.md, navigator.jsx)
 □ Code fences balanced; no duplicate section numbers

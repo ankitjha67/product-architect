@@ -3,6 +3,26 @@
 All notable changes to Product Architect. Format follows [Keep a Changelog](https://keepachangelog.com/);
 versions follow semver as declared in `SKILL.md` metadata.
 
+## [3.2.1] — 2026-07
+
+### Added
+- **README `## About` section** — the repo previously opened straight into install
+  instructions with no explanation of what it is. Now states the premise (48 department
+  heads, not one generalist), what makes it different, who it's for, and the honest
+  scope limits.
+- **`.github/` scaffolding**: a CI workflow running the validator on every push and PR
+  (a red check blocks merge), a PR template mirroring the CONTRIBUTING quality bar and
+  wiring checklist, and issue templates for content gaps and bugs.
+
+### Changed
+- **`tools/validate_repo.py` upgraded** — now also verifies every relative markdown
+  link resolves and every code fence is balanced, alongside the existing count,
+  numbering, and doc-consistency checks. One source of truth for CI and local runs.
+
+### Fixed
+- Unbalanced code fence in `frameworks/ai-engineering-stack.md` (a stray closing fence
+  after the RAG pipeline table) — caught by the new validator check on its first run.
+
 ## [3.2.0] — 2026-07
 
 ### Added

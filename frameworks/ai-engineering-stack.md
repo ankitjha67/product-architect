@@ -58,7 +58,6 @@ INGEST → CHUNK → EMBED → INDEX → (query) → RETRIEVE → RERANK → ASS
 | **Assemble** | Build the prompt | Put retrieved context in a cacheable prefix; dedupe; budget tokens |
 | **Generate** | LLM answers from context | Instruct: "answer ONLY from context; if not present, say so"; require citations |
 | **Cite** | Attribute every claim | Anthropic **Citations** (`citations: {enabled: true}`) returns char/page-level cites automatically |
-```
 
 ### 1b. Advanced RAG (use when naive RAG under-retrieves)
 

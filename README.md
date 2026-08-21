@@ -8,6 +8,44 @@
 
 ---
 
+## About
+
+**Product Architect turns Claude into an entire product organization.**
+
+Most AI product advice is one generalist answering everything at surface level. This
+is the opposite: **48 specialized department heads** — Discovery, PRD, Engineering,
+Security, Privacy, Pricing, Growth, RevOps, Legal, Finance, Governance, and more —
+each with a department-head-depth playbook, routed to your question by a context
+engine that loads only what's relevant.
+
+Ask *"should we build this?"* and you don't get an opinion. You get a **cited market
+verdict** (does it already exist, who ships it, where's the gap), then a PRD with the
+edge cases, an architecture, a pricing model, a compliance read, and a launch plan —
+each from the agent that owns that domain, cross-checked against the others.
+
+**What makes it different:**
+
+| | |
+|---|---|
+| 🔍 **Research-first** | Before recommending you build anything, it investigates the market and returns a verdict: *"this exists — here are the competitors, refine it"* or *"white-space — and here's why the niche may be empty."* It never fabricates a company, statistic, or URL. |
+| 🧠 **Reasons, doesn't template** | Every agent works through frame → options → evidence → quantified trade-offs → recommendation → risks + the condition that would reverse it. Each carries its own decision framework for its hardest calls. |
+| 🏢 **Enterprise-grade** | Regulated-industry, 1000+ person, multi-region depth: audit trails, SLAs, procurement gauntlets, change management, 3-year TCO — not just startup advice. |
+| 🤖 **AI-native** | A full LangGraph + RAG engineering stack, plus a concrete LLM/agent application mapped to all 48 departments. |
+| ⚖️ **Governed** | A 5-level authority hierarchy (Compliance → Privacy → Security → Finance → Review) resolves conflicts between agents instead of letting them contradict each other. |
+| 💾 **Remembers** | Key Decision Records survive chat compaction — paste one into a new conversation and pick up exactly where you left off. |
+
+**Who it's for:** solo founders who need a whole company's worth of expertise ·
+product managers who want PRDs with every edge case · engineering leads needing
+architecture, security, and test strategy · teams operating at Fortune-500 caliber
+without Fortune-500 headcount.
+
+**Honest scope:** this is an educational and operational framework built through
+human-AI collaboration — not professional advice. Legal, financial, security, and HR
+content requires qualified review before real-world use. See
+[`references/DISCLAIMER.md`](references/DISCLAIMER.md).
+
+---
+
 ## Install
 
 ### Claude.ai (Pro, Max, Team, or Enterprise)
@@ -117,7 +155,7 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 |--------|-------|
 | Agents | 48 |
 | Frameworks | 35 |
-| Total files | 102 |
+| Total files | 106 |
 | Total lines | 30,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
@@ -140,6 +178,7 @@ product-architect/
 ├── CONTRIBUTING.md              ← Conventions, quality bar, wiring checklist
 ├── CHANGELOG.md                 ← Version history (semver, matches SKILL.md)
 ├── LICENSE                      ← MIT
+├── .github/                     ← CI (validator on every PR), issue & PR templates
 ├── agents/                      ← 48 agent files (00-47)
 ├── frameworks/                  ← 35 framework files
 ├── references/
@@ -150,7 +189,7 @@ product-architect/
 │   └── industry-references.md   ← Best-in-class by function
 └── tools/
     ├── navigator.jsx            ← Interactive web UI for founders
-    └── validate_repo.py         ← Structure validator (counts, numbering, doc-consistency)
+    └── validate_repo.py         ← Validator (counts, numbering, links, fences, doc-consistency)
 ```
 
 ## Disclaimer
