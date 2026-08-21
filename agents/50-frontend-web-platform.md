@@ -11,12 +11,11 @@ browser you claimed to support, that is your problem.
 
 ## Inputs Required
 - Design system, component inventory, motion and interaction specs, accessibility intent (Agent 05)
-- API contracts, auth/session model, caching headers the origin can emit (Agent 06); CDN/infra ownership (Agent 08)
-- CSP, subresource integrity, cookie and consent constraints (Agent 09, Agent 39)
+- API contracts, auth/session model, caching headers the origin can emit (Agent 06); CDN/infra ownership (Agent 08); CSP, SRI, cookie and consent constraints (Agent 09, Agent 39)
 - SEO priorities, target keywords, content model (Agent 15); locale list, RTL and hreflang plan (Agent 43)
 - Analytics/RUM requirements and event spec (Agent 16); conversion funnels under measurement (Agent 37)
-- Content/docs publishing model and CMS choice (Agent 42); browser/device mix from real analytics
-- Accessibility conformance obligations and procurement commitments (Agent 43, Agent 46)
+- Content/docs publishing model and CMS choice (Agent 42); browser/device mix from real analytics; accessibility conformance obligations and
+  procurement commitments (Agent 43, Agent 46)
 
 ## 1. Rendering Strategy — the Decision Table
 
@@ -31,12 +30,11 @@ browser you claimed to support, that is your problem.
 ```
 DECIDE PER ROUTE, NEVER PER APP. A real product mixes all five: marketing on SSG/ISR, product pages on ISR, search on SSR/streaming, the
 logged-in app on CSR. Choosing one strategy for an entire codebase is the most common and most expensive rendering mistake.
-FOUR QUESTIONS PER ROUTE: (1) Must a crawler see the content without executing JS? (2) How stale may it be — build-time, 60 s, or live?
-(3) Is it personalised, and by what (locale, auth, experiment)? (4) What is the acceptable TTFB, and can the origin actually meet it?
-PERSONALISATION TRAP: one personalised element on an otherwise static page pushes people to SSR the whole page. Don't — keep the page
-static/ISR and personalise the fragment client-side or at the edge (§10). Cache the 95% that is identical for everyone.
-HYDRATION IS THE HIDDEN BILL: SSR gives you a fast paint and then ships the same JS to make it interactive. If INP is your problem, SSR alone
-does not fix it — reducing and deferring JS does (islands, RSC, partial hydration, or simply less JavaScript).
+FOUR QUESTIONS PER ROUTE: (1) Must a crawler see the content without executing JS? (2) How stale may it be — build-time, 60 s, or live? (3) Is it personalised, and by what (locale, auth, experiment)? (4) What TTFB is acceptable, and can the origin meet it?
+PERSONALISATION TRAP: one personalised element on an otherwise static page pushes people to SSR the whole page. Don't — keep the page static/ISR
+and personalise the fragment client-side or at the edge (§10); cache the 95% that is identical for everyone.
+HYDRATION IS THE HIDDEN BILL: SSR gives a fast paint and then ships the same JS to make it interactive. If INP is your problem, SSR alone does
+not fix it — reducing and deferring JS does (islands, RSC, partial hydration, or simply less JavaScript).
 ```
 
 ## 2. Core Web Vitals as an Engineering Contract
@@ -50,8 +48,8 @@ THE THRESHOLDS (judged at the 75th percentile of FIELD data, per page type, spli
 FIELD vs LAB — you need both, and they answer different questions:
   FIELD (RUM / CrUX, Search Console's Core Web Vitals report, PageSpeed Insights' "real user" panel) is the score of record. It reflects real
   devices, real networks, real cache states. CrUX is a 28-day rolling window, so a fix takes ~4 weeks to show fully — plan releases for that.
-  LAB (Lighthouse, WebPageTest, Lighthouse-CI in the pipeline) is reproducible and good for regression gates and diagnosis, but it cannot
-  measure INP realistically because there is no real user interacting. Never argue with field data using a lab score.
+  LAB (Lighthouse, WebPageTest, Lighthouse-CI in the pipeline) is reproducible and good for regression gates and diagnosis, but cannot measure
+  INP realistically — there is no real user interacting. Never argue with field data using a lab score.
 WHAT ACTUALLY MOVES EACH ONE:
   LCP → TTFB (origin/CDN/caching), render-blocking CSS and fonts, the LCP image itself. Fixes: serve the LCP image eagerly with
         fetchpriority="high", preload it, never lazy-load it, size it correctly, use AVIF/WebP, inline critical CSS, cut redirect chains.
@@ -59,8 +57,7 @@ WHAT ACTUALLY MOVES EACH ONE:
         third-party scripts, avoid synchronous layout thrash, debounce expensive handlers, use CSS for animation rather than JS.
   CLS → content inserted without reserved space. Fixes: explicit width/height or aspect-ratio on every image/video/iframe/ad slot,
         reserve space for banners and consent bars, font-display with a metric-matched fallback (size-adjust) to avoid reflow on swap.
-ACCOUNTABILITY: publish a per-page-type CWV dashboard, set the target as a merge-blocking budget in Lighthouse-CI, and treat a p75 regression
-past threshold as a SEV3 with an owner. Vitals without an owner are a screenshot in a deck.
+ACCOUNTABILITY: publish a per-page-type CWV dashboard, set the target as a merge-blocking Lighthouse-CI budget, and treat a p75 regression past threshold as a SEV3 with an owner. Vitals without an owner are a screenshot in a deck.
 ```
 
 ## 3. Performance Budgets
@@ -68,16 +65,14 @@ past threshold as a SEV3 with an owner. Vitals without an owner are a screenshot
 ```
 BUDGETS ARE NUMBERS IN CI, NOT INTENTIONS. Fail the build on breach; require a named approver to raise a budget.
 JAVASCRIPT — the dominant cost, because bytes must be downloaded, parsed, compiled, and executed (unlike images):
-□ Practical starting budget for a mass-market page on a mid-tier Android over 4G: ~150-170 KB of compressed first-party JS on the critical
-  path. Alex Russell's performance-inequality work argues for budgets in this range; treat the exact number as a target to validate on your
-  own device/network mix, not as a law. Dashboards behind a login can afford more; a landing page cannot.
+□ Practical starting budget for a mass-market page on a mid-tier Android over 4G: ~150-170 KB of compressed first-party JS on the critical path.
+  Alex Russell's performance-inequality work argues for budgets in this range; validate the exact number against your own device/network mix
+  rather than treating it as law. Dashboards behind a login can afford more; a landing page cannot.
 □ Route-level code splitting by default; dynamic import() anything below the fold or behind an interaction; tree-shake and check what actually
   survives; audit with source-map-explorer / webpack-bundle-analyzer / `next build` output on every PR that touches dependencies.
-□ Ban the accidental heavyweights: a full date library where 3 functions were needed, an icon set imported wholesale, a charting library on a
-  page with no chart, two state libraries because two teams disagreed, moment/lodash-style full-package imports.
+□ Ban the accidental heavyweights: a full date library where 3 functions were needed, an icon set imported wholesale, a charting library on a page with no chart, two state libraries because two teams disagreed.
 IMAGES — usually the biggest bytes but the cheapest to fix:
-□ AVIF with WebP fallback; responsive `srcset`/`sizes`; a CDN image pipeline that resizes on the fly; `loading="lazy"` below the fold and
-  NEVER on the LCP element; explicit dimensions or aspect-ratio on every image to protect CLS.
+□ AVIF with WebP fallback; responsive `srcset`/`sizes`; a CDN image pipeline that resizes on the fly; `loading="lazy"` below the fold and NEVER on the LCP element; explicit dimensions or aspect-ratio on every image to protect CLS.
 FONTS — small bytes, large blast radius:
 □ Self-host WOFF2, subset to the glyphs you use (critical for Indic scripts, which are large — coordinate Agent 43), `font-display: swap`
   (or `optional` when the swap reflow is worse than the fallback), preload only the one or two faces used above the fold, and set
@@ -85,10 +80,10 @@ FONTS — small bytes, large blast radius:
 THE THIRD-PARTY TAX — the budget nobody owns:
 □ Tag managers, chat widgets, session recorders, ad pixels, and A/B tools frequently dominate main-thread time on a median site. Each is
   someone else's code on your critical path, changeable without your review.
-□ RULES: a written inventory with an owner and a business justification per tag; nothing loads synchronously in <head> except the consent
-  gate; everything else is deferred, facade-loaded (render a static placeholder, load the real widget on click), or loaded in a partytown-style
-  worker; quarterly cull of tags that no team can defend; and a hard rule that anti-flicker snippets from A/B tools — which deliberately hide
-  the page for up to hundreds of milliseconds — are never allowed on a conversion-critical route.
+□ RULES: a written inventory with an owner and a business justification per tag; nothing loads synchronously in <head> except the consent gate;
+  everything else is deferred, facade-loaded (static placeholder, real widget on click), or run in a partytown-style worker; a quarterly cull of
+  tags no team can defend; and a hard rule that A/B anti-flicker snippets — which deliberately hide the page for hundreds of milliseconds —
+  never run on a conversion-critical route.
 ```
 
 ## 4. Technical SEO (strategy: Agent 15 · locales: Agent 43)
@@ -98,16 +93,14 @@ THE THIRD-PARTY TAX — the budget nobody owns:
   content type and kept under the per-file limits, referenced from robots.txt; a clean internal link graph — orphan pages do not get indexed.
 □ RENDERING: Googlebot executes JavaScript, but rendering is queued and deferred. Client-rendered content is indexed later and less reliably,
   and other crawlers (many social, AI, and regional bots) do not execute JS at all. If a route must rank, server-render or pre-render it.
-□ CANONICALS: one self-referencing canonical per page; canonicalise parameterised and paginated variants deliberately; never canonicalise
-  every page to the homepage (a classic migration disaster).
+□ CANONICALS: one self-referencing canonical per page; canonicalise parameterised and paginated variants deliberately; never canonicalise every page to the homepage (a classic migration disaster).
 □ HREFLANG (with Agent 43): reciprocal annotations for every locale pair, correct ISO language-region codes, an `x-default`, and consistency
   between hreflang, canonical, and the actual served content. One-directional or mismatched hreflang is silently ignored.
 □ STRUCTURED DATA: JSON-LD in the page (Product, Article, BreadcrumbList, FAQ, Organization, LocalBusiness as applicable). Validate in CI with
   a schema linter and spot-check in Search Console's Rich Results test. Markup must describe what the user actually sees, or it is spam.
 □ STATUS CODES AND MIGRATIONS: real 404s for missing pages (never a 200 "not found" — a soft 404), 301 for permanent moves, a complete
   redirect map before any URL change, and a pre/post crawl diff (Screaming Frog, Sitebulb) as the migration gate.
-□ MONITORING: Search Console coverage + CWV reports, log-file analysis for crawl behaviour on large sites, and an alert on a sudden drop in
-  indexed pages — which is usually a deploy, not an algorithm update.
+□ MONITORING: Search Console coverage + CWV reports, log-file analysis of crawl behaviour on large sites, and an alert on a sudden drop in indexed pages — usually a deploy, not an algorithm update.
 ```
 
 ## 5. Frontend Architecture
@@ -140,12 +133,10 @@ THE PIPELINE: DESIGN TOKENS → PRIMITIVES → COMPONENTS → DOCS → ADOPTION.
 □ TOKENS are the contract: colour, spacing, radius, typography, elevation, motion, and semantic aliases (`color.text.danger`, not `red-600`)
   in a single source (W3C Design Tokens format or Figma Variables) transformed by Style Dictionary into CSS custom properties, TS constants,
   and native platform outputs (hand the mobile outputs to Agent 48). Designers change the token; every surface updates.
-□ THEMING falls out of tokens: light/dark, multi-brand, and density are token sets, not component forks. If a theme needs a new component
-  variant, the token layer is under-specified.
+□ THEMING falls out of tokens: light/dark, multi-brand, and density are token sets, not component forks. If a theme needs a new component variant, the token layer is under-specified.
 □ COMPONENT API RULES: accessible by construction (semantics, keyboard, focus, labels baked in), a small prop surface, composition over
   configuration (`<Card><Card.Header/></Card>` beats twelve booleans), no business logic inside, no hard-coded copy (Agent 43).
-□ VERSIONING: semver on the package, a changelog, codemods for breaking changes, and a deprecation window of at least two minor versions.
-  A design system that breaks consumers without a codemod loses adoption once, permanently.
+□ VERSIONING: semver on the package, a changelog, codemods for breaking changes, and a deprecation window of at least two minor versions — a design system that breaks consumers without a codemod loses adoption once, permanently.
 □ DOCS: a live component explorer (Storybook) with props, usage guidance, do/don't examples, and accessibility notes per component; visual
   regression tests (Chromatic/Percy/Playwright screenshots) so a token change cannot silently redesign the product.
 □ ADOPTION METRICS — a design system with no adoption metric is a side project: % of UI surface built from DS components (target >70-80%),
@@ -186,13 +177,11 @@ THE PIPELINE: DESIGN TOKENS → PRIMITIVES → COMPONENTS → DOCS → ADOPTION.
   Chrome). Review quarterly; announce drops one release ahead.
 □ ENCODE IT IN TOOLING: a `browserslist` in the repo drives Babel/SWC targets, Autoprefixer, and Lightning CSS — so the policy is executable,
   not a wiki page. Every dropped target reduces bundle size, which is a performance win you can measure.
-□ USE BASELINE: the Web Platform "Baseline" signal (Widely available vs Newly available) is the sane way to decide whether a CSS or JS feature
-  is safe to ship without a polyfill. Prefer Widely available for core paths; Newly available is fine behind progressive enhancement.
+□ USE BASELINE: the Web Platform "Baseline" signal (Widely available vs Newly available) decides whether a CSS/JS feature is safe without a polyfill. Prefer Widely available on core paths; Newly available is fine behind progressive enhancement.
 □ PROGRESSIVE ENHANCEMENT is a resilience strategy, not nostalgia: JS fails on flaky networks, blocked CDNs, corporate proxies, and old
   webviews far more often than teams assume. Critical paths — search, checkout, sign-in, form submission — should work as server-rendered
   forms with real `<form action>` and progressively upgrade. Use `@supports` for CSS enhancement rather than UA sniffing.
-□ ERROR BOUNDARIES AND FALLBACKS: an error boundary per route with a useful recovery UI, a global "something went wrong" that reports to the
-  error tracker, and no blank white page as a failure state — ever.
+□ ERROR BOUNDARIES AND FALLBACKS: an error boundary per route with a useful recovery UI, a global "something went wrong" that reports to the error tracker, and no blank white page as a failure state — ever.
 ```
 
 ## 9. Frontend Observability
@@ -205,12 +194,10 @@ THE PIPELINE: DESIGN TOKENS → PRIMITIVES → COMPONENTS → DOCS → ADOPTION.
   ₹12,000-Android segment is at 6 s LCP. Aggregates conceal exactly the users you are losing.
 □ ERROR TRACKING: Sentry/Rollbar/Bugsnag with release tagging and SOURCE MAPS UPLOADED AT BUILD TIME but NOT served publicly (`hidden-source-map`
   or upload-then-delete). Group by release, alert on a new-error-rate spike after a deploy, and tie every error to a git SHA.
-□ SAMPLING AND BUDGET: sample performance traces (e.g. 5-20%) but capture 100% of errors; watch the beacon payload — observability must not
-  become the third-party tax it exists to detect.
+□ SAMPLING AND BUDGET: sample performance traces (e.g. 5-20%) but capture 100% of errors; watch the beacon payload — observability must not become the third-party tax it exists to detect.
 □ PRIVACY (Agent 39 signs off): session replay and RUM capture user input. Mask by default, allowlist rather than blocklist for what is
   recorded, honour consent state before initialising, and confirm the processor's DPA and data region.
-□ SYNTHETIC AS THE COMPLEMENT: Lighthouse-CI on every PR for regression gating, plus scheduled checks from the regions you serve — synthetic
-  catches a break before users do; RUM tells you what users actually experience.
+□ SYNTHETIC AS THE COMPLEMENT: Lighthouse-CI on every PR for regression gating, plus scheduled checks from the regions you serve — synthetic catches a break before users do; RUM tells you what they actually experience.
 ```
 
 ## 10. Edge & CDN Strategy
