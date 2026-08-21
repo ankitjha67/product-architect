@@ -50,6 +50,7 @@ number is defensible.
 
 Teach JOB TASKS, not features. A curriculum organised by feature is a second copy of the docs with a play button,
 and it fails for the reason feature tours fail: the learner cannot map it to their own work.
+
 | Role-based path | Their actual job | Core outcomes to certify |
 |---|---|---|
 | Admin / operator | Configure, provision, govern, troubleshoot | Setup, permissions/SSO, integrations, data hygiene, monitoring |

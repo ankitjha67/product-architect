@@ -27,6 +27,7 @@ revenue you book, which is a number that can grow while the business gets worse.
 
 The first decision is not "how do we deliver?" but "what is this organisation *for*?" Get it wrong and every
 downstream metric measures the wrong thing.
+
 | Posture | Target services GM | What it optimises | When it fits | The cost |
 |---|---|---|---|---|
 | Profit center | 30-40% | Services P&L, revenue per consultant | Complex products, high ACV, established category, buyers who expect to pay | Pulls the org toward billable hours over product simplification |
