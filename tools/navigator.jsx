@@ -129,7 +129,12 @@ const agentMap = {
   "39": "Privacy & DPO", "40": "IT & Corporate Engineering", "41": "Technical Program Mgmt",
   "42": "Content & Docs", "43": "Localization & i18n", "44": "Investor Relations",
   "45": "Corporate Development", "46": "Procurement & Supply Chain",
-  "47": "Deep Research",
+  "47": "Deep Research", "48": "Mobile Engineering", "49": "ML Engineering (MLOps)",
+  "50": "Frontend & Web Platform", "51": "Solutions Engineering", "52": "Professional Services",
+  "53": "Customer Education", "54": "Community", "55": "Billing & Monetization Eng",
+  "56": "Revenue Accounting", "57": "Tax", "58": "Treasury",
+  "59": "Internal Audit & Risk", "60": "Talent Acquisition", "61": "Total Rewards",
+  "62": "Chief of Staff & BizOps", "63": "AI Evaluation & Red-Teaming",
 };
 
 const quickLinks = [
@@ -191,11 +196,11 @@ export default function ProductArchitectUI() {
           <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: -0.5 }}>
             <span style={{ color: C.accent }}>Product</span> Architect
           </div>
-          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>48 agents. 35 frameworks. AI-native. Research-first. Zero to legend.</div>
+          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>64 agents. 35 frameworks. AI-native. Research-first. Zero to legend.</div>
         </div>
         <div style={{ display: "flex", gap: 4 }}>
           <div className={`tab ${view === "journey" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("journey")}>Journey</div>
-          <div className={`tab ${view === "agents" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("agents")}>All 48 Agents</div>
+          <div className={`tab ${view === "agents" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("agents")}>All 64 Agents</div>
           <div className={`tab ${view === "quick" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("quick")}>Quick Start</div>
         </div>
       </div>
@@ -321,7 +326,7 @@ export default function ProductArchitectUI() {
         {/* Agents View */}
         {view === "agents" && (
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, marginBottom: 6 }}>All 48 Agents</h2>
+            <h2 style={{ fontSize: 22, fontWeight: 600, marginBottom: 6 }}>All 64 Agents</h2>
             <p style={{ fontSize: 14, color: C.textMid, marginBottom: 20, lineHeight: 1.6 }}>
               Each agent is a specialized department head. Tell Claude which one you need,
               or say "build me a complete product" to activate them all in sequence.

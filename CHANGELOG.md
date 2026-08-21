@@ -3,6 +3,41 @@
 All notable changes to Product Architect. Format follows [Keep a Changelog](https://keepachangelog.com/);
 versions follow semver as declared in `SKILL.md` metadata.
 
+## [4.0.0] — 2026-07
+
+### Added
+- **16 new department agents (48–63)**, each written deep from birth with a Decision
+  Framework, Enterprise-Grade section, failure modes, and a worked reasoning example —
+  ~7,000 lines. These are real departments with distinct depth, not sub-topics of
+  existing agents:
+  - **Engineering specialisms:** 48 Mobile Engineering (release trains, app-store
+    reality, crash/ANR budgets, MASVS), 49 ML Engineering/MLOps (baseline ladder,
+    training-serving skew, deploy patterns, drift), 50 Frontend & Web Platform
+    (rendering strategy, Core Web Vitals as a contract, design-system implementation).
+  - **Customer-facing delivery:** 51 Solutions Engineering (POC gates, security
+    questionnaires), 52 Professional Services (SOW discipline, migration, TTFV),
+    53 Customer Education (certification, academy platforms), 54 Community.
+  - **Revenue systems:** 55 Billing & Monetization Engineering (entitlements, metering,
+    proration, dunning, tax engines, rev-rec hooks).
+  - **Finance specialisms:** 56 Revenue Accounting & Controller (ASC 606, close, audit),
+    57 Tax (indirect tax, PE risk, transfer pricing), 58 Treasury (liquidity, counterparty
+    risk, FX).
+  - **Risk & talent:** 59 Internal Audit & Enterprise Risk (three lines, SOX/ICFR),
+    60 Talent Acquisition (funnel math, structured interviews), 61 Total Rewards
+    (job architecture, bands, equity).
+  - **Executive & AI assurance:** 62 Chief of Staff & BizOps (operating system, decision
+    rights), 63 AI Evaluation & Red-Teaming (golden sets, judge calibration, CI gates,
+    red-teaming, the ship/hold safety gate).
+- Agent 47 (Deep Research) deepened 132 → 227 lines: research-depth tiering by decision
+  reversibility with explicit stop rules, competitive-intelligence ethics and legal
+  bright lines, dossier shelf life, and failure modes.
+
+### Changed
+- All 16 wired end to end: SKILL.md directory + quick routing, SMART-LOADER routing table
+  and "what each agent produces", agent-standards cross-reference, README, START-HERE
+  directory, github-readme tables, navigator `agentMap`, and a row each in
+  `ai-department-playbooks.md`. Counts moved to 64 agents / 122 files everywhere.
+
 ## [3.2.1] — 2026-07
 
 ### Added

@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development system ever built.**
 
-48 specialized AI agents. 35 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
+64 specialized AI agents. 35 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
 
 ---
 
@@ -10,7 +10,7 @@
 
 Product Architect is a multi-agent skill system for [Claude](https://claude.ai) that transforms any product idea into a complete, executable blueprint. It covers **every department, function, process, and policy** that exists in a world-class company.
 
-Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 37 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
+Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 53 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
 
 ### Who Is This For?
 
@@ -51,7 +51,7 @@ Every file is self-contained. Browse `agents/` and `frameworks/` for any topic:
 
 ---
 
-## The 48 Agents
+## The 64 Agents
 
 Organized by lifecycle phase — the natural order of building a company:
 
@@ -159,11 +159,51 @@ Organized by lifecycle phase — the natural order of building a company:
 | 45 | Corporate Development | M&A, build-buy-partner, valuation, diligence, integration thesis |
 | 46 | Procurement & Supply Chain | P2P, sourcing, contracts, vendor risk, SaaS spend, supply chain |
 
+### 📱 Engineering Specialisms
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 48 | Mobile Engineering | Native vs cross-platform, release trains, app-store submission, crash/ANR budgets, MASVS |
+| 49 | ML Engineering (MLOps) | Baseline ladder, feature stores & training-serving skew, deploy patterns, drift, retraining |
+| 50 | Frontend & Web Platform | Rendering strategy, Core Web Vitals budgets, design-system implementation, a11y in code, edge |
+
+### 🤝 Customer-Facing Delivery
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 51 | Solutions Engineering | Technical discovery, demo engineering, POC gates, security questionnaires, technical win |
+| 52 | Professional Services | Engagement models, SOW & change control, data migration, time-to-first-value, utilization |
+| 53 | Customer Education | Curriculum architecture, format matrix, certification design, academy platform, adoption |
+| 54 | Community | The one job, platform choice, cold start, health metrics, champions, moderation |
+
+### 💳 Revenue Systems
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 55 | Billing & Monetization Eng | Build-vs-buy, entitlements, usage metering, proration, dunning, tax engines, rev-rec hooks |
+
+### 📒 Finance Specialisms
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 56 | Revenue Accounting & Controller | ASC 606/IFRS 15, deferred revenue, month-end close, audit readiness, controls |
+| 57 | Tax | GST/VAT/sales-tax nexus, permanent-establishment risk, transfer pricing, withholding, tax calendar |
+| 58 | Treasury | Cash & liquidity policy, banking/counterparty risk, investment policy, FX hedging, working capital |
+
+### 🛡️ Risk & Talent
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 59 | Internal Audit & Enterprise Risk | Three lines model, risk-based audit plan, findings, SOX/ICFR readiness |
+| 60 | Talent Acquisition | Funnel & capacity math, structured interviews, debrief discipline, hiring compliance |
+| 61 | Total Rewards | Comp philosophy, job architecture, bands, equity & tax treatment, pay equity, benefits |
+
+### 🎯 Executive & AI Assurance
+| # | Agent | What It Does |
+|---|-------|-------------|
+| 62 | Chief of Staff & BizOps | Charter, cadence stack, planning process, decision rights, BizOps portfolio |
+| 63 | AI Evaluation & Red-Teaming | Golden datasets, judge calibration, CI gates, red-teaming, the ship/hold safety gate |
+
 ---
 
 ## Key Features
 
-**Smart Loading** — The system is 30,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
+**Smart Loading** — The system is 38,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
 
 **Memory That Survives** — The KDR (Key Decision Record) system outputs structured state summaries after every phase. These survive chat compaction and can be pasted into new conversations to resume exactly where you left off. Works on free tier.
 
@@ -187,7 +227,7 @@ product-architect/
 ├── START-HERE.md                Free-tier guided entry point
 ├── ENHANCEMENTS.md              Enhancement roadmap (what was added & why)
 ├── LICENSE                      MIT License
-├── agents/                      48 specialized agents (00-47)
+├── agents/                      64 specialized agents (00-63)
 ├── frameworks/                  35 strategic & operational frameworks
 ├── references/
 │   ├── agent-standards.md       Quality + Depth Doctrine inherited by all agents
@@ -204,11 +244,11 @@ product-architect/
 
 | Metric | Value |
 |--------|-------|
-| Agents | 48 |
+| Agents | 64 |
 | Frameworks | 35 |
 | Country deep-dives | 5 (covering 11 countries) |
-| Total files | 106 |
-| Total lines | 30,000+ |
+| Total files | 122 |
+| Total lines | 38,000+ |
 | Coverage areas audited | 250+ |
 | Complete policies | 14 |
 | SOPs with process maps | 20+ |
