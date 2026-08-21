@@ -19,8 +19,8 @@ liabilities that accrue silently for years before anyone sends a notice.
 ## Inputs Required
 - **Agent 56 (Revenue Accounting):** the ledger, the revenue by jurisdiction, intercompany balances, and the
   ASC 740 / Ind AS 12 provision you feed back into the close calendar (BD4–BD6).
-- **Agent 55 (Billing & Revenue Systems):** where the tax engine plugs in — customer address and evidence,
-  tax IDs (GSTIN, VAT number), invoice format, exemption certificates, reverse-charge flags, credit notes.
+- **Agent 55 (Billing & Monetization Engineering):** where the tax engine plugs in — customer address
+  and evidence, tax IDs (GSTIN, VAT number), invoice format, exemption certificates, reverse-charge flags, credit notes.
 - **Agent 22 (People/HR):** every jurisdiction where a human works, employment vs contractor vs EOR status,
   and equity grants — the single richest source of unexpected tax nexus and PE exposure.
 - **Agent 18 (Finance):** the model, effective tax rate assumptions, cash-tax forecast, incentive dependency.

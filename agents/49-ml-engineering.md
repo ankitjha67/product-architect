@@ -90,13 +90,12 @@ raised anywhere. Causes, in order of frequency:
 
 THE FIXES, in order of strength:
 □ SINGLE DEFINITION: one feature definition materialised to BOTH an offline store (warehouse/Parquet) and an online store (Redis/DynamoDB/Cassandra) from the same code. Feast (OSS), Tecton, Databricks FS, Vertex AI FS, SageMaker FS.
-□ POINT-IN-TIME JOINS as a first-class API — `get_historical_features(entity_df with event_timestamp)`. If your feature store cannot do
-  this, you do not have a feature store, you have a cache.
+□ POINT-IN-TIME JOINS as a first-class API — `get_historical_features(entity_df with event_timestamp)`. If your feature store cannot do this, you do not have a feature store, you have a cache.
 □ SKEW DETECTION IN PRODUCTION: log the exact feature vector used at inference (sampled, e.g. 1-5% of requests). Nightly, replay those
   requests through the offline pipeline and assert equality. Alert on any feature where the mismatch rate exceeds ~0.1% of sampled requests.
-□ TRAIN ON SERVING LOGS: for online models, the strongest guarantee is training on logged serving features rather than recomputing them.
-ONLINE STORE SLO: p99 feature fetch < 10 ms, else the feature store becomes your latency budget. Batch entity lookups; never loop per feature.
-COORDINATE: Agent 38 owns the pipelines that produce feature source tables and their freshness SLA; you own parity and the online path.
+□ TRAIN ON SERVING LOGS: for online models the strongest guarantee is training on logged serving features rather than recomputing them.
+ONLINE STORE SLO: p99 feature fetch <10 ms, else the feature store becomes your latency budget — batch entity lookups, never loop per feature.
+Agent 38 owns the pipelines producing feature source tables and their freshness SLA; you own parity and the online path.
 ```
 
 ## 5. Experiment Tracking, Model Registry & Reproducibility
@@ -215,16 +214,15 @@ pass calibration, and pass the skew replay (§4). Automated retraining without a
 ## 10. Cost Control
 
 ```
-□ TWO SEPARATE BUDGETS: training cost (bursty, controllable) and inference cost (recurring, scales with traffic — this is the one that kills).
-□ NORTH-STAR METRIC: COST PER 1,000 PREDICTIONS, tracked per model and trended weekly, alongside the value per prediction from Agent 18.
-  A model that costs more per prediction than the decision is worth should be shut down — say so plainly.
-□ TRAINING LEVERS: spot/preemptible instances with checkpointing (large discounts, interruption-tolerant); early stopping; subsample for
-  hyperparameter search then train the finalist on full data; cache and reuse feature materialisations across experiments; cap sweep budgets.
+□ TWO SEPARATE BUDGETS: training cost (bursty, controllable) and inference cost (recurring, scaling with traffic — the one that kills you).
+□ NORTH-STAR METRIC: COST PER 1,000 PREDICTIONS, tracked per model and trended weekly against the value per prediction from Agent 18. A model that costs more per prediction than the decision is worth should be shut down — say so plainly.
+□ TRAINING LEVERS: spot/preemptible instances with checkpointing (large discounts, interruption-tolerant); early stopping; subsample for the
+  hyperparameter search then train the finalist on full data; reuse feature materialisations across experiments; cap sweep budgets.
 □ INFERENCE LEVERS, in payback order: (1) move it to BATCH if freshness allows — usually an order-of-magnitude saving; (2) cache repeated inputs;
   (3) dynamic batching; (4) quantise/compile; (5) right-size the instance; (6) distil to a smaller model; (7) only then scale out.
 □ SHUTDOWN DISCIPLINE: archive models with no traffic, delete idle endpoints and orphaned notebooks/GPU instances, expire unused feature
   materialisations — idle endpoints and forgotten dev GPUs are a large share of most ML bills.
-□ Tag every training job and endpoint by model, team, and environment so cost is attributable (mirrors Agent 08's FinOps discipline).
+□ Tag every training job and endpoint by model, team, and environment so cost is attributable (Agent 08's FinOps discipline) — an untagged GPU is an unowned GPU.
 ```
 
 ## Decision Framework: Batch vs Real-Time Serving
