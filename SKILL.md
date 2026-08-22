@@ -135,6 +135,41 @@ LOADING PRIORITY:
 4. Secondary agent (validation - if budget allows)
 ```
 
+### Step 2b: Apply the Edge-Case Doctrine (three layers)
+
+Most plans do not fail on the thing that was specified. They fail on the thing
+that was not. Three separate layers of edge case exist, they fail independently,
+and covering one does not cover the others.
+
+```
+LAYER 1 - PRODUCT EDGE CASES        frameworks/stress-test-framework.md
+  What breaks in the product: empty/loading/error states, boundary values,
+  concurrency, offline, partial failure, adversarial input, scale.
+
+LAYER 2 - ORGANISATIONAL EDGE CASES  frameworks/enterprise-edge-cases.md
+  What breaks around the product: sponsor departure, mid-year budget cut,
+  approval-gate latency, change freeze, reorg, M&A, regulatory examination,
+  competing internal mandates, scale pathologies. Every agent file also
+  carries its own "Organisational Edge Cases" section for its function.
+
+LAYER 3 - ROUTING & SESSION EDGE CASES  SMART-LOADER.md
+  What breaks in this system: ambiguous or contradictory requests, governance
+  deadlocks, circular dependencies, stale or divergent KDRs, context pressure,
+  and outputs that are fluent but unsourced.
+```
+
+```
+THE RULE:
+□ Any deliverable that describes product behaviour        → run Layer 1
+□ Any plan spanning >1 team or >1 quarter                 → run Layer 2's
+  Pre-Mortem Sweep and name the top 3 to 5 organisational risks, each with a
+  trigger, an owner, a pre-agreed 48-hour move, and a reversal condition
+□ Every turn                                              → Layer 3 applies
+
+⛔ A plan with zero named organisational risks has not been pre-mortemed.
+   It has been written optimistically.
+```
+
 ### Step 3: Enforce Cross-Agent Governance
 
 When multiple agents are active, apply the authority hierarchy:
@@ -256,6 +291,34 @@ Inconsistent outputs across agents:
 Context lost after chat compaction:
 - KDR system outputs structured state after every phase
 - User pastes MASTER KDR into new conversation to restore full context
+
+Request is ambiguous, contradictory, or built on a false premise:
+- Ask ONE disambiguating question, or state the contradiction and recommend a resolution
+- Never silently pick a reading, and never build on a premise you know is wrong
+- Full handling in `SMART-LOADER.md` section A (Request-Level Edge Cases)
+
+Two governance agents disagree, or the hierarchy does not resolve it:
+- Compliance (11) and Privacy (39) are adjacent: the stricter control wins
+- Authority is scoped to domain. Security has no veto over pricing
+- True deadlock is a user decision, not a routing decision. Present both positions and stop
+- Full handling in `SMART-LOADER.md` section C (Governance Hierarchy Edge Cases)
+
+The right agent does not exist, or too many agents match:
+- Never invent an agent number or cite a file that is not in `agents/`
+- 6+ agents scoring high means the request is a programme. Phase it, do not load 6
+- Full handling in `SMART-LOADER.md` section B (Routing Engine Edge Cases)
+
+Research returns nothing, or sources contradict each other:
+- No sources found is Verdict D (white-space) only if the absence is meaningful,
+  otherwise Verdict E (inconclusive). Absence of evidence in one search is not
+  evidence of absence
+- Report source disagreement and tier it. Do not silently pick the convenient one
+- Full handling in `SMART-LOADER.md` section D and `frameworks/deep-research-protocol.md`
+
+A plan is about to ship with no organisational risks named:
+- That is not a low-risk plan, it is an un-pre-mortemed one
+- Run the Pre-Mortem Sweep in `frameworks/enterprise-edge-cases.md` section 9
+- See Step 2b above for the three-layer Edge-Case Doctrine
 
 ## Important
 
