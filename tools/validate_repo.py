@@ -116,15 +116,48 @@ LINK_RE = re.compile(r"\]\((?!https?:|mailto:|#)([^)\s#]+\.md)(?:#[^)\s]*)?\)")
 
 
 def check_internal_links(paths):
-    """Every relative link to a .md file must resolve - catches renames and typos."""
+    """Every relative link to a .md file must resolve - catches renames and typos.
+
+    The most common mistake is writing a repo-root path from inside a
+    subdirectory: agents/09-security.md cited from another file in agents/
+    resolves to agents/agents/09-security.md and does not exist. That case gets
+    a specific message, because "broken link" alone sends people hunting for a
+    missing file that is actually right there.
+    """
     for path in paths:
         with open(path, encoding="utf-8") as fh:
             content = fh.read()
         base = os.path.dirname(path)
+        rel = os.path.relpath(path, ROOT)
         for link in set(LINK_RE.findall(content)):
-            if not os.path.isfile(os.path.normpath(os.path.join(base, link))):
-                rel = os.path.relpath(path, ROOT)
+            if os.path.isfile(os.path.normpath(os.path.join(base, link))):
+                continue
+            from_root = os.path.normpath(os.path.join(ROOT, link))
+            if os.path.isfile(from_root):
+                correct = os.path.relpath(from_root, base)
+                errors.append(
+                    f"Wrong relative path in {rel} -> {link} "
+                    f"(repo-root path used from a subdirectory; write {correct})"
+                )
+            else:
                 errors.append(f"Broken link in {rel} -> {link}")
+
+
+def check_no_em_dashes(paths):
+    """House style: no em dashes. Enforced mechanically so it cannot drift back."""
+    for path in paths:
+        with open(path, encoding="utf-8") as fh:
+            content = fh.read()
+        count = content.count("—")
+        if count:
+            rel = os.path.relpath(path, ROOT)
+            line = next(
+                i for i, text in enumerate(content.splitlines(), 1) if "—" in text
+            )
+            errors.append(
+                f"Em dash (U+2014) x{count} in {rel}, first at line {line} - "
+                f"use a comma, a colon, or a spaced hyphen."
+            )
 
 
 def main():
@@ -149,6 +182,7 @@ def main():
     cross_check_docs(agent_count, framework_count)
     check_code_fences(markdown)
     check_internal_links(markdown)
+    check_no_em_dashes(markdown)
 
     print()
     for w in warnings:
