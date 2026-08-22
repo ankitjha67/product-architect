@@ -208,6 +208,15 @@ FOR EACH ONE YOU MARK AS PLAUSIBLE (aim for the top 3 to 5, not all 40):
 | Data residency, deletion conflicts | 39 Privacy and DPO | 38, 56, 11 |
 | Scale pathologies, process debt | 20 BAU | 19, 62, 23 |
 
+**This file is the shared catalogue, not the whole answer.** Every agent file in `agents/`
+carries its own `Organisational Edge Cases` section covering how these categories land on
+that specific function, with the early warning signal, the first move, and who owns the
+response. A budget cut is one row here; in `18-finance.md` it is a cost-centre reassignment
+orphaning a live project, in `22-people-hr.md` it is a freeze landing after offers are
+extended, and in `20-bau.md` it is the run budget being raided to fund a strategic bet.
+Read the shared catalogue for the categories and the agent's own section for what actually
+happens to that team. The two are meant to be used together.
+
 ---
 
 > **Professional-review note:** several categories here (legal hold, works-council
