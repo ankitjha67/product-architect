@@ -385,6 +385,75 @@ STRATEGIC FIT, or for CAPITAL, and say which one publicly (Agents 25 and 44 own 
 | Deals killed in diligence    | Discipline indicator (healthy if >0)    | You're saying no   |
 ```
 
+## 15. Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits
+(sponsor loss, freezes, reorgs, budget cuts). This section is the corp-dev-specific layer: the cases
+where the thesis and the model are sound and the ORGANISATION, on either side of the deal, is what
+destroys the value. Pick the 3 to 5 that can plausibly hit this transaction in the next two quarters
+and name the trigger, the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **The deal is announced before integration capacity exists** | No named integration lead at signing · the IMO is "to be stood up" · every functional owner is already at full allocation on the roadmap | Do not let announcement set the integration clock. Publish a capacity-honest 100-day plan naming what is explicitly NOT integrated in year one, and re-baseline the acquiring org's roadmap in the same week. Integration capacity is a real tax on the plan of record: budget it before signing, not after the press release | Agent 45 Corporate Development with Agent 41 Technical Program Management and Agent 62 Chief of Staff |
+| **The earnout points the acquired team away from the roadmap** | Earnout measured on standalone revenue or a legacy product line · the founders resist deprecating anything · every integration ask is met with "that hurts the number" | Rewrite the incentive or accept the behaviour. If the metric cannot change, ring-fence exactly what the earnout measures, write the integration exclusions into the plan, and stop asking the team to trade their own payout for your synergy. Earnout disputes are a leading cause of post-close litigation: define measurement, accounting policy and audit rights precisely with counsel | Agent 45 Corporate Development with Agent 10 Legal and Agent 18 Finance |
+| **Retention packages all expire on the same date** | Every key-person agreement was signed at close with the same term · calendar month 12 or 24 with no staggering · recruiters actively working the acquired team's LinkedIn | Stagger before the cliff, not after it. Re-paper the top talent 3 to 6 months ahead with a genuine role, not just money, and know which names are single points of failure in the acquired product. A synchronised cliff turns a retention plan into a scheduled mass departure | Agent 22 People and HR with Agent 61 Total Rewards and Agent 45 Corporate Development |
+| **Merger control or foreign-investment review extends the timeline** | Size-of-parties, size-of-transaction or local-nexus thresholds plausibly met in any jurisdiction · a foreign-investment or national-security screening regime touches the target's sector or data | Model sign-to-close as a range, not a date, and put the regulatory-risk allocation in the agreement: who files, who pays, the efforts standard, and whether a reverse break fee applies. Run a clean team for competitively sensitive data and do not integrate before clearance. Thresholds, forms and timelines change constantly: verify current with competition counsel per jurisdiction | Agent 10 Legal with Agent 28 Government Relations and Agent 45 Corporate Development |
+| **Works council, employee consultation or transfer-of-undertakings duties are discovered late** | EU or UK headcount in the target · any change to working conditions, entity, or reporting line · the plan says "announce Monday, integrate Tuesday" | Start consultation BEFORE the decision is final; presenting a fait accompli restarts the clock and can invalidate steps already taken. Build consultation lead time into the timetable by default for these jurisdictions, and sequence announcement so employee obligations precede customer comms. Verify the current obligations with qualified employment counsel per country | Agent 22 People and HR with Agent 10 Legal and Agent 57 Tax |
+| **Diligence findings arrive after exclusivity** | Data room populated late in the window · "we will get you that after signing" · a workstream lead flags an unanswered question and the process moves on anyway | Convert the unknown into a term rather than a hope: specific indemnity, escrow or holdback, a price adjustment, or a condition precedent. Exclusivity is not a commitment to close; walking is cheaper at any point before signature than remediating after. Log the finding and its resolution so the post-close team inherits it | Agent 45 Corporate Development with Agent 10 Legal and Agent 59 Internal Audit and Risk |
+| **Change-of-control clauses in the target's contracts bite at close** | Customer MSAs with assignment or termination-on-change-of-control rights · a vendor whose licence is non-transferable · a key partner with a competitor-ownership clause | Extract and rank change-of-control clauses during diligence by revenue and criticality, then pre-clear consents with the top accounts before close under a controlled comms plan. A consent you learn about on day one is a renegotiation at your weakest moment | Agent 10 Legal with Agent 17 Customer Success and Agent 46 Procurement and Supply Chain |
+| **The acquired tech estate and vendor contracts duplicate your own** | Two of everything: identity, CRM, observability, payroll · overlapping enterprise agreements with different renewal dates · a shared domain-admin account and no asset inventory | Inventory and rank by renewal date and data sensitivity before consolidating anything. Rationalisation savings are real but land in the year the contracts expire, not in the synergy slide, so model them against the actual dates. No flat network merge until a posture assessment closes | Agent 40 IT and Corporate Engineering with Agent 46 Procurement and Supply Chain and Agent 09 Security |
+| **A divestiture where shared services cannot actually be separated** | One ERP instance, one identity provider, commingled data stores, and a single support org serving both · TSA scope drafted by lawyers and never costed by the people who run the systems | Cost the separation bottom-up with the service owners before agreeing a TSA term, and price the TSA to reflect real effort plus a step-up so nobody is incentivised to extend it forever. Carve-out readiness is decided years earlier by how cleanly entities and data were separated in the first place | Agent 45 Corporate Development with Agent 19 Operations and Agent 38 Data Engineering |
+| **The acquirer's own reorg lands mid-integration** | Skip-levels appear on calendars · the deal sponsor's org is re-pointed under someone new · backfills quietly stop | Re-qualify the mandate within two weeks and get the new owner to restate the deal thesis in their own words. Freeze integration scope, not integration work, and re-baseline ownership before dates. An integration sponsored by a person who left is a stranded cost with a project plan attached | Agent 62 Chief of Staff with Agent 45 Corporate Development |
+| **Pre-close roadmap promises made to the target's customers surface after close** | Renewals closed in the diligence window on commitments nobody logged · a customer citing a feature date your roadmap does not contain · side letters outside the standard paper | Sweep for side letters and non-standard commitments as a diligence workstream, not a legal afterthought, and reconcile every promise against the combined roadmap before the first joint QBR. Then decide deliberately: honour, renegotiate, or compensate. Discovering it at renewal costs the account | Agent 17 Customer Success with Agent 10 Legal and Agent 04 PRD |
+| **The integration budget was never in anyone's plan** | Deal model shows purchase price and synergies but no integration cost line · retention, TSA, systems migration and duplicate run-cost land as unbudgeted opex · a capitalisation question raised by the auditor mid-year | Cost integration as a funded programme with its own line before approval: retention, TSA, migration, dual-run, advisory and severance. Confirm capex versus opex treatment with the controller BEFORE committing spend. An unfunded integration is paid for by cancelling roadmap work nobody agreed to cancel | Agent 18 Finance with Agent 56 Revenue Accounting and Agent 45 Corporate Development |
+| **The deal leaks before announcement** | Unusual traffic in the data room · an advisor's junior on the wrong distribution list · a journalist calling the target's employees · unexplained trading or a message board thread | Execute the pre-drafted holding statement the same day and brief employees before customers; both sides speak through one named channel. If either party is listed or has listed comparables, treat the leak as a disclosure and insider-dealing question immediately with counsel, not as a comms problem | Agent 25 PR and Communications with Agent 44 Investor Relations and Agent 10 Legal |
+| **Synergy targets were set by the deal team and inherited by people who never agreed to them** | Synergy numbers appear in the board pack with no named functional owner · line managers first see their cost target after close · realisation reported as "on track" with no baseline | Assign every synergy line to a named owner with a baseline, a method and a date, or delete it from the model. Unowned synergies are not conservative estimates; they are commitments the operating org will be measured against and will miss | Agent 45 Corporate Development with Agent 18 Finance and Agent 19 Operations |
+
+```
+HOW CORPORATE DEVELOPMENT FAILS UNDER ORGANISATIONAL PRESSURE (org failure, not model error):
+□ THE DEAL TEAM DISBANDS AT CLOSE. The people who understood the thesis, the diligence caveats
+  and the negotiated compromises move to the next transaction the week the value creation starts.
+  Continuity of at least one senior deal-team member through month 12 is not a nicety.
+□ THE MODEL IS OWNED, THE PLAN IS NOT. Every synergy needs a named operating owner with a
+  baseline. A number in a spreadsheet that no manager has accepted is a future miss.
+□ THE CALENDAR IS SET BY LAWYERS AND BANKERS, NOT BY CAPACITY. Sign and close dates are driven by
+  process momentum; integration readiness is driven by whether four functions have people free.
+  These are unrelated variables and the second one loses every time it is not made explicit.
+□ INCENTIVES SURVIVE THE STRATEGY. Earnouts, retention cliffs and legacy commission plans keep
+  pointing the acquired team at the old business long after the roadmap changed direction.
+□ THE ACQUIRED ORG IS TREATED AS INTERNAL ON DAY ONE. Network, identity and data access are
+  granted before posture is known, converting an acquisition into an unassessed third party with
+  a domain admin account.
+□ REGULATORY AND EMPLOYEE CONSULTATION TIMELINES ARE TREATED AS PAPERWORK. They are dependencies
+  with their own clocks, and starting them late is the single most common source of slipped close.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Corp dev is judged on PRICE and decided by CAPACITY. Almost no deal fails because the multiple was
+half a turn too high; deals fail because the acquiring organisation had no free capacity in the four
+functions that integration actually consumes, and nobody priced that. Integration is paid for in
+Engineering, IT, Finance and HR attention, and that attention is already fully allocated to a plan
+of record that nobody re-baselined.
+
+□ The honest question at approval is not "what is it worth" but "what are we cancelling to do this,
+  and has the person who owns that work been told". If the answer is nothing, the answer is wrong.
+□ Diligence discovers facts; it does not create capacity. A clean data room and a green diligence
+  report say nothing about whether you can absorb the company.
+□ The two deadlines nobody controls, merger control and employee consultation, are usually the ones
+  discovered last. Both are knowable at thesis stage and both are cheap to start early.
+□ An acquisition is not a purchase, it is a permanent increase in operating surface area: more
+  vendors, more systems, more entities, more audit scope, more on-call. Model the run cost, not
+  just the deal cost.
+
+⚠️ Merger control and foreign-investment thresholds, works-council and transfer-of-undertakings
+   duties, earnout accounting and measurement, disclosure and insider-dealing obligations, and
+   entity or tax treatment are jurisdiction-specific and change over time. Treat the principle above
+   as durable and verify the current rule with qualified counsel before acting. See
+   references/DISCLAIMER.md.
+```
+
 ## Enterprise-Grade
 ```
 ANTITRUST AND MERGER CONTROL. Many jurisdictions require a pre-closing filing and a waiting period once

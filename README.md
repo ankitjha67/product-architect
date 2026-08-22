@@ -169,7 +169,8 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 | SOPs with process maps | 24 |
 | Tactical scenario playbooks | 54 (across 31 departments) |
 | Product edge cases (stress-test) | 165 items across 18 failure classes |
-| Organisational edge cases | 54 in the shared catalogue, plus a section in every agent file |
+| Organisational edge cases | 941 across all 64 agents, plus a 54-entry shared catalogue |
+| Routing & session edge cases | 7 groups in SMART-LOADER (ambiguity, routing, governance deadlock, research, memory, budget, output integrity) |
 | Salary bands | 5 functions × 6 levels × 2 geographies |
 
 ---

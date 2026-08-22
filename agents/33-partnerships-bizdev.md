@@ -347,6 +347,72 @@ to the vendor whose kit is easier.
 | Avg deal size: partner vs direct | ACV comparison | Partners often bring bigger deals |
 | MDF ROI | Pipeline from MDF / MDF spent | Don't fund partners who don't produce |
 
+## Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits
+(sponsor loss, freezes, reorgs, budget cuts). This section is the partnerships-specific layer: the
+cases where the deal is sound and the ORGANISATION, yours or theirs, is the failure mode. Pick the
+3 to 5 that can plausibly hit this program in the next two quarters and name the trigger, the owner,
+and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A partner's business depends on an API you must deprecate** | One integration partner is a double-digit share of calls on a legacy endpoint · their pricing page names your object model · the deprecation notice was drafted by engineering with no partner list attached | Never let the deprecation notice be the first contact. Pull usage by partner before the notice, brief the top consumers privately with a migration path and a named engineer, and set the sunset by MIGRATION COMPLETION for the top tier rather than by calendar. Contractual notice periods bind you: check the agreement before announcing a date | Agent 30 Platform and Ecosystem with Agent 34 Developer Relations and Agent 33 Partnerships |
+| **Co-sell attribution rules read differently on each side** | Both sides claim the same logo in their QBR · deal registration approved on your side but never entered in their portal · their seller says quota retirement, your rep says sourced | Freeze the credit argument and reconcile the two definitions in writing: what counts as sourced, what counts as influenced, whose system is the record, and the dispute path with a named arbiter on each side. Do it on a live deal, once, and make the outcome the standing rule | Agent 32 Sales and RevOps with Agent 33 Partnerships and Agent 18 Finance |
+| **An exclusivity or MFN clause signed years ago blocks a better deal** | Legal asks for the 2019 agreement and nobody can find the signed version · a term like "most favoured" or "sole partner in region" surfaces during a new negotiation · an auto-renewal date passed unnoticed | Stop the new negotiation before terms are exchanged. Build the obligations register from executed agreements: exclusivity scope, MFN, non-compete, renewal and notice dates. Then price the exit (waiver, buy-out, wait for term) rather than hoping nobody reads it. Verify enforceability with counsel per jurisdiction | Agent 10 Legal with Agent 33 Partnerships and Agent 46 Procurement |
+| **A partner's security incident becomes your incident** | You learn from their status page or the press · your data sits in their tenant with a token you issued · the agreement says "without undue delay" and names no hours | Assume your data is in scope until proven otherwise: rotate every credential, key and token shared with them, pull their subprocessor list, and start your own notification clock rather than waiting for theirs. Customer comms go out through one channel, not through account reps improvising | Agent 09 Security with Agent 39 Privacy and DPO and Agent 25 PR and Communications |
+| **Channel conflict between direct sales and the partner motion** | Reps discounting to beat a partner on the same account · deal registration approvals slowing to weeks · a partner escalating that they were "cut out" after doing the discovery | Rule of record within 48 hours: a registered deal is protected for a fixed window, and comp is neutral so the rep earns the same either way. Conflict is a COMPENSATION design problem before it is a behaviour problem, and no amount of policy fixes a plan that pays reps to fight the channel | Agent 32 Sales and RevOps with Agent 33 Partnerships and Agent 61 Total Rewards |
+| **A partner is acquired by a competitor** | Their roadmap goes quiet · your joint marketing slips twice · their champion is suddenly "not the right contact" | Assume the integration is now a data-flow risk and a roadmap risk. Check change-of-control, assignment and termination rights the same week, scope down what data continues to move, and stand up the alternative before the relationship formally ends. Treat their access as third-party access under review | Agent 33 Partnerships with Agent 10 Legal and Agent 09 Security |
+| **MDF spend cannot be substantiated at audit** | Reimbursement claims with no attendee list, invoice or creative · funds paid as a lump sum in advance · a partner treating unspent MDF as an entitlement | Suspend further disbursement, not the relationship. Reconstruct proof of performance for the last claim window, and move to the standing rule: written plan before approval, named approver, evidence before reimbursement, cap per partner per period, annual audit sample. Rebate and tax treatment differs by market: confirm current with Agents 56 and 57 | Agent 59 Internal Audit and Risk with Agent 18 Finance and Agent 33 Partnerships |
+| **Anti-bribery or sanctions exposure through a reseller in a high-risk market** | A commission rate with no commercial rationale · payment requested to a third country or personal account · undisclosed ownership · a government customer plus a politically connected owner | No further payment and no new orders until screening clears: ultimate beneficial ownership, sanctions and PEP screening, adverse media, and any government-official connection. Preserve the diligence file, because it is the evidence you were not wilfully blind. Applicability of extraterritorial statutes is fact-specific: verify with qualified counsel | Agent 11 Compliance and Ethics with Agent 10 Legal and Agent 33 Partnerships |
+| **The integration nobody budgeted to maintain** | The integration was built for one deal by a team that has since re-orged · no named owner in the service catalogue · breakage discovered by a customer ticket, not by monitoring | Inventory every live integration with owner, partner tier, revenue attached and last change date. Then make the call explicitly: fund it, hand it to the partner to own, or deprecate it with notice. An unowned integration is an outage with a delay fuse and a partner-facing apology attached | Agent 06 Engineering with Agent 30 Platform and Ecosystem and Agent 33 Partnerships |
+| **A marketplace or platform changes listing terms mid-contract** | Listing fee, draw-down eligibility or disbursement schedule changes with short notice · private offers start failing on a permission you cannot grant · your co-sell designation is restructured out of existence | Re-run the unit economics on the new terms before renewing anything, and treat disbursement timing as a working-capital item with Agent 58. Platform program mechanics change frequently: never quote a fee or an eligibility rule to a customer without verifying it that quarter | Agent 33 Partnerships with Agent 18 Finance and Agent 58 Treasury |
+| **A partner becomes a competitor** | Their job posts name your category · your integration's most valuable objects appear natively in their release notes · they ask for deeper API scopes than the use case needs | Reduce dependency before reducing the relationship. Re-scope the data and API access to the stated use case, remove your roadmap from joint planning, and quantify what revenue is attached so the decision to continue is a number, not a feeling. Keep selling together while it pays | Agent 33 Partnerships with Agent 30 Platform and Ecosystem and Agent 47 Deep Research |
+| **The partnership's sponsor on their side leaves** | Your monthly gets rescheduled twice then cancelled · their new leader asks you to "re-justify" the integration · joint pipeline stops being reviewed | Re-qualify the mandate inside two weeks and get the new sponsor to restate the joint value thesis in their own words. Nothing inherits. A partnership sponsored by a person rather than by revenue in their number ends at the next reorg | Agent 33 Partnerships with Agent 62 Chief of Staff |
+| **A reseller sells into a market where you have no entity or clearance** | An order form from a country not on the approved list · a public-sector end customer with local data rules · export-controlled functionality in the shipped build | Hold fulfilment, not the relationship. Confirm entity, tax nexus, data-residency and export-control position before provisioning, and add approved-territory language plus no-sub-reseller-without-consent to the agreement. These regimes are jurisdiction-specific and change: verify current position with qualified counsel | Agent 57 Tax with Agent 11 Compliance and Ethics and Agent 39 Privacy and DPO |
+| **Partner revenue is recognised differently by you and by Finance** | Rev-share booked gross by the partner team and net by accounting · marketplace fees netted against revenue with no policy · the board deck and the ledger disagree on partner-sourced ARR | Fix the definition once, in the revenue policy, before the next board pack: gross versus net, who is principal versus agent, how marketplace fees and MDF are treated, and what "partner-sourced" means in the CRM. Then report one number. Two numbers with the same name is an audit finding waiting to happen | Agent 56 Revenue Accounting with Agent 18 Finance and Agent 32 Sales and RevOps |
+
+```
+HOW PARTNERSHIPS FAIL UNDER ORGANISATIONAL PRESSURE (org failure, not product bug):
+□ THE DEAL IS SIGNED, THE OPERATING MODEL IS NOT. Who supports the joint customer at 2am, who
+  owns the integration's on-call, who pays for the migration when an API changes. Unanswered at
+  signature means answered badly during the first incident.
+□ COMPENSATION BEATS POLICY. Every channel-conflict rule loses to a comp plan that pays a rep
+  more for a direct deal. Fix the plan or accept the conflict; do not write a third memo.
+□ THE OBLIGATIONS ARE UNKNOWABLE. Exclusivity, MFN, notice periods and change-of-control sit in
+  PDFs across three systems and two departed lawyers. You cannot negotiate a new deal safely if
+  nobody can enumerate what the old ones promised.
+□ ATTRIBUTION BECOMES POLITICS. Sourced versus influenced is an accounting definition that gets
+  argued as a loyalty question. Undefined, it consumes more executive time than the revenue.
+□ PARTNER RISK IS TREATED AS RELATIONSHIP RISK. Their breach, their sanctions exposure, their
+  acquisition and their MDF paperwork are YOUR risk register items, not delicate topics.
+□ THE ECOSYSTEM OUTLIVES ITS BUDGET. Integrations, certifications and portals accumulate; the
+  team that built them is re-orged; nothing is retired, so the surface area grows while the
+  headcount that maintains it shrinks.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Partnership teams are measured on SIGNATURES and destroyed by OBLIGATIONS. The failure is almost
+never a bad partner; it is that a partnership converts a one-time negotiation into a permanent
+operational liability held by functions that were never in the room. Every signed agreement quietly
+enrols Engineering into a maintenance commitment, Support into a joint escalation path, Security
+into third-party access, Finance into a revenue-recognition question, and Legal into an exclusivity
+clause that will surface in five years during a better deal.
+
+□ The right question at signature is not "does this pencil" but "who carries this on their number
+  and in their headcount every quarter until we terminate it, and do they know".
+□ Deprecating anything a partner built on is a contractual and reputational act before it is a
+  technical one. Check notice obligations before a date is spoken aloud.
+□ A partnership with no named owner in Engineering and no line in Finance's plan is not a
+  partnership. It is a press release with a maintenance bill arriving later.
+
+⚠️ Exclusivity and MFN enforceability, anti-bribery and sanctions applicability, export controls,
+   entity and tax nexus, and partner data obligations are jurisdiction-specific and change over
+   time. Treat the principle above as durable and verify the current rule with qualified counsel
+   (Agent 10) before acting. See references/DISCLAIMER.md.
+```
+
 ## Enterprise-Grade
 
 ```

@@ -496,6 +496,66 @@ verdict line, the interview log (N, segment, cold vs warm, date), the codebook w
 figure, the disconfirming evidence that survived, and the reversal condition. Delivered as `.md` narrative plus
 `.xlsx` for the interview log, sizing model, and competitor matrix.
 
+## 12. Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the discovery-specific
+layer: the cases where the method is sound and the ORGANISATION is what corrupts the evidence.
+Pick the 3 to 5 that can plausibly hit THIS study in the next two quarters and name the trigger,
+the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Findings arrive after the decision is already committed** | Engineering kick-off is booked before fieldwork closes · the quarter's roadmap slide already names the feature · the sponsor asks for "the readout deck" and never for the verdict line | Stop writing the full brief. Ship a one-page interim in 72 hours covering only the findings that can still change a REVERSIBLE choice, and log the rest as a dated reversal condition against the launch. Then move the study's start gate from plan stage to option stage, permanently | Agent 02 Discovery with Agent 04 PRD and Agent 62 Chief of Staff |
+| **The account team will not risk the relationship by letting you near the customer** | Every intro routes through a CSM who "will check the timing" · named accounts flagged research-sensitive · three weeks elapsed with zero calls booked while pipeline stays green | Convert the ask to lower-risk surfaces first: ride along on existing QBRs, mine support tickets and call recordings (Agent 17), run win/loss with Agent 32. Offer the account owner the read-out first and a veto over named quotes, never over findings. Escalate on decision risk, not on courtesy | Agent 17 Customer Success with Agent 32 Sales and RevOps and Agent 02 Discovery |
+| **The research queue is served by loudness rather than by risk** | Intake is a DM channel · the highest-paid requester's study jumps the line · two teams commission the same segment study in one quarter | Publish one intake form scoring decision reversibility, spend at risk, and decision date, then rank the queue in the open against that score. A visible ranked queue is the only defence; an invisible one gets routed around by an agency invoice on a corporate card | Agent 35 User Research with Agent 02 Discovery and Agent 62 Chief of Staff |
+| **Participant recruitment and consent collide with privacy law** | Proposed participants are minors, patients, or employees · the recruiting list came from a marketing CRM whose consent basis covers marketing only · a market with strict consent rules is in scope | No fieldwork until the lawful basis, consent script, retention period and deletion path for recordings are written and approved. Special-category data (health, biometric) and minors need explicit handling and usually guardian consent. Requirements are jurisdiction-specific and change: verify current with Agent 39 and qualified counsel | Agent 39 Privacy and DPO with Agent 10 Legal and Agent 11 Compliance |
+| **Incentive payments hit tax, procurement and anti-bribery policy** | Cash or gift cards with no vendor record · a public-sector, healthcare or procurement-officer participant · incentives paid to an employee of a live customer · Finance asks which cost centre this is | Route incentives through an approved panel vendor or a documented disbursement path with receipts, and screen the list for government officials and regulated professions BEFORE offering anything. Withholding, reporting thresholds and gift limits vary by jurisdiction and change: verify current treatment with Agents 57 and 56 | Agent 18 Finance with Agent 57 Tax and Agent 46 Procurement and Agent 11 Compliance |
+| **A convenience sample is presented as representative** | 80% of participants came from the community Slack, the beta list, or warm intros · the deck reports percentages on n=12 · no segment denominators anywhere | Relabel before anyone quotes it. Report raw counts with denominators plus recruiting source per participant, mark the study directional, and state which population it does NOT cover. Then fund one cold-recruited replication of the single load-bearing finding | Agent 02 Discovery with Agent 35 User Research and Agent 16 Analytics |
+| **Findings contradict an executive's public conviction** | The leader has said it on stage, in a board deck, or to an analyst · your read-out is moved to "a smaller session" · someone proposes softening the wording | Separate the observation from the verdict. Present the finding, the N, the segment and the evidence rung with no implied judgement, and hand the leader the reframe that lets them update in public: what changed in the market, not who was wrong. Never bury it; a buried finding resurfaces at launch with interest | Agent 62 Chief of Staff with Agent 00 Chief Reviewer and Agent 02 Discovery |
+| **Discovery is commissioned to ratify a decision, not to test one** | The brief names the expected conclusion · no kill criterion exists · the timeline ends the day before a funding review | Ask for the reversal condition in writing before accepting the study. If the sponsor cannot name an outcome that would change the plan, the correct deliverable is not research: it is a decision-log entry recording that the choice was made on conviction. Say that politely, in writing, and decline the study | Agent 02 Discovery with Agent 62 Chief of Staff |
+| **The sponsor wants the interview guide to lead the witness** | Proposed questions open with "how much would you love" · concept exposure moved to question two · the sponsor asks to sit in and "just clarify" | Protect the unprompted block. Observers attend in silence under a written no-interruption rule with questions passed to the moderator in a side channel, and every leading edit is accepted only as a probe AFTER the unprompted ranking. Publish the guide with the sponsor's edits visible so influence is auditable | Agent 35 User Research with Agent 02 Discovery |
+| **Recording, transcription or an AI note-taker ships data somewhere unapproved** | A note-taking bot joins calls with no DPA · transcripts sit in a personal drive · the tool was bought on a card and never entered the vendor register | Stop the tool, inventory what it already holds, and establish whether recordings crossed a border or fed model training. Bring it onto SSO, a signed DPA and a retention clock, or move to an approved processor. The consent script must name the processor by name | Agent 39 Privacy and DPO with Agent 40 IT and Agent 46 Procurement |
+| **An enterprise contract blocks the use of what you learned** | The MSA or NDA covers "all information exchanged" · the customer asks to approve any external use · a logo you wanted in the brief | Split the artefact at source: an internal evidence file with named accounts, and a de-identified findings layer cleared for wider circulation. Secure named-quote clearance in writing per quote and per use at interview time, never at publication time | Agent 10 Legal with Agent 02 Discovery |
+| **Nobody can find the study that already answered this** | Two studies on the same question 14 months apart · repository search returns decks with no verdict line · the researcher who ran it has left | Search the repository by DECISION rather than title before commissioning, and require every study to land as an insight record carrying N, segment, date, verdict and reversal condition. Findings past their expiry get re-validated, not re-quoted: a three-year-old price-sensitivity number is a liability | Agent 35 User Research with Agent 38 Data Engineering and Agent 20 BAU |
+| **Research capacity is cut and "everyone does research now"** | The researcher req is frozen · PMs are told to self-serve interviews · agency spend quietly moves onto the marketing budget | Publish the coverage map: which decisions still get evidence, which get a lightweight template, and which are explicitly unresearched from this date. Then spend what is left on the two things that scale without headcount, a vetted recruiting pipeline and a reviewed guide template. Silent de-scoping becomes fabricated confidence | Agent 35 User Research with Agent 18 Finance and Agent 22 People and HR |
+
+```
+HOW DISCOVERY FAILS UNDER ORGANISATIONAL PRESSURE (org failure, not method error):
+□ THE CALENDAR BEATS THE METHOD. The study is rigorous and arrives one week after the build
+  was funded. Research that cannot change a decision is documentation. Book the decision date
+  first and work backwards; if the arithmetic does not close, say so on day one, not at readout.
+□ ACCESS IS OWNED BY SOMEONE ELSE. Sales owns the customers, Support owns the tickets, IT owns
+  the panel tool. A research plan with no access plan is a wish. Negotiate access as a standing
+  agreement per quarter, not as a favour per study.
+□ THE QUEUE BECOMES THE STRATEGY. Whatever gets researched becomes what gets built. An intake
+  process ranked by seniority quietly hands roadmap control to the loudest director.
+□ EVIDENCE DECAYS INTO FOLKLORE. A finding loses its N, its segment and its date within two
+  quarters and is repeated as "we know users want X". Insight records without expiry dates are
+  how a company confidently ships to a segment that stopped existing.
+□ THE RESEARCHER BECOMES THE SPONSOR'S EDITOR. Each round of guide edits, participant swaps and
+  wording softening is individually reasonable. Cumulatively they produce a study that can only
+  return one answer, with everyone's fingerprints and nobody's accountability.
+□ DISCONFIRMATION HAS NO HOME. Nobody is rewarded for a kill, so kills are re-framed as pivots
+  and the bet survives under a new name with the same economics.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Discovery teams defend SAMPLE QUALITY and lose on DECISION TIMING and ACCESS OWNERSHIP. The
+studies that changed nothing were almost never methodologically weak; they were commissioned
+after the option set had closed, or run on whichever customers a third party was willing to
+release. In a large organisation, the researcher does not control the two variables that decide
+whether the work matters, so those are the two that must be contracted in advance: a named
+decision with a date and a reversal condition, and a standing access agreement with the function
+that owns the customer. Everything else, sample size included, is a second-order argument.
+
+⚠️ Participant consent, special-category and minors' data, incentive withholding and reporting,
+   employee research and works-council duties are jurisdiction-specific and change over time.
+   Treat the principle above as durable and verify the current rule with Agent 39 and qualified
+   counsel before fieldwork. See references/DISCLAIMER.md.
+```
+
 ## Quality Standard
 - Every insight names its N, segment, recruiting source, and evidence rung, and carries a clickable evidence ID.
 - Kill criteria were written, dated, and signed BEFORE fieldwork began.
