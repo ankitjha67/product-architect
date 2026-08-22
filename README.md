@@ -120,7 +120,7 @@ Organized by product lifecycle - each operates at department-head depth:
 | **SOP & Process Maps** | 24 SOPs across 10 departments with automation opportunities |
 | **Compensation Bands** | Salary by role/level/geography + equity + maintenance process |
 | **Consulting Frameworks** | McKinsey 7S, Porter's, Blue Ocean, BCG, JTBD, PESTEL |
-| **Stress-Test Framework** | 200+ edge cases across 12 categories |
+| **Stress-Test Framework** | Product-level failure: 165 checklist items across 18 failure classes, from idempotency and clock skew to money rounding, encoding, illegal state transitions and adversarial abuse, plus how to run the session and a severity triage rubric |
 | **OKRs & Goal-Setting** | North Star metric, metrics tree, OKR cascade & cadence |
 | **Pricing & Packaging** | Price-metric selection, Van Westendorp, discount governance |
 | **Growth Model** | AARRR, growth loops, activation/retention, experiment engine |
@@ -162,13 +162,14 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 |--------|-------|
 | Agents | 64 |
 | Frameworks | 36 |
-| Total files | 122 |
-| Total lines | 38,000+ |
+| Total files | 123 |
+| Total lines | 46,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
 | Tactical scenario playbooks | 54 (across 31 departments) |
-| Stress-test edge cases | 200+ |
+| Product edge cases (stress-test) | 165 items across 18 failure classes |
+| Organisational edge cases | 54 in the shared catalogue, plus a section in every agent file |
 | Salary bands | 5 functions × 6 levels × 2 geographies |
 
 ---
