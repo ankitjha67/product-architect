@@ -271,6 +271,54 @@ SECURITY - treat model output AND retrieved content as UNTRUSTED input (OWASP LL
   the demo" is not a release gate. Coordinate Agent 09 (Security) + Agent 39 (Privacy).
 ```
 
+## 7. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue (people, budget, approval,
+legacy, political, external, scale, data). Read it once, then work this list: the
+engineering-specific failures that kill a technically correct architecture in a 500+ person
+org. The binding constraint on a design is rarely the technology. It is who owns the thing
+you must change, and when their queue opens.
+
+| Situation | Early warning signal | First move |
+|---|---|---|
+| **Shared service owned by another team will not prioritise your change** | Request sits in triage past 10 working days with no sprint number; their PM cannot name a quarter; the answer is "raise a ticket" | Within 5 days convert the ask into a written interface contract (provider, artefact, need-by date) and hand it to Agent 41 as a dated dependency. In parallel design the bypass: anti-corruption layer plus your own read model or cached projection, so you ship without their change |
+| **Architecture review board rejects the design after build started** | You appear on the ARB agenda only at "final review"; no pre-read was ever circulated; a board member asks a residency or multi-tenancy question you cannot answer | Book ARB at concept stage with a 2-page sketch, and carry a written variance request for the 2 to 3 standards you knowingly break. If rejection has already landed, ask for conditional approval with a dated remediation plan rather than accepting a redesign |
+| **Platform migration mandated from above mid-roadmap** (cloud, IdP, service mesh, monorepo) | A platform-strategy deck circulating at director level; a new central team hiring; your current platform's renewal inside 12 months | Cost it as a first-class epic: typically 15 to 30% of team capacity for 2 to 3 quarters. Negotiate the deadline against a ranked descope list, not against heroics. Demand a dual-run window and a named migration owner inside the mandating org |
+| **Monorepo / CI queue turns a 5-minute change into 3 hours** | Median PR wall-clock > 60 min; CI queue depth > 20 by 11:00; engineers batch changes to dodge the queue | Publish merge-to-green p50/p95 weekly as a team metric. Ask Agent 08 for affected-targets-only builds, remote cache, and a merge queue. Until then plan capacity on merged PRs per week, not story points, and tell Agent 41 it is a critical-path constraint |
+| **On-call rotation consumes a third of team capacity** | More than 2 pages per night; interrupt work > 25% of the sprint; the on-call engineer delivers roughly zero planned work | Cap planned load at (team size − 1 − on-call) and make the deduction visible in planning. Then fix the top 3 alert sources. A rotation above 25% of capacity is a reliability defect, not a staffing gap (Agent 08 §4 and §7 error-budget policy) |
+| **Security finding forces an unplanned refactor** | Pen test booked inside 4 weeks of launch; a critical CVE in a transitive dependency with no patched version; an auth pattern copied from a deprecated service | Threat-model at design, security review at 60% build, never at 100% (Agent 09). When a late finding lands, negotiate a compensating control (WAF rule, flag off, scoped token) plus a dated refactor rather than blocking the release |
+| **The internal library nobody owns** | Last commit > 9 months old; CODEOWNERS empty or pointing at a disbanded team; 14 services already depend on it | Run "what depends on this" before you become the 15th. Then either take ownership explicitly (named maintainer, release process, deprecation policy) or vendor it into your repo with a removal date. Unowned plus load-bearing is bus factor 0 |
+| **Conflicting standards between acquired and legacy stacks** | Two identity systems, two CI tools, two log formats, two paging tools post-acquisition; PRs stalling on "which standard applies" | Do not converge everything. Pick the 3 seams that must be common (identity, trace/correlation ID, deploy and rollback) and let the rest diverge until a business reason forces convergence. Integration mandate and funding sit with Agent 45 |
+| **6-month vendor procurement cycle blocks a build decision** | Security questionnaire, DPA and legal redlines all still open at week 6; the vendor is not on the approved list | Start procurement the day the shortlist exists (Agents 46, 10), and put the integration behind an adapter interface so build proceeds against a stub or an already-approved vendor. Never place the critical path on an unsigned contract |
+| **Production access approvals break incident response** | Read access needs a ticket with a 24h SLA; the last SEV1 timeline shows > 20 minutes lost to access requests | Pre-approved break-glass: named role, 60-minute expiry, full session recording, automatic post-hoc review. Rehearse it in a game day. An untested break-glass fails for the first time at 03:00 (Agents 08, 09) |
+| **Conway's law forces a bad interface** | An API shaped like the org chart (one endpoint per team); a broker service that exists only to join two teams; 6 teams in one release train for one feature | Name it in the architecture doc as an org constraint and cost it (extra hop latency, deploy coupling, coordination weeks). Route the fix to org design (Agents 62, 22) instead of pretending it was a technical choice. Master catalogue §7 |
+| **Tech debt no quarter ever allocates** | The same module in 3+ consecutive postmortems; change-failure rate on it > 20%; estimates against it inflate ~2× versus the rest of the codebase | Stop asking for a debt quarter, it never arrives. Attach a fixed 15 to 20% debt allowance to every epic that touches the module, and instrument the rework cost in engineer-days per quarter so Agent 18 sees a number rather than a preference |
+
+```
+WHO OWNS THE RESPONSE (escalate, do not absorb it silently in the sprint):
+□ Cross-team dependency, dates, escalation ladder .. Agent 41 (TPM) §1, §5
+□ Security finding, break-glass, threat model ...... Agent 09 (Security)
+□ Pipeline, environments, on-call load, freezes .... Agent 08 (DevOps/SRE) §4, §8
+□ Vendor contract, EOL, procurement clock .......... Agent 46 (Procurement) + Agent 10 (Legal)
+□ Team boundaries, decision rights, RACI ........... Agent 62 (Chief of Staff) + Agent 22 (People)
+□ Cost of rework, capitalisation of debt ........... Agent 18 (Finance) + Agent 56
+□ Post-acquisition standard convergence ............ Agent 45 (Corporate Development)
+□ Data residency or PII surfaced by a design ....... Agent 39 (Privacy) + Agent 11
+□ Audit evidence on a design or change ............. Agent 59 (Internal Audit)
+
+WRITE THESE INTO THE ARCHITECTURE DOCUMENT, not into a side risk register:
+□ OWNERSHIP MAP: for every component you call, the owning team and their queue SLA
+□ CHANGE BUDGET: which systems you may modify versus which you must integrate around
+□ APPROVAL PATH: ARB date, security review date, CAB class, freeze windows that apply
+□ FALLBACK PER EXTERNAL DEPENDENCY: what ships if their date moves 8 weeks right
+
+⚠️ WHAT EVERYONE GETS WRONG: writing the architecture for the system, and treating the
+org chart, the approval calendar and the ownership map as somebody else's problem. In an
+org above roughly 500 people the elegant design that requires three other teams to change
+loses to the uglier design you can merge this quarter. Design the system you can actually
+get shipped, then write down what the org cost you so the debt is visible and priced.
+```
+
 ## Output: Technical Architecture Document
 Deliver as `.md` file with diagrams (Mermaid for architecture, ERD for database).
 

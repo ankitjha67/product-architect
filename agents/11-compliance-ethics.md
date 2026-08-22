@@ -834,6 +834,57 @@ ANNUAL METRICS:
 □ Benchmarking against industry peers
 ```
 
+## ORGANISATIONAL EDGE CASES
+
+`frameworks/enterprise-edge-cases.md` holds the master catalogue of organisational shocks
+(sponsor loss, freezes, reorgs, M&A) that every agent inherits. What follows is the
+compliance-specific layer: the situations where the POLICY is correct, the register is
+complete, and the programme still fails because of how the organisation behaves.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A regulation changes mid-build** | Draft rules published for consultation; a peer receives an enforcement action for the same practice; an industry-association alert lands | Impact assessment within 5 working days of publication. Freeze ONLY the design decisions the draft touches, not the whole build. Use the consultation window to comment rather than waiting for the final text | 28, 11, 10 |
+| **A business unit treats compliance as advisory and ships anyway** | The BU's launch dates never reach the compliance calendar; sign-off is requested after go-live; "we'll retrofit it" | The real defect is the authorization matrix (POL-OPS-001): if Compliance is not a required approver in the DoA, fix the gate rather than fighting one launch. Log the incident as a policy violation with a severity, not as a disagreement | 11, 62, 26 |
+| **Whistleblower report where the accused is the investigator's manager** | Any allegation naming someone in the reporting chain of Compliance, HR, or the assigned investigator | Conflict check at 48-hour triage routes it to the Audit Committee chair directly plus external counsel or forensics. The named manager is not informed and does not select the investigator (POL-FOUND-003) | 59, 10, 22 |
+| **Policy accretion after every incident** | The register grows every quarter and never shrinks; two policies give conflicting instruction on the same act; controls with no named owner | Every policy carries a review date AND an expiry. At annual reconciliation, a control that has produced zero exceptions in 24 months is either perfect or not operating: test which before renewing it | 11, 20, 59 |
+| **Two jurisdictions where complying with one breaches the other** | Blocking statute versus a foreign discovery order; localisation versus a lawful-access demand; disclosure duty versus a secrecy obligation | Never let the local team choose quietly. Document the conflict, obtain written opinions in BOTH jurisdictions, take a chosen posture to the board as a signed risk acceptance with the exposure quantified. Verify current with qualified counsel | 10, 28, 26 |
+| **Training completion is 100% and behaviour is unchanged** | Completion at 100%, hotline volume near zero, and the same violation category recurring quarter after quarter | Replace the completion metric with a behaviour metric: scenario-assessment scores, spot audits, and reporting rate. A hotline receiving roughly zero reports per 100 employees per year signals fear or ignorance, not integrity | 11, 22, 59 |
+| **Regulator information request with a short statutory clock** | A letter naming a response date, commonly 10 to 30 days depending on regime and often shorter for follow-ups | Acknowledge within 48 hours; appoint ONE response owner; issue the legal hold before any collection; never send an unreviewed extract. Confirm the actual statutory clock with counsel because it differs by regime and changes | 10, 28, 11 |
+| **Acquired entity with different policies and a grace period that never ends** | "We will harmonise post-close"; a day-one grace period still running at month 14; two codes of conduct simultaneously in force | At close, set a dated harmonisation plan with a maximum 12-month grace and a named executive owner. The interim state is recorded as an approved, expiring exception, never as silence | 45, 11, 22 |
+| **Third-party and subprocessor flow-down fails** | A vendor cannot name their subcontractors; your clauses are absent from THEIR downstream contract; annual attestations were never collected | Sample 5 Critical vendors and ask for the downstream clause text. A vendor who cannot produce it is a finding today, not a renewal-cycle item (POL-OPS-003) | 46, 39, 10 |
+| **A control exists on paper and has never been operated** | No exception log, no evidence artefacts, the named owner has left, and the answer is "it's automatic" | Re-perform one instance end to end. Inquiry is not evidence. Zero exceptions in 12 months on a manual control is the strongest single indicator that it has never run | 59, 11 |
+| **A sanctions or watchlist designation lands between screening cycles** | Screening tool refreshes weekly or monthly; a new designation is announced; a counterparty name closely matches an existing customer or vendor | Re-screen the FULL customer and vendor base on the day of designation rather than at next cycle. Freeze payments to any match, escalate to counsel, and file within the regime's clock. Verify current lists and timelines with qualified counsel | 10, 46, 18 |
+
+```
+⛔ WHAT EVERYONE GETS WRONG:
+Compliance programmes are built to survive an AUDIT and fail against BEHAVIOUR. The register
+is complete, the policies are current, the training is at 100%, and the same category of
+violation repeats because nothing in the operating model made the compliant path the easy one.
+
+□ AUTHORITY IS ARCHITECTURAL, NOT PERSUASIVE. If Compliance is not a named approver in the
+  delegation-of-authority matrix, it has an opinion, not a gate. Fix the matrix once instead
+  of escalating each launch.
+□ A POLICY WITH NO EXPIRY IS A LIABILITY. Every incident adds a control; nothing removes one.
+  Within 3 years the stack is unfollowable, so people route around all of it, including the
+  controls that mattered.
+□ THE METRIC IS THE ENEMY. Training completion, policy acknowledgement, and register size all
+  rise while risk rises with them. Measure exceptions caught, reports received, and controls
+  re-performed.
+□ COMPLIANCE THEATRE FAILS EXACTLY WHEN TESTED. A control nobody has operated does not fail
+  quietly on a random Tuesday; it fails during the regulator request, when the evidence is
+  demanded within 10 days and cannot be created.
+□ THE GRACE PERIOD IS THE RISK. Post-acquisition and post-reorg "temporary" states are where
+  the unowned violations live. Date them, or they become permanent by default.
+□ JURISDICTIONAL CONFLICTS ARE A BOARD DECISION. When two laws cannot both be obeyed, the
+  answer is a documented, signed choice with counsel on both sides, not a quiet local
+  workaround by whoever is closest to the problem.
+
+⚠️ Statutory response clocks, whistleblower-directive timelines, sanctions obligations,
+   cross-border conflicts and acquisition harmonisation duties are jurisdiction-specific and
+   change over time. Treat the principle as durable and verify the current rule with
+   qualified counsel before acting.
+```
+
 ## Output: Governance, Compliance & Policy Structure
 Complete policy register, all Tier 1-3 policies drafted, governance infrastructure
 (committees, audit function, policy lifecycle), authorization matrix, compliance

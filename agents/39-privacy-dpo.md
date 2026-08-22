@@ -381,6 +381,56 @@ EU AI ACT & AUTOMATED DECISIONS:
 > See [DISCLAIMER.md](../references/DISCLAIMER.md).
 ```
 
+### 14. Organisational Edge Cases
+
+Sections 1 to 13 assume a cooperative organisation. `frameworks/enterprise-edge-cases.md`
+holds the master catalogue of organisational shocks; this section is the privacy-specific
+layer - the places where the law is clear, your programme is correct, and the company's
+actual shape defeats it. Pick the 3 to 5 that are live for this product and pre-agree the
+move now, while calm.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Deletion request collides with legal hold or statutory financial retention** | The DSAR subject appears in an open dispute, a fraud case, or the finance ledger; the legal-hold list is an email thread, not a field | Suppress-and-restrict, do not choose between delete and refuse: stop all processing, retain only the minimum under the named legal basis, tell the requester exactly what is retained and why, delete everything else. Pre-decide per data category in the retention schedule (Section 9) so this is a lookup, not a debate. The legal-hold flag must be a real field in the data model | 10, 56, 39 |
+| **Backups and archives are outside the deletion pipeline** | The deletion job targets prod only; restore tests never re-apply pending deletions; a 7-year archive with no subject index | Build the pending-deletion queue and re-apply it on every restore, then TEST it: restore a snapshot into a sandbox and confirm the subject is gone. Publish the backup ageing cycle as part of the erasure response so a restore cannot silently undo an erasure | 38, 08, 39 |
+| **Data residency requirement discovered after the architecture is built** | A pipeline deal in a localisation market; a customer questionnaire asking where data rests; an RBI or DPDP scope note arriving after design lock | Cost the three real options (regional deployment, in-region storage with a global control plane, exit the market) BEFORE anyone promises the customer. Escalate as an architecture decision with a number attached, not as a compliance objection | 06, 38, 11, 57 |
+| **Subprocessor change triggers customer notice and objection rights** | Procurement swaps a vendor with 30 days notice; enterprise DPAs grant 30-day objection windows; the subprocessor page has no subscribe mechanism | Check the DPA notice period BEFORE signing the replacement: a swap facing a 30-day objection window needs 60 to 90 days of lead time. Keep a public, subscribable subprocessor page so notice is a publish event, not a mail-merge project | 46, 10, 39 |
+| **A DSAR spans unstructured data across dozens of systems** | The request says "all emails and chats about me"; your deletion map covers 12 systems while IT lists 60 SaaS tools | Scope by documented proportionality: search the systems where the subject's data is reasonably likely to be, name those systems in the response, and use the statutory extension (GDPR: +2 months, notified inside the first month) rather than missing the deadline silently | 39, 38, 40 |
+| **Consent records cannot be reconstructed for an audit** | A CMP migration with no receipt export; consent stored as a boolean with no timestamp or notice version; a marketing tool holding its own separate opt-in state | If you cannot evidence consent, you do not have consent: stop the processing that relies on it and re-consent. Every receipt must carry subject id, purpose, timestamp, notice version, capture mechanism, and withdrawal state (Section 6) | 39, 15, 38 |
+| **Marketing acquired a list with no lawful basis** | A CSV appears in the CRM with an empty or "partner" source field; complaint and bounce rates spike after a send | Quarantine before any send. Demand written provenance and the consent evidence. No evidence means the list is deleted, not "warmed up". Move the addresses to suppression rather than re-importing them later | 15, 10, 39 |
+| **Employee monitoring lawful in one country, needs works-council consultation in another** | A DLP, UEBA or productivity-analytics rollout with a single global go-live date and EU headcount | Start consultation BEFORE the decision is final; presenting a fait accompli restarts the clock. Split the rollout by jurisdiction rather than delaying globally, and run a DPIA for the monitoring itself | 22, 40, 09, 39 |
+| **A breach where the notification clock differs by jurisdiction** | One incident, subjects in several regimes, and separate teams drafting separate notices | Run to the EARLIEST applicable deadline from the awareness timestamp, notify in phases with the facts you have, and maintain one factual master log so no two notices contradict each other. Verify each regime's current deadline with counsel; they differ and they change | 39, 09, 10, 25 |
+| **Personal data found inside an AI training corpus or vector store** | A red-team eval extracts a real name or email from the model; the embedding job reads a table classified as PII; the RAG source list includes support tickets | Stop the pipeline. Treat the vector store as a PII store (residency, access control, retention, DSAR reach). Establish whether a lawful basis existed for the repurposing; "we already had it" is not one. Re-embedding from a filtered source is usually cheaper than defending the retrofit, with retraining or unlearning as the last resort | 38, 63, 29, 39 |
+| **An unreviewed tracker or pixel appears on the live site** | A tag added through the tag manager without review; consent mode not enforced; a network tab showing calls the CMP never declared | Run a monthly automated scan of live pages against the CMP inventory. Any tracker not in the inventory is disabled within 48 hours, then reviewed for lawful basis before reinstatement | 15, 39, 50 |
+| **DPO independence is squeezed** | The DPO role sits with the CTO, GC or Head of Marketing; performance objectives include shipping the features they must review; sign-off requested on their own team's project | A DPO conflict of interest is a structural finding, not a workload problem. Document it and report it to the board or audit committee. Independence is a reporting line and a mandate, not a personal quality | 26, 59, 22 |
+
+```
+⛔ WHAT EVERYONE GETS WRONG:
+Privacy is treated as a REQUEST-HANDLING function and fails as a DATA-TOPOLOGY problem. The
+DSAR runbook is excellent and unfulfillable, because nobody can enumerate where the data is.
+
+□ DELETION IS A GRAPH PROBLEM, NOT A QUERY. Prod, replicas, warehouse, backups, archives,
+  logs, caches, embeddings, vector indexes, exports sitting in someone's drive, and the SaaS
+  tool with its own copy. Deletion that misses any of these is not deletion, it is a claim.
+□ THE COLLISION CASES ARE DECIDED IN ADVANCE OR DECIDED BADLY. Hold versus erasure, tax
+  retention versus consent withdrawal - resolved per data category in the retention schedule
+  while nobody is under a 30-day clock, or improvised per request under pressure.
+□ CONSENT YOU CANNOT EVIDENCE DOES NOT EXIST. The audit failure is almost never "we had no
+  consent"; it is "we cannot produce the receipt, the notice version, or the timestamp".
+□ THE FORGOTTEN PROCESSORS ARE THE MARKETING PIXEL AND THE EMBEDDED SDK. They see PII, cross
+  borders, and rarely appear on the processor list until a regulator or a scanner finds them.
+□ RESIDENCY AND MONITORING RULES ARE ARCHITECTURE AND HR DECISIONS, NOT PRIVACY OPINIONS.
+  Raised at design they cost a config; raised at launch they cost a re-platform or a
+  restarted works-council clock.
+□ AN EMBEDDING OF PERSONAL DATA IS PERSONAL DATA. Teams that would never copy a PII table
+  into a spreadsheet will vectorise it into an unclassified store with no retention rule.
+
+⚠️ Retention conflicts, transfer and residency rules, monitoring and works-council duties,
+   breach clocks and AI-corpus obligations are jurisdiction-specific and moving. Treat the
+   principle as durable and verify the current rule with qualified privacy counsel before
+   acting. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+```
+
 ## Privacy Metrics
 
 ```

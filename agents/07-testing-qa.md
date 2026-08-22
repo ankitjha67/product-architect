@@ -328,6 +328,46 @@ CI/CD INTEGRATION:
 - Pre-release: Full regression suite + manual exploratory testing
 ```
 
+## 12. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks. This section is
+the QA-specific layer: in a large org most escaped defects are not missing test cases, they
+are tests that ran against something that was not the system.
+
+| Situation | Early warning signal | First move |
+|---|---|---|
+| **No production-like environment; key integrations exist only in prod** | Staging holds 12 of prod's 200 integrations; 3 of the last 5 SEVs were "green in staging, broken in prod"; nobody tracks staging config drift | Classify every integration as mocked / sandboxed / prod-only. For prod-only ones the test strategy IS canary + feature flag + synthetic monitoring, not a staging test. Put the "cannot be tested pre-prod" list into the release sign-off, signed (Agents 08, 06) |
+| **Test data scrubbed into uselessness** | Every user is "Test User", every date is today; no account with 5 years of history, no multi-currency, no 10,000-line order; prod bugs are consistently data-shaped | Build 12 to 20 named golden personas with realistic distributions (long tails, unicode and RTL names, expired cards, partial refunds, dormant accounts), generated synthetically and versioned in-repo. Prod-derived data loses either fidelity or legality, usually both |
+| **Test data contains real PII by accident** | A real customer replies to a "test" email; the masking job silently skipped a column added last sprint; the anonymisation script has no tests of its own | Stop the refresh immediately and treat it as a personal-data incident: notify **Agent 39** inside the breach clock, Agent 09 for containment. Then gate every non-prod refresh on a scanner that fails on real email/phone/PAN/card patterns, plus schema-drift detection so a new column defaults to masked |
+| **Shared staging: another team's deploy breaks your run** | More than 20% of failures trace to "someone deployed"; the same suite passes on a rerun 2 hours later; staging has no deploy calendar | Ephemeral per-PR environments for anything namespaceable. For the genuinely shared parts, a booked window on the same calendar as deploys, plus a pre-flight step that records the deployed SHA of every dependency into the test report so a failure is attributable rather than argued about |
+| **6-hour regression suite that nobody runs** | Full suite is nightly-only and red more often than green; devs merge on the 5-minute subset; the last full green run was 9 days ago | Split by risk into three tiers: merge-blocking < 10 min (money and auth paths), hourly < 45 min, full nightly. Shard and parallelise before deleting; then delete tests with zero unique failure history in 12 months (§9 economics) |
+| **Flaky tests erode trust until the suite is ignored** | Retry-passes > 1% of runs; a team norm of "just re-run it"; the quarantine list grows month over month | Enforce §9 mechanically: 3 pass-on-retry flips in 7 days triggers auto-quarantine, a ticket and a named owner, fix or delete inside 14 days. Publish the weekly flake tax in engineer-hours so it is a budget line, not a grumble |
+| **QA headcount cut, release cadence unchanged** | Two QA leave, releases stay weekly; the manual regression checklist is still 400 items; exploratory time falls to zero | Within one week publish what is NO LONGER tested and get product plus Agent 41 to sign it. Automate the top 20 manual checks first, push the rest of the burden into PR gates (§10). Silent absorption turns a QA cut into a customer-visible incident about 6 weeks later |
+| **Compliance demands documented test evidence and traceability** | An auditor asks for the test report of release 4.2.1 and nobody can name the environment or the commit SHA; requirements have no IDs | Switch on immutable run records now (§11) and auto-generate the traceability matrix from `@req:` annotations. Retention per Agent 11's regime, sampling per Agent 59. Reconstructing evidence for a past release costs 5 to 10× what emitting it continuously costs |
+| **UAT business users unavailable until launch week** | UAT is on the plan but has no names; the named users sit in month-end close; one SME covers 4 programmes | Book named participants and their manager's approval at planning time, with hours blocked in calendars, then front-load scripted UAT against a stable slice at 70% build. If they cannot be booked, escalate it as a dated cross-team dependency (Agent 41 §1), not as a QA scheduling problem |
+| **Third-party sandbox behaves differently from production** | The sandbox always approves; no rate limits; webhook order is deterministic; documented error codes that the sandbox never actually emits | Contract tests recorded against real production responses (Pact or recorded fixtures), plus a written list of behaviours the sandbox cannot reproduce: declines, timeouts, out-of-order and duplicate webhooks, partial refunds. Everything on that list moves to fault injection plus prod canary (§3, Agent 08 chaos) |
+| **Change freeze compresses all testing into one window** | The freeze calendar is published after the plan is committed; 6 releases queue for the first post-freeze week; regression scope triples overnight | Pull the freeze calendar into the test plan at planning time (Agent 08 §8, Agent 20). Ship smaller and earlier before the freeze. For the queued batch insist on sequenced releases with separate canaries: one big-bang batch makes every failure un-attributable and doubles triage time |
+
+```
+WHO OWNS THE RESPONSE:
+□ PII in a non-prod environment ................. Agent 39 (Privacy/DPO) + Agent 09
+□ Environment parity, staging drift, canary ..... Agent 08 (DevOps/SRE) §1
+□ Audit evidence, retention, sampling ........... Agent 59 (Internal Audit) + Agent 11
+□ UAT participants, dependency dates, freezes ... Agent 41 (TPM) §1, §4
+□ Vendor sandbox quality, contract remedies ..... Agent 46 (Procurement) + Agent 10
+□ Headcount cut, cadence renegotiation .......... Agent 22 (People) + Agent 18
+□ Test-environment cloud cost pressure .......... Agent 18 (Finance) + Agent 08 §8 FinOps
+□ Untestable-in-prod features, flag strategy .... Agent 06 (Engineering) §5
+
+⚠️ WHAT EVERYONE GETS WRONG: managing QA by test count and coverage percentage while the
+real variable is ENVIRONMENT AND DATA FIDELITY. Coverage of the code is cheap and easy to
+raise; fidelity of the thing under test is expensive and is what actually determines escape
+rate. In a large org, budget QA effort by fidelity gap (which integrations, which data
+shapes, which failure modes can only be observed in production) and spend the remainder on
+prod verification: canary, synthetic monitors, and a rollback you have actually pulled.
+A green suite against a fictional environment is a confidence generator, not a quality gate.
+```
+
 ## Example: Allocating a Fixed Test Budget
 
 **User says:** "We have 2 QA engineers and 6 weeks to launch. Where do we focus testing?"

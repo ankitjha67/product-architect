@@ -234,6 +234,54 @@ EVERY program and every incident closes with a learning loop:
   back into the program plan so the same failure can't recur. Track recurrence as a metric.
 ```
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue and you are the agent most
+often asked to absorb items from it. This section is the TPM-specific layer: the delivery
+failures that come from the org, not from the work. In a large org the critical path usually
+runs through DECISIONS, APPROVALS and CALENDARS, not through engineering.
+
+| Situation | Early warning signal | First move |
+|---|---|---|
+| **The dependency team deprioritises you after committing** | Your item disappears from their board; their EM changes; the commitment exists only in meeting notes; their answer moves from a date to "next quarter" | Re-confirm in writing inside 48h: provider, consumer, artefact, need-by date, consequence of a slip. If it stays unconfirmed 5 working days on the critical path, trigger the pre-agreed fallback and escalate at Level 2 (§5) with two costed options. Dependency aging (§1) is your earliest signal |
+| **A reorg re-points ownership mid-programme** | Skip-levels appearing on calendars; backfills stopping; an org-design consultant on site; your single "A" in the RACI now reports elsewhere | Freeze scope, not work. Re-baseline OWNERSHIP before you re-baseline dates: inside 2 weeks get the new owner to restate the commitment in their own words and re-sign the RACI (§6). Do not re-litigate settled decisions, point at the decision log (Agents 62, 22) |
+| **An executive commits a date externally that the plan does not support** | A date surfaces in an analyst briefing, an earnings call, a signed customer contract or a keynote abstract that no team ever estimated | Inside 5 working days put the three-lever choice in writing (scope, date, capacity) with the specific descope that makes the date real, and get ONE of them recorded. Never negotiate the date alone. An external commitment converts a slip into a legal and comms event (Agents 25, 10, 17) |
+| **Status reporting becomes theatre because red is punished** | Eight weeks of green followed by red; RAG changes only after a milestone is already missed; teams tell each other something different from what they tell you | Default to Amber for anything with an unconfirmed critical-path dependency, and report leading indicators (dependency aging, say-do ratio) instead of sentiment. Enforce §3's rule: never green to red in one step. Ask the sponsor to visibly reward one early red; that is the only durable fix |
+| **Approval chain deadlock with an absent approver** | An approval open > 5 days; the approver's calendar shows leave; no named delegate in the delegation-of-authority matrix | At kickoff, split Approve from Consult (RAPID/DACI), parallelise the chain, name a standing delegate per approval role, and set a 48h escalation clock per stage. If already stuck, escalate to the approver's manager with the decision pre-framed and a recommendation attached (master catalogue §3, Agent 62) |
+| **Scope added without capacity added** | Scope-change rate > 15% per cycle against a flat team; "small" asks arriving through the sponsor's DMs; say-do ratio dropping below 70% | Keep a live ranked backlog with trade prices in team-weeks. Every addition must name what it displaces, in writing, and the sponsor picks. A TPM who absorbs scope quietly ends up owning the slip alone (§8) |
+| **Partner or vendor dependency slips with no contractual remedy** | The SOW has no dated milestones and no service credits; their delivery lead changes; a sandbox date slips twice | Get dated milestones and remedies into the contract before signature (Agents 46, 10). In flight: fortnightly joint checkpoint with their delivery lead, artefact-based evidence only (a working sandbox call, not a status slide), and parallel-track the fallback provider from the FIRST slip, not the second |
+| **The programme that is 90% done for three months** | The same percentage in 3 consecutive reports; remaining work described as "integration and hardening"; the last milestones have no dated done-definition | Delete percentages. Replace with a countable list of demonstrable milestones plus a burn-up of open defects and unmet exit criteria. The last 10% is almost always integration, migration and sign-offs that were never on the plan: put them on it, sized, with owners (§2) |
+| **Conflicting quarterly planning cycles between teams** | A dependency team runs 6-week Shape Up cycles or a SAFe PI starting 5 weeks after your quarter; their commit window closes before your scope is final | Map every dependency team's planning calendar at kickoff and submit your ask before THEIR commit date, not yours. Where cycles cannot be reconciled, request a standing capacity reservation (a stated percentage of their cycle) rather than item-by-item commitments (§7) |
+| **Holiday and freeze calendars in multiple countries compress the window** | The plan assumes uniform velocity through December, Diwali, Lunar New Year, Eid and August in Europe; the launch date lands inside a peak-trading freeze | Build one merged calendar at planning time: public holidays per delivery location, code freezes, audit and fiscal close, peak-trading windows. Subtract those working days BEFORE committing. Then re-check the approval chain: 5 serial approvals spanning a holiday period stretch from 15 days to 25 (Agents 20, 08 §8) |
+| **Two programmes need the same scarce specialist** | One name sits on 3 critical paths (the payments SME, the only DBA, the single Salesforce architect); their calendar is fully booked 4 weeks out | Log shared-scarce-resource dependencies as first-class RAID entries with allocation percentages agreed by BOTH sponsors. Never plan on more than ~60% of a shared specialist's time. Escalate to portfolio level (Agent 26) rather than negotiating peer to peer and losing on urgency |
+
+```
+WHO OWNS THE RESPONSE (you coordinate; these agents decide):
+□ Reorg, leave, delegate, capacity loss ......... Agent 22 (People) + Agent 62
+□ Budget cut, fallback spend, business case ..... Agent 18 (Finance)
+□ Freeze calendar, CAB, deploy windows .......... Agent 20 (BAU) + Agent 08 §8
+□ Vendor SOW, milestones, remedies, exit ........ Agent 46 (Procurement) + Agent 10 (Legal)
+□ External date commitment, customer comms ...... Agent 25 (PR) + Agent 17 (CS)
+□ Portfolio prioritisation, shared specialists .. Agent 26 (Governance) + Agent 03
+□ Decision rights, RACI disputes, decision log .. Agent 62 (Chief of Staff)
+□ Security or audit gate on the critical path ... Agent 09 + Agent 59
+□ Engineering-side constraints (CI, on-call) .... Agent 06 §7 + Agent 08 §10
+
+ADD THESE TO THE RAID LOG BY DEFAULT ON ANY PROGRAMME LONGER THAN ONE QUARTER:
+□ RISK: sponsor changes or loses influence            Trigger: 2 skipped reviews
+□ RISK: dependency team re-plans at their cycle break Trigger: their PI/cycle date
+□ RISK: approval chain spans a holiday or freeze      Trigger: merged calendar overlap
+□ ASSUMPTION: the verbal commitment survives a reorg  Validate: written, manager-seen
+□ ASSUMPTION: the vendor date is contractual          Validate: read the SOW yourself
+
+⚠️ WHAT EVERYONE GETS WRONG: assuming a commitment is a commitment. In a large org a
+verbal yes from another team is a statement of current intent, repriced by whatever their
+next planning cycle decides. A durable commitment has four properties: a named provider, a
+dated artefact, a written record their manager has seen, and a defined consequence if it
+moves. Anything short of all four is an ASSUMPTION in the RAID log wearing a dependency's
+clothes, and it will break at their cycle boundary, not at yours.
+```
+
 ## Example
 
 **User says:** "We committed to launching our new payments flow in 8 weeks across web and

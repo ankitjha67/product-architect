@@ -306,6 +306,52 @@ RED-TEAM:
 □ RULE: AI accelerates the analyst; it never auto-remediates or closes an incident alone
 ```
 
+### 9. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the security-specific
+layer: the situations where the control is fine and the ORGANISATION is the failure mode.
+Pick the 3 to 5 that can plausibly hit this product in the next two quarters and name the
+trigger, the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move (first 48 hours) | Owns the response |
+|---|---|---|---|
+| **Security review booked at 100% build, becomes the launch blocker** | No threat model exists at PRD sign-off; the security ticket's due date sits inside launch week; the design doc was never routed to security | Split the review: 5-day time-boxed design review on the top 3 abuse cases now, remainder converted to dated findings with severities. Never issue a blanket waiver. Then move the gate: threat model at PRD, review at 60% build | 09 with 04, 41, 08 |
+| **Critical CVE lands during a change freeze** | CVSS ≥9.0 with a public exploit or a known-exploited-vulnerability listing, while the freeze calendar shows peak season or quarter-end | Invoke the pre-agreed emergency-change path (CAB chair + incident commander, 4-hour approval clock). If patching is impossible, ship a compensating control (WAF rule, segmentation, feature disable) logged with an expiry date | 09, 08, 20 |
+| **Shadow IT surfaces during an audit** | Corporate-card SaaS charges absent from the vendor register; SSO logs showing OAuth grants to unknown apps; a sampled department with 200 users on an unapproved tool | Inventory and rank by data sensitivity BEFORE disabling anything. Killing a tool 200 people depend on creates worse shadow IT. Bring the top-risk tools onto SSO + logging + DPA within 30 days | 40, 46, 39, 11 |
+| **Acquired company with unknown security posture** | No asset inventory, no SOC 2, shared domain-admin accounts, and a proposal to "just connect the networks" in week one | No network trust until a 2-week posture assessment closes. Allow federated identity and scoped data exchange, not a flat network merge. Treat the entity as a third party until it earns internal status | 45, 09, 40 |
+| **A vendor breach becomes your incident** | You learn from their status page or the press before their notice arrives; the DPA says "without undue delay" and names no hours | Assume your data is in scope until proven otherwise: rotate every credential, API key and token shared with them, pull their subprocessor list, start your own notification clock rather than waiting for theirs | 09, 46, 39, 10 |
+| **Privileged access cannot be revoked because the system has no role model** | An access review returns "all 40 users need admin"; the leaver checklist contains "email the vendor"; one shared account with a password in a wiki | Put a break-glass proxy with session recording in FRONT of the system instead of trying to model roles inside it. Raise the shared account as a Critical finding with a named owner and a 90-day date | 09, 40, 59 |
+| **Pen test finding requires an architecture change nobody budgeted** | The finding reads "insecure design" or architectural IDOR rather than a patchable bug; remediation estimate exceeds a quarter of the team's capacity | Separate exploitability now from architecture later: compensating control in 2 weeks, design fix costed and entered into the next planning cycle, residual risk formally accepted at the level the rating requires and logged with a date | 09, 06, 18, 59 |
+| **Security headcount cut while attack surface grows** | Assets-per-analyst rising; alert backlog ageing past 7 days; on-call single-threaded; new products launching with no named security partner | Publish the coverage map: what is monitored, what is not, and what you are formally ceasing to cover from this date. Silent de-scoping becomes negligence; stated de-scoping becomes a board decision with an owner | 09, 18, 59 |
+| **Insider threat investigation needing HR and Legal** | DLP alert on a resigning employee; bulk export outside working hours; access to data outside the person's role; a hotline tip naming a colleague | Do NOT confront and do NOT revoke access first: that tips the subject and destroys volatile evidence. Charter the investigation in writing, forensic-image before any change, engage counsel early so privilege can attach where available | 10, 22, 59, 09 |
+| **The exception request becomes permanent** | An exception with no expiry field; a third renewal; a ticket labelled "temporary" older than 12 months | Every exception carries a maximum 90-day expiry, a named accountable executive, and a compensating control. Expiry auto-reopens the ticket at the ORIGINAL severity rather than closing it | 09, 20, 59 |
+| **Incident response collides with legal hold and evidence preservation** | The instinct to rebuild the host and move on; 30-day log retention on an intrusion that started 90 days ago; a deletion job scheduled to run mid-incident | Containment and preservation are the same step: image before you wipe, capture volatile memory, freeze log rotation and the privacy deletion pipeline for in-scope systems, and issue the hold before remediation | 10, 09, 39 |
+| **A customer or regulator asks for evidence you never generated** | An enterprise deal gated on SOC 2 Type II; a questionnaire asking for 12 months of access-review evidence when only the last quarter exists | Never backfill evidence. State the true coverage period and the date continuous evidence begins. A fabricated artefact is a bigger finding than the gap it hides | 09, 59, 51, 32 |
+
+```
+⛔ WHAT EVERYONE GETS WRONG:
+Security teams optimise the CONTROL and lose on the CALENDAR. Almost none of the failures
+above are caused by a weak control; they are caused by a gate placed at the wrong point in
+someone else's schedule, or an authority the security function was never granted.
+
+□ The gate that fires at 100% build has no power. A blocker at launch gets overridden by a
+  VP; a design objection at PRD costs nothing to accept. Move left or lose the argument.
+□ "We blocked it" is not an outcome. The outcome is a dated, signed, owned exception or a
+  fix. An unresolved block becomes an unrecorded acceptance the moment the deadline passes.
+□ Emergency paths must exist BEFORE the emergency. A freeze with no documented break-glass
+  route produces unlogged out-of-band changes, which is strictly worse than a fast patch.
+□ Evidence preservation and containment are not sequential. Teams that "clean up first"
+  destroy the record that determines notification scope, liability, and insurance recovery.
+□ Access you cannot revoke is a design defect in the SYSTEM, not a discipline problem in the
+  team. Fix it with an architectural layer, not another quarterly review.
+
+⚠️ Breach-notification clocks, insider-investigation constraints (monitoring, works-council
+   duties, privilege) and legal-hold obligations are jurisdiction-specific and change over
+   time. Treat the principle above as durable and verify the current rule with qualified
+   counsel and Agent 39 before acting. See references/DISCLAIMER.md.
+```
+
 ## Output: Security Audit Report
 
 ```markdown

@@ -327,6 +327,54 @@ three tell the AC the function is optional. The cause is almost always a finding
 symptom and proposed a fix nobody was resourced to deliver.
 ```
 
+## 9. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of organisational shocks. This
+section is the internal-audit layer: the pressures that do not show up as a failed test, and
+that end the function's usefulness long before anyone says so out loud.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Management pressure to soften a finding** | "Let's align on the wording" AFTER the facts are agreed; the rating is discussed before the evidence; a request to remove the quantified EFFECT | Separate a FACT dispute from a RATING dispute. Facts move with better evidence; ratings are your professional judgment. Publish both positions verbatim, side by side. If pressure continues, raise it in executive session with the AC chair and have it minuted | 59, 26 |
+| **The audit committee chair changes and resets expectations** | The new chair asks for "shorter packs" or "more operational focus"; the executive session quietly drops off the agenda | Re-ratify the charter within one meeting cycle: budget floor, removal veto, executive session every meeting, no area out of scope. Do not assume inheritance - a charter re-signed by the incoming chair is what protects the next unwelcome finding | 26, 59 |
+| **A repeat finding was closed without real remediation** | Closure evidenced by email; the "fix" was a training session; the same control fails in the next cycle | Re-open the original at one severity higher and rate the third appearance as a finding ABOUT MANAGEMENT. Re-verify by re-performance, never inquiry. The cause is almost always a recommendation nobody was funded to deliver | 59, 26 |
+| **Scope creep pulls audit into operational work** | IA asked to run the SOX PMO, draft the policy, clear the access-review backlog, or "just help" with an ERP go-live | Log it in the advisory register with a written independence note and a minimum 12-month cooling-off on assuring that area. If the ask means IA OPERATES a control, decline in writing to the AC. Coverage that looks complete with zero assurance is the worst outcome available | 59, 11, 40 |
+| **The auditee cannot produce evidence: the control is manual and undocumented** | "We do it, we just don't record it"; no exception log; the evidence is one person's memory; the process has no system of record | Issue "control environment not evidenceable" as a HIGH finding NOW, and defer the audit to next year once a system of record exists. Low auditability (the 0.5-1.5 factor in §4) is itself the finding, not a reason to stay silent | 59, plus 1st-line owner |
+| **A fraud allegation lands outside the audit plan** | A hotline tip naming a plausible mechanism; an analytics exception on manual or post-close journals; a vendor whose bank details changed twice | Use the 15-20% unallocated capacity (§4). Charter in writing, preserve evidence and issue the litigation hold BEFORE the first interview, engage counsel early for privilege (§7). Tell the AC chair which plan item you are dropping; never claim you will do both | 59, 10, 22, 11 |
+| **Resource constraints force plan reduction** | Capacity math (FTE × 220 × 0.65) shows a >20% gap against the approved plan by Q2; two auditors resign in a quarter | Never reduce silently. Take a re-prioritised plan to the AC naming what is dropped and the assurance the board therefore loses. Drop order: rotational low-score coverage, then advisory, then areas with reliable external assurance. Never drop statutory scope, the SOX/IFC cycle, or regulator-directed work | 59, 26, 18 |
+| **An acquired entity sits outside the audit universe for a year** | An entity contributing >5% of revenue with no risk-register entry, no location scoping, and "integration will cover it" | Add it to the risk universe at CLOSE, not at integration. Run a 10-15 day baseline over ITGCs, delegation of authority, and revenue cut-off within two quarters. Local statutory internal-audit duties apply per entity from the day a threshold is crossed; verify current thresholds with counsel | 45, 59, 56 |
+| **IA reports administratively to the CFO whose function it audits** | The CFO approves the plan, the budget, or the CAE's performance rating; findings on the close cycle keep getting downgraded | This is a charter defect, not a relationship problem. Table the reporting-line change at the next AC meeting with the specific decisions the CFO currently controls listed. Administrative line to the CEO, functional line to the AC (§2) | 26, 59 |
+| **External auditor reliance on internal audit work** | They request your workpapers to reduce their own testing; a "reliance assessment" appears in their scoping memo | Agree the quality bar BEFORE testing starts: sample sizes, evidence standard, workpaper review, documented objectivity and competence (PCAOB AS 2201 / ISA 610 frame reliance around objectivity, competence and a systematic approach; verify current text with the audit firm). Work produced to your own bar and offered up afterwards is usually rejected, wasting the cycle | 59, 56, 26 |
+| **The area under audit is reorganised mid-fieldwork** | The process owner changes twice; the control owner named in the planning memo has left; the system is mid-migration | Re-sign the planning memo with the new owner within 5 working days or the report will be dismissed as "that was the old process". If the process itself is in flight, convert to a design-only opinion and re-test after stabilisation | 59, 62 |
+
+```
+⛔ WHAT EVERYONE GETS WRONG ABOUT ORGANISATIONAL PRESSURE ON AUDIT:
+The function is rarely destroyed by a bad audit. It is destroyed by a sequence of individually
+reasonable accommodations - one softened rating, one helpful operational favour, one closure
+taken on trust, one plan quietly trimmed - after which the board still believes it has
+assurance it no longer has. That gap between believed and actual coverage is the real risk.
+
+□ INDEPENDENCE IS A STRUCTURE, NOT A STANCE. A reporting line, a budget floor, and a removal
+  veto. Every edge case above is survivable with those three and unsurvivable without them.
+□ SILENT DE-SCOPING IS THE MOST DANGEROUS ACT AVAILABLE TO A CAE. A dropped audit the AC
+  approved is a governance decision; a dropped audit nobody was told about is a false
+  assurance map.
+□ HELPFULNESS IS HOW INDEPENDENCE ACTUALLY DIES. Nobody proposes that audit write the
+  control. They ask for help during a crunch, and 12 months of assurance over that area is
+  gone with no one noticing.
+□ A CLOSED FINDING IS A CLAIM UNTIL RE-PERFORMED. Closure rates built on assertion make the
+  metric fiction and guarantee the repeat.
+□ THE UNAUDITED ACQUIRED ENTITY IS WHERE THE LOSS HAPPENS. New systems, unfamiliar controls,
+  distracted management, and a delegation-of-authority matrix nobody has mapped.
+□ RELIANCE IS EARNED IN ADVANCE. External-auditor reliance is a quality bar set before
+  fieldwork, never a favour requested afterwards.
+
+⚠️ Statutory internal-audit thresholds, external-auditor reliance standards, fraud-reporting
+   duties and investigation constraints are jurisdiction-specific and change over time. Treat
+   the principle as durable and verify current requirements with your statutory auditor and
+   qualified counsel before acting. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+```
+
 ## Decision Framework: What to Audit, and What to Do When Management Disagrees
 ```
 SHOULD THIS GO IN THE PLAN?

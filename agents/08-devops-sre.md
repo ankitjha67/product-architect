@@ -299,6 +299,52 @@ asking, the golden-path templates aren't good enough yet - fix those first.
 ⛔ HERO ON-CALL: one person holds prod knowledge; they leave and RTO becomes ∞
 ```
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` holds the master catalogue. This is the platform and
+SRE layer: the org mechanics that decide your actual MTTR and change lead time, regardless
+of how good the architecture in §1 to §9 is.
+
+| Situation | Early warning signal | First move |
+|---|---|---|
+| **Change freeze collides with a required security patch** | A critical CVE with a published patch lands inside the freeze; the CISO clock (commonly 7 days critical / 30 days high) expires mid-freeze | Use the expedited path from §8: 2 approvers, 1h SLA, exception logged as SOC 2 CC8.1 evidence. If no expedited path exists, define and publish it before the next freeze. The alternative is an undocumented emergency change, which is the audit finding (Agents 09, 59) |
+| **The CAB slot adds a week to every deploy** | Median lead time to prod > 7 days while build plus test is < 1 hour; the CAB agenda runs 40 items and 90% are routine | Get a **standard / pre-approved change** class for anything automated, tested and reversible, using canary plus auto-rollback as the evidence. Book the CAB slot when work starts, not when it finishes. Target > 80% of changes flowing as standard, CAB reserved for the genuine rest (Agents 20, 41) |
+| **Multi-team incident where nobody owns the failing component** | 15+ minutes elapsed with no declared incident commander; a channel with 40 people and no roles; the component has no entry in the service catalogue | Whoever detects declares and holds IC until an explicit handover (IC, comms lead, ops lead named in the first 5 minutes). Every ownership gap found mid-incident becomes a catalogue action with a 5-day SLA. A service with no catalogue owner cannot pass launch readiness (Agent 41 LRR) |
+| **Alert fatigue and the pager everyone mutes** | More than 10 pages/day (§4 threshold); any alert with an acknowledged-no-action rate > 80%; a notification channel muted for weeks | Take the 10 noisiest alerts and for each choose delete, demote to dashboard, or add a runbook plus a symptom-based threshold. Track pages per on-call shift as a weekly team metric. Default rule: an alert with no runbook is deleted, not tuned |
+| **Cloud cost spike with no clear owner** | Unit cost per request or per order up > 15% week over week (§8); a new untagged resource group; an egress or GPU line appearing overnight | Alert on unit cost at the same severity as latency, then attribute by tag inside 24h. Untagged non-prod resources: 7-day grace, then terminate. Put the delta in front of the accountable team as showback rather than as a central complaint (Agents 18, 46) |
+| **Capacity planning against a campaign nobody told you about** | You learn of a campaign from a customer, a landing page in CDN logs, or a coupon code in staging you did not create | Make campaign registration a hard input: anything above a stated reach threshold files a traffic forecast 10 working days ahead. Then pre-scale, pre-book quota and reservations, raise rate limits, and run a spike test at 2× forecast (Agents 15, 14; Agent 07 §4) |
+| **A region outage exposes that failover was never actually tested** | Last DR drill > 2 quarters ago, or documented but never exercised; replica lag unmonitored; DNS TTL still 3600s; the runbook's first step opens a console the outage takes down | Run the quarterly drill as a real failover with the business informed, and measure ACTUAL RTO/RPO, not the intended numbers from §5. Every failing step becomes a P2 with an owner and a date. Untested failover is a plan with an unknown success probability |
+| **Legacy maintenance window constrains everything else** | The ERP or mainframe batch owns 01:00 to 05:00 nightly and all integrations must quiesce; your deploy window is whatever is left over | Publish the legacy calendar as a first-class constraint in the release calendar (Agent 41 §4), and make your integration queue-buffered and replayable so your service stays up while theirs is down. Never put a synchronous call on a system with a scheduled outage |
+| **Shared Kubernetes clusters and noisy neighbours** | Your p99 moves when another namespace deploys; ~30% of workloads have no resource requests or limits; eviction events from node pressure | Enforce requests/limits and a ResourceQuota per namespace via admission policy, PodDisruptionBudgets on your own services, and a dedicated node pool for anything on a checkout-grade SLO. Cross-tenant impact is a platform SLA question, not per-team tuning |
+| **Audit requires change evidence on every production change** | An auditor samples 25 changes and 3 have no ticket, approval or test record; hotfixes still go out through a console | Emit evidence from the pipeline automatically: approver, tests passed, commit SHA, rollback plan, timestamps. Zero manual production changes (§6). Break-glass sessions recorded and reviewed weekly. Audit then becomes retrieval, not archaeology (Agents 59, 09) |
+| **Key rotation nobody can perform because the owner left** | A secret with an unknown last-rotation date; a certificate whose renewal contact is a personal address or a disbanded alias; a rotation runbook containing exactly one name | Inventory every key, cert and token with an owner ROLE (not person), expiry, runbook and blast radius. Rehearse by rotating one non-critical secret this month. Cert expiry alerts at 30/14/7 days (§4 P2). Two-person rule on every rotation credential (master catalogue §1, bus factor) |
+
+```
+WHO OWNS THE RESPONSE:
+□ Freeze calendar, CAB class, exception log ...... Agent 20 (BAU) + Agent 41 (TPM)
+□ CVE clock, break-glass, incident security ...... Agent 09 (Security)
+□ Change evidence, sampling, control testing ..... Agent 59 (Internal Audit) + Agent 11
+□ Unit cost, showback, chargeback ................ Agent 18 (Finance) + Agent 46
+□ Campaign traffic forecast, launch calendar ..... Agent 15 (Marketing) + Agent 14 (GTM)
+□ Cross-team incident ownership, catalogue gaps .. Agent 41 (TPM) + Agent 06
+□ Multi-tenant cost per tenant, pricing floor .... Agent 36 (Pricing) via §8 FinOps
+□ Departed-owner credentials, offboarding gaps ... Agent 22 (People) + Agent 40 (IT)
+
+⛔ ORG FAILURE MODES ON TOP OF §"Failure Modes":
+⛔ FREEZE WITHOUT AN EXPEDITED PATH: guarantees undocumented emergency changes
+⛔ CAB AS A QUEUE, NOT A CLASSIFIER: routine automated changes waiting behind risky ones
+⛔ CATALOGUE ROT: a service registry nobody updates, so ownership is discovered mid-SEV1
+⛔ DRILL SCHEDULED, NEVER HELD: three consecutive quarters "deferred due to launch"
+⛔ ROTATION BY HERO: one person can rotate the root key and they are on leave
+
+⚠️ WHAT EVERYONE GETS WRONG: treating governance (CAB, freeze, audit, approvals) as the
+enemy of reliability and quietly routing around it. The platform teams that ship fastest in
+regulated orgs do the opposite: they automate the evidence until their changes legitimately
+qualify as pre-approved standard changes, and win back the week the exception path costs
+everyone else. Compliance latency is an engineering problem with an engineering solution.
+The team that argues with the CAB every week is slower than the team that automated it away.
+```
+
 ## Example: Choosing an SLO and DR Posture
 
 **User says:** "Investors ask about uptime. Should we promise 99.99% and go multi-region?"
