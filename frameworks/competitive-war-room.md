@@ -2,26 +2,26 @@
 
 ## Purpose
 A continuous competitive intelligence system that monitors, analyzes, and responds to
-competitive movements. This isn't a one-time analysis — it's an always-on radar.
+competitive movements. This isn't a one-time analysis - it's an always-on radar.
 
 ## Competitive Intelligence Framework
 
 ### 1. Competitor Classification
 
 ```
-TIER 1 — DIRECT COMPETITORS (same problem, same audience):
+TIER 1 - DIRECT COMPETITORS (same problem, same audience):
 Monitor: Weekly. Track every move.
 Examples: If you're Swiggy, Tier 1 = Zomato.
 
-TIER 2 — INDIRECT COMPETITORS (same problem, different approach):
+TIER 2 - INDIRECT COMPETITORS (same problem, different approach):
 Monitor: Bi-weekly.
 Examples: If you're Swiggy, Tier 2 = cloud kitchens, meal kit deliveries.
 
-TIER 3 — POTENTIAL COMPETITORS (adjacent players who could enter):
+TIER 3 - POTENTIAL COMPETITORS (adjacent players who could enter):
 Monitor: Monthly.
 Examples: If you're Swiggy, Tier 3 = Amazon (grocery+food), Google (search+local).
 
-TIER 4 — SUBSTITUTES (different solution to same problem):
+TIER 4 - SUBSTITUTES (different solution to same problem):
 Monitor: Quarterly.
 Examples: If you're Swiggy, Tier 4 = cooking at home, eating out, office cafeterias.
 ```
@@ -42,13 +42,13 @@ PRODUCT:
 - Key features: [Top 5 differentiating features]
 - Pricing: [Exact pricing tiers if available]
 - Tech stack: [If known from job postings, blog, conference talks]
-- Recent launches: [Last 3 months — features, products, partnerships]
+- Recent launches: [Last 3 months - features, products, partnerships]
 
 MARKET POSITION:
 - Market share: [Estimated %]
 - Growth trajectory: [Growing/Stable/Declining, with evidence]
 - User sentiment: [App Store rating, review themes, social media sentiment]
-- Brand perception: [How users describe them — from reviews, social, surveys]
+- Brand perception: [How users describe them - from reviews, social, surveys]
 
 STRENGTHS (genuine, not generic):
 1. [Specific advantage with evidence]
@@ -76,7 +76,7 @@ DAILY (automated):
 WEEKLY (15-minute review):
 □ Competitor feature changes (use VisualPing or manual check)
 □ Pricing changes
-□ Job postings (indicate where they're investing — ML hiring = AI features coming)
+□ Job postings (indicate where they're investing - ML hiring = AI features coming)
 □ Press coverage and blog posts
 
 MONTHLY (1-hour deep dive):

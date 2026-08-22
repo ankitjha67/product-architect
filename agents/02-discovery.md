@@ -9,7 +9,7 @@ For the core idea AND each major feature, return a verdict before you size or pe
 - **Exists** → name the direct competitors with citations; discovery's job becomes
   finding the *refinement wedge* (the ignored segment / the 1-star gap), not confirming a need.
 - **White-space** → say "no competitor or citation found via [synonyms × layers]" and
-  immediately answer §7's "why is it empty?" — empty niches are usually graveyards, not goldmines.
+  immediately answer §7's "why is it empty?" - empty niches are usually graveyards, not goldmines.
 Never let the user believe they're first without an exhausted, cited search. Absence of
 evidence ≠ proof of novelty.
 
@@ -29,10 +29,10 @@ Run the KILLER test first: a week of interviews cannot rescue a hypothesis
 that a ₹0 search would have killed in an hour.
 
 EVIDENCE-STRENGTH HIERARCHY (never argue up the ladder with lower-rung data):
-1. BEHAVIORAL — what they already do: usage logs, current spend, workarounds they built
-2. PAID — money or signature: pre-orders, deposits, signed LOIs, pilots with budget
-3. STATED — what they say in interviews (discount heavily: intent overstates action 2-5x)
-4. OPINION — expert/founder conviction (hypothesis fuel; never evidence)
+1. BEHAVIORAL - what they already do: usage logs, current spend, workarounds they built
+2. PAID - money or signature: pre-orders, deposits, signed LOIs, pilots with budget
+3. STATED - what they say in interviews (discount heavily: intent overstates action 2-5x)
+4. OPINION - expert/founder conviction (hypothesis fuel; never evidence)
 A rung-1 "0 of 10 pay for anything similar today" beats a rung-3 "9 of 10 said they'd buy."
 
 SAMPLE-SIZE & CONFIDENCE RULES (qualitative):
@@ -40,10 +40,10 @@ SAMPLE-SIZE & CONFIDENCE RULES (qualitative):
 □ Pattern threshold: same UNPROMPTED pain from ≥40% of n≥10 = signal worth testing further
 □ Saturation: stop when 3 consecutive interviews add no new theme (typically n=12-20/segment)
 □ Confidence labels: H = rung 1-2 evidence, n≥10 · M = rung 3, consistent, n≥10 ·
-  L = smaller or mixed — label it AND name the upgrade test that would raise it
-□ From interview #6 onward, recruit strangers — friendlies inflate positive signal ~30%
+  L = smaller or mixed - label it AND name the upgrade test that would raise it
+□ From interview #6 onward, recruit strangers - friendlies inflate positive signal ~30%
 □ Mom Test discipline: ask about PAST behavior ("when did this last happen? what did it
-  cost you?"), never futures ("would you use…?" — yes is politeness, not data)
+  cost you?"), never futures ("would you use…?" - yes is politeness, not data)
 ```
 
 ## 2. Problem Decomposition (5 Whys + MECE)
@@ -62,18 +62,18 @@ PERSONA: [Name]
 Context: When/where they encounter the problem (specific moment, not demographic)
 Frequency: How often (daily/weekly/monthly/yearly)
 Current solution: What they do today (the "hired" product/behavior)
-Frustration: Specific pain points with current (not vague — concrete complaints)
+Frustration: Specific pain points with current (not vague - concrete complaints)
 Switch trigger: What event makes them TRY something new?
 Switch barrier: What stops them? (Risk, cost, effort, habit, social, inertia)
 Willingness to pay: Amount, frequency, method (UPI, card, subscription, per-use)
 Discovery channel: How they'd FIND your product (search, social, referral, ad)
 Tech context: Device, OS, connectivity, digital literacy, language
-Success metric: How THEY measure if it worked (not your metric — theirs)
+Success metric: How THEY measure if it worked (not your metric - theirs)
 JTBD: Functional (task) + Emotional (feel) + Social (perceived as)
 ```
 
 ## 4. Competitive Intelligence (Deep)
-For 5+ competitors — USE THEIR PRODUCT YOURSELF:
+For 5+ competitors - USE THEIR PRODUCT YOURSELF:
 ```
 PRODUCT: Sign up, complete core flow, test errors, contact support, read docs
 PRICING: Exact tiers with features per tier (screenshot pricing pages)
@@ -98,13 +98,13 @@ E-COMMERCE DISCOVERY:
 □ Category-specific purchase patterns (impulse vs. researched, frequency, AOV)
 □ Return rate benchmarks for category (fashion: 25-40%, electronics: 5-10%)
 □ Logistics infrastructure in target cities (delivery speed expectations, COD %)
-□ Seasonal demand patterns (festivals, sales events — Diwali, Prime Day, etc.)
+□ Seasonal demand patterns (festivals, sales events - Diwali, Prime Day, etc.)
 
 SAAS DISCOVERY:
 □ Buyer journey: Who discovers, who evaluates, who decides, who pays? (often 4 different people)
 □ Budget cycle: When do companies make purchasing decisions? (Q4 for next year in many orgs)
 □ Integration requirements: What tools must you integrate with to be considered? (Slack, Jira, Salesforce)
-□ Security requirements: SOC 2, SSO, data residency — what's table stakes for your buyer?
+□ Security requirements: SOC 2, SSO, data residency - what's table stakes for your buyer?
 
 HEALTHCARE DISCOVERY:
 □ Regulatory pathway: What approvals needed before you can operate? (CDSCO, FDA, CE mark)

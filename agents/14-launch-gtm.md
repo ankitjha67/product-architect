@@ -137,7 +137,7 @@ PHASE 3: PUBLIC LAUNCH (Week 5+)
 - Channels (select based on audience and budget):
   - Product Hunt launch (for tech/SaaS products)
   - App Store Optimization (ASO for mobile apps)
-  - Social media (organic + paid — platform based on audience)
+  - Social media (organic + paid - platform based on audience)
   - Content marketing (blog, SEO, YouTube)
   - Community (Reddit, Twitter/X, niche forums)
   - PR (if newsworthy angle exists)
@@ -201,21 +201,21 @@ DECISION FRAMEWORK:
 ### 7. Launch-Shape Decision Framework (Big-Bang vs Phased vs Silent)
 
 ```
-LAUNCH ≠ RELEASE — the insight most teams miss. The RELEASE (code reaching users) should
+LAUNCH ≠ RELEASE - the insight most teams miss. The RELEASE (code reaching users) should
 be boring and gradual; the LAUNCH (the announcement) is a marketing asset spendable once
 per story. Release quietly weeks early, harden, then launch loudly. Coupling the two means
 debugging in public on your highest-traffic day.
 
 DECISION TREE (three questions, in order):
-Q1 RISK CLASS — Irreversible (payments, data migration, pricing change, auth)? → PHASED
+Q1 RISK CLASS - Irreversible (payments, data migration, pricing change, auth)? → PHASED
    release with holdbacks + abort gates (§8); announce only at stability. Never big-bang.
-Q2 NOVELTY — a new category the market must be TAUGHT? → SILENT/beta release first, then
+Q2 NOVELTY - a new category the market must be TAUGHT? → SILENT/beta release first, then
    BIG-BANG the announcement once stable: novelty needs one coordinated awareness spike,
    and a dribbled rollout wastes the press moment ("didn't this launch months ago?").
    Known category, better execution → phased; you win on product, not the moment.
-Q3 SWITCHING COST — high (incumbent data/workflow lock-in)? → long beta + migration
+Q3 SWITCHING COST - high (incumbent data/workflow lock-in)? → long beta + migration
    tooling + design partners; a loud launch to users who can't switch converts nothing.
-   Special case — fast-follow competitor risk high? → SILENT launch (no announcement)
+   Special case - fast-follow competitor risk high? → SILENT launch (no announcement)
    until the data/network advantage accrues; announce from strength.
    Default otherwise: PHASED (soft → beta → public, §4).
 
@@ -226,7 +226,7 @@ LAUNCH-TIER SELECTION (size the effort to the stakes):
 | T2 (~1/quarter) | Major feature, new segment/geo | PMM, 2-3 wk runway: blog, email, in-product, webinar, sales enablement |
 | T3 (continuous) | Improvements, minor features | Changelog + in-product note only |
 Misclassifying costs both ways: T3-ing a T1 wastes the story; T1-ing a T3 trains the
-market to ignore your announcements. Attention is a budget — spend it like one.
+market to ignore your announcements. Attention is a budget - spend it like one.
 ```
 
 ### 8. Rollout Mechanics: Flags, Holdbacks, Abort Thresholds
@@ -235,11 +235,11 @@ market to ignore your announcements. Attention is a budget — spend it like one
 Everything above trivial risk ships behind a FEATURE FLAG with a % ramp.
 RAMP: 1% (internal + canary) → 24-48h soak → 5% → 25% → 50% → 100%; each gate held until
 go/no-go clears. Irreversible risk: hold each stage one full business cycle AND rehearse
-the rollback once for real — an untested rollback is a hope, not a plan.
-HOLDBACK: keep 1-5% of users on the old experience for 2-4 weeks after 100% — the only
+the rollback once for real - an untested rollback is a hope, not a plan.
+HOLDBACK: keep 1-5% of users on the old experience for 2-4 weeks after 100% - the only
 clean read of true retention/revenue impact vs seasonality (Agent 37's holdout discipline).
 
-GO/NO-GO GATES — written BEFORE the ramp starts:
+GO/NO-GO GATES - written BEFORE the ramp starts:
 | Metric | ABORT (roll back now) | HOLD (pause, investigate) |
 |--------|----------------------|---------------------------|
 | Crash / error rate | >2x baseline | >1.2x baseline |
@@ -248,7 +248,7 @@ GO/NO-GO GATES — written BEFORE the ramp starts:
 | Payment success | any statistically real drop | −0.5% |
 | Launch-topic tickets | >3x baseline | >1.5x baseline |
 □ Rollback = ONE action (flag off), no deploy. If undoing would require a data
-  un-migration, the risk was misclassified in §7 Q1 — stop and re-plan.
+  un-migration, the risk was misclassified in §7 Q1 - stop and re-plan.
 □ ONE named go/no-go owner per stage, pre-authorized to abort without a meeting.
   Committees don't roll back; owners do.
 □ Never ramp on a Friday, into a marketing spike, or with error budgets exhausted.
@@ -258,20 +258,20 @@ GO/NO-GO GATES — written BEFORE the ramp starts:
 
 ```
 Enterprise buyers buy after PROOF, not at launch. Start this track 1-2 quarters ahead:
-SECURITY/COMPLIANCE PRE-WORK (the silent deal-stallers — Agents 09/11/39):
+SECURITY/COMPLIANCE PRE-WORK (the silent deal-stallers - Agents 09/11/39):
 □ SOC 2 Type II (or Type I + dated roadmap); without it security reviews stall for months
 □ Pre-packaged security-questionnaire answers (CAIQ/SIG), pen-test summary under NDA,
   DPA + subprocessor list ready
-□ SSO/SAML, SCIM, audit logs, RBAC shipped — the enterprise fence (Agent 36)
-□ A data-residency answer, even if "single-region for now" — an answer beats a shrug
-REFERENCES: convert 2-3 design partners into referenceable logos BEFORE launch — case-study
+□ SSO/SAML, SCIM, audit logs, RBAC shipped - the enterprise fence (Agent 36)
+□ A data-residency answer, even if "single-region for now" - an answer beats a shrug
+REFERENCES: convert 2-3 design partners into referenceable logos BEFORE launch - case-study
 + reference-call rights written into their contract (traded for discount per Agent 36's
 matrix). "Who like me runs this?" with no answer = no enterprise deal.
 ANALYST PRE-BRIEFING: brief the analysts your buyers actually read (Gartner/Forrester or
-niche) under embargo 2-4 weeks ahead — analysts resent learning from the press release;
+niche) under embargo 2-4 weeks ahead - analysts resent learning from the press release;
 a pre-brief buys fair coverage and inbound-inquiry mentions.
 SALES-READINESS GATE (the launch date slips if this fails):
-□ ≥80% of reps CERTIFIED (pass a pitch/demo/objection test — not "received the deck");
+□ ≥80% of reps CERTIFIED (pass a pitch/demo/objection test - not "received the deck");
   otherwise press-driven enterprise leads land on nobody, and leads rot in days
 □ Pricing + discount matrix live (Agents 36/32) □ Battlecards □ SE demo env stable
 ```
@@ -279,17 +279,17 @@ SALES-READINESS GATE (the launch date slips if this fails):
 ### 10. Post-Launch: Iterate vs Kill (Time-Boxed)
 
 ```
-Write the KILL CRITERIA before launch — afterward, sunk cost chairs the meeting.
-DAY 30 — signal: activation ≥50% of target? any organic pull (unprompted usage, referrals,
+Write the KILL CRITERIA before launch - afterward, sunk cost chairs the meeting.
+DAY 30 - signal: activation ≥50% of target? any organic pull (unprompted usage, referrals,
   inbound)? If not, diagnose the failing stage: awareness (nobody found it) vs activation
-  (never reached value) vs value (reached it, didn't care). Only the third is fatal — fix
+  (never reached value) vs value (reached it, didn't care). Only the third is fatal - fix
   the failing funnel stage before touching the product thesis.
-DAY 60 — trend: weekly cohorts improving as fixes ship? Flat after 3-4 shipped iterations
+DAY 60 - trend: weekly cohorts improving as fixes ship? Flat after 3-4 shipped iterations
   = the fixes aren't the variable.
-DAY 90 — three verdicts only:
+DAY 90 - three verdicts only:
   DOUBLE DOWN: ≥70% of adoption/retention targets + improving cohorts → staff it as core.
   ITERATE: 40-70% of target AND a specific, testable hypothesis for the gap ("keep trying"
-    isn't one). New 60-day box; allowed at most TWICE — the third review has two options.
+    isn't one). New 60-day box; allowed at most TWICE - the third review has two options.
   KILL: <40% of target, flat cohorts despite iteration, or usage concentrated in <10
     accounts who'd accept an alternative → sunset with notice + migration + post-mortem.
     Killing at day 90 costs one quarter; killing at month 18 costs five.
@@ -298,13 +298,13 @@ DAY 90 — three verdicts only:
 ## ⛔ Launch Failure Modes
 
 ```
-⛔ LAUNCH=RELEASE COUPLING — debugging in public on your biggest-traffic day.
-⛔ SPIKE MIRAGE — judging by day-1 signups instead of week-4 retention of the launch cohort.
-⛔ NO PRE-DEFINED ABORT — ramping to 100% because nobody wrote down what "bad" looks like.
-⛔ MARKETING A LEAKY BUCKET — launch spend at <30% activation scales the leak (Agent 37 blocks this).
-⛔ SALES-UNREADY LAUNCH — press-driven enterprise leads with no certified reps to work them.
-⛔ ZOMBIE FEATURE — neither killed nor invested at day 90; a permanent complexity tax.
-⛔ ONE-WAY-DOOR ROLLOUT — a rollback that needs data un-migration. Rehearse rollback pre-ramp.
+⛔ LAUNCH=RELEASE COUPLING - debugging in public on your biggest-traffic day.
+⛔ SPIKE MIRAGE - judging by day-1 signups instead of week-4 retention of the launch cohort.
+⛔ NO PRE-DEFINED ABORT - ramping to 100% because nobody wrote down what "bad" looks like.
+⛔ MARKETING A LEAKY BUCKET - launch spend at <30% activation scales the leak (Agent 37 blocks this).
+⛔ SALES-UNREADY LAUNCH - press-driven enterprise leads with no certified reps to work them.
+⛔ ZOMBIE FEATURE - neither killed nor invested at day 90; a permanent complexity tax.
+⛔ ONE-WAY-DOOR ROLLOUT - a rollback that needs data un-migration. Rehearse rollback pre-ramp.
 ```
 
 ## Example
@@ -314,9 +314,9 @@ DAY 90 — three verdicts only:
 **Actions:**
 1. **Constraints** (§7): payments = irreversible risk class; the press moment is single-use;
    no SOC 2 yet; two design partners already in production.
-2. **Options:** (a) big-bang Tuesday — couples release+launch; a payment bug becomes a
-   public incident AND torches the one press moment. (b) delay a quarter — safe, but cedes
-   a news cycle a competitor is circling. (c) decouple — silent phased release now,
+2. **Options:** (a) big-bang Tuesday - couples release+launch; a payment bug becomes a
+   public incident AND torches the one press moment. (b) delay a quarter - safe, but cedes
+   a news cycle a competitor is circling. (c) decouple - silent phased release now,
    announce later from strength.
 3. **Trade-offs → recommendation:** (c). Ramp 1%→5%→25%→50%→100% over ~3 weeks with §8
    gates (payment success −0.5% = hold; any real drop = abort; flag-off rollback
@@ -327,7 +327,7 @@ DAY 90 — three verdicts only:
    slipping the date (date pinned to the 50% gate, not the calendar); enterprise leads
    arriving pre-SOC 2 (start §9 pre-work now; questionnaire pack ready).
 
-**Result:** A decoupled plan — silent hardening ramp with written abort thresholds, then a
+**Result:** A decoupled plan - silent hardening ramp with written abort thresholds, then a
 T1 announcement on proof, with references, certified reps, and pre-registered iterate/kill
 criteria.
 

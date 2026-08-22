@@ -3,7 +3,7 @@
 Repository structure validator for Product Architect.
 
 Checks that the repo's structure is internally consistent:
-  - counts agents and frameworks (dynamically — never hard-coded)
+  - counts agents and frameworks (dynamically - never hard-coded)
   - verifies agent files are numbered sequentially with no gaps (00..N)
   - verifies every agent/framework file is non-empty and has an H1 heading
   - cross-checks the agent/framework counts asserted in SKILL.md and README.md
@@ -64,7 +64,7 @@ def validate_agent_numbering():
     expected = list(range(min(numbers), max(numbers) + 1))
     missing = sorted(set(expected) - set(numbers))
     if missing:
-        errors.append(f"Gap in agent numbering — missing: {missing}")
+        errors.append(f"Gap in agent numbering - missing: {missing}")
     if min(numbers) != 0:
         warnings.append(f"Agent numbering starts at {min(numbers):02d}, expected 00.")
     return sorted(numbers)
@@ -102,13 +102,13 @@ def all_markdown_files():
 
 
 def check_code_fences(paths):
-    """Every ``` must be closed — an unbalanced fence silently swallows content."""
+    """Every ``` must be closed - an unbalanced fence silently swallows content."""
     for path in paths:
         with open(path, encoding="utf-8") as fh:
             count = sum(1 for line in fh if line.startswith("```"))
         if count % 2 != 0:
             rel = os.path.relpath(path, ROOT)
-            errors.append(f"Unbalanced code fences ({count}) in {rel} — every ``` must be closed.")
+            errors.append(f"Unbalanced code fences ({count}) in {rel} - every ``` must be closed.")
 
 
 # Markdown links to local .md targets. Skips URLs (http:, mailto:) and pure anchors.
@@ -116,7 +116,7 @@ LINK_RE = re.compile(r"\]\((?!https?:|mailto:|#)([^)\s#]+\.md)(?:#[^)\s]*)?\)")
 
 
 def check_internal_links(paths):
-    """Every relative link to a .md file must resolve — catches renames and typos."""
+    """Every relative link to a .md file must resolve - catches renames and typos."""
     for path in paths:
         with open(path, encoding="utf-8") as fh:
             content = fh.read()

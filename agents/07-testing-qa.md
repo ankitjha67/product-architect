@@ -73,7 +73,7 @@ PAYMENT TESTING (CRITICAL):
 □ Payment succeeds but webhook fails
 □ Webhook arrives before redirect (race condition)
 □ Webhook arrives twice (idempotency check)
-□ Partial payment (should be impossible — verify it is)
+□ Partial payment (should be impossible - verify it is)
 □ Refund: full, partial, to original method
 □ Refund when original payment method is invalid (card expired)
 □ Currency mismatch between order and payment
@@ -84,16 +84,16 @@ PAYMENT TESTING (CRITICAL):
 AUTHENTICATION TESTING:
 ━━━━━━━━━━━━━━━━━━━━━━
 □ Login with valid credentials
-□ Login with wrong password (1st, 2nd, 3rd, 4th, 5th attempt — lockout)
+□ Login with wrong password (1st, 2nd, 3rd, 4th, 5th attempt - lockout)
 □ Login with non-existent account
 □ Login with SQL injection payload as email
 □ Login with XSS payload as email
 □ Password reset with valid email → token received → reset works
 □ Password reset with expired token
 □ Password reset with already-used token
-□ Password reset — old password no longer works
-□ Session expiry — user is redirected gracefully, not shown error
-□ Concurrent sessions — login on device B, verify device A session status
+□ Password reset - old password no longer works
+□ Session expiry - user is redirected gracefully, not shown error
+□ Concurrent sessions - login on device B, verify device A session status
 □ OAuth: successful, cancelled by user, provider error, email mismatch
 
 SEARCH & FILTER TESTING:
@@ -198,7 +198,7 @@ FAILURE INJECTION SCENARIOS:
 
 ```
 □ Full screen reader navigation (VoiceOver iOS, TalkBack Android, NVDA web)
-□ Keyboard-only navigation (Tab, Enter, Escape, Arrow keys — no mouse)
+□ Keyboard-only navigation (Tab, Enter, Escape, Arrow keys - no mouse)
 □ Color contrast ratios (minimum 4.5:1 text, 3:1 large text, 3:1 UI components)
 □ Touch targets (minimum 44×44pt on mobile)
 □ Focus indicators visible on all interactive elements
@@ -220,17 +220,17 @@ RISK-BASED INVESTMENT MATRIX:
                     LOW IMPACT (cosmetic)      HIGH IMPACT (money/data/trust/legal)
 HIGH CHANGE FREQ    Smoke-level unit only      MAXIMUM: unit 100% + integration + E2E
 (weekly+ edits)                                + mutation testing (checkout, pricing)
-LOW CHANGE FREQ     Minimal — don't            Deep suite once, then freeze; contract
+LOW CHANGE FREQ     Minimal - don't            Deep suite once, then freeze; contract
 (quarterly edits)   gold-plate footer links    tests guard the boundary (tax calc, auth)
 
 GET THE DATA (don't guess the quadrant):
 □ Change frequency: git log --since="90 days" --name-only | sort | uniq -c | sort -rg
 □ Failure impact: ₹/hour of outage per module (from Agent 18) + incident history
-□ Defect density: bugs per module, last 6 months — hotspots predict hotspots
+□ Defect density: bugs per module, last 6 months - hotspots predict hotspots
 
-MUTATION TESTING — measures whether tests can FAIL (coverage only proves execution):
+MUTATION TESTING - measures whether tests can FAIL (coverage only proves execution):
 □ Tools: Stryker (JS/TS), mutmut (Python), PIT (Java)
-□ Scope: high-impact modules only (payment/auth/pricing) — full-codebase runs are too slow
+□ Scope: high-impact modules only (payment/auth/pricing) - full-codebase runs are too slow
 □ Thresholds: ≥80% mutation score on payment/auth; ≥60% on other critical paths
 □ 95% line coverage + 40% mutation score = assertion-free "coverage theater"
 
@@ -241,11 +241,11 @@ e.g. 2% flake × 100 runs/day × 15 min ≈ 30 eng-hours/week wasted
   (removed from merge-blocking, ticket auto-filed, owner assigned)
 □ Quarantine SLA: fix or delete within 14 days; > 30 days quarantined → delete it
 □ Budget: quarantined tests < 2% of suite; retry-passes < 1% of runs (Google has
-  reported ~16% of tests showing some flakiness — unmanaged, this compounds)
-□ NEVER blanket-retry the whole suite — it hides real race conditions users will hit
+  reported ~16% of tests showing some flakiness - unmanaged, this compounds)
+□ NEVER blanket-retry the whole suite - it hides real race conditions users will hit
 
 ⚠️ WHAT EVERYONE GETS WRONG: a uniform global coverage bar ("90% everywhere").
-Coverage is an input, not quality. The right target is asymmetric — 100% on the 5%
+Coverage is an input, not quality. The right target is asymmetric - 100% on the 5%
 of code that moves money or data, deliberate under-testing of stable low-impact code.
 Uniform bars make teams test getters and skip the payment race condition.
 ```
@@ -267,9 +267,9 @@ waive it in a hurry, it's a suggestion.
 | Flake budget | Quarantine list < 2% of suite | Weekly review | QA Director |
 
 RULES:
-□ Gate on the DELTA, not the absolute — legacy debt shouldn't block today's PR,
+□ Gate on the DELTA, not the absolute - legacy debt shouldn't block today's PR,
   but no PR may make things worse
-□ Every waiver logged with who/why/expiry — waivers without expiry become the norm
+□ Every waiver logged with who/why/expiry - waivers without expiry become the norm
 □ Budgets versioned in-repo (budgets.json); changing a threshold is a reviewed PR
 ```
 
@@ -277,7 +277,7 @@ RULES:
 
 ```
 COMPLIANCE-DRIVEN TEST EVIDENCE (SOC 2, ISO 27001, PCI-DSS, HIPAA, RBI/IRDAI audits):
-A test that ran but left no evidence didn't happen — auditors need artifacts.
+A test that ran but left no evidence didn't happen - auditors need artifacts.
 □ Immutable run records: suite version, commit SHA, environment, results, timestamp
 □ Signed-off release test reports retained ≥ 3 years (retention per Agent 11's regime)
 □ Segregation of duties: code author cannot be sole approver of its test evidence
@@ -288,32 +288,32 @@ TRACEABILITY MATRIX (requirement → test → result):
 |--------|-------------|--------------|------|----------|--------|
 | PRD-4.2 | Refund ≤ original amount | TC-201..204 | Unit+Int | <SHA> | PASS |
 □ Every PRD "shall" (Agent 04) maps to ≥ 1 test; orphan requirements = untested scope
-□ Reverse check: tests with no requirement = undocumented behavior — document or delete
-□ Auto-generate from test annotations (@req:PRD-4.2) — hand-maintained matrices rot in weeks
+□ Reverse check: tests with no requirement = undocumented behavior - document or delete
+□ Auto-generate from test annotations (@req:PRD-4.2) - hand-maintained matrices rot in weeks
 
 PERFORMANCE SLO VERIFICATION (with Agent 08):
 □ Every SLO in the error-budget policy has a load test verifying it PRE-release, at 2×
-  expected peak (capacity math: Agent 08 §8) — SLO regression in staging = release blocker
+  expected peak (capacity math: Agent 08 §8) - SLO regression in staging = release blocker
 
 ACCESSIBILITY: AUTOMATION vs MANUAL SPLIT:
 □ Automated (axe-core, Lighthouse, Pa11y) catches ~30-40% of WCAG issues (contrast,
   labels, ARIA misuse) → run per-PR via the gate above
 □ Manual-only (~60-70%): screen-reader task completion, focus order, alt-text quality →
   per-release on critical flows + quarterly full audit
-□ Enterprise buyers ask for a VPAT/ACR — produce and version one (EAA 2025: Agent 10 §3)
+□ Enterprise buyers ask for a VPAT/ACR - produce and version one (EAA 2025: Agent 10 §3)
 ```
 
 ## Failure Modes (⛔)
 
 ```
-⛔ COVERAGE THEATER: high line coverage, no assertions — mutation testing exposes it
+⛔ COVERAGE THEATER: high line coverage, no assertions - mutation testing exposes it
 ⛔ INVERTED PYRAMID: 500 E2E tests, 50 unit tests → 2-hour flaky pipeline nobody trusts
-⛔ RETRY CULTURE: auto-retry masks race conditions until they ship — quarantine, don't retry
+⛔ RETRY CULTURE: auto-retry masks race conditions until they ship - quarantine, don't retry
 ⛔ STAGING DRIFT: tests pass against a staging that no longer resembles prod (data/config/scale)
 ⛔ FROZEN SUITE: tests never deleted; suite time grows 20%/quarter until devs skip it locally
-⛔ QA AS PHASE: testing "after dev complete" — gates must live in the PR, not a stage
+⛔ QA AS PHASE: testing "after dev complete" - gates must live in the PR, not a stage
 ⛔ MOCKED INTO FICTION: every integration mocked → green suite, broken prod (contract tests fix this)
-⛔ NO PROD VERIFICATION: zero synthetic monitoring — staging-only confidence (with Agent 08)
+⛔ NO PROD VERIFICATION: zero synthetic monitoring - staging-only confidence (with Agent 08)
 ```
 
 ## Test Automation Strategy
@@ -336,15 +336,15 @@ CI/CD INTEGRATION:
 1. CONSTRAINTS: 2 engineers × 6 weeks ≈ 480 hours. Modules: payments (Razorpay), auth,
    catalog, search, reviews. Zero existing automation.
 2. OPTIONS: (a) broad manual regression over everything; (b) automate E2E for all flows;
-   (c) risk-based split — automate money/auth paths deeply, exploratory-test the rest.
+   (c) risk-based split - automate money/auth paths deeply, exploratory-test the rest.
 3. TRADE-OFFS: (a) leaves no reusable asset and decays instantly; (b) E2E-first is slow
-   and flaky — ~10 flows max in 6 weeks, weakest at catching logic bugs; (c) accepts
+   and flaky - ~10 flows max in 6 weeks, weakest at catching logic bugs; (c) accepts
    possible cosmetic bugs in reviews/catalog but protects every revenue path.
 4. RECOMMENDATION: (c). Allocation: 180h unit+integration on payment/auth (100% coverage,
    mutation ≥ 80%), 120h E2E on 5 critical flows (signup → checkout → refund), 80h CI
    quality-gate wiring (§10), 60h exploratory on the rest, 40h load test at 2× peak.
 5. RISKS / REVERSAL: if exploratory finds > 3 severe bugs in an "under-tested" module, the
-   matrix mis-scored it — re-rank and move budget. If flake rate > 2% by week 4, pause new
+   matrix mis-scored it - re-rank and move budget. If flake rate > 2% by week 4, pause new
    E2E and stabilize first.
 
 **Result:** A risk-ranked plan with hour allocations, merge-blocking gates live in CI, and

@@ -16,15 +16,15 @@ vacation, changes roles, or leaves. This framework prevents that.
 ## 1. The Three Layers of Context
 
 ```
-LAYER 1 — DECISION MEMORY (already exists in KDR system)
+LAYER 1 - DECISION MEMORY (already exists in KDR system)
 What was decided, when, by whom, with what alternatives considered.
 
-LAYER 2 — INSTITUTIONAL MEMORY (this framework adds)
+LAYER 2 - INSTITUTIONAL MEMORY (this framework adds)
 WHY decisions were made. What alternatives were rejected and why.
 What context existed at the time that made this the right call.
 What changed since then that might make it worth revisiting.
 
-LAYER 3 — PEOPLE & TEAM MEMORY
+LAYER 3 - PEOPLE & TEAM MEMORY
 Who has expertise in what. Who has relationships with whom.
 How each person prefers to communicate. What motivates them.
 What's on each person's plate right now. Who's overloaded.
@@ -60,14 +60,14 @@ ALTERNATIVES CONSIDERED:
 DECIDING FACTORS:
 - Primary: [The one thing that tipped the decision]
 - Secondary: [Other factors that supported it]
-- Dissent: [Who disagreed and why — recorded respectfully]
+- Dissent: [Who disagreed and why - recorded respectfully]
 
 REVISIT TRIGGERS (when should we reconsider this decision?):
 □ If [assumption] turns out to be false
 □ If team size exceeds [X]
 □ If monthly spend on this exceeds [₹X]
 □ If a competitor does [Y]
-□ Scheduled review: [Date — typically 6 or 12 months]
+□ Scheduled review: [Date - typically 6 or 12 months]
 
 LINKED DECISIONS: [Other decisions that depend on this one]
 Example: "Our choice of PostgreSQL (DAR-007) affects DAR-012 (data pipeline)
@@ -116,15 +116,15 @@ Communication:
 □ Preferred channel: [Slack DM / Email / In-person / Video call]
 □ Response time expectation: [Instant / Within 2 hours / Within 24 hours]
 □ Best time for deep work: [Morning / Afternoon / Late night]
-□ Meeting preference: [Love meetings / Tolerate meetings / Hate meetings — async first]
+□ Meeting preference: [Love meetings / Tolerate meetings / Hate meetings - async first]
 □ Feedback style: [Direct and blunt / Gentle with context / Written over verbal]
 
 Working patterns:
 □ Peak productivity hours: [e.g., 10 AM - 1 PM]
 □ Do not disturb hours: [e.g., before 10 AM, after 7 PM]
 □ Working days: [Mon-Fri / Flexible / Compressed 4-day week]
-□ Location: [Office / Remote / Hybrid — which days in office]
-□ Timezone: [IST / EST / CET — matters for distributed teams]
+□ Location: [Office / Remote / Hybrid - which days in office]
+□ Timezone: [IST / EST / CET - matters for distributed teams]
 
 Decision-making:
 □ How I process decisions: [Quick gut + iterate / Need data first / Sleep on it]
@@ -139,7 +139,7 @@ Context for managers:
 □ What I wish my manager knew: [X]
 
 UPDATE CADENCE: Quarterly, or when something changes significantly.
-STORAGE: Internal wiki (Notion, Confluence) — private to the team.
+STORAGE: Internal wiki (Notion, Confluence) - private to the team.
 RULE: This is voluntary and never used in performance reviews.
 ```
 
@@ -192,7 +192,7 @@ TOOL EVALUATION CRITERIA (before adding any new tool):
 ## 6. Context Handoff Protocol
 
 ```
-PURPOSE: When someone goes on vacation, changes roles, or leaves —
+PURPOSE: When someone goes on vacation, changes roles, or leaves -
 their context transfers completely, not partially.
 
 VACATION HANDOFF (>3 days away):
@@ -205,16 +205,16 @@ VACATION HANDOFF (>3 days away):
 
 ROLE CHANGE HANDOFF (2-4 weeks):
 □ Week 1: Document all recurring responsibilities with how-tos
-□ Week 2: Shadow sessions — successor watches, asks questions
-□ Week 3: Reverse shadow — successor does, predecessor watches and advises
+□ Week 2: Shadow sessions - successor watches, asks questions
+□ Week 3: Reverse shadow - successor does, predecessor watches and advises
 □ Week 4: Successor operates independently, predecessor available for questions
 □ Create: "If you're ever stuck, here's what I'd do" cheat sheet
 □ Transfer: All relevant tool access, document ownership, meeting invites
 
-EXIT HANDOFF (resignation/termination — see Agent 22):
+EXIT HANDOFF (resignation/termination - see Agent 22):
 □ Everything in Role Change PLUS:
 □ Write DARs for any undocumented significant decisions
-□ Update the Team Knowledge Map — who takes over each domain?
+□ Update the Team Knowledge Map - who takes over each domain?
 □ Record a 30-min "brain dump" video: Things that aren't written down anywhere
 □ Introduce successor to key external contacts (vendors, partners, customers)
 □ Ensure all code/docs are in shared repos, not personal accounts
@@ -229,10 +229,10 @@ The enhanced KDR adds: Context, alternatives, triggers, linked decisions.
 ENHANCED KDR FORMAT:
 
 ╔══════════════════════════════════════════════════╗
-║ KDR: [PRODUCT NAME] — PHASE [X] COMPLETE        ║
+║ KDR: [PRODUCT NAME] - PHASE [X] COMPLETE        ║
 ╠══════════════════════════════════════════════════╣
 ║                                                  ║
-║ [Standard KDR fields — same as SMART-LOADER.md]  ║
+║ [Standard KDR fields - same as SMART-LOADER.md]  ║
 ║                                                  ║
 ║ ─── ENHANCED CONTEXT (new) ───                   ║
 ║                                                  ║
@@ -247,8 +247,8 @@ ENHANCED KDR FORMAT:
 ║ • [Question that needs expert input]             ║
 ║                                                  ║
 ║ ASSUMPTIONS TO VALIDATE:                         ║
-║ • [Assumption #1] — validate by [method] by [date]║
-║ • [Assumption #2] — validate by [method] by [date]║
+║ • [Assumption #1] - validate by [method] by [date]║
+║ • [Assumption #2] - validate by [method] by [date]║
 ║                                                  ║
 ║ TEAM CONTEXT:                                    ║
 ║ • Who was involved: [Names/roles]                ║

@@ -7,7 +7,7 @@
 ## Role
 You are the Chief Compliance Officer, Chief Ethics Officer, and DPO (Data Protection Officer)
 combined into one relentless guardian. You build the policy infrastructure that acts as the
-organization's immune system — preventing breaches, harassment, fraud, corruption, and every
+organization's immune system - preventing breaches, harassment, fraud, corruption, and every
 form of organizational failure before it happens. When prevention fails, you ensure detection
 is immediate and response is decisive.
 
@@ -48,7 +48,7 @@ REVIEW CYCLE: [Annual/Bi-annual/Trigger-based]
 APPLICABILITY: [All employees / Specific roles / Contractors / Board]
 PENALTY FOR VIOLATION: [Warning / PIP / Termination / Legal action]
 RELATED REGULATIONS: [Act/Law this policy implements]
-TRAINING REQUIRED: [Yes/No — if yes, frequency]
+TRAINING REQUIRED: [Yes/No - if yes, frequency]
 ACKNOWLEDGMENT: [All covered persons must sign/e-sign annually]
 ```
 
@@ -63,7 +63,7 @@ PURPOSE: Defines how every person in the organization is expected to behave.
 This is the constitution. Everything else flows from this.
 
 COVERS:
-□ Integrity & honesty: Never lie, deceive, or mislead — internally or externally
+□ Integrity & honesty: Never lie, deceive, or mislead - internally or externally
 □ Respect & dignity: Treat every person with respect regardless of position, background, identity
 □ Fairness: No favoritism, no nepotism, no discrimination in any decision
 □ Accountability: Own your mistakes. Report problems. Never cover up.
@@ -84,7 +84,7 @@ REPORTING MECHANISM:
 - Manager (first point of contact for most concerns)
 - HR (for people-related issues)
 - Compliance Officer (for regulatory/ethical issues)
-- Whistleblower hotline (anonymous, protected — see POL-FOUND-003)
+- Whistleblower hotline (anonymous, protected - see POL-FOUND-003)
 - Board Audit Committee (for concerns about senior leadership)
 
 ENFORCEMENT:
@@ -100,8 +100,8 @@ TRAINING: Mandatory within 30 days of joining, annual refresher (1 hour)
 ### POL-FOUND-002: Anti-Harassment & Prevention of Sexual Harassment (POSH)
 
 ```
-PURPOSE: Zero tolerance for harassment of any kind — sexual, verbal, physical,
-psychological, cyber — in the workplace, work events, work communications, or any
+PURPOSE: Zero tolerance for harassment of any kind - sexual, verbal, physical,
+psychological, cyber - in the workplace, work events, work communications, or any
 context connected to employment.
 
 LEGAL BASIS:
@@ -121,7 +121,7 @@ DEFINITION OF HARASSMENT:
 □ Cyber harassment: Offensive messages, sharing inappropriate content,
   online stalking, non-consensual sharing of private information
 
-INTERNAL COMPLAINTS COMMITTEE (ICC) — mandatory in India for ≥10 employees:
+INTERNAL COMPLAINTS COMMITTEE (ICC) - mandatory in India for ≥10 employees:
 □ Presiding Officer: Senior woman employee
 □ Members: 2 employees committed to women's causes
 □ External Member: From NGO/legal background familiar with sexual harassment issues
@@ -141,13 +141,13 @@ COMPLAINT PROCESS:
 3. INVESTIGATE: ICC completes investigation within 90 days
    - Both parties heard separately with fair opportunity to present evidence
    - Witnesses interviewed confidentially
-   - All proceedings confidential — identity not disclosed
+   - All proceedings confidential - identity not disclosed
    - NO retaliation tolerated at any stage (itself a terminable offense)
 
 4. FINDINGS: ICC submits report within 10 days of completing inquiry
    - If harassment proven: Recommend action (warning to termination to legal)
    - If not proven: No adverse action against either party if complaint was in good faith
-   - If complaint found malicious/false: Action against complainant (but high threshold — doubt favors complainant)
+   - If complaint found malicious/false: Action against complainant (but high threshold - doubt favors complainant)
 
 5. ACTION: Employer acts on ICC recommendation within 60 days
    - Actions may include: Written apology, warning, transfer, termination,
@@ -164,7 +164,7 @@ ZERO TOLERANCE COMMITMENT:
 - Applies to ALL employees, contractors, visitors, vendors, clients
 - Applies at office, remote work, business travel, company events, online spaces
 - Power dynamics are an AGGRAVATING factor, not a mitigating one
-- "They didn't intend it as harassment" is NOT a defense — impact matters, not intent
+- "They didn't intend it as harassment" is NOT a defense - impact matters, not intent
 ```
 
 ### POL-FOUND-003: Whistleblower Protection & Vigil Mechanism
@@ -190,7 +190,7 @@ WHAT CAN BE REPORTED:
 □ Retaliation against another whistleblower
 □ Any conduct that violates the Code of Conduct or law
 
-REPORTING CHANNELS (multiple channels — reporter chooses):
+REPORTING CHANNELS (multiple channels - reporter chooses):
 1. Direct to manager (if comfortable and manager is not involved)
 2. HR department
 3. Compliance Officer (email, phone, in-person)
@@ -207,7 +207,7 @@ ANONYMITY & CONFIDENTIALITY:
 
 INVESTIGATION PROCESS:
 1. Report received → Logged in secure system → Acknowledge within 48 hours
-2. Preliminary assessment: Within 5 business days — is this a genuine concern?
+2. Preliminary assessment: Within 5 business days - is this a genuine concern?
 3. If yes → Full investigation by Compliance Officer or external investigator
 4. Investigation completed within 45 days (extendable with Audit Committee approval)
 5. Findings reported to Audit Committee
@@ -221,7 +221,7 @@ ANTI-RETALIATION PROTECTION:
   - Exclusion from meetings, projects, or opportunities
   - Hostile behavior, shunning, or intimidation
   - Threats (direct or implied)
-⛔ Retaliation is a SEPARATELY TERMINABLE offense — even if the original report is unsubstantiated
+⛔ Retaliation is a SEPARATELY TERMINABLE offense - even if the original report is unsubstantiated
 ⛔ Any person found retaliating: Immediate suspension pending investigation, termination if confirmed
 
 PROTECTION MONITORING:
@@ -245,7 +245,7 @@ ACCESS CONTROL:
 □ Principle of least privilege: Access only what's needed for your role
 □ Role-based access control (RBAC) for all systems
 □ Access provisioning: Approved by manager, implemented by IT, logged
-□ Access review: Quarterly — remove access no longer needed
+□ Access review: Quarterly - remove access no longer needed
 □ Termination: All access revoked within 1 hour of exit notification
 □ Shared accounts: PROHIBITED (every action must be attributable to a person)
 □ Admin/root access: Restricted to SRE team, requires MFA + justification logging
@@ -271,17 +271,17 @@ NETWORK SECURITY:
 □ Firewall: Deny-by-default, allowlist specific traffic
 
 DATA CLASSIFICATION:
-□ Public: Marketing content, public documentation — no restrictions
-□ Internal: Company strategy, financials, internal comms — NDA required
-□ Confidential: Customer PII, employee data, source code — encryption + access control
-□ Restricted: Passwords, API keys, payment data, health data — encryption + audit trail + need-to-know
+□ Public: Marketing content, public documentation - no restrictions
+□ Internal: Company strategy, financials, internal comms - NDA required
+□ Confidential: Customer PII, employee data, source code - encryption + access control
+□ Restricted: Passwords, API keys, payment data, health data - encryption + audit trail + need-to-know
 
 INCIDENT REPORTING:
-□ EVERY security incident reported within 1 hour — no exceptions
+□ EVERY security incident reported within 1 hour - no exceptions
 □ Report to: security@company.com or Slack #security-incidents
 □ Examples of incidents: Suspected phishing, lost device, unauthorized access,
   data sent to wrong recipient, suspicious software, social engineering attempt
-□ NO penalty for reporting in good faith — even if the reporter caused the incident
+□ NO penalty for reporting in good faith - even if the reporter caused the incident
 ```
 
 ### POL-SEC-002: Data Protection & Privacy Policy (Internal)
@@ -321,7 +321,7 @@ DATA SUBJECT RIGHTS HANDLING:
 
 PROCESS FOR DATA SUBJECT REQUESTS:
 1. Request received (email/form/support) → Logged in DSR tracker
-2. Identity verification (within 3 days — can't give data to wrong person)
+2. Identity verification (within 3 days - can't give data to wrong person)
 3. Scope assessment (what data, what right, any exceptions)
 4. Fulfillment (within 30 days)
 5. Response to requester with data/confirmation
@@ -366,15 +366,15 @@ in every country we operate.
 
 LEGAL BASIS:
 - India: Prevention of Corruption Act 1988 (as amended 2018)
-- US: Foreign Corrupt Practices Act (FCPA) — applies to any company with US connection
-- UK: Bribery Act 2010 — applies to any company with UK connection (broadest scope)
+- US: Foreign Corrupt Practices Act (FCPA) - applies to any company with US connection
+- UK: Bribery Act 2010 - applies to any company with UK connection (broadest scope)
 - Global: UN Convention Against Corruption
 
 PROHIBITED:
 ⛔ Paying or offering to pay any government official, political party, or candidate to:
    obtain or retain business, influence decisions, secure permits/licenses, expedite processes
 ⛔ Receiving or soliciting any payment or benefit to influence a business decision
-⛔ Making facilitation payments ("speed money") — prohibited even where locally common
+⛔ Making facilitation payments ("speed money") - prohibited even where locally common
 ⛔ Using intermediaries, agents, or consultants to make payments you cannot make directly
 ⛔ Making charitable donations or political contributions to improperly influence anyone
 ⛔ Providing lavish gifts or entertainment beyond reasonable business courtesy
@@ -401,7 +401,7 @@ DUE DILIGENCE ON THIRD PARTIES:
 □ Annual re-screening of all active third parties
 
 TRAINING: All employees within 30 days of joining, annual refresher
-SPECIAL TRAINING: Sales, BD, procurement, finance teams — enhanced training annually
+SPECIAL TRAINING: Sales, BD, procurement, finance teams - enhanced training annually
 ```
 
 ### POL-ETHICS-002: Conflict of Interest Policy
@@ -520,7 +520,7 @@ AUDIT: All authorization decisions logged, monthly sample audit by Internal Audi
 
 ```
 PURPOSE: Ensure records are kept for the required period and destroyed when
-no longer needed — both for compliance and to minimize data liability.
+no longer needed - both for compliance and to minimize data liability.
 
 RETENTION SCHEDULE:
 | Record Category | Retention | Basis |
@@ -624,8 +624,8 @@ MONITORING NOTICE:
 ### POL-PEOPLE-001: Anti-Discrimination & Equal Opportunity
 
 ```
-PURPOSE: Every employment decision — hiring, promotion, compensation, assignment,
-training, termination — based on merit, qualifications, and performance.
+PURPOSE: Every employment decision - hiring, promotion, compensation, assignment,
+training, termination - based on merit, qualifications, and performance.
 
 PROTECTED CHARACTERISTICS (non-discrimination basis):
 □ Race, color, ethnicity, national origin
@@ -641,7 +641,7 @@ PROTECTED CHARACTERISTICS (non-discrimination basis):
 □ Any other characteristic protected by applicable law
 
 SPECIFIC COMMITMENTS:
-□ Equal pay for equal work — audited annually by role, level, and demographics
+□ Equal pay for equal work - audited annually by role, level, and demographics
 □ Reasonable accommodations for disabilities (physical workspace, tools, schedule)
 □ Religious accommodations (prayer time, dietary needs, holiday flexibility)
 □ Inclusive language in all company communications and job postings
@@ -663,7 +663,7 @@ PERSONAL SOCIAL MEDIA:
 □ Do NOT speak on behalf of the company unless authorized by Communications team
 □ Do NOT disparage customers, partners, competitors, or colleagues
 □ Do NOT share screenshots of internal tools, Slack conversations, or internal documents
-□ Use good judgment — if you wouldn't say it in front of the CEO and a journalist, don't post it
+□ Use good judgment - if you wouldn't say it in front of the CEO and a journalist, don't post it
 
 OFFICIAL COMPANY SOCIAL MEDIA:
 □ Only authorized personnel post on company accounts
@@ -716,14 +716,14 @@ OUTPUT:
 PURPOSE: Independent, objective assurance that controls are working.
 
 AUDIT PLAN (annual, approved by Audit Committee):
-□ Financial controls audit (annual — mandatory for companies requiring statutory audit)
+□ Financial controls audit (annual - mandatory for companies requiring statutory audit)
 □ IT security audit (annual)
 □ Data protection audit (annual)
 □ Process compliance audit (select 3-4 processes per year)
 □ Vendor compliance audit (sample of Critical/High vendors)
 □ Expense audit (quarterly random sampling)
 □ Access rights audit (bi-annual)
-□ Policy compliance audit (annual — are policies being followed?)
+□ Policy compliance audit (annual - are policies being followed?)
 
 SURPRISE AUDITS:
 □ Unannounced audits: At least 2 per year on random processes/departments
@@ -767,7 +767,7 @@ POLICY VERSIONING:
 □ Employees re-acknowledge when material changes are made
 
 POLICY REPOSITORY:
-□ Central location: Company intranet / Notion / Confluence — searchable, categorized
+□ Central location: Company intranet / Notion / Confluence - searchable, categorized
 □ Every policy has: Owner, version, effective date, review date, related training
 □ Employees can find any policy in < 2 minutes
 □ New hires introduced to policy repository on Day 1

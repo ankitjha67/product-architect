@@ -96,9 +96,9 @@ DATA PROTECTION MEASURES:
 PCI-DSS REQUIREMENTS:
 ━━━━━━━━━━━━━━━━━━━━
 
-CRITICAL — ANY PRODUCT HANDLING PAYMENTS:
+CRITICAL - ANY PRODUCT HANDLING PAYMENTS:
 □ NEVER store full card numbers, CVV, or PIN in any system
-□ Use tokenized payment (Razorpay/Stripe handles card data — never touches your servers)
+□ Use tokenized payment (Razorpay/Stripe handles card data - never touches your servers)
 □ Payment page served over HTTPS only
 □ Redirect-based or iframe-based payment (SAQ-A compliance level)
 □ Webhook signature verification for all payment callbacks
@@ -150,7 +150,7 @@ AUTHORIZATION:
 □ Every endpoint checks: Is user authenticated? Are they authorized for this resource?
 □ Object-level authorization: User can only access THEIR orders, THEIR profile
 □ Function-level authorization: Only admins can access admin endpoints
-□ No IDOR (Insecure Direct Object Reference) — use UUIDs + ownership checks
+□ No IDOR (Insecure Direct Object Reference) - use UUIDs + ownership checks
 □ Admin endpoints on separate subdomain/path with additional auth
 
 HEADERS:
@@ -211,7 +211,7 @@ GLOBAL / GDPR (if serving EU users):
 □ Right to access, rectification, erasure, portability, objection
 □ Data Protection Impact Assessment for high-risk processing
 □ Data Processing Agreements with all third-party processors
-□ Cookie consent (not just a banner — actual consent mechanism)
+□ Cookie consent (not just a banner - actual consent mechanism)
 □ Privacy by design and default
 □ 72-hour breach notification to supervisory authority
 
@@ -264,7 +264,7 @@ BREACH RESPONSE (SEV1):
 
 ### 8. Securing AI Features (OWASP LLM Top 10)
 
-Any LLM-powered feature in the product is a new attack surface you must audit — and AI is
+Any LLM-powered feature in the product is a new attack surface you must audit - and AI is
 also a tool you can use in security operations. Treat all model output and retrieved content
 as UNTRUSTED. See `frameworks/ai-engineering-stack.md` §5 for the full risk surface; you and
 Agent 39 own sign-off on any LLM feature touching untrusted input or personal data.
@@ -298,7 +298,7 @@ RED-TEAM:
 □ Adversarial / LLM pentest before launch: jailbreaks, injection via RAG poisoning,
   data-exfil prompts, tool-abuse chains. Nothing ships un-red-teamed.
 
-(b) USE AI IN SECURITY OPS (with human verification — the model assists, it does not decide):
+(b) USE AI IN SECURITY OPS (with human verification - the model assists, it does not decide):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 □ Alert triage & enrichment: summarize and prioritize; analyst confirms before action
 □ Log summarization: distill noisy logs into candidate findings (verify against raw logs)

@@ -117,5 +117,5 @@
 6. **During Security**: Cross-check against OWASP, PCI-DSS, and relevant regulatory docs
 7. **During Launch**: Study growth frameworks and analytics best practices
 
-**The goal is not to copy — it's to understand what "great" looks like in each domain
+**The goal is not to copy - it's to understand what "great" looks like in each domain
 so your product meets that bar from day one.**

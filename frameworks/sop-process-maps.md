@@ -54,19 +54,19 @@ PROCESS MAP:
      ├── YES → (Peer review, 24hr SLA) → (Revise if needed)
      └── NO  → continue
   → (Implement code)
-  → (Write unit tests — min 80% coverage) ⚡ Coverage gate in CI
+  → (Write unit tests - min 80% coverage) ⚡ Coverage gate in CI
   → (Self-review: lint, format, test pass) ⚡ Pre-commit hooks auto-run
   → (Open Pull Request) ⚡ PR template auto-populated
-  → ⏱️ (Code review — 24hr SLA for first review)
+  → ⏱️ (Code review - 24hr SLA for first review)
   → <Review approved?>
      ├── YES → continue
      └── NO  → (Address comments) → 🔁 Re-review
-  → ⚡ (CI/CD: lint + test + build + security scan — automated)
+  → ⚡ (CI/CD: lint + test + build + security scan - automated)
   → <CI passes?>
      ├── YES → (Merge to main)
      └── NO  → (Fix failures) → 🔁 Re-run CI
   → ⚡ (Auto-deploy to staging)
-  → (QA verification on staging — 48hr SLA)
+  → (QA verification on staging - 48hr SLA)
   → <QA passes?>
      ├── YES → (Mark as ready for production)
      └── NO  → (Bug filed, dev fixes, back to QA) → 🔁
@@ -97,12 +97,12 @@ INPUT: Bug report with reproduction steps, severity, affected users
 PROCESS MAP:
 [Bug reported] → ⚡ (Auto-triaged by severity keywords/error type)
   → ⏱️ <Severity?>
-     ├── SEV1 (Critical) → (Page on-call engineer — 15 min response)
+     ├── SEV1 (Critical) → (Page on-call engineer - 15 min response)
      │   → (War room opened) → (Hotfix branch created)
-     │   → (Fix implemented) → (Emergency code review — 1hr SLA)
-     │   → (Deploy direct to production — skip staging if needed)
+     │   → (Fix implemented) → (Emergency code review - 1hr SLA)
+     │   → (Deploy direct to production - skip staging if needed)
      │   → (Verify fix in production) → (Post-mortem within 72hrs)
-     ├── SEV2 (High) → (Assign to current sprint — 24hr response)
+     ├── SEV2 (High) → (Assign to current sprint - 24hr response)
      │   → (Standard dev flow: fix → test → review → deploy)
      ├── SEV3 (Medium) → (Add to next sprint backlog)
      └── SEV4 (Low) → (Add to backlog, prioritize in monthly grooming)
@@ -127,16 +127,16 @@ INPUT: Merged code, passing CI, QA sign-off
 
 PROCESS MAP:
 [Code merged to main]
-  → ⚡ (Build Docker image, tag with commit SHA — automated)
-  → ⚡ (Push to container registry — automated)
-  → ⚡ (Deploy to staging — automated)
-  → ⚡ (Run smoke tests on staging — automated)
+  → ⚡ (Build Docker image, tag with commit SHA - automated)
+  → ⚡ (Push to container registry - automated)
+  → ⚡ (Deploy to staging - automated)
+  → ⚡ (Run smoke tests on staging - automated)
   → <Smoke tests pass?>
-     ├── YES → (Deployment approval request — Slack/Teams)
+     ├── YES → (Deployment approval request - Slack/Teams)
      │   → <Tech lead approves?>
      │   │   ├── YES → continue
      │   │   └── NO  → (Investigate, fix, re-run) → 🔁
-     │   → ⚡ (Canary deploy — 5% traffic for 15 minutes)
+     │   → ⚡ (Canary deploy - 5% traffic for 15 minutes)
      │   → ⚡ (Automated health check: error rate, latency, business metrics)
      │   → <Health check passes?>
      │   │   ├── YES → ⚡ (Gradual rollout: 25% → 50% → 100% every 10 min)
@@ -144,7 +144,7 @@ PROCESS MAP:
      │   │        → ⛔ (Alert team, investigate failure)
      │   → ⚡ (Post-deploy smoke tests on production)
      │   → (Update deployment log)
-     │   → ⚡ (Slack notification: "Deployed vX.Y.Z — [changelog]")
+     │   → ⚡ (Slack notification: "Deployed vX.Y.Z - [changelog]")
      └── NO  → ⛔ (Block deploy, notify team, investigate)
   → [Deployment complete]
 
@@ -186,12 +186,12 @@ TRIGGER: Feature request received (user feedback, support ticket, internal idea,
 INPUT: Description of requested feature/change
 
 PROCESS MAP:
-[Request received] → ⚡ (Logged in feedback tool — Productboard/Canny/spreadsheet)
+[Request received] → ⚡ (Logged in feedback tool - Productboard/Canny/spreadsheet)
   → ⚡ (Auto-tagged by category, source, customer segment)
   → <Duplicate of existing request?>
      ├── YES → ⚡ (Merge, increment vote count)
      └── NO  → continue
-  → (Weekly feedback triage — PM reviews top requests by vote/frequency)
+  → (Weekly feedback triage - PM reviews top requests by vote/frequency)
   → (PM evaluates: problem validity, user impact, strategic alignment)
   → <Worth investigating?>
      ├── YES → (Add to discovery backlog)
@@ -220,13 +220,13 @@ INPUT: Roadmap, backlog, previous sprint retro, bug queue, stakeholder requests
 
 PROCESS:
   → (PM reviews roadmap priorities and upcoming milestones)
-  → (PM reviews bug queue — SEV1/2 bugs mandatory in sprint)
+  → (PM reviews bug queue - SEV1/2 bugs mandatory in sprint)
   → (PM drafts sprint proposal: features + bugs + tech debt allocation)
      Rule: 70% features, 20% bugs, 10% tech debt (adjust per phase)
-  → (Sprint planning meeting — PM + Engineering + Design, 60 min max)
+  → (Sprint planning meeting - PM + Engineering + Design, 60 min max)
      → (Review each ticket: scope, dependencies, estimate)
      → (Team capacity check: vacations, on-call, meetings)
-     → (Commit to sprint scope — never exceed 80% of capacity)
+     → (Commit to sprint scope - never exceed 80% of capacity)
   → (Sprint board updated with committed items) ⚡ Auto-populated from planning tool
   → ⚡ (Daily standup: 15 min, async-first option via Slack bot)
   → (Mid-sprint check: Are we on track? Any blockers?)
@@ -248,11 +248,11 @@ AUTOMATION:
 TRIGGER: Scheduled research (bi-weekly) or ad-hoc for specific feature validation
 PROCESS:
   → (Define research question and methodology)
-  → (Recruit participants — 5-8 per study) ⚡ Recruitment via panel tool (UserTesting, Respondent)
+  → (Recruit participants - 5-8 per study) ⚡ Recruitment via panel tool (UserTesting, Respondent)
   → (Prepare discussion guide / task list)
-  → (Conduct sessions — 30-45 min each, recorded with consent)
+  → (Conduct sessions - 30-45 min each, recorded with consent)
   → ⚡ (Transcript auto-generated by Otter.ai/Grain)
-  → (Synthesize findings — affinity mapping)
+  → (Synthesize findings - affinity mapping)
   → (Write research brief: insights, evidence, recommendations)
   → (Share with team in weekly product sync)
   → (Add insights to research repository) ⚡ Tagged and searchable
@@ -268,7 +268,7 @@ PROCESS:
   → (Design tokens documented: colors, spacing, typography, components used)
   → (All assets exported: icons as SVG, images optimized) ⚡ Figma auto-export
   → (Interactive prototype linked in Jira/Linear ticket)
-  → (Handoff meeting: Designer walks engineers through flows, interactions, edge cases — 30 min)
+  → (Handoff meeting: Designer walks engineers through flows, interactions, edge cases - 30 min)
   → (Engineer asks questions, designer documents answers in ticket)
   → (Design QA after implementation: Designer reviews build against specs)
   → <Matches design?>
@@ -295,7 +295,7 @@ PROCESS MAP:
 [Content slot due]
   → (Writer drafts content per brief) ⚡ Brief auto-generated from content calendar
   → (SEO optimization: keywords, meta description, internal links) ⚡ SurferSEO/Clearscope
-  → (Editor review — 24hr SLA)
+  → (Editor review - 24hr SLA)
   → <Approved?>
      ├── YES → continue
      └── NO  → (Revisions) → 🔁
@@ -380,12 +380,12 @@ PROCESS MAP:
 [Ticket created] → ⚡ (Auto-assigned to queue based on: channel, category, language, VIP status)
   → ⚡ (Auto-response: "We've received your request. Ticket #XXX. Expected response: X hours.")
   → ⚡ (AI auto-suggests resolution to agent based on similar past tickets)
-  → ⏱️ (Agent picks up ticket — SLA timer running)
+  → ⏱️ (Agent picks up ticket - SLA timer running)
      SLAs: Chat < 2 min, Email < 4 hr, WhatsApp < 1 hr, Social < 2 hr
   → (Agent diagnoses issue using knowledge base + internal tools)
   → <Can resolve at Tier 1?>
      ├── YES → (Resolve, document resolution, close ticket)
-     │   → ⚡ (Auto-send satisfaction survey — CSAT)
+     │   → ⚡ (Auto-send satisfaction survey - CSAT)
      └── NO  → (Escalate to Tier 2 with notes)
           → <Can resolve at Tier 2?>
           │   ├── YES → (Resolve, close)
@@ -415,7 +415,7 @@ PROCESS:
   → <Eligible per refund policy?>
      ├── YES → <Refund amount < ₹5,000?>
      │   │   ├── YES → (Agent processes directly) ⚡ One-click refund in admin
-     │   │   └── NO  → (Supervisor approval required — 4hr SLA)
+     │   │   └── NO  → (Supervisor approval required - 4hr SLA)
      │   → ⚡ (Refund initiated via payment gateway API)
      │   → ⚡ (Confirmation email/SMS sent to customer)
      │   → ⚡ (Refund logged in finance reconciliation system)
@@ -447,7 +447,7 @@ TIMELINE: Complete within 10 business days of month end
 PROCESS:
   Day 1-2:
   → ⚡ (Revenue recognition auto-calculated from billing system)
-  → ⚡ (Payment gateway reconciliation auto-run — match every transaction)
+  → ⚡ (Payment gateway reconciliation auto-run - match every transaction)
   → (Flag and investigate mismatches)
   → ⚡ (Expense categorization auto-suggested from transaction descriptions)
   → (Manual review of uncategorized or large expenses)
@@ -455,12 +455,12 @@ PROCESS:
   Day 3-5:
   → (Accounts payable: Verify all vendor invoices received and recorded)
   → (Accounts receivable: Verify all outstanding invoices, follow up on overdue)
-  → ⚡ (Payroll auto-processed — Keka/Darwinbox/Gusto)
-  → (Prepaid expense amortization — recognize monthly portion)
-  → (Depreciation entries — auto-calculated per asset register)
+  → ⚡ (Payroll auto-processed - Keka/Darwinbox/Gusto)
+  → (Prepaid expense amortization - recognize monthly portion)
+  → (Depreciation entries - auto-calculated per asset register)
 
   Day 6-8:
-  → ⚡ (Bank reconciliation — auto-matched via accounting software)
+  → ⚡ (Bank reconciliation - auto-matched via accounting software)
   → (Investigate unmatched transactions)
   → (Inter-company reconciliation if applicable)
   → (Review accruals and provisions)
@@ -492,8 +492,8 @@ PROCESS:
   → ⚡ (OCR auto-extracts: amount, vendor, date, category)
   → ⚡ (Auto-checked against expense policy: within limits? valid category? receipt attached?)
   → <Passes auto-check?>
-     ├── YES → ⚡ (Routed to manager for approval — push notification)
-     │   → ⏱️ (Manager approves/rejects — 48hr SLA)
+     ├── YES → ⚡ (Routed to manager for approval - push notification)
+     │   → ⏱️ (Manager approves/rejects - 48hr SLA)
      │   → <Approved?>
      │   │   ├── YES → ⚡ (Queued for next payroll cycle or direct reimbursement)
      │   │   └── NO  → (Rejection reason shared with employee)
@@ -529,12 +529,12 @@ PRE-JOINING (Day -14 to Day -1):
   → ⚡ (Slack: New hire intro auto-posted to team channel with photo and fun fact)
 
 DAY 1:
-  → (HR welcome: Culture values, policies, benefits walkthrough — 60 min)
-  → (IT setup: Laptop, accounts, 2FA, VPN — 30 min) ⚡ Pre-configured laptop image
+  → (HR welcome: Culture values, policies, benefits walkthrough - 60 min)
+  → (IT setup: Laptop, accounts, 2FA, VPN - 30 min) ⚡ Pre-configured laptop image
   → (Team introduction: Meet the team, office tour or virtual meet)
   → (Manager 1:1: Role expectations, 30-60-90 plan review, first task assignment)
   → (Buddy lunch/coffee: Informal welcome)
-  → (Product walkthrough: Guided demo of own product — 45 min)
+  → (Product walkthrough: Guided demo of own product - 45 min)
   → ⚡ (Onboarding checklist auto-tracked: each step marked complete in HRIS)
 
 WEEK 1:
@@ -575,8 +575,8 @@ TRIGGER: Employee requests leave
 PROCESS:
   → (Employee submits leave request via HRIS) ⚡ Mobile app or Slack bot
   → ⚡ (Auto-check: Leave balance, blackout dates, team coverage)
-  → ⚡ (Routed to manager — push notification)
-  → ⏱️ (Manager approves/rejects — 24hr SLA for planned, 4hr for emergency)
+  → ⚡ (Routed to manager - push notification)
+  → ⏱️ (Manager approves/rejects - 24hr SLA for planned, 4hr for emergency)
   → ⚡ (Calendar auto-updated, team notified, out-of-office auto-set)
   → ⚡ (Payroll auto-adjusted for unpaid leave)
   → [Leave processed]
@@ -589,14 +589,14 @@ AUTOMATION: Entire flow automated via HRIS (Keka/Darwinbox/BambooHR/Gusto)
 ```
 TRIGGER: Quarterly (check-in) / Annual (comprehensive)
 PROCESS:
-  → ⚡ (Review cycle kicked off in HRIS — auto-notifications to all participants)
+  → ⚡ (Review cycle kicked off in HRIS - auto-notifications to all participants)
   → (Employee writes self-assessment)
-  → (Peers submit 360 feedback — anonymized) ⚡ Auto-requested from system
+  → (Peers submit 360 feedback - anonymized) ⚡ Auto-requested from system
   → (Manager writes assessment based on goals, self-review, peer feedback)
   → (Calibration meeting: Managers align ratings across teams)
-  → (Manager delivers review in 1:1 — discuss performance, development, goals)
+  → (Manager delivers review in 1:1 - discuss performance, development, goals)
   → (Compensation adjustment recommendations submitted to HR)
-  → ⚡ (New goals set for next period — tracked in system)
+  → ⚡ (New goals set for next period - tracked in system)
   → ⚡ (Review documents auto-archived)
 
 AUTOMATION:
@@ -613,12 +613,12 @@ TRIGGER: Resignation submitted or termination decision made
 PROCESS:
   → (Manager acknowledges resignation, discusses last working day)
   → (HR initiates offboarding checklist) ⚡ Auto-triggered in HRIS
-  → (Knowledge transfer plan created — documented handover of all responsibilities)
-  → (Exit interview scheduled — HR, not manager) ⚡ Auto-scheduled
+  → (Knowledge transfer plan created - documented handover of all responsibilities)
+  → (Exit interview scheduled - HR, not manager) ⚡ Auto-scheduled
   → (IT access revocation scheduled for last day) ⚡ Auto-scheduled in IT system
   → (Final settlement calculation: salary, leave encashment, gratuity, ESOP status)
   → (Equipment return: laptop, access cards, any company property)
-  → ⚡ (Last day: All access revoked at EOD — email, Slack, GitHub, cloud, admin)
+  → ⚡ (Last day: All access revoked at EOD - email, Slack, GitHub, cloud, admin)
   → ⚡ (Final settlement processed within 30 days)
   → (Alumni network invitation sent)
   → [Exit complete]
@@ -638,15 +638,15 @@ AUTOMATION:
 
 ```
 [Order placed]
-  → ⚡ (Payment verified — auto-confirmed by gateway webhook)
-  → ⚡ (Order created in OMS — auto)
-  → ⚡ (Inventory reserved — auto)
-  → ⚡ (Warehouse notified — auto)
-  → (Picker picks items from shelf — guided by WMS)
+  → ⚡ (Payment verified - auto-confirmed by gateway webhook)
+  → ⚡ (Order created in OMS - auto)
+  → ⚡ (Inventory reserved - auto)
+  → ⚡ (Warehouse notified - auto)
+  → (Picker picks items from shelf - guided by WMS)
   → (Packer verifies items, packs with invoice + brand inserts)
   → (Quality check: Item matches order, packaging intact)
-  → ⚡ (Shipping label generated — auto from logistics partner API)
-  → ⚡ (Tracking number assigned, customer notified — auto email/SMS/WhatsApp)
+  → ⚡ (Shipping label generated - auto from logistics partner API)
+  → ⚡ (Tracking number assigned, customer notified - auto email/SMS/WhatsApp)
   → (Package handed to logistics partner)
   → ⚡ (Tracking updates auto-synced from logistics API)
   → (Delivery attempted)
@@ -699,9 +699,9 @@ PROCESS:
   → ⚡ (Auto-classified by type: vendor, customer, NDA, employment, partnership)
   → ⚡ (Standard contracts: Auto-compared against approved templates, deviations flagged)
   → ⏱️ <Contract type?>
-     ├── Standard (NDA, vendor <₹5L) → (Paralegal review — 48hr SLA)
-     ├── Significant (vendor >₹5L, customer, partner) → (Lawyer review — 5 day SLA)
-     └── Critical (>₹25L, strategic, M&A) → (GC review — 10 day SLA)
+     ├── Standard (NDA, vendor <₹5L) → (Paralegal review - 48hr SLA)
+     ├── Significant (vendor >₹5L, customer, partner) → (Lawyer review - 5 day SLA)
+     └── Critical (>₹25L, strategic, M&A) → (GC review - 10 day SLA)
   → (Review findings: Acceptable / Needs changes / Reject)
   → <Needs changes?>
      ├── YES → (Redlines shared with counterparty → Negotiate → Re-review) → 🔁
@@ -729,7 +729,7 @@ AUTOMATION:
 TRIGGER: Alert fires OR user reports issue OR monitoring detects anomaly
 
 [Alert fires]
-  → ⚡ (PagerDuty pages on-call engineer — 5 min to acknowledge)
+  → ⚡ (PagerDuty pages on-call engineer - 5 min to acknowledge)
   → ⏱️ (On-call acknowledges and begins investigation)
   → (Assess severity: SEV1/2/3/4 per severity matrix)
   → <SEV1 or SEV2?>
@@ -739,13 +739,13 @@ TRIGGER: Alert fires OR user reports issue OR monitoring detects anomaly
      │   → (Investigate → Identify root cause → Implement fix)
      │   → (Status page: "Identified → Monitoring → Resolved") ⚡ Auto-updates
      │   → (User communication: Email/in-app notification) ⚡ Auto-sent on resolution
-     │   → (Post-mortem within 72 hours — blameless format)
+     │   → (Post-mortem within 72 hours - blameless format)
      │   → (Action items tracked to completion)
      └── NO  → (Fix in normal workflow, document in incident log)
   → [Incident resolved]
 
 AUTOMATION:
-⚡ Alert → PagerDuty → Slack channel — fully automated
+⚡ Alert → PagerDuty → Slack channel - fully automated
 ⚡ Status page updates via API (no manual website edits during crisis)
 ⚡ Incident timeline auto-logged from Slack messages
 ⚡ Post-mortem template auto-generated with timeline, impact, and action items
@@ -768,11 +768,11 @@ PROCESS:
   → Day -7: ⚡ (Board pack compiled and distributed to all directors via secure portal)
      Contents: Agenda, minutes of last meeting, financials, KPI dashboard,
      department updates, proposals for approval, compliance status
-  → Day 0: (Board meeting conducted — minutes recorded)
+  → Day 0: (Board meeting conducted - minutes recorded)
   → Day +2: (Draft minutes circulated to directors for comment)
   → Day +15: (Minutes finalized and signed)
   → ⚡ (Action items tracked and assigned with due dates)
-  → ⚡ (Resolutions filed with ROC if required — India)
+  → ⚡ (Resolutions filed with ROC if required - India)
   → [Board meeting cycle complete]
 
 AUTOMATION:
@@ -845,11 +845,11 @@ SOP CHANGE PROCESS:
 4. Update document, version bump, changelog entry
 5. Communicate change to all affected personnel
 6. Training if process change is significant
-7. Archive old version (never delete — maintain history)
+7. Archive old version (never delete - maintain history)
 
 SOP METRICS:
 □ SOP compliance rate (sampled quarterly via audit)
 □ Process cycle time (is each SOP getting faster over time?)
 □ Exception rate (how often does the process require escalation?)
-□ Automation coverage (% of steps automated — track and increase quarterly)
+□ Automation coverage (% of steps automated - track and increase quarterly)
 ```

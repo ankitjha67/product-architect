@@ -5,7 +5,7 @@
 ### Core Methodologies
 
 ```
-PDCA CYCLE (Deming Wheel) — apply to EVERY process:
+PDCA CYCLE (Deming Wheel) - apply to EVERY process:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 PLAN: Identify the problem, analyze root cause, plan the improvement
@@ -61,7 +61,7 @@ the cost of defects justifies the analysis investment.
 
 KAIZEN (continuous small improvements):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Not big transformations — daily tiny improvements by everyone
+- Not big transformations - daily tiny improvements by everyone
 - "Kaizen events": 3-5 day focused improvement sprints on one process
 - Every team member empowered to suggest improvements
 - Suggestions tracked, evaluated weekly, implemented if viable
@@ -110,11 +110,11 @@ For SIGNIFICANT and TRANSFORMATIONAL changes:
 1. CREATE URGENCY:
    Why must we change NOW? What happens if we don't?
    → Data, competitive threat, customer feedback, market shift
-   → Not fear-mongering — honest assessment of current trajectory
+   → Not fear-mongering - honest assessment of current trajectory
 
 2. FORM A COALITION:
    Who are the 3-5 people who will champion this change?
-   → Not just executives — include respected ICs, team leads, skeptics-turned-believers
+   → Not just executives - include respected ICs, team leads, skeptics-turned-believers
    → They need authority, expertise, credibility, AND leadership
 
 3. CREATE A VISION:
@@ -138,7 +138,7 @@ For SIGNIFICANT and TRANSFORMATIONAL changes:
 
 6. CREATE SHORT-TERM WINS:
    Visible improvements within 60-90 days.
-   → Plan for early wins — don't leave them to chance
+   → Plan for early wins - don't leave them to chance
    → Celebrate publicly
    → Use wins as evidence that the change is working
 

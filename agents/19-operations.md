@@ -112,7 +112,7 @@ ESCALATION SOP:
 VENDOR CLASSIFICATION:
 ━━━━━━━━━━━━━━━━━━━━
 
-TIER 1 — CRITICAL (product breaks without them):
+TIER 1 - CRITICAL (product breaks without them):
 - Cloud provider (AWS/GCP/Azure)
 - Payment gateway (Razorpay/Stripe)
 - Communication (SMS: MSG91/Twilio, Email: SendGrid/SES)
@@ -122,7 +122,7 @@ TIER 1 — CRITICAL (product breaks without them):
 → Review: Monthly performance review
 → Risk: What's the migration plan if they fail or change pricing?
 
-TIER 2 — IMPORTANT (significant impact if unavailable):
+TIER 2 - IMPORTANT (significant impact if unavailable):
 - Analytics (Mixpanel/Amplitude)
 - CRM (HubSpot/Salesforce)
 - Monitoring (Datadog/Sentry)
@@ -131,7 +131,7 @@ TIER 2 — IMPORTANT (significant impact if unavailable):
 → Backup: Migration path documented
 → Review: Quarterly
 
-TIER 3 — UTILITY (easily replaceable):
+TIER 3 - UTILITY (easily replaceable):
 - Design tools (Figma)
 - Project management (Linear/Jira)
 - Documentation (Notion/Confluence)
@@ -269,7 +269,7 @@ MONTHLY OPS REPORT:
 - Hiring plan vs. actual
 ```
 
-### 8. Ops Scaling Decisions — Standardize, Automate, or Stay Flexible
+### 8. Ops Scaling Decisions - Standardize, Automate, or Stay Flexible
 
 ```
 THE VARIANCE × VOLUME MATRIX (decide per process, not per department):
@@ -279,28 +279,28 @@ THE VARIANCE × VOLUME MATRIX (decide per process, not per department):
 HIGH VOLUME          AUTOMATE (software/RPA)           STANDARDIZE the frame, keep
 (>100 runs/month)    e.g. refunds <₹500, KYC checks    human judgment inside it
                                                        e.g. seller-dispute resolution
-LOW VOLUME           SOP + checklist, no automation    STAY FLEXIBLE — document
+LOW VOLUME           SOP + checklist, no automation    STAY FLEXIBLE - document
 (<100 runs/month)    e.g. vendor onboarding            principles only
                                                        e.g. enterprise escalations
 RULES:
-- Don't standardize before ~50 runs — you'd freeze a process you haven't learned yet.
-- Don't automate a broken process — you get faster garbage. Order: fix → standardize → automate.
+- Don't standardize before ~50 runs - you'd freeze a process you haven't learned yet.
+- Don't automate a broken process - you get faster garbage. Order: fix → standardize → automate.
 - Re-check quadrants quarterly: volume growth moves processes up and to the left.
 
 AUTOMATION ROI MATH (automate when the numbers clear, not when the task is annoying):
 Monthly benefit = freq × time/run × loaded rate + (error rate × error cost × freq)
 Automate when payback = build cost ÷ (benefit − maintenance) ≤ 12-18 months
 
-WORKED: refund processing — 600 runs/mo, 8 min each, ₹600/hr loaded, 2% errors @ ₹2K:
+WORKED: refund processing - 600 runs/mo, 8 min each, ₹600/hr loaded, 2% errors @ ₹2K:
 - Labor: 600 × 8/60 × ₹600 = ₹48K/mo   Errors: 0.02 × 600 × ₹2K = ₹24K/mo → ₹72K/mo
 - Build ₹6L one-time + ₹15K/mo maintenance → payback = ₹6L ÷ (72K−15K) ≈ 10.5 months → YES
 - Same process at 60 runs/mo: ₹7.2K/mo benefit → payback ~9 years → keep the SOP, skip the bot
 
 WHAT EVERYONE GETS WRONG:
-⛔ Automating the 20% edge cases with the 80% path — automate the happy path, route
+⛔ Automating the 20% edge cases with the 80% path - automate the happy path, route
   exceptions to a clean human queue
 ⛔ Claiming saved hours as savings without redeploying the capacity (Finance won't count it)
-⛔ Scripting high-variance work — quality drops and agents game the script
+⛔ Scripting high-variance work - quality drops and agents game the script
 ```
 
 ### 9. Enterprise Operations (1,000+ People, Regulated, Multi-Region)
@@ -311,11 +311,11 @@ CONTROL FRAMEWORK (what auditors and regulators will actually ask for):
 □ Maker-checker on money-touching ops: no one person both initiates AND approves a payout,
   refund >₹10K, vendor master-data change, or price override
 □ Segregation of duties (SoD): requester ≠ approver ≠ executor ≠ reconciler; scan system
-  roles (ERP/admin panel) for SoD conflicts quarterly — org charts lie, role grants don't
+  roles (ERP/admin panel) for SoD conflicts quarterly - org charts lie, role grants don't
 □ Access recertification: process owners re-attest every system access quarterly
 
 ISO 9001-STYLE PROCESS AUDIT (run it even if you never certify):
-□ Annual internal audit per critical SOP: sample 10 transactions end-to-end — is the
+□ Annual internal audit per critical SOP: sample 10 transactions end-to-end - is the
   documented process the ACTUAL process?
 □ CAPA loop: nonconformity → root cause → corrective action → verified closed
 □ Quarterly management review of findings + quality metrics
@@ -334,7 +334,7 @@ process-design function itself. Pilot 90 days with ~20% of volume before committ
 price per outcome (resolved ticket) over per-seat where possible.
 
 MULTI-REGION: follow-the-sun support only after single-region SLAs are stable. One global
-SOP library with local annexes (language, regulation, payment rails) — never forked copies.
+SOP library with local annexes (language, regulation, payment rails) - never forked copies.
 ```
 
 ## Output: Operations Strategy Document

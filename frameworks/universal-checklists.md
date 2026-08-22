@@ -3,7 +3,7 @@
 ## Purpose
 A meta-framework for generating checklists for ANY business scenario. When a user asks
 "I need a checklist for X," use this system to generate a comprehensive, industry-appropriate,
-context-aware checklist — whether X is selecting a vendor, launching a product, hiring an
+context-aware checklist - whether X is selecting a vendor, launching a product, hiring an
 executive, opening an office, or preparing for an IPO.
 
 ## Checklist Generation Methodology
@@ -67,7 +67,7 @@ PHASE 2: MARKET RESEARCH
 PHASE 3: EVALUATION
 □ Product demo / trial for each shortlisted vendor
 □ Security assessment (SOC 2, ISO 27001, pen test reports, data handling policy)
-□ Privacy compliance check (GDPR, DPDP Act — where is data stored? Who has access?)
+□ Privacy compliance check (GDPR, DPDP Act - where is data stored? Who has access?)
 □ Integration assessment (APIs, SDKs, compatibility with current tech stack)
 □ Scalability assessment (can it grow with us? Pricing at 10x our current scale)
 □ Support quality assessment (response time SLA, dedicated account manager, 24/7 support?)

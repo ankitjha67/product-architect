@@ -1,6 +1,6 @@
 # PRD Framework
 
-Use this template for every PRD. Fill every section — if a section isn't applicable,
+Use this template for every PRD. Fill every section - if a section isn't applicable,
 state why rather than leaving it blank.
 
 ---

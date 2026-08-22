@@ -3,7 +3,7 @@
 ## READ THIS FILE FIRST. ALWAYS. BEFORE ANY OTHER FILE.
 
 This file is the brain of the Product Architect system. It decides what to load,
-manages context efficiently, and ensures nothing is ever lost — even across chat
+manages context efficiently, and ensures nothing is ever lost - even across chat
 compaction, session limits, or new conversations.
 
 ---
@@ -13,28 +13,28 @@ compaction, session limits, or new conversations.
 Read the user's message. Classify into ONE pattern:
 
 ```
-PATTERN A — SINGLE TOPIC: "Write a PRD" / "Design an app" / "Financial model"
+PATTERN A - SINGLE TOPIC: "Write a PRD" / "Design an app" / "Financial model"
 → Load: 1-2 agents + 1 framework. Done in 1 turn.
 
-PATTERN B — MULTI-TOPIC: "Product roadmap" / "Marketing strategy" / "Launch plan"
+PATTERN B - MULTI-TOPIC: "Product roadmap" / "Marketing strategy" / "Launch plan"
 → Load: 3-4 agents + 1-2 frameworks. Done in 1-2 turns.
 
-PATTERN C — FULL PRODUCT: "Build me a complete product" / "Full product from scratch"
+PATTERN C - FULL PRODUCT: "Build me a complete product" / "Full product from scratch"
 → Phased execution across 5-6 turns. See Phase Plan below.
 
-PATTERN D — CONTINUE PREVIOUS: User references past work or pastes a KDR/MKDR.
+PATTERN D - CONTINUE PREVIOUS: User references past work or pastes a KDR/MKDR.
 → Read the KDR. Resume from where they left off. Don't reload completed phases.
 
-PATTERN E — CHECKLIST/QUICK ANSWER: "Checklist for X" / "How much to raise"
+PATTERN E - CHECKLIST/QUICK ANSWER: "Checklist for X" / "How much to raise"
 → Load: 1 framework only. Quick response. No multi-phase needed.
 
-PATTERN F — MULTI-INTENT: Request contains 2+ distinct topics.
+PATTERN F - MULTI-INTENT: Request contains 2+ distinct topics.
 → Decompose into separate intents. Prioritize. Execute sequentially.
   Example: "Write a PRD and estimate the cost" = PRD (Agent 04) THEN Finance (Agent 18).
   Load the primary intent first. Address secondary after primary is delivered.
 
-PATTERN G — AMBIGUOUS: Can't confidently classify.
-→ Ask ONE clarifying question: "I can help with that — are you looking for
+PATTERN G - AMBIGUOUS: Can't confidently classify.
+→ Ask ONE clarifying question: "I can help with that - are you looking for
   [interpretation A] or [interpretation B]?" Then route based on answer.
 ```
 
@@ -67,10 +67,10 @@ context_bonus (0-2):
   +0 = No additional context signal
 
 LOAD DECISION:
-  Score 8-10: PRIMARY agent — load first, this produces the deliverable
-  Score 5-7:  SECONDARY agent — load if budget allows, validates/enriches
-  Score 3-4:  TERTIARY — mention in output ("you may also want Agent X for Y")
-  Score 0-2:  SKIP — not relevant to this request
+  Score 8-10: PRIMARY agent - load first, this produces the deliverable
+  Score 5-7:  SECONDARY agent - load if budget allows, validates/enriches
+  Score 3-4:  TERTIARY - mention in output ("you may also want Agent X for Y")
+  Score 0-2:  SKIP - not relevant to this request
 ```
 
 ### 2b. Primary Routing Table
@@ -90,28 +90,28 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "launch" / "go-to-market" → 14+07 (Launch+QA)  → stress-test            → 15 (Marketing)
 "operations" / "SOP"      → 19+20 (Ops+BAU)   → sop-process-maps       → 18 (Finance)
 "IPO" / "board"           → 26+18 (Gov+Fin)   → corporate-scaling      → 10 (Legal)
-"trust" / "moderation"    → 12 (Trust)         → —                      → 11 (Compliance)
-"fraud"                   → 13 (Fraud)         → —                      → 09 (Security)
-"AI" / "ML" / "data"      → 29 (Data/AI)       → —                      → 06 (Engineering)
-"ESG" / "sustainability"  → 27 (ESG)           → —                      → 25 (PR)
-"platform" / "API" / "eco"→ 30 (Platform)      → —                      → 34 (DevRel)
+"trust" / "moderation"    → 12 (Trust)         → -                      → 11 (Compliance)
+"fraud"                   → 13 (Fraud)         → -                      → 09 (Security)
+"AI" / "ML" / "data"      → 29 (Data/AI)       → -                      → 06 (Engineering)
+"ESG" / "sustainability"  → 27 (ESG)           → -                      → 25 (PR)
+"platform" / "API" / "eco"→ 30 (Platform)      → -                      → 34 (DevRel)
 "crisis" / "incident"     → 25 (PR)            → scenario-playbooks     → 09 (Security)
 "positioning"/"messaging" → 31 (PMM)           → brand-messaging        → 15 (Marketing)
 "pricing" / "packaging"   → 36 (Pricing)       → pricing-packaging      → 18 (Finance)
 "sales" / "RevOps"/"CRM"  → 32 (Sales/RevOps)  → sales-playbook         → 18 (Finance)
 "partner" / "channel"     → 33 (Partnerships)  → partnership-framework  → 10 (Legal)
-"developer relations"/"SDK"→ 34 (DevRel)       → —                      → 42 (Docs)
+"developer relations"/"SDK"→ 34 (DevRel)       → -                      → 42 (Docs)
 "user research"/"usability"→ 35 (Research)     → user-flows-framework   → 02 (Discovery)
 "growth" / "PLG"/"activation"→ 37 (Growth)     → growth-model           → 16 (Analytics)
 "data pipeline"/"warehouse"→ 38 (Data Eng)     → data-governance        → 16 (Analytics)
 "privacy"/"DSAR"/"DPO"     → 39 (Privacy)      → global-compliance      → 11 (Compliance)
-"internal IT"/"SSO"/"MDM"  → 40 (IT/Corp Eng)  → —                      → 09 (Security)
-"program mgmt"/"TPM"/"PMO" → 41 (TPM)          → —                      → 04 (PRD)
-"docs"/"technical writing" → 42 (Content/Docs) → —                      → 34 (DevRel)
+"internal IT"/"SSO"/"MDM"  → 40 (IT/Corp Eng)  → -                      → 09 (Security)
+"program mgmt"/"TPM"/"PMO" → 41 (TPM)          → -                      → 04 (PRD)
+"docs"/"technical writing" → 42 (Content/Docs) → -                      → 34 (DevRel)
 "localization"/"i18n"/"l10n"→ 43 (Localization)→ accessibility-i18n     → 06 (Engineering)
 "investor update"/"IR"     → 44 (Investor Rel) → corporate-scaling      → 18 (Finance)
 "M&A"/"acquisition"/"corp dev"→ 45 (Corp Dev)  → physical-ops-pmi       → 18 (Finance)
-"procurement"/"vendor"/"RFP"→ 46 (Procurement) → —                      → 18 (Finance)
+"procurement"/"vendor"/"RFP"→ 46 (Procurement) → -                      → 18 (Finance)
 "OKR" / "goals" / "north star"→ (none)         → okr-goal-setting       → 03 (Strategy)
 "on-call"/"postmortem"/"SLO"→ 08 (DevOps)      → incident-management    → 41 (TPM)
 "customer journey"/"lifecycle"→ 17 (Cust Succ) → customer-journey       → 37 (Growth)
@@ -126,9 +126,9 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "customer training"/"certification"→ 53 (Educ) → customer-journey         → 42 (Docs)
 "community"/"forum"/"ambassador"→ 54 (Community)→ customer-journey        → 34 (DevRel)
 "billing"/"subscription"/"metering"→ 55 (Billing)→ pricing-packaging      → 36 (Pricing)+18
-"revenue recognition"/"close"/"ASC 606"→ 56 (RevAcct)→ —                  → 18 (Finance)
+"revenue recognition"/"close"/"ASC 606"→ 56 (RevAcct)→ -                  → 18 (Finance)
 "tax"/"GST"/"VAT"/"nexus" → 57 (Tax)            → global-compliance        → 56 (RevAcct)
-"cash"/"FX"/"treasury"/"banking"→ 58 (Treasury) → —                        → 18 (Finance)
+"cash"/"FX"/"treasury"/"banking"→ 58 (Treasury) → -                        → 18 (Finance)
 "internal audit"/"SOX"/"ERM"→ 59 (Audit)        → risk-matrix              → 11 (Compliance)
 "recruiting"/"hiring"/"interview"→ 60 (TA)      → compensation-bands       → 22 (People)
 "compensation"/"equity"/"benefits"→ 61 (Rewards)→ compensation-bands       → 22 (People)+18
@@ -137,10 +137,10 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "does this exist"/"is this novel"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "market research"/"who else does"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "build [any feature/product]"→ 47 FIRST (gate) → deep-research-protocol → then route normally
-"checklist for"           → (none)             → universal-checklists   → —
-"how to start" / "day 0"  → (none)             → founders-playbook      → —
-"review" / "audit all"    → 00+01 (Review+Adv) → coverage-audit         → —
-"complete product"        → PHASE PLAN (below) →                        → —
+"checklist for"           → (none)             → universal-checklists   → -
+"how to start" / "day 0"  → (none)             → founders-playbook      → -
+"review" / "audit all"    → 00+01 (Review+Adv) → coverage-audit         → -
+"complete product"        → PHASE PLAN (below) →                        → -
 ```
 
 ### 2c. Fallback When No Pattern Matches
@@ -159,7 +159,7 @@ IF the request doesn't match ANY routing pattern:
    C) Technical/engineering
    D) Legal/compliance
    E) Team/operations
-   F) Something else — describe in one sentence"
+   F) Something else - describe in one sentence"
 
 NEVER: Load 5 random agents and hope one is relevant.
 NEVER: Say "I don't know which agent to use." Route or ask.
@@ -237,20 +237,20 @@ TOKEN ESTIMATION:
   FREE TIER (~100K tokens):
     Budget: 60K for files (after 40% conversation reserve)
     Max: SMART-LOADER (6.5K) + 3 agents (15K) + 1 framework (4K) = ~25.5K
-    Remaining: ~34K for response generation — comfortable
+    Remaining: ~34K for response generation - comfortable
 
   PRO TIER (~200K tokens):
     Budget: 120K for files
     Max: SMART-LOADER (6.5K) + 5 agents (25K) + 2 frameworks (8K) = ~39.5K
-    Remaining: ~80K for response generation — very comfortable
+    Remaining: ~80K for response generation - very comfortable
 
 LOADING PRIORITY (when budget is tight):
-1. SMART-LOADER.md (always — non-negotiable)
+1. SMART-LOADER.md (always - non-negotiable)
 2. PRIMARY agent (the one producing the main deliverable)
-3. references/agent-standards.md (quality protocol — load on first agent use per session)
+3. references/agent-standards.md (quality protocol - load on first agent use per session)
 4. The relevant framework (template/structure)
-5. SECONDARY agent (validation/enrichment — only if budget allows)
-6. Agent 01 (Proactive Advisor) — only if budget allows after all of the above
+5. SECONDARY agent (validation/enrichment - only if budget allows)
+6. Agent 01 (Proactive Advisor) - only if budget allows after all of the above
 ```
 
 ## STEP 4: Full Product Phase Plan
@@ -258,44 +258,44 @@ LOADING PRIORITY (when budget is tight):
 For "build me a complete product" requests:
 
 ```
-PHASE 0 — RESEARCH GATE (Turn 0, before anything is designed):
+PHASE 0 - RESEARCH GATE (Turn 0, before anything is designed):
   Load: Agent 47 (Deep Research) + deep-research-protocol
-  Output: Feature/Product Research Dossier — exists-vs-novel verdict with citations.
+  Output: Feature/Product Research Dossier - exists-vs-novel verdict with citations.
     If it EXISTS → carry the competitor teardown + differentiation wedge into Phase A.
     If WHITE-SPACE → carry the "why is it empty?" findings + validation plan into Phase A.
   → Output KDR-0. No product gets designed before its market reality is established.
 
-PHASE A — FOUNDATION (Turn 1):
+PHASE A - FOUNDATION (Turn 1):
   Load: Agent 02 (Discovery) + Agent 03 (Strategy) + consulting-frameworks
   Input: KDR-0 (the research verdict grounds the strategy)
   Output: Discovery Brief + Product Strategy
   → Output KDR-A at end of turn
 
-PHASE B — SPECIFICATION (Turn 2):
+PHASE B - SPECIFICATION (Turn 2):
   Load: Agent 04 (PRD) + Agent 05 (Design) + prd-framework + user-flows
   Input: KDR-A (provides context from Phase A)
   Output: PRD + Design direction + Key user flows
   → Output KDR-B at end of turn
 
-PHASE C — ENGINEERING & TESTING (Turn 3):
+PHASE C - ENGINEERING & TESTING (Turn 3):
   Load: Agent 06 (Engineering) + Agent 07 (Testing) + Agent 08 (DevOps)
   Input: KDR-A + KDR-B
   Output: Architecture + Test strategy + DevOps plan
   → Output KDR-C at end of turn
 
-PHASE D — BUSINESS & OPERATIONS (Turn 4):
+PHASE D - BUSINESS & OPERATIONS (Turn 4):
   Load: Agent 18 (Finance) + Agent 19 (Operations) + Agent 15 (Marketing)
   Input: KDR-A + KDR-B + KDR-C
   Output: Financial model + Ops plan + GTM strategy
   → Output KDR-D at end of turn
 
-PHASE E — GOVERNANCE & COMPLIANCE (Turn 5):
+PHASE E - GOVERNANCE & COMPLIANCE (Turn 5):
   Load: Agent 11 (Compliance) + Agent 22 (People) + Agent 26 (Governance)
   Input: All previous KDRs
   Output: Policy framework + Hiring plan + Governance structure
   → Output KDR-E at end of turn
 
-PHASE F — FINAL AUDIT (Turn 6):
+PHASE F - FINAL AUDIT (Turn 6):
   Load: Agent 00 (Chief Reviewer) + Agent 01 (Proactive Advisor)
   Input: All KDRs
   Output: Comprehensive audit report + Proactive suggestions
@@ -305,37 +305,37 @@ Between phases, ASK: "Phase [X] complete. Ready for Phase [X+1]?"
 This gives the user control and lets them ask questions or adjust before continuing.
 ```
 
-### Extended Phases (deeper builds — load only when the product needs them)
+### Extended Phases (deeper builds - load only when the product needs them)
 
 For products that are commercial-heavy (B2B SaaS, platforms, marketplaces) or
 maturing toward scale, the core A–F plan is followed by these optional phases.
 Insert them where relevant or run after Phase F. Output a KDR after each.
 
 ```
-PHASE G — RESEARCH & GROWTH MODEL (before/with Phase B):
+PHASE G - RESEARCH & GROWTH MODEL (before/with Phase B):
   Load: Agent 35 (User Research) + Agent 37 (Growth) + okr-goal-setting + growth-model
   Output: Research plan + activation/retention model + North Star & OKRs
   → Insert here when the product is consumer/PLG; validates Discovery (02) assumptions
 
-PHASE H — COMMERCIAL ENGINE (after Phase D):
+PHASE H - COMMERCIAL ENGINE (after Phase D):
   Load: Agent 31 (Product Mktg) + Agent 36 (Pricing) + Agent 32 (Sales/RevOps)
   Frameworks: brand-messaging + pricing-packaging + sales-playbook
   Output: Positioning + pricing/packaging + sales motion + RevOps stack
   → Required for any product that monetizes; reconcile pricing with Finance (18)
 
-PHASE I — DATA, PRIVACY & PLATFORM (after Phase C):
+PHASE I - DATA, PRIVACY & PLATFORM (after Phase C):
   Load: Agent 38 (Data Eng) + Agent 39 (Privacy/DPO) + Agent 34 (DevRel, if API)
   Frameworks: data-governance + incident-management
   Output: Data platform + privacy program (RoPA/DPIA/DSAR) + DevEx (if platform)
-  → Privacy (39) has OVERRIDE authority — run before any data-collecting feature ships
+  → Privacy (39) has OVERRIDE authority - run before any data-collecting feature ships
 
-PHASE J — DELIVERY & SCALE OPS (continuous):
+PHASE J - DELIVERY & SCALE OPS (continuous):
   Load: Agent 41 (TPM) + Agent 40 (IT/Corp Eng) + Agent 46 (Procurement)
   Frameworks: incident-management + sop-process-maps
   Output: Program/delivery system + internal IT + procurement/vendor management
   → Activates as the team grows past ~15 people
 
-PHASE K — CAPITAL & CORPORATE (fundraising / inorganic growth):
+PHASE K - CAPITAL & CORPORATE (fundraising / inorganic growth):
   Load: Agent 44 (Investor Relations) + Agent 45 (Corp Dev) + Agent 26 (Governance)
   Frameworks: corporate-scaling + physical-ops-pmi (for M&A integration)
   Output: IR program + M&A thesis/diligence + governance structure
@@ -360,7 +360,7 @@ They survive compaction because they're recent. They can be pasted into new chat
 
 ```
 ╔══════════════════════════════════════════════════╗
-║ KDR: [PRODUCT NAME] — PHASE [X] COMPLETE        ║
+║ KDR: [PRODUCT NAME] - PHASE [X] COMPLETE        ║
 ║ Date: [Date] | Phase: [X of Y]                   ║
 ╠══════════════════════════════════════════════════╣
 ║ PRODUCT: [Name]                                  ║
@@ -383,14 +383,14 @@ They survive compaction because they're recent. They can be pasted into new chat
 ║ • Budget: [Monthly burn, runway, raise target]   ║
 ║                                                  ║
 ║ ARTIFACTS PRODUCED:                              ║
-║ • [Document name] — [What it contains]           ║
-║ • [Document name] — [What it contains]           ║
+║ • [Document name] - [What it contains]           ║
+║ • [Document name] - [What it contains]           ║
 ║                                                  ║
 ║ OPEN ITEMS:                                      ║
 ║ • [What still needs to be decided/built]         ║
 ║ • [Question that needs user input]               ║
 ║                                                  ║
-║ NEXT: Phase [X+1] — [What it covers]             ║
+║ NEXT: Phase [X+1] - [What it covers]             ║
 ╚══════════════════════════════════════════════════╝
 ```
 
@@ -446,11 +446,11 @@ Output this at the end of a complete product session. It's the user's "save file
 ║ [... complete numbered list ...]                             ║
 ║                                                              ║
 ║ ─── OPEN ITEMS ───                                           ║
-║ 1. [Item] — [What's needed to resolve]                      ║
-║ 2. [Item] — [What's needed to resolve]                      ║
+║ 1. [Item] - [What's needed to resolve]                      ║
+║ 2. [Item] - [What's needed to resolve]                      ║
 ║                                                              ║
 ║ ─── ARTIFACTS PRODUCED ───                                   ║
-║ • [Name] — [Type] — [Status: Draft/Complete]                ║
+║ • [Name] - [Type] - [Status: Draft/Complete]                ║
 ║ [... complete list ...]                                      ║
 ║                                                              ║
 ║ ─── NEXT STEPS ───                                           ║
@@ -467,7 +467,7 @@ TO CONTINUE: Paste this MASTER KDR into a new conversation with Claude and say
 ### Memory Rules
 
 ```
-RULE 1: Output a KDR after EVERY phase — non-negotiable.
+RULE 1: Output a KDR after EVERY phase - non-negotiable.
 RULE 2: KDR must capture ALL decisions, not just major ones.
         "We chose PostgreSQL over MongoDB" is a decision. Record it.
 RULE 3: KDR must capture ALL open items and questions.
@@ -502,23 +502,23 @@ BEFORE RECORDING ANY NEW DECISION, CLAUDE MUST:
      "Decisions #[old] and #[new] conflict. Which do you want to keep?"
 
 3. Record the resolution as a new decision:
-   Decision #[N]: CONFLICT RESOLVED — [old decision] updated to [new decision]
+   Decision #[N]: CONFLICT RESOLVED - [old decision] updated to [new decision]
    because [reason]. Previous Decision #[old] is SUPERSEDED.
 
 EXAMPLES:
 Decision #7 (Strategy): "Target SMBs with ₹499/month pricing"
 Decision #19 (Finance): "Need ₹999/month minimum for positive unit economics"
-→ ⚠️ CONFLICT: #7 and #19 — pricing doesn't cover costs
+→ ⚠️ CONFLICT: #7 and #19 - pricing doesn't cover costs
 → Resolution: Ask user. Options: raise price, reduce costs, or accept negative margins for growth.
-→ Decision #20: CONFLICT RESOLVED — Pricing set to ₹699/month with ₹999 target
+→ Decision #20: CONFLICT RESOLVED - Pricing set to ₹699/month with ₹999 target
    by Month 6. Decision #7 SUPERSEDED.
 
 Decision #12 (Engineering): "Store user location history for recommendations"
-Decision #23 (Compliance): "DPDP Act requires purpose limitation — location
+Decision #23 (Compliance): "DPDP Act requires purpose limitation - location
    for recommendations requires explicit consent"
-→ ⚠️ CONFLICT: #12 and #23 — data collection without consent flow
+→ ⚠️ CONFLICT: #12 and #23 - data collection without consent flow
 → Resolution: Compliance overrides (hierarchy Rule 1). Auto-resolved.
-→ Decision #24: CONFLICT RESOLVED — Add consent prompt before location collection.
+→ Decision #24: CONFLICT RESOLVED - Add consent prompt before location collection.
    Decision #12 UPDATED to include consent requirement.
 
 THIS IS THE MECHANISM THAT PREVENTS 31 AGENTS FROM CONTRADICTING EACH OTHER.
@@ -616,6 +616,6 @@ SCENARIO: Session is about to hit token limit.
 61 Total Rewards → Comp & Benefits Framework (philosophy, job architecture, bands, comp cycle, equity, pay equity)
 62 Chief of Staff→ Operating System (charter, cadence stack, planning process, decision rights, BizOps portfolio)
 63 AI Evaluation → AI Safety Case (golden sets, judge calibration, CI gates, red-team findings, ship/hold verdict)
-01 Advisor       → Proactive Suggestions (runs parallel — blind spots, ideas, best practices)
+01 Advisor       → Proactive Suggestions (runs parallel - blind spots, ideas, best practices)
 00 Chief Review  → Final Audit (cross-agent consistency, gaps, risks, recommendations)
 ```

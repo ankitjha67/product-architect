@@ -22,7 +22,7 @@ modern AI-engineering stack (LangGraph, RAG, agents) applied across every depart
 This system goes deep "until the Mariana Trench." Before recommending building
 ANY feature, product, or bet, agents run the **Deep Research Protocol**
 (`frameworks/deep-research-protocol.md`, owned by Agent 47): they investigate the
-market end to end and return a grounded verdict — **"this already exists, here are
+market end to end and return a grounded verdict - **"this already exists, here are
 the competitors + citations, refine it"** or **"this is white-space, no competition
 or citations found in this niche"** (with the honest caveat that absence of evidence
 is not proof of novelty). Every agent inherits this via `references/agent-standards.md`
@@ -128,10 +128,10 @@ Load the primary agent file, then apply quality standards from
 
 ```
 LOADING PRIORITY:
-1. SMART-LOADER.md (routing — always)
+1. SMART-LOADER.md (routing - always)
 2. Primary agent (produces the deliverable)
-3. Relevant framework (template/structure — see agent-standards.md cross-reference table)
-4. Secondary agent (validation — if budget allows)
+3. Relevant framework (template/structure - see agent-standards.md cross-reference table)
+4. Secondary agent (validation - if budget allows)
 ```
 
 ### Step 3: Enforce Cross-Agent Governance
@@ -139,11 +139,11 @@ LOADING PRIORITY:
 When multiple agents are active, apply the authority hierarchy:
 
 ```
-Level 5 (highest): Agent 11 (Compliance) — OVERRIDE on legal/regulatory risk
-Level 4: Agent 39 (Privacy/DPO) — OVERRIDE on personal-data processing & rights
-Level 3: Agent 09 (Security) — OVERRIDE on security vulnerabilities
-Level 2: Agent 18 (Finance) — VETO on budget/cost violations
-Level 1: Agent 00 (Chief Reviewer) — VETO on quality/consistency
+Level 5 (highest): Agent 11 (Compliance) - OVERRIDE on legal/regulatory risk
+Level 4: Agent 39 (Privacy/DPO) - OVERRIDE on personal-data processing & rights
+Level 3: Agent 09 (Security) - OVERRIDE on security vulnerabilities
+Level 2: Agent 18 (Finance) - VETO on budget/cost violations
+Level 1: Agent 00 (Chief Reviewer) - VETO on quality/consistency
 ```
 
 Note: Privacy (39) and Compliance (11) are adjacent authorities. When a question is
@@ -152,7 +152,7 @@ Privacy leads. When it is about *which statute/regulator* governs and broader le
 regulatory exposure, Compliance leads. If they disagree, the stricter control wins.
 
 If two agents produce conflicting recommendations:
-1. STOP — do not proceed with either
+1. STOP - do not proceed with either
 2. STATE the conflict explicitly
 3. APPLY the hierarchy (higher authority wins)
 4. DOCUMENT in KDR with decision number
@@ -180,7 +180,7 @@ Developer & Research: `34-developer-relations` `35-user-research` `42-content-do
 Data & Privacy: `38-data-engineering` `39-privacy-dpo`
 Internal & Delivery: `40-it-corporate-engineering` `41-technical-program-management`
 Corporate Finance: `44-investor-relations` `45-corporate-development` `46-procurement-supply-chain`
-Research: `47-deep-research` (research-first gate — invoked before any build/bet)
+Research: `47-deep-research` (research-first gate - invoked before any build/bet)
 Engineering Specialisms: `48-mobile-engineering` `49-ml-engineering` `50-frontend-web-platform`
 Customer-Facing Delivery: `51-solutions-engineering` `52-professional-services` `53-customer-education` `54-community`
 Revenue Systems: `55-billing-monetization-engineering`
@@ -205,7 +205,7 @@ All framework files are in `frameworks/` directory:
 `customer-journey` `deep-research-protocol` `ai-engineering-stack`
 `ai-department-playbooks`
 
-Country compliance: `references/compliance/` — india, us, eu, uk, sea.
+Country compliance: `references/compliance/` - india, us, eu, uk, sea.
 
 ## Examples
 

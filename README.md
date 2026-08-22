@@ -13,26 +13,26 @@
 **Product Architect turns Claude into an entire product organization.**
 
 Most AI product advice is one generalist answering everything at surface level. This
-is the opposite: **64 specialized department heads** — Discovery, PRD, Engineering,
-Security, Privacy, Pricing, Growth, RevOps, Legal, Finance, Governance, and more —
-each with a department-head-depth playbook, routed to your question by a context
-engine that loads only what's relevant.
+is the opposite: **64 specialized department heads** covering Discovery, PRD,
+Engineering, Security, Privacy, Pricing, Growth, RevOps, Legal, Finance, Governance
+and more. Each carries a department-head-depth playbook, routed to your question by a
+context engine that loads only what's relevant.
 
 Ask *"should we build this?"* and you don't get an opinion. You get a **cited market
 verdict** (does it already exist, who ships it, where's the gap), then a PRD with the
-edge cases, an architecture, a pricing model, a compliance read, and a launch plan —
-each from the agent that owns that domain, cross-checked against the others.
+edge cases, an architecture, a pricing model, a compliance read, and a launch plan.
+Each comes from the agent that owns that domain, cross-checked against the others.
 
 **What makes it different:**
 
 | | |
 |---|---|
-| 🔍 **Research-first** | Before recommending you build anything, it investigates the market and returns a verdict: *"this exists — here are the competitors, refine it"* or *"white-space — and here's why the niche may be empty."* It never fabricates a company, statistic, or URL. |
+| 🔍 **Research-first** | Before recommending you build anything, it investigates the market and returns a verdict: *"this exists; here are the competitors, refine it"* or *"white-space, and here's why the niche may be empty."* It never fabricates a company, statistic, or URL. |
 | 🧠 **Reasons, doesn't template** | Every agent works through frame → options → evidence → quantified trade-offs → recommendation → risks + the condition that would reverse it. Each carries its own decision framework for its hardest calls. |
-| 🏢 **Enterprise-grade** | Regulated-industry, 1000+ person, multi-region depth: audit trails, SLAs, procurement gauntlets, change management, 3-year TCO — not just startup advice. |
+| 🏢 **Enterprise-grade** | Regulated-industry, 1000+ person, multi-region depth: audit trails, SLAs, procurement gauntlets, change management, 3-year TCO. Not just startup advice. |
 | 🤖 **AI-native** | A full LangGraph + RAG engineering stack, plus a concrete LLM/agent application mapped to all 64 departments. |
 | ⚖️ **Governed** | A 5-level authority hierarchy (Compliance → Privacy → Security → Finance → Review) resolves conflicts between agents instead of letting them contradict each other. |
-| 💾 **Remembers** | Key Decision Records survive chat compaction — paste one into a new conversation and pick up exactly where you left off. |
+| 💾 **Remembers** | Key Decision Records survive chat compaction. Paste one into a new conversation and pick up exactly where you left off. |
 
 **Who it's for:** solo founders who need a whole company's worth of expertise ·
 product managers who want PRDs with every edge case · engineering leads needing
@@ -40,7 +40,7 @@ architecture, security, and test strategy · teams operating at Fortune-500 cali
 without Fortune-500 headcount.
 
 **Honest scope:** this is an educational and operational framework built through
-human-AI collaboration — not professional advice. Legal, financial, security, and HR
+human-AI collaboration, not professional advice. Legal, financial, security, and HR
 content requires qualified review before real-world use. See
 [`references/DISCLAIMER.md`](references/DISCLAIMER.md).
 
@@ -70,13 +70,13 @@ Use the `/v1/skills` endpoint with the `container.skills` parameter. Requires Co
 
 If you're on the free plan, you can still use everything in this repo:
 
-1. **Guided mode (recommended)** — Open [`START-HERE.md`](START-HERE.md) on GitHub, click **Raw**, copy everything, paste into a new Claude chat. Describe your idea — Claude will ask what you're building, identify the right agents, give you exact GitHub URLs to paste them one at a time, and guide you through the entire product development process step by step.
+1. **Guided mode (recommended)** - Open [`START-HERE.md`](START-HERE.md) on GitHub, click **Raw**, copy everything, paste into a new Claude chat. Describe your idea - Claude will ask what you're building, identify the right agents, give you exact GitHub URLs to paste them one at a time, and guide you through the entire product development process step by step.
 
-2. **Projects** — Create a Project in Claude.ai, paste `SKILL.md` + `SMART-LOADER.md` as project knowledge. Then paste individual agent/framework files as needed per conversation.
+2. **Projects** - Create a Project in Claude.ai, paste `SKILL.md` + `SMART-LOADER.md` as project knowledge. Then paste individual agent/framework files as needed per conversation.
 
-3. **Direct paste** — Open any file on GitHub (e.g. `frameworks/founders-playbook.md`), copy the raw content, and paste it into a regular Claude chat. Every file works standalone.
+3. **Direct paste** - Open any file on GitHub (e.g. `frameworks/founders-playbook.md`), copy the raw content, and paste it into a regular Claude chat. Every file works standalone.
 
-4. **Claude Code** — If you have Claude Code access, clone the repo into your skills directory. Skills load automatically.
+4. **Claude Code** - If you have Claude Code access, clone the repo into your skills directory. Skills load automatically.
 
 ---
 
@@ -84,7 +84,7 @@ If you're on the free plan, you can still use everything in this repo:
 
 ### 64 Specialized Agents
 
-Organized by product lifecycle — each operates at department-head depth:
+Organized by product lifecycle - each operates at department-head depth:
 
 | Phase | Agents |
 |-------|--------|
@@ -110,8 +110,8 @@ Organized by product lifecycle — each operates at department-head depth:
 
 | Framework | What It Does |
 |-----------|-------------|
-| **AI Engineering Stack** | LangGraph agents, RAG (hybrid retrieval, rerank, GraphRAG), evals, guardrails, observability, and the maturity ladder — with Anthropic-native options |
-| **AI Department Playbooks** | How every one of the 64 departments applies LLMs/RAG/agents — a specific use case, pattern, stack, and guardrail per function |
+| **AI Engineering Stack** | LangGraph agents, RAG (hybrid retrieval, rerank, GraphRAG), evals, guardrails, observability, and the maturity ladder - with Anthropic-native options |
+| **AI Department Playbooks** | How every one of the 64 departments applies LLMs/RAG/agents - a specific use case, pattern, stack, and guardrail per function |
 | **Deep Research Protocol** | End-to-end market existence/novelty engine: exists-vs-novel verdict, citation hygiene, anti-hallucination gate, per-agent depth map |
 | **Founder's Playbook** | Week-by-week from Day 0 with costs, fundraising, IP, legal |
 | **30-Day Launch Engine** | Positioning, channel selection, day-by-day execution |
@@ -141,17 +141,17 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 ## Key Architecture
 
-**AI-Native** — A modern AI-engineering layer runs through the whole system: the **AI Engineering Stack** framework (LangGraph orchestration, RAG with hybrid retrieval + reranking + GraphRAG, evals-in-CI, guardrails, observability, and the L0→L5 maturity ladder), plus **AI Department Playbooks** giving all 64 departments a concrete LLM/RAG/agent application. Defaults to the latest Claude models (Opus 4.8, Sonnet 5, Haiku 4.5) with adaptive thinking, MCP for integrations, and Security (09) + Privacy (39) sign-off on any AI feature touching untrusted input or personal data.
+**AI-Native** - A modern AI-engineering layer runs through the whole system: the **AI Engineering Stack** framework (LangGraph orchestration, RAG with hybrid retrieval + reranking + GraphRAG, evals-in-CI, guardrails, observability, and the L0→L5 maturity ladder), plus **AI Department Playbooks** giving all 64 departments a concrete LLM/RAG/agent application. Defaults to the latest Claude models (Opus 4.8, Sonnet 5, Haiku 4.5) with adaptive thinking, MCP for integrations, and Security (09) + Privacy (39) sign-off on any AI feature touching untrusted input or personal data.
 
-**Research-First Depth** — Before recommending building anything, agents run the **Deep Research Protocol** (Agent 47): an end-to-end market investigation that returns a grounded verdict — *"this already exists, here are the competitors + citations, refine it"* or *"this is white-space, no competition/citations in this niche"* (with the honest caveat that absence of evidence isn't proof of novelty, plus a "why is it empty?" analysis). Every agent inherits a Depth Rubric (L0 surface → L4 Mariana Trench), must grade itself L3+, and never fabricates a company, statistic, study, patent, or URL.
+**Research-First Depth** - Before recommending building anything, agents run the **Deep Research Protocol** (Agent 47): an end-to-end market investigation that returns a grounded verdict - *"this already exists, here are the competitors + citations, refine it"* or *"this is white-space, no competition/citations in this niche"* (with the honest caveat that absence of evidence isn't proof of novelty, plus a "why is it empty?" analysis). Every agent inherits a Depth Rubric (L0 surface → L4 Mariana Trench), must grade itself L3+, and never fabricates a company, statistic, study, patent, or URL.
 
-**Smart Loading** — `SMART-LOADER.md` routes each request to only the relevant agents. Scores agents 0-10 on relevance, handles multi-intent requests, supports dynamic mid-conversation loading. Never loads everything at once. Free tier: 3 agents/turn. Pro: 5 agents/turn.
+**Smart Loading** - `SMART-LOADER.md` routes each request to only the relevant agents. Scores agents 0-10 on relevance, handles multi-intent requests, supports dynamic mid-conversation loading. Never loads everything at once. Free tier: 3 agents/turn. Pro: 5 agents/turn.
 
-**Cross-Agent Governance** — 5-level authority hierarchy prevents contradictions: Compliance (override) → Privacy/DPO (override) → Security (override) → Finance (veto) → Chief Reviewer (veto). 5-step conflict protocol: stop, state, apply hierarchy, document, flag.
+**Cross-Agent Governance** - 5-level authority hierarchy prevents contradictions: Compliance (override) → Privacy/DPO (override) → Security (override) → Finance (veto) → Chief Reviewer (veto). 5-step conflict protocol: stop, state, apply hierarchy, document, flag.
 
-**KDR Memory** — Key Decision Records with sequential numbering, conflict detection (scan-before-record), and SUPERSEDED mechanism. Survives chat compaction. Works on free tier. Paste MASTER KDR into new conversations to resume.
+**KDR Memory** - Key Decision Records with sequential numbering, conflict detection (scan-before-record), and SUPERSEDED mechanism. Survives chat compaction. Works on free tier. Paste MASTER KDR into new conversations to resume.
 
-**Agent Standards** — Shared quality protocol inherited by all agents: before/during/after checklists, iterative refinement loops, performance rules, cross-reference table mapping every agent to related frameworks.
+**Agent Standards** - Shared quality protocol inherited by all agents: before/during/after checklists, iterative refinement loops, performance rules, cross-reference table mapping every agent to related frameworks.
 
 ---
 
@@ -204,11 +204,11 @@ This is an educational framework created through human-AI collaboration, not pro
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
 
 ## Contributing
 
-Contributions welcome — new agents, deeper frameworks, industry-specific extensions, country compliance additions, bug fixes. See [CONTRIBUTING.md](CONTRIBUTING.md) for the conventions, quality bar, and wiring checklist, and [CHANGELOG.md](CHANGELOG.md) for version history.
+Contributions welcome - new agents, deeper frameworks, industry-specific extensions, country compliance additions, bug fixes. See [CONTRIBUTING.md](CONTRIBUTING.md) for the conventions, quality bar, and wiring checklist, and [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 

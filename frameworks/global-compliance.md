@@ -48,10 +48,10 @@ and industry regulations. ALWAYS ask the user for target markets, then apply rel
 INDIA:
 - Payment gateways: Razorpay, Cashfree, PayU, Juspay (all RBI-regulated)
 - UPI: Mandatory support for mass-market products. Free for merchant transactions
-- Card tokenization: Mandatory (RBI directive — no storing card numbers)
+- Card tokenization: Mandatory (RBI directive - no storing card numbers)
 - Wallet: RBI PPI license required for own wallet
 - BNPL: RBI digital lending guidelines apply
-- COD: Still 30-40% of e-commerce — plan for it
+- COD: Still 30-40% of e-commerce - plan for it
 - International payments: FEMA regulations, purpose codes required
 
 US:
@@ -79,7 +79,7 @@ SOUTHEAST ASIA:
 - Cash-heavy: COD still significant in Philippines, Vietnam, Indonesia
 
 MIDDLE EAST:
-- Mada (Saudi Arabia), NOL (UAE), BENEFIT (Bahrain) — local card networks
+- Mada (Saudi Arabia), NOL (UAE), BENEFIT (Bahrain) - local card networks
 - Apple Pay/Google Pay adoption growing
 - Islamic finance considerations (no interest/riba in financial products)
 
@@ -123,7 +123,7 @@ US-SPECIFIC:
 ```
 INDIA: GST (0%, 5%, 12%, 18%, 28% depending on product category, HSN/SAC code required, e-invoicing for B2B)
 EU: VAT (varies 17-27% by country, VAT MOSS for digital services, reverse charge for B2B)
-US: Sales tax (varies by state, county, city — use Avalara/TaxJar for automation)
+US: Sales tax (varies by state, county, city - use Avalara/TaxJar for automation)
 UK: VAT (20% standard, registration threshold £85,000)
 AUSTRALIA: GST (10%, registration threshold A$75,000)
 CANADA: GST/HST/PST (varies by province)

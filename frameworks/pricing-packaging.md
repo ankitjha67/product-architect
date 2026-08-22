@@ -2,7 +2,7 @@
 
 > **⚠️ DISCLAIMER:** The benchmarks, templates, and discount matrices here are illustrative
 > frameworks, not financial, tax, or legal advice. Pricing changes, discounts, and localization
-> carry revenue-recognition, tax (VAT/GST), and contractual consequences — have a CA/CPA and
+> carry revenue-recognition, tax (VAT/GST), and contractual consequences - have a CA/CPA and
 > counsel review before going live. See [DISCLAIMER.md](../references/DISCLAIMER.md).
 
 ## Purpose
@@ -12,44 +12,44 @@ trees, and checklists you execute. Use them together.
 
 ---
 
-## PART 1 — THE PRICING PROJECT WORKFLOW (step by step)
+## PART 1 - THE PRICING PROJECT WORKFLOW (step by step)
 
 ```
-A pricing project is a 6-8 week effort, not an afternoon. Run it in order — skipping research
+A pricing project is a 6-8 week effort, not an afternoon. Run it in order - skipping research
 is how companies ship prices they regret for years.
 
-WEEK 1 — FRAME
+WEEK 1 - FRAME
   □ Define the goal: new pricing? a raise? a re-package? fix churn? Pick ONE primary objective.
   □ Pull inputs: unit economics & margin floor (Agent 18), usage data & cohorts (Agent 16),
     win/loss & discount data (Sales/CS), positioning & ICP (Agent 03).
   □ State the constraint: gross-margin floor, must-not-harm conversion, contractual locks.
 
-WEEK 2-3 — RESEARCH (willingness-to-pay)
+WEEK 2-3 - RESEARCH (willingness-to-pay)
   □ Run Van Westendorp (Part 4) for a price RANGE. Add Gabor-Granger (Part 5) for the point.
   □ Run MaxDiff/conjoint if re-packaging (which features are worth gating). Agent 36 §4.
   □ Run 8-12 WTP interviews (Part 7) for the qualitative "why" behind the numbers.
-  □ Discount stated WTP ~20-30% — surveys run high vs. real paid behavior.
+  □ Discount stated WTP ~20-30% - surveys run high vs. real paid behavior.
 
-WEEK 4 — DESIGN
+WEEK 4 - DESIGN
   □ Pick/validate the VALUE METRIC (Part 2 decision tree). This is the highest-leverage call.
   □ Design packaging on the canvas (Part 3): tiers, fences, add-ons.
   □ Set price points within the researched range, anchored to value, above the margin floor.
 
-WEEK 5 — PRESSURE-TEST
+WEEK 5 - PRESSURE-TEST
   □ Model revenue impact across cohorts (3 scenarios: conservative/base/optimistic).
   □ Teardown your own pricing page draft (Part 8).
   □ Build the discount approval matrix (Part 6) so the new list doesn't leak on day one.
   □ Legal/tax review of localization, tax-inclusive display, contract terms (professional review).
 
-WEEK 6+ — ROLL OUT
+WEEK 6+ - ROLL OUT
   □ Execute the price-change runbook (Part 9): comms, grandfathering, migration, monitoring.
-  □ Roll out cohort-based (new customers first) — NEVER A/B different prices to identical users.
+  □ Roll out cohort-based (new customers first) - NEVER A/B different prices to identical users.
   □ Watch guardrails 90 days; have a rollback/save plan ready.
 ```
 
 ---
 
-## PART 2 — PRICE-METRIC SELECTION DECISION TREE
+## PART 2 - PRICE-METRIC SELECTION DECISION TREE
 
 ```
 START: What does the customer get MORE of as they get more value?
@@ -66,10 +66,10 @@ START: What does the customer get MORE of as they get more value?
     └─ YES & you can meter it cleanly & accept delivery risk → consider OUTCOME-BASED. (Rare; powerful.)
     └─ NO ↓
   Is value roughly FLAT per customer / hard to meter / customer wants total predictability?
-    └─ YES → TIERED FLAT (good-better-best on feature sets). Caution: caps expansion — add
+    └─ YES → TIERED FLAT (good-better-best on feature sets). Caution: caps expansion - add
              usage or seats as a second dimension if accounts grow.
 
-CONVERGENCE: most mature products land on a HYBRID — a predictable base (seat or platform fee)
+CONVERGENCE: most mature products land on a HYBRID - a predictable base (seat or platform fee)
 + an expansion dimension (usage/seats) + enterprise add-ons. Pick ONE primary metric.
 
 VALIDATE the chosen metric against all 5 (Agent 36 §2):
@@ -79,7 +79,7 @@ VALIDATE the chosen metric against all 5 (Agent 36 §2):
 
 ---
 
-## PART 3 — PACKAGING DESIGN CANVAS
+## PART 3 - PACKAGING DESIGN CANVAS
 
 ```
 Fill one row per feature. Decide its tier and its fence rationale. The canvas forces you to
@@ -87,18 +87,18 @@ fence on VALUE, not annoyance.
 
 | Feature | Value to customer | Who needs it | Fence type | Tier | Add-on? |
 |---------|-------------------|--------------|------------|------|---------|
-| Core action | Essential | Everyone | none | GOOD+ | — |
+| Core action | Essential | Everyone | none | GOOD+ | - |
 | More seats | Scales w/ team | Growing teams | scale axis | metered | yes |
-| Advanced analytics | High, for power users | Mid-market+ | value | BETTER | — |
-| Integrations | High | Teams w/ stack | value | BETTER | — |
-| SSO / SAML / SCIM | Security/IT requirement | Enterprises | "who-pays" | ENTERPRISE | — |
-| Audit logs / DLP | Compliance | Regulated orgs | "who-pays" | ENTERPRISE | — |
-| SLA / dedicated CSM | Risk reduction | Large accounts | value | ENTERPRISE | — |
-| AI / automation | Discretionary premium | Some, all sizes | value | — | ADD-ON |
-| Extra usage pack | Scales w/ consumption | Heavy users | scale axis | — | ADD-ON |
+| Advanced analytics | High, for power users | Mid-market+ | value | BETTER | - |
+| Integrations | High | Teams w/ stack | value | BETTER | - |
+| SSO / SAML / SCIM | Security/IT requirement | Enterprises | "who-pays" | ENTERPRISE | - |
+| Audit logs / DLP | Compliance | Regulated orgs | "who-pays" | ENTERPRISE | - |
+| SLA / dedicated CSM | Risk reduction | Large accounts | value | ENTERPRISE | - |
+| AI / automation | Discretionary premium | Some, all sizes | value | - | ADD-ON |
+| Extra usage pack | Scales w/ consumption | Heavy users | scale axis | - | ADD-ON |
 
 GOOD-BETTER-BEST RULES:
-□ 3 tiers. Make the MIDDLE (Better) the bullseye — most should choose it (anchoring/compromise).
+□ 3 tiers. Make the MIDDLE (Better) the bullseye - most should choose it (anchoring/compromise).
 □ GOOD = acquisition tier: genuinely useful, missing what teams need at scale. Not crippleware.
 □ BETTER = where you make money: everything a typical customer needs.
 □ BEST = anchor: makes Better look reasonable; a few big accounts buy it (pure margin).
@@ -110,7 +110,7 @@ hostage situation?" If hostage → move it down a tier or make it an add-on.
 
 ---
 
-## PART 4 — VAN WESTENDORP SURVEY TEMPLATE
+## PART 4 - VAN WESTENDORP SURVEY TEMPLATE
 
 ```
 Audience: 30-50+ QUALIFIED respondents (your ICP, who understand the product). Show a crisp
@@ -119,7 +119,7 @@ description of the product/tier + the value-metric unit (per seat / per month / 
 THE 4 QUESTIONS (ask exactly these; respondents give a price for each):
   Q1 (Too Expensive):  "At what price would this be so expensive you would NOT consider buying it?"
   Q2 (Expensive/High): "At what price is this getting expensive, but you'd still CONSIDER it?"
-  Q3 (Cheap/Bargain):  "At what price is this a BARGAIN — a great value for the money?"
+  Q3 (Cheap/Bargain):  "At what price is this a BARGAIN - a great value for the money?"
   Q4 (Too Cheap):      "At what price is this so cheap you'd QUESTION its quality?"
 
 HOW TO PLOT:
@@ -129,10 +129,10 @@ HOW TO PLOT:
   2. Draw all four curves on one chart (price on X, cumulative % on Y).
 
 THE 4 INTERSECTIONS TO READ:
-  • PMC — Point of Marginal Cheapness  = "Too Cheap" × "Expensive"      → LOWER bound of range
-  • PME — Point of Marginal Expensiveness = "Too Expensive" × "Cheap"   → UPPER bound of range
-  • OPP — Optimal Price Point          = "Too Cheap" × "Too Expensive"  → resistance balanced; the headline price
-  • IPP — Indifference Price Point     = "Cheap" × "Expensive"          → the "expected/normal" price
+  • PMC - Point of Marginal Cheapness  = "Too Cheap" × "Expensive"      → LOWER bound of range
+  • PME - Point of Marginal Expensiveness = "Too Expensive" × "Cheap"   → UPPER bound of range
+  • OPP - Optimal Price Point          = "Too Cheap" × "Too Expensive"  → resistance balanced; the headline price
+  • IPP - Indifference Price Point     = "Cheap" × "Expensive"          → the "expected/normal" price
 
 INTERPRET:
   Range of Acceptable Pricing = PMC → PME (set price inside this).
@@ -143,7 +143,7 @@ INTERPRET:
 
 ---
 
-## PART 5 — GABOR-GRANGER SURVEY TEMPLATE
+## PART 5 - GABOR-GRANGER SURVEY TEMPLATE
 
 ```
 Goal: find the REVENUE-MAXIMIZING price and the demand curve.
@@ -162,13 +162,13 @@ ANALYZE:
   | 1.5X  | 45%                  | 0.68X  ← may still maximize    |
   | 2X    | 25%                  | 0.50X                         |
   The price with the HIGHEST indexed revenue is the revenue-maximizing point. (Note: max-revenue
-  ≠ max-volume ≠ max-margin — choose per your objective and clear the margin floor.)
+  ≠ max-volume ≠ max-margin - choose per your objective and clear the margin floor.)
 LIMITATION: weaker for novel categories (respondents can't judge unknown value); anchoring risk.
 ```
 
 ---
 
-## PART 6 — DISCOUNT APPROVAL MATRIX (copy-paste)
+## PART 6 - DISCOUNT APPROVAL MATRIX (copy-paste)
 
 ```
 Publish this internally on day one of new pricing. Every standing, ungoverned discount becomes
@@ -176,7 +176,7 @@ the new expected price.
 
 | Discount % | Approver           | Required justification (logged on the deal) |
 |------------|--------------------|---------------------------------------------|
-| 0–10%      | Rep (self-serve)   | Annual prepay / multi-year / logo value — note the reason |
+| 0–10%      | Rep (self-serve)   | Annual prepay / multi-year / logo value - note the reason |
 | 11–20%     | Sales Manager      | Competitive / volume / strategic, w/ written rationale |
 | 21–30%     | Director / RevOps  | "Lost without it" evidence + multi-year commit + expansion path |
 | 31–40%     | VP Sales + Finance | CFO sign-off; must clear gross-margin FLOOR; documented exception |
@@ -185,7 +185,7 @@ the new expected price.
 RULES:
 □ Trade discount for VALUE TO YOU: annual/multi-year prepay, case-study rights, logo use,
   reference calls, longer commit, faster close. Never discount for nothing.
-□ Prefer adding VALUE (extra seats, a month free, an add-on) over cutting PRICE — protects
+□ Prefer adding VALUE (extra seats, a month free, an add-on) over cutting PRICE - protects
   realized ARR and is easier to claw back at renewal.
 □ Use EXPIRING, end-of-quarter discounts, not permanent list reductions.
 □ Publish the FLOOR price. Below it, walk.
@@ -194,7 +194,7 @@ RULES:
 
 ---
 
-## PART 7 — WILLINGNESS-TO-PAY INTERVIEW SCRIPT
+## PART 7 - WILLINGNESS-TO-PAY INTERVIEW SCRIPT
 
 ```
 8-12 interviews with ICP buyers. 30 min. Goal: the qualitative WHY behind the survey numbers.
@@ -203,10 +203,10 @@ OPEN (2 min): "I want to understand how you think about the value and cost of so
 There are no right answers and I'm not selling you anything today."
 
 VALUE & ALTERNATIVES (10 min):
-  □ "Walk me through how you solve [problem] today. What does that cost you — in money, time,
+  □ "Walk me through how you solve [problem] today. What does that cost you - in money, time,
      or pain?" (establish the next-best-alternative / reference price)
   □ "If [problem] were completely solved, what would that be worth to you / your team?" (TEV)
-  □ "What have you paid for tools in this space? What made those worth it — or not?"
+  □ "What have you paid for tools in this space? What made those worth it - or not?"
 
 PRICE REACTION (10 min):
   □ "If this cost [price A], what's your gut reaction?" (watch for the flinch)
@@ -227,7 +227,7 @@ features, and who else is in the decision. Triangulate with Van Westendorp/Gabor
 
 ---
 
-## PART 8 — PRICING-PAGE TEARDOWN CHECKLIST
+## PART 8 - PRICING-PAGE TEARDOWN CHECKLIST
 
 ```
 □ Does the page lead with VALUE/outcomes, not a wall of feature checkmarks?
@@ -240,17 +240,17 @@ features, and who else is in the decision. Triangulate with Van Westendorp/Gabor
 □ FAQ killing the top objections (billing, cancellation, refunds, what counts as a "seat/unit")?
 □ Comparison table for considered B2B buys; simple cards for low-consideration B2C?
 □ Charm pricing (₹999) for B2C; round confident numbers for B2B/enterprise?
-□ Tier NAMES signal who each is for (not just "Basic/Pro" — speak to the segment)?
+□ Tier NAMES signal who each is for (not just "Basic/Pro" - speak to the segment)?
 □ Local currency + PPP shown for international visitors (Agent 36 §6)?
 □ Is the cheapest desired action the most obvious one on the page?
 ```
 
 ---
 
-## PART 9 — PRICE-CHANGE ROLLOUT RUNBOOK
+## PART 9 - PRICE-CHANGE ROLLOUT RUNBOOK
 
 ```
-T-60 days — PREPARE
+T-60 days - PREPARE
   □ Finalize new pricing, packaging, and the grandfather policy (permanent / time-boxed / migrate).
   □ Model impact by cohort (3 scenarios). Confirm margin floor cleared.
   □ Draft comms: top-account personal emails, broad email, in-app, updated pricing page, FAQ,
@@ -258,19 +258,19 @@ T-60 days — PREPARE
   □ Legal/tax review (tax-inclusive display, contract price-lock clauses, notice requirements).
   □ Prep monitoring dashboard (Part below) and a ROLLBACK plan.
 
-T-30 days — ANNOUNCE
+T-30 days - ANNOUNCE
   □ Notify EXISTING customers with 30-60 days notice. Lead with VALUE shipped since they joined,
     not "rising costs." Personal outreach to top accounts.
   □ Offer a lock-in: "prepay annually now to keep your current price for 12 months" (also pulls
     cash forward and boosts retention).
   □ Honor contractual price locks; never change annual contracts mid-term.
 
-T-0 — GO LIVE (COHORT-BASED, never A/B on identical users)
+T-0 - GO LIVE (COHORT-BASED, never A/B on identical users)
   □ New customers see new pricing immediately (no grandfather needed).
-  □ Existing customers migrate per the grandfather policy — on RENEWAL, not mid-term.
+  □ Existing customers migrate per the grandfather policy - on RENEWAL, not mid-term.
   □ Sunset discontinued legacy plans gracefully; don't strand mid-implementation customers.
 
-T+1 to T+90 — MONITOR (guardrails)
+T+1 to T+90 - MONITOR (guardrails)
   | Metric | Watch for | Action if breached |
   |--------|-----------|--------------------|
   | New-business conversion | drop vs prior cohort | investigate page/price; consider rollback |
@@ -284,10 +284,10 @@ T+1 to T+90 — MONITOR (guardrails)
 
 ---
 
-## PART 10 — SaaS PRICING BENCHMARKS
+## PART 10 - SaaS PRICING BENCHMARKS
 
 ```
-Directional ranges for healthy SaaS. Verify against current data and your own model — these age.
+Directional ranges for healthy SaaS. Verify against current data and your own model - these age.
 
 | Metric | Healthy | Notes |
 |--------|---------|-------|

@@ -2,7 +2,7 @@
 
 ## Roadmap Structure
 
-Every roadmap has 4 horizons. The detail decreases as you look further out — because
+Every roadmap has 4 horizons. The detail decreases as you look further out - because
 certainty decreases. Don't pretend to know what you'll build in 12 months.
 
 ```
@@ -134,7 +134,7 @@ Feature G ── independent ─────────────────
 ## Roadmap Principles
 
 1. **Ship early, learn fast**: A 60% feature shipped today beats a 100% feature shipped next quarter
-2. **Date things loosely**: "Q2" not "April 15th" — precision implies false certainty
+2. **Date things loosely**: "Q2" not "April 15th" - precision implies false certainty
 3. **Kill features that don't earn their place**: If Phase 2 data shows Feature X isn't used, cut it
 4. **Leave buffer**: Plan for 70% capacity. The other 30% is bugs, tech debt, and surprises
 5. **Review monthly**: Roadmap is a living document, not a contract

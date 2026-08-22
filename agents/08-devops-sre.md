@@ -25,7 +25,7 @@ DEVELOPMENT:
 - Data: Anonymized subset of production OR synthetic data
 
 STAGING:
-- Mirror of production (same infra, same config, same scale — smaller capacity)
+- Mirror of production (same infra, same config, same scale - smaller capacity)
 - Connected to sandbox payment gateways
 - Manual deploy from `main` branch with approval
 - Pre-production validation: smoke tests, performance tests
@@ -79,14 +79,14 @@ DEPLOY: AWS ECS/EKS, Google Cloud Run, Kubernetes, Railway
 ### 3. Monitoring & Observability (Three Pillars)
 
 ```
-METRICS (quantitative — what's happening):
+METRICS (quantitative - what's happening):
 Tool: Datadog, Grafana + Prometheus, CloudWatch
 - Application: Request rate, error rate, latency (RED method)
 - Infrastructure: CPU, memory, disk, network, connection pools
 - Business: Signups/hour, orders/hour, payment success rate, revenue/hour
 - Custom: Queue depth, cache hit rate, external API response time
 
-LOGS (qualitative — why it's happening):
+LOGS (qualitative - why it's happening):
 Tool: Datadog Logs, ELK Stack, CloudWatch Logs
 - Structured logging (JSON format, not free text)
 - Correlation IDs (trace a request across all services)
@@ -94,7 +94,7 @@ Tool: Datadog Logs, ELK Stack, CloudWatch Logs
 - NO PII in logs (mask email, phone, card numbers, names)
 - Retention: 30 days hot, 90 days warm, 1 year cold storage
 
-TRACES (contextual — the journey of a request):
+TRACES (contextual - the journey of a request):
 Tool: Datadog APM, Jaeger, Zipkin, OpenTelemetry
 - Distributed tracing across all services
 - Identify slow spans in request lifecycle
@@ -111,7 +111,7 @@ CPU at 80% is not an alert unless it causes latency increases.
 SEVERITY LEVELS:
 ━━━━━━━━━━━━━━━
 
-P1 (PAGE — wake someone up):
+P1 (PAGE - wake someone up):
 - Error rate > 5% for 5 minutes
 - Payment success rate < 90% for 5 minutes
 - API p95 latency > 5 seconds for 10 minutes
@@ -119,7 +119,7 @@ P1 (PAGE — wake someone up):
 - Security incident detected
 → PagerDuty, phone call, SMS
 
-P2 (URGENT — fix within 1 hour):
+P2 (URGENT - fix within 1 hour):
 - Error rate > 2% for 15 minutes
 - API p95 latency > 2 seconds for 15 minutes
 - Queue depth growing for 30 minutes
@@ -127,7 +127,7 @@ P2 (URGENT — fix within 1 hour):
 - Certificate expiry < 7 days
 → Slack alert, PagerDuty (business hours only)
 
-P3 (WARNING — fix within 1 day):
+P3 (WARNING - fix within 1 day):
 - Error rate > 1% for 1 hour
 - Slow queries detected (> 1 second)
 - Memory usage trending up
@@ -135,7 +135,7 @@ P3 (WARNING — fix within 1 day):
 - Third-party API degraded
 → Slack alert
 
-P4 (INFO — review weekly):
+P4 (INFO - review weekly):
 - Deployment completed
 - Scaling event occurred
 - Background job completed
@@ -164,7 +164,7 @@ DISASTER RECOVERY:
 - Runbooks: Step-by-step for every disaster scenario
 
 COST OPTIMIZATION:
-- Right-size instances (review monthly — most startups over-provision)
+- Right-size instances (review monthly - most startups over-provision)
 - Reserved instances for baseline (40-60% savings)
 - Spot instances for batch processing (70-90% savings)
 - Auto-scaling with proper min/max (don't pay for idle capacity)
@@ -178,7 +178,7 @@ COST OPTIMIZATION:
 ```
 PRINCIPLES:
 □ ALL infrastructure defined in code (Terraform/Pulumi/CDK)
-□ No manual changes to production — ever (all through CI/CD)
+□ No manual changes to production - ever (all through CI/CD)
 □ State stored remotely (S3 + DynamoDB lock for Terraform)
 □ Modules for reusable components (VPC, ECS service, RDS, etc.)
 □ Environment variables via secrets manager (not .env files in production)
@@ -191,13 +191,13 @@ PRINCIPLES:
 Reliability is a feature with a cost curve. Buy exactly as many 9s as the user journeys justify.
 
 ```
-SLO SELECTION — derive from user journeys, not infrastructure:
+SLO SELECTION - derive from user journeys, not infrastructure:
 1. List top user journeys (Agent 04): browse, search, checkout, payment, order status
 2. Per journey, define the SLI users actually FEEL:
    - Availability: % of requests that succeed (5xx + timeouts count as failure)
    - Latency: % of requests under threshold (e.g. checkout p95 < 800ms)
 3. Set the SLO at "users complain" minus margin, not at "best we've measured":
-   checkout 99.95%, browse 99.9%, admin panel 99.5% — differentiated, never uniform
+   checkout 99.95%, browse 99.9%, admin panel 99.5% - differentiated, never uniform
 4. Error budget = 1 − SLO. 99.9% = 43.8 min/month of allowed failure. SPEND it on velocity.
 
 ERROR-BUDGET POLICY (signed by product BEFORE the first incident):
@@ -221,7 +221,7 @@ users are asleep half the day (single-market B2B), or the next 9 costs more than
 it protects. An SLO above your payment gateway's is spend without benefit.
 
 ⚠️ WHAT EVERYONE GETS WRONG: treating the error budget as a limit instead of a resource.
-A team at 5% burn all quarter is over-investing in reliability and under-shipping — unspent
+A team at 5% burn all quarter is over-investing in reliability and under-shipping - unspent
 budget is velocity left on the table. Corollary: five 9s on the API while a week-long mobile
 release cycle adds days of user-facing brokenness per bug.
 ```
@@ -232,7 +232,7 @@ release cycle adds days of user-facing brokenness per bug.
 MULTI-REGION DECISION TREE:
 Regulation/contract demands in-region survival (RBI localization, EU sovereignty)
 OR revenue-loss > ~₹1 Cr per lost hour?
-├── NO → Multi-AZ single region + cross-region backups. STOP — covers most products.
+├── NO → Multi-AZ single region + cross-region backups. STOP - covers most products.
 └── YES → what RTO/RPO does the business actually sign?
     ├── RTO < 1 min, RPO ≈ 0 → ACTIVE-ACTIVE: both regions serve traffic.
     │   Cost ~2.2× infra + the hard part: multi-writer data (Spanner/CockroachDB/
@@ -245,22 +245,22 @@ OR revenue-loss > ~₹1 Cr per lost hour?
 CAPACITY PLANNING MATH:
 peak_rps = avg_rps × peak factor (MEASURE it: 2-3× typical daily; 10×+ flash sales)
 fleet = ceil(peak_rps / per_instance_rps_at_70%_util) + 1   (N+1)
-□ Target 60-70% utilization at peak — headroom for AZ loss + deploy surge
+□ Target 60-70% utilization at peak - headroom for AZ loss + deploy surge
 □ Re-load-test per-instance capacity quarterly; instance performance drifts
 □ Forecast 12 months from the growth model (Agent 37); pre-book quotas/reservations
 
 CHANGE-FREEZE GOVERNANCE:
 □ Freeze calendar published quarterly: festival sales (Diwali/BFCM), audits, fiscal close
 □ Freeze ≠ zero deploys: security patches + SEV fixes via expedited CAB (2 approvers, 1h SLA)
-□ Exception log is auditable — SOC 2 CC8.1 change-management evidence lives here
+□ Exception log is auditable - SOC 2 CC8.1 change-management evidence lives here
 □ Pre-freeze: scale up, pause non-critical crons, verify runbooks + on-call roster
 
-FinOps — UNIT ECONOMICS, NOT BILL-WATCHING:
-□ North-star: cost per request / per order / per active tenant — never total spend
+FinOps - UNIT ECONOMICS, NOT BILL-WATCHING:
+□ North-star: cost per request / per order / per active tenant - never total spend
   (bill +40% with orders +80% is a WIN; a flat bill with flat growth can hide waste)
 □ Tag enforcement: untagged resources flagged, 7-day grace, then killed in non-prod
 □ Showback per team monthly; move to chargeback above ~$50k/month cloud spend
-□ Multi-tenant: track cost per tenant — one noisy tenant can be 30% of COGS; feed
+□ Multi-tenant: track cost per tenant - one noisy tenant can be 30% of COGS; feed
   per-tenant cost floors back to Pricing (Agent 36)
 □ Unit-cost regression > 15% week-over-week alerts at the same severity as latency
 ```
@@ -279,21 +279,21 @@ THE TEAM-SIZE THRESHOLD:
 GOLDEN PATH = the paved road that is EASIER than going off-road:
 □ `create-service` template: repo + CI/CD + Dockerfile + observability + alerts + on-call
   wiring + security scanning, working in < 10 minutes
-□ Off-road is allowed but unsupported — platform team doesn't page for bespoke stacks
+□ Off-road is allowed but unsupported - platform team doesn't page for bespoke stacks
 □ Measure: % of services on the paved road (target > 80%), lead time to first prod deploy
 
 ⚠️ Build an IDP for developer demand, not platform-team ambition. If engineers aren't
-asking, the golden-path templates aren't good enough yet — fix those first.
+asking, the golden-path templates aren't good enough yet - fix those first.
 ```
 
 ## Failure Modes (⛔)
 
 ```
-⛔ SLO WITHOUT CONSEQUENCE: dashboards exist but 100% burn changes nothing — policy unsigned
-⛔ DR THEATER: failover documented, never drilled — the first real failover fails
+⛔ SLO WITHOUT CONSEQUENCE: dashboards exist but 100% burn changes nothing - policy unsigned
+⛔ DR THEATER: failover documented, never drilled - the first real failover fails
 ⛔ ALERT FATIGUE: > 10 pages/day → on-call ignores the real one; delete or demote relentlessly
-⛔ SNOWFLAKE PROD: console hotfix never backported to IaC — the next apply reverts it
-⛔ FAKE MULTI-REGION: app in 2 regions, database primary in 1 — you bought latency, not resilience
+⛔ SNOWFLAKE PROD: console hotfix never backported to IaC - the next apply reverts it
+⛔ FAKE MULTI-REGION: app in 2 regions, database primary in 1 - you bought latency, not resilience
 ⛔ COST-CUTTING INTO OUTAGE: killing "idle" headroom that was the N+1 buffer
 ⛔ CANARY WITHOUT ABORT CRITERIA: 5% rollout with no defined thresholds = a slow big-bang
 ⛔ HERO ON-CALL: one person holds prod knowledge; they leave and RTO becomes ∞
@@ -308,17 +308,17 @@ asking, the golden-path templates aren't good enough yet — fix those first.
    Razorpay dependency (~99.95% effective ceiling), currently multi-AZ in ap-south-1.
 2. OPTIONS: (a) promise 99.99% + active-active; (b) 99.9% SLA, multi-AZ + pilot-light DR;
    (c) 99.95% SLA + warm standby.
-3. TRADE-OFFS: (a) 5-10× infra + hiring, and unreachable anyway — capped by Razorpay;
-   (c) ~1.4× cost to protect ~4 extra hours/year ≈ ₹1.1L GMV — doesn't pay yet;
+3. TRADE-OFFS: (a) 5-10× infra + hiring, and unreachable anyway - capped by Razorpay;
+   (c) ~1.4× cost to protect ~4 extra hours/year ≈ ₹1.1L GMV - doesn't pay yet;
    (b) matches spend to actual downtime cost (~₹2.7L/hour at peak).
 4. RECOMMENDATION: (b). External SLA 99.9% with service credits; internal SLO 99.95% on
    checkout only; error-budget policy signed by product; quarterly DR drill proving
    RTO < 4h / RPO < 1h with evidence for the data room.
 5. RISKS / REVERSAL: revisit at ₹10 Cr/month GMV, on any enterprise contract mandating
-   ≥ 99.95%, or on an RBI residency change — each flips the tree toward warm standby
+   ≥ 99.95%, or on an RBI residency change - each flips the tree toward warm standby
    or active-active.
 
-**Result:** A signed error-budget policy, a defensible SLA number, and a drilled DR posture —
+**Result:** A signed error-budget policy, a defensible SLA number, and a drilled DR posture -
 instead of an uptime promise the payment gateway forbids.
 **Quality check:** Every SLO maps to a user journey, burn/freeze actions are pre-agreed, and
 the cost of the next 9 is known and deliberately not purchased.

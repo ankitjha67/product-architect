@@ -15,7 +15,7 @@ Client Events → Collection Layer → Processing → Storage → Analytics → 
 
 COLLECTION LAYER:
 - Client SDK: Mixpanel/Amplitude/PostHog/Rudderstack (choose ONE as source of truth)
-- Server events: API-side event emission for critical actions (payment, signup — don't rely on client)
+- Server events: API-side event emission for critical actions (payment, signup - don't rely on client)
 - Third-party data: Payment gateway webhooks, email delivery status, ad platform conversions
 
 PROCESSING:
@@ -25,7 +25,7 @@ PROCESSING:
 
 STORAGE:
 - Event store: BigQuery / Snowflake / ClickHouse (analytical queries)
-- Operational DB: PostgreSQL (transactional data — source of truth for business records)
+- Operational DB: PostgreSQL (transactional data - source of truth for business records)
 - Feature store: Redis / Feast (ML features, real-time personalization)
 
 TOOLS BY STAGE:
@@ -160,23 +160,23 @@ LEADING ↔ LAGGING PAIRS (design them together):
 | NPS | Time-to-first-value + support-resolution CSAT |
 | Enterprise renewal | QBR attendance + exec engagement (Agent 17) |
 VALIDATE the pair: does the leading metric actually predict the lagging one in YOUR
-historical cohorts? If not, it's a hopeful proxy — replace it.
+historical cohorts? If not, it's a hopeful proxy - replace it.
 
-THE GAMEABILITY TEST — run on EVERY metric before it ships:
+THE GAMEABILITY TEST - run on EVERY metric before it ships:
 Ask: "If my bonus depended on this number, how would I fake it?"
 - "Weekly active users" → auto-login pings, notification spam → tighten to "users
   performing [core action] ≥1×/week"
 - "Tickets resolved" → close-and-reopen, premature closes → pair with reopen rate + CSAT
 - "Trial signups" → incentivized junk traffic → pair with week-2 activation of the cohort
 If you can name the exploit, so will the team being measured. Goodhart's law is not
-a risk on a targeted metric — it is a guarantee.
+a risk on a targeted metric - it is a guarantee.
 
 GOODHART GUARDRAILS (every TARGET metric ships with):
 □ A COUNTER-METRIC that breaks if the target is gamed (speed↔quality, volume↔refund
   rate, deflection↔CSAT, growth↔D30 retention)
 □ A precise semantic-layer definition (who counts, what window, what threshold)
-□ A named owner + review date — metrics expire; re-validate the pair quarterly
-□ Segment views by default — an aggregate can improve while every segment worsens (§7)
+□ A named owner + review date - metrics expire; re-validate the pair quarterly
+□ Segment views by default - an aggregate can improve while every segment worsens (§7)
 ```
 
 ### 7. Experiment Analysis: When NOT to Trust the Result
@@ -203,17 +203,17 @@ runtime. Free rigor for returning users; useless for brand-new users (no pre-per
 PEEKING & SEQUENTIAL TESTING:
 Checking a fixed-horizon test daily and stopping "when significant" inflates the false
 positive rate from 5% to roughly 25-40%. Either (a) fix the sample size and look once,
-or (b) use methods built for peeking — mSPRT / always-valid p-values (Statsig and Eppo
+or (b) use methods built for peeking - mSPRT / always-valid p-values (Statsig and Eppo
 implement these). Never "we peeked, but it was really significant."
 
-DO-NOT-TRUST CHECKLIST — the result is suspect if ANY hold:
-□ Sample ratio mismatch (actual split ≠ declared split — a bucketing bug voids all)
+DO-NOT-TRUST CHECKLIST - the result is suspect if ANY hold:
+□ Sample ratio mismatch (actual split ≠ declared split - a bucketing bug voids all)
 □ Stopped early on a peek without a sequential correction
 □ Effect driven by one segment or one whale account (recompute without the top 1%)
 □ Lift decays week over week, or vanishes in the second-week cohort (novelty)
-□ Primary metric moved but its upstream causal-chain metrics didn't — how, exactly?
-□ >5 variants/metrics with no multiple-comparison correction — 1-in-20 wins are free
-□ It contradicts strong priors AND barely clears p<0.05 — replicate before shipping
+□ Primary metric moved but its upstream causal-chain metrics didn't - how, exactly?
+□ >5 variants/metrics with no multiple-comparison correction - 1-in-20 wins are free
+□ It contradicts strong priors AND barely clears p<0.05 - replicate before shipping
 RULE: an unbelievable result is a bug until replicated. Re-run before you celebrate.
 ```
 
@@ -228,19 +228,19 @@ one already made.
 PRE-REGISTRATION TEMPLATE (filled in BEFORE data collection starts):
 - DECISION: "We will [ship X / kill X / raise price to Y] IF [primary metric] moves
   ≥[Z] at [stat threshold] over [window]."
-- OTHERWISE: [the default action — usually "do not ship"].
+- OTHERWISE: [the default action - usually "do not ship"].
 - GUARDRAILS: the decision reverses regardless of the primary if [guardrail metric]
   worsens by ≥[W].
 - SEGMENTS THAT MUST NOT BE HARMED: [list].
 - SIGNED BY: [decision-maker], dated, before the experiment/analysis begins.
 
 ENFORCEMENT:
-□ The rule lives in the experiment doc, timestamped — not in anyone's memory
+□ The rule lives in the experiment doc, timestamped - not in anyone's memory
 □ Changing the rule mid-flight = a new experiment (log the old rule and why it moved)
 □ "Interesting but off-rule" findings → the hypothesis backlog, not this decision
 □ Quarterly audit: % of shipped changes that had a pre-registered rule (target >80%)
 WHY IT WORKS: it converts arguments about numbers (endless) into arguments about
-thresholds — held before the data arrived, when nobody knew which side they'd be on.
+thresholds - held before the data arrived, when nobody knew which side they'd be on.
 ```
 
 ### 9. Enterprise Analytics: Governance, Certification & Cost
@@ -269,58 +269,58 @@ DATA SLAs WITH CONSUMING TEAMS (written, like any other SLA):
 □ Upstream contracts: schema changes to T1/T2 sources need notice + a migration window
 
 BI & WAREHOUSE COST GOVERNANCE (the silent 3x bill):
-□ Per-team/query cost attribution via warehouse tags — published monthly, by name
+□ Per-team/query cost attribution via warehouse tags - published monthly, by name
 □ Auto-suspend idle warehouses; timeouts + cost caps on all human-issued queries
 □ Dashboard hygiene: no views in 90 days → archive; every scheduled refresh has a
   named owner or dies
-□ Materialize the top-10 most-queried patterns instead of rescanning raw events —
+□ Materialize the top-10 most-queried patterns instead of rescanning raw events -
   typically the single biggest saving
 ```
 
 ## LLM-Powered Analytics
 
 See `frameworks/ai-engineering-stack.md` for the full stack (RAG, guardrails, evals). Analytics
-is a high-ROI place for LLMs — but only if every number is verifiable. Start at the lowest
+is a high-ROI place for LLMs - but only if every number is verifiable. Start at the lowest
 maturity rung (L0/L1); do not reach for an autonomous agent to answer a metric question.
 
 ```
 USE CASES (pick the smallest that works):
 - NL→SQL / text-to-query: user asks in English → generate SQL against the warehouse.
-  ALWAYS generate against the SEMANTIC LAYER (dbt metrics, Cube, LookML), never raw tables —
+  ALWAYS generate against the SEMANTIC LAYER (dbt metrics, Cube, LookML), never raw tables -
   the semantic layer is the single source of truth for metric definitions and joins.
 - "Ask your data" (RAG over metadata): retrieve metric definitions, dashboard descriptions,
   and column docs so the model answers "what does 'activation' mean here?" with citations.
 - Insight & anomaly narration: turn a detected spike/drop or cohort shift into plain-language
-  "what changed and likely why" — grounded in the actual query result, not invented.
+  "what changed and likely why" - grounded in the actual query result, not invented.
 
 GUARDRAILS (non-negotiable for analytics):
-□ Numbers verified against source — the LLM narrates results it was GIVEN; it never
+□ Numbers verified against source - the LLM narrates results it was GIVEN; it never
   fabricates or estimates a figure. Compute in SQL, then have the model describe it.
-□ Semantic layer = source of truth — generated queries resolve metrics through it, so
+□ Semantic layer = source of truth - generated queries resolve metrics through it, so
   "revenue" always means the one agreed definition.
-□ Human review of definitions — a person signs off on new/edited metric logic before it
+□ Human review of definitions - a person signs off on new/edited metric logic before it
   ships; the model proposes, an analyst approves.
-□ Bound the blast radius — read-only warehouse role, row/column access respected, query
+□ Bound the blast radius - read-only warehouse role, row/column access respected, query
   timeouts and cost caps (a runaway generated query is a real bill).
 
 EVALS (gate every prompt/model/schema change in CI):
-□ Query correctness — golden set of NL question → expected SQL / expected result; measure
+□ Query correctness - golden set of NL question → expected SQL / expected result; measure
   execution accuracy (does the query run and return the right number?), not just string match.
-□ Faithfulness of narration — the summary states only what the result supports.
+□ Faithfulness of narration - the summary states only what the result supports.
 □ "I can't answer that from the available metrics" behavior when the question has no
-  defined metric — no guessing.
+  defined metric - no guessing.
 ```
 
 ## ⛔ Analytics Failure Modes
 
 ```
-⛔ TARGETED METRIC, NO COUNTER-METRIC — Goodhart executes; the number improves, the business doesn't.
-⛔ DASHBOARD OF LAGGING METRICS — a scoreboard, not a steering wheel; by the time it moves, it's over.
-⛔ PEEK-AND-STOP — daily significance checks on a fixed-horizon test; 5% error becomes ~30%.
-⛔ AGGREGATE-ONLY READS — Simpson's paradox ships a change that loses in every segment.
-⛔ POST-HOC DECISION RULES — the analysis decorates a decision that was already made.
-⛔ 40 DEFINITIONS OF REVENUE — ungoverned self-serve; every meeting opens with "whose number?"
-⛔ TRUSTING THE UNBELIEVABLE — a p=0.049 miracle shipped without replication.
+⛔ TARGETED METRIC, NO COUNTER-METRIC - Goodhart executes; the number improves, the business doesn't.
+⛔ DASHBOARD OF LAGGING METRICS - a scoreboard, not a steering wheel; by the time it moves, it's over.
+⛔ PEEK-AND-STOP - daily significance checks on a fixed-horizon test; 5% error becomes ~30%.
+⛔ AGGREGATE-ONLY READS - Simpson's paradox ships a change that loses in every segment.
+⛔ POST-HOC DECISION RULES - the analysis decorates a decision that was already made.
+⛔ 40 DEFINITIONS OF REVENUE - ungoverned self-serve; every meeting opens with "whose number?"
+⛔ TRUSTING THE UNBELIEVABLE - a p=0.049 miracle shipped without replication.
 ```
 
 ## Example
@@ -332,11 +332,11 @@ Ship it?"
 1. **Constraints:** planned runtime was 14 days (two business cycles); the §8
    pre-registered rule says "ship if ≥+2% at the fixed horizon with guardrails flat";
    the team has been peeking daily.
-2. **Options:** (a) ship now — banks the win, but a 6-day read on a 14-day design
+2. **Options:** (a) ship now - banks the win, but a 6-day read on a 14-day design
    with daily peeking carries a ~25-40% false-positive rate and no weekend cohort;
-   (b) restart under a sequential test — statistically cleanest, costs 2+ weeks;
+   (b) restart under a sequential test - statistically cleanest, costs 2+ weeks;
    (c) run to the pre-registered horizon and read once, with the §7 checklist.
-3. **Trade-offs → recommendation:** (c) — the rule was pre-registered for exactly
+3. **Trade-offs → recommendation:** (c) - the rule was pre-registered for exactly
    this moment; honoring it costs 8 days. At day 14: sample-ratio check, mobile vs
    desktop segments (Simpson's), second-week-cohort lift (novelty), guardrails (AOV,
    refund rate, support tickets). Apply CUPED with pre-period purchase behavior to
@@ -347,7 +347,7 @@ Ship it?"
    day-14 lift <+2% or any degraded guardrail → do not ship; log the near-miss.
 
 **Result:** A decision made by the pre-registered rule at the pre-registered horizon,
-with SRM, segment, and novelty checks — not by the most exciting interim number.
+with SRM, segment, and novelty checks - not by the most exciting interim number.
 
 **Quality check:** Was the decision rule written before the data existed? Did anyone
 stop early on a peek? Do the segments agree with the aggregate? Would this replicate?

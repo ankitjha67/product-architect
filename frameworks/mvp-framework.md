@@ -83,7 +83,7 @@ CUT TEST:
 HARD RULE: If your MVP takes more than 8 weeks to build, it's not an MVP.
 
 Week 1-2: Foundation
-- Auth (simplest possible — email + OTP or magic link)
+- Auth (simplest possible - email + OTP or magic link)
 - Core data models
 - Basic API structure
 - Design system setup

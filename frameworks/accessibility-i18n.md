@@ -103,12 +103,12 @@ DYNAMIC CONTENT:
 ARCHITECTURE:
 - All user-facing strings in translation files (JSON/YAML), never hardcoded
 - Key format: "module.component.element" (e.g., "cart.checkout.button_pay")
-- Pluralization support (1 item vs. 2 items — rules vary by language)
+- Pluralization support (1 item vs. 2 items - rules vary by language)
 - Gender support where needed (languages with gendered nouns)
-- Context for translators ("Save" button vs. "Save" as noun — different translations)
+- Context for translators ("Save" button vs. "Save" as noun - different translations)
 
 LANGUAGE-SPECIFIC CHALLENGES:
-German: Compound words can be very long (Geschwindigkeitsbegrenzung) — UI must handle
+German: Compound words can be very long (Geschwindigkeitsbegrenzung) - UI must handle
 Japanese/Chinese/Korean (CJK): No word boundaries, different line-breaking rules
 Arabic/Hebrew (RTL): Entire layout mirrors, numbers remain LTR
 Hindi/Tamil/Bengali (Indic): Complex script rendering, conjuncts, line breaking

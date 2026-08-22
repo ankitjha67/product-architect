@@ -3,11 +3,11 @@
 All notable changes to Product Architect. Format follows [Keep a Changelog](https://keepachangelog.com/);
 versions follow semver as declared in `SKILL.md` metadata.
 
-## [4.0.0] — 2026-07
+## [4.0.0] - 2026-07
 
 ### Added
 - **16 new department agents (48–63)**, each written deep from birth with a Decision
-  Framework, Enterprise-Grade section, failure modes, and a worked reasoning example —
+  Framework, Enterprise-Grade section, failure modes, and a worked reasoning example -
   ~7,000 lines. These are real departments with distinct depth, not sub-topics of
   existing agents:
   - **Engineering specialisms:** 48 Mobile Engineering (release trains, app-store
@@ -38,10 +38,10 @@ versions follow semver as declared in `SKILL.md` metadata.
   directory, github-readme tables, navigator `agentMap`, and a row each in
   `ai-department-playbooks.md`. Counts moved to 64 agents / 122 files everywhere.
 
-## [3.2.1] — 2026-07
+## [3.2.1] - 2026-07
 
 ### Added
-- **README `## About` section** — the repo previously opened straight into install
+- **README `## About` section** - the repo previously opened straight into install
   instructions with no explanation of what it is. Now states the premise (48 department
   heads, not one generalist), what makes it different, who it's for, and the honest
   scope limits.
@@ -50,15 +50,15 @@ versions follow semver as declared in `SKILL.md` metadata.
   wiring checklist, and issue templates for content gaps and bugs.
 
 ### Changed
-- **`tools/validate_repo.py` upgraded** — now also verifies every relative markdown
+- **`tools/validate_repo.py` upgraded** - now also verifies every relative markdown
   link resolves and every code fence is balanced, alongside the existing count,
   numbering, and doc-consistency checks. One source of truth for CI and local runs.
 
 ### Fixed
 - Unbalanced code fence in `frameworks/ai-engineering-stack.md` (a stray closing fence
-  after the RAG pipeline table) — caught by the new validator check on its first run.
+  after the RAG pipeline table) - caught by the new validator check on its first run.
 
-## [3.2.0] — 2026-07
+## [3.2.0] - 2026-07
 
 ### Added
 - **Enterprise Reasoning Protocol** in `references/agent-standards.md`, inherited by all
@@ -71,7 +71,7 @@ versions follow semver as declared in `SKILL.md` metadata.
   00–03, 05, 07, 08, 10, 12–17, 19–28, 30.
 - Repo scaffolding: `CONTRIBUTING.md` (conventions + wiring checklist), `CHANGELOG.md`.
 
-## [3.1.0] — 2026-07
+## [3.1.0] - 2026-07
 
 ### Added
 - **AI-native layer**: `frameworks/ai-engineering-stack.md` (L0–L5 maturity ladder, RAG
@@ -80,7 +80,7 @@ versions follow semver as declared in `SKILL.md` metadata.
   (a concrete LLM/RAG/agent use case for every one of the 48 departments).
 - Inline AI sections on Agents 06, 09, 16, 17, 29, 34, 38, 39.
 
-## [3.0.0] — 2026-06
+## [3.0.0] - 2026-06
 
 ### Added
 - **17 new agents (31–47)**: Product Marketing, Sales & RevOps, Partnerships, DevRel,
@@ -99,7 +99,7 @@ versions follow semver as declared in `SKILL.md` metadata.
 - Country compliance deep-dives (IN/US/EU/UK/SEA) expanded ~3x; coverage-audit and
   risk-matrix rebuilt as full instruments.
 
-## [2.0.0] and earlier — 2026 H1
+## [2.0.0] and earlier - 2026 H1
 
 - Original system: 31 agents (00–30), 23 frameworks, SMART-LOADER routing, KDR memory,
   4-level governance, compliance deep-dives, navigator UI, Anthropic skill-guide

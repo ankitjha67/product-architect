@@ -12,7 +12,7 @@ PRIORITIES:
 □ Incorporate company (Private Limited India, C-Corp Delaware US)
 □ Open business bank account
 □ Domain, social handles, basic branding
-□ Startup India DPIIT registration (India — for tax benefits)
+□ Startup India DPIIT registration (India - for tax benefits)
 DEPARTMENTS THAT EXIST: You = CEO + CTO + PM + Designer + Support + Sales
 GOVERNANCE: None needed. You make all decisions.
 ```
@@ -52,7 +52,7 @@ GOVERNANCE: Weekly team meeting. Founder makes major decisions. Informal board (
 NEW COMPLIANCE: GST registration, TDS, basic employment compliance
 ```
 
-### Stage 3: Growth Stage — Series A (15-40 people)
+### Stage 3: Growth Stage - Series A (15-40 people)
 
 ```
 YOU ARE: Product-market fit achieved. Time to scale.
@@ -76,7 +76,7 @@ GOVERNANCE: Board (4-5 members). Monthly leadership sync. Quarterly all-hands.
 NEW COMPLIANCE: Employee PF registration, shop & establishment license, professional tax
 ```
 
-### Stage 4: Scale-Up — Series B/C (40-150 people)
+### Stage 4: Scale-Up - Series B/C (40-150 people)
 
 ```
 YOU ARE: Market leader in your niche. Scaling aggressively.

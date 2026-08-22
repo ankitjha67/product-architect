@@ -73,7 +73,7 @@ Buy to acquire a team, a technology leap, or to remove a competitor.
 |           |                                        | roadmap, marquee co-marketing     |
 
 PROGRAM DESIGN PRINCIPLES:
-  ✓ Tiers must be EARNED on outcomes (sourced revenue, certs, CSAT) — not vanity.
+  ✓ Tiers must be EARNED on outcomes (sourced revenue, certs, CSAT) - not vanity.
   ✓ Each tier up = more margin/benefits AND more commitment. Symmetric.
   ✓ Deal registration protects partners from channel conflict (first to register
     a deal gets the margin / protection for X days).
@@ -100,7 +100,7 @@ GUARDRAILS:
   ✓ Referral (partner just intros) < Reseller (partner sells & supports) margin.
   ✓ Recurring rev-share should reflect ongoing partner effort, not just the intro.
   ✓ Tie higher margins to higher tiers and verified value-add.
-  ⚠ Margins, rev-share, and MDF terms have tax/legal/accounting implications —
+  ⚠ Margins, rev-share, and MDF terms have tax/legal/accounting implications -
     see the disclaimer and Agent 10.
 ```
 
@@ -112,7 +112,7 @@ GUARDRAILS:
 SOURCED vs INFLUENCED (define these crisply or you'll double-count):
   SOURCED   = partner originated the deal (their lead). Full attribution.
   INFLUENCED= partner touched a deal you already had (integration, co-sell assist).
-              Partial/assist credit. Track separately — never sum the two as one.
+              Partial/assist credit. Track separately - never sum the two as one.
 
 PARTNER CAC:
   Partner CAC = (program cost + MDF + margin given up + partner-team cost)
@@ -159,7 +159,7 @@ full enablement → deprioritize. 80% of value comes from ~20% of partners.
 
 ```
 WHY IT MATTERS: enterprises have committed cloud spend (EDP/MACC). If your
-product is on the marketplace, that spend can be DRAWN DOWN to buy you —
+product is on the marketplace, that spend can be DRAWN DOWN to buy you -
 removing a procurement battle. Plus co-sell motions with cloud field teams.
 
 MARKETPLACE MECHANICS:
@@ -169,7 +169,7 @@ MARKETPLACE MECHANICS:
     (often the single biggest reason an enterprise prefers buying via marketplace).
   ✓ Cloud takes a listing fee (historically ~3% with co-sell, varies by program).
   ✓ CO-SELL programs: AWS ISV Accelerate, Azure IP Co-Sell, Google Partner
-    Advantage — get your deals in front of cloud field sellers (they're comped
+    Advantage - get your deals in front of cloud field sellers (they're comped
     on partner ACR/influenced revenue).
 
 PLAY: register opportunities in the cloud's partner portal (ACE for AWS,
@@ -186,7 +186,7 @@ transact via private offer → spend draws down → faster close.
 ☐ Term, renewal, termination (for cause / convenience / notice period)
 ☐ Economics: fees, margins, rev-share %, payment terms, MDF rules
 ☐ Deal registration & channel-conflict rules
-☐ Exclusivity (territory/vertical?) — avoid blanket exclusivity early
+☐ Exclusivity (territory/vertical?) - avoid blanket exclusivity early
 ☐ IP ownership & license grants (who owns what, white-label rights)
 ☐ Data sharing, privacy, security obligations (tie to data-governance.md)
 ☐ Branding / trademark usage rights & approval

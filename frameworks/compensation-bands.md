@@ -12,7 +12,7 @@ PRINCIPLES:
 2. Benchmark against MARKET, not just internal equity (but maintain internal equity too)
 3. TRANSPARENCY: Every employee knows their band, where they sit, and how to move up
 4. TOTAL COMPENSATION: Base + Equity + Benefits + Perks = Total Package
-5. GEOGRAPHY-AWARE: Adjust for cost of living, not cost of labor (pay for role, not location — with geographic modifier)
+5. GEOGRAPHY-AWARE: Adjust for cost of living, not cost of labor (pay for role, not location - with geographic modifier)
 
 COMPENSATION FORMULA:
 Total Comp = Base Salary + Variable/Bonus + Equity (annualized) + Benefits Value
@@ -203,7 +203,7 @@ ESOP ALLOCATION BY LEVEL (% of total pool):
 
 VESTING STANDARD:
 - 4-year vesting with 1-year cliff
-- Monthly vesting after cliff (not quarterly — be employee-friendly)
+- Monthly vesting after cliff (not quarterly - be employee-friendly)
 - Accelerated vesting on acquisition: Single trigger (partial) or Double trigger (recommended)
 
 REFRESH GRANTS:
@@ -320,6 +320,6 @@ DATA HYGIENE:
 AUTOMATION OPPORTUNITIES:
 ⚡ Set Google Alerts for "[your company] salary" and "tech salary india 2026"
 ⚡ Quarterly Levels.fyi/Glassdoor scrape for your top 10 roles (manual, 2 hours)
-⚡ Compensation management tools: Pave, Ravio, Figures — automate benchmarking
-⚡ Track offer acceptance rate by role — declining rate = early warning signal
+⚡ Compensation management tools: Pave, Ravio, Figures - automate benchmarking
+⚡ Track offer acceptance rate by role - declining rate = early warning signal
 ```

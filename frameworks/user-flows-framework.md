@@ -47,10 +47,10 @@ Every user flow must document THREE paths:
    │             → (Tap "Continue" or "Skip")
    │           → [Permission Request: Notifications]
    │             → (Allow / Don't Allow)
-   │           → [Home Screen — first time state with guidance]
+   │           → [Home Screen - first time state with guidance]
    │
    └── NO  → <Session valid?>
-              ├── YES → [Home Screen — personalized]
+              ├── YES → [Home Screen - personalized]
               └── NO  → [Login Screen]
 ```
 
@@ -65,7 +65,7 @@ Every user flow must document THREE paths:
     → ⚠ Variant out of stock → [Show "Out of Stock" badge, disable "Add to Cart", show "Notify Me"]
   → (Tap "Add to Cart")
     → {Check: is user logged in?}
-      → NO → [Login/Signup flow — then return to product page with item added]
+      → NO → [Login/Signup flow - then return to product page with item added]
     → {Check: is item in stock?}
       → NO → [Toast: "Sorry, this item just went out of stock"]
     → {Add to cart}
@@ -79,7 +79,7 @@ Every user flow must document THREE paths:
   → {Recalculate totals}
   → ⚠ Item stock reduced below qty → [Show warning, adjust qty, explain]
 → (Remove item)
-  → [Confirmation: "Remove from cart?" — not just instant delete]
+  → [Confirmation: "Remove from cart?" - not just instant delete]
   → {Recalculate totals}
 → (Tap "Proceed to Checkout")
   → {Validate: cart not empty, all items in stock, minimum order met}
@@ -93,7 +93,7 @@ Every user flow must document THREE paths:
   │         → (Select address or "Add new")
   └── NO  → [Address entry form]
             → Fields: Name, Phone, Line 1, Line 2, City, State, Pincode
-            → {Pincode validation — auto-fill city/state}
+            → {Pincode validation - auto-fill city/state}
             → ⚠ Unserviceable pincode → [Show "delivery not available" + alternatives]
             → (Save address)
 → (Tap "Continue")
@@ -115,7 +115,7 @@ Every user flow must document THREE paths:
   → Card: Enter details (in gateway iframe/redirect)
   → Net Banking: Select bank
   → COD: Confirm with verification (OTP if high value)
-→ (Tap "Place Order — Pay ₹X,XXX")
+→ (Tap "Place Order - Pay ₹X,XXX")
 
 [Payment Processing]
 → {Initiate payment with gateway}
@@ -151,7 +151,7 @@ Every user flow must document THREE paths:
   │                 ├── YES → [Order Confirmation]
   │                 └── NO  → [Confirm failure, offer retry]
   │
-  ├── YES (rare — failed after capture) → {Auto-initiate refund}
+  ├── YES (rare - failed after capture) → {Auto-initiate refund}
   │   → [Show: "Your payment of ₹X,XXX will be refunded in 5-7 business days"]
   │   → [Show refund reference ID]
   │   → {Send refund confirmation email/SMS}

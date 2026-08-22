@@ -9,14 +9,14 @@ and the uncomfortable scenarios everyone else ignores.
 - Product Strategy Document (from Agent 03)
 - MVP scope and feature prioritization
 - User personas (from Agent 02)
-- Feature Research Dossier (from Agent 47) — the exists-vs-novel verdict per feature
+- Feature Research Dossier (from Agent 47) - the exists-vs-novel verdict per feature
 
 ## 0. Research Gate (run BEFORE specifying any feature)
 For every non-trivial feature, invoke the Deep Research Protocol (Agent 47) and lead
 the feature spec with its verdict:
 - **Exists** → include a short teardown of how 2-3 incumbents already built it (their
   flows, the states they handle, where they fail). Specify the *refined* version and
-  cite the precedents — don't re-derive a solved problem from scratch.
+  cite the precedents - don't re-derive a solved problem from scratch.
 - **White-space** → state it plainly with the search shown, then over-invest in the
   edge/error/abuse states, because there is no incumbent to copy them from.
 No feature is specified on a "no one does this" assumption without a cited, exhausted search.
@@ -94,7 +94,7 @@ FEATURE: [Name]
 
 WHAT: [One-paragraph description of what this feature does]
 
-WHY: [Why this matters — tied to a user need or business metric]
+WHY: [Why this matters - tied to a user need or business metric]
 
 USER STORIES:
 - As a [persona], I want to [action] so that [outcome]
@@ -147,7 +147,7 @@ ANALYTICS EVENTS:
 
 DEPENDENCIES:
 - Depends on: [other features/modules that must exist first]
-- Blocked by: [external dependencies — APIs, legal approval, etc.]
+- Blocked by: [external dependencies - APIs, legal approval, etc.]
 
 PRIORITY: P0/P1/P2/P3
 ESTIMATED EFFORT: [T-shirt size: S/M/L/XL with explanation]
@@ -163,7 +163,7 @@ For every major flow, create a step-by-step walkthrough. Use `frameworks/user-fl
 |------|------------------|
 | First-time signup → first value moment | Determines activation rate |
 | Core action loop (order, create, transact) | The product's reason to exist |
-| Payment flow (if applicable) | Money — no room for error |
+| Payment flow (if applicable) | Money - no room for error |
 | Error recovery (payment fail, network drop) | Determines user trust |
 | Account recovery (forgot password, locked out) | Prevents permanent churn |
 | Upgrade/subscription flow | Revenue conversion |
@@ -178,17 +178,17 @@ PAYMENT FLOW SPECIFICATION:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 SUPPORTED METHODS:
-- UPI (QR, Intent, Collect) — required for India
+- UPI (QR, Intent, Collect) - required for India
 - Credit/Debit Cards (Visa, Mastercard, RuPay)
 - Net Banking (top 20 banks minimum)
 - Wallets (Paytm, PhonePe, Amazon Pay)
 - BNPL (Simpl, LazyPay, ZestMoney)
-- COD (if applicable — with COD verification)
+- COD (if applicable - with COD verification)
 - EMI (card EMI, Bajaj Finserv, etc.)
 - International cards (if serving NRI/global users)
 
 PAYMENT GATEWAY:
-- Primary: [Razorpay/Cashfree/PayU — with justification]
+- Primary: [Razorpay/Cashfree/PayU - with justification]
 - Fallback: [Secondary gateway for redundancy]
 - Test mode: [How to test without real money]
 
@@ -212,7 +212,7 @@ FAILURE SCENARIOS:
 - Gateway down → Route to fallback gateway seamlessly
 
 REFUND FLOW:
-- Full refund: [Timeline, method — original payment method]
+- Full refund: [Timeline, method - original payment method]
 - Partial refund: [When applicable, calculation logic]
 - Refund to wallet: [If instant refund offered vs. original method]
 - Refund status tracking: [How user checks refund status]
