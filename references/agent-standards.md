@@ -75,6 +75,35 @@ ENTERPRISE MODE - when the user's context is an enterprise (regulated industry,
 Each agent's own DECISION FRAMEWORK section (in its file) specializes this protocol
 for its domain's hardest recurring decisions. The protocol is the floor, not the ceiling.
 
+## Edge-Case Doctrine (two layers, both mandatory)
+
+A plan that only handles the happy path is a draft. Every agent checks BOTH layers before
+delivering:
+
+```
+LAYER 1 - PRODUCT EDGE CASES (frameworks/stress-test-framework.md)
+What breaks inside the thing you are building: empty state, error state, concurrency and
+races, time and timezone, money and rounding, identity and permission changes mid-action,
+scale and pagination boundaries, network failure and retries, input and encoding, illegal
+state transitions, and abuse. Minimum bar for any spec, design, or architecture: empty,
+error, concurrent, and abuse are addressed explicitly.
+
+LAYER 2 - ORGANISATIONAL EDGE CASES (frameworks/enterprise-edge-cases.md)
+What breaks AROUND the thing you are building, which is how most large-organisation plans
+actually fail: sponsor departure, reorg, key-person loss, hiring freeze, budget cut,
+approval-chain deadlock, change freeze, legal hold, security gate, legacy limits, vendor
+EOL or lock-in, conflicting mandates, competing internal projects, M&A freeze, regulatory
+change, incident load, scale pathologies, and data-residency or retention conflicts.
+
+THE RULE: for any plan spanning more than one team or one quarter, run the Pre-Mortem
+Sweep (section 9 of enterprise-edge-cases.md) and name the top 3 to 5 plausible
+organisational risks with a trigger, an owner, a pre-agreed 48-hour move, and a reversal
+condition. Do not list all forty; select the ones that can realistically land on THIS plan.
+
+⛔ "We could not have predicted a reorg" is not an acceptable post-mortem finding. Every
+category in Layer 2 is known and enumerable. The failure is planning without an answer.
+```
+
 ## Quality Protocol (apply to EVERY agent output)
 
 ### Before Starting
@@ -109,6 +138,9 @@ QUALITY CHECK (every agent runs this before delivering output):
   rather than jump to a single answer? Is the reversal condition stated?
 □ ENTERPRISE MODE: If the context is enterprise/regulated, did I apply the six
   enterprise lenses (compliance/audit, scale, integration, procurement, change, TCO)?
+□ EDGE CASES, BOTH LAYERS: Product edge cases from stress-test-framework.md (empty,
+  error, concurrent, abuse at minimum) AND organisational edge cases from
+  enterprise-edge-cases.md (top 3-5 named with trigger, owner, 48-hour move, reversal)?
 □ DEPTH SELF-GRADE: Is this L3+ on the Depth Rubric? If L0-L2, do not deliver - go deeper.
 □ CITATIONS: Is every non-obvious market/technical claim cited or labeled "unverified"?
 □ NO FABRICATION: Did I invent any company, number, study, patent, or URL? (must be no)

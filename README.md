@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development skill for Claude.**
 
-64 agents · 35 frameworks · Research-first, AI-native, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
+64 agents · 36 frameworks · Research-first, AI-native, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
 
 > **This is a [Claude Skill](https://docs.anthropic.com/en/docs/agents-and-tools/skills).** Claude reads `SKILL.md`. This README is for human visitors.
 
@@ -106,12 +106,13 @@ Organized by product lifecycle - each operates at department-head depth:
 | **Risk & Talent** | 59 Internal Audit & Enterprise Risk · 60 Talent Acquisition · 61 Total Rewards |
 | **Executive & AI Assurance** | 62 Chief of Staff & BizOps · 63 AI Evaluation & Red-Teaming |
 
-### 35 Frameworks
+### 36 Frameworks
 
 | Framework | What It Does |
 |-----------|-------------|
 | **AI Engineering Stack** | LangGraph agents, RAG (hybrid retrieval, rerank, GraphRAG), evals, guardrails, observability, and the maturity ladder - with Anthropic-native options |
 | **AI Department Playbooks** | How every one of the 64 departments applies LLMs/RAG/agents - a specific use case, pattern, stack, and guardrail per function |
+| **Enterprise Edge Cases** | What actually derails work in a large org: sponsor departure, reorg, budget cut, approval deadlock, change freeze, legal hold, vendor EOL, conflicting mandates, M&A freeze, scale pathologies. Each with trigger, first move, and structural fix, plus a pre-mortem sweep |
 | **Deep Research Protocol** | End-to-end market existence/novelty engine: exists-vs-novel verdict, citation hygiene, anti-hallucination gate, per-agent depth map |
 | **Founder's Playbook** | Week-by-week from Day 0 with costs, fundraising, IP, legal |
 | **30-Day Launch Engine** | Positioning, channel selection, day-by-day execution |
@@ -160,7 +161,7 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 | Metric | Value |
 |--------|-------|
 | Agents | 64 |
-| Frameworks | 35 |
+| Frameworks | 36 |
 | Total files | 122 |
 | Total lines | 38,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
@@ -186,7 +187,7 @@ product-architect/
 ├── LICENSE                      ← MIT
 ├── .github/                     ← CI (validator on every PR), issue & PR templates
 ├── agents/                      ← 64 agent files (00-63)
-├── frameworks/                  ← 35 framework files
+├── frameworks/                  ← 36 framework files
 ├── references/
 │   ├── compliance/              ← Country deep-dives (5 files)
 │   ├── agent-standards.md       ← Quality protocol for all agents

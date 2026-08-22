@@ -1,6 +1,6 @@
 ---
 name: product-architect
-description: Complete product development system with 64 agents and 35 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, vector database, embeddings, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 64 agents and 36 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, vector database, embeddings, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
@@ -14,7 +14,7 @@ metadata:
 # Product Architect
 
 64 specialized agents covering every department from solo founder Day 0 to IPO.
-35 frameworks with tactical playbooks, compliance guides, process maps, and a
+36 frameworks with tactical playbooks, compliance guides, process maps, and a
 modern AI-engineering stack (LangGraph, RAG, agents) applied across every department.
 
 ## Depth Promise: Research-First, Never Surface-Level
@@ -107,6 +107,7 @@ QUICK ROUTING:
 "Compensation/equity/benefits" → agents/61-total-rewards.md + frameworks/compensation-bands.md
 "Chief of staff/BizOps/operating cadence" → agents/62-chief-of-staff-bizops.md
 "AI evals/red-team/is it safe to ship" → agents/63-ai-evaluation-red-teaming.md
+"What could go wrong/pre-mortem/org risk" → frameworks/enterprise-edge-cases.md
 "LangGraph/RAG/AI agent"→ frameworks/ai-engineering-stack.md + agents/29-data-ai-strategy.md + agents/06-engineering.md
 "AI feature/LLM/embed"  → frameworks/ai-engineering-stack.md + frameworks/ai-department-playbooks.md
 "AI for [department]"   → frameworks/ai-department-playbooks.md
@@ -203,7 +204,7 @@ All framework files are in `frameworks/` directory:
 `okr-goal-setting` `pricing-packaging` `growth-model` `sales-playbook`
 `data-governance` `incident-management` `partnership-framework` `brand-messaging`
 `customer-journey` `deep-research-protocol` `ai-engineering-stack`
-`ai-department-playbooks`
+`ai-department-playbooks` `enterprise-edge-cases`
 
 Country compliance: `references/compliance/` - india, us, eu, uk, sea.
 

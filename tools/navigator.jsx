@@ -196,7 +196,7 @@ export default function ProductArchitectUI() {
           <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: -0.5 }}>
             <span style={{ color: C.accent }}>Product</span> Architect
           </div>
-          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>64 agents. 35 frameworks. AI-native. Research-first. Zero to legend.</div>
+          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>64 agents. 36 frameworks. AI-native. Research-first. Zero to legend.</div>
         </div>
         <div style={{ display: "flex", gap: 4 }}>
           <div className={`tab ${view === "journey" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("journey")}>Journey</div>

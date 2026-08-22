@@ -134,6 +134,7 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "compensation"/"equity"/"benefits"→ 61 (Rewards)→ compensation-bands       → 22 (People)+18
 "chief of staff"/"BizOps"/"cadence"→ 62 (CoS)   → okr-goal-setting         → 20 (BAU)+03
 "AI eval"/"red team"/"safe to ship"→ 63 (AI Eval)→ ai-engineering-stack    → 29 (AI)+09
+"what could go wrong"/"pre-mortem"→ (that agent) → enterprise-edge-cases    → 62 (CoS)+20 (BAU)
 "does this exist"/"is this novel"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "market research"/"who else does"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "build [any feature/product]"→ 47 FIRST (gate) → deep-research-protocol → then route normally
