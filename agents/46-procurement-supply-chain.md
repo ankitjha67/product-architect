@@ -179,6 +179,17 @@ trades a little price for resilience against a supplier failure or a regional sh
 □ Conflict-minerals / responsible-materials checks for relevant physical goods
 □ Scope-3 emissions: a material chunk of the company's carbon lives in the supply chain -
   factor supplier sustainability into the scorecard, not as an afterthought
+□ MODERN SLAVERY & FORCED LABOUR: statutory transparency and due-diligence regimes exist in several
+  markets - the UK Modern Slavery Act 2015 (s.54 statement above a turnover threshold), Australia's
+  Modern Slavery Act 2018, Germany's LkSG supply-chain due-diligence law, and EU forced-labour and
+  corporate-sustainability due-diligence measures. **Thresholds, scope and timelines are being
+  amended - verify current applicability with counsel (Agents 10/27).** Practically: map tier 1 AND
+  tier 2, risk-rank by country and commodity, require a signed code of conduct, audit high-risk
+  suppliers on site, run a grievance channel workers can actually reach, and document remediation.
+  A published statement with no due diligence behind it is itself the exposure.
+□ ESG DATA IN THE SCORECARD: Scope-3 supplier emissions, worker-safety record, water/waste where
+  material, supplier-diversity targets where they apply. Collect at onboarding in the standard
+  questionnaire, refresh at the QBR (§11), and never accept self-attestation alone from a Tier-1.
 ```
 
 ## 9. Savings Methodology & Metrics
@@ -197,6 +208,183 @@ METRICS:
 | Maverick spend %       | Buying outside the process                 | Driving toward 0     |
 | Spend-under-management | % of spend actually managed                | Toward 80–90%        |
 | Inventory turns        | How fast stock cycles (physical)           | Higher = leaner      |
+```
+
+## 10. Category Management & the Kraljic Matrix
+```
+SPEND TAXONOMY: L1 category (Technology) → L2 sub-category (Cloud & Hosting) → L3 line item (EC2
+reserved); map to UNSPSC for external benchmarking. No supplier may sit in two L2s - split the spend
+or you negotiate against yourself twice.
+CATEGORY PLAN (one page per L2, refreshed annually): spend + 3-year trend, supplier shares, contract
+end dates, market structure (how many credible suppliers exist), the real price driver (commodity
+index, labour, FX, licence metric), demand levers, savings pipeline with owners/dates, risk register.
+
+KRALJIC MATRIX - plot each category on PROFIT IMPACT (share of spend, effect on your cost/quality)
+against SUPPLY RISK (scarcity, switching difficulty, lead time, concentration). Four quadrants, four
+completely different strategies:
+| Quadrant | Real examples | Strategy | Relationship |
+|---|---|---|---|
+| LEVERAGE (high impact, low risk) | Laptops, standard compute, logistics, staffing, commodity parts | Compete hard: RFQ/e-auction, consolidate volume, 2–3 suppliers, short terms, benchmark price quarterly | Transactional |
+| STRATEGIC (high impact, high risk) | Core cloud platform, payment processor, ERP, sole-qualified component, OEM partner | Partner: multi-year WITH exit rights, joint roadmap, QBRs, funded dual-source qualification, price caps | Exec-sponsored |
+| BOTTLENECK (low impact, high risk) | Certification/audit bodies, niche compliance SaaS, calibration services, single-source chemical | De-risk before price: buffer stock, longer term for continuity, qualify an alternative, engineer the requirement out | Secure supply |
+| ROUTINE / TAIL (low impact, low risk) | Office supplies, small SaaS seats, travel, courier | Process cost exceeds goods cost: catalogues, P-cards, punchout, one aggregator, never an RFP | Automate and forget |
+⚠ THE CLASSIC ERROR: running a leverage playbook on a bottleneck category - squeezing a sole-source
+certifier wins nothing on price and buys a slower turnaround exactly when you need speed. Re-plot
+annually: cloud moved bottleneck → leverage as alternatives matured, specialised silicon went the
+other way.
+```
+
+## 11. Supplier Relationship Management & QBR Mechanics
+```
+SEGMENT BY VALUE AND CRITICALITY, not by invoice size - your largest invoice is often not your most
+important supplier:
+| Segment | Share | Cadence | Owner | Agenda |
+| Strategic | 1–2% of suppliers, 40–60% of spend | Monthly ops + quarterly QBR + annual exec review | Category manager + exec sponsor | Roadmap, risk, joint value |
+| Preferred | ~10–15% | Quarterly or semi-annual | Category manager | Performance, savings, renewal prep |
+| Approved / transactional | The remainder | Annual scorecard, by exception | Requester + the P2P system | Price and compliance only |
+
+QBR MECHANICS (a QBR is a governance meeting, not a lunch - if the supplier builds the deck, you
+have already lost the meeting):
+□ AGENDA fixed and circulated 5 working days ahead: (1) scorecard vs SLA using data YOU pulled,
+  (2) open issues with their age, (3) spend and forecast vs contracted commitments, (4) roadmap
+  changes, (5) risk review (financial, security, continuity, ESG), (6) actions with owners and dates
+  carried forward from last quarter.
+□ SCORECARD (weighted, shared, identical format every quarter): delivery/OTIF, quality or defect
+  rate, SLA attainment and credits earned, responsiveness (P1 response and resolution), commercial
+  hygiene (invoice accuracy, price adherence), value delivered, ESG and compliance.
+□ CONSEQUENCE LADDER written into the contract so the scorecard has teeth: watch status →
+  improvement plan with a 60–90 day deadline → volume reallocated to the second source →
+  termination for repeated breach. A scorecard with no consequence attached is a newsletter.
+□ TWO-WAY: ask what YOU do that costs them money (late forecasts, changed specs, slow payment). Bad
+  customers get served last in a shortage, which is exactly when being served matters.
+```
+
+## 12. Total Cost of Ownership - the model that actually decides
+```
+TCO = ACQUISITION + IMPLEMENTATION + OPERATION + CHANGE + EXIT, over an identical horizon for every
+option (3 years default; 5 for capex or any implementation over 6 months). Discount to present value
+where cash timing differs materially - a 3-year prepay and annual-in-arrears are not the same money.
+
+WORKED EXAMPLE - replacing a support platform, 200 agents, 3-year horizon (illustrative figures):
+| Cost element | Incumbent (stay) | Challenger (switch) | Note |
+|---|---|---|---|
+| Licence, year 1 | ₹1.20 Cr | ₹0.85 Cr | Challenger buys year 1 to win the deal |
+| Licence, years 2–3 with uplift | ₹2.52 Cr (5% capped) | ₹1.87 Cr (7%, uncapped as offered) | The uplift clause is worth more than the year-1 discount |
+| Implementation + integration | ₹0 | ₹35 L | SI fees plus ~2 internal FTE-quarters |
+| Data migration + parallel run | ₹0 | ₹12 L | Two systems live for 2 months |
+| Training + productivity dip | ₹0 | ₹18 L | 200 agents × ~3 days of ramp |
+| Internal admin/ops FTE | ₹45 L | ₹45 L | Cancels out: include for both or neither |
+| Exit cost from the incumbent | ₹8 L | - | Export fees, notice period, overlap |
+| **3-year TCO** | **₹4.25 Cr** | **₹3.82 Cr** | Switch saves ~₹43 L (~10%) |
+SENSITIVITY: the switch only wins if the uplift is capped and implementation lands under ~₹50 L. An
+uncapped uplift or a 6-month slip erases the whole saving - so the negotiation target is the UPLIFT
+CAP, not the year-1 price. Run the same sensitivity on any TCO before you present it as a decision.
+ALWAYS PRICE THE EXIT BEFORE SIGNING: export format and any fee, notice period, transition-assistance
+duration and day rate, licence to keep using your data post-termination, certificate of destruction.
+A vendor who will not quote the exit has just told you what the exit will cost.
+```
+
+## 13. Negotiation Mechanics - BATNA, concessions and timing
+```
+BATNA (Best Alternative To a Negotiated Agreement) IS THE ONLY REAL LEVERAGE - construct it in
+writing before you open:
+□ Name it: a second supplier with an actual quote, the in-house build costed, or a credible
+  do-nothing (extend 6 months, cut scope, defer). Cost it honestly INCLUDING §12 switching cost -
+  a BATNA you would never execute is a bluff, and experienced sellers price bluffs correctly.
+□ Improve the BATNA before improving the offer: one extra qualified bidder moves price further than
+  any tactic. Never enter a renewal single-bid.
+□ Know THEIR BATNA: is your logo a reference they need? Are you 25% of their vertical revenue? A
+  supplier with a waitlist concedes nothing; one with a thin quarter concedes a lot.
+CONCESSION LADDER (plan and price every concession before the first call):
+- Open at target, not walk-away, with room for 3 concessions of decreasing size (10% → 4% → 1.5%):
+  shrinking increments signal you are near your limit, and that is how they are read.
+- Trade, never give: each concession buys something back (longer term, reference call, case study,
+  payment terms, a capped uplift, extra seats at the same rate).
+- Concede cheap things first (logo use, testimonial, payment timing); hold unit price and the uplift
+  cap to last. Package the deal - line-by-line negotiation lets them win the expensive line.
+TIMING LEVERAGE: vendor quarter-end and fiscal year-end are real, and quota-carrying reps discount
+hardest in the final two weeks - learn their fiscal calendar (frequently not December) and time
+signature to it. Open renewals 120 days out (the §4 alert); negotiating inside the notice window
+surrenders the option to leave and their CRM knows it. Never let the requester disclose the go-live
+date or the budget number.
+MULTI-YEAR vs ANNUAL:
+| | Multi-year (2–3 yr) | Annual |
+| Price | 10–25% lower, uplift locked | Higher, repriced every year |
+| Risk | Locked to a product that may stagnate; exit is harder | Repricing exposure annually |
+| Use when | STRATEGIC category, mature product, exit rights + cap held | Fast-moving market, immature product, uncertain volume |
+RULE: a multi-year commit is safe only with (a) a capped uplift, (b) termination for convenience or a
+defined off-ramp, (c) SLA credits with teeth, (d) price protection on the volume tiers you expect to
+grow into. Without those you bought a longer trap, not a cheaper deal.
+```
+
+## 14. Supplier Financial Health, Concentration & the Failure Playbook
+```
+FINANCIAL DISTRESS SIGNALS (screen Tier-1 annually; private suppliers need inference, not filings):
+□ Filings: MCA filings and charges registered against assets in India; late statutory accounts,
+  going-concern language in the audit opinion, or an auditor resignation anywhere.
+□ Behaviour: sudden demand for prepayment or shortened terms, unusual end-of-quarter discounting,
+  senior finance departures, layoffs, missed roadmap dates, degrading support, a down round.
+□ Third-party: D&B / CRIF commercial reports, credit ratings, litigation and insolvency searches
+  (IBC filings in India), news monitoring on the ultimate parent.
+□ Contractual protection: source-code or tooling escrow for Tier-1 software, step-in rights,
+  termination on insolvency, explicit title to your data and to any tooling you paid for.
+CONCENTRATION RISK - measure BOTH directions: your exposure (% of a category from one supplier;
+>60% is concentrated, and "one failure stops the product" is a board risk, not a procurement metric)
+and their exposure to you (above ~20–25% of a small supplier's revenue you own their solvency; below
+~1% of a giant's revenue you get standard terms and no escalation path).
+SINGLE vs DUAL SOURCE ECONOMICS: dual-sourcing typically costs 3–8% in unit price (lost volume tiers,
+duplicate qualification and tooling, split MOQs) and buys continuity. Fund it where a year of outage
+risk costs more than the premium, not everywhere. A 70/30 or 80/20 split keeps the second source
+warm; a "backup" that has never shipped a real order is not a backup.
+SUPPLIER-FAILURE PLAYBOOK (written per Tier-1 BEFORE you need it):
+1. DETECT on a named trigger: missed delivery, insolvency notice, breach, acquisition by a competitor.
+2. STABILISE: secure inventory and data in hand, invoke escrow, place a bridge order, freeze new
+   commitments, reconcile what is paid for versus delivered.
+3. LEGAL (Agent 10): serve notice, preserve claims, confirm title to tooling, inventory and data
+   before an administrator does.
+4. SWITCH: activate the qualified alternative on the requalification lead time you measured in the
+   good times - discovering it now costs weeks you do not have.
+5. COMMUNICATE: Ops (19), Finance (18) on cash and write-offs, customers via 25 if delivery slips.
+6. POST-MORTEM: what the risk register missed, then re-tier the category.
+```
+
+## 15. Enterprise-Grade Procurement
+```
+□ PROCUREMENT POLICY & DELEGATION OF AUTHORITY: one written policy naming who may commit the company
+  to what value, with the §1 matrix at its core. It states the DoA table by role and value, that
+  authority is not sub-delegable without written approval, that splitting a purchase to duck a
+  threshold is a disciplinary matter, and who may actually SIGN (signature authority ≠ budget
+  authority; keep signatories few). Reviewed annually with Agents 18 and 26; thresholds versioned.
+□ THREE BIDS OR A DOCUMENTED EXCEPTION above the policy threshold, every sole-source justified in
+  writing, approved one level up, and logged. Track the sole-source RATE - a rising rate means the
+  policy is being routed around, not that the market shrank.
+□ CONFLICT OF INTEREST & ANTI-BRIBERY (with Agent 11): annual COI declarations from everyone in the
+  sourcing chain, mandatory recusal on any relationship, a gifts-and-hospitality register with a
+  value threshold, and no award decided by one person above the RFQ level. Screen suppliers against
+  sanctions, PEP and debarment lists. Contracts carry anti-bribery representations, audit rights and
+  termination for breach - relevant under India's Prevention of Corruption Act, the US FCPA, and the
+  UK Bribery Act 2010 whose failure-to-prevent offence reaches associated persons acting for you.
+  **Verify current scope and amendments with counsel.** Agents and intermediaries are the highest-risk
+  category: due-diligence file, written scope of services, no success fees to an unvetted agent.
+□ PO COMPLIANCE & MAVERICK-SPEND CONTROL: no PO, no pay - enforced in the ERP/AP system, not by memo.
+  Controls that work: punchout catalogues and pre-approved suppliers for routine spend, P-cards with
+  merchant-category limits for the tail, blocked new-supplier creation outside onboarding, a monthly
+  no-PO invoice exception report reviewed by Finance, and naming the worst cost centres. Measure PO
+  coverage %, first-time 3-way match rate, exceptions per 1,000 invoices, and intake-to-PO cycle time
+  - maverick spend is usually caused by a slow process, so fix speed before policing behaviour.
+□ CONTRACT LIFECYCLE MANAGEMENT AT SCALE: one repository holding every executed agreement with
+  extracted metadata - counterparty, contracting entity, value, start/end, notice window, auto-renew
+  flag, uplift cap, liability cap, DPA status, governing law, change-of-control and assignment terms.
+  Tooling: Ironclad, Icertis, Agiloft, DocuSign CLM, Sirion at enterprise scale; a disciplined shared
+  drive plus a renewal calendar holds below roughly 200 contracts and nothing above it. Non-negotiable:
+  a clause library with pre-approved fallbacks so Legal is not consulted on standard redlines, alerts
+  at 150/120/90 days before every expiry, and an OBLIGATION REGISTER of what WE promised (volume
+  commitments, exclusivity, audit cooperation) - unmet buyer obligations are where the surprise
+  true-up invoice comes from.
+□ SEGREGATION OF DUTIES: whoever raises a requisition cannot approve it, receive the goods and release
+  the payment. Vendor master-data changes - above all bank-account changes - require out-of-band
+  verification by callback to a previously known number: supplier-impersonation fraud targets exactly
+  this gap and is a common mid-market loss (Agent 13).
 ```
 
 ## Example
