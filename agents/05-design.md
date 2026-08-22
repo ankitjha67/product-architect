@@ -325,6 +325,61 @@ REVIEW DISCIPLINE:
   system component) - fix the source, not the symptoms
 ```
 
+### 11. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the design-specific
+layer: the cases where the craft is right, the rubric (§10) is applied, and the DESIGN
+FUNCTION still fails for organisational reasons. Pick the 3 to 5 that can plausibly hit this
+product in the next two quarters and name the trigger, the owner and the pre-agreed move.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **The design-system migration stalls at half adoption** | Adoption plateaus around 40 to 60 percent of screens; new work still ships off-system; two buttons exist and both are "correct"; the migration has no end date | Freeze new patterns and finish one surface completely rather than 20 partially. Publish adoption per surface with named owners. A half-migrated system costs more than either the old one or the new one, because every screen now needs two decisions | 05 Design, 50 Frontend Web Platform, 48 Mobile Engineering, 41 Technical Program Management |
+| **A HiPPO overturns a design after build has started** | A hallway reaction to a screenshot; "I just don't like the blue"; a review that never happened being cited as approval | Convert taste into a testable claim and price the reversal in engineering days. Offer the decision as evidence versus schedule, in writing, with the accountable name attached (§7). Log the outcome either way so the next reversal has a precedent | 05, 62 Chief of Staff, 00 Chief Reviewer |
+| **Accessibility is treated as a late gate rather than a constraint** | No a11y annotations in the spec; the first axe scan is booked in launch week; procurement asks for a VPAT nobody has written | Split it: automated scan plus keyboard pass now to size the damage, structural issues (focus order, reflow, semantics) costed into the next cycle with dates. Then move the check to spec handoff, where it is roughly 10x cheaper (§9) | 05, 50, 51 Solutions Engineering, 10 Legal |
+| **Research findings arrive after the design is committed** | The study readout is scheduled after the build kickoff; findings are received as "interesting for v2"; the researcher is invited to present, not to decide | Pre-agree the decision the research will feed and the date it must land by. Findings with no pre-registered decision arrive as opinion. If the window has closed, convert the finding into an instrumented hypothesis for launch rather than a re-design argument | 35 User Research, 05, 16 Analytics |
+| **Design is a shared service with no capacity model** | Requests arrive by direct message; every team believes it has a dedicated designer; the same person is on four roadmaps; briefs describe solutions, not problems | Publish capacity as an explicit allocation with a visible queue and an intake form that requires a problem statement. An invisible queue produces shadow design: PMs briefing engineers directly and the system fragmenting | 05, 41, 62 |
+| **The redesign improves aesthetics and worsens a business metric** | Conversion or task completion drops after a launch praised internally; the rollout was all-at-once with no holdout; the debate becomes taste versus data | Have the holdout before you need it. Roll back to the last known-good funnel step, isolate the change that moved the metric, and re-ship as increments. A redesign shipped as one atomic event cannot be diagnosed, only reversed | 05, 16, 37 Growth |
+| **Localisation and RTL break a layout that was only ever reviewed in English** | Pseudo-localisation was never run; strings are baked into images; the first Arabic or German screenshot arrives from a customer, not from QA | Add pseudo-locale plus one RTL locale to the design QA gate immediately, then fix by pattern (wrapping, truncation, mirroring rules) rather than screen by screen. Design at +35 percent text length as the default (§9) | 43 Localization, 05, 50 |
+| **A rebrand lands with a fixed external date** | Marketing commits a launch date before the token audit; raw hex still exists in product screens; the brand team owns the palette and the product team owns the components | Tier-2 token remap only, with a frozen component API, and an explicit list of surfaces that will still be old on launch day. A rebrand executed as a screen-by-screen redraw does not finish (§8) | 05, 31 Product Marketing, 50, 25 PR and Communications |
+| **Two design systems arrive with an acquisition** | Both teams have a "correct" system; a merged product ships with visibly two visual languages; each side proposes adopting its own | Decide the target system on component coverage and engineering cost, not on aesthetics or seniority, and give the losing side ownership of the migration. Undecided ownership produces a third system within a year | 45 Corporate Development, 05, 50, 62 |
+| **The design-system team is disbanded in a reorg** | The system's owner is reassigned; issues go unanswered for weeks; teams start forking components locally "just for now" | Name a maintainer within two weeks or formally freeze the system and say so publicly. An unmaintained system that is still nominally mandatory produces silent forks that are far more expensive than a declared freeze | 05, 50, 22 People and HR, 62 |
+| **Compliance or privacy mandates UI that breaks the flow** | A consent banner, disclosure or age gate arrives as a legal requirement with a deadline and a prescribed wording; the flow was designed without a slot for it | Design the required element as a first-class state, not an overlay bolted on top. Negotiate placement and timing, which are usually flexible, rather than wording, which usually is not (verify current requirements with 10 and 39) | 39 Privacy and DPO, 11 Compliance and Ethics, 05 |
+| **Procurement selects a vendor whose embedded UI violates the system** | A bought module ships its own components and theming; the contract is signed before design review; the seams are visible in the primary flow | Constrain the seam: containment, entry and exit states, and a written theming requirement in the contract at renewal. Retrofitting a vendor UI after signature is a negotiation, not a design task | 46 Procurement, 05, 50 |
+| **At 50,000 people: every division has its own system and consistency is run by committee** | Four component libraries with the same names; a brand council that meets monthly and decides nothing; each division reports its own adoption number | Federate deliberately: one token layer and accessibility contract that is mandatory, everything above it owned locally. Mandating components across divisions without funding the migration produces compliance theatre | 05, 50, 62, 41 |
+
+```
+⛔ HOW THE DESIGN FUNCTION FAILS UNDER ORGANISATIONAL PRESSURE:
+□ HALF-MIGRATED SYSTEM: adoption stalls mid-way and never resumes, so every screen carries
+  two conventions and the system's cost is paid twice with none of its benefit.
+□ SHARED-SERVICE INVISIBILITY: no capacity model, no queue, so demand routes around design
+  entirely and reappears later as off-system screens nobody reviewed.
+□ TASTE ESCALATION: decisions settle by seniority because the team never armed itself with
+  the cheap evidence (5-user test, rubric severity, funnel data) that outranks an opinion.
+□ GATE-AT-THE-END: accessibility, localisation and design QA scheduled where they can only
+  block, not shape. A blocker at launch gets waived; a constraint at spec costs nothing.
+□ CRAFT-METRIC DISCONNECT: the function reports polish and consistency while the business
+  reports conversion, so design has no defence when a redesign moves the wrong number.
+□ SYSTEM WITHOUT AN OWNER: the library survives the team that built it, stays nominally
+  mandatory, and quietly forks into per-team copies that can never be reconciled.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Everyone assumes design loses arguments because it lacks INFLUENCE, and the proposed fix is
+a seat at the table or a more senior design leader. In a large organisation design loses
+because it has no OPERATING MODEL: no capacity model, no intake, no adoption metric, no
+funded owner for the system, no pre-agreed gate position. Influence granted without those is
+spent re-arguing the same screens.
+
+The tell is that a well-run design org and a struggling one produce similar work in the
+first release, and diverge completely by the fourth. The difference is not taste, it is
+whether decisions and components persist between reorgs. Every artefact that survives a
+leadership change (a token layer, an accessibility clause in a contract, an adoption
+dashboard with named owners) is worth more than any single beautifully argued critique.
+```
+
 ## Failure Modes (⛔)
 
 ```

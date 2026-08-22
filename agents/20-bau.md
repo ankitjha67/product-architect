@@ -369,6 +369,62 @@ BCP TESTING CADENCE (extends §8):
   security reviews and regulators
 ```
 
+### 11. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the BAU-specific layer:
+the cases where the cadence is right, the runbooks exist, and the ORGANISATION is the failure
+mode. Pick the 3 to 5 that can plausibly land in the next two quarters and name the trigger,
+the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **The run budget is raided to fund a strategic bet** | A "temporary" reallocation of 2 engineers from run to the new programme; patching, upgrades and toil work sliding two sprints in a row; run-versus-change split never measured, so the raid is invisible | Publish the run-versus-change split as a standing number before the raid, not after. Then convert the raid into an explicit trade: name the run items that stop, their risk, and the date they resume, signed by the sponsor who took the people | 20 BAU with 18 Finance, 62 Chief of Staff & BizOps |
+| **Toil accumulates until the team can accept nothing new** | Unplanned work above roughly 50 percent of capacity for 3 sprints; on-call handover notes growing each week; the same manual fix appearing in three postmortems | Cap toil with a hard budget (for example 30 percent of capacity) and protect a fixed automation allocation as a first-class commitment. Toil never gets fixed with leftover time, because there is never leftover time | 20 BAU, 08 DevOps & SRE, 06 Engineering |
+| **A deprecation nobody will fund** | An EOL date on a dependency with no migration owner; a legacy service with 4 remaining users, each of them senior; "we will do it next quarter" appearing in two consecutive planning cycles | Price the carry cost annually (licence, on-call, security exceptions, blocked upgrades) and put it beside the migration cost. Then set a sunset date with a named executive owner. Without a date, the item loses every prioritisation contest forever | 20 BAU, 06 Engineering, 18 Finance |
+| **Knowledge is concentrated in a person who is about to leave** | One name in every escalation and every runbook edit; a system with exactly one reviewer; a resignation, an internal transfer or an extended leave with a "the team will absorb it" plan | 48-hour capture: recorded walkthrough, written runbook, credential and access transfer, named successor who executes the next real change while the expert watches. A handover document nobody has exercised is a hypothesis, not a transfer | 22 People & HR, 20 BAU, 23 Learning & Development |
+| **Sales committed an SLA that operations never agreed to** | A contractual uptime, support-hours or restoration commitment discovered in an escalation; an RFP answer promising 24x7 for a team staffed 9x5; no obligation register entry | Reconcile the committed obligation against actual staffed capability, in writing, and take the gap to the exec as a funding or renegotiation decision. Then wire the deal desk to legal's obligation register so a commitment cannot be made without an operational approver | 32 Sales & RevOps, 20 BAU, 10 Legal & IP |
+| **BAU load grows linearly with customers while headcount does not** | Tickets, reconciliations, access requests and reports rising with customer count; run capacity consumed before planning even starts; the same team named as owner of five new systems | Model BAU cost per customer or per account explicitly and show the crossing point where the queue breaks. Present it in the annual plan as a capacity curve, not as a complaint: the moment it is a number with a date, it becomes a decision | 20 BAU, 18 Finance, 19 Operations |
+| **The cadence stack accretes after every reorg** | ICs at 20 or more meeting hours a week; three forums reviewing the same metric; a new weekly added by each incoming manager and none removed | Run the meeting-cost audit and kill, merge or shorten by default. Every recurring forum needs a decision it makes and a review date; a forum that only shares information should be a written update | 20 BAU, 62 Chief of Staff & BizOps |
+| **Policy and controls accrete after every incident** | A check added post-incident with no expiry; a release checklist longer than the release; exception volume rising as the fastest route through the process | Every policy and control carries a review date, and the exception register is the evidence of misfit (§10). A third renewal of the same exception means the policy is wrong: change it or stop granting it | 20 BAU, 59 Internal Audit & Risk, 09 Security |
+| **The change process becomes a queue teams route around** | CAB slots booked out for weeks; "we shipped it as a config change" appearing in incident timelines; emergency-change volume above roughly 15 percent of all changes | Fix the throughput before enforcing the gate: standard pre-approved change types, risk-tiered paths, and same-week slots for low-risk work. A control that is slower than the workaround selects for the workaround (§7) | 20 BAU, 08 DevOps & SRE, 41 Technical Program Management |
+| **The continuity plan has never been exercised** | A DR test deferred three quarters running; a runbook referencing a system that was decommissioned; a backup restore that has never been performed end to end | Run the smallest real test rather than the perfect one: restore one critical data set, fail over one service. Book the next test date at the end of the current test, and keep the records as audit evidence (§10) | 20 BAU, 08 DevOps & SRE, 40 IT & Corporate Engineering |
+| **A reorg leaves systems and runbooks with no owner** | The DRI register naming people who changed teams; alerts routing to a deleted channel; a service whose last commit and last owner are both a year old | Re-attest ownership within 2 weeks of any reorg: every system, runbook, alert route and recurring obligation gets a named DRI and a backup. Orphaned systems are found during incidents otherwise, which is the most expensive possible discovery | 20 BAU, 62 Chief of Staff & BizOps, 08 DevOps & SRE |
+| **Annual planning assumes 100 percent of capacity is available for new work** | A roadmap costed in engineer-quarters with no run reserve; incident, compliance and support load absent from the plan; last year's actual delivery ignored in this year's assumptions | Enter planning with the measured run reserve from last year (incidents, toil, support, audit, upgrades) as a fixed subtraction, evidenced by data. Every organisation re-learns this each year unless the number is published before planning starts | 20 BAU, 41 Technical Program Management, 18 Finance |
+| **An executive request becomes permanent unfunded reporting work** | A "quick" weekly deck requested during a crisis and never retired; three teams manually assembling the same numbers; an analyst whose week is consumed by recurring reports | Give every recurring report an owner, a consumer and an expiry date, and re-justify it at expiry. Automate or kill; the manual weekly report is where analytical capacity silently disappears | 20 BAU, 16 Analytics, 62 Chief of Staff & BizOps |
+
+```
+⛔ HOW BAU FAILS UNDER ORGANISATIONAL PRESSURE:
+□ RUN IS THE BILL PAYER: change work is visible, sponsored and promotable; run work is not,
+  so every squeeze lands on run first and the damage appears two quarters later.
+□ NOBODY IS PROMOTED FOR THE INCIDENT THAT DID NOT HAPPEN: prevention has no artefact, which
+  makes BAU investment structurally harder to defend than any new initiative.
+□ THE CADENCE OUTLIVES ITS PURPOSE: forums, reports, checklists and controls are added by
+  incidents and reorgs and removed by nobody, so process debt compounds like technical debt.
+□ OWNERSHIP DECAYS AT REORG SPEED: the DRI register is accurate on the day it is written and
+  wrong within a quarter, and orphaned systems are discovered only when they fail.
+□ CAPACITY IS PLANNED AS IF RUN WERE FREE: run load is real, measurable and predictable, yet
+  it is subtracted from the plan only after the plan has already been committed.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+BAU is treated as a capacity question when it is a MEASUREMENT question. Almost every BAU
+failure above is the same failure: the run side of the business has no published number, so it
+cannot lose an argument it is never allowed to enter. Change work arrives with a business
+case, a sponsor and a date; run work arrives as a feeling that the team is busy. The fix is
+not to argue harder for BAU protection, it is to publish three numbers continuously, before
+you need them: run-versus-change split, unplanned-work percentage, and BAU cost per customer.
+Teams that publish those numbers get their run budget defended by Finance; teams that do not
+get it raided every time a strategic bet needs people, and are then blamed for the backlog
+that follows.
+
+⚠️ Continuity, records-retention and audit-evidence obligations vary by jurisdiction, sector
+   and contract, and change over time. Treat the principles above as durable and verify
+   current requirements with qualified counsel and Agents 10, 11 and 59 before relying on
+   them. See references/DISCLAIMER.md.
+```
+
 ## Output: BAU Operations Manual
 Daily/weekly/monthly/quarterly/annual routine checklists, meeting-ROI and cadence-stack
 audit, DRI register, governance framework (RACI), MBR/QBR mechanics, escalation SLAs,

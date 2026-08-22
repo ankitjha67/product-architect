@@ -240,6 +240,64 @@ OUTCOME:     locale-specific conversion, activation, retention, and CSAT vs the
              VALUE, not just the words - go back to payment/imagery/tone.)
 ```
 
+### 11. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, reorgs, freezes, budget cuts). This section is the localization-
+specific layer: the cases where the pipeline works and the ORGANISATION is what ships the
+broken locale. Pick the 3 to 5 that can plausibly land in the next two quarters and name
+the trigger, the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A market launch date is announced before localisation lead times were checked** | The date appears in a GTM deck with no locale on the roadmap; sales has already quoted it; the i18n readiness audit has never been run on the codebase | Publish the real critical path in days: i18n remediation, then translation, then in-context QA, then legal review. Offer a staged option (UI localised, help content machine-translated and labelled, legal terms human-translated) instead of an all-or-nothing slip | 43 Localization with 14 Launch & GTM, 41 Technical Program Management |
+| **A string freeze collides with a feature freeze or with continuous delivery** | Strings still changing in the week translators are working; hot-fix copy shipped straight to production in English; the same key retranslated three times | Version the source: freeze the translation branch, not the product, and route late changes through an explicit late-string path with a cost attached. Continuous localisation means keys flow continuously, not that deadlines disappear | 43 Localization, 06 Engineering, 41 TPM |
+| **A rebrand or terminology change silently corrupts the translation memory** | Product renamed, tone guidelines rewritten, or a new glossary published while the TM still contains the old term in twelve languages | Run a TM audit and a scripted find-and-replace per locale BEFORE the next batch, then re-approve the glossary with in-country reviewers. Untreated TM drift means the old brand keeps reappearing in the languages nobody on the team reads | 43 Localization, 31 Product Marketing, 42 Content & Docs |
+| **A jurisdiction legally requires the local language for what you are shipping** | Expansion into a market with consumer-protection or public-facing language rules; contracts, labels, safety text or support offered only in English | Separate legally required text (terms, consent, disclosures, support obligations) from product copy and treat the legal set as a launch blocker with human translation and counsel review. Language mandates differ by market and change: verify current with qualified counsel | 10 Legal, 43 Localization, 11 Compliance |
+| **Machine translation is fine for help content and unacceptable for legal or safety text** | One MT engine wired to every content type; a translated privacy notice or medical or financial disclosure with no human review; MT output published with no label | Classify content by consequence: MT-only, MT plus post-edit, human plus in-country review, human plus counsel review. The failure is never MT itself, it is one quality tier applied to content with four different risk levels | 43 Localization, 10 Legal, 42 Content & Docs, 39 Privacy & DPO |
+| **RTL and CJK break a layout that was only ever reviewed in English** | Designs signed off with English placeholder text; hard-coded left and right in CSS; text in images; no pseudo-locale run in CI; a Japanese line-break bug found by a customer | Make pseudo-localisation and one RTL plus one CJK locale part of the design review and the CI gate, not part of locale QA. A layout that fails pseudo-loc will fail every real locale, and finding it after translation means paying twice | 05 Design, 50 Frontend Web Platform, 48 Mobile Engineering, 43 Localization |
+| **The only in-country reviewer is also the country manager, and they are the bottleneck** | Sign-off waiting on one person for weeks; approvals given at 2am before a launch; the reviewer on leave with no named delegate and the release date fixed | Two named reviewers per locale with a standing delegate, a time-boxed review SLA, and an explicit default (ship with a flagged-strings list) when the SLA lapses. Review capacity is a launch dependency, so plan it like any other single point of failure | 43 Localization, 62 Chief of Staff & BizOps, 22 People & HR |
+| **A single LSP holds the translation memory and the contract is up for renewal** | No TM export in the last year, the glossary living only in the vendor's tool, per-word pricing rising, and a migration quote that assumes you cannot leave | Own the TM and the glossary contractually and export them on a schedule. The TM is your asset and your switching cost; a vendor holding it converts a price negotiation into a hostage negotiation | 46 Procurement, 43 Localization |
+| **A locale is promised to close one enterprise deal** | A single customer requiring Japanese or Arabic in the contract; a commitment made without support coverage, legal review or a maintenance owner | Price the whole lifetime cost, not the first translation: ongoing strings, support in language, help content, QA and legal upkeep. Then either fund it as a market entry or scope it contractually as limited coverage with what is excluded named in writing | 32 Sales & RevOps, 43 Localization, 18 Finance, 17 Customer Success |
+| **A budget cut hits localisation while strings keep shipping** | The untranslated-keys-in-production count rising from zero; MT quietly replacing human review on Tier 1 locales; a locale with no reviewer since the reorg | Publish per-locale coverage and downgrade tiers explicitly rather than degrading silently: a market moved from full support to MT plus community review is a decision someone owns. Half-translated screens damage trust more than English-only ones | 43 Localization, 18 Finance, 14 Launch & GTM |
+| **Retiring a locale that real users depend on** | A market exit, a tier downgrade, or a language quietly dropped from the build; support tickets in a language nobody is staffed for | Treat deprecation like an API sunset: notice period, in-language communication, data export and support wind-down, with the retention and refund obligations checked per market. Users who onboarded in their language did not consent to English | 43 Localization, 17 Customer Success, 10 Legal, 25 PR & Communications |
+| **AI or user-generated content is machine-translated with nobody reviewing the output** | An LLM feature answering in a language the team cannot evaluate; translated UGC with no moderation coverage; safety classifiers trained mainly on English | Do not ship a language you cannot moderate or evaluate. Locale coverage for safety and quality evaluation is a launch gate for AI features, exactly like translation coverage is for the UI | 12 Trust & Safety, 49 ML Engineering, 43 Localization, 63 AI Evaluation & Red Teaming |
+| **The data model, not the strings, is what fails in a market** | Names that do not split into first and last, addresses with no postcode, phone or ID validation regexes that assume one country, sorting and search that break for non-Latin scripts | Fix i18n at the schema and validation layer, because no amount of translation rescues a form that rejects a valid local name or address. This is engineering debt discovered by localisation, and it must be routed as such | 06 Engineering, 43 Localization, 38 Data Engineering |
+| **A regional entity refuses the global tone, brand or standard** | Local marketing rewriting approved copy, a country team maintaining its own parallel strings, or "that does not work in our market" with no specifics | Separate what genuinely must differ (legal, script, payment, cultural taboo) from what is preference, then standardise the rest and give locals controlled variation in the approved fields. Unmanaged local forks become permanent maintenance costs nobody budgeted | 43 Localization, 31 Product Marketing, 62 Chief of Staff & BizOps |
+
+```
+ORG FAILURE MODES OF A LOCALIZATION FUNCTION UNDER PRESSURE (org failure, not bugs):
+⛔ LAST-MILE POSITIONING: localisation is invited after design, architecture and the launch
+   date are fixed, so it can only absorb the consequences of decisions it never saw.
+⛔ COST-CENTRE FRAMING: measured on cost per word instead of on locale conversion and
+   retention, which makes every quality decision look like an expense with no upside.
+⛔ REVIEW CAPACITY IGNORED: translation is planned and in-country review is assumed to be
+   free, so the critical path runs through unpaid volunteers with day jobs.
+⛔ SILENT DEGRADATION: coverage decays through cuts and reorgs without any locale being
+   formally downgraded, so nobody is accountable for the market that quietly got worse.
+⛔ ONE QUALITY TIER: the same pipeline for marketing copy, help articles and legal terms,
+   which is either wastefully expensive or legally exposed, and usually both at once.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG: localisation is scheduled as a translation task and it is
+actually a DEPENDENCY GRAPH that runs through engineering, design, legal, payments,
+support and a scarce in-country reviewer. The words are the fastest part. What sets the
+date is the readiness of the codebase, the availability of one bilingual approver, and
+whether legal text can be signed off in that market.
+
+So the classic failure is not a bad translation, it is a launch date derived from the
+translation estimate alone, and then a locale that ships with a working UI, an unsupported
+help centre, an English legal page and no one who can answer a ticket. Localisation
+maturity is measured by whether adding the next locale is a configuration exercise or
+another project, and that is decided long before any string reaches a translator.
+
+⚠️ Language mandates, consumer-disclosure rules, contract-language requirements and data
+   or content obligations differ by market and change over time. Treat the principle as
+   durable and verify the current rule for each market with qualified counsel and Agents
+   10, 11 and 39 before launch. See references/DISCLAIMER.md.
+```
+
 ## Example
 User says: "We're an India-first fintech app, English-only. We want to add Hindi and
 Tamil, and we're seeing demand from the Gulf for Arabic. Where do we start?"

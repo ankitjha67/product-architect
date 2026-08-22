@@ -423,6 +423,63 @@ retailer") so a refusal delays the asset instead of killing it.
 | Sales velocity | (deals × win rate × ACV) / cycle length | Trend up |
 | Message resonance | A/B + message-testing lift on LP/email | Statistically significant winner |
 
+## 4. Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the PMM-specific layer:
+the cases where the positioning is right and the ORGANISATION is the failure mode. Pick the
+3 to 5 that can plausibly hit this launch in the next two quarters and name the trigger, the
+owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A launch narrative approved by an executive that Legal cannot substantiate** | Superlatives in the keynote script that are absent from the claim substantiation file; a benchmark cited with no test date or method; Legal added to the launch thread in week minus one | Ship the weaker true claim now and give the executive a substantiation path: dated test, method, data set, sign-off, and the date the stronger claim becomes sayable. A line pulled after the keynote costs more than a line never said | Agent 10 Legal and IP, Agent 31 Product Marketing, Agent 11 Compliance and Ethics |
+| **Positioning contradicts what sales is already saying in the field** | Call recordings using a category name absent from the message registry; the top rep carrying a personal deck; win/loss quotes describing a product you do not recognise | Sample 10 recorded calls before rewriting a word. Where the field's version wins deals, the field is right and the doc is wrong: adopt it. Where it is wrong, certify against it explicitly rather than republishing a document nobody reads | Agent 31 Product Marketing, Agent 32 Sales and RevOps |
+| **A competitor announcement lands inside your launch window** | Their analyst briefings, conference slots, hiring pages and domain registrations; embargo chatter reaching your own AR contacts | Hold the date and hold your frame. Decide at planning time which of three responses applies: proceed unchanged, add one comparison asset, or move. A defensive post inside a week donates your traffic to their framing | Agent 31 Product Marketing, Agent 47 Deep Research, Agent 14 Launch and GTM |
+| **A rebrand or acquisition invalidates every asset at once** | The legal entity name changing in contracts; a naming-architecture decision taken without PMM; the acquirer owning an overlapping product | Inventory by blast radius, not alphabetically: assets inside live deals first, then site and docs, then long tail. Price the rename honestly at 6 to 12 PMM weeks plus docs, localisation, SEO redirects and contract schedules | Agent 45 Corporate Development, Agent 31 Product Marketing, Agent 42 Content and Docs |
+| **Analyst relations budget is cut in the quarter you need the report** | A subscription renewal falling inside a spend freeze; the inquiry allowance unused for two quarters; a submission window opening with no named owner | Separate what money buys (inquiry hours, fact-check cycles, briefing slots) from what it cannot buy (the placement). Keep the briefing cadence, which is free, and drop the subscription before the relationship. Map submission deadlines against the freeze calendar a year out | Agent 31 Product Marketing, Agent 18 Finance, Agent 46 Procurement and Supply Chain |
+| **A pricing change is communicated before enablement is ready** | A billing release date earlier than the certification date; the change visible in a changelog, a pricing page or an invoice before any rep briefing | Hold the customer-facing announcement to the enablement date, never the engineering date. Sequence: support and sales briefed, objection guide and grandfathering rules published, then customers. A price change first discovered on an invoice is a churn event | Agent 36 Pricing and Monetization, Agent 31 Product Marketing, Agent 17 Customer Success |
+| **The field goes off-message because the enablement asset was 40 slides** | Content usage below 40 percent at 90 days; reps rebuilding their own one-pagers; a 100 percent certification pass rate while the pitch still varies call to call | Measure usage per asset and retire everything under the threshold. Replace the deck with a one-page first-call narrative plus the top five objections, then have a new rep run the call cold. That test is the only acceptance criterion that matters | Agent 31 Product Marketing, Agent 32 Sales and RevOps, Agent 53 Customer Education |
+| **Two products claim the same category word after a reorg** | Two PMMs presenting the same roof phrase; site navigation offering two answers to one buyer question; a competitor quoting your inconsistency back at you | Stand up one message registry with an owner and a last-approved date per entry, and adjudicate the contested word at portfolio level within two weeks. Rules: a product pillar never contradicts the roof, and no product owns a word another product owns | Agent 31 Product Marketing, Agent 03 Strategy, Agent 62 Chief of Staff and Bizops |
+| **The date slips after press and analysts are briefed under embargo** | Feature-complete landing inside the embargo window; QA opening P0s in launch week; a keynote slot that cannot move | Notify every embargoed party yourself, before they notice, with a new date or a clean withdrawal. Never let an embargo lapse silently. Then decide what can honestly launch: an availability date, a labelled preview, or nothing | Agent 31 Product Marketing, Agent 25 PR and Communications, Agent 14 Launch and GTM |
+| **PMM is re-parented between CPO and CMO and the mandate changes with it** | A new dotted line; the first review asking for MQL contribution; positioning work reprioritised behind campaign support | Renegotiate the metric before the first cycle, in writing: win rate, launch adoption, sales velocity. Demand-gen owns pipeline volume and CAC. Losing that argument once converts PMM into campaign support permanently | Agent 31 Product Marketing, Agent 15 Marketing and Sales, Agent 62 Chief of Staff and Bizops |
+| **A regional entity refuses the global positioning** | A market quietly rewriting the pillars; a category name that does not translate; local proof points missing from the global evidence bank | Split what is legally required to differ from what is preference. Localise the pillars, keep the roof, and route every claim through an in-market native-speaker review. Transcreate, never translate | Agent 43 Localization and i18n, Agent 31 Product Marketing, Agent 11 Compliance and Ethics |
+| **The flagship reference customer churns, is acquired, or goes quiet mid-campaign** | Health score falling; the champion changing employer; three logos carrying twenty reference calls a quarter | Pull the asset the same day and check the contract for logo rights after termination. Hold 3 referenceable customers per ICP segment per use case as a launch gate so no single logo is load-bearing | Agent 31 Product Marketing, Agent 17 Customer Success, Agent 10 Legal and IP |
+| **The feature slips but the date is locked to a conference keynote** | A keynote slot booked two quarters ahead; the demo running on a branch; a plan to announce and ship in the same month | Decide explicitly what is being announced: general availability, a dated preview with a waitlist, or a vision statement labelled as one. Calling a beta "generally available" is a substantiation problem and a support problem in the same sentence | Agent 14 Launch and GTM, Agent 31 Product Marketing, Agent 10 Legal and IP |
+| **A layoff removes the PMM who owned the message registry** | Bus factor of one on positioning; battlecards with no last-reviewed date; nobody able to explain why a claim is worded the way it is | Run a 48-hour capture: registry ownership, claim substantiation files, analyst contacts, win/loss cadence and reference relationships transferred to named people. An unowned battlecard is stale in one release and losing deals by the second | Agent 22 People and HR, Agent 31 Product Marketing, Agent 32 Sales and RevOps |
+
+```
+⛔ ORG FAILURE MODES SPECIFIC TO PRODUCT MARKETING:
+⛔ MESSAGE WITHOUT CUSTODY: a beautiful narrative with no registry, no owner and no review
+   date, so three versions exist within two quarters and none is authoritative.
+⛔ ENABLEMENT AS PUBLICATION: the asset was delivered, therefore the job is done. Nobody
+   measured whether a single rep opened it, and usage is the only evidence of adoption.
+⛔ CLAIMS WITH NO FILE: superlatives approved verbally in a launch review, unbacked by test,
+   date or method when Legal, a regulator or a competitor's counsel eventually asks.
+⛔ CALENDAR CAPTURE: the launch calendar owned by whoever shouts loudest, so releases land in
+   the last two weeks of a quarter when sales attention is at its lowest of the year.
+⛔ REFERENCE CONCENTRATION: the same three customers carrying every case study, webinar and
+   analyst call until they stop replying, taking the entire proof bank with them.
+⛔ ATTRIBUTION SURRENDER: accepting a pipeline number as the PMM metric to look accountable,
+   which converts the function into campaign support in roughly two quarters.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+PMM is judged on the quality of the message and actually fails on DISTRIBUTION AND CUSTODY
+inside its own company. The deliverable is not a positioning document; it is what a rep says
+on a call six weeks later with nobody from PMM in the room. Every failure above is a version
+of the same thing: the message existed in a file rather than in the muscle memory of people who
+do not report to you. PMM is the only function whose output has to be repeated verbatim by
+hundreds of strangers to count as shipped, and it has no authority over any of them. Which is
+why the message registry, the usage metric, the certification and the kill date are the actual
+job, and the narrative is the easy part.
+⚠️ Advertising-claim and endorsement rules, sector-specific marketing restrictions and
+   forward-looking-statement obligations are jurisdiction-specific and change over time. Treat
+   the principle as durable and verify the current rule with Agents 10, 11 and 44 before
+   publishing. See references/DISCLAIMER.md.
+```
+
 ## Example
 
 Example: Launching a new "AI insights" tier for a B2B analytics SaaS
