@@ -63,6 +63,22 @@ DISCOVER → SIGN UP → FIRST CALL → AHA → HABIT → ADVOCATE
 - **TTV (Time-to-Value)**: signup → first *meaningful production* outcome. Target depends
   on product complexity: payments < 1 day, complex platform integrations < 1 week.
 
+```
+THE STAGE-INTERVENTION MAP - what actually moves each number (benchmarks are starting priors;
+recalibrate on your own two most recent quarters):
+| Stage below band | Most likely cause | The intervention that moves it | Lead time |
+|------------------|-------------------|-------------------------------|-----------|
+| Docs → signup <8% | Signup gated behind sales or a credit card; no free tier | Self-serve signup, GitHub OAuth, free tier with real limits, a "get your key" CTA above the fold on every docs page | 2-4 weeks |
+| Signup → first call <60%/24h | No key at signup; quickstart starts with an SDK install | Auto-provision `sk_test_` visible in 10s + a prefilled curl the dev can paste; curl-first quickstart | 1-3 weeks |
+| First call → activation <40%/7d | The quickstart ends at "hello world" and the real job needs 6 more steps | A task-based tutorial for each of the top-3 JTBD, seeded sandbox data, deterministic error triggers | 3-6 weeks |
+| Activation → habit <25% W4 | Their integration fails silently in their own staging | Webhook + event delivery logs, a dashboard of their failing calls, proactive email on a 4xx/5xx spike on their key | 4-8 weeks |
+| Habit → advocate <1% | No surface to be visible on | Champions programme, community answer credit, conference CFP support, co-authored posts | 2 quarters |
+DIAGNOSTIC RULE (same logic as a sales funnel): a stage far outside band indicts the PRECEDING
+stage. Low activation with healthy first-call rate is a docs and sandbox problem, never a
+"developer quality" problem. Segment every stage by language, region, and signup source before
+concluding anything - one broken Go SDK can drag the aggregate below band on its own.
+```
+
 Measure TTFHW honestly: instrument the clock from `signup_completed` to the first `200`
 on a core endpoint with a *live or test key the developer created themselves*. Do not
 count the call you make for them in a demo. Segment by language/SDK - a 4-minute Node
@@ -81,6 +97,26 @@ DevEx is UX for developers. Each pillar is a place a developer rage-quits if it'
 - Code samples in every supported language, copy-paste runnable, kept in sync via CI.
 - Gold standards to study and benchmark against: Stripe, Twilio, Vercel, Plaid, Razorpay.
 
+```
+DOCS ARE THE PRODUCT, not a release chore. For a developer product the docs are usually the #1
+or #2 organic entry point and the single most-used surface after the API itself. Staff them with
+a roadmap, a backlog and an owner (jointly with Agent 42), and hold this quality bar:
+□ EVERY PAGE: what you will build, prerequisites, runnable code, the expected output, the next
+  step, plus a visible LAST REVIEWED date and a named owner.
+□ FRESHNESS SLA: the API reference regenerates from OpenAPI on every merge (never hand-written);
+  guides reviewed every 90 days; any page unreviewed past 180 days carries a staleness banner.
+□ CI GATES on the docs repo: every code sample compiles and executes against the sandbox in CI
+  (docs tests, run nightly), every link checked (lychee/htmltest), every spec endpoint has at
+  least one example, and no sample uses a deprecated parameter.
+□ MEASURES: search zero-result rate <5% (review the list weekly - it is your content backlog),
+  per-page helpfulness >80%, top-20 pages reviewed monthly, and a `docs-gap` ticket tag from
+  Agent 17 whose volume is reported as a docs defect count, not as support noise.
+□ WRITE FOR THE READER WHO ARRIVED FROM SEARCH, not for a linear reader: every page states its
+  prerequisites and links its parent. Most developers never see your homepage or your IA.
+⛔ The failure that costs the most: a code sample that no longer runs. It teaches the developer
+that the product is broken, and no amount of prose recovers that in the same session.
+```
+
 ### 3.2 Quickstarts
 - One canonical quickstart per language that hits TTFHW < 5 min.
 - Pre-filled test API key for logged-in readers (no "go generate a key" detour).
@@ -95,6 +131,31 @@ DevEx is UX for developers. Each pillar is a place a developer rage-quits if it'
   exponential backoff + jitter; idempotency-key support baked in.
 - Generate from OpenAPI (Stainless, Speakeasy, OpenAPI Generator) to keep parity, but
   hand-polish the ergonomics.
+
+```
+SDK STRATEGY - which languages, in what order, and what each one costs you forever:
+□ DECIDE FROM YOUR OWN DISTRIBUTION, not from a popularity index. Instrument the language and
+  SDK version of every API call (user-agent / `X-Client-Version`) from day one, plus the
+  language field at signup. Ecosystem rankings describe the world; your telemetry describes
+  your buyers. India fintech and agency-heavy markets skew far more PHP and Java than any
+  global index predicts; AI/data products skew Python far harder.
+□ TIER THE PORTFOLIO PUBLICLY so nobody builds a business on an unmaintained client:
+  Tier 1 - hand-polished, 2-week parity SLA, full test suite, examples, on-call ownership.
+  Tier 2 - generated, best-effort, parity within a release, issues answered but not guaranteed.
+  Tier 3 - community-owned, listed with an explicit "not maintained by us" disclaimer.
+□ GENERATED vs HAND-WRITTEN is not either/or: generate transport, models and pagination from
+  the OpenAPI spec (Stainless, Speakeasy, Fern, OpenAPI Generator); hand-write the ergonomics
+  layer (auth helpers, iterators, webhook-signature verification, retry/backoff, idempotency).
+  Pure hand-written drifts out of parity within two releases; pure generated feels foreign to
+  the language's own idioms and collects one-star issues about naming.
+□ COST REALITY: a Tier 1 SDK is roughly 0.3-0.5 engineer FTE/year once releases, security
+  patches, and issue triage are counted. Four Tier 1 SDKs is a two-person team. Do not announce
+  a fifth language without funding it - an abandoned SDK does more damage than a missing one.
+□ VERSIONING AND NOTICE NORMS (align with §8/§9 and Agent 30): at most one SDK major every
+  12-18 months · support N-1 major for 12 months with backported security fixes · 6 months'
+  notice on an SDK major · 90 days on a breaking change in a beta SDK · 12 months on an API
+  version sunset. Publish the support matrix (SDK version → API version → EOL date) as a page.
+```
 
 ### 3.4 Sandbox / Test Keys
 - Separate test mode with realistic seed data and deterministic test triggers (e.g.
@@ -138,6 +199,20 @@ the offending `param`, a `doc_url`, and a `request_id` the dev can paste into Su
 | Office hours / live streams | Weekly | Rotating advocate | Attendance, questions resolved |
 | Developer newsletter | Monthly | DevRel | Open rate >35%, click to docs/changelog |
 
+```
+SAMPLE APPS - every one is a permanent liability, so budget the maintenance before the launch:
+□ Dependencies rot in 3-6 months (Dependabot/Renovate on every repo, `npm audit`/`pip-audit` in
+  CI). Budget 0.5-1 engineer-day per sample per month, forever, plus a spike on every SDK major.
+□ CI runs every sample WEEKLY against the live sandbox. A sample failing for 14 days is archived
+  with a banner and removed from the docs, never left up "until someone gets to it".
+□ CAP THE PORTFOLIO: one flagship per top-3 use case per Tier 1 language, roughly 10 repos
+  maximum. Beyond that you are running an open-source org you did not staff.
+□ PREFER the smallest runnable thing (a 40-line quickstart repo) over a full demo application.
+  Full demo apps earn the most stars and the least adoption: developers copy snippets, not
+  architectures, and a big repo hides the five lines they actually needed.
+□ Every sample states the SDK and API version it was verified against, and the date.
+```
+
 Advocacy ratio reality check: an advocate spends ~40% creating (samples, posts, talks),
 ~30% in community, ~20% feeding product feedback to Agent 30/06, ~10% on metrics. If
 advocates spend >50% in pre-sales demos, the role has been hijacked - escalate.
@@ -167,6 +242,29 @@ and monthly active contributors.
 - Every piece of content carries a `request_id`-style instrumentation: UTM + a unique
   code path so you can attribute activation, not just pageviews.
 - Certification / badges for advanced developers once you cross ~1000 active devs.
+
+```
+THE CONTENT ENGINE - what drives adoption versus what merely feels good:
+| Format | Cost per unit | What it actually drives | Honest verdict |
+|--------|---------------|-------------------------|----------------|
+| Reference + quickstart | Continuous | Activation, TTFHW | Highest adoption per hour spent. Nothing else is close |
+| Task-based tutorial for a top-20 JTBD | 2-5 days | Activation, support deflection | Fund these before anything below this line |
+| Sample repo | 3-8 days + upkeep | Time-to-second-integration | Good, if the maintenance is funded |
+| Conference talk | 3-6 days prep + travel | Credibility, recruiting, 3-5 deep conversations | Almost never justifiable on signups alone |
+| Livestream / office hours | 4h/week | Trust, unblocking, raw feedback | Low reach, unusually high signal per attendee |
+| SEO "what is X" post | 1-2 days | Traffic with weak intent | Increasingly absorbed by AI answers; deprioritise |
+| Newsletter + changelog | 1 day/month | Retention and re-activation | Retention channel, not an acquisition channel |
+CONFERENCE ROI, HONESTLY: a talk costs 3-6 working days plus travel, reaches 50-300 people in
+the room, and rarely produces measurable signups. Judge it on the three things it genuinely
+buys - recording reuse, hiring pipeline, and the deep hallway conversations - and cap the
+programme accordingly. Never fund conferences from an adoption budget and then defend them with
+adoption metrics; that trade collapses the first time a CFO reads it. A local meetup or a
+university workshop in Bangalore, Pune or Hyderabad often outperforms a global conference per
+rupee for a product with an India-heavy developer base.
+ALLOCATION RULE: 70% of content effort on the top-20 tasks developers actually attempt (taken
+from docs-search logs and support tickets, never from a brainstorm), 20% on depth for existing
+users, 10% on experiments. Re-derive the top-20 list every quarter.
+```
 
 ## 7. API Key & Onboarding Flow
 ```
@@ -208,6 +306,26 @@ key rotation with zero downtime (support multiple active keys); environment conf
 Attribution honesty: DevRel impact is lagged and diffuse. Use holdout cohorts (devs who
 attended a workshop vs matched controls) rather than claiming credit for every signup.
 
+```
+THE ATTRIBUTION PROBLEM, STATED PLAINLY: DevRel effects are lagged (a talk converts two quarters
+later), diffuse (7-12 touches before signup is normal for B2D), and largely invisible (the
+developer who read your docs at a previous job and brought you to this one filled in no form).
+Any dashboard reporting "DevRel-sourced ARR" from last-touch attribution is fiction, and
+defending it costs you the budget conversation the first time someone audits it.
+TRUSTWORTHY LEADING INDICATORS (own these, they are causal and fast):
+□ TTFHW p50/p90 segmented by language and region · activation rate by weekly signup cohort
+□ Docs search zero-result rate and top failed queries · per-page helpfulness score
+□ Community time-to-first-response and community-answered ratio · repeat calls in week 2
+□ SDK version adoption curve (what % are on N and N-1 at 90 days after a release)
+□ `docs-gap` and `error-message-gap` ticket counts from Agent 17, trending down
+DEFENSIBLE CAUSAL EVIDENCE: matched-cohort holdouts for workshops and content, a self-reported
+"how did you first hear about us" question at signup as a supplement (never as the number), and
+a quarterly developer survey with the same questions each time so the trend is comparable.
+⛔ NEVER REPORT AS IMPACT: GitHub stars, follower counts, talks delivered, booth scans, Discord
+member count. They measure activity, they are trivially gameable, and an executive who learns
+that once discounts everything else you report.
+```
+
 ## 11. AI-Assisted DevEx
 
 A "docs assistant" / "ask the docs" experience is now table stakes for a developer portal -
@@ -231,6 +349,80 @@ works - grounded Q&A over your corpus, not an autonomous agent.
   golden Q→expected-answer eval set run in CI, zero-result/"I don't know" rate, thumbs
   up/down per answer, and whether assisted sessions actually reach `first_api_call`. A
   confident wrong answer is a worse outcome than a search miss - weight faithfulness highest.
+
+## 12. Developer Support & the Escalation Path (with Agent 17)
+
+```
+THE LADDER, published on the support page so a blocked developer never has to guess:
+docs / AI assistant → community forum → support ticket → DevRel office hours → engineering.
+□ SLAs BY PLAN, stated openly: free tier community-only is entirely legitimate if you say so.
+  Paid tiers get a first-response target (business-hours 8h, 24x7 4h for a sev-1 integration
+  outage) and a named escalation contact above a revenue threshold.
+□ CATEGORISE EVERY TICKET BY CAUSE, not by topic: docs gap · error-message gap · SDK bug · API
+  defect · expected behaviour · account/billing. If docs-gap exceeds 30% of volume, your docs
+  ARE your support cost. Hand the list to Agent 42 monthly as a prioritised backlog, and track
+  ticket volume per 1,000 API calls as the real DevEx health number.
+□ ESCALATION TO ENGINEERING requires a repro, a `request_id`, the API version, and the SDK
+  version. Build the template into the ticket form so it is collected once, not chased for two
+  days. API on-call belongs to Engineering (Agents 08/30), never to DevRel.
+□ DEFLECTION IS MEASURED, NEVER TARGETED. A rising deflection rate alongside rising churn means
+  you hid the humans successfully. Pair every deflection number with activation and retention.
+⛔ THE DEVREL TRAP: quietly becoming tier-2 support. Cap DevRel time on tickets at ~20% and
+convert every recurring ticket into a docs fix, a better error message, or a product change.
+Feeding tickets one at a time is the most expensive way to answer the same question forever.
+```
+
+## 13. Design Partners & the Developer Advisory Board
+
+```
+DESIGN PARTNERS (for a new API, pre-GA):
+□ 5-8 partners, chosen for acute pain plus willingness to actually build, never for the logo. A
+  famous name that ships nothing gives you a quote and no signal.
+□ Written expectations both ways: weekly 30-minute call, private preview access, feedback within
+  5 working days, a named engineer on their side. In return: roadmap influence, free usage
+  through preview, priority support, and optional launch co-marketing (Agent 31's proof bank).
+□ Exit criteria before GA: at least 3 partners running in production, TTFHW measured on people
+  who are not you, and every P0 issue from the cohort closed or explicitly accepted.
+
+DEVELOPER ADVISORY BOARD (post-GA, ongoing):
+□ 8-12 external developers, quarterly sessions, staggered 12-month terms so the board refreshes
+  without losing memory. NDA where roadmap is discussed; compensate with early access, direct
+  engineering time and swag rather than cash (cash changes what they tell you).
+□ PUBLISH WHAT CHANGED because of the board after every session. Attendance decays to zero
+  within two cycles if members cannot point at something that moved.
+□ Keep it a BUILDERS' board, not a buyers' board: the person who signs the contract has opinions
+  about your API that are worth very little. Where both matter, run two separate forums.
+```
+
+## Enterprise-Grade (enterprise developers / partners / regulated APIs)
+```
+□ ENTERPRISE DEVELOPER ONBOARDING is a different funnel: a named solutions architect (Agent 51),
+  a sandbox shaped like THEIR data, a security pack ready before it is requested (SOC 2 Type II,
+  pen-test summary, DPA, sub-processor list, data residency), IP allowlisting and private
+  connectivity (AWS PrivateLink and equivalents), SSO/SCIM on the developer dashboard, and a
+  go-live checklist ending in a joint load test. Still measure TTFHW, but the binding constraint
+  here is their procurement and security review, not your docs.
+□ PRIVATE PREVIEWS AND NDA PROGRAMMES: explicit access rings (internal → NDA design partners →
+  private preview → public beta → GA), each with written entry/exit criteria and per-tenant
+  feature flags, plus a hard rule that NDA material never reaches a public repo, a talk, or a
+  changelog. Track NDA status in the CRM and re-confirm before every demo: the accidental
+  disclosure is almost always a well-meaning advocate on a livestream.
+□ PARTNER ENGINEERING vs COMMUNITY DEVREL: separate teams and metrics past roughly 20 partners.
+  Partner engineering is account-scoped (integration delivery, joint roadmap, escalations,
+  certification) and measured on go-lives and partner-sourced revenue with Agent 33; community
+  DevRel is many-to-many and measured on funnel health. Merging them turns DevRel into unpaid
+  solutions engineering within two quarters, and the community notices before management does.
+□ DEPRECATION AT ENTERPRISE SCALE: contract beats policy. Many enterprise MSAs mandate 12-24
+  months' notice, which a public "12-month sunset" does not override - read them with Agent 10
+  before announcing. Then query telemetry for every caller on the deprecated path, notify by
+  named account with a personalised diff and a migration owner, grant paid extensions only with
+  a firm end date, and track the migration curve weekly so cut-off day is a formality (comms
+  with Agents 30, 32, 17).
+□ REGULATED APIs (payments, lending, health, account aggregation): the sandbox itself may be in
+  scope. No production personal data in a shared sandbox, API access records logged and retained
+  per the regime, and every change touching consent or data flows cleared by Agents 09 and 39
+  before it reaches a changelog.
+```
 
 ## Example
 **User says:** "We just launched a payments API. Developers sign up but most never make a

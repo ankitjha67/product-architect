@@ -261,6 +261,227 @@ ACCESSIBILITY:
 - Keyboard navigation
 - Color contrast ratios (4.5:1 minimum for text)
 - Touch targets: minimum 44x44pt
+
+SECURITY & PRIVACY (with Agents 09/39 - requirements, not a review step bolted on later):
+- AuthZ model: the role/permission matrix, the default (deny), and which actions need re-auth
+  or step-up MFA. Write the permission table into the PRD; "admins can do more" is not a spec.
+- Data classification per field: public / internal / PII / sensitive personal data (GDPR Art.9,
+  DPDP Act 2023). TLS 1.2+ in transit, AES-256 at rest, tokenisation for card data (PCI DSS v4.0).
+- Retention and deletion per entity in days, with the purge mechanism named. "Account deletion"
+  must state what is hard-deleted, what is anonymised, and what is retained under statute
+  (Companies Act 2013 §128: 8 years of books; RBI KYC records: 5 years after relationship ends).
+- Consent: what is collected, who owns the notice text, and whether processing blocks without it.
+- Secrets and key rotation, audit logging of privileged actions, per-key per-endpoint rate limits.
+- ABUSE CASES written as hostile user stories: "As a scraper, I want to enumerate order IDs..."
+  Each gets a mitigation and a detection event. Every P0 flow needs at least three.
+
+OBSERVABILITY (if it is not specified here, it will not be built, and you will debug blind):
+- Per feature: the success metric event, failure events with codes, a latency histogram, and
+  required log fields (request_id, hashed user_id, tenant_id).
+- SLO per critical flow with the error budget and the on-call owner, e.g. "checkout success
+  ≥99.5% over 28 rolling days". Alert thresholds and the dashboard are named in the PRD.
+- A synthetic probe on every P0 flow, running in production at least every 60 seconds.
+
+NFRs ARE TESTABLE OR THEY ARE DECORATION. Each is a measurable assertion with a method:
+  BAD  "the app should be fast" · "highly available" · "secure"
+  GOOD "search p95 < 300ms at 500 RPS against the 100k-SKU catalogue, verified by k6 weekly"
+Every NFR carries: the number, the load/condition it holds under, the measurement tool, the
+owner, and the behaviour on breach (degrade, shed load, queue, fail closed - pick one, in writing).
+BUDGET ALLOCATION: performance budgets are split per component at spec time with Agent 06 (a
+200ms p95 API budget = gateway 20ms + service 120ms + DB 60ms). Unallocated budget is silently
+consumed by whichever team ships last.
+```
+
+### 6. Requirements Elicitation (people describe solutions; you need the problem)
+
+Stakeholders arrive with a solution ("add an Excel export"), never with a requirement. Job one
+is recovering the problem behind the request; job two is resolving people who each think their
+version is obvious.
+
+```
+FIVE WHYS APPLIED TO A FEATURE REQUEST (a real chain, not a ritual):
+"Add an Excel export to the ops dashboard."
+ W1 Why? "So ops can see yesterday's failed orders."            → the job is triage, not export
+ W2 Why Excel? "To filter and sort them."                       → in-product filtering is inadequate
+ W3 Why not filter here? "It can't filter by failure reason."   → the actual gap
+ W4 Why does that matter? "We must call those customers by 11am"→ a deadline constraint
+ W5 Why 11am? "The refund SLA in the merchant contract."        → the requirement and its source
+REQUIREMENT: "Ops retrieves all orders failed in the last 24h, filtered by failure reason,
+within 2 minutes, before 11:00 IST daily." Export is now one candidate solution among several
+(saved view, alert, auto-generated call list) and probably not the best. Stop asking why at the
+level where the answer becomes a business rule or a contract, not a preference.
+
+ELICITATION TECHNIQUES, by signal per hour:
+| Technique | Best for | Cost | Trap |
+|-----------|----------|------|------|
+| Contextual inquiry / observation | The real workflow and its workarounds | 2-4h/session | People perform when watched |
+| Existing artefacts (tickets, call recordings, logs, the spreadsheet they actually use) | Frequency, volume, cost | Low | Survivorship: only complaints that got filed |
+| Structured stakeholder interview | Constraints and incentives | 45-60 min | They answer as their department, not as the business |
+| Workshop / event storming | Cross-team flows and hand-offs | 1 day, 6-10 people | The loudest voice writes the spec |
+| Survey | Prioritising a KNOWN list | Low | Cannot discover an unknown need |
+NEVER accept a requirement stated only as a solution. Two questions break every one of them:
+"what happens today if this does not exist?" and "who is harmed, how often, and what does it
+cost?" A requirement with no frequency and no cost cannot be prioritised, and usually turns out
+to be one loud customer or one executive's last job.
+
+CONFLICTING STAKEHOLDERS - resolve, never average:
+1. Restate both positions as OUTCOMES with the metric each protects (Sales: cycle time; Legal:
+   audit exposure; Support: ticket volume). Conflicts are between metrics, not people.
+2. Test whether it is a genuine trade-off or an untested assumption. Most are the latter: pull
+   data (Agent 16) or run the smallest experiment instead of negotiating opinions.
+3. If it is a real trade-off, escalate a written option table (cost, risk, reversibility) to the
+   ONE accountable decision-maker, named in the PRD. Averaging two positions ships a feature
+   neither side wanted and nobody defends in review.
+4. Record the losing position and why it lost. Undocumented, it returns in ninety days.
+```
+
+### 7. Acceptance-Criteria Craft
+
+Vague acceptance criteria are the largest single cause of rework: engineering builds to one
+reading, QA tests another, and the disagreement surfaces at demo, when the fix costs an order of
+magnitude more than at spec time (Boehm's cost-of-change curve; the multiplier is debated, the
+direction is not).
+
+```
+GIVEN / WHEN / THEN DISCIPLINE:
+- One behaviour per criterion. Two "and"s means two criteria. Split them.
+- GIVEN is state, never an action. WHEN is exactly one trigger. THEN is observable by a tester
+  with no code access: a UI state, an API response, an emitted event, a row, an email.
+- Cover the boundary and the negative: one below the limit, one above, empty, max length,
+  duplicate submission, expired token, and the unauthorised actor.
+- Numbers, not adjectives. Every threshold, timeout, currency, unit, and time zone is written.
+```
+
+| Bad (rework guaranteed) | Good (a QA engineer can test it today) |
+|-------------------------|----------------------------------------|
+| "Login should be secure" | GIVEN 5 failed attempts within 15 min WHEN a 6th is made THEN return 429, lock the account 30 min, and email the owner |
+| "Show an error if payment fails" | GIVEN a card declined with `insufficient_funds` WHEN the charge returns THEN show "Your bank declined this payment (insufficient funds)", preserve the cart, and offer UPI as the next method |
+| "Search should be fast" | GIVEN a 100k-SKU catalogue WHEN a query is submitted THEN results render p95 < 300ms at 500 RPS |
+| "Support bulk upload" | GIVEN a CSV ≤10,000 rows and ≤10MB WHEN uploaded THEN validate every row, import the valid ones, and return a downloadable error file naming row number and reason |
+
+DONE means: every acceptance criterion passes, the analytics events fire with the specified
+properties, error/empty/loading states match the spec, and the NFR assertions hold under the
+stated load. Anything short of that is "merged", not "done".
+
+### 8. Requirements Traceability
+
+```
+Every requirement carries a stable ID (REQ-PAY-014) that survives the whole chain:
+BUSINESS GOAL → REQUIREMENT (REQ-ID) → ACCEPTANCE CRITERION (AC-ID) → TEST CASE (Agent 07) →
+BUILD/RELEASE → the feature flag that enabled it → the evidence it was verified in production.
+Tooling: Jira issue links or Linear relations for most teams; a plain matrix table in the PRD
+below ~50 requirements; DOORS, Polarion or Jama in medical and safety-critical contexts.
+WHY IT MATTERS EVEN UNREGULATED: it answers "why does this code exist?" three years later, it
+tells you exactly what to re-test when a requirement changes (impact analysis), and it exposes
+orphans in both directions - tests with no requirement (scope that shipped unnoticed) and
+requirements with no test (the ones that break in production).
+WHY IT IS MANDATORY WHEN REGULATED: medical software (IEC 62304, FDA design controls under 21
+CFR 820.30), aviation (DO-178C) and automotive (ISO 26262) require demonstrable requirement-to-
+test coverage. SOX ITGC change-control evidence and RBI/SEBI system audits ask the same
+question: prove that what was approved is what was built, tested, and released.
+COVERAGE RULE: 100% of P0 requirements map to at least one automated test; report the gap count
+every sprint. An untraced P0 is a release blocker, not a footnote for the next retro.
+```
+
+### 9. Spec Review, Sign-off, and Change Control
+
+Async read first, meeting second. A meeting held to read a document is six salaries spent on
+reading aloud.
+
+| Reviewer | Looks for | Blocking? |
+|----------|-----------|-----------|
+| Engineering lead (06) | Feasibility, dependencies, missing NFRs, data model | Yes |
+| Design (05) | Flows, all states, accessibility, content design | Yes |
+| QA (07) | Testability: can every AC become a test case as written? | Yes |
+| Security / Privacy (09/39) | Data classes, lawful basis, abuse cases, retention | Yes if personal data |
+| Support / CS (17) | Failure paths, what agents will be asked, tooling needed | Advisory |
+| Finance / Legal (18/10) | Money movement, claims, contractual and tax terms | Yes if either applies |
+
+```
+SIGN-OFF is a named person and a date in the document header, not a Slack thumbs-up. One
+accountable owner per PRD (RACI: the PM is A; everyone else is C or I). Silence is not approval:
+a reviewer who does not respond within 3 working days is escalated, never assumed to agree.
+
+CHANGE CONTROL AFTER SIGN-OFF (specs change; the discipline is that changes are visible and priced):
+□ Every change is a CHANGE REQUEST stating: what changes, why now, impact on scope/date/cost,
+  the REQ-IDs touched, and who approves. Anything touching a P0 requirement, the release date,
+  or a signed NFR returns to the original approvers - not just to the PM.
+□ VERSION the PRD (v1.0 signed, v1.1, v2.0) with a change log naming author, date and rationale.
+  Never silently edit a signed spec: the diff is the audit trail and the memory.
+□ SCOPE-CREEP DETECTION, measured not felt: count requirements added after sign-off and the % of
+  sprint capacity they consume. Above 15% for two consecutive sprints means the spec was signed
+  too early or discovery was skipped - fix the cause, not the sprint.
+□ FREEZE POINT: no new requirements after code-complete minus one sprint, except defects and
+  regulatory changes. Everything else enters the next release as a written queue entry, so the
+  requester sees a position rather than a refusal.
+```
+
+## Decision Framework: In-Scope vs Out-of-Scope vs Later
+```
+Every requirement lands in exactly ONE bucket, in writing, inside the PRD. The out-of-scope list
+is the most valuable section of any PRD: it is the only part that prevents the argument in week six.
+
+IN SCOPE - all four must be true:
+  1. The target user cannot complete the core job end to end without it, even once.
+  2. Removing it breaks a P0 acceptance criterion or a legal/contractual obligation.
+  3. It can be built AND verified inside the release window by the committed team.
+  4. Its absence cannot be absorbed by a manual/ops workaround at current volume.
+LATER - valuable, but the trigger has not fired. Write the trigger, never "someday":
+  "self-serve refunds when refund tickets exceed 200/week" or "SSO at the first €50K deal".
+OUT OF SCOPE - stated out loud with the reason: different user, different problem, a cheaper
+  alternative exists, or the evidence does not support it yet.
+
+THE MVP CUT, applied in this order (stop as soon as the release fits):
+  1. Cut USERS first (one persona, one segment, one city) before touching the flow.
+  2. Cut the flow's BRANCHES, never its spine. A broken end-to-end path is not an MVP.
+  3. Replace automation with an ops workaround where volume permits: manual refunds at <50/day
+     are cheaper than the feature. Write the SOP with Agent 19 AND the trigger to automate.
+  4. Cut breadth of inputs (5 payment methods → UPI + cards; 12 file formats → CSV).
+  5. Cut polish LAST.
+NEVER CUT: authentication correctness, payment idempotency, data deletion, audit logging on
+money or personal data, error and empty states, and accessibility on the primary flow. Each is
+more expensive to retrofit than to build, and three of them are legal obligations.
+REVERSAL CONDITION: a "later" item re-enters scoping when its trigger fires or when 3+ customers
+request it in a quarter with ARR attached - by evidence, never by escalation volume.
+```
+
+## Enterprise-Grade (regulated / multi-team / migration)
+```
+□ REGULATED-PRODUCT REQUIREMENTS: identify the controlling regime per feature BEFORE specifying
+  (RBI for payments and lending, SEBI for broking, IRDAI for insurance, PCI DSS v4.0 for card
+  data, HIPAA for US health data, DPDP Act 2023 / GDPR for personal data). Write the rule as a
+  cited requirement: "REQ-KYC-003: re-KYC every 2 years for high-risk customers per the RBI
+  Master Direction on KYC" is testable; "must be RBI compliant" is a wish with a citation.
+□ AUDIT TRAIL ON THE REQUIREMENTS THEMSELVES: who proposed, who approved, when, and what changed
+  between versions, retained for the audit window (7 years is a common default; confirm per
+  regime). Agents 11 and 59 will sample this, and "we edited the Notion page" is not evidence.
+□ MULTI-TEAM DEPENDENCY SPECS: any requirement crossing a team boundary needs an INTERFACE
+  CONTRACT in the PRD - API shape, owner, SLO, error semantics, version, and the date it is
+  available in a testable environment (not the date it is "done"). Register it in Agent 41's
+  dependency tracker with a named owner on each side. A dependency without a date is a risk.
+□ MIGRATION AND BACKWARD COMPATIBILITY: for anything replacing a live system, specify the data
+  migration (row volume, field mapping, fields with no equivalent, reconciliation counts and the
+  accepted tolerance), the coexistence period with both systems running, the cutover window,
+  the rollback path, and what happens to in-flight transactions at the cut. Backward
+  compatibility is a requirement with an expiry: name the API versions and client versions
+  supported and until when. Mobile clients cannot be force-upgraded - assume a 12-18 month tail
+  on Android in India before you can drop an old client.
+□ SEGREGATION OF DUTIES: specify RBAC plus maker-checker/four-eyes on privileged or money-moving
+  actions where SOX ITGC or RBI norms apply. Retrofitting approval workflows post-launch means
+  rewriting every write path and re-testing every one of them.
+```
+
+## Failure Modes (⛔)
+```
+⛔ SOLUTION-SHAPED REQUIREMENTS: "add a dropdown" specified faithfully, shipping the wrong thing
+   correctly.
+⛔ ADJECTIVE ACCEPTANCE CRITERIA: "fast", "secure", "intuitive" - untestable, so untested.
+⛔ NFRs AS AN APPENDIX: performance and security discovered at load test, two weeks from launch.
+⛔ AVERAGED STAKEHOLDER CONFLICT: a compromise feature neither party asked for and neither owns.
+⛔ SILENT SPEC EDITS after sign-off, so nobody can say what was approved or by whom.
+⛔ "LATER" WITH NO TRIGGER: a backlog that is a graveyard, re-litigated every planning cycle.
+⛔ MVP CUT THAT REMOVES ERROR STATES: the demo works, the first real user does not.
+⛔ NO TRACEABILITY IN A REGULATED BUILD: an audit finding that costs more than the feature earned.
 ```
 
 ## Output: PRD Document
