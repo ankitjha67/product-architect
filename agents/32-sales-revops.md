@@ -398,6 +398,70 @@ NRR/GRR and CAC payback are the bridge to Finance (Agent 18); win rate and cycle
 bridge to PMM (Agent 31). When win rate drops, it's usually a positioning/competitive problem
 (Agent 31), not a "reps need to try harder" problem.
 
+## Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the revenue-operations
+layer: the cases where the motion is sound, the product is fine, and the ORGANISATION breaks
+the number. Pick the 3 to 5 that can plausibly hit this quarter and name the trigger, the
+owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Quota was set on a plan Finance later cut** | The board number changes after comp letters are out; bottom-up capacity and the top-down target diverge by more than 10 percent; a re-forecast lands after the period has started | Never re-cut quota retroactively inside a live period. Close the gap this quarter with coverage, pipeline and hiring assumptions, then re-baseline at the next plan boundary with a written bridge from the old target to the new one that every manager can show a rep | Agent 32 Sales and RevOps with Agent 18 Finance, Agent 61 Total Rewards |
+| **A territory carve lands mid-quarter** | A segmentation project promising delivery "by end of month"; net-new leads routing ambiguously; two reps working the same parent account | Freeze ownership of open opportunities with their current owner through close and apply the new map to net-new only. Split credit on named exceptions in writing before either rep invests another call. Anything else buys a commission dispute and a stalled quarter | Agent 32 Sales and RevOps with Agent 61 Total Rewards, Agent 18 Finance |
+| **A comp plan change that is legally a change to compensation terms** | A mid-year rate change, a new clawback, an introduced cap or a removed accelerator; a plan document with no reservation-of-rights clause; reps across several jurisdictions | Route it through employment counsel and each local entity BEFORE announcement. Earned commission is frequently not unilaterally revocable and treatment varies sharply by jurisdiction, so verify current rules. Model every affected rep old versus new, brief managers first, and change only at a period boundary | Agent 10 Legal and IP with Agent 22 People and HR, Agent 61 Total Rewards, Agent 32 Sales and RevOps |
+| **A CRM migration destroys pipeline history mid-forecast** | A cutover date inside a quarter; stage mappings that are not one-to-one; stage-change and amount-change history absent from the migration scope | Keep the quarter's forecast on the old system and run the new one in parallel. Migration scope must include stage and amount history, because win rate, conversion and cycle time are computed from history, not from current state. Exit dual-run on a reconciliation criterion, not a date | Agent 32 Sales and RevOps with Agent 38 Data Engineering, Agent 40 IT and Corporate Engineering |
+| **The deal desk becomes the bottleneck on every enterprise deal** | Approval-cycle time rising as a share of sales cycle; a spike of quotes submitted in the final week; reps pre-negotiating outside the system to skip the queue | Publish and staff the SLA, tier the routing so standard paper never touches a human, and report percentage non-standard by rep and by term. A slow desk does not prevent bad terms, it relocates them into side letters where nobody reviews them | Agent 32 Sales and RevOps with Agent 10 Legal and IP, Agent 18 Finance |
+| **Sandbagging or hockey-sticking distorts a board forecast** | Commit landing above forecast by a consistent margin; most bookings in the last two weeks; close dates clustering on the final day of the quarter | Publish both numbers every week: rep-called and model-derived from stage-gate evidence and historical conversion. Measure the bias per manager rather than arguing about it, and never punish the first honest downgrade or the behaviour becomes permanent | Agent 32 Sales and RevOps with Agent 18 Finance, Agent 44 Investor Relations |
+| **A large deal closes with non-standard terms revenue accounting never saw** | A side letter, an unpriced extension option, a right of return, a bundled implementation priced at negotiated line rates, or prepaid credits with rollover; an order form signed late on the last day | Revenue treatment is assessed before signature, never after. Any commitment outside the executed order form routes through Legal and Revenue Accounting, and every rep must know that a "just between us" email is a contract term and the classic audit finding | Agent 56 Revenue Accounting with Agent 10 Legal and IP, Agent 18 Finance, Agent 32 Sales and RevOps |
+| **A rep departs and strands a named account** | A resignation mid-renewal cycle; a single mapped contact on a strategic account; a champion reachable only through the departing rep's phone | Run a 48-hour transition: a joint introduction from a leader, a contact and next-step audit in the CRM, a named interim owner, and the comp treatment of in-flight deals stated in writing. Renewal risk comes from the silence after the exit, not from the exit | Agent 32 Sales and RevOps with Agent 17 Customer Success, Agent 61 Total Rewards |
+| **Channel conflict between the direct and partner motions** | Two registrations on one account; a partner discovering a direct rep inside their opportunity; unexplained margin sitting with an intermediary | Apply the written deal-registration and precedence rules, decide within days rather than weeks, and pay the losing side on the pre-agreed rule instead of by seniority. Unresolved conflicts teach both motions to hide pipeline, which corrupts the forecast | Agent 33 Partnerships and BizDev with Agent 32 Sales and RevOps |
+| **A hiring freeze lands on a capacity model that assumed ramp** | Req approvals slowing from days to weeks; a backfill open past 60 days; a plan still carrying productive capacity that does not exist | Re-run coverage on the heads you actually have, publish the attainable number and the resulting gap, and force an explicit choice between reallocation, quota relief and target reduction. Silent absorption converts a capacity decision into a miss with no owner | Agent 32 Sales and RevOps with Agent 18 Finance, Agent 60 Talent Acquisition |
+| **A customer above 10 percent of revenue threatens churn unless the roadmap changes** | A renewal escalating to executives; a demand tied to a dated commitment; a churn threat used as a lever more than once | Apply the concentration policy decided in advance rather than negotiating per threat. Price the ask as an explicit roadmap trade with a named cost and owner, and never commit a delivery date inside a renewal call | Agent 17 Customer Success with Agent 32 Sales and RevOps, Agent 03 Strategy, Agent 18 Finance |
+| **A pricing or packaging change lands mid-quarter on live pipeline** | A launch date inside the quarter; open quotes on the old model; grandfathering rules still undecided at announcement | Publish the transition rule before the change: which quotes honour old pricing, until when, and who approves exceptions. An undefined grandfathering rule converts every open deal into a deal-desk escalation in the worst two weeks of the quarter | Agent 36 Pricing and Monetization with Agent 32 Sales and RevOps |
+| **The customer reorganises or is acquired and moves segment mid-term** | The account crosses the enterprise threshold mid-contract; two account teams both claim the renewal; the contracting entity changes name | Ownership follows the contracting entity until renewal and the segment change applies at the renewal boundary. Write the credit split and the quota relief before either team invests, and check the contract for change-of-control and assignment terms | Agent 32 Sales and RevOps with Agent 17 Customer Success, Agent 10 Legal and IP |
+| **CRM, billing and the board deck disagree on the same number** | Bookings, invoiced revenue and reported ARR differing by more than a rounding error; three teams maintaining three definitions of ARR; a manual spreadsheet between the systems | Name one system of record per metric and publish the definition and the reconciliation, not just the number. Every downstream deck derives from that source. Two credible numbers is worse than one imperfect number nobody can dispute | Agent 32 Sales and RevOps with Agent 56 Revenue Accounting, Agent 55 Billing and Monetization Engineering, Agent 16 Analytics |
+
+```
+⛔ REVOPS FAILURE MODES UNDER ORGANISATIONAL PRESSURE:
+□ THE PLAN THAT IS ARITHMETIC, NOT CAPACITY. A target divided by headcount is not a model.
+  Without ramp curves, attrition and coverage it produces a number that was never attainable,
+  and the miss is discovered in month eight when nothing can be changed.
+□ THE FORECAST THAT IS A NEGOTIATION. Once the number reported upward is the number that
+  keeps a manager comfortable, forecasting stops measuring the business. The cure is
+  objective stage gates plus a model-derived number published beside the called one.
+□ THE PROCESS REPS ROUTE AROUND. Every field, gate and approval added without enablement
+  creates a workaround, and the data gap it produces stays invisible until a forecast is
+  built on it. Ship process changes like product changes: trained, migrated, measured.
+□ THE COMP PLAN THAT PAYS FOR LAST YEAR'S STRATEGY. Plans are annual and strategy is not, so
+  reps keep selling the motion the plan rewards. Change at period boundaries, or accept that
+  the stated strategy is decorative.
+□ THE EXCEPTION THAT BECAME POLICY. A quarter-end discount or non-standard term granted under
+  pressure sets the precedent for every renewal and every comparable deal. Without a register
+  with expiry dates, the standard paper is quietly rewritten by the deals that shouted.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+RevOps is staffed as a reporting function, but every artefact it owns is binding on someone.
+A quota, a territory map, a comp plan, a stage definition and a CRM field are the terms on
+which several hundred people are paid and on which a board has been told a number. Changing
+one is not a configuration change, it is a change to a contract with the field.
+
+□ That is why almost every failure above is the same failure: a change made at a SYSTEM
+  boundary rather than at a PERIOD boundary. The system can be changed on any Tuesday; the
+  people, the plan and the reported number can only be changed at a boundary with a bridge.
+□ The corollary is that speed of decision beats elegance of design. An imperfect rule
+  published before the dispute is worth more than a perfect rule decided after it, because
+  the disputed cases are settled by seniority the moment there is no written rule.
+
+⚠️ Compensation, clawback, commission and territory-change mechanics carry employment-law
+   consequences that are jurisdiction specific and change over time. Treat the principle
+   above as durable, verify the current rule with qualified counsel, and see
+   `../references/DISCLAIMER.md`.
+```
+
 ## Enterprise-Grade RevOps
 
 ```

@@ -427,6 +427,72 @@ MCP + AGENT ORCHESTRATION (open standards over lock-in):
   not by hype. Full trade-off table in frameworks/ai-engineering-stack.md §2c.
 ```
 
+## 10. Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the data and AI layer:
+the cases where the model is fine, the architecture is fine, and the ORGANISATION is the
+failure mode. Pick the 3 to 5 that can plausibly land on this portfolio in the next two
+quarters and name the trigger, the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **An AI mandate arrives top-down with a date and no use case** | A board slide or all-hands commits to "AI-first by Q3"; a budget line appears before a problem statement; the ask names a technology rather than an outcome | Convert the mandate into a portfolio within 2 weeks: 5 to 8 candidate problems scored on value, data readiness and risk tier, two funded, the rest explicitly parked with reasons. Hand back a funded portfolio, never a demo | Agent 29 Data and AI Strategy with Agent 03 Strategy, Agent 62 Chief of Staff |
+| **Shadow AI is already in production in three teams before governance exists** | Corporate-card charges to model vendors absent from the vendor register; OAuth grants to AI plugins in SSO logs; a support macro that already drafts replies with an LLM | Inventory before enforcement. Rank discovered uses by data sensitivity and blast radius, move the top ones onto approved keys with logging and a DPA inside 30 days, and publish a days-not-quarters approval path. A ban first guarantees a second, invisible wave | Agent 29 with Agent 40 IT and Corporate Engineering, Agent 09 Security, Agent 39 Privacy and DPO |
+| **A model shipped before the eval function existed and now needs a retroactive approval trail** | An enterprise questionnaire or auditor asks for the model card, eval results and sign-off on a feature launched 8 months ago; nobody can name the approver | Never backfill artefacts with dates implying they existed. State the true coverage period, run the eval NOW against the frozen production version, record risk acceptance at the level the tier requires, and start continuous evidence from a stated date | Agent 29 with Agent 63 AI Evaluation and Red Teaming, Agent 59 Internal Audit and Risk |
+| **GPU or inference budget contention against a louder team** | A shared quota hits its ceiling mid-month; a training job is pre-empted with no policy behind it; the escalation is by seniority rather than by value | Publish the allocation rule before the next contention event: reserved capacity for production inference by tier, a pre-emptible pool for experiments, a named arbiter and a written escalation clock. Per-team chargeback turns a political fight into a visible trade-off | Agent 29 with Agent 18 Finance, Agent 08 DevOps and SRE |
+| **A data licensing basis that was fine for research is not fine for a product** | The prototype corpus came from a research exemption, a scraped source, or customer data whose contract bars derived models; the launch date is already public | Stop the launch clock, not the work. Map every dataset to rights, lawful basis, contamination and output rights using section 9, then retrain on a clean corpus or gate the feature per tenant. A licence defect is not fixable after distribution | Agent 10 Legal and IP with Agent 39 Privacy and DPO, Agent 29 |
+| **The AI governance council meets monthly while teams ship weekly** | An approval queue ageing past one cycle; teams describing their launch as "not really a model"; a Tier-1 decision waiting on quorum | Add an out-of-band path with a 5 working-day clock and two-person written approval for low-tier changes. A body that cannot decide between meetings gets routed around, and the routing stays invisible until an incident makes it visible | Agent 29 with Agent 11 Compliance and Ethics, Agent 62 Chief of Staff |
+| **A vendor deprecates a model version under a live customer commitment** | A deprecation notice with a 60 to 90 day window; a quality shift on an endpoint you believed was pinned; an RFP answer or contract naming the model | Treat a model swap as an untested production change: re-run the golden eval set on the successor, diff behaviour on the money path, and notify any customer whose contract names the model or its properties before the switch, not after | Agent 29 with Agent 46 Procurement and Supply Chain, Agent 51 Solutions Engineering |
+| **Killing an AI bet is career-costly, so the portfolio only grows** | An initiative with a named executive owner, no metric movement for two quarters, and reviews that keep producing "more time"; the kill list in the portfolio review is empty | Kill on pre-registered criteria, not on judgement in the room: every funded bet carries its stop condition at funding time and the review reads it aloud. Move the people first and announce the redeployment, so the person is not the loss | Agent 29 with Agent 03 Strategy, Agent 62 Chief of Staff |
+| **Central AI team versus embedded teams, reorganised mid-programme** | Two teams building the same retrieval layer; a platform team told to "enable" with no mandate or budget line; an org-design consultant on site | Freeze the interfaces, not the work. Write down who owns the model inventory, the eval harness and the shared platform BEFORE dates are re-baselined, so the reorg re-points ownership instead of restarting the roadmap | Agent 22 People and HR with Agent 29, Agent 41 Technical Program Management |
+| **The board asks for an AI number nobody has been measuring** | A request for "AI ROI" or "AI adoption" a week before the meeting; three teams holding three definitions of what counts as an AI feature | Publish the definition first, then the number: value delivered in currency, cost per unit of AI work, model count by tier, incidents and near-misses. A defensible small number beats an impressive one that cannot be reproduced next quarter | Agent 29 with Agent 16 Analytics, Agent 18 Finance, Agent 44 Investor Relations |
+| **An incident lands on a model that is not in the inventory** | A harmful or biased output traced to a fine-tune or prompt chain nobody registered; no owner, no kill switch, no known rollback version | Contain at the calling surface (feature flag or route disable) because there is no per-model switch, preserve prompts, retrieval traces and outputs before anything is redeployed, then register the model and name its owner as part of remediation | Agent 29 with Agent 09 Security, Agent 63 AI Evaluation and Red Teaming, Agent 25 PR and Communications |
+| **A data platform migration lands under a model in training** | The warehouse team announces a cutover date; feature definitions change owner; a training pipeline reads a table already scheduled for deprecation | Pin and snapshot the training inputs, then negotiate the dual-run exit as feature parity on a reconciliation set rather than a calendar date. A model retrained on silently changed features is a silent regression nobody will attribute correctly | Agent 38 Data Engineering with Agent 29, Agent 49 ML Engineering |
+| **The labelling and annotation supply chain becomes the risk** | A labelling vendor changes workforce or geography; quality drifts with no rubric change; the eval set was built by one contractor whose engagement is ending | Treat the rubric and the eval set as owned assets: in-house custody, versioned, with a held-out slice the vendor never sees. Requalify quality against a gold-standard sample before the transition, not after the first bad release | Agent 46 Procurement and Supply Chain with Agent 29, Agent 63 AI Evaluation and Red Teaming |
+
+```
+⛔ DATA AND AI FAILURE MODES UNDER ORGANISATIONAL PRESSURE:
+□ THE DEMO THAT BECAME A COMMITMENT. A two-week prototype is shown to an executive, and the
+  date in the room becomes the plan. Everything downstream (evals, licensing, residency) is
+  then negotiated against a promise made before any of it was checked.
+□ GOVERNANCE THAT ARRIVES AFTER PRODUCTION. A council chartered once models are already live
+  can only ratify. Its first act must be an amnesty-and-inventory pass with a deadline, not a
+  policy nobody can comply with retroactively.
+□ EVAL DEBT. Shipping quality is asserted by the team that built the model. Without an
+  independent golden set that grows after every incident, "it seems better" is the only
+  available evidence, and it cannot survive an auditor, a customer or a regression.
+□ THE INVENTORY THAT IS A DOCUMENT. A spreadsheet of models decays within a quarter. If the
+  inventory is not generated from the systems that serve the models, the org does not know
+  what it runs, and the first time it finds out is during an incident.
+□ COST DISCOVERED AT SCALE. Unit economics are computed at pilot volume, then inference spend
+  arrives as a surprise line item. Cost per unit of AI work belongs in the business case at
+  funding, with a stated ceiling that triggers a re-review.
+□ THE CENTRE THAT HAS A MANDATE AND NO BUDGET. A platform team accountable for adoption it
+  cannot fund becomes a review board, which is exactly what teams route around.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+AI does not fail in large organisations because the models are weak or the talent is thin. It
+fails because the mandate arrives with a NAME attached to it. A named executive announced the
+initiative, so every governance step reads as a challenge to that person rather than a check
+on a system, and the predictable result is a body that approves what has already shipped and a
+portfolio where funding is easy and stopping is impossible.
+
+□ The counter is to make the decisions impersonal BEFORE the pressure arrives: pre-registered
+  kill criteria attached at funding, tiered approval with a published clock, and an inventory
+  that is a system of record rather than a document someone maintains.
+□ The scarce resource is not compute or researchers. It is the authority to say no to a use
+  case that a senior person likes, and that authority only exists if it was written down while
+  everyone was calm.
+
+⚠️ AI-specific regulation, data-transfer mechanisms and training-data rules are jurisdiction
+   specific and are being actively revised. Treat the principle above as durable, verify the
+   current rule with qualified counsel and Agents 39 and 11 before acting, and see
+   `../references/DISCLAIMER.md`.
+```
+
 ## Enterprise-Grade Data & AI
 
 ```

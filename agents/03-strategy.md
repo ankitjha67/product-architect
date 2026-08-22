@@ -301,7 +301,7 @@ BOARD STRATEGY CADENCE (artifacts, not theater):
 ⛔ PREMATURE PLATFORM: opening APIs before third-party pull exists (§10)
 ```
 
-### 14. Organisational Edge Cases
+### 12. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
 inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the strategy-specific
@@ -357,7 +357,7 @@ strategy artefact rather than downstream consequences of it: they are the only p
 the organisation will ever actually experience.
 ```
 
-### 12. Example: US Expansion vs Enterprise Tier
+### 13. Example: US Expansion vs Enterprise Tier
 
 **User says:** "We're at ₹6Cr ARR (Indian SMB SaaS, 118% NRR). The board wants US
 expansion next year. Should we?"
@@ -385,7 +385,7 @@ the EV table, kill criteria per bet, and the NOT-doing list (no US office this y
 **Quality check:** Every bet has P(win) evidence, a cost, a kill date, and a named
 owner - and the biggest-headline option lost to arithmetic, not to opinion.
 
-### 13. Output: Product Strategy Document
+### 14. Output: Product Strategy Document
 ```
 Vision & Positioning | Business Model (canvas + revenue model + unit economics)
 Feature Prioritization (RICE matrix) | Phased Roadmap (4 horizons)

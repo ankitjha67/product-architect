@@ -387,6 +387,73 @@ SUPPLIER-FAILURE PLAYBOOK (written per Tier-1 BEFORE you need it):
   this gap and is a common mid-market loss (Agent 13).
 ```
 
+## 16. Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the procurement and
+supply-chain layer: the cases where the contract is sound, the supplier is competent, and the
+ORGANISATION creates the loss. Pick the 3 to 5 that can plausibly land in the next two
+quarters and name the trigger, the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A spend freeze lands after the PO is already issued** | A cash-preservation memo; approvals rerouted to the CFO; fiscal year-end or a covenant conversation | Separate committed from uncommitted within 48 hours. A signed PO is normally a legal commitment and cancelling it can cost more than honouring it, so produce a list of what can be deferred, descoped or renegotiated with the contractual cancellation cost named against each line | Agent 46 Procurement and Supply Chain with Agent 18 Finance, Agent 10 Legal and IP |
+| **A supplier goes insolvent mid-contract** | Prepayment suddenly demanded, senior finance departures, going-concern language, an auditor resignation, unusual end-of-quarter discounting | Run the section 14 failure playbook: secure inventory and data in hand, invoke escrow, freeze new commitments, and have Legal confirm title to tooling, data and paid-for inventory before an administrator is appointed. Recovery falls with every day of hesitation | Agent 46 Procurement and Supply Chain with Agent 10 Legal and IP, Agent 18 Finance |
+| **An auto-renew clause is discovered after the cancellation window closed** | An invoice at a new price; a renewal date missing from the contract repository; a business owner who assumed procurement was tracking it | Trade the lock-in you now hold for terms you want: uplift cap, exit rights, co-terminus dates, a service credit. Then fix the cause rather than the instance, with alerts at 150, 120 and 90 days on every contract in the repository, not only the remembered ones | Agent 46 Procurement and Supply Chain with Agent 18 Finance, Agent 40 IT and Corporate Engineering |
+| **A sole-source dependency created by an engineering choice nobody routed through procurement** | A proof of concept already serving production traffic; no credible substitute for the API; spend growing on a card before any contract exists | Buy leverage back before the renewal cliff, not at it: negotiate while switching cost is still theoretical, price the exit honestly (extraction, retraining, dual-run), and add the dependency to the concentration register. Never open a negotiation the month before a cliff | Agent 46 Procurement and Supply Chain with Agent 06 Engineering, Agent 18 Finance |
+| **A supplier audit finds forced-labour or sanctions exposure** | Undisclosed subcontracting layers; refusal of audit rights; an ownership chain terminating in a sanctioned jurisdiction; a screening hit on a beneficial owner | Stop new orders and preserve the record before any conversation with the supplier. This is a legal and disclosure question first and a sourcing question second, and remediation on a dated plan is often required rather than immediate exit. Verify current obligations with counsel | Agent 11 Compliance and Ethics with Agent 10 Legal and IP, Agent 27 ESG and Sustainability, Agent 46 Procurement and Supply Chain |
+| **An acquisition brings a duplicate vendor and invalidates the category strategy** | Deal announcement; two contracts for one capability with different terms and end dates; an integration plan that assumes one will simply be cancelled | Do not default to cancelling the earlier expiry. Model both on remaining committed spend, exit cost and migration effort, consolidate at the cheaper boundary, and use the combined volume as the lever at the surviving renewal rather than accepting a blended price | Agent 45 Corporate Development with Agent 46 Procurement and Supply Chain, Agent 18 Finance |
+| **Delegation-of-authority thresholds make small purchases slower than large ones** | Intake-to-PO cycle time worse for the tail than for strategic spend; requisitions split just under a threshold; a rising share of card spend | Fix speed before policing behaviour: punchout catalogues and pre-approved suppliers for routine spend, cards with merchant-category limits for the tail, and a light path with a value ceiling and a 48-hour clock. Splitting to duck a threshold stays a disciplinary matter | Agent 46 Procurement and Supply Chain with Agent 18 Finance, Agent 19 Operations |
+| **Maverick spend surfaces on corporate cards** | Recurring merchant charges absent from the vendor register; SaaS renewals nobody sourced; a growing no-PO invoice exception report | Reconcile card and SaaS-discovery data against the vendor master monthly, onboard the material ones properly (security review, DPA, contract), and name the worst cost centres to their own leaders. Cancelling first without an approved alternative drives the spend further underground | Agent 46 Procurement and Supply Chain with Agent 40 IT and Corporate Engineering, Agent 09 Security, Agent 18 Finance |
+| **A vendor subprocessor or sub-tier change triggers your own customer obligations** | A subprocessor list update email; a processing region change; enterprise DPAs that grant objection rights with a notice window | Check the objection window in YOUR customer contracts before accepting the change upstream. A routine vendor swap becomes a customer-communication project on a legal clock, and the notice period runs from their announcement, not from your discovery | Agent 39 Privacy and DPO with Agent 46 Procurement and Supply Chain, Agent 10 Legal and IP |
+| **A supplier bank-account change arrives mid-payment run** | An email from a known contact with new details, urgency and a plausible reason; the change requested close to a large invoice date; a reply-to address that differs by one character | Verify out of band by callback to a previously known number, never a number in the request, and hold the payment until verified. Supplier-impersonation fraud targets exactly this gap and is one of the most common mid-market losses | Agent 13 Fraud Operations with Agent 18 Finance, Agent 46 Procurement and Supply Chain |
+| **The requesting team has already promised the supplier the business** | An RFP scoped from one vendor's datasheet; a "we just need a PO raised" request; an implementation kickoff already in calendars | Keep the record defensible: document the sole-source justification, approve it one level up, log it, and negotiate anyway because commercial leverage still exists at signature even when selection does not. Track the sole-source rate as a governance metric, not as an anecdote | Agent 46 Procurement and Supply Chain with Agent 59 Internal Audit and Risk |
+| **Tariffs, sanctions or a logistics shock re-price landed cost mid-plan** | A trade measure or duty change on a category; a lane closure; a freight index moving sharply; an origin country reclassified. Verify current measures | Recompute landed cost and re-run the make, buy and source-location decision rather than absorbing the difference silently. Confirm who bears the cost under the agreed incoterm before arguing commercially, and re-check the dual-source premium against the new risk | Agent 46 Procurement and Supply Chain with Agent 57 Tax, Agent 19 Operations, Agent 18 Finance |
+| **Payment terms are extended unilaterally and the supplier base absorbs the shock** | A working-capital programme moving standard terms from 30 to 60 or 90 days; small suppliers asking for prepayment; a single-source Tier-1 supplier inside the affected population | Exempt the suppliers whose solvency you effectively own (roughly a fifth or more of their revenue) and every single-source Tier-1 before the policy is issued. A cash gain that kills a sole-source supplier is a loss on a delay. Verify local prompt-payment rules | Agent 58 Treasury with Agent 18 Finance, Agent 46 Procurement and Supply Chain |
+
+```
+⛔ PROCUREMENT FAILURE MODES UNDER ORGANISATIONAL PRESSURE:
+□ PROCUREMENT AS A GATE, NOT AN EARLY PARTNER. Involved at the requisition, the function
+  inherits a decided specification, a decided vendor and a decided date, and can only argue
+  about price. Every structural lever was spent before the ticket arrived.
+□ SAVINGS NOBODY CAN FIND IN THE P&L. Reported savings that Finance never validated are
+  cost avoidance at best and fiction at worst. Conflating the two once costs the function
+  its credibility on every number afterwards.
+□ THE REGISTER THAT IS NOT A SYSTEM OF RECORD. If the contract repository is a shared drive
+  and the renewal calendar is a person, then notice periods, uplift caps and obligations are
+  discovered by invoice. Above roughly 200 contracts this is a certainty, not a risk.
+□ POLICY ENFORCED BY MEMO. "No PO, no pay" holds only when the ERP blocks payment. Any
+  control that depends on people choosing the slower path fails at quarter-end, which is
+  exactly when the exposure is largest.
+□ THE OBLIGATION REGISTER THAT ONLY TRACKS THEIRS. Volume commitments, exclusivity and audit
+  cooperation that WE promised are where the surprise true-up invoice comes from, and nobody
+  is assigned to watch them.
+□ CATEGORY STRATEGY WITH NO DEMAND SIGNAL. A sourcing plan built without engineering and IT
+  roadmaps consolidates onto a vendor the business is about to outgrow, and re-locks the org
+  for three more years.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Procurement's leverage is spent long before the negotiation starts. By the time a requisition
+appears, the specification, the vendor and usually the date are already fixed, so the function
+is measured on the one variable it can still move (unit price) and blamed for the ones it was
+never shown (lock-in, exit cost, concentration, renewal terms).
+
+□ The fix is not a stricter policy. Stricter policy on a slow process produces maverick spend,
+  which is the same purchases with none of the controls. The fix is to be present at the
+  specification stage and to be FASTER than the workaround.
+□ The corollary: the most expensive procurement decisions are made by engineers and department
+  heads choosing a tool, not by buyers signing a contract. Instrument that moment (architecture
+  review, IT discovery, a light intake with a 48-hour clock) or accept that you negotiate only
+  after the leverage is gone.
+
+⚠️ Sanctions regimes, trade measures, forced-labour and supply-chain due-diligence rules and
+   prompt-payment law are jurisdiction specific and change frequently. Treat the principle
+   above as durable and verify the current rule with qualified counsel before acting. See
+   [DISCLAIMER.md](../references/DISCLAIMER.md).
+```
+
 ## Example
 **User says:** "Our SaaS bill has ballooned to ₹2 Cr/year across 60 tools and three of them
 auto-renew next month. Help."
