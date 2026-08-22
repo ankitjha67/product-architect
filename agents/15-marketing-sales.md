@@ -292,6 +292,75 @@ MDF (MARKET DEVELOPMENT FUNDS) WITH PARTNERS:
   unclaimed or unproductive funds quarterly to partners who convert
 ```
 
+### 10. Organisational Edge Cases
+
+The channel math in §6 to §9 assumes the org lets you run the plan. In a company of any size
+it usually does not: the claim needs substantiating, the logo needs permission, and the number
+you report is computed differently three floors up. `frameworks/enterprise-edge-cases.md` has
+the generic shocks; these are the ones that hit marketing and sales specifically.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **A campaign claim legal cannot substantiate** | Creative is booked and legal asks "what is the evidence for 'fastest'?" three days before flight | Either the claim is pulled and the creative is worthless, or it runs and becomes a competitor complaint, a regulator letter, or a retraction | Every superlative and every number in creative carries a substantiation file BEFORE the media buy: source, date, methodology, and who signed it. Comparative claims get a named legal reviewer per market (`agents/10-legal-ip.md`) |
+| **Customer logo used without current permission** | A deck, a website wall, or a conference booth carries a logo whose permission expired, or was verbal, or belonged to a contact who left | Legal demand letter, a public retraction, and a damaged reference account you also had in the pipeline | Logo rights live in the contract or in a dated written permission with a scope and an expiry. Audit the wall quarterly against the register; renew before renewal season, not after (`agents/32-sales-revops.md`) |
+| **CRM migration mid-quarter destroys attribution** | IT announces a Salesforce, HubSpot or CDP cutover with a date that ignores the quarter | Historical touch data does not map, campaign IDs break, and two quarters of channel comparison become unusable exactly when you need them for budget defence | Freeze the attribution schema and export a full historical snapshot to the warehouse before cutover. Run old and new reporting in parallel for one full sales cycle, with a reconciliation owner (`agents/38-data-engineering.md`, `agents/16-analytics.md`) |
+| **A channel policy change kills a working paid motion** | An ad platform bans your category, tightens a targeting option, or rejects a creative pattern overnight; CPMs jump with no bidding change | The channel funding most of pipeline stops in days, and the 70 percent core of the §7 allocation has nowhere to go | Never let one channel exceed roughly 60 to 70 percent of sourced pipeline without a written contingency: the standing 20 percent scale channel exists exactly for this. Keep a live account rep contact and a policy-change alert |
+| **Brand guidance conflicts across regions** | Two markets publish different taglines, colour usage, or claim wording for the same product | Fragmented brand, duplicated production spend, and a market that will not adopt the global asset because it "does not work here" | Separate what is legally required to differ (claims, disclosures, currency, endorsement rules) from what is preference. Standardise the second category and publish the exception process (`agents/43-localization-i18n.md`) |
+| **Marketing and finance compute demand-gen differently** | Marketing reports 40 percent of pipeline sourced; finance says 12 percent, and both are right under their own definitions | Budget conversations become definitional arguments, credibility drains, and the marketing number stops being cited at all | Fix the definitions once, in writing, signed by CMO and CFO: what counts as an opportunity, at which stage, on which touch model, with what lookback. Then never change them mid-year (`agents/18-finance.md`) |
+| **Consent and tracking changes break measurement** | Consent-mode rollout, browser cookie deprecation, an app-tracking prompt, or a stricter regional consent rule lands and conversions silently drop | Reported CAC rises with no real change in performance; teams optimise against a broken signal and cut a working channel | Rebase before you react. Establish server-side and modelled conversion paths, hold a geo or matched-market holdout as the causal referee, and re-baseline every channel target after the change (`agents/39-privacy-dpo.md`) |
+| **Purchased or scraped contact list in a consent regime** | A vendor supplies "verified opt-in" data; an SDR sequence launches into EU, UK, Canada or India contacts | Complaint volume, domain reputation damage, deliverability collapse across the whole company, and a regulatory exposure that dwarfs the campaign value | No list enters the stack without a documented lawful basis per region and a suppression file. Treat sender reputation as shared infrastructure owned by IT, not by whoever is prospecting (`agents/40-it-corporate-engineering.md`) |
+| **Sales comp plan and marketing targets point in opposite directions** | Comp rewards new logos; marketing is measured on expansion pipeline, or vice versa | Leads are ignored, MQLs pile up untouched, and each function's dashboard proves the other is failing | Comp plan design is a joint artifact reviewed before the plan year. If comp and the marketing plan disagree, comp wins in practice, so change the plan or change the comp (`agents/61-total-rewards.md`) |
+| **Agency or contractor loses the account knowledge** | The agency reassigns your team, or a contract lapses at quarter end | Ad account access, pixel configurations, creative source files and negative keyword lists walk out the door | Own the ad accounts, the pixel, the domain and the creative source files as company assets from day one. Offboarding checklist is written into the contract (`agents/46-procurement-supply-chain.md`) |
+| **A mid-year budget cut of 10 to 30 percent** | Finance asks twice for the marketing spend breakdown; a cost programme is announced | Panic cuts land on brand and experiments first, which are the two things that create next year's pipeline | Hold a pre-ranked descope list mapping spend to expected pipeline, so the cut is a decision with a named consequence. Protect the 20 percent scale channel before the 70 percent core if payback windows differ |
+| **An employee or influencer post creates disclosure exposure** | A paid creator posts without a disclosure tag; an employee promotes the product without identifying their employer | Advertising-standards complaints, platform takedowns, and in some regimes direct liability for the brand rather than the creator | Written creator contracts specifying disclosure wording per market, a pre-publication check for paid posts, and an employee advocacy policy that states the disclosure rule plainly (`agents/11-compliance-ethics.md`) |
+| **Reference customers are exhausted or go quiet** | The same three logos appear in every deal; one is acquired, one churns, one bans reference calls | Late-stage deals stall for want of a peer reference, and the pipeline model does not show why | Maintain a reference bench of 10 to 15 accounts across segments with refresh dates and negotiated reference rights, traded for something real at contract time (`agents/17-customer-success.md`) |
+| **A pricing or packaging change lands mid-campaign** | The pricing page changes while paid ads, landing pages and nurture sequences still quote the old model | Click-to-page mismatch tanks conversion, and prospects arrive quoting a price you no longer offer | Pricing changes trigger a mandatory asset sweep with an owner and a checklist: ads, landing pages, sequences, calculators, sales decks, partner materials (`agents/36-pricing-monetization.md`) |
+| **A crisis or incident lands mid-flight** | An outage, a security incident, or a public controversy while scheduled campaigns keep publishing | Automated cheerful posts during a crisis become the screenshot that defines the week | A one-command scheduled-content freeze, owned by comms and rehearsed, covering social, lifecycle email, in-product messages and paid creative (`agents/25-pr-communications.md`) |
+| **Category or keyword restrictions in a regulated market** | Financial, health, crypto, alcohol, employment or housing categories trigger platform certification requirements or targeting restrictions | Campaigns are disapproved en masse, or run illegally and are pulled with fines attached | Check category eligibility and certification requirements per market during planning, not at upload. Some categories need a pre-cleared account and a licence number in the creative |
+| **Trade shows and events booked a year ahead** | The event contract was signed before the strategy changed, before the freeze, or before the product slipped | Non-refundable spend on a booth for a product that will not exist, staffed by people who were reassigned | Negotiate transfer and downsize clauses at signature. Reforecast event value each quarter and convert big-booth spend into §9 field marketing when the product is not ready |
+
+**Failure modes specific to this function**
+
+```
+⛔ UNSUBSTANTIATED CLAIM - creative that outran the evidence, discovered at flight time.
+⛔ DEFINITION DRIFT - marketing's pipeline number and finance's number never reconciled.
+⛔ SINGLE-CHANNEL CONCENTRATION - one platform policy change away from no pipeline.
+⛔ MEASUREMENT SHOCK MISREAD - a consent or tracking change mistaken for performance decay.
+⛔ ASSET SPRAWL - claims, prices and logos live in a hundred files with no source of truth.
+⛔ PERMISSION DEBT - logos, testimonials and creator rights used past their written scope.
+```
+
+**Escalation and who owns what**
+
+- Claim substantiation, comparative advertising, trademark and logo rights: `agents/10-legal-ip.md`.
+- Advertising standards, disclosure rules and sector marketing restrictions: `agents/11-compliance-ethics.md`.
+- Consent, cookies, lawful basis for outbound, and suppression lists: `agents/39-privacy-dpo.md`.
+- Pipeline definitions, attribution model and budget arbitration: `agents/18-finance.md` with `agents/16-analytics.md`.
+- CRM, CDP and martech migrations, plus domain and sender reputation: `agents/40-it-corporate-engineering.md`, `agents/38-data-engineering.md`.
+- Comp plan and quota conflicts with the demand plan: `agents/32-sales-revops.md` and `agents/61-total-rewards.md`.
+- Agency contracts, cancellation and asset ownership clauses: `agents/46-procurement-supply-chain.md`.
+- Crisis content freeze and reputational calls: `agents/25-pr-communications.md`.
+- Regional brand exceptions and translated claims: `agents/43-localization-i18n.md`.
+
+**Pre-mortem prompts for this department**
+
+```
+□ For every number and superlative in this campaign, who signed the substantiation and
+  on what date? Would it survive a competitor complaint?
+□ If our largest channel disappeared on Monday for policy reasons, what happens to
+  pipeline in 90 days, and what is the written contingency?
+□ Do marketing, sales and finance compute sourced pipeline the same way, in writing,
+  signed? If not, which number will the CFO quote in the budget review?
+□ Which logos, testimonials and creator posts are running on permissions we cannot
+  produce a dated document for?
+□ If a measurement change halves reported conversions next quarter, how would we tell
+  that apart from real performance decay?
+□ What in this plan is already non-refundable, and what would we cut first if the
+  budget dropped 25 percent tomorrow?
+□ If an incident started this afternoon, how many scheduled messages would publish
+  before anyone stopped them, and who holds that switch?
+```
+
 ## ⛔ Marketing Failure Modes
 
 ```

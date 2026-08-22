@@ -338,6 +338,78 @@ TRAP CASES:
   de-anonymized by context; sanitize the detail, not just the name
 ```
 
+### 10. Organisational Edge Cases
+
+The playbooks above assume you get to run the process. In a large organisation the crisis rarely
+arrives alone: it arrives during a quiet period, on a public holiday, in a region with its own
+notification duty, while the approved spokesperson is on a plane.
+`frameworks/enterprise-edge-cases.md` covers the generic org shocks. These are the ones that
+specifically break communications work.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **An incident statement creates legal exposure** | Comms drafts "we apologise for the breach" before forensics has scoped anything | A statement that concedes cause or scope becomes evidence in litigation, a regulatory filing, and an insurer's coverage question, and it is often wrong within 48 hours | Apply §6 Rule 2: empathy without admission. Only publish facts the incident lead will sign. Pre-clear two statement variants (confirmed and unconfirmed) with legal and the cyber insurer before you need them (`agents/10-legal-ip.md`, `agents/09-security.md`) |
+| **A regulatory notification clock starts before the press does** | Security confirms personal data exposure and the first question is what to publish | Several regimes require notification to a supervisory authority within a short fixed window, often around 72 hours, with customer notice separately governed: verify current per market. Publishing before or out of sequence can itself be the violation | The notification clock, not the news cycle, drives the sequence. Keep a per-jurisdiction notification matrix with owners and clocks, maintained in peacetime (`agents/39-privacy-dpo.md`) |
+| **A spokesperson goes off-message** | An executive gives an unbriefed interview, freelances a number, or speculates on cause on a live mic | A Tier 3 story becomes a Tier 1 story, and an unguided revenue or user figure becomes a disclosure problem as well as a comms problem | Enforce the §7 spokesperson tiers as a hard gate: no current media training, no live mic. Every interview gets a message house and a one-page do-not-say list, and the comms lead sits in |
+| **Crisis lands in a quiet period or during a fundraise** | An incident during the pre-earnings window, a live diligence process, or a pre-IPO quiet period | Every reassuring statement risks reading as guidance or selective disclosure, so the natural comms instinct is exactly the wrong one | Disclosure committee reviews any statement containing numbers or forward-looking language. Route through §8 discipline with securities counsel; when in doubt, say less and file more (`agents/44-investor-relations.md`, `agents/26-governance-ipo.md`) |
+| **Embargo break** | One outlet publishes hours early; other journalists find out from the article rather than from you | The embargoed list feels betrayed, the story runs half-briefed, and your carefully sequenced launch narrative is replaced by someone else's summary | Have a pre-agreed break protocol: lift the embargo for everyone immediately, notify the full list in one message, and publish your own material within minutes. Decide the consequence for the breaking outlet afterwards, not in the moment (§9) |
+| **An internal message leaks** | An all-hands recording, a Slack thread or a strategy memo appears on social media or in a reporter's inbox | The company's internal framing becomes its public framing without any of the context, and the leak hunt does more reputational damage internally than the leak did externally | Live by the §8 write-every-memo-as-if-public rule, and prepare a leak response that addresses the substance rather than the leaking. Treat the underlying grievance as the real story (`agents/22-people-hr.md`) |
+| **A regional communication obligation nobody knew about** | Local counsel mentions a works-council consultation duty, a language-of-communication law, a local filing, or a market-specific incident-notification rule after the global statement went out | The global statement is unlawful, incomplete, or simply not in the required language in one market, and you now correct in public | Maintain a per-market comms obligations register alongside the notification matrix: consultation duties, language requirements, filing requirements, local spokesperson rules (`agents/43-localization-i18n.md`, `agents/28-government-relations.md`) |
+| **Layoffs leak before the sequence completes** | An internal calendar invite, a badge-system change, or a manager briefing surfaces publicly mid-sequence | Affected employees learn from a headline, which is the single most damaging version of that news, and the external statement is forced early and unpolished | Compress the §8 sequence to hours rather than days, pre-draft the external statement at step 1, and hold a "leak now" trigger that moves everything forward together (`agents/22-people-hr.md`) |
+| **Crisis lands on a holiday, a weekend, or at 3am in another region** | The story breaks while the approving executive is unreachable and legal is offline | The golden hour expires while people look for phone numbers, and the vacuum fills with other people's version | Publish a follow-the-sun on-call rota for comms with named delegates who hold approval authority per tier, plus out-of-hours contact details for legal and the CEO's office, tested twice a year |
+| **The company is a supplier and the customer's incident is now yours** | A customer or partner announces an incident naming your product, or a subprocessor of yours has a breach | You are commenting on a story you do not control, with facts held by a third party, and your enterprise customers demand statements simultaneously | Pre-agree joint communications clauses with major partners and subprocessors: who announces, in what sequence, and who reviews. Have a customer-notice template ready for the supplier case (`agents/46-procurement-supply-chain.md`) |
+| **Two crises at once** | A product outage during a workplace-conduct story, or an incident during an M&A embargo | The comms team serialises, the second story is handled badly, and the two narratives fuse into "the company is falling apart" | Pre-assign a second incident commander and a second drafting pair so two crisis channels can run in parallel. Never let the same approver be the bottleneck for both |
+| **The CEO wants to respond personally on social media** | A founder or executive replies directly to a critic, a researcher, or a journalist at speed | One unreviewed reply becomes the story, and it cannot be deleted usefully because screenshots are already out | Agree the rule in peacetime: during any active Tier 1 or Tier 2 incident, all executive social posting routes through the crisis channel. Give the CEO a fast lane, not a free lane |
+| **The scheduled content machine keeps running during a crisis** | A cheerful campaign post, a lifecycle email or an in-product celebration publishes an hour into an outage | The screenshot of that post is what people remember, and it reads as either oblivious or callous | One rehearsed command that freezes social, lifecycle email, in-product messaging and paid creative, owned by comms and tested during drills (`agents/15-marketing-sales.md`) |
+| **Comms is told about the decision after it is announced internally** | You learn about a pricing change, a policy reversal or an executive departure from the all-hands you are attending | You are drafting under time pressure for a decision you had no chance to pressure-test, and the reputational risk was never priced into the decision | Get comms a seat at the decision, not the announcement. A standing rule that any decision affecting customers, employees or regulators carries a comms review before approval (`agents/62-chief-of-staff-bizops.md`) |
+| **Awards, sponsorships and partnerships that age badly** | A sponsored figure, a partner brand or an award body becomes the subject of a scandal | Your logo is now attached to somebody else's crisis, and archived material keeps resurfacing | Run a reputational screen before any endorsement or sponsorship, and negotiate an exit clause for conduct. Keep an inventory of every place your logo appears with someone else's (`agents/27-esg-sustainability.md`) |
+| **Old content resurfaces out of context** | An archived blog post, a founder's decade-old tweet, or a marketing claim that a policy change has invalidated | A story built entirely from your own archive, with you looking either dishonest or careless | Periodic archive review for claims that have expired, with correction notices and dated updates rather than silent deletion. Silent deletion is itself a story |
+| **A statement in one market contradicts one in another** | Local teams answer the same question differently for local audiences | Journalists compare and the difference becomes the headline, especially where a regulator is involved | One approved global fact set, with local variation permitted only in tone and required legal wording, plus a single tracker of what has been said publicly and where |
+
+**Failure modes specific to this function**
+
+```
+⛔ CLOCK CONFUSION - responding to the news cycle while a regulatory notification clock runs.
+⛔ APPROVAL BOTTLENECK - one approver, no delegate, and a crisis at 3am in their timezone.
+⛔ UNGATED SPOKESPERSON - an untrained executive on a hostile live mic (§7 exists for this).
+⛔ SEQUENCING FAILURE - employees, customers or regulators learning in the wrong order.
+⛔ LATE SEAT AT THE TABLE - comms brought in to announce a decision it could not shape.
+⛔ ARCHIVE BLINDNESS - the damaging material is our own published back catalogue.
+```
+
+**Escalation and who owns what**
+
+- Statement wording that concedes cause, litigation and insurer notice: `agents/10-legal-ip.md`.
+- Incident facts, scope and confirmation timing: `agents/09-security.md` with `agents/08-devops-sre.md`.
+- Regulatory notification clocks and customer notice duties: `agents/39-privacy-dpo.md` and `agents/11-compliance-ethics.md`.
+- Disclosure, quiet periods and anything containing numbers: `agents/44-investor-relations.md`, `agents/26-governance-ipo.md`.
+- Employee sequencing, works councils and conduct matters: `agents/22-people-hr.md`.
+- Regulator and political engagement in a crisis: `agents/28-government-relations.md`.
+- Partner and subprocessor joint communications: `agents/46-procurement-supply-chain.md`, `agents/33-partnerships-bizdev.md`.
+- Scheduled content freeze across paid, owned and lifecycle: `agents/15-marketing-sales.md`, `agents/37-growth.md`.
+- Local language, filing and consultation obligations: `agents/43-localization-i18n.md`.
+- Getting comms into the decision rather than the announcement: `agents/62-chief-of-staff-bizops.md`.
+
+**Pre-mortem prompts for this department**
+
+```
+□ If this broke at 3am on a public holiday, who publishes the holding statement, and
+  have they ever actually done it in a drill?
+□ Which regulatory clocks would start before the first tweet, in which jurisdictions,
+  and who owns each one?
+□ Which executives are currently cleared for a hostile live interview, with training
+  dated inside the last 12 months?
+□ If our internal memo on this decision appeared on a front page tomorrow, which line
+  would we be defending?
+□ Are we inside a quiet period or a live diligence process, and does that change what
+  we may say about numbers?
+□ What is scheduled to publish automatically in the next 24 hours, and who can stop it
+  with one action?
+□ Who else must speak about this: a partner, a customer, a regulator, a subprocessor,
+  and have we agreed the sequence with them in advance?
+□ Is comms in the room for the decision, or being handed the announcement?
+```
+
 ## Failure Modes
 ```
 ⛔ SPEED-ACCURACY INVERSION: waiting for complete facts before ANY statement. Publish

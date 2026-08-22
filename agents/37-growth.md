@@ -301,6 +301,77 @@ service desk for other teams.
   between core product and growth pods.
 ```
 
+## 13. Organisational Edge Cases
+
+An experiment engine is the easiest function in the company to run into a wall it did not know
+existed: a consumer-protection rule, a platform policy, a consent change, or a finance team that
+does not believe the lift. `frameworks/enterprise-edge-cases.md` covers the generic org shocks.
+These are the ones that specifically stop growth teams, and they get sharper as the user base
+and the number of jurisdictions grow.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **An experiment is a dark pattern under consumer-protection law** | A test uses a fake countdown, a pre-ticked box, a hidden cancel path, drip-fed fees, or confirmshaming copy, and it wins on conversion | Regulators in several regimes now treat these as unlawful interface design rather than clever optimisation, and enforcement is rising: verify current rules per market. The evidence against you is your own experiment log | Add a design-ethics gate to the backlog review: any test that changes cancellation, consent, pricing display, urgency or default opt-ins needs legal and compliance sign-off before it ships (`agents/11-compliance-ethics.md`, `agents/12-trust-safety.md`) |
+| **A growth loop depends on a platform whose policy changes** | An app store rule, a social API tier, an email provider policy, or a search algorithm update lands with days of notice | The dominant loop stops overnight. Loops built on someone else's distribution are rented, not owned | Score every loop by platform dependency and keep at least one owned-channel loop (direct, email with consent, in-product) at meaningful scale. Monitor platform changelogs as a named responsibility (`agents/30-platform-ecosystem.md`) |
+| **Consent or tracking changes destroy measurement** | A consent banner rollout, cookie deprecation, an app-tracking prompt, or a stricter regional consent rule; conversions drop with no product change | Every historical benchmark becomes non-comparable, experiments lose statistical power because the tracked population shrank and skewed, and teams "fix" imaginary regressions | Re-baseline deliberately after the change, move to server-side and first-party event collection with a lawful basis, and keep a holdout in a stable measurement region as the causal referee (`agents/39-privacy-dpo.md`, `agents/16-analytics.md`) |
+| **Incentive abuse and referral fraud** | Referral payouts spike; K-factor improves while retention of referred users collapses; clusters of accounts share devices, payment instruments or IP ranges | The growth number is real in the dashboard and fictional in the bank account. Finance discovers it at the payout reconciliation, not in the experiment readout | Design referral programmes with fraud controls from day one: delayed payout tied to a retention event, per-device and per-instrument caps, velocity rules, and reward in product value rather than cash (`agents/13-fraud-operations.md`) |
+| **An experiment ships without a holdout, so the lift cannot be defended** | Finance asks what the growth team delivered this year and the answer is a sum of local test wins | Summed A/B lifts routinely exceed actual company growth by a wide margin, and once that is noticed, none of the numbers are believed | Run a persistent global holdout (commonly 1 to 5 percent, sized to your traffic) and report cumulative measured impact against it quarterly. Agree the holdout with finance in advance so the referee is not chosen after the game (`agents/18-finance.md`) |
+| **Growth's targets conflict with trust, safety or fraud mandates** | Growth is told to raise signup conversion, fraud is told to cut chargebacks, and both are moving the same friction control | A private compromise nobody owns, then a public incident when one side wins quietly | Escalate through the governance hierarchy rather than negotiating in a corridor, and instrument the shared control so both metrics are visible on one dashboard with one owner (`agents/12-trust-safety.md`) |
+| **Lifecycle messaging breaks a consent or anti-spam rule** | A behavioural trigger sends to users who opted out of marketing, or a "transactional" message carries a promotion | Deliverability collapses for the whole company domain, and in strict regimes each message can carry its own penalty | Classify every lifecycle message as transactional or marketing with a named owner, enforce suppression at the send layer rather than in campaign logic, and audit triggers quarterly (`agents/39-privacy-dpo.md`) |
+| **Experiment infrastructure is owned by another team with its own roadmap** | Flag changes need a ticket; the assignment service is in someone else's on-call | Velocity, the one thing growth cannot lose, becomes a queue position | Own flags, assignment and the experiment readout end to end, or negotiate a written SLA with the platform team. A growth pod that cannot ship independently is a request desk (`agents/06-engineering.md`) |
+| **A test degrades a metric another team owns** | Latency, support volume, refund rate or NPS moves while the conversion headline is green | The other team finds it first and the experiment programme loses its licence to operate | Every test carries guardrails owned by the affected function, with pre-agreed abort thresholds and a shared alert. Publish the guardrail breach before someone else does (`agents/08-devops-sre.md`, `agents/17-customer-success.md`) |
+| **Sample size collapses when the org segments the audience** | The experiment reaches only a region, a tier, or logged-in users, or the market itself is small | Underpowered tests read as flat, and the team learns nothing while believing it learned something | Compute minimum detectable effect before running. If the segment cannot power the test, choose a bigger swing, a longer run, a switchback design, or accept a qualitative method instead of pretending |
+| **Localization and cultural fit break the loop in new markets** | A referral mechanic, a share artifact or an onboarding nudge that works at home converts near zero abroad | Global rollout of a home-market loop produces a global average that hides one working market and eight dead ones | Report loop metrics per market, not blended. Re-test the mechanic per market before scaling, and localise the incentive as well as the string (`agents/43-localization-i18n.md`) |
+| **Accessibility regressions shipped through experiments** | Fast-shipped growth surfaces skip the accessibility review the core product runs | Contrast, focus order and screen-reader failures reach production, and in several jurisdictions that is a legal exposure, not a polish item | Automated accessibility checks in the experiment pipeline plus a manual review for any change to a purchase, signup or cancellation path (`agents/05-design.md`) |
+| **A reorg moves the growth pod under a function with a different metric** | The pod now reports to marketing, or to product, and inherits a channel or feature target | The system view fragments and the pod becomes a service desk for whichever parent it landed under | Re-establish the metric mandate in writing within two weeks of the reorg, with the input metric, the holdout, and the shipping autonomy named as conditions of the pod existing |
+| **Data platform migration breaks the event stream mid-quarter** | A warehouse cutover, a CDP swap, or an event-schema refactor lands during a live test | Cohorts split across two definitions, the running experiment is unreadable, and past cohorts cannot be compared | Freeze schema changes during live tests, version the event contract, and require a dual-write and reconciliation period before any cutover (`agents/38-data-engineering.md`) |
+| **The activation fix requires core product work the roadmap will not fund** | The magic number sits behind a change growth does not own, and the owning team has its own quarterly commitments | Growth optimises the surfaces it can reach, hits a local maximum, and the real activation gap persists for a year | Bring the cohort evidence to the roadmap process as a funded item, not a favour, with the expected NSM impact quantified. Escalate through the metrics tree, not through relationships (`agents/04-prd.md`, `agents/62-chief-of-staff-bizops.md`) |
+| **Growth spend and growth engineering land in different budgets** | Paid acquisition sits with marketing, engineering headcount with product, and neither owns payback | The bucket is fixed by one budget and filled by another, and nobody can trade between them | One agreed payback and NSM framework across both budgets, reviewed together. If the two budgets cannot be traded off, the leaky-bucket argument in §6 cannot be won (`agents/18-finance.md`, `agents/15-marketing-sales.md`) |
+
+**Failure modes specific to this function**
+
+```
+⛔ ADDITIVE-LIFT FICTION - summed local wins that no holdout ever confirmed.
+⛔ RENTED LOOP - the dominant growth loop lives on a platform that can change its rules.
+⛔ ETHICS DEBT - a conversion win that is a regulatory finding waiting to be written up.
+⛔ MEASUREMENT SHOCK MISREAD - a consent or tracking change diagnosed as product decay.
+⛔ VELOCITY CAPTURE - the pod cannot ship without another team's queue, so it stops learning.
+⛔ BLENDED-MARKET AVERAGE - one working geography carrying eight dead ones in the mean.
+```
+
+**Escalation and who owns what**
+
+- Dark patterns, consumer-protection limits, and design-ethics review: `agents/11-compliance-ethics.md`, `agents/12-trust-safety.md`.
+- Consent, lawful basis for tracking, and lifecycle-message classification: `agents/39-privacy-dpo.md`.
+- Referral fraud, incentive abuse and payout controls: `agents/13-fraud-operations.md`.
+- Holdout design, cumulative impact reporting and payback definitions: `agents/18-finance.md` with `agents/16-analytics.md`.
+- Event schema, warehouse migrations and cohort continuity: `agents/38-data-engineering.md`.
+- Experiment infrastructure, flags and shipping autonomy: `agents/06-engineering.md`; performance guardrails: `agents/08-devops-sre.md`.
+- Platform and API dependency risk for loops: `agents/30-platform-ecosystem.md`.
+- Core-product roadmap funding for activation fixes: `agents/04-prd.md`, arbitrated by `agents/62-chief-of-staff-bizops.md`.
+- Accessibility review of growth surfaces: `agents/05-design.md`.
+
+**Pre-mortem prompts for this department**
+
+```
+□ If finance asked tomorrow what growth delivered this year, what holdout number would
+  we show, and who agreed the methodology before the results existed?
+□ Which of our loops would stop working if one external platform changed a policy next
+  month, and what fraction of new users does that loop produce?
+□ Would any live test embarrass us if the variant screenshots were published next to the
+  relevant consumer-protection guidance?
+□ What percentage of referral rewards is going to accounts that never retained, and who
+  reconciles that against the payout ledger?
+□ If tracking coverage dropped by a third next quarter, could we still tell a real
+  regression from a measurement artefact?
+□ Which experiment could we not ship this month without another team's queue, and what
+  did that cost us in learning cycles?
+□ Are our loop and activation numbers reported per market, or is one geography carrying
+  the average?
+□ If the pod were reorganised under a different function next quarter, what written
+  mandate would survive the move?
+```
+
 ## Example
 
 **User says:** "We have 2,000 signups/month and a decent product, but we're stuck at ~₹X

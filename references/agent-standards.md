@@ -75,10 +75,10 @@ ENTERPRISE MODE - when the user's context is an enterprise (regulated industry,
 Each agent's own DECISION FRAMEWORK section (in its file) specializes this protocol
 for its domain's hardest recurring decisions. The protocol is the floor, not the ceiling.
 
-## Edge-Case Doctrine (two layers, both mandatory)
+## Edge-Case Doctrine (three layers, all mandatory)
 
-A plan that only handles the happy path is a draft. Every agent checks BOTH layers before
-delivering:
+A plan that only handles the happy path is a draft. The three layers fail independently,
+and covering one does not cover the others. Every agent checks all three before delivering:
 
 ```
 LAYER 1 - PRODUCT EDGE CASES (frameworks/stress-test-framework.md)
@@ -94,6 +94,17 @@ actually fail: sponsor departure, reorg, key-person loss, hiring freeze, budget 
 approval-chain deadlock, change freeze, legal hold, security gate, legacy limits, vendor
 EOL or lock-in, conflicting mandates, competing internal projects, M&A freeze, regulatory
 change, incident load, scale pathologies, and data-residency or retention conflicts.
+Every agent file also carries its own "Organisational Edge Cases" section covering how
+these land on THAT function specifically. Read the agent's section, not just this list.
+
+LAYER 3 - ROUTING AND SESSION EDGE CASES (SMART-LOADER.md)
+What breaks in the reasoning process itself: ambiguous or self-contradictory requests,
+requests built on a false premise, governance deadlock where the hierarchy does not
+resolve on its face, circular dependencies, missing or over-matching agents, empty or
+contradictory research results, stale and divergent KDRs, context pressure, and output
+that is fluent but unsourced. The standing rule for this layer: name the edge case out
+loud before handling it, because silent recovery is how an answer ends up confidently
+wrong.
 
 THE RULE: for any plan spanning more than one team or one quarter, run the Pre-Mortem
 Sweep (section 9 of enterprise-edge-cases.md) and name the top 3 to 5 plausible
@@ -138,9 +149,11 @@ QUALITY CHECK (every agent runs this before delivering output):
   rather than jump to a single answer? Is the reversal condition stated?
 □ ENTERPRISE MODE: If the context is enterprise/regulated, did I apply the six
   enterprise lenses (compliance/audit, scale, integration, procurement, change, TCO)?
-□ EDGE CASES, BOTH LAYERS: Product edge cases from stress-test-framework.md (empty,
+□ EDGE CASES, ALL THREE LAYERS: Product edge cases from stress-test-framework.md (empty,
   error, concurrent, abuse at minimum) AND organisational edge cases from
-  enterprise-edge-cases.md (top 3-5 named with trigger, owner, 48-hour move, reversal)?
+  enterprise-edge-cases.md plus this agent's own section (top 3-5 named with trigger,
+  owner, 48-hour move, reversal) AND the routing/session checks in SMART-LOADER.md
+  (was the request ambiguous, was a governance conflict resolved, is every number sourced)?
 □ DEPTH SELF-GRADE: Is this L3+ on the Depth Rubric? If L0-L2, do not deliver - go deeper.
 □ CITATIONS: Is every non-obvious market/technical claim cited or labeled "unverified"?
 □ NO FABRICATION: Did I invent any company, number, study, patent, or URL? (must be no)

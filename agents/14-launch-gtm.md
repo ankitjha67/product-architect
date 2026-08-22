@@ -295,6 +295,76 @@ DAY 90 - three verdicts only:
     Killing at day 90 costs one quarter; killing at month 18 costs five.
 ```
 
+### 11. Organisational Edge Cases
+
+Everything above assumes the organisation behaves: the date is yours, the reviewers turn up,
+the markets are the ones you planned for. `frameworks/enterprise-edge-cases.md` covers the
+generic org shocks. Below are the ones that land specifically on a launch, and what they do
+to the gates in §8 when they land.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Date set by executive commitment, not readiness** | You first see the date on a board slide, an earnings script, or a keynote agenda you did not write | The §8 go/no-go gates become theatre. Aborting now embarrasses a named executive, so the ramp compresses and every gate is "reviewed" rather than held | Split the commitment into two dates: RELEASE (already done, quietly, weeks earlier) and ANNOUNCEMENT (the immovable one). Get the sponsor to sign the abort authority in writing BEFORE the date goes public. An abort clause agreed while calm is the only one that survives |
+| **Competitor pre-announces into your window** | Analyst asks you to comment on a rival roadmap; embargoed press call you for reaction | Pressure to drop the phased ramp, T1-announce a T3 product, or ship a half-built parity feature | Move the narrative, never the ramp. Re-anchor on the differentiation you can prove and lean on the §9 references. Shipping 3 weeks early with a broken payment path costs more than being second |
+| **Legal or regulatory review lands 48 hours out** | A reviewer is looped in late and finds a claim, a market, or a data flow nobody cleared | Launch with an uncleared claim, or slip publicly at T-2 days with no story | Book legal, privacy and compliance review as a named calendar item at the 60 percent build gate, with a named reviewer. A checklist line with no human name attached is not a control (`agents/10-legal-ip.md`, `agents/39-privacy-dpo.md`) |
+| **Change freeze collides with launch week** | The IT or BAU freeze calendar is published after your date was chosen: holiday freeze, quarter-end, peak retail, exam or election period, regulatory filing window | You cannot ramp, cannot hotfix, and the rollback itself needs a CAB slot you do not have | Pull the freeze calendar at planning time and treat it as an immovable constraint (`agents/20-bau.md`). Launching inside a freeze requires a pre-approved exception AND a named approver reachable out of hours |
+| **The feature is not lawful in a launch market** | Late discovery of age gating, consumer credit rules, health or financial claims, gambling adjacency, AI disclosure duties, or a payments licence gap | Geo-blocking bolted on in the final week, or a market-by-market unwind after launch, which is the expensive version | Build a market eligibility matrix at PRD stage. Default to a named allowlist of markets; every additional market is its own launch with its own review (`agents/11-compliance-ethics.md`, `agents/57-tax.md`) |
+| **Sales enablement is not ready and the field sells the wrong thing** | Reps improvise on calls; you hear your own roadmap described as generally available | Commitments you cannot honour become renewal risk, then legal exposure, then a revenue-recognition question | Treat the §9 certification gate (roughly 80 percent of reps passing a real pitch and objection test) as a hard gate. Regions below the bar do not receive routed leads (`agents/32-sales-revops.md`) |
+| **A regional entity launches its own version locally** | A translated announcement appears in a market with pricing, claims or a launch date you never approved | Claim drift, price drift, and a regulated statement published under rules that differ from the source market | One messaging pack as the single source of truth, with a named regional approver per market and a rule that translation never rewrites a claim (`agents/43-localization-i18n.md`) |
+| **Sponsor leaves between decision and launch** | Sponsor misses the last two go/no-go reviews; their org is re-pointed | Nobody holds abort authority and nobody defends the launch budget when finance sweeps it | Re-qualify the mandate in writing within 2 weeks and name a standing delegate who holds abort authority by role, not by name |
+| **Support and on-call staffed for steady state, not for the spike** | Support headcount modelled on last month; the launch cohort arrives in a day | Backlog, first-response SLA breach, and the one-star reviews that persist for years get written in the first 72 hours | Model the ticket spike explicitly (a T1 launch commonly runs 3 to 10 times baseline, verify against your own past launches), pre-staff, pre-write macros, and make support readiness a §8 gate (`agents/17-customer-success.md`) |
+| **Marketing spend is committed before the abort gate** | A media flight is booked non-refundable; an event sponsorship is paid | Aborting the ramp now costs real cash, so the ramp is not aborted, whatever the metrics say | Buy media with a reschedule clause and gate the spend release on the 50 percent ramp gate rather than the calendar (`agents/15-marketing-sales.md`) |
+| **Two teams launch into the same week** | Both booked the same newsletter, the same in-product slot, the same analyst briefing window | Attention cannibalisation, confused field messaging, and a turf fight during the worst possible week | One launch calendar with a named owner, booked at commit time rather than at ship time (`agents/62-chief-of-staff-bizops.md`, `agents/31-product-marketing.md`) |
+| **Localization is the long pole nobody costed** | Copy freeze slips; the translation vendor SLA is 10 to 15 business days and legal review is per-language | English launches on time, everything else follows weeks later with claims that no longer match | Freeze source copy at T-4 weeks for multi-market launches. Legal reviews the source and the claim, not each translation, and translation memory carries the approved claim forward |
+| **Pricing changes between plan and launch** | The pricing page and the launch collateral disagree; a rep quotes the old number | Contract templates, order forms and revenue recognition lag the announcement, and the first deals close on the wrong paper | One price source of truth that the collateral pulls from. Freeze pricing at T-2 weeks or reissue the entire pack (`agents/36-pricing-monetization.md`, `agents/56-revenue-accounting.md`) |
+| **Analytics instrumentation ships after the launch cohort** | Events are defined in §2 but not deployed; the day-1 dashboard is empty | The launch cohort is unmeasurable forever, and the §10 day-90 verdict has no data to rule on | Instrumentation is a §8 gate: events verified in staging AND smoke-tested in production, or no ramp (`agents/16-analytics.md`) |
+| **Security findings arrive at 100 percent build** | The pen test was booked late because the build slipped, so the report lands in launch week | Choose between launching with a known high-severity finding or slipping publicly | Threat model at design, test at 60 percent build. Pre-agree with `agents/09-security.md` which severities are launch-blocking, so the argument happens in advance and not at midnight |
+| **A major customer demands day-zero access or exclusivity** | An enterprise AE has promised a named account early access to close the quarter | Your phased ramp now carries a VIP exception with no flag coverage and no support plan | Named-account early access is a documented pilot with its own terms, its own flag and its own success criteria, never a favour granted in a deal room |
+| **Procurement or spend freeze hits the launch quarter** | Agency invoices stall, POs bounce back, a vendor stops work mid-asset | Assets arrive half-finished and the launch is rescoped by accident rather than by decision | Raise POs before quarter and fiscal-year boundaries, and hold a ranked descope list of launch assets so a cut is a decision (`agents/46-procurement-supply-chain.md`) |
+
+**Failure modes specific to this function**
+
+```
+⛔ DATE THEATRE - a readiness process that cannot actually move the date it reports on.
+⛔ GATE CAPTURE - the go/no-go owner is the person whose bonus depends on launching.
+⛔ CHECKBOX READINESS - every box ticked, no box with a named human and an artifact behind it.
+⛔ SINGLE-MARKET BLINDNESS - a plan written for the home market, shipped to twelve.
+⛔ CALENDAR AMNESIA - freeze windows, earnings dates and other launches discovered late.
+⛔ POST-LAUNCH ABANDONMENT - the team disbands at T+7 and nobody owns the §10 verdict.
+```
+
+**Escalation and who owns what**
+
+- Change freeze, CAB slots, launch-week exception approval: `agents/20-bau.md`, with `agents/08-devops-sre.md` for the rollback path.
+- Claim substantiation, contract templates, market lawfulness: `agents/10-legal-ip.md` and `agents/11-compliance-ethics.md`.
+- Data flows, residency and consent in launch markets: `agents/39-privacy-dpo.md`.
+- Launch-blocking severity policy and pen-test timing: `agents/09-security.md`.
+- Field readiness, lead routing and quota impact of a slip: `agents/32-sales-revops.md`, `agents/51-solutions-engineering.md`.
+- Messaging pack ownership and analyst relations: `agents/31-product-marketing.md`; press timing and embargo: `agents/25-pr-communications.md`.
+- Support surge staffing and the ticket forecast: `agents/17-customer-success.md`.
+- Launch calendar arbitration between competing teams: `agents/62-chief-of-staff-bizops.md`.
+- Spend commitments, cancellation clauses and freeze windows: `agents/46-procurement-supply-chain.md`, `agents/18-finance.md`.
+
+**Pre-mortem prompts for this department**
+
+```
+□ Who, by name, can abort this launch at 2am on ramp day without calling a meeting,
+  and has that person agreed the abort numbers in writing?
+□ If the date slipped four weeks, what breaks: a legal obligation, a contract, or an
+  executive's slide? Only the first two are real constraints.
+□ Which markets are we announcing into, and who confirmed the feature is lawful and
+  taxable in each of them, on what date?
+□ What is scheduled in launch week that we do not control: a freeze, an earnings call,
+  a competitor event, a religious or national holiday in a launch market?
+□ If every rep were asked to demo this tomorrow, what percentage would get it right,
+  and what is the evidence for that number?
+□ If support volume is 10x baseline for 72 hours, who answers, and what do they say?
+□ Which launch commitments are already non-refundable, and do they sit before or after
+  the gate that could cancel them?
+□ Six months from now this launch is judged a failure. Was it awareness, activation, or
+  value? Which of those three could we already predict today?
+```
+
 ## ⛔ Launch Failure Modes
 
 ```

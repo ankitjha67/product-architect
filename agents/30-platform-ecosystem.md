@@ -318,6 +318,84 @@ ECOSYSTEM: Active developers, published apps, API call volume, dev satisfaction 
 HEALTH: Multi-homing rate, exclusivity rate, NPS both sides, dispute rate
 ```
 
+## 11. Organisational Edge Cases
+
+A platform's hardest problems are other organisations: partners whose payroll depends on your
+roadmap, upstream vendors who change the rules under you, and regulators who take an interest
+the moment you compete with the people building on you.
+`frameworks/enterprise-edge-cases.md` covers the generic org shocks. Below are the ones that
+land specifically on a platform and ecosystem function, and they compound as partner count
+grows from ten to a thousand.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **A partner's business depends on an API you must deprecate** | Telemetry shows one integrator generating a large share of calls on a v1 surface you need to retire; their support tickets get emotional | The §7 notice period is legally sufficient and commercially irrelevant: a partner with 30 engineers on your old interface will escalate to your CEO, your customers, and sometimes the press | Segment deprecation by dependency, not by policy. Named migration plan, funded engineering support, and an extended window for Strategic partners, agreed in the MSA rather than granted under pressure. Never sunset while any Strategic partner remains on the old version |
+| **An upstream vendor changes its own platform policy** | A cloud provider, an app store, an identity provider or a model vendor changes pricing, terms, or an availability guarantee you depend on | Your platform promise is only as strong as the weakest upstream commitment, and your partners' contracts point at you, not at your supplier | Maintain an upstream dependency register with EOL and notice terms per vendor, and never grant a downstream commitment longer than the upstream one supporting it (`agents/46-procurement-supply-chain.md`) |
+| **Marketplace revenue share changes** | Competitive pressure, a regulatory settlement, or a margin programme moves the take rate or the fee tiers | Every partner rebuilds their business model at once. Small developers exit, large ones renegotiate, and the change is read as a signal about your future intentions whatever you say | Change take rates with a long notice period, grandfather existing signed terms for a stated window, and publish the reasoning. Pair any increase with a concrete added service, per §5 |
+| **A partner security incident becomes your incident** | A third-party app with broad OAuth scopes is compromised, and customer data flows through it | Customers experience it as your breach because it happened on your platform, and your notification and support obligations may trigger regardless of fault | Scope minimisation and short-lived tokens by default, per-app anomaly detection, a documented kill switch per integration, and a joint incident-communications clause in partner terms (`agents/09-security.md`, `agents/25-pr-communications.md`) |
+| **Antitrust and self-preferencing exposure** | Your own first-party app ranks above partners in the marketplace, or your platform team gets a feature a partner cannot access | Self-preferencing, bundling and access asymmetry attract regulatory attention in several regimes, and the evidence is your own ranking code and internal memos: verify current obligations per market | Codify the §7 Sherlocking line, enforce equal API access for first-party products (same rate limits, same data, same review queue), and keep ranking factors documented and auditable (`agents/11-compliance-ethics.md`, `agents/28-government-relations.md`) |
+| **Ecosystem lock-in cuts both ways** | A single partner or a small set of partners now carries most of the ecosystem's transaction volume | You cannot enforce policy against them, cannot change terms, and cannot deprecate anything they use. The moat has become a hostage situation | Track concentration as a first-class metric (share of calls, GMV and installs held by the top 5), set a threshold that triggers active diversification, and keep an in-house or second-source fallback for any critical ecosystem capability |
+| **A partner is acquired by a competitor** | Deal announcement, or a quiet change of tone in the partner relationship | Your API is now feeding a rival's product, with historical data access and roadmap knowledge attached | Change-of-control clauses in partner terms with a defined review right, data-access scoping that can be tightened without breaking function, and an offboarding runbook that includes data deletion attestation (`agents/45-corporate-development.md`) |
+| **A partner acts unlawfully on your platform** | A listed app harvests data beyond its stated scope, resells it, or serves a sanctioned market through you | Platform operators increasingly carry duties for what happens on their surface, and "we are just infrastructure" has stopped working in several regimes | App review that verifies the data-use declaration, periodic re-review rather than review-once, sanctions and export-control screening for partners, and enforcement that is documented and consistent (`agents/12-trust-safety.md`, `agents/10-legal-ip.md`) |
+| **Enterprise customers demand contractual API stability you already promised elsewhere** | A large buyer wants a 24-month change window pinned in the MSA while product wants to ship a v2 next quarter | Sales signs the clause to close the quarter, and platform inherits a legal obligation nobody costed | The §7 deprecation contract is the ceiling for what sales may promise. Any longer window requires platform sign-off and a funded long-term-support plan (`agents/32-sales-revops.md`) |
+| **Your own product teams route around the platform** | An internal team builds a private endpoint or a direct database read instead of using the public API | Gate 1 in §2 quietly reverses: the platform stops being the way things are built, and the abstraction rots | Enforce the internal-reuse rule as an architecture policy with a review gate, and publish internal-consumer counts per surface as a health metric (`agents/06-engineering.md`) |
+| **DevRel and partner support are funded as marketing** | A budget cut lands and developer relations, docs and sandbox maintenance are cut as discretionary spend | Integration time triples, community sentiment turns, and the ecosystem decays 12 to 18 months later, long after anyone connects it to the cut | Report DX cost against partner-sourced revenue and integration time so the line is defensible as infrastructure, not promotion (`agents/34-developer-relations.md`, `agents/42-content-docs.md`) |
+| **Data residency and cross-border transfer constraints in the ecosystem** | A partner in one region processes data belonging to customers in another, through your API | Your customer's residency commitment breaks through a route neither of you documented, and the DPA chain has a gap | Map every partner as a data flow with a region, a lawful basis and a subprocessor status. Enterprise DPAs often give objection rights on subprocessor change, so partner onboarding becomes a customer-notice project (`agents/39-privacy-dpo.md`) |
+| **A partner leaks or misuses roadmap information** | Beta access, a co-development agreement, or a Developer Advisory Board seat becomes a public roadmap post | Competitive information moves, and other partners learn what you were planning to build in their category before you told them | Tiered disclosure with NDAs that specify what is shareable, staggered beta access, and no unreleased roadmap in any forum with more than a handful of parties |
+| **App review becomes a bottleneck or an inconsistency scandal** | Review times stretch to weeks, or two similar apps get opposite decisions | Partners publicise the inconsistency, and inconsistent enforcement is exactly the evidence a regulator or a plaintiff wants | Publish review SLAs and decision criteria, keep an appeals path with a different reviewer, and log every decision with its reasoning for auditability |
+| **A partner fails or goes dark** | Support tickets from mutual customers, a dead status page, an unpaid invoice | Customers who built workflows on that integration are stranded, and they blame the platform, not the vanished partner | Publish an integration health signal, require data-portability from listed apps so customers can extract their own data, and keep a migration path or a first-party fallback for critical categories |
+| **Rate limits sold per key rather than per organisation** | A partner adds keys to farm more quota; a noisy neighbour degrades an enterprise tenant | Capacity planning is fiction, and your enterprise SLA is breached by another tenant's traffic | Per-organisation quotas with documented burst and sustained limits, quota isolation for enterprise tiers, and 429 responses with Retry-After, as in §9 |
+| **Open-source or licence terms shift under a dependency the ecosystem relies on** | An upstream project relicenses, or a key SDK dependency changes its terms | Partners built on a component they can no longer use commercially, and your SDKs may need re-issuing | Licence inventory for every published SDK and sample, with a named owner and a review cadence (`agents/10-legal-ip.md`) |
+
+**Failure modes specific to this function**
+
+```
+⛔ POLICY-COMPLIANT SURPRISE - a deprecation that met the notice period and still destroyed
+   a partner business, because notice is not the same as migration support.
+⛔ CONCENTRATION BLINDNESS - the top 5 partners hold the ecosystem hostage and nobody
+   tracks the number.
+⛔ ASYMMETRIC ACCESS - first-party products with quotas, data or review treatment partners
+   cannot get, documented in your own code.
+⛔ PROMISE INFLATION - sales and enterprise contracts committing change windows the
+   platform never agreed to fund.
+⛔ DX AS DISCRETIONARY - docs, sandbox and DevRel cut as marketing, with the ecosystem
+   decay arriving a year later.
+⛔ REVIEW INCONSISTENCY - the same conduct treated two ways, in writing, in your own logs.
+```
+
+**Escalation and who owns what**
+
+- Partner contracts, change-of-control, licence terms and enforcement rights: `agents/10-legal-ip.md`.
+- Self-preferencing, bundling and competition-law exposure: `agents/11-compliance-ethics.md`, with `agents/28-government-relations.md` for regulator engagement.
+- Partner and third-party app security, OAuth scopes, kill switches: `agents/09-security.md`.
+- Subprocessor status, residency, DPAs and customer notice on partner changes: `agents/39-privacy-dpo.md`.
+- Abuse, prohibited content and marketplace enforcement policy: `agents/12-trust-safety.md`.
+- Upstream vendor terms, EOL notice and concentration risk: `agents/46-procurement-supply-chain.md`.
+- Contractual API-stability commitments made in deals: `agents/32-sales-revops.md`, `agents/51-solutions-engineering.md`.
+- Developer experience, docs and community funding defence: `agents/34-developer-relations.md`, `agents/42-content-docs.md`.
+- Partner acquisitions, acqui-hires and ecosystem consolidation: `agents/45-corporate-development.md`, `agents/33-partnerships-bizdev.md`.
+- Take-rate and fee-structure economics: `agents/36-pricing-monetization.md` with `agents/18-finance.md`.
+
+**Pre-mortem prompts for this department**
+
+```
+□ Which partners would lose more than a quarter of their revenue if we shipped our
+  current roadmap, and have we spoken to them yet?
+□ What share of API calls, GMV and installs sits with our top 5 partners, and what is
+  the plan if any one of them leaves or is acquired?
+□ Could an outsider reading our ranking logic, quota config and review logs conclude we
+  favour our own products? What would the evidence look like?
+□ Which downstream commitments outlive the upstream contracts that support them?
+□ If a listed app were breached tomorrow, who kills the integration, how fast, and who
+  tells the affected customers?
+□ Which enterprise contracts contain API-stability clauses the platform team has never
+  seen, and who signed them?
+□ What have we promised in the deprecation policy that we have never actually executed
+  end to end, on a real partner, under time pressure?
+□ If DevRel and docs were cut 30 percent next quarter, what number would show the damage,
+  and how long before it appears?
+```
+
 ## Failure Modes (⛔)
 
 ```

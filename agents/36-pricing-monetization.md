@@ -395,6 +395,77 @@ reduce decision frequency, usage caps/alerts, re-onboard low-usage accounts, val
 | LTV/CAC | Agent 18 | >3x |
 ```
 
+## 15. Organisational Edge Cases
+
+Pricing is the one decision that touches contracts, revenue recognition, tax and trust at the
+same time, which is why it fails organisationally far more often than analytically.
+`frameworks/enterprise-edge-cases.md` covers the generic shocks. Below are the ones that bite
+a pricing function specifically, and get worse with every zero added to the customer count.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Most-favoured-nation clauses in existing contracts** | Legal review of a proposed price cut or a promotional bundle finds MFN or "best pricing" language in enterprise paper | Any discount offered to a new customer must be extended retroactively to every MFN account, turning a targeted promotion into a company-wide revenue cut | Inventory every MFN, price-lock, price-protection and benchmark clause BEFORE modelling any change. Model the blast radius in ARR. Ban new MFN language in the contract playbook and buy out the existing ones at renewal (`agents/10-legal-ip.md`) |
+| **Grandfathering commitments nobody documented** | A customer produces an email from a departed AE promising "this price forever"; support has been honouring an undocumented legacy plan for years | Legacy plans multiply into a pricing estate no system can bill correctly, and every migration attempt reopens a promise you cannot verify | Build a legacy-plan register with an owner, a count, the ARR, and the exact commitment for each. Anything not in the register is not a commitment, and that rule must be stated before it is needed (`agents/55-billing-monetization-engineering.md`) |
+| **A packaging change reopens revenue recognition** | Bundling, a platform fee plus usage, a multi-year ramp, or a "free for 6 months" term appears in a deal | Standalone selling price allocation changes, deferred revenue schedules move, and the auditor asks for a memo you have not written | Revenue accounting reviews every new packaging construct BEFORE it is sold, not at quarter close. A pricing model that cannot be recognised cleanly is not cheaper, it is slower (`agents/56-revenue-accounting.md`) |
+| **Regional price parity and grey-market arbitrage** | Resellers or customers buy in a low-PPP market and use the licence in a high-price one; a VPN storefront appears on a forum | Your discount band becomes the world price, high-price markets erode, and the leakage is invisible until the parity gap is in a public spreadsheet | Tie the PPP price to a verified local payment method and billing address, cap seats per low-band contract, and monitor usage-region versus billing-region divergence. Accept a small tolerance and act on the tail (§6) |
+| **A pricing experiment is unlawful or unfair in a jurisdiction** | Legal or a regulator asks how two customers saw different prices for the same thing on the same day | Personalised or dynamic pricing can breach consumer-protection, non-discrimination or price-transparency rules in several regimes, and disclosure duties are widening: verify current rules per market | Keep to the §9 safe methods: cohort, geography and packaging tests only. Any test that varies price between concurrent, comparable buyers goes through legal and privacy sign-off before it runs (`agents/11-compliance-ethics.md`) |
+| **The discount approval chain adds weeks to enterprise deals** | Deals cluster in the last 72 hours of the quarter waiting on a signature; approvers are on leave | Reps pre-inflate discount requests to survive the chain, the chain gets slower, and deal slippage is blamed on customers | Parallelise the §7 matrix rather than serialising it, publish a response clock per tier, and give every approver a named standing delegate. Measure approval cycle time as a pricing metric alongside leakage |
+| **Sales comp fights the price increase** | Comp pays on booked ARR with no realisation component; reps quietly discount back to the old price | The list increase produces zero realised increase and a discount-leakage spike instead | Change comp and the increase together: pay on realised price or on margin, add a floor-price gate to CPQ, and treat any deal below floor as an exception requiring the same evidence as a §7 tier (`agents/61-total-rewards.md`, `agents/32-sales-revops.md`) |
+| **Billing systems cannot express the new model** | Engineering estimates 2 to 3 quarters to meter or prorate the design pricing has already announced | The pricing launches manually, invoices are spreadsheets, and errors become credits, disputes and churn | Billing feasibility is a gate before announcement. Every price model ships with a proration, mid-cycle change, refund and credit answer (§11, `agents/55-billing-monetization-engineering.md`) |
+| **Tax treatment differs by market and by construct** | An invoice is issued without local VAT or GST registration, or a bundle changes the tax character of the sale | Retroactive tax liability, e-invoicing non-compliance, and a market you must exit or re-paper | Tax reviews new markets, bundles and the digital-versus-service split before launch. Tax-inclusive display duties and registration thresholds vary and change: verify current per market (`agents/57-tax.md`) |
+| **Public sector or regulated pricing obligations** | A government framework agreement, a most-favoured-customer pricing certification, or a sector price cap applies to the account | Your published list becomes a legal reference point, and a private discount elsewhere can breach the framework | Segregate regulated and framework pricing into its own price book with its own approval path. Never let a promotional price leak into the public catalogue that a framework references |
+| **A currency swing breaks a local price point** | 10 percent or more move against the anchor currency; a market's price is suddenly below the margin floor or above the market | Either you erode gross margin silently or you shock customers with a large correction | Set an FX review cadence with a written trigger band, use local charm points that absorb small moves, and pre-agree who approves an off-cycle repricing (`agents/58-treasury.md`, `agents/18-finance.md`) |
+| **Acquisition brings a second, incompatible price book** | Post-close, two products, two value metrics and two discount cultures serve overlapping accounts | Customers arbitrage the two lists, sales fights over which paper to use, and the cross-sell case collapses | Decide the harmonisation path in the first 90 days: one list, mapped tiers, and a migration schedule with grandfathering rules written down (`agents/45-corporate-development.md`) |
+| **A large customer's renewal is used to force a price rollback** | An account over 10 percent of segment revenue threatens non-renewal unless the increase is reversed | One exception becomes the reference price for every peer, because enterprise buyers talk to each other | Decide the concentration policy in advance: the maximum concession, what is traded for it, and who approves. Trade term length, prepayment, references or scope, never the headline rate alone (§7) |
+| **Price change lands during a quiet period or a fundraise** | Repricing is scheduled while the company is pre-IPO, in a quiet period, or mid-diligence | Churn or conversion noise from the change contaminates the numbers being diligenced, and disclosure questions follow | Sequence pricing changes against the finance calendar. Never let a repricing cohort be the first cohort a diligence team examines (`agents/44-investor-relations.md`, `agents/26-governance-ipo.md`) |
+| **Nobody owns pricing, so five functions own it** | Product sets the fences, sales sets the discounts, finance sets the floor, marketing sets the page, and no one owns realised price | List price and realised price diverge for quarters before anyone reports it | Name a single accountable pricing owner with a standing pricing council (finance, sales, product, legal) and a monthly realisation review. Decision rights in writing (`agents/62-chief-of-staff-bizops.md`) |
+| **A partner or reseller margin conflicts with direct pricing** | A reseller undercuts your direct quote to the same account using their margin | Channel conflict, a lost direct deal at a worse net price, and a partner who stops trusting the register | Deal registration with price floors for the channel, published margin bands, and one net-price view per account across direct and partner motions (`agents/33-partnerships-bizdev.md`) |
+| **Support and CS quietly discount to save accounts** | Retention offers, courtesy credits and pause plans issued outside the §7 matrix | Realised price erodes through a channel that appears in no pricing report | Bring save offers into the discount matrix with their own approval tier and their own leakage line. A credit is a discount with a different accounting entry (`agents/17-customer-success.md`) |
+
+**Failure modes specific to this function**
+
+```
+⛔ CONTRACT BLINDNESS - repricing modelled on the price book while MFN and price-lock
+   clauses in signed paper decide the real outcome.
+⛔ UNDOCUMENTED PROMISES - a legacy estate built from emails, verbal deals and departed reps.
+⛔ ANNOUNCE-THEN-BUILD - a model billing and revenue accounting cannot actually execute.
+⛔ LIST-PRICE FICTION - a headline increase fully absorbed by discount leakage within a quarter.
+⛔ EXPERIMENT OVERREACH - a live price test that is a consumer-protection issue, not a test.
+⛔ OWNERLESS PRICING - five functions with a veto, nobody accountable for realised price.
+```
+
+**Escalation and who owns what**
+
+- MFN, price locks, grandfather commitments and contract language: `agents/10-legal-ip.md`.
+- Revenue recognition, standalone selling price, deferred revenue: `agents/56-revenue-accounting.md`.
+- VAT, GST, digital-services taxes, e-invoicing and market registration: `agents/57-tax.md`.
+- FX policy, hedging and the trigger band for repricing: `agents/58-treasury.md`; margin floors and budget impact: `agents/18-finance.md`.
+- Metering, proration, credits and the billing feasibility gate: `agents/55-billing-monetization-engineering.md`.
+- Discount approval operation, CPQ floors and quota impact: `agents/32-sales-revops.md`; comp design: `agents/61-total-rewards.md`.
+- Consumer-protection and fairness limits on price testing: `agents/11-compliance-ethics.md`, with `agents/39-privacy-dpo.md` where personalisation uses personal data.
+- Channel margin, deal registration and reseller conflict: `agents/33-partnerships-bizdev.md`.
+- Price-change communications and the churn narrative: `agents/25-pr-communications.md`, `agents/17-customer-success.md`.
+- Post-acquisition price-book harmonisation: `agents/45-corporate-development.md`.
+
+**Pre-mortem prompts for this department**
+
+```
+□ Which signed contracts contain MFN, price-protection or price-lock language, and what
+  is the ARR blast radius if this change triggers them?
+□ Can billing actually meter, prorate, credit and invoice this model today, or are we
+  announcing something engineering will build over two quarters?
+□ What has revenue accounting said, in writing, about how this packaging is recognised?
+□ If every rep discounted to the floor, what is realised ARPA, and does that still clear
+  the gross-margin floor?
+□ Which markets does this change reach, and who confirmed the tax treatment and the
+  price-display obligations in each?
+□ Would this experiment still look defensible if a journalist put two customers' invoices
+  side by side on the same day?
+□ Who, by name, owns realised price, and when did they last report leakage by segment?
+□ If our largest account demanded a rollback next month, what would we concede, and who
+  decided that before the call rather than during it?
+```
+
 ## Example
 
 **User says:** "We're a B2B SaaS at ₹4,000/seat/mo flat. Growth is fine but ARPA is flat
