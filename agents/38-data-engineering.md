@@ -349,6 +349,51 @@ OPERATING DISCIPLINE (this is what makes it a product, not a demo):
   cost-per-1k-chunks + vector-store spend the same way §11 tracks warehouse cost.
 ```
 
+### 14. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` holds the master catalogue. This is the data layer of
+it: the org mechanics that decide whether the contracts in §8, the tests in §7 and the cost
+controls in §11 survive contact with teams that do not report to you and never will.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **An upstream team renames or drops a column without knowing you consume it** | A silver model fails schema tests the morning after an unrelated product release; the producer's PR touched a table your name is not on; ingestion still uses `SELECT *` | Treat the producer's schema as an external API. Register consumers in the catalogue and move the contract test into the PRODUCER's CI so their build breaks before your DAG does (§8). Until that exists, pin ingestion to explicit column lists and subscribe to their release notes | Agent 38 (Data Engineering) with Agent 06 (Engineering) |
+| **The data contract exists socially but not technically** | The contract is a Confluence page agreed in a meeting; nobody can name the CI job that enforces it; breakages are still reported by consumers, not caught by producers | A contract that is not a failing test is a memo. Convert each clause into a producer-side check plus a schema-registry entry, with an owning ROLE and a review date. Socially enforced contracts decay within two reorgs, which at 5,000 people is about 18 months | Agent 38 with Agent 41 (Technical Program Management) |
+| **A pipeline's owner left and the runbook is a Slack thread** | One name in every DAG alert alias; failures triaged by asking "who knows about this?"; last commit 14 months old; nobody will take leave during month-end | 48-hour capture per the master catalogue §1: owner ROLE in the catalogue, runbook in the repo beside the DAG, alerts routed to a rota not a person. Track bus factor per pipeline as a real metric and refuse new pipelines without a named second | Agent 38 with Agent 22 (People and HR) |
+| **A metric definition changes under a number already committed externally** | Analytics proposes a cleaner definition of active user mid-quarter; the old number is already in a board deck, an investor update or a covenant | Freeze the committed definition as a versioned metric in the semantic layer (§10). Ship the new one alongside it with a dated cutover and a restated back series. Never redefine silently: publish both and let Finance and IR choose which is external | Agent 16 (Analytics) with Agent 44 (Investor Relations) and Agent 18 (Finance) |
+| **Data residency retrofitted onto a single global warehouse** | A market entry, an enterprise security questionnaire, or a regulator asks where the data physically sits, and the design assumed one region forever | Do not shard first. Classify by data category what genuinely must stay in-country, then choose per category: in-region ingestion and storage, pseudonymisation before export, or a regional replica of gold only. Retrofit cost scales with how late the question is asked | Agent 39 (Privacy and DPO) with Agent 38 and Agent 11 (Compliance and Ethics) |
+| **One dashboard quietly becomes the largest line on the warehouse bill** | Spend up sharply week over week with no new workload; a 5-minute auto-refresh running an unpartitioned full scan (§11); an untagged compute warehouse | Attribute cost per query, per model and per team within 24 hours, then fix the top offender instead of renegotiating the contract. Require partition filters and per-user quotas so the next one cannot happen silently, and report it as showback to the owning team | Agent 38 with Agent 18 (Finance) |
+| **PII arrives in a field that was never meant to carry it** | Profiling finds emails or government IDs in a free-text note, a JSON blob or a URL parameter; support pastes customer detail into a ticket field that lands in the lake | Stop ingesting that field, not the pipeline. Classify, mask at the bronze boundary, purge downstream copies including any embeddings built from it (§12, §13), and log it as a privacy incident rather than a data-quality ticket | Agent 39 with Agent 38 |
+| **Finance and Ops keep their own extracts, so there are three sources of truth** | Someone reconciles the warehouse against a spreadsheet before every close; a team asks for raw table access "just to check"; two numbers for the same metric in one meeting | Treat the shadow extract as evidence of an unmet requirement (master catalogue §5), not misbehaviour. Find what gold does not serve, serve it, then retire the extract by agreement. Crackdowns produce hidden extracts, not fewer extracts | Agent 38 with Agent 18 and Agent 56 (Revenue Accounting) |
+| **A reverse-ETL sync pushes a broken segment into a customer-facing system** | A silver model failed overnight but the sync ran anyway; a campaign audience jumps or collapses by an order of magnitude with no campaign change | Gate every reverse-ETL sync on the freshness and volume tests of its source model: no green tests, no sync (§7, §10). Add a magnitude guard that halts on an unexplained audience change. A data-quality failure that reaches a customer is a comms incident | Agent 38 with Agent 15 (Marketing and Sales) and Agent 25 (PR and Communications) |
+| **A backfill is required but the source retains only 30 days** | A transform bug is found two quarters late; the operational database purges on a retention policy nobody mapped against analytical need | Decide the raw-retention question at design time: bronze is the insurance policy and it is cheaper than the incident. Where the window is already gone, publish explicitly what can and cannot be restated rather than quietly recomputing a partial series | Agent 38 with Agent 16 and Agent 56 |
+| **A deletion request collides with the lake, the backups and time travel** | A DSAR arrives and the deletion map covers the warehouse but not object storage, snapshots, table time travel or the vector index | Deletion that misses backups is not deletion. Maintain a source to chunk to vector deletion map (§12, §13) and a per-category resolution for retention versus deletion agreed with Legal and Tax in advance, not per request | Agent 39 with Agent 38 and Agent 10 (Legal and IP) |
+| **A vendor renewal forces a warehouse or ingestion migration you did not plan** | Renewal quote up sharply; a vendor acquisition; a procurement-led consolidation; the renewal date is 90 days out and nobody mapped it against the roadmap | Model the exit cost honestly (re-platforming every dbt model, re-pointing every BI asset, dual-run, retraining) and negotiate exit terms at renewal rather than at exit. Know which transformation logic is genuinely portable and which is vendor-specific | Agent 46 (Procurement and Supply Chain) with Agent 38 |
+| **An ad-hoc executive query becomes a permanent production dependency** | A one-off CSV is now a weekly ritual; a personal scheduled query feeds a slide leadership reads every Monday; it has no tests, no owner and no lineage | Either promote it to a tested gold model with an owner and an SLA, or kill it. The unmanaged middle state is how a number with nothing behind it reaches the top of the company and stays there | Agent 38 with Agent 62 (Chief of Staff and BizOps) |
+| **The data team becomes a ticket queue and the org routes around it** | Backlog ageing past a month; teams buying their own BI or ELT tools; "we just built it ourselves against the app database" | Publish an SLA and a visible queue, then split the work: self-serve on documented gold marts, platform work on a roadmap. An invisible queue guarantees a shadow data stack, and shadow stacks are where the next PII incident lives (master catalogue §7) | Agent 38 with Agent 29 (Data and AI Strategy) and Agent 20 (BAU) |
+
+```
+⛔ ORG FAILURE MODES ON TOP OF THE TECHNICAL ONES:
+⛔ CONTRACT WITHOUT A CI JOB: an agreement that lives only in a document, dead at the first reorg
+⛔ CONSUMER-SIDE-ONLY TESTING: you detect the producer's break instead of preventing it, and you keep the pager
+⛔ OWNERSHIP BY PERSON, NOT ROLE: every departure creates an orphan DAG, discovered mid-incident
+⛔ METRIC DRIFT UNDER A COMMITTED NUMBER: the definition moves, the board deck does not, and trust goes first
+⛔ COST WITHOUT ATTRIBUTION: one central bill nobody owns, so the fix becomes a budget argument, not a query fix
+⛔ CATALOGUE AND LINEAGE ROT: accurate on the day it was built, wrong for the year since, believed throughout
+⛔ RESIDENCY AND DELETION AS AN AFTERTHOUGHT: a global design meeting a local rule, priced at rebuild rates
+
+⚠️ WHAT EVERYONE GETS WRONG: treating data quality as a pipeline-hardening problem and investing
+on your own side of the boundary. Data engineering is the only engineering function whose inputs
+are produced entirely by teams that do not report to it and get no credit for its uptime. More
+resilient ingestion only moves the break later and keeps the pager where it is. The platforms that
+hold up at 5,000 people spend their political capital getting one contract test into somebody
+else's CI, so the producer sees the failure first, and they price trust correctly: a single wrong
+number in front of an executive destroys more credibility than a year of correct ones earns, which
+is why frozen metric definitions and public restatements matter more than the warehouse choice.
+At 500 people you can hold the boundary by knowing everyone; at 5,000 you need the tests; at 50,000
+you need the tests, the catalogue, and a published SLA, because nobody will come and ask you first.
+```
+
 ## Example
 
 **User says:** "Our dashboards are slow, the numbers don't match between Looker and the

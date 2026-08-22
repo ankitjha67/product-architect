@@ -213,6 +213,62 @@ Measure offboarding COMPLETENESS, not just speed.
 □ Document recovery runbooks; test them - a BCP no one has rehearsed is fiction.
 ```
 
+### 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the corporate-IT layer:
+the cases where the architecture is right, the runbooks exist, and the ORGANISATION is the
+failure mode. Pick the 3 to 5 that can plausibly land in the next two quarters and name the
+trigger, the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Shadow IT surfaces during an audit** | Corporate-card SaaS charges with no entry in the vendor register; OAuth grants to unknown apps in the IdP logs; a department with 200 users on a tool nobody approved | Inventory and rank by DATA SENSITIVITY before disabling anything: killing a tool 200 people depend on creates worse shadow IT. Bring the top-risk tools onto SSO, logging and a DPA within 30 days, retire the rest on a published date. Treat adoption as evidence of real unmet demand | 40 IT & Corporate Engineering with 46 Procurement & Supply Chain, 09 Security, 39 Privacy & DPO |
+| **An SSO or identity-provider migration touches every system at once** | An IdP contract expiring; an acquisition forcing consolidation; a plan whose cutover is a single weekend for all apps; non-SSO apps discovered mid-migration | Sequence by blast radius, never big bang: pilot cohort, then low-risk apps, then business-critical, with dual-IdP federation during the overlap. Break-glass local admin accounts tested BEFORE cutover, since a failed identity migration means nobody can log in to fix it | 40 IT & Corporate Engineering, 09 Security, 41 Technical Program Management |
+| **A device refresh cycle collides with a hiring surge** | Hardware lead times stretching while the joiner forecast doubles; new starters sharing loaners; a refresh deferred to fund headcount, leaving 4-year-old machines under warranty expiry | Hold a buffer sized to the hiring forecast plus the measured failure rate, and order against the recruiting pipeline rather than against start dates. Day-0 readiness fails on procurement lead time far more often than on process | 40 IT & Corporate Engineering, 60 Talent Acquisition, 46 Procurement & Supply Chain |
+| **A SaaS renewal auto-renews at a large price increase** | A renewal date inside a spend freeze; a notice window of 60 to 90 days that passes silently; a vendor repricing on a new per-seat or usage model at renewal | Track every renewal date and notice window in one register with alerts at T-120 and T-90, and have licence-utilisation data ready before the negotiation. After the notice window closes you have no leverage at all, only a payable | 46 Procurement & Supply Chain, 40 IT & Corporate Engineering, 18 Finance |
+| **Offboarding completes on paper while access stays live** | A leaver checklist containing "email the vendor"; non-SSO apps with local accounts; shared credentials in a wiki; sessions and tokens still valid after the account is disabled | Disable at the IdP first, then revoke live sessions and tokens (disabling alone does not end an active session), then walk the non-SSO long tail individually, verifying from an independent admin account. Then fix the cause: SSO coverage and SCIM, not a longer checklist (§7) | 40 IT & Corporate Engineering, 09 Security, 22 People & HR |
+| **A mass offboarding must run at a scheduled minute** | A restructuring or RIF with a legally required sequence and a confidentiality perimeter; a script that must revoke hundreds of accounts simultaneously without touching anyone else | Pre-build and dry-run the revocation list against a test cohort under strict need-to-know. Coordinate the exact sequence with HR and counsel, since termination, notice and works-council duties differ by jurisdiction: verify with qualified counsel before executing | 22 People & HR, 40 IT & Corporate Engineering, 10 Legal & IP |
+| **An acquired company's IT estate must be integrated on the deal timeline** | No asset inventory; shared domain-admin accounts; a proposal to "just connect the networks" in week one; day-1 email and directory expectations set by the announcement | No network trust until a posture assessment closes. Federate identity and scope data exchange instead of merging flat networks. Sequence day-1 (email, chat, SSO for a few apps) apart from day-100 (directory merge, device re-enrolment, tool consolidation) | 45 Corporate Development, 40 IT & Corporate Engineering, 09 Security |
+| **Endpoint policy collides with what engineers need to do their job** | Local admin removed org-wide; an EDR agent adding measurable build latency; developers running work in personal environments to escape the policy; exception requests rising monthly | Give the highest-risk population a supported path (a hardened developer profile, ephemeral cloud dev environments) rather than a blanket exception or a blanket ban. Policy that makes the job impossible produces unmanaged machines, which is strictly worse | 40 IT & Corporate Engineering, 06 Engineering, 09 Security |
+| **The identity provider itself goes down** | Single-IdP dependency with no tested break-glass; MFA push provider outage; a runbook that lives behind the SSO that is down | Break-glass admin accounts stored offline, monitored for use, and TESTED quarterly. Keep the IdP-outage runbook and the alternate comms channel outside the affected estate. Identity is the single point of failure for the entire workforce (§9) | 40 IT & Corporate Engineering, 08 DevOps & SRE, 20 BAU |
+| **Monitoring or DLP tooling triggers a consultation or legality problem** | Endpoint monitoring, productivity analytics or DLP rolled out globally from a single policy; an EU or works-council jurisdiction in scope; staff learning about it from a system tray icon | Start the consultation BEFORE the decision is final: presenting a fait accompli restarts the clock. Scope monitoring to a documented purpose and retention period per market. Employee-monitoring rules differ sharply by country: verify with qualified counsel and 39 Privacy & DPO | 39 Privacy & DPO, 22 People & HR, 40 IT & Corporate Engineering |
+| **A team buys a SaaS on a credit card and puts customer data in it** | An expense line for a tool with no DPA; a trial that quietly became production; data exported to a vendor with no security review or subprocessor disclosure | Classify the data first, then decide. If regulated or customer data is in scope, treat it as a processor onboarding (DPA, security review, subprocessor notice) or an exit plan with a data-deletion certificate, not a policy scolding | 40 IT & Corporate Engineering, 39 Privacy & DPO, 46 Procurement & Supply Chain |
+| **IT budget is cut while headcount and SaaS sprawl grow** | Spend per head trending up; licences unreclaimed after leavers; overlapping tools for the same job; a flat percentage cut applied without a utilisation review | Reclaim before you cut capability: unused licences, duplicate tools, tier downgrades and unretired shadow apps usually clear a double-digit percentage. Publish what stops if the remainder is cut, so it is a decision with an owner rather than silent degradation | 40 IT & Corporate Engineering, 18 Finance, 46 Procurement & Supply Chain |
+| **An executive demands a personal exception** | A request to stay off MDM, forward mail to a personal account, or keep an unmanaged device; the sentence "I need to be able to work on my own laptop" | Offer an equivalent supported path (managed device, virtual desktop, scoped mobile profile), and if the exception stands, document it with a named accountable executive, a compensating control and a 90-day expiry. The highest-value phishing targets cannot be the least-protected accounts | 40 IT & Corporate Engineering, 09 Security, 59 Internal Audit & Risk |
+
+```
+⛔ HOW CORPORATE IT FAILS UNDER ORGANISATIONAL PRESSURE:
+□ IT IS FUNDED AS OVERHEAD AND MEASURED AS AVAILABILITY: it can only lose that argument, so
+  investment arrives after an incident or an audit rather than before either.
+□ THE QUEUE CREATES THE SHADOW ESTATE: a slow request path is the single largest cause of
+  shadow IT. Every unapproved tool started as somebody's blocked ticket.
+□ ONBOARDING IS CELEBRATED, OFFBOARDING IS UNWITNESSED: joiners complain loudly on day 1 and
+  leavers complain never, so the security-critical half of the lifecycle decays quietly.
+□ POLICY WRITTEN FOR THE AVERAGE USER, ENFORCED ON THE OUTLIERS: engineers, executives and
+  field staff are the exceptions, and they are also the highest-risk populations.
+□ IT INHERITS EVERY DECISION IT WAS NOT IN: acquisitions, tool purchases, office moves and
+  RIF dates arrive as deadlines, not as consultations, and the estate absorbs the difference.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Corporate IT is treated as a support function when it is actually the organisation's control
+plane: identity, devices and SaaS are the surface on which every other control depends, and
+the coverage gap is never where people look. The failures above cluster in the LONG TAIL that
+no dashboard shows: the 20 percent of apps not behind SSO, the shared credential, the personal
+laptop, the tool bought on a card. Aggregate metrics look excellent while the tail carries
+nearly all the risk, because an attacker or an auditor samples the tail, not the average. The
+organisational counter is to measure and shrink the tail explicitly (SSO coverage, unmanaged
+devices, ungoverned apps, verified offboarding completeness) and to make the approved path
+faster than the workaround, because IT never wins on enforcement and always wins on latency.
+
+⚠️ Employee monitoring, works-council consultation, termination sequencing, data-transfer and
+   records-retention obligations are jurisdiction-specific and change over time. Treat the
+   principles above as durable and verify current requirements with qualified counsel and
+   Agents 10, 22 and 39 before acting. See references/DISCLAIMER.md.
+```
+
 ## Corporate IT Metrics
 
 ```

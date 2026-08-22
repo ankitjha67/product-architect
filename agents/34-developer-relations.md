@@ -394,6 +394,64 @@ DEVELOPER ADVISORY BOARD (post-GA, ongoing):
   about your API that are worth very little. Where both matter, run two separate forums.
 ```
 
+## 14. Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the DevRel-specific
+layer: the cases where the docs, SDKs and community are fine and the ORGANISATION is the
+failure mode. Pick the 3 to 5 that can plausibly hit this API in the next two quarters and
+name the trigger, the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A deprecation is forced by engineering on a timeline the ecosystem cannot absorb** | A sunset date set in a platform planning doc DevRel never saw; telemetry showing thousands of callers still on the old path 60 days out; no migration guide written yet | Query the callers before arguing about the date, then bring the migration curve rather than an opinion: who is left, what they call, what enterprise MSAs oblige. Contract beats policy, and the migration guide ships BEFORE the announcement | Agent 30 Platform and Ecosystem, Agent 34 Developer Relations, Agent 10 Legal and IP |
+| **A community incident escalates into press** | A heated thread with a moderator reply and no owner; a maintainer resigning publicly; screenshots of a support answer circulating off-platform; a journalist in your Discord | One named spokesperson, one written response, in the channel where it started, within hours. Silence in a developer community reads as confirmation. Comms owns the press statement; DevRel owns not making it worse and never argues in-thread | Agent 25 PR and Communications, Agent 34 Developer Relations, Agent 54 Community |
+| **DevRel headcount is cut because attribution cannot prove its value** | A request for "DevRel-sourced ARR" from a last-touch dashboard; conference spend queried line by line; an advocacy hiring freeze while API traffic grows | Never defend with last-touch revenue; it collapses the first time anyone audits it. Lead with the causal set: TTFHW, activation by weekly cohort, docs-gap tickets per 1,000 calls, matched-cohort holdouts. Then publish which coverage stops from what date | Agent 34 Developer Relations, Agent 18 Finance, Agent 16 Analytics |
+| **The only maintainer of a Tier-1 SDK leaves** | One name on every commit for 18 months; open PRs ageing past 60 days; the 2-week parity SLA missed twice; a language nobody else on the team writes | Declare the tier honestly within a week: maintained, community-maintained, or deprecated with a date. A silently unmaintained SDK is worse than a documented downgrade, because developers keep putting production traffic on it | Agent 34 Developer Relations, Agent 30 Platform and Ecosystem, Agent 06 Engineering |
+| **A conference commitment was made before the budget was approved** | A sponsorship signed in one fiscal year for an event in the next; a CFP accepted with no travel approval; a spend freeze landing after the booth deposit | Split the contractual obligation from the discretionary spend and renegotiate the second. Cancelling a confirmed talk costs credibility that takes years to rebuild; cancelling a booth costs money. Pay the money, keep the talk | Agent 34 Developer Relations, Agent 18 Finance, Agent 46 Procurement and Supply Chain |
+| **DevRel is reorged under marketing and handed a pipeline number** | An MQL target appearing on the DevRel dashboard; advocates asked to gate content behind forms; office hours reframed as a demo channel | Renegotiate the metric in writing before the first cycle. Gating a quickstart behind a lead form is measurable and destroys the funnel it measures. If the number cannot move, state publicly and in advance which activities stop | Agent 34 Developer Relations, Agent 15 Marketing and Sales, Agent 62 Chief of Staff and Bizops |
+| **A design partner's feedback is under NDA and cannot reach the team that needs it** | A P0 DevEx issue living only in a private call note; an engineer re-deriving a problem three partners already reported; NDA status untracked in the CRM | Secure written permission to share anonymised findings at charter time, not at the moment you need it. Failing that, file a de-identified issue in the tracker with the partner named only in an access-controlled field | Agent 34 Developer Relations, Agent 10 Legal and IP, Agent 30 Platform and Ecosystem |
+| **The docs owner is reorged away mid-migration and the portal freezes** | Docs PRs unmerged for weeks; a style guide with no owner; a platform migration at 60 percent with nobody accountable for the remaining 40 | Freeze the migration rather than run two portals: split truth is worse than old truth. Name an interim owner for the API reference specifically, since that is the page whose drift converts directly into support cost | Agent 42 Content and Docs, Agent 34 Developer Relations, Agent 41 Technical Program Management |
+| **The free tier is cut or rate-limited for cost reasons and the community reads it as betrayal** | A unit-economics review naming the free tier; a limit change shipped as a changelog line; hobbyist projects sitting in the top 10 by call volume | Announce the economics honestly with notice measured in months, grandfathering for existing projects, and a named path for education and open source. A silent limit change discovered as a 429 in production is the fastest way to lose a community | Agent 36 Pricing and Monetization, Agent 34 Developer Relations, Agent 18 Finance |
+| **An advocate discusses an unshipped roadmap item on a livestream** | NDA or preview material present in a public demo environment; a talk deck reviewed by nobody; access rings that exist in a document but not in feature flags | Correct publicly and immediately in the same channel, and do not delete. Then fix the mechanism: per-tenant flags, a pre-talk review for anything touching preview, and NDA status re-confirmed before every demo | Agent 34 Developer Relations, Agent 10 Legal and IP, Agent 25 PR and Communications |
+| **A security incident forces mass credential rotation across the ecosystem** | A key-exposure finding, a token leaked in a public repo, or a vendor breach touching your auth path | Incident comms and developer comms are different jobs on one clock. Ship a scriptable rotation path, a dated deadline, per-key telemetry on who has rotated, and a status-page entry. Never ask thousands of developers to rotate by hand with no tooling | Agent 09 Security, Agent 34 Developer Relations, Agent 08 DevOps and SRE |
+| **A community-maintained SDK becomes load-bearing with no contract behind it** | More downloads than your official client; enterprise customers naming it in architecture reviews; support tickets about code you do not own | Choose deliberately and in writing: adopt it with the maintainer's consent and real headcount, certify it as community-supported with the limits stated on the docs page, or ship a first-party client. Ambiguity here becomes an outage you get blamed for | Agent 34 Developer Relations, Agent 30 Platform and Ecosystem, Agent 10 Legal and IP |
+| **Legal requires a terms change that breaks existing integrations** | New data-use, AI-training or redistribution clauses drafted without API review; a notice period shorter than a typical enterprise procurement cycle | Map the clause to real call patterns before it publishes, and align the notice period to the deprecation policy. A terms change with technical effect IS a breaking change and earns the same notice as one | Agent 10 Legal and IP, Agent 34 Developer Relations, Agent 30 Platform and Ecosystem |
+| **An acquisition creates two overlapping APIs and the community asks which one dies** | An integration announcement with no API convergence plan; two docs portals; two SDK families using the same names | Say what you know and what you do not, with a date for the real answer. "No decision yet", published on a schedule, beats speculation. Commit publicly that neither API sunsets inside the stated notice window, then hold to it | Agent 45 Corporate Development, Agent 30 Platform and Ecosystem, Agent 34 Developer Relations |
+
+```
+⛔ ORG FAILURE MODES SPECIFIC TO DEVELOPER RELATIONS:
+⛔ NO SEAT AT THE BREAKING-CHANGE TABLE: DevRel learns about the deprecation from the changelog
+   like everyone else, which converts the function from early warning into apology delivery.
+⛔ ACTIVITY REPORTING: stars, followers, talks and booth scans presented as impact. One
+   executive discovering they are gameable discounts every honest number you report afterwards.
+⛔ TIER-1 SDK ON A BUS FACTOR OF ONE: an official-looking client with a single maintainer and
+   no declared support status, carrying production traffic it was never resourced to carry.
+⛔ THE TIER-2 SUPPORT DRIFT: ticket load creeping past 20 percent of DevRel time, so recurring
+   issues are answered one at a time forever instead of becoming docs, errors or product fixes.
+⛔ PIPELINE CAPTURE: adopting a lead number to look accountable, then gating the assets that
+   drive activation behind forms and measuring the resulting decline as a content problem.
+⛔ PRIVATE FEEDBACK, PRIVATE FOREVER: NDA and advisory-board input that never reaches the
+   engineers who could act on it, so the board stops attending within two cycles.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+DevRel is the only function whose constituency sits OUTSIDE the company, which means every
+internal shock (reorg, freeze, cut, acquisition, terms change) is transmitted straight to people
+who never agreed to absorb it. Leaders therefore treat DevRel as a communications channel and
+budget it as one. Its real value is the opposite direction of travel: it is the org's earliest
+and cheapest warning that a decision made inside the building will break integrations outside
+it. That is why the reorg under a pipeline number is the most expensive failure on this page.
+It does not just change a metric; it removes DevRel from the deprecation, pricing and terms
+conversations where the warning was worth something, and leaves it holding the announcement.
+Ecosystem trust is asymmetric: earned over quarters of usefulness, spent in a single changelog
+line, and never rebuilt on the schedule the person who spent it assumed.
+⚠️ Contractual notice periods, data-use and AI-training terms, developer-data obligations and
+   NDA handling are jurisdiction-specific and change over time. Treat the principle as durable
+   and verify the current rule with Agents 10 and 39 before announcing. See references/DISCLAIMER.md.
+```
+
 ## Enterprise-Grade (enterprise developers / partners / regulated APIs)
 ```
 □ ENTERPRISE DEVELOPER ONBOARDING is a different funnel: a named solutions architect (Agent 51),

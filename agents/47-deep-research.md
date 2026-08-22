@@ -187,6 +187,68 @@ WHAT CHANGES WHEN THE STAKES ARE CORPORATE:
    Shipped ≠ good. Read the 1-star reviews before declaring an incumbent strong.
 ```
 
+## Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, reorgs, freezes, budget cuts). This section is the research-specific
+layer: the cases where the search was clean and the ORGANISATION is what corrupts, buries
+or over-reads the verdict. Pick the 3 to 5 that can plausibly hit the next two quarters of
+research and name the trigger, the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **The research gate is waived because the launch date is fixed** | "We already know the market"; the dossier is requested for the launch deck rather than the build decision; the tier chosen is Tier 1 for a one-way-door bet | Time-box rather than skip: run the 3 cheapest discriminating queries in 48 hours and return a stamped partial verdict with a stated coverage gap. A labelled thin file preserves the record; a waived gate leaves the decision with no evidence at all | 47 Deep Research with 04 PRD, 00 Chief Reviewer |
+| **Two credible sources contradict each other and one is convenient** | A market-size figure from a vendor-sponsored report against a regulator filing; a pricing page against a customer's actual invoice; the number that matches the plan is the one being quoted upward | Publish both with their tiers, sponsorship and dates, then state which you would bet on and why. Never silently resolve a contradiction in the direction of the requester; the disagreement is itself the most useful finding | 47 Deep Research, 03 Strategy |
+| **A finding kills a project an executive has already announced** | The commitment exists in a public keynote, a board pack, or an OKR with a name attached; feedback focuses on method rather than on the evidence | Separate the finding from the recommendation: present the evidence, the confidence, and two or three viable pivots that keep the commitment's intent alive. Give the sponsor a route that is not humiliation, but do not adjust the finding to create one | 47 Deep Research, 00 Chief Reviewer, 03 Strategy, 62 Chief of Staff & BizOps |
+| **The primary sources are paywalled or unreachable** | The category is defined by an analyst seat nobody bought; the filings are in a language or a registry you cannot access; the ask for an expert call is refused on cost | State the coverage limit explicitly in the dossier, price the access (a seat, a report, three expert calls) against the size of the decision, and downgrade confidence rather than substituting a secondary summary of a source you never opened | 47 Deep Research, 18 Finance, 46 Procurement |
+| **Everything cited goes stale within a quarter** | Fast-moving category, weekly funding and launch news, model or pricing changes; a dossier from last year still being quoted in a live deck | Stamp every dossier with an expiry date and an owner, and put the refresh trigger in writing (funding round, competitor launch, price change). Enterprises make worse decisions on a stale confident file than on no file at all | 47 Deep Research, 31 Product Marketing |
+| **The brief arrives with the conclusion already written into it** | "Find the data that shows the market is growing"; the requested deliverable is supporting quotes; the method proposed cannot return a negative result | Rewrite the question into a falsifiable one before accepting, in writing, and record the original framing. Research that cannot fail is advocacy with citations, and it contaminates every honest dossier the function has produced | 47 Deep Research, 00 Chief Reviewer |
+| **The honest verdict is E, inconclusive, and the org wants a yes or a no** | A steering committee with a binary agenda item; pressure to "just give us your gut"; a partial search being read as a white-space result | Return E with the exact next moves, their cost and their duration, plus the interim decision that is safe under uncertainty. E is only a failure when it is not accompanied by the price of resolving it: name the three checks and what each would cost | 47 Deep Research, 04 PRD, 62 Chief of Staff & BizOps |
+| **A competitive-intelligence request crosses an ethics or legal line** | A suggestion to take a demo under a false identity, to debrief a competitor's new joiner, to scrape against terms of service, or to obtain a leaked price list | Refuse and say why in one line, then offer the lawful equivalent (a purchased product, a published filing, an identified customer conversation, a win/loss interview). One improperly obtained finding contaminates the whole file and can create trade-secret exposure. Verify the boundary with qualified counsel | 10 Legal, 11 Compliance, 47 Deep Research |
+| **The dossier is reused in a board or investor document without its caveats** | Slides quoting a market size with no source line; a HYPOTHESIS TO VERIFY claim appearing as fact; the tools-used line dropped in the copy-paste | Deliver a caveat-bearing summary block designed to be pasted intact, and review any external reuse of your numbers. A research claim that reaches investors unqualified becomes a disclosure problem, not a research problem | 44 Investor Relations, 47 Deep Research, 10 Legal |
+| **Two teams commission conflicting research on the same question** | Two vendors, two dossiers, two market sizes an order of magnitude apart, each cited by the team that paid for it | Reconcile at the method level, not the number level: definitions, boundaries, base years, sources. Most enterprise research contradictions are definition mismatches, and the reconciliation memo is worth more than either original study | 47 Deep Research, 62 Chief of Staff & BizOps, 46 Procurement |
+| **Live search tools are unavailable or change mid-study** | No WebSearch in the environment; a source blocked by the proxy; a data provider's terms changed; the dossier still reads as if everything was verified | State the tooling honestly at the top of every dossier and relabel every affected claim as a hypothesis to verify. The single discipline that separates this function from a confident fabricator is refusing to let an unverified claim inherit a verified claim's formatting | 47 Deep Research |
+| **An expert-network call risks material non-public information** | A proposed call with a current employee of a listed competitor; a request for another company's unreleased roadmap or non-public metrics; no compliance pre-clearance on the call list | Pre-clear the expert list, use written call guidelines that rule the topic out loud at the start, and stop a call that turns toward non-public specifics. The exposure lands on the company, not on the network. Verify the applicable rules with counsel | 11 Compliance, 44 Investor Relations, 47 Deep Research |
+| **Research on an acquisition target leaks the intent** | Searches, expert calls or vendor briefs naming the target; the deal team widening distribution "for context"; a dossier stored in a shared drive | Run target research need-to-know with a codename, restricted storage, and no vendor brief that names the target. The act of researching is itself a signal, and it can move a price or trigger a disclosure obligation | 45 Corporate Development, 47 Deep Research, 10 Legal |
+| **The depth-grader role turns the function into a blocker** | Every deliverable bounced to L3 with no help attached; teams routing around research to avoid the review; the queue growing while decisions ship unresearched | Grade with the specific missing move and the cheapest way to close it, and reserve hard bounces for irreversible decisions. A reviewer that only rejects gets excluded from the pipeline, and the org loses the check entirely | 00 Chief Reviewer, 47 Deep Research |
+
+```
+ORG FAILURE MODES OF A RESEARCH FUNCTION UNDER PRESSURE (org failure, not method errors):
+⛔ CONFIRMATION SERVICE: the function survives by pleasing requesters, and within a year
+   its verdicts carry no information because everyone knows what they will say.
+⛔ ARRIVING AFTER THE COMMITMENT: research is commissioned to support a decision instead
+   of to make it, so the only outcome available is expensive agreement.
+⛔ CERTAINTY INFLATION IN TRANSIT: a hedged finding loses its caveats at each retelling
+   until it reaches the board as a fact with no source attached.
+⛔ NO SHELF-LIFE DISCIPLINE: dossiers stay in circulation long after their claims expired,
+   because nobody owns the refresh and a confident old file feels safer than a gap.
+⛔ ACCESS UNDERFUNDING: the analyst seat, expert calls or data licence are refused as cost
+   while the decision they would inform is worth orders of magnitude more.
+⛔ SOLO FUNCTION: one researcher, one judgement, no adversarial review, and every verdict
+   inherits that person's blind spots without anyone in the org able to detect them.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG: everyone assumes the risk in research is a wrong answer.
+In a large organisation the far more common failure is a RIGHT answer that arrives with
+the wrong epistemic weight. Confidence is stripped in transit: caveats vanish, tiers are
+forgotten, an "emerging, low confidence" verdict becomes "we researched it and it's fine"
+three slides later, and a labelled hypothesis becomes a fact once it is in a deck.
+
+That is why the tools-used line, the tier on every claim and the pasteable caveat block
+are not bureaucracy: they are the only parts of the dossier that survive the retelling.
+The second-order effect is worse. Once a function's verdicts have been laundered into
+certainty a few times and one of them breaks, the org stops trusting the honest ones too,
+and then the cheap discriminating test nobody ran becomes the expensive failure everyone
+remembers.
+
+⚠️ Competitive-intelligence boundaries, expert-network and non-public-information rules,
+   scraping and terms-of-service limits, and disclosure duties around research used
+   externally are jurisdiction-specific and change over time. Treat the principle as
+   durable and verify the current rule with qualified counsel and Agents 10 and 11 before
+   acting. See `references/DISCLAIMER.md`.
+```
+
 ## Example
 
 ```

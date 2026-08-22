@@ -315,6 +315,64 @@ REGULATED / MULTI-ENTITY MACHINERY:
   sign-off - "it's just a pilot" is not a compliance category
 ```
 
+### 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the innovation-specific
+layer: the cases where the portfolio logic (§7) is sound, the gates are honest, and the
+PROGRAM still fails because explore work is the first thing an organisation defunds,
+absorbs or forgets. Pick the 3 to 5 that are live and name the trigger, the owner and the
+pre-agreed move.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Hackathon output never ships** | Hack-to-shipped rate below 5 percent for three events; winners announced with no owner or roadmap slot; the same demo reappears next year | Stop running open events until a landing path exists: one directed track tied to a roadmap theme, a named receiving team per track, and a 2-week post-event decision on each winner. Prizes are not a graduation path | 21 Innovation and Programs, 41 Technical Program Management, 06 Engineering |
+| **A promising bet is killed by a mid-year budget cut** | Finance asks for headcount justification twice; explore budget is described as "flexible"; the bet is at G2 with real evidence but no revenue | Present the bet in the cut conversation as a priced option with its next gate and kill criteria, not as a project. Then take the ranked descope: pause with a written restart condition and preserve the team, rather than dissolving both quietly | 18 Finance, 21, 62 Chief of Staff |
+| **The incubated team has no landing zone in the core org** | The bet passed G3 with no receiving team named; the intended owner has a full roadmap; handover is described as "documentation" | Name the receiving org and its capacity BEFORE G3, and transfer the bet WITH its team (§9). A graduated bet handed over without its people reverts to a backlog item within a quarter | 21, 03 Strategy, 62, 22 People and HR |
+| **Core-versus-new resource contention (the raid)** | A core incident pulls explore engineers "for two weeks"; a shared platform team is committed to both roadmaps; explore standups start missing half the team | Escalate to the named C-level sponsor whose job includes refusing raids (§9). Ring-fence by naming individuals, not percentages: a 20 percent allocation on a shared engineer is zero in any quarter with an incident | 21, 62, 06, 41 |
+| **An innovation project quietly duplicates existing internal work** | Two teams demo similar prototypes in the same quarter; the idea keeps being described as "surprisingly obvious"; discovery skipped an internal search | Search internally at G0 as a gate item: existing repos, shadow IT, and the SaaS spend register. Then merge, kill one, or draw the boundary in writing with both sponsors named. Duplication found at launch costs the political capital of both teams | 21, 62, 40 IT and Corporate Engineering |
+| **Shutting a bet down cleanly is politically more expensive than letting it linger** | A bet is neither funded nor killed; the team shrinks by attrition; the sponsor stops attending reviews; the kill criteria were met two quarters ago | Kill by the pre-committed criteria at a scheduled gate, publish the learning, and place every person before announcing. A visible, well-handled kill is the single strongest signal that the gates are real; lingering bets teach everyone that criteria are decorative | 21, 62, 22 |
+| **The C-level sponsor of the explore portfolio changes** | The new leader asks explore to "show commercial impact this year"; the ring-fenced budget is re-opened in the quarterly cycle; scorecards shift to revenue | Re-qualify the mandate in 2 weeks with the innovation accounting ladder (§9), not with anecdotes. Offer one portfolio-level decision (fund, rebalance, wind down) rather than defending each bet individually | 21, 62, 18 |
+| **Bug bounty triage capacity collapses in a hiring freeze** | Time-to-triage stretching past the published SLA; the queue ageing; researchers chasing on social media; duplicates rising | Narrow scope or move to private before the SLA breaks publicly, and say so in the program page. A public program you cannot staff converts researcher goodwill into disclosure pressure within weeks | 09 Security, 21, 22 |
+| **A pilot becomes production by accident** | A design-partner pilot handles real user data and real money; support requests arrive through a personal channel; there is no on-call, no DPA and no runbook | Apply the production bar the moment real user data or money is involved: security and privacy sign-off, on-call, and a dated exit or promote decision. "It is just a pilot" is not a compliance category (§9) | 09, 39 Privacy and DPO, 21, 08 DevOps and SRE |
+| **Hack or incubation IP is created in the wrong legal entity** | Contributors span entities and contractors; no invention assignment on the event registration; the prototype is already in a customer demo | Assign IP at creation through event terms and the entity IP register, and audit any bet that crossed entities before it graduates. Wrong-entity IP is a transfer-pricing and diligence problem discovered at the worst possible moment | 10 Legal and IP, 21, 57 Tax, 45 Corporate Development |
+| **Partnership and MOU sprawl survives a reorg** | Signed agreements with no named owner; renewal dates nobody tracks; a partner escalates to an executive who has never heard of them | Re-point every agreement to a current owner with a 12-month review-or-exit date, and let the unowned ones lapse deliberately rather than by surprise. Partnerships decay silently and fail loudly | 33 Partnerships and BizDev, 21, 46 Procurement |
+| **The lab becomes a retention scheme rather than a portfolio** | Graduation rate near zero while headcount grows; the best engineers are parked on interesting work; kill rate below 30 percent | Re-impose gates with dates, publish the ladder to the board, and move people out on a schedule. A lab with no graduations and no kills is a comp strategy that will be cut in the first downturn | 21, 22, 62, 18 |
+| **At 50,000 people: six divisions each run their own innovation program** | The same idea funded three times; three incompatible internal platforms; each program reports its own activity metrics to a different executive | Federate the pipeline, not the funding: one shared idea and bet register with visible stages, division-owned budgets, and a quarterly cross-division deduplication review. Central control of funding kills local initiative; central visibility does not | 21, 62, 03, 29 Data and AI Strategy |
+
+```
+⛔ HOW THE INNOVATION FUNCTION FAILS UNDER ORGANISATIONAL PRESSURE:
+□ FIRST-CUT BUDGET: explore spend is the most defensible line to cut because its returns are
+  dated later than the cut. Without ring-fencing agreed annually, the portfolio is a rounding
+  error the moment revenue misses.
+□ ABSORPTION: the explore team is gradually assigned core work until it is a feature team
+  with a lab's name on the door. Nobody decides this; it happens one urgent request at a time.
+□ NO LANDING ZONE: the program optimises the funnel up to graduation and owns nothing after,
+  so successful bets die at the handover rather than at a gate.
+□ KILL AVERSION: killing costs a sponsor visible credibility while lingering costs the
+  company invisible capacity, so the incentives point at zombies every single time.
+□ ACTIVITY REPORTING: events run, ideas submitted, prototypes built. Metrics that rise
+  whether or not anything ships, which is exactly why they get reported.
+□ DUPLICATION BLINDNESS: no shared register, so the same idea is funded in three divisions
+  and discovered only when two of them demo it to the same executive.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Everyone treats innovation as an IDEA-SUPPLY problem and builds intake: hackathons, portals,
+shark tanks, idea boxes. Ideas are almost never the constraint. In an organisation above
+roughly 5,000 people the binding constraint is ABSORPTION CAPACITY, the ability of the core
+business to receive a validated bet: a team with room, a P&L willing to carry it, a platform
+that can host it, and a leader whose targets improve by adopting it.
+
+That is why the most valuable thing an innovation program builds is not a pipeline of ideas
+but a set of standing landing zones and pre-agreed transfer terms, negotiated while the bet
+is still small and unthreatening. It also explains the counter-intuitive rule that a program
+should run FEWER experiments than it can source: bets validated faster than they can be
+absorbed become zombies, and zombies are what get the whole programme cancelled in the next
+cost cycle.
+```
+
 ## Failure Modes
 ```
 ⛔ INNOVATION THEATER: labs, hackathons, posters - no graduation path. If you don't measure

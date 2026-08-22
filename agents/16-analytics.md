@@ -277,6 +277,63 @@ BI & WAREHOUSE COST GOVERNANCE (the silent 3x bill):
   typically the single biggest saving
 ```
 
+### 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the analytics-specific
+layer: the cases where the pipeline is healthy, the statistics are right, and the ANALYTICS
+FUNCTION still fails because of who owns the number and what it is being used for. Pick the
+3 to 5 that are live and name the trigger, the owner and the pre-agreed move.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A metric definition has to change under a live external commitment** | A definition bug is found in a metric already reported to the board or the market; the correct restatement moves the number the wrong way; someone proposes "fixing it from next quarter" | Restate with a bridge, never a silent swap: publish old definition, new definition, the delta per period, and the date the change takes effect. A definition changed without a bridge is indistinguishable from a number changed to fit the plan | 16 Analytics, 18 Finance, 44 Investor Relations, 26 Governance and IPO |
+| **Two teams report different numbers for the same thing in the same meeting** | Both are defensible; neither is certified; the meeting spends 20 minutes on reconciliation and zero on the decision | Stop the reconciliation in the room. One owner produces a written diff by grain, filter and time zone within 48 hours, and the certified definition wins by default (§9). Numbers disagreeing in public is a governance failure, not an analytical one | 16, 38 Data Engineering, 62 Chief of Staff |
+| **An instrumentation gap is discovered after launch** | The success metric cannot be computed from what was actually emitted; events fire on render rather than on action; the tracking plan was written after the build | Do not backfill from inference and present it as measured. State the coverage start date, ship the events now, and decide from the earliest clean window. Then move the tracking plan into the spec gate so it is reviewed with the design | 16, 38, 41 Technical Program Management |
+| **Consent, platform or measurement changes break continuity** | A consent banner change moves observed traffic overnight; an identifier or attribution mechanism shifts; year-on-year comparisons stop meaning anything | Mark the discontinuity in the semantic layer as a hard boundary and re-baseline rather than blending across it. Preserve one modelled and one observed series. Verify current platform and consent rules with 39 rather than assuming last year's behaviour | 39 Privacy and DPO, 16, 15 Marketing and Sales |
+| **A change ships with no holdout, so the lift cannot be defended** | The rollout was all-at-once "because it was obviously better"; the claimed impact is a pre/post comparison across a seasonal boundary; finance is asked to book the benefit | Say clearly that the effect is unestimable and give the cheapest path to an estimate: a geo or cohort holdout, a staged reversal, or a switchback. Never let an unmeasured change enter a plan as a measured one | 16, 37 Growth, 18 |
+| **The analyst is asked to re-cut until the number agrees with the plan** | A fourth segment request arrives after three showed no effect; "can we look at engaged users only"; the requester supplies the filter and asks for the result | Pre-register the decision rule and the segments (§8), then release results once. Additional cuts go to the hypothesis backlog with their multiple-comparison cost stated. The defence is the timestamp, not the argument | 16, 00 Chief Reviewer, 62 |
+| **Data access approval is the real bottleneck** | Analysts waiting weeks for a role; the fastest route to an answer is asking someone with production access; a shared service account with a password in a wiki | Publish the access SLA and the approval path, and pre-approve standing roles per job family. Access queues do not stop analysis, they push it into unlogged, uncertified copies of the data | 40 IT and Corporate Engineering, 38, 39 |
+| **A dashboard becomes a performance-management tool** | A team metric appears in a review deck attached to a name; the metric improves while its counter-metric is quietly dropped from the page; instrumentation edits start arriving from the measured team | Separate the operating dashboard from the evaluation dashboard, and require counter-metrics on any measure used for evaluation. A number that decides someone's rating stops being a measurement (Goodhart, §6) | 16, 22 People and HR, 61 Total Rewards |
+| **Warehouse and BI cost spikes into a budget cut** | Monthly spend up sharply with no new use case; dashboards refreshing hourly for weekly decisions; cost attribution not published by team | Attribute cost by team and query before cutting anything, then kill refresh frequency and unowned dashboards first (§9). Blanket compute cuts fall hardest on the reliable T1 marts that everybody depends on | 16, 38, 18 |
+| **The certified metric owner leaves and nobody re-certifies** | Definitions with a departed name attached; a re-certification date months past; a schema change merged with no metric review | Re-assign certification within two weeks or visibly downgrade the metric to "exploratory". A stale certification badge is worse than none, because it transfers unearned confidence to executive decks | 16, 38, 62 |
+| **An auditor or regulator asks how a reported number was produced** | The pipeline was rewritten since; the notebook lives on a laptop; the figure cannot be reproduced to the digit | Reproduce from versioned code and versioned data or state plainly that you cannot, with the reason. Lineage and query history for board-reported metrics is an audit control, not an engineering nicety (verify current retention requirements) | 59 Internal Audit, 16, 38, 56 Revenue Accounting |
+| **An attribution model change reallocates budget between teams** | Marketing and product each prefer a different model; the model change lands mid-planning; last-touch and incremental readings differ by a factor | Decide the model out of cycle, publish both readings during a transition, and tie budget to incrementality tests rather than to the model. Changing attribution during planning is a resource fight wearing a methodology costume | 16, 15, 37, 18 |
+| **At 50,000 people: divisions run their own semantic layers** | Three "revenue" definitions each certified locally; the board pack reconciles them by hand; every cross-division comparison needs an analyst | Certify a small set of company-level metrics centrally and let divisions extend below them. Federate the layer, not the definitions of the numbers that reach the board | 16, 38, 29 Data and AI Strategy, 62 |
+
+```
+⛔ HOW THE ANALYTICS FUNCTION FAILS UNDER ORGANISATIONAL PRESSURE:
+□ NUMBER-SUPPLIER CAPTURE: the team is measured on requests served rather than decisions
+  improved, so it optimises for turnaround and stops challenging the question.
+□ DEFINITION DRIFT UNDER COMMITMENT: once a number is promised externally, changing its
+  definition becomes a political act, and correctness starts losing to consistency.
+□ COVERAGE SILENCE: measurement gaps and discontinuities are known internally and never
+  stated on the chart, so consumers read a broken series as a trend.
+□ CERTIFICATION ROT: badges outlive their owners. A stale "certified" label transfers
+  confidence the underlying definition no longer deserves.
+□ EVIDENCE ON DEMAND: analysis commissioned after the decision, timed to arrive as support.
+  The tell is that no decision rule was written before the data was pulled (§8).
+□ ACCESS-DRIVEN SHADOW DATA: slow approvals push work into spreadsheets and personal
+  extracts, which then appear in exec decks with no lineage and no owner.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Everyone believes analytics fails on RIGOR: peeking, bad tests, missing holdouts. Those are
+real, and they are the easy half. In a large organisation analytics fails on OWNERSHIP of
+definitions, because a metric is not a measurement, it is a contract between departments
+about what counts. The moment a number is attached to a commitment, a bonus or a board
+slide, changing its definition costs someone something, and the function that owns the
+definition is doing politics whether it admits it or not.
+
+The practical consequence is that the highest-leverage analytics work looks the least
+analytical: certification with named owners, a written diff when a definition changes,
+lineage that survives a pipeline rewrite, and coverage caveats printed on the chart rather
+than in a footnote. A team with excellent statistics and no definitional authority ends up
+arbitrating other people's numbers; a team with definitional authority and adequate
+statistics ends up deciding what the company believes.
+```
+
 ## LLM-Powered Analytics
 
 See `frameworks/ai-engineering-stack.md` for the full stack (RAG, guardrails, evals). Analytics
