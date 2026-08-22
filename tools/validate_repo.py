@@ -143,6 +143,36 @@ def check_internal_links(paths):
                 errors.append(f"Broken link in {rel} -> {link}")
 
 
+SECTION_RE = re.compile(r"^(#{2,3}) (\d+)\.(?!\d)")
+
+
+def check_section_order(paths):
+    """Numbered sections must read in order.
+
+    Appending a new section before an existing trailing block (Example, Output)
+    and giving it the next free number produces a file that reads 10, 11, 14,
+    12, 13. Each heading is individually valid and nothing is duplicated, so
+    neither a duplicate check nor a link check catches it. Levels are tracked
+    separately because ## and ### series are independent, and the negative
+    lookahead keeps `### 3.1` style subsections out of the ## sequence.
+    """
+    for path in paths:
+        found = []
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                m = SECTION_RE.match(line)
+                if m:
+                    found.append((len(m.group(1)), int(m.group(2))))
+        for level in (2, 3):
+            seq = [n for lv, n in found if lv == level]
+            if seq != sorted(seq):
+                rel = os.path.relpath(path, ROOT)
+                errors.append(
+                    f"Section numbers out of reading order in {rel} "
+                    f"(H{level}): {seq}"
+                )
+
+
 def check_no_em_dashes(paths):
     """House style: no em dashes. Enforced mechanically so it cannot drift back."""
     for path in paths:
@@ -182,6 +212,7 @@ def main():
     cross_check_docs(agent_count, framework_count)
     check_code_fences(markdown)
     check_internal_links(markdown)
+    check_section_order(markdown)
     check_no_em_dashes(markdown)
 
     print()
