@@ -471,6 +471,82 @@ memo that tells the story before an investor's adviser does. **Quality check:** 
 you have revenue or a human, can you name the obligation, the position, and the evidence? Any blank is the
 exposure.
 
+## 11. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits. This
+section is the tax-specific layer, and it has one theme: almost every tax exposure in a growing company
+is created by a decision taken somewhere else, by someone who did not know they were making a tax
+decision. Pick the 3 to 5 that can plausibly land in the next two quarters and name the trigger, the
+owner, and the pre-agreed move.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **A remote hire creates permanent establishment and nobody told tax** | An offer letter in a country with no entity; a new LinkedIn profile listing a country you do not operate in; an expense claim for a co-working desk abroad | PE can bring corporate tax on attributed profit, local registration, filings, transfer-pricing documentation, local payroll and sometimes indirect tax. It is usually discovered in diligence, priced as an escrow, and cannot be undone retroactively | A hard gate: no offer letter in a new country without a completed, signed PE assessment (§4). Wire the gate into the requisition workflow with Agent 60 and Agent 22 so it fires before the offer, not after the start date |
+| **An existing employee relocates without telling anyone** | A payroll address change; a VPN pattern; a tax residency certificate request; a benefits enrolment in a new country | The individual creates day-count, social-security and sometimes PE exposure for a company that has no idea they moved. Employment law, equity taxation and withholding all move with them | A mandatory location-change reporting rule with Agent 22, enforced through the HRIS, plus a standing rule that a stay beyond a defined day count triggers a review. Track days, not intentions |
+| **Self-serve revenue crosses an economic-nexus or registration threshold silently** | A US state's sales or transaction count creeping past its threshold; EU B2C sales growing with no OSS registration; a new market appearing in the revenue report | Collection duty starts without an invoice ever changing. For an unregistered taxpayer the look-back can be effectively unlimited because the limitation period often never starts, so the exposure compounds every month it is unnoticed | A threshold tracker fed monthly from Agent 55's data by jurisdiction, with an amber level below the threshold. Sequence any cleanup as VDA first, then registration, with counsel. **Verify current thresholds, measurement periods and definitions state by state** |
+| **Marketing books a conference booth and creates physical nexus** | An events calendar, a trade-show contract, a sales team travelling to a state or country for a week | Physical presence still creates nexus independently of economic thresholds, and often income or franchise tax nexus as well. A single booth can start a registration obligation in a state where you have no revenue thresholds met | Put a tax check in the event-approval flow with Agent 14 and Agent 15, and maintain a travel and presence log by jurisdiction. This is cheap to track prospectively and expensive to reconstruct at audit |
+| **A contractor abroad is really an employee** | A long-running full-time contractor with company equipment, a manager, and fixed hours; a local authority reclassification letter | Misclassification brings back payroll taxes, social contributions, penalties and interest, and the person's activity may also have created PE. Two exposures land together, usually during diligence | Review the contractor population by country annually with Agent 22 and local counsel. Test authority to conclude contracts separately from employment status, because an EOR solves employment law and does not by itself solve PE |
+| **A cross-border vendor payment goes out without withholding documentation** | An urgent payment to a new non-resident supplier; no W-8, TRC or Form 10F on file; a treaty rate applied because someone assumed one existed | Where the payer fails to deduct, the payer usually owes the tax plus interest and penalties, and often loses the deduction. The vendor has already been paid gross and has no incentive to help | Make tax documentation a payment-release control with Agent 58 and Agent 46: no first payment to a non-resident without the certificate set and a current rate check against the treaty matrix in §6 |
+| **Intercompany cash moved before the agreement was signed** | A funding transfer to a subsidiary described as "capital", a cost recharge with no invoice, an entity with expenses and no revenue | With no signed intercompany agreement and no benchmarking study, the tax authority is free to characterise the flow as it prefers, and the other country may not give the corresponding relief. Backdating the agreement is fraud; drafting it late is merely expensive | The paper exists before the cash moves, without exception (§5). Where cash has already moved, quantify the exposure, disclose it to Agent 56 for the provision, and remediate prospectively with counsel |
+| **The transfer-pricing markup no longer matches what the subsidiary actually does** | The subsidiary now owns customer relationships, hires senior product leadership, or holds IP-creating functions, while still being paid as a low-risk service provider | The functional profile and the reward diverge, which is the single most common transfer-pricing challenge. The adjustment lands in the country with the stronger claim, and relief in the other requires a slow mutual agreement procedure | Re-run the functional analysis whenever the subsidiary's role changes materially, not annually by habit. Refresh the benchmarking study, update the agreement, and consider an advance pricing agreement for a structure that is material and stable |
+| **An acquisition brings unregistered back-period exposure** | Diligence finds no nexus study, no VAT registrations, and a target that sold into 20 jurisdictions from a single entity | The exposure becomes yours on close unless it is priced, indemnified or escrowed. Registering the combined group prospectively invites the question "since when?" for the target's history too | Tax diligence with Agent 45 quantifies indirect tax, payroll and PE exposure by jurisdiction before signing, and the integration plan sequences VDAs before any new registration. Never register the acquired footprint before the back period has a plan |
+| **Registering prospectively without addressing the back period** | A well-meaning finance manager registers in a state or country to "get compliant" | Registration tells the authority you exist and starts a conversation about prior periods that you have not prepared for, converting a manageable disclosure into an assessment | Sequence: quantify, then VDA or equivalent voluntary programme with counsel, then register. This ordering rule belongs in writing so a new hire cannot helpfully break it |
+| **An incentive or tax holiday lapses because a condition was missed** | A headcount, investment or export condition in a scheme; a sunset date sitting in a model built two years ago | The benefit is clawed back or simply disappears from the effective tax rate, and Agent 18's plan was built on it. The finding usually arrives with interest attached | Maintain an incentives and credits register with conditions, evidence owners and sunset dates, reviewed quarterly. Never model an incentive past its sunset, and **verify current eligibility and conditions each year** |
+| **A reorg moves tax under someone with no tax capacity** | The tax lead departs and is not backfilled; the compliance calendar is handed to a controller already at capacity; advisers start emailing a shared inbox | Filing deadlines are absolute and unforgiving. Missed returns produce penalties that are small individually and disqualifying in aggregate when an acquirer's counsel lists them | The global tax calendar has a named internal owner per obligation, never an adviser alone, and every obligation has a standing delegate. Escalate an unowned calendar to the audit committee in writing rather than absorbing it |
+| **A legal entity is created and tax finds out later** | A new subsidiary appears in the group structure for a banking, licensing or investor reason; a dormant entity kept "for later" | Every entity carries filing obligations from incorporation, dormant or not, plus transfer-pricing documentation where any flow exists. Dormant entities are the most common source of small, embarrassing penalties | The entity register is jointly owned with Agent 26 and reviewed quarterly, and no entity is incorporated without a tax and compliance cost estimate. Dissolve unused entities deliberately; keeping them is a recurring cost |
+| **A product change creates a new taxability question** | Bundling hardware or a physical deliverable, reselling compute, launching a marketplace, adding a training or professional-services SKU | Taxability varies by jurisdiction and by how the offering is characterised. A SaaS-only tax configuration silently misprices the new SKU on every invoice from launch day | Product tax codes are set with Agent 36 and Agent 55 before the SKU goes live, and marketplace roles are analysed explicitly. A tax engine with the wrong tax codes is a machine for producing wrong invoices at scale |
+| **Marketplace facilitator rules shift collection and you keep collecting too** | Selling through an app store or platform that begins remitting on your behalf | Double collection, customer refunds, and a filing that no longer matches the platform's report. Alternatively the reverse: both parties assume the other is remitting and nobody is | Confirm in writing who remits, per platform and per jurisdiction, before assuming it is handled, and reconcile platform statements to your own filings each period with Agent 55 |
+| **Exemption certificates expire and nobody re-solicits** | A reseller-heavy customer base; a certificate register that has not been touched in a year | At audit, no valid certificate means the tax is yours, plus penalties, on sales you never charged tax on. The customer is long gone or unwilling to pay it now | Certificate capture, expiry tracking and automated re-solicitation are an Agent 55 workflow with a tax-owned exception report. Sample the register quarterly rather than discovering it during fieldwork |
+| **A notice arrives at an address nobody monitors** | A registered office that is a former co-working space; a notice in a portal only an ex-employee could access; a personal inbox of someone who left | Statutory response windows are short and running. A missed response can escalate to a best-judgment assessment or a bank attachment before anyone in finance knows a notice exists | Registered addresses, portal credentials and authorised-signatory records are reviewed quarterly with Agent 26 and Agent 40, and every portal has at least two named internal users. Notices route to a monitored shared mailbox with an acknowledgement SLA |
+| **Equity compensation crosses borders** | An employee who was granted options in one country and exercises in another; a mobile senior hire with unvested equity from a prior jurisdiction | Sourcing rules can split the gain between countries, withholding obligations arise where the company may have no payroll, and the employee discovers a personal tax bill they were never warned about | Run mobile-employee equity with Agent 61 and Agent 22 before grant and before exercise windows, with country-specific communications. Employee-side surprises become retention and reputation problems, not just tax ones |
+| **The advisory budget is cut in the year of an audit or a raise** | A cost programme trimming professional fees; a controller asked to "handle it internally" | The saving is an order of magnitude smaller than a single contested position, and the positions most likely to be challenged are exactly the ones that needed external sign-off | Present professional fees as a risk-weighted number to Agent 18: what is discretionary, what is defence, and what the exposure is if it goes unadvised. Cut the discretionary, never the defence |
+
+**Failure modes specific to this function**
+```
+⛔ Tax is consulted after the decision. Hiring, entity creation, pricing, packaging and vendor selection
+   are all tax decisions that other functions make first and describe to you later.
+⛔ The compliance calendar lives with an outsourced adviser and has no internal owner, so the first sign
+   of a missed obligation is a penalty notice.
+⛔ Exposure is known and never quantified, so it cannot be disclosed, provisioned, or negotiated, and it
+   surfaces for the first time in someone else's diligence.
+⛔ The registration map is a one-time snapshot rather than a monitored threshold tracker, so it is accurate
+   on the day it is built and decorative thereafter.
+⛔ Rates, thresholds and deadlines are carried forward from last year's memo instead of re-verified in the
+   current period.
+⛔ Notices and audits are handled by whoever opened the envelope, with no playbook, no privilege
+   consideration, and no single point of contact with the authority.
+```
+
+**Escalation and who owns what**
+- Hiring in new countries, relocations, contractor classification and EOR use: `agents/22-people-hr.md` with `agents/60-talent-acquisition.md`.
+- Equity taxation, mobile employees and payroll withholding on comp: `agents/61-total-rewards.md`.
+- Tax engine configuration, invoicing, certificates and location evidence: `agents/55-billing-monetization-engineering.md`.
+- Provision, deferred tax, disclosure and the ledger side of every position: `agents/56-revenue-accounting.md`.
+- Payment release controls, FEMA and cross-border cash movement: `agents/58-treasury.md`.
+- Vendor tax status at onboarding and supplier compliance scoring: `agents/46-procurement-supply-chain.md`.
+- Entity register, board approvals and related-party structures: `agents/26-governance-ipo.md`.
+- Diligence, indemnities, escrow and integration sequencing: `agents/45-corporate-development.md`.
+- Privilege, disputes, litigation strategy and counsel engagement: `agents/10-legal-ip.md`.
+- Horizon scanning on regime change and engagement with authorities: `agents/28-government-relations.md`.
+- Control testing over tax processes and SOX scoping: `agents/59-internal-audit-risk.md`.
+
+**Pre-mortem prompts for this department**
+```
+□ In which jurisdictions do we have revenue or a human today that we have never formally assessed?
+□ Which offer letter, relocation or contractor engagement in the last 12 months went out without a PE
+  assessment, and what does that person actually do for the business?
+□ If an acquirer's tax counsel opened our registration map tomorrow, which line would they stop on?
+□ What is our largest quantified back-period exposure, who outside tax knows the number, and is it in
+  the provision?
+□ Which intercompany flow is running today on an agreement that is unsigned, expired, or no longer
+  describes what the entity does?
+□ Which rate, threshold or deadline in our current filings was verified this period rather than copied
+  from last year?
+□ Which incentive or credit in the financial plan has a condition or a sunset that nobody is monitoring?
+□ If a notice arrived today at a registered address we no longer occupy, how many days would pass before
+  we knew?
+```
+
 ## Output: Tax Position & Compliance Package
 The registration-obligation map by jurisdiction with threshold trackers, the indirect-tax determination
 design for Agent 55 (product tax codes, location evidence, exemption certificates, reverse-charge logic),

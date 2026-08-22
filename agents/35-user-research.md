@@ -243,6 +243,65 @@ Research that doesn't change a decision is theater. Track:
 - Stakeholder NPS on research usefulness
 ```
 
+### 11. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, reorgs, freezes, budget cuts). This section is the research-specific
+layer: the cases where the method is sound and the ORGANISATION is what wastes the study.
+Pick the 3 to 5 that can plausibly hit the next two quarters of research and name the
+trigger, the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Findings arrive after the decision has already been made** | The request lands with a build date already committed; the kickoff has no named decision owner; the study's readout is scheduled after the sprint it was meant to inform | Refuse to field without a decision, an owner and a decision date on the one-page plan. If the date cannot move, switch to the fastest method that still discriminates and deliver a partial read before the date, not a complete one after it | 35 User Research with 04 PRD, 41 Technical Program Management |
+| **The queue is served by the loudest team rather than the highest stakes** | Intake happens in DMs; a VP's request jumps three studies; researchers negotiate priority individually and privately | Publish an intake form, a visible queue and a scoring rule (decision reversibility x blast radius x deadline). An unpublished queue is always won by seniority, and the researcher takes the blame for the ranking | 35 User Research, 62 Chief of Staff & BizOps |
+| **Recruiting minors, patients or other protected participants** | A study targeting under-18 users, health or financial-hardship topics, or employees of a customer; a screener asking for data you have no basis to hold | Do not field until privacy and legal have signed the consent flow, the guardian or verifiable-consent path, the data minimisation and the retention limit. Some populations require ethics review or are simply out of scope. Verify with qualified counsel | 39 Privacy & DPO, 10 Legal, 35 User Research, 12 Trust & Safety |
+| **Incentives create a tax, procurement or sanctions problem** | Gift cards bought on a personal card and expensed; payments to participants in a restricted country; incentives paid to employees of a regulated customer; no vendor on record | Move incentives onto a panel vendor or a controlled process with a tax treatment agreed by finance and a screening step for restricted jurisdictions. Never pay a public official or a procurement decision-maker in an active deal | 18 Finance, 46 Procurement, 35 User Research, 11 Compliance |
+| **The sample is convenient rather than representative** | Recruits come from the community forum, power users, English speakers, one region, or whoever answered the in-app intercept; recruitment lead time was two days | State the sampling frame and its bias in the report header, not in an appendix. If the decision hinges on the excluded group, say the study cannot answer it rather than shipping a finding shaped by who was easy to reach | 35 User Research, 16 Analytics |
+| **A finding contradicts an executive's public conviction** | The brief includes the answer; a senior stakeholder pre-announces the direction; the pushback is about method rather than about evidence | Lead with the evidence chain and the alternative explanations, separate observation from interpretation, and give the decision owner a face-saving path (a cheap test that would change your mind). Never soften the finding; the second study will not be commissioned if the first was hedged | 35 User Research, 00 Chief Reviewer, 04 PRD |
+| **Research is commissioned to ratify a decision, not to inform one** | "Run a study so we can show the board users want it"; the deliverable requested is quotes rather than a verdict; the method chosen cannot produce a negative result | Rewrite the question into one that can fail, in writing, before accepting. If it will not be rewritten, decline and record why. A research function that has never returned an unwelcome answer has no evidential value left to lend | 35 User Research, 00 Chief Reviewer |
+| **Customer access is gated by an account team that will not risk the relationship** | Every recruit routes through a CSM who screens the list; only happy references are offered; churned and struggling customers are never available | Trade value for access: bring insight back to the account, run sessions inside existing QBR slots, and get a standing research allowance per account. Build a churned-customer path outside the account team, because the missing segment is the informative one | 17 Customer Success, 35 User Research, 32 Sales & RevOps |
+| **The insight repository quietly becomes a shadow PII store** | Raw recordings past their retention date; transcripts with names, screens and account data; an AI notetaker or transcription vendor with no DPA and unclear training terms | Audit and de-identify before it leaves the secure store, enforce automatic deletion of raw media, and route every recording or AI tool through privacy review. The repository is the easiest breach in the company because nobody thinks of it as a database | 39 Privacy & DPO, 35 User Research, 40 IT & Corporate Engineering |
+| **Democratised research produces folklore at scale** | PRDs citing "users said" with no sample; leading questions in a self-serve survey; the same three interviews quoted for a year across four decks | Guardrails, not gates: templates, a screener bank, a pre-field review, and a rule that any claim entering a PRD carries method, sample and date. Insight without provenance is more dangerous than no insight, because it is unfalsifiable | 35 User Research, 04 PRD |
+| **The function is one person and the panel lives in their spreadsheet** | One researcher supporting eight teams; the participant list, consent records and incentive tracker in personal files; no cover plan for leave | Institutionalise ResearchOps first and study capacity second: panel, consent records, incentive process and repository owned as systems. When the researcher is on leave, everything they carried personally becomes unavailable, including consent evidence | 35 User Research, 22 People & HR |
+| **A session exposes unreleased product or a customer's confidential information** | Prototypes shown without an NDA; a participant recording their screen; a customer describing their own roadmap or a competitor's pricing in the session | Confidentiality terms and a no-recording-by-participant rule in the consent, an approved-materials list, and an escalation path for anything a participant discloses that they should not have. Do not use accidentally disclosed confidential information | 10 Legal, 35 User Research, 47 Deep Research |
+| **A participant discloses harm, fraud or discrimination mid-session** | A session that turns into a complaint, a safeguarding concern, or an admission of illegal activity; a researcher improvising a response on camera | Have the escalation path written before fielding: how the session ends, who is told within 24 hours, what is recorded, and what support the participant is offered. Researchers should never have to invent this while a recording is running | 12 Trust & Safety, 10 Legal, 35 User Research, 22 People & HR |
+| **Research on internal users triggers consultation or monitoring rules** | A study of employees using an internal tool, session recording on staff systems, or productivity data gathered as "research" in a works-council jurisdiction | Treat employee studies as workplace monitoring, not as user research: consultation and notice obligations may apply before the study starts. Verify the local requirement with qualified counsel and People before fielding | 22 People & HR, 39 Privacy & DPO, 35 User Research, 10 Legal |
+
+```
+ORG FAILURE MODES OF A RESEARCH FUNCTION UNDER PRESSURE (not study errors, org failure):
+⛔ SERVICE-DESK CAPTURE: research becomes an order-taking studio running whatever is
+   requested, and loses the authority to say a question is not worth answering.
+⛔ EVIDENCE LAUNDERING: the function is used to add rigour-shaped decoration to decisions
+   already taken, which spends credibility that cannot be re-earned within a tenure.
+⛔ REORG DRIFT: moved under design and it becomes usability testing; moved under growth
+   and it becomes experiment support; moved under marketing and it becomes messaging tests.
+⛔ ACCESS DEPENDENCY: the customers you can reach are chosen by the teams whose numbers
+   the findings might damage, so the sampling frame is set by internal politics.
+⛔ IMPACT INVISIBILITY: no log of study to decision to outcome, so the function is priced
+   as a cost centre in the first budget cut and cut before anyone can quantify the loss.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG: research is treated as a supply problem (more studies, more
+participants, faster turnaround) when it is almost always a TIMING AND AUTHORITY problem.
+The organisation asks the question after the commitment has been made, so even excellent
+work arrives as commentary. Speeding up the study does not fix it, because the decision
+was never waiting on the evidence.
+
+The lever is upstream: get research into the decision at the point where the question is
+still open, which means intake tied to the planning cycle rather than to the sprint, a
+named decision owner and date on every plan, and a standing veto on studies whose result
+cannot change anything. A research team measured on studies delivered will be busy and
+ignored; one measured on decisions changed will run fewer studies and be argued with,
+which is the sign that it is working.
+
+⚠️ Consent requirements, rules for minors and special-category data, cross-border transfer,
+   incentive tax treatment and employee-monitoring duties are jurisdiction-specific and
+   change over time. Treat the principle as durable and verify the current rule with
+   Agent 39 and qualified counsel before fielding. See references/DISCLAIMER.md.
+```
+
 ## Privacy & Ethics Note
 All recordings, transcripts, and PII are personal data. Apply data minimization,
 encrypt at rest, set retention limits (default: delete raw recordings 12 months

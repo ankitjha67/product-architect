@@ -431,6 +431,82 @@ hedge ratio; and a quarterly board report that answers "where is our money and w
 page. **Quality check:** if your primary bank failed tomorrow morning, could you run Friday's payroll from
 another institution without asking anyone for permission? If not, the work is not done.
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits. This
+section is the treasury-specific layer: the cases where the policy is sound and the ORGANISATION is the
+failure mode, because a decision taken elsewhere moved the exposure, the counterparty, the calendar, or
+the person who was supposed to press the button. Treasury failures are unusually unforgiving, since most
+of them are only fixable in advance. Pick the 3 to 5 that can plausibly land next quarter and name the
+trigger, the owner, and the pre-agreed move.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Counterparty stress at the bank holding most of the cash** | Deposit outflows reported in the press; a rating action; a lender with a concentrated depositor base; your own relationship manager going quiet | Access to cash becomes a queue, not a contract. Payroll, vendor runs and tax payments all fail in the same 48 hours, and nothing can be opened fast enough to help. The outcome for depositors is a policy decision, not your right | The fix is entirely pre-event (§3): a second relationship that is live, funded and has actually processed a payroll, concentration limits written into policy, and a one-page cash-mobilisation runbook naming who moves what, from where, with which credentials |
+| **A one-off charge trips a covenant** | A restructuring charge, an impairment, a legal settlement, or an accounting reclassification landing in a quarter where the covenant is tested | Covenants are tested on reported figures, so a non-cash item can breach a test the business itself has not failed. A breach converts a financing partner into a controlling creditor with the ability to sweep cash and block draws | Model every covenant against the DOWNSIDE case and against known one-off items with Agent 18 and Agent 56 before the quarter closes. Where a breach is foreseeable, seek the waiver early and from strength, never in the week of the certificate |
+| **Cash is trapped in a subsidiary** | Exchange controls, dividend or repatriation restrictions, thin-capitalisation limits, or a local regulator requiring minimum capital | Group runway is overstated because a material balance cannot legally leave the entity that holds it. The discovery usually happens when the parent needs the money | Report group cash split into available, restricted and trapped, every month, with the mechanism named per entity. Plan repatriation routes with Agent 57 in advance, and never fund a subsidiary beyond its needs simply because the transfer was easy |
+| **A payment rail fails on payroll day** | A bank portal outage, a national clearing system incident, a file-format rejection, a sanctions screening hold on a batch | Salaries do not arrive. This is a trust event with the whole company, and it escalates to the CEO within an hour regardless of whose system failed | Payroll runs are prepared with a full working day of buffer, a tested alternate rail at the second bank, and a documented manual fallback. Agree the communication template with Agent 22 before you need it, because the delay is survivable and the silence is not |
+| **The hedge no longer matches the exposure** | A downsize, a repricing, a customer loss, or a plan change that reduces the foreign-currency cash flows the hedge was booked against | An over-hedged position stops being a hedge and becomes a currency position that can lose real money, and hedge accounting may be lost at the same time | Re-test hedge coverage against the current forecast at every re-forecast, not annually. The policy ladder has both a floor and a ceiling, and a breach of the ceiling is escalated exactly like a breach of the floor |
+| **The lender requires all cash to stay with them** | A deposit-concentration covenant in a venture debt or revolver term sheet | The financing directly contradicts the diversification policy, and the risk it creates is the risk you spent the last two years designing out | Treat it as a negotiable term, priced explicitly: quantify the concentration risk it forces and trade it against rate or warrants. Where it cannot be removed, cap the covered balance and get a board-recorded acceptance of the residual risk |
+| **A large expected receipt slips** | An annual prepay assumed in week 6 of the forecast; a customer's own procurement freeze; a milestone invoice awaiting acceptance | The 13-week forecast fails at the point of least slack, and the response is a fire sale of investments or an emergency draw at bad terms | Every forecast line above a threshold carries a confidence level and a named owner in Agent 32 or Agent 17. Build the minimum operating cash floor so that a single receipt slipping is an inconvenience, not an event |
+| **Vendor bank-detail fraud during a busy or understaffed period** | A change request arriving at quarter end, during a systems migration, or in the first month of a new AP hire; urgency and seniority invoked together | Funds leave the same day and recovery depends on hours, not days. The post-mortem almost always finds a control that existed on paper and was bypassed for speed | Out-of-band callback to a number already on file, a second approver, a cooling-off period, and a rule that urgency and seniority never waive a control. Rehearse the recovery path with Agent 09 and Agent 13 so nobody is looking up who to call |
+| **The signatory matrix is stale after departures** | A leaver still on the mandate; the only remaining approver on leave; a bank requiring wet signatures from a director who has moved on | Payments cannot be released, or worse, a former employee retains authority. Bank mandate changes take weeks in most jurisdictions, so the gap cannot be closed when it is discovered | Review the signatory matrix quarterly and on every departure, with a named standing delegate for every approval role. Revocation is part of the leaver checklist with Agent 22 and Agent 40, with evidence filed |
+| **Restricted or pledged cash is reported inside runway** | Security deposits, lease guarantees, letters of credit, escrow, minimum balances under a facility, customer-funded balances | The runway number the board and the market rely on is wrong by the pledged amount, and the correction lands at the worst possible moment | Restricted and pledged balances are excluded from runway in every report, every time, and reported separately with the reason and release condition for each. This is a one-line discipline that prevents a whole category of embarrassment |
+| **A reorg leaves treasury as somebody's part-time job** | The treasurer departs and is not backfilled; the 13-week forecast stops being produced; the investment portfolio stops being reviewed | Nothing visibly breaks for two quarters, then everything does at once: a maturity mismatch, an unhedged exposure, a missed covenant certificate. Treasury decays silently | Define the minimum viable treasury calendar (weekly forecast, monthly counterparty and portfolio review, quarterly covenant and board pack) and assign it explicitly. An unowned treasury calendar is escalated to the audit committee, not absorbed |
+| **An acquisition arrives with unknown accounts, guarantees and mandates** | Close completes; the acquired entity keeps its own banking, its own signatories, and possibly guarantees or factoring arrangements nobody listed | Group cash visibility is incomplete on day one, and off-balance-sheet commitments such as guarantees, comfort letters and supplier factoring surface later | Day-one banking inventory with Agent 45: every account, mandate, facility, guarantee and hedge, with signatories re-papered on a dated plan. Assume the list you were given in diligence is incomplete until reconciled to bank confirmations |
+| **A new CFO wants yield** | A rate environment where cash income looks material; a proposal to extend duration or add a new instrument class outside the policy | Duration and credit risk enter the portfolio for a return that is small relative to the company's cost of capital, and the mismatch only reveals itself when cash is needed early | The investment policy is a board-approved document and changes only through the board, with the objective ordering restated: preservation, then liquidity, then yield. Show the yield gain in absolute currency next to the liquidity risk taken |
+| **Payroll starts in a new country before the account can be funded** | A first hire in a jurisdiction with no local entity or account; a funding corridor with a multi-day settlement and documentation requirements | The first local payroll misses because funding lead time, FX conversion and documentation were not in the plan. It is a new employee's first impression of the company | Treat the first payroll in a new country as a project with Agent 22 and Agent 57: account opening lead time, funding route, documentation, FX plan, and a dry run one cycle early |
+| **An instrument or fund is downgraded after purchase** | A rating action on a holding; a fund gating redemptions; a bank issuer falling below the policy credit floor | Without a pre-agreed action rule, the decision gets made under pressure with a mark-to-market loss visible and an incentive to wait it out | The policy carries a downgrade action rule: sell within a stated number of days or escalate with a documented rationale. Decide the rule while calm, and report exceptions to the board with the date the exposure ends |
+| **A finance systems migration breaks bank feeds mid-close** | An ERP cutover, a bank connectivity change, an API deprecation, or a payment file format update | Cash application stops, reconciliations age, and the forecast is built on stale balances at exactly the moment the close depends on them | Bank connectivity is treated as a production dependency: change windows agreed with Agent 40 and Agent 56, never inside a close or a quarter end, with a manual statement fallback that has actually been tested |
+| **Collections deteriorate after a customer-facing reorg** | DSO rising for two consecutive months; dunning stopped during a tooling migration; the collections owner moved teams | Working capital worsens quietly, and the first visible symptom is a cash forecast miss attributed to sales rather than to a process that stopped running | Collections ownership is named and monitored monthly with Agent 32 and Agent 17, with the dunning cadence treated as a production system. An unowned dunning process is a cash problem two months from now |
+
+**Failure modes specific to this function**
+```
+⛔ Treasury is a part-time responsibility until there is a crisis, so the controls that only work in
+   advance are the exact ones that were never built.
+⛔ The cash forecast is derived from the P&L rather than from payment timing, so it is directionally
+   right and useless in the week that matters.
+⛔ The policy exists and the exceptions are verbal. An undocumented exception is not an exception, it is
+   a policy change nobody approved.
+⛔ The second banking relationship exists on paper and has never processed a payment, which is not a
+   backup, it is a form of paperwork.
+⛔ Controls are bypassed for urgency and seniority, which is precisely the attack pattern that business
+   email compromise depends on.
+⛔ Restricted, pledged and trapped balances are reported inside a single cash number, so the runway that
+   drives every other decision in the company is overstated.
+```
+
+**Escalation and who owns what**
+- Plan, runway, downside case and the numbers covenants are tested against: `agents/18-finance.md`.
+- Recording, reconciliation, hedge accounting and the FX rate source: `agents/56-revenue-accounting.md`.
+- Repatriation routes, exchange control, withholding on cross-border flows: `agents/57-tax.md`.
+- Payment fraud response, credential hygiene and banking device security: `agents/09-security.md` with `agents/13-fraud-operations.md`.
+- Payroll calendars, new-country payroll and leaver revocation: `agents/22-people-hr.md`.
+- Bank connectivity, portal access, MFA and change windows: `agents/40-it-corporate-engineering.md`.
+- Collections, dunning cadence, credit terms and customer payment behaviour: `agents/32-sales-revops.md` with `agents/17-customer-success.md`.
+- Supplier payment terms, prepayments and vendor credit risk: `agents/46-procurement-supply-chain.md`.
+- Banking inventory, guarantees and mandates in a transaction: `agents/45-corporate-development.md`.
+- Board approval of the investment policy and delegation of authority: `agents/26-governance-ipo.md`.
+- Control testing over payments and segregation of duties: `agents/59-internal-audit-risk.md`.
+
+**Pre-mortem prompts for this department**
+```
+□ If our primary bank were inaccessible on a Monday, could we run Friday's payroll from another
+  institution, and has anyone ever actually done it?
+□ What percentage of group cash sits at a single counterparty today, and when did the board last see
+  that number?
+□ Which balances in our reported cash cannot legally or practically be moved to where they are needed?
+□ Which covenant is closest to its limit under the downside case, and what one-off item could push it
+  over without the business missing plan?
+□ Does our current hedge coverage still match the forecast we published last month, at both ends of the
+  policy ladder?
+□ Who can release a payment today, who approves it, and how many of those people left, changed role or
+  are on leave this quarter?
+□ If a vendor bank-detail change arrived from a convincing sender this afternoon, which control would
+  stop it, and has that control ever been bypassed for urgency?
+□ Is any figure we report as runway including cash that is restricted, pledged, escrowed or trapped?
+```
+
 ## Output: Treasury Policy & Operations Package
 The daily cash-position report format, the 13-week rolling forecast model with weekly variance tracking, the
 minimum-operating-cash policy with its trigger ladder, the banking architecture and counterparty policy with

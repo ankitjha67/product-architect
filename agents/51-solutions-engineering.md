@@ -299,6 +299,79 @@ technical win rate and POC→close instead.
    and concludes you don't talk to each other.
 ```
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` covers the org shocks every function inherits. These are the ones
+that land on pre-sales, where a deal clock runs against two organisations that both keep changing.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **POC criterion depends on a roadmap capability** | A success criterion quietly references a feature dated "next quarter"; the demo used a feature-flagged build | The date slips by one sprint and the POC fails a criterion you wrote yourself. The buyer concludes the product does not do what you said, which is materially worse than never bidding | No criterion may reference unreleased capability without a written, dated commitment approved by `agents/06-engineering.md` and `agents/04-prd.md` with a remedy attached. Otherwise it goes on the out-of-scope line and is sold as roadmap context, not proof |
+| **Security questionnaire lands with a deal deadline attached** | A 300-question SIG arrives on the 20th of quarter-end month with a "sign by the 30th" expectation | The library covers 70 percent, the remaining 30 percent needs `agents/09-security.md` sign-off, and someone under pressure writes an aspirational answer that becomes a contractual representation | Publish and hold the §5 SLAs, and make the escalation path an on-call rota rather than one named person. Any net-new answer is written by the control owner, not the SE. If the timeline cannot be met honestly, say so in writing and offer the trust-center subset |
+| **A library answer has gone stale under you** | The answer is 14 months old; the certificate scope changed at the last audit; a subprocessor was added | You send a confidently wrong answer that the buyer's auditor cross-checks against your public SOC 2 scope. Trust does not recover inside this deal | Stale-answer blocking is a control, not a nicety: any answer past its review date is auto-flagged and cannot be inserted. Re-review the library after every audit, certificate renewal and subprocessor change |
+| **The customer environment violates a documented assumption** | A TLS-inspecting proxy, an air-gapped segment, a non-standard IdP configuration, or an egress allowlist surfaces at week three | The POC stalls on connectivity nobody scoped, SE hours burn on their network team's queue, and the delay is attributed to your product | Environment prerequisites become a signed pre-flight checklist before day 0: IdP and protocol, egress rules, proxy behaviour, admin rights, data volumes. A prerequisite unmet at kickoff pauses the clock in writing |
+| **SE capacity is the real constraint on pipeline** | Demo lead time passes 5 business days; SE attach falls below 80 percent on qualified enterprise opps | Win rate falls quietly a quarter before anyone connects it to staffing, and the fix proposed is "more demos", which makes it worse | Report the §7 capacity math monthly to `agents/32-sales-revops.md` in hours and deals, not in feelings. Under a hiring freeze, ration explicitly: publish which segments get SE attach and which get self-serve proof |
+| **A bespoke integration is promised in the deal and orphaned after close** | The order form references a connector; no SOW line, no engineering ticket, no owner | Post-sale, `agents/52-professional-services.md` discovers unpriced work and `agents/17-customer-success.md` inherits an angry customer. The margin hit is invisible until the project overruns | Nothing custom leaves pre-sales without a price and an owner: either a scoped SOW line from 52 or a committed backlog item from 06. The §8 commitment register is the gate, and it is auditable at Closed Won |
+| **The buyer's architecture review board rejects the deployment model late** | An architect who never attended a call appears in week eight with a standards document | Your single-tenant SaaS meets a mandate for private networking, a specific iPaaS, or on-prem key management. The technical win evaporates after it was logged | Ask "who must say yes technically who is not on this call" in discovery, then get the standards document early. Where the mandate is genuine, build to it or disqualify; do not negotiate against a written standard in week nine |
+| **A certification lapses or its scope changes mid-cycle** | SOC 2 period ends and the bridge letter is late; an ISO surveillance audit adds a qualification | Buyers in regulated sectors block on the gap. Deals in the final stage stall behind an internal audit calendar you do not control | Track certificate periods, bridge-letter dates and audit windows on the same calendar as pipeline. Warn `agents/09-security.md` of deals landing inside a gap, and pre-write the honest bridging language |
+| **Your own vendor or subprocessor has an incident mid-deal** | A supplier breach makes the news while your security review is open | The questionnaire reopens, the buyer asks what data was exposed, and any hedged answer reads as concealment | Have the subprocessor inventory and an incident-response statement ready before you need one. Answer through 09 and `agents/39-privacy-dpo.md` in one voice; never let an SE improvise a supply-chain answer |
+| **Pricing or packaging changes mid-POC** | A new list price, a repackaged tier, or a limit that moves under an active evaluation | The sizing you presented is void, the buyer feels bait-and-switched, and the AE discounts to repair it | Require a change-notice path from `agents/36-pricing-monetization.md` into open opportunities, with grandfathering for anything already quoted in writing during an active evaluation |
+| **Legal redlines rewrite technical commitments after the technical win** | Uptime credits, RPO/RTO figures, or support response times appear in a redline nobody technical has read | The company signs an SLA that operations cannot meet, and the first breach is discovered by the customer | Any contractual technical number is reviewed by `agents/08-devops-sre.md` and 09 before signature. The SE reads the final redlines; a technical clause approved only by Legal is an incident on a delay |
+| **A competitor offers a free POC plus free integration work** | The AE arrives with "match it or lose it", usually in the last two weeks of a quarter | You fund an unscoped implementation with SE hours, set a precedent your next four deals will cite, and still lose on relationship | Answer with the qualification bar, not the discount: paid pilot, fixed-fee scoping through 52, or a costed connector attached to the proposal. Escalate the precedent question to `agents/32-sales-revops.md` and `agents/18-finance.md`, not to the individual SE |
+| **The prospect is a competitor, an investor, or a customer of a customer** | Deal-desk review, or an SE recognising the domain during discovery | Your architecture, limits and roadmap walk out of the room in a demo recording. Non-public information reaches someone with an interest in it | Screen accounts for competitive and conflict status before a deep technical session. Redact limits and roadmap for flagged accounts, keep NDAs current with `agents/10-legal-ip.md`, and never share another tenant's data shapes |
+| **A public-sector or regulated RFP with mandatory requirements you fail** | A 10-day deadline, mandatory clauses on residency, accessibility conformance or certification | Someone bids anyway, submits an aspirational compliance matrix, and creates a written obligation the company cannot meet, sometimes with debarment exposure | Run the §5 go/no-go honestly and no-bid in writing. Where a mandatory requirement is close but unmet, respond with an exception and a compensating control, never with a "yes" you cannot evidence |
+| **Global procurement overrides a regional buy** | A regional entity is ready to sign while a global vendor-management office asserts a single global agreement | The regional deal freezes for a quarter behind a global master agreement, and the regional champion loses credibility internally | Ask about global procurement mandates in discovery, not at signature. Where a global agreement exists, sell the regional pilot into it as an addendum with `agents/46-procurement-supply-chain.md` rather than around it |
+| **SE hours drift into post-sales firefighting** | SEs on escalation bridges for live customers; demo lead time rising with no change in pipeline | Pre-sales capacity funds post-sales failure invisibly, then pipeline coverage collapses and looks like a demand problem | Cap and measure post-sale SE time (the 30-day window in §8 is the boundary). Anything beyond it becomes a funded escalation resource owned by 17 and 52, tracked as a transfer, not absorbed |
+| **An SE resigns and takes a vertical with them** | One name on every fintech deal; one person owns the healthcare demo org and half the library | Deals in that vertical stall for a quarter, and the answers they wrote decay with no reviewer | Two-person rule per vertical: named backup, documented demo-org ownership, library answers owned by a control owner rather than the SE who typed them. Track bus factor per vertical as a real metric |
+
+**Failure modes specific to this function**
+```
+⛔ THE STRETCHED YES UNDER QUARTER-END PRESSURE - an aspirational answer or a promised date given
+   because the calendar is louder than the control owner. It becomes a representation, then a claim.
+⛔ CAPACITY INVISIBLE UNTIL WIN RATE DROPS - SE constraint reported as a feeling, so the org buys
+   more demos instead of more coverage, and attach rises while conversion falls.
+⛔ COMMITMENT REGISTER TREATED AS PAPERWORK - the verbal promise nobody logged is the single most
+   reliable source of post-sale margin loss and first-quarter customer distrust.
+⛔ LIBRARY OWNERSHIP DECAY AFTER A REORG - control owners change, review dates pass, and the answer
+   library becomes a confident record of a security posture the company no longer has.
+⛔ DEMO ENVIRONMENT ROT UNDER A FREEZE - the golden org depends on internal platform work that a
+   change freeze or a platform reorg stops, and nobody notices until a live demo fails.
+⛔ PRE-SALES ABSORBING POST-SALES WORK - the quietest capacity leak in the department, because it
+   feels like good customer service right up to the point pipeline coverage breaks.
+```
+
+**Escalation and who owns what**
+```
+Security answers, exceptions, certificate scope ....... agents/09-security.md
+DPA, residency, subprocessors, transfer mechanisms .... agents/39-privacy-dpo.md
+Contractual technical terms, NDAs, redlines ........... agents/10-legal-ip.md, agents/08-devops-sre.md
+Roadmap commitments and dated feature promises ........ agents/04-prd.md, agents/06-engineering.md
+Custom work: scoping, pricing, ownership after close .. agents/52-professional-services.md
+Post-go-live value, references, escalations ........... agents/17-customer-success.md
+Capacity, attach, coverage, deal-desk precedent ....... agents/32-sales-revops.md
+Discount floors, free-POC funding, precedent cost ..... agents/18-finance.md, agents/36-pricing-monetization.md
+Global agreements, VMO mandates, vendor onboarding .... agents/46-procurement-supply-chain.md
+Regulated-sector obligations, public-sector bids ...... agents/11-compliance-ethics.md, agents/28-government-relations.md
+SE headcount, vertical bus factor, backfills .......... agents/22-people-hr.md, agents/60-talent-acquisition.md
+Cross-functional deadlock and decision rights ......... agents/62-chief-of-staff-bizops.md
+```
+
+**Pre-mortem prompts for this department**
+```
+□ Which live POCs have a success criterion that depends on something not yet shipped?
+□ If the security reviewer or control owner is on leave for three weeks, which deals stall,
+  and who is the named delegate on the questionnaire path?
+□ How many answers in the library are past their review date, and are any of them in flight today?
+□ Which deals in the current quarter contain a custom commitment with no SOW line and no ticket?
+□ If two enterprise POCs and one RFP land in the same fortnight, whose deal does not get an SE,
+  and who decides that?
+□ Which vertical, demo org, or answer domain has exactly one person who understands it?
+□ What technical numbers are in the standard contract, and when did operations last confirm
+  the company can actually meet them?
+□ For every deal above the deal-desk threshold, has anyone checked whether a global procurement
+  agreement or a change freeze governs the signature date?
+```
+
 ## Example
 
 **User says:** "A 4,000-person insurer wants a 6-week POC and wants us to build a connector to their legacy

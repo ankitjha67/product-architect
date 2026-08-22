@@ -337,6 +337,63 @@ MULTI-REGION: follow-the-sun support only after single-region SLAs are stable. O
 SOP library with local annexes (language, regulation, payment rails) - never forked copies.
 ```
 
+### 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the operations-specific
+layer: the cases where the process is well designed, the SOP is current, and the ORGANISATION
+is the failure mode. Pick the 3 to 5 that can plausibly land in the next two quarters and name
+the trigger, the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **The vendor SLA is meaningless because the penalty is smaller than the impact** | Service credits capped at a few percent of monthly fees against an outage that costs many times that; the vendor breaching and paying without changing behaviour; a QBR where the same miss appears three quarters running | Stop negotiating credits and start negotiating REMEDIES: named improvement plan with dates, earn-back tied to volume, and a termination-for-repeated-breach right. Price your own fallback, because a credit is not a recovery (§3) | 19 Operations with 46 Procurement & Supply Chain, 10 Legal & IP |
+| **A process only works because one person absorbs every exception** | One name on every escalation; a documented SOP with a 20 percent exception rate handled "informally"; that person declining leave; volume growth absorbed with no headcount growth | Instrument the exceptions for two weeks before touching the process: type, volume, time cost, and who resolved it. Exceptions are the real process. Then either design them into the SOP or route them to a named second person, with a 48-hour knowledge capture in the meantime | 19 Operations, 20 BAU, 22 People & HR |
+| **A change freeze collides with a committed delivery date** | The freeze calendar published after the commitment; peak season, quarter-end or a regulatory filing window landing inside the delivery plan; an emergency-change path that exists only in theory | Publish the freeze calendar at planning time and treat it as an immovable constraint. For anything genuinely urgent, use the pre-agreed break-glass path (named approver, hour-based clock, logged). Unlogged out-of-band changes during a freeze are worse than the delay | 20 BAU, 19 Operations, 41 Technical Program Management |
+| **Capacity is planned on a forecast owned by a team paid to inflate it** | The sales or growth forecast used directly as the ops capacity input; historical forecast error never measured; a hiring plan built on the optimistic case only | Track forecast accuracy by owner and apply the measured bias, not the submitted number. Plan capacity in three bands (base, upside trigger, downside trigger) with a named event that moves you between them, so surge staffing is a decision, not a scramble | 19 Operations, 18 Finance, 32 Sales & RevOps |
+| **A shared service is a single point of failure nobody has budgeted to fix** | One queue, one integration, one payments file or one legacy job that every team depends on; a known fix repeatedly deferred because it belongs to no roadmap; no owner named in the CMDB | Name an owner before naming a solution. Then price the outage, not the fix: an unfunded fix stays unfunded until the expected annual loss is on the same page as the cost. Add a manual continuity procedure in the meantime (§8 in Agent 20) | 19 Operations, 08 DevOps & SRE, 18 Finance |
+| **A BPO transition or vendor attrition spike lands next to peak** | Vendor attrition above roughly 40 percent annualised; a renegotiated contract at a lower unit price; a knowledge-transfer plan measured in weeks, not in shadowed transactions | Never transition inside a peak window. Require a shadow period measured in transactions handled, not calendar days, and hold 20 percent of volume in-house through the transition as the fallback path (§3) | 19 Operations, 46 Procurement & Supply Chain, 17 Customer Success |
+| **The documented SOP is not the actual process** | An audit sample where 3 of 10 transactions took an undocumented path; workarounds shared in chat rather than the SOP library; a version-control-free document with no owner or review date | Audit the process as executed and update the SOP to match reality FIRST, then improve it. A team that is punished for deviating simply stops reporting deviations, which removes the only signal you had (§6) | 19 Operations, 59 Internal Audit & Risk, 20 BAU |
+| **A cost programme removes the exception-handling and QA layer** | A headcount cut applied evenly across queues; QA sampling reduced to "when there is time"; the escalation desk merged into the frontline queue | Show the failure demand: the rework, refunds and escalations that the removed layer prevented, in money per month. If the cut stands, publish which checks stop from which date, so the risk is an accepted decision with an owner rather than a silent degradation | 19 Operations, 18 Finance, 59 Internal Audit & Risk |
+| **A product launches with ops cost per unit never modelled** | A launch plan with no ops sign-off; a workflow requiring manual intervention "just for the first few months"; support and fulfilment volumes absent from the business case | Attach an ops cost per order or per ticket to the launch review as a gate. Manual-for-now becomes permanent load: agree the automation date and owner at launch, not after the queue backs up (§8) | 19 Operations, 14 Launch & GTM, 41 Technical Program Management |
+| **A regional entity refuses the global SOP** | Local leadership running a forked process; local law, local rails or local pride cited without specifics; two versions of a document with different steps | Separate what genuinely must differ by law or rail from what is preference, in writing. Standardise the rest into one SOP library with local annexes, never forked copies (§9). Unreconciled forks become the audit finding | 19 Operations, 11 Compliance & Ethics, 43 Localization & i18n |
+| **A control that auditors will test lives in one person's spreadsheet** | Reconciliations, maker-checker or exception approvals performed in a file with no access control, no version history and no evidence trail; the evidence assembled the week the auditor asks | Move evidence generation into the system that performs the work, and keep it continuously retrievable. Never reconstruct evidence retrospectively: a fabricated artefact is a larger finding than the gap it hides (§9) | 59 Internal Audit & Risk, 19 Operations, 20 BAU |
+| **An automation project is half-delivered and both processes are now live** | A rollout paused at 60 percent because the sponsor moved or the budget was cut; two paths for the same transaction; reconciliation differences between the automated and the manual route | Either finish the migration or formally revert. Running dual paths is the most expensive state and it silently doubles the training, QA and audit surface. Set an explicit dual-run exit criterion, for example two clean reconciliation cycles, rather than a date | 19 Operations, 41 Technical Program Management, 06 Engineering |
+| **Product defects are routed to operations as permanent manual work** | A workaround SOP written for a known bug; ticket volume tied to one feature; ops headcount growing linearly with a defect nobody prioritises | Report failure demand back to the owning team monthly, in FTE cost, and require a fix date or a formal acceptance that ops carries the cost. Absorbing defects silently makes ops the cheapest place to hide engineering debt | 19 Operations, 06 Engineering, 62 Chief of Staff & BizOps |
+
+```
+⛔ HOW OPERATIONS FAILS UNDER ORGANISATIONAL PRESSURE:
+□ HEROICS READ AS HEALTH: the exceptions absorbed quietly by good people are invisible in
+  every dashboard, so the process looks stable right up to the day that person leaves.
+□ OPS IS SIZED AGAINST SOMEONE ELSE'S FORECAST: capacity is a consequence of a number the ops
+  function neither owns nor is allowed to challenge, and the variance always lands on ops.
+□ THE VENDOR RELATIONSHIP IS MANAGED BY THE CONTRACT, NOT THE OPERATION: nobody watches the
+  vendor's attrition, site concentration or supervisor ratio, which is where the SLA actually
+  breaks weeks before the metric shows it.
+□ EVERY OTHER FUNCTION'S UNFINISHED WORK BECOMES AN SOP: ops is the organisational shock
+  absorber, and absorbing it is precisely what stops it from being fixed upstream.
+□ PROCESS DEBT HAS NO BUDGET LINE: nobody is funded to retire a control, a workaround or a
+  dual path, so accretion is permanent and the cost surfaces only as slow degradation.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Operations is judged on the mean and killed by the variance. Every capacity model, SLA and
+staffing plan is built on the average transaction, while the actual cost of the function sits
+in the exception tail: the 8 percent of cases that take 10 times as long, are handled by one
+experienced person, and appear in no report because they were resolved. That is why cutting
+ops headcount looks free for two quarters and then produces a backlog that costs multiples of
+the saving. The organisational counter is to measure the exception rate and the failure demand
+as first-class metrics with owners, and to route the cost back to whoever generates it. An ops
+function that cannot say what percentage of its volume is exceptions, and who caused them, has
+no defence when the cost programme arrives.
+
+⚠️ SLA and penalty enforceability, outsourcing and works-council duties, audit evidence
+   standards and cross-border process requirements are jurisdiction-specific and change over
+   time. Treat the principles above as durable and verify current obligations with qualified
+   counsel and Agents 10, 11 and 46 before acting. See references/DISCLAIMER.md.
+```
+
 ## Output: Operations Strategy Document
 Operational model, SOPs for critical processes, vendor management framework, workforce plan,
 quality management system, and operational dashboards specification.

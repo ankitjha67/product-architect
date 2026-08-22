@@ -309,6 +309,83 @@ so the first sceptical CFO destroys it.
 ⛔ TRAINING BUILT WITHOUT AGENT 17's TICKET DATA - teaching what is easy to film, not what people get stuck on.
 ```
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` covers the org shocks every function inherits. These are the ones
+that land on education, where content is a maintained system, a credential is a promise, and both are
+hostage to release trains and other people's budgets.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **A release invalidates the certification blueprint** | A major version changes the admin model, or a feature in an exam domain is renamed or removed | Candidates study for a product that no longer exists, pass rates move for reasons nothing to do with competence, and the credential quietly loses meaning | Bind the blueprint to a product version and to the §8 intake decision at release planning. A domain-affecting release triggers item review, a delta exam and a dated recertification window before the release ships, not after complaints arrive |
+| **A deprecation reaches customers before it reaches education** | The deprecation notice goes out and the top onboarding module still teaches the removed workflow | Learners are trained into a dead end, support absorbs the confusion, and every other asset loses credibility because learners cannot tell which third is wrong | Education is a named recipient on the deprecation calendar owned by `agents/06-engineering.md` and `agents/04-prd.md`. No deprecation ships without an education decision recorded in the release checklist |
+| **A rebrand or an acquisition invalidates the whole library** | New product names, new UI chrome, merged terminology across two companies | Thousands of screens, narration tracks and exam items become wrong at once. Re-recording everything is unaffordable, so nothing is done and the library rots publicly | Triage by traffic and stakes: fix the onboarding path and certification first, banner the rest with a version note, retire aggressively. Budget the rebrand's content cost during integration planning with `agents/45-corporate-development.md`, not after launch |
+| **The exam item bank leaks** | Pass rates jump for a cohort; braindump sites appear; identical wrong answers cluster | The certified population can no longer be trusted, and every enterprise buyer who used the credential to hire is affected. Reputation damage falls on the ecosystem, not just the exam | Assume leakage and plan refresh: multiple forms, rotating items, statistical monitoring for anomalous patterns, and a published policy on invalidation. Retire compromised items rather than defending them |
+| **A candidate challenges a result or the exam's accessibility** | An appeal, a request for accommodation, or a complaint about proctoring software and biometric checks | A credential decision becomes a legal and reputational matter, and the defence depends on documentation created long before the complaint | Publish an appeals process, keep the cut-score method defensible, and offer accommodations as a documented standard. Coordinate with `agents/05-design.md` on conformance and `agents/10-legal-ip.md` on the appeals policy before the first exam is sold |
+| **Accessibility conformance becomes a procurement blocker** | An enterprise or public-sector buyer asks for a VPAT covering the academy and the content in it | Captions, transcripts and keyboard navigation become contractual, and a deal stalls behind a remediation project measured in months | Treat captions, transcripts and conformance as production standards from the first module, not a retrofit. Keep the academy's conformance statement in `agents/51-solutions-engineering.md`'s answer library so the question is answered in hours |
+| **Training completion is treated as an auditable control** | A pharma, financial-services or healthcare customer asks which content version a named person completed, and when | Your platform can prove someone finished a course but not which version, with no attestation and no tamper-evident record. The customer fails a control test and blames the vendor | Version content, retain per-learner attestation records, and confirm retention periods with `agents/11-compliance-ethics.md`. A platform that cannot produce a defensible record is disqualified regardless of how good the courses look |
+| **A deletion request collides with a retention obligation on training records** | A learner exercises erasure rights while the same record is a compliance artifact for their employer | Privacy says delete, the customer's auditor says retain, and the conflict is improvised per request by whoever answers first | Decide the rule per data category in advance with `agents/39-privacy-dpo.md`: what is the customer's record, what is yours, what is anonymised rather than deleted. Write it into the academy DPA before enterprise launch |
+| **Localisation gaps block a regulated market** | A market requires training in the local language, or the customer's works council objects to tracking employee completion | Rollout stalls in one region, or an English-only course is delivered to people who legally must be trained in their own language | Tier localisation per §7 and check the requirement, not the preference, with `agents/43-localization-i18n.md` and `agents/11-compliance-ethics.md`. Where employee monitoring or consultation rules apply, start consultation before the rollout date is announced |
+| **CPE, CEU or accreditation obligations attach to your programme** | Customers ask whether courses carry continuing-education credit for their professional bodies | Sponsorship carries real obligations: qualified instructors, documented learning objectives, attendance verification, records retention and periodic review. Failing them can withdraw the accreditation mid-programme | Do not advertise credit before the sponsorship obligations are confirmed and staffed, and verify current requirements with the accrediting body. Where obligations are heavy, partner rather than sponsor |
+| **The academy platform is acquired or reprices per learner** | An acquisition notice, a renewal quote with per-learner pricing, or a feature moved to a higher tier | Cost scales with success, and the switching cost is enormous because completion history, SCORM packages and certification records live inside the vendor | Contract for export and portability at signature, not at renewal: raw event export to the warehouse, learner records, content in a portable format. Model the exit cost annually with `agents/46-procurement-supply-chain.md` |
+| **Your content goes stale inside the customer's own LMS** | A large customer imported SCORM packages a year ago and never updated them | Their employees are trained on an old version, the resulting tickets look like product defects, and you cannot see the cause because the content is in their system | Version and date every exported package, publish a supported-version policy with an expiry, and notify licensees on material change. Treat content licensing as a maintained integration, not a one-time delivery |
+| **A budget cut lands on education first** | Completion is the only number the team reports; a cost-optimisation programme asks each function for a ranked descope | Education is cut because its value was never expressed in retention, deflection or services offset, and the cut is defended with the team's own vanity metric | Report §1's value pools with a defensible measurement design continuously, so the number exists before it is asked for. Keep a ranked descope list that protects the onboarding path and certification maintenance first |
+| **The sole instructional designer or video producer leaves** | One person owns the authoring tool, the studio workflow and the certification item bank | Production stops, the freshness SLA lapses, and the library decays for two quarters while a replacement is hired and ramped | Two-person rule on the authoring pipeline and the item bank, documented production runbooks, and a standing contractor relationship as surge cover. Track content bus factor as a real risk with `agents/22-people-hr.md` |
+| **Partner certification becomes a commercial gate you cannot supply** | Partner tiering requires N certified consultants; exam capacity, proctoring slots or course translations are the constraint | Partners cannot transact, and your enablement programme becomes the reason a channel misses its number | Size exam and enablement capacity against the partner plan with `agents/33-partnerships-bizdev.md` before tiering rules go live, and hold voucher and proctoring capacity for committed partners |
+| **Marketing turns an education outcome into an advertising claim** | A campaign states that trained customers churn less or resolve tickets faster, quoting your number | An unmatched correlational figure becomes a public claim requiring substantiation, and the first analyst or regulator who asks costs the programme its credibility | Any external claim uses the matched-cohort or holdout number, with the method attached, reviewed with `agents/31-product-marketing.md` and `agents/10-legal-ip.md`. Report correlational figures as correlational, internally and externally |
+| **Instructor-led delivery in a country where you have no entity** | Live cohorts, on-site workshops or contract trainers engaged in a new market | Trainer engagements can raise worker-classification questions and, in some cases, permanent-establishment or withholding exposure. The finding usually arrives from tax, long after the classes ran | Route new-country delivery through `agents/57-tax.md` and `agents/22-people-hr.md` before booking. Prefer a local partner or an existing entity, and verify current rules per jurisdiction rather than assuming last year's answer |
+
+**Failure modes specific to this function**
+```
+⛔ CONTENT PRICED AS A PROJECT, NOT A SYSTEM - the build is funded and the maintenance is not, so the
+   library ages into a liability the moment the release train moves.
+⛔ VALUE REPORTED IN COMPLETIONS WHEN THE BUDGET IS SQUEEZED - the one metric that guarantees the
+   function is read as content ops and cut first.
+⛔ A CREDENTIAL WHOSE INTEGRITY IS UNDEFENDED - leaked items, a soft cut score and no appeals process,
+   so the certification stops meaning anything to the employers whose hiring made it valuable.
+⛔ EDUCATION USED TO ABSORB ORGANISATIONAL FAILURE - teaching around a confusing design, an unfinished
+   implementation or a support gap, which makes the underlying problem permanently invisible.
+⛔ ENTERPRISE OBLIGATIONS DISCOVERED AT RENEWAL - accessibility, versioned training records, residency
+   and retention treated as edge cases until a procurement questionnaire makes them blockers.
+⛔ ONE-PERSON PRODUCTION PIPELINE - authoring, video and the item bank owned by a single individual,
+   so any departure or leave freezes the curriculum.
+```
+
+**Escalation and who owns what**
+```
+Release, deprecation and version calendars ............ agents/04-prd.md, agents/06-engineering.md
+Learner personal data, retention, DSAR conflicts ...... agents/39-privacy-dpo.md
+Auditable training records in regulated customers ..... agents/11-compliance-ethics.md
+Exam appeals, accreditation terms, content licensing .. agents/10-legal-ip.md
+Accessibility conformance and VPAT responses .......... agents/05-design.md, agents/51-solutions-engineering.md
+Localisation scope, language tiers, in-market rules ... agents/43-localization-i18n.md
+Academy platform contract, exit and portability ....... agents/46-procurement-supply-chain.md
+Ticket data, deflection value, CSM enablement ......... agents/17-customer-success.md
+Implementation-scope enablement and go-live training .. agents/52-professional-services.md
+Partner certification demand and channel tiering ...... agents/33-partnerships-bizdev.md
+External claims and campaign substantiation ........... agents/31-product-marketing.md
+Budget defence, ROI methodology, descope ranking ...... agents/18-finance.md
+Trainer engagement, classification, new-market entry .. agents/22-people-hr.md, agents/57-tax.md
+```
+
+**Pre-mortem prompts for this department**
+```
+□ Which assets would be wrong tomorrow if the next major release shipped on schedule, and who
+  is on the hook to fix them?
+□ If the company rebranded or acquired a competitor next quarter, what would the content
+  remediation cost, and has anyone put that number in the integration plan?
+□ Can we prove which version of which course a named learner completed, on what date?
+□ If a learner asked us to erase their records today, which of those records is the customer's
+  compliance artifact rather than ours, and who decided that?
+□ What happens to the curriculum if the one person who owns authoring or the item bank leaves?
+□ If education's budget were cut 30 percent, what do we stop, and what have we promised
+  contractually that we must keep doing anyway?
+□ Which claims about education outcomes are currently in market, and does the evidence behind
+  them survive a matched-cohort challenge?
+□ Which enterprise contracts already commit us to accessibility, language coverage or record
+  retention that the current programme does not meet?
+```
+
 ## Example
 
 **User says:** "Our support volume is up 60% year over year, mostly admin 'how do I' tickets. Our CSMs spend

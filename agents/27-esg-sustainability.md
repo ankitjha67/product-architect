@@ -328,6 +328,64 @@ RATINGS MECHANICS (know the game before deciding to play it):
    substance flat, and buyers' auditors notice the gap.
 ```
 
+## 9. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, budget cuts, reorgs). This section is the ESG-specific
+layer: the cases where the science is settled and the framework is chosen, and the
+ORGANISATION is what breaks the program. Pick the 3 to 5 that can plausibly land in the
+next two quarters and name the trigger, the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A public target is announced before the data to report against it exists** | A target year appears in a board or investor deck with no inventory attached; the press release is drafted before a data owner is named; "carbon neutral" appears with no methodology footnote | Downgrade the announcement from a dated target to a commitment plus a baseline program: publish the commitment, the boundary, and the date the baseline lands. No number reaches a press release without a substantiation file (§6) | 27 ESG with 25 PR, 44 Investor Relations, 10 Legal |
+| **Scope 3 is most of the footprint and sits in a supply chain you do not control** | The spend-based screen shows Cat 1 and Cat 11 dominating; supplier questionnaire response rate under 30 percent; the standard contract template has no ESG clause | Stop questionnairing the tail. Engage the roughly 50 suppliers that are most of spend, and move the data ask into renewal clauses so it is contractual rather than a favour | 27 ESG, 46 Procurement, 18 Finance |
+| **A voluntary disclosure regime becomes mandatory and last year's marketing copy becomes a legal statement** | A regime you answered voluntarily moves into scope for your size, listing status or EU revenue; counsel starts asking who signs the sustainability statement | Re-read every prior public claim as if it were already in a filing, then restate or withdraw before the first mandatory cycle rather than after. Scope, thresholds and phase-in change often: verify current with qualified counsel | 27 ESG, 11 Compliance, 10 Legal, 26 Governance & IPO |
+| **Assurance demands evidence for numbers that were estimated** | The provider asks for source documents behind a spend-based proxy; a renewable percentage traces only to unbundled certificates; the emissions workbook has no version history | Split the inventory into assurance-grade and estimated tiers before the auditor does it for you. Estimated with a documented method is defensible; estimated but presented as measured is a finding | 27 ESG, 59 Internal Audit & Risk, 56 Revenue Accounting |
+| **A green claim is challenged by a regulator, NGO or journalist** | An advertising complaint, a competitor counter-claim, or a claim using "eco", "carbon neutral" or "plastic-free" with no qualifier and no file behind it | Pull the substantiation file within 24 hours. If it does not exist, withdraw the claim before defending it. A quiet correction survives; a defended claim that later collapses becomes the story | 27 ESG, 10 Legal, 25 PR, 15 Marketing & Sales |
+| **An ESG rating downgrade touches a financing covenant** | A sustainability-linked facility with a margin ratchet; a rater re-weighting its industry model; the data-verification window opening while your submission owner is on leave | Model the basis-point impact and the covenant test date FIRST, then decide whether engaging the rater is worth it. Treasury owns the money question, ESG owns the data question | 58 Treasury, 27 ESG, 18 Finance, 44 Investor Relations |
+| **An acquisition brings an inherited target and a different methodology** | Diligence surfaces a published 2030 commitment, a different base year, site environmental liabilities, or transferring ESG-linked covenants | Recalculate the baseline at close instead of silently absorbing their number, and decide publicly whether the inherited target is adopted, restated or retired before an analyst asks | 45 Corporate Development, 27 ESG, 44 Investor Relations |
+| **The ESG budget is cut but the disclosure obligation is not** | A cost program lands, the headcount req is frozen, the filing deadline is unchanged, and the plan is "the team absorbs it" | Publish a coverage map: which topics keep assurance-grade data, which drop to estimated and are labelled as such, and from what date. Silent de-scoping of a disclosed metric is a misstatement | 18 Finance, 27 ESG, 59 Internal Audit & Risk |
+| **The entire inventory lives in one analyst's spreadsheet** | One person reconciles every number; hard-coded emission factors with no vintage; no lineage from invoice or meter to tonne; that person declines to take leave | Treat the inventory like a financial system: version control, sourced factors with vintages, a named second reviewer, and a pipeline owned by data engineering rather than by a person | 27 ESG, 38 Data Engineering, 59 Internal Audit & Risk |
+| **A methodology or factor update makes emissions go UP** | Grid factor refresh, a supplier moving from spend-based to activity-based data, or a boundary change after a divestiture or acquisition | Restate the prior year on the new method and publish both, splitting real change from method change. A restatement disclosed early is a footnote; discovered later it is a credibility event | 27 ESG, 44 Investor Relations, 25 PR |
+| **A customer's ESG cascade lands on a deal deadline** | An RFP demands a CDP score, supplier value-chain data, or a validated target, with a response window of weeks against data that takes quarters | Answer with what genuinely exists plus a dated roadmap and the commitment evidence. Most procurement scorecards rank "committed with evidence" far above blank. Never quote a score you do not hold | 32 Sales & RevOps, 27 ESG, 51 Solutions Engineering |
+| **DEI metrics cannot lawfully be collected the same way in every country** | A global dashboard asks for demographic categories that some jurisdictions restrict; local HR or a works council objects after the metric has been announced | Design the metric per jurisdiction BEFORE it is published, with privacy and consultation review, and report coverage honestly rather than showing a global figure built on a partial base. Verify with qualified counsel | 39 Privacy & DPO, 22 People & HR, 27 ESG, 10 Legal |
+| **ESG-linked pay makes the reporter and the beneficiary the same person** | The scorecard metric is produced by the team reporting to the executive it pays; a target quietly adjusted mid-cycle; no independent recalculation before payout | Route the metric through the same control path as a financial KPI: defined at cycle start, calculated independently, evidenced, and reviewed by audit before any payout is approved | 61 Total Rewards, 59 Internal Audit & Risk, 26 Governance & IPO, 27 ESG |
+| **A business decision blows the target and nobody consulted ESG** | A high-carbon compute region chosen on latency and price alone; a travel policy reversal; an acquisition or an office mandate decided with no emissions line in the memo | Get the emissions consequence into the SAME decision memo as cost and latency, with a number. A target owned only by the ESG function is a target no other function has to respect | 27 ESG, 62 Chief of Staff & BizOps, 08 DevOps & SRE, 29 Data & AI Strategy |
+
+```
+ORG FAILURE MODES OF AN ESG FUNCTION UNDER PRESSURE (not reporting bugs, org failure):
+⛔ REPORTING FUNCTION WITH NO MANDATE: ESG owns the number but not one decision that
+   moves it, so the team becomes an accounting department for other people's choices.
+⛔ NARRATIVE-LED TARGETS: the pledge date is set by the comms calendar (investor day,
+   listing, award submission) rather than by an abatement model anyone has actually run.
+⛔ ONE-CYCLE STAFFING: the team is sized for the report and not for what follows it -
+   assurance, supplier engagement, restatements, customer questionnaires, ratings windows.
+⛔ DATA WITHOUT LINEAGE: numbers that cannot be traced to an invoice, meter or contract
+   survive exactly until the first auditor, first RFP audit, or first journalist.
+⛔ ISLAND OPERATING MODEL: no ESG seat in procurement, architecture, M&A or facilities
+   decisions, so every commitment is quietly undermined downstream by design.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG: ESG programs almost never fail on climate science or on
+framework choice. They fail on ACCOUNTABILITY GEOMETRY. The function that publishes the
+commitment has authority over none of the decisions that determine it: cloud region,
+supplier selection, travel policy, factory siting, M&A. So the target is real to exactly
+one team and advisory to everyone else, and the gap only becomes visible years later when
+the trajectory misses and the disclosure is now legally binding.
+
+The structural fix is not a bigger ESG team. It is putting the emissions and social
+consequence into other functions' decision templates and incentives, so procurement,
+engineering and corp dev each carry a piece of the number. An ESG team that reports the
+whole footprint but owns no lever is a well-staffed measurement of someone else's plan.
+
+⚠️ Disclosure scope, assurance requirements, green-claims rules and demographic-data
+   collection limits are jurisdiction-specific and move quickly. Treat the principle as
+   durable and verify the current rule with qualified counsel and your assurance provider
+   before publishing anything. See references/DISCLAIMER.md.
+```
+
 ## Example
 **User says:** "We're a 900-person B2B SaaS (India HQ, 40% revenue from EU enterprise
 customers). Two RFPs now demand CDP scores and 'CSRD-ready' data. The CEO wants to

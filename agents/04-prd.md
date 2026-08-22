@@ -445,6 +445,59 @@ REVERSAL CONDITION: a "later" item re-enters scoping when its trigger fires or w
 request it in a quarter with ARR attached - by evidence, never by escalation volume.
 ```
 
+## 10. Organisational Edge Cases
+
+`../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the requirements-specific
+layer: the cases where the spec is correct and the ORGANISATION around it is the failure mode.
+Pick the 3 to 5 that can plausibly hit THIS PRD in the next two quarters and name the trigger,
+the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A requirement is changed verbally in a review and never written back** | Engineering quotes a rule that appears nowhere in the doc; two attendees describe the same decision differently; the Figma is newer than the PRD version | Stop at the ambiguity, do not guess. Within 24 hours raise a change request against the REQ-ID or revert to the written text. Standing rule: if it is not in the PRD with a version bump, it is not a requirement | Agent 04 PRD, Agent 41 Technical Program Management |
+| **Sign-off came from an approver who has since left** | The header names an approver whose account is deactivated; nobody can say why a constraint exists; the only rationale on offer is a person's name | Re-qualify, do not re-litigate. Get the successor to restate the goal in their own words and re-sign the current version. Requirements that survive gain a written rationale; those nobody can defend move to out-of-scope with a date | Agent 04 PRD, Agent 62 Chief of Staff and Bizops |
+| **A PRD approved in one quarter is built in another** | Sign-off predates the first commit by more than a quarter; the competitive section describes a pre-approval landscape; the ROI model uses last year's pricing | Run a 3-day freshness review before build starts: re-check problem evidence, the competitor set, the pricing assumption and the regulatory position. Re-baseline or re-sign. A stale approval is not an approval | Agent 04 PRD, Agent 02 Discovery, Agent 03 Strategy |
+| **Regulated build where the requirement trail is itself the audit artefact** | Design controls or ITGC change evidence in scope; reviewers editing a signed doc in place; no versioned diff between v1.0 and what shipped | Lock the signed baseline before any edit; every change becomes a numbered request with author, date, rationale and approver. Never reconstruct a trail afterwards: a rebuilt record is a worse finding than the gap it hides | Agent 11 Compliance and Ethics, Agent 59 Internal Audit and Risk, Agent 04 PRD |
+| **Scope creep arrives as "small clarifications" past the freeze point** | Requests framed as "this was always implied"; no REQ-ID attached; post-sign-off additions consuming more than 15 percent of sprint capacity for two consecutive sprints | Price every clarification as a change: scope, date, cost, REQ-IDs touched. Anything touching a P0, the release date or a signed NFR returns to the ORIGINAL approvers, not to the PM alone. Publish the running count weekly | Agent 04 PRD, Agent 41 Technical Program Management, Agent 18 Finance |
+| **Two teams are building to two versions of the same PRD** | A team links a doc URL you do not recognise; integration tests fail on field names; someone exported the PRD to a deck and the deck became the spec | Declare one canonical URL and version in writing, kill every copy, then diff both builds against the canonical REQ-IDs before another sprint runs. Copies are the mechanism; the cause is that the canonical location was not obvious | Agent 41 Technical Program Management, Agent 04 PRD, Agent 06 Engineering |
+| **A dependency team never agreed to the commitment the PRD assumes** | The interface contract has no named owner on their side; their roadmap does not mention you; the date in your PRD came from a hallway conversation | Convert the assumption into a written interface contract (API shape, owner, SLO, error semantics, version, date testable) countersigned by their lead. No countersignature means it is a risk with a descope path, not a plan | Agent 41 Technical Program Management, Agent 06 Engineering, Agent 04 PRD |
+| **The PRD is written to justify a decision already made** | The doc opens with the solution; the research section cites one interview; the alternatives are strawmen; the sign-off meeting is booked before the draft exists | Say so in the document. Record it as a directed decision with the named decision-maker and the evidence that was NOT available, then specify honestly. A reverse-engineered PRD that poses as discovery discredits every future one | Agent 62 Chief of Staff and Bizops, Agent 04 PRD, Agent 00 Chief Reviewer |
+| **A senior leader reverses a signed P0 in a hallway** | A scope change with no ticket; "the VP said"; the reversal reaches engineering before it reaches the PM | Do not implement on hearsay. Require the reversal in the decision log with the new evidence attached, then re-run only the approvers it affects. Re-opening a signed decision takes new evidence, not new seniority | Agent 62 Chief of Staff and Bizops, Agent 04 PRD |
+| **Legal, privacy or compliance review lands after code-complete and changes a P0** | Personal data or money movement in the spec with no reviewer named in the sign-off table; consent and retention appear only in the NFR appendix | Route data classes, lawful basis, retention and abuse cases at PRD stage. If it has already happened, split the finding: ship-blocking items now, the remainder as dated REQ-IDs with a named accepter and a review date | Agent 39 Privacy and DPO, Agent 10 Legal and IP, Agent 09 Security |
+| **A mid-build budget cut asks which requirements survive** | Finance requests headcount justification twice; req approvals slow from days to weeks; a cost programme is announced | Have the ranked descope list already inside the PRD, ordered by the MVP cut. State the never-cut list as non-negotiable: auth correctness, payment idempotency, deletion, audit logging on money and personal data, error states, accessibility on the primary flow | Agent 18 Finance, Agent 04 PRD, Agent 03 Strategy |
+| **A market requires a requirement the global PRD forbids** | A regional entity asks for a local field, a local consent screen or in-country storage after the schema is frozen | Separate what is legally required to differ from what is local preference, then vary only the first as a per-market REQ-ID variant. Residency and consent are architecture, not copy: surface them at design or pay for them at launch | Agent 43 Localization and i18n, Agent 39 Privacy and DPO, Agent 11 Compliance and Ethics |
+| **Nobody reads the PRD, so the Figma becomes the spec** | Review comments cluster in the first two sections; QA writes cases from screens; acceptance criteria are quoted back with the numbers dropped | Fix the artefact, not the audience: one page of P0 requirements with acceptance criteria at the top, everything else as annex. Verify by asking QA to write test cases from the document alone, with no screens and no meeting | Agent 04 PRD, Agent 07 Testing and QA, Agent 05 Design |
+
+```
+⛔ ORG FAILURE MODES SPECIFIC TO REQUIREMENTS WORK:
+⛔ THE UNVERSIONED TRUTH: a signed spec edited in place, so "what was approved" becomes a
+   memory contest between people with opposing incentives.
+⛔ APPROVAL BY ATTENDANCE: everyone was in the meeting, so everyone is assumed to agree, and
+   no named person is accountable when the requirement turns out to be wrong.
+⛔ ASSUMED DEPENDENCY DATES: a date another team never gave you, written down often enough
+   that it starts to read as a commitment.
+⛔ THE ORPHANED PRD: the author is reorged away, the document keeps being built from, and
+   nobody left has the authority to change it.
+⛔ FREEZE WITH NO QUEUE: a hard freeze and no visible next-release list, so every rejected
+   request re-routes through an executive instead of taking a backlog position.
+⛔ DELIBERATE VAGUENESS AS CONFLICT AVOIDANCE: scope left fuzzy so the argument can be
+   deferred, which relocates it into the sprint where it costs an order of magnitude more.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Teams treat the PRD as a specification and audit it for precision. In a large organisation it is
+first a RECORD OF WHO AGREED TO WHAT, and it fails on custody far more often than on clarity.
+The requirement that breaks the release is rarely the ambiguous one: it is the perfectly worded
+one whose approver has left, whose dependency never countersigned, or whose change was agreed
+verbally and never written back. Spec craft is table stakes. Provenance, versioning and a named
+living approver are what let the document survive an organisation that keeps moving underneath it.
+⚠️ Retention windows, design-control obligations and audit-evidence expectations are regime
+   specific and change over time. Treat the principle as durable and verify the current rule
+   with Agents 10, 11 and 59 before relying on it. See references/DISCLAIMER.md.
+```
+
 ## Enterprise-Grade (regulated / multi-team / migration)
 ```
 □ REGULATED-PRODUCT REQUIREMENTS: identify the controlling regime per feature BEFORE specifying

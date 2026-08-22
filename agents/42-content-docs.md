@@ -251,6 +251,78 @@ IN-PRODUCT:
 - Drop-off at copy-heavy steps (A/B the words with Agent 16)
 ```
 
+## 11. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` covers the org-level shocks every function inherits. These
+are the ones that land on content and docs, where the output is public, permanent, indexed, and
+frequently read as a promise the company did not know it was making.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|-----------|------------------------|----------------------|----------|
+| **Doc rot at scale after a reorg** | Ownership metadata points at teams that no longer exist; the quarterly audit surfaces thousands of pages with no reviewer | Four versions of the truth, three stale, and readers cannot tell which. Support absorbs the difference and trust in the whole corpus falls, not just the wrong page | Re-point ownership by ROLE, not person, immediately after any reorg. Any page past its review date with no owner is banner-flagged or deleted, never quietly left. Deleting beats archiving; an unowned page is a liability with SEO |
+| **A legal or compliance gate blocks a release note** | Counsel asks to review a changelog entry, or a claim in a feature announcement needs substantiation | Docs become the critical path for the release, and the pressure is to ship the feature with no note at all, which is worse than a delayed one | Agree in advance which content classes need review (claims, security, pricing, regulated features) and which do not, with `agents/10-legal-ip.md` and `agents/11-compliance-ethics.md`. Pre-approved templates for routine notes remove the gate from the common case |
+| **A rebrand or acquisition invalidates thousands of pages** | New product names, merged terminology, two docs sites with conflicting content | Search results split across old and new names, screenshots show a UI nobody ships, and remediation is unfunded because it was scoped as a marketing project | Triage by traffic and stakes: fix the top-traffic and revenue-path pages first, redirect rather than delete, run a terminology migration in the linter, and put the content remediation cost into the integration plan with `agents/45-corporate-development.md` |
+| **Translated docs drift from source** | Source pages updated in a release; localised versions still show last quarter's steps | Non-English readers are given instructions that no longer work, and the failure is invisible to the English-speaking team that owns the page | Version-lock translations to source revisions, banner any locale behind the source with a link to the current English page, and prioritise locales by revenue and regulation with `agents/43-localization-i18n.md`. A stale translation is worse than an untranslated page |
+| **A doc becomes contractually binding** | A published uptime figure, rate limit, retention period or security page is cited in a questionnaire, an MSA or a customer dispute | Marketing-grade wording becomes a representation the company must honour, and changing it later looks like a unilateral downgrade | Identify contract-adjacent pages and treat them as controlled documents: named approver from `agents/09-security.md` or Legal, change history retained, and a notice path before material changes. Verify current published commitments against what operations can meet |
+| **A deprecation notice is also a contractual notice** | Enterprise agreements require N days notice for material changes; the docs page is where customers actually learn | Publishing late, or editing the notice after the fact, breaches a notice obligation nobody attached to the changelog | Treat deprecation pages as dated, immutable records with version history, coordinated with `agents/17-customer-success.md` so account owners tell customers before the docs do |
+| **The docs pipeline loses its owner** | A platform reorg or a departure leaves the CI, the site build and the preview deploys unowned; a broken link check is disabled to unblock a release | The gates that keep docs honest are switched off one at a time under deadline, and nobody notices until samples stop compiling | Docs infrastructure has a named owning team in `agents/06-engineering.md` and an SLA like any other internal platform. Disabling a docs CI check requires the same approval as disabling a test |
+| **The "docs PR required" gate is waived to hit a date** | A launch ships with a placeholder page, or the gate is marked optional during a crunch | The exception becomes the norm within two releases, and the backlog of undocumented features is only discovered through support volume | Make the waiver visible and costly: a named approver, a dated follow-up ticket, and a monthly report of waived gates to the release process owner in `agents/41-technical-program-management.md` |
+| **A domain migration or SEO change strands the archive** | Marketing moves the docs subdomain, restructures URLs, or consolidates sites | Ranking pages 404, organic support deflection drops, and the loss shows up as a support volume increase nobody attributes to the migration | No URL changes without a redirect map and a post-migration crawl. Hold a shared owner with `agents/15-marketing-sales.md`, and measure deflection before and after so the cost of a migration is a number |
+| **A writer leaves and a product area goes dark** | One name on every page in an area; SME reviewers unknown to anyone else | Releases in that area ship undocumented or with SME-written prose that contradicts the style guide, and the debt compounds silently | Two-person coverage per product area, SME reviewers named in page metadata rather than in someone's head, and a documented handover for any area with a single writer |
+| **Published content triggers an accessibility obligation** | An enterprise or public-sector buyer asks for a VPAT; a complaint arrives about the docs site or a video | Conformance work becomes a procurement blocker with a remediation timeline measured in months, on content produced over years | Build conformance into the templates and the CI check, not into a remediation project: heading structure, alt text, contrast, captions and transcripts as publication standards. Keep the conformance statement available for `agents/51-solutions-engineering.md`'s answer library |
+| **A doc leaks something it should not** | An architecture page describing internal topology, a workaround revealing an unfixed vulnerability, an unannounced feature in a preview build or a public repo | Security-sensitive detail is indexed within hours and cannot be recalled. Embargoed launches leak through docs previews more often than through press | Classify before publishing: security-sensitive detail reviewed by `agents/09-security.md`, embargoed content on a gated branch, preview deploys not indexed. Assume anything published is permanently mirrored |
+| **A tool migration creates a second source of truth** | Support macros, a new help centre, or an internal wiki holds answers that contradict the docs | Two confident answers to the same question, and readers pick whichever ranks better. The stale copy is almost always the one inside the other tool | Single-source with includes and links; support macros link to docs rather than restating them. After any tool migration, run a duplicate-content audit with `agents/17-customer-success.md` and retire the loser |
+| **An AI assistant answers from stale docs** | Internal or customer-facing retrieval over the docs corpus keeps citing a page retired two releases ago | The wrong answer arrives with a citation, which makes it more credible than an ordinary stale page | Re-index on publish, exclude retired and versioned-old content from retrieval, and expose last-reviewed dates in the corpus so freshness can be filtered. Coordinate with `agents/29-data-ai-strategy.md` and the deflection assistant owner in 17 |
+| **Community contributions arrive without a licence** | An open docs repo takes external pull requests; a customer sends a large page as a contribution | Content of uncertain provenance ends up in a corpus the company relies on and licenses to enterprise customers | Require a contributor licence agreement or a clear inbound licence on the repo, reviewed by `agents/10-legal-ip.md`, before accepting external content |
+| **Docs become evidence in an exam or a dispute** | A regulator, auditor or opposing counsel asks what the documentation said on a specific date | Version history that lives only in a SaaS help centre with no retention policy cannot answer the question | Keep docs in version control with retained history, know how to produce a page as it existed on a date, and apply legal holds to the docs repository like any other record system |
+
+**Failure modes specific to this function**
+```
+⛔ THE GATE WAIVED UNDER DEADLINE - the docs PR requirement, the link check or the sample compile
+   switched off to ship, and never switched back on.
+⛔ OWNERSHIP THAT DIES IN A REORG - pages owned by named individuals rather than roles, so every
+   reorganisation orphans another few hundred pages.
+⛔ PUBLISHING A COMMITMENT BY ACCIDENT - an uptime number, a retention period or a limit written as
+   marketing prose and later read as a contractual representation.
+⛔ VOLUME MISTAKEN FOR VALUE - a corpus that only grows, with nothing retired, so readers cannot tell
+   which third is wrong and stop trusting all of it.
+⛔ TRANSLATION TREATED AS A ONE-TIME PROJECT - localised pages funded at launch and never maintained,
+   which quietly gives non-English markets the worst version of the product.
+⛔ DOCS AS THE LAST TEAM TO KNOW - deprecations, rebrands, migrations and launches reaching the writers
+   after the decision, so the corpus is always one release behind the product.
+```
+
+**Escalation and who owns what**
+```
+Claims review, contractual wording, inbound licences .. agents/10-legal-ip.md
+Regulated-content review and disclosure obligations ... agents/11-compliance-ethics.md
+Security-sensitive detail and vulnerability wording ... agents/09-security.md
+Published commitments on uptime, limits, retention .... agents/08-devops-sre.md, agents/09-security.md
+Docs CI, site build, preview environments ............. agents/06-engineering.md
+Release gates, launch embargoes, waiver reporting ..... agents/41-technical-program-management.md
+Deprecation notice timing to accounts ................. agents/17-customer-success.md
+API spec ownership and SDK reference .................. agents/30-platform-ecosystem.md, agents/34-developer-relations.md
+Locale priority, translation drift, in-market rules ... agents/43-localization-i18n.md
+Domain moves, redirects, SEO equity ................... agents/15-marketing-sales.md
+Retrieval over the docs corpus and freshness .......... agents/29-data-ai-strategy.md
+Content remediation cost after a rebrand or deal ...... agents/45-corporate-development.md
+Writer headcount, area coverage, bus factor ........... agents/22-people-hr.md
+```
+
+**Pre-mortem prompts for this department**
+```
+□ If the company rebranded next quarter, how many pages carry the old name, and who is funding
+  the rewrite?
+□ Which published pages state a number the company would have to honour, and who approved each one?
+□ Which product areas have exactly one writer, and which have none?
+□ If a reader in our second-largest language followed our docs today, would the steps still work?
+□ Which docs CI checks are currently disabled, who disabled them, and for which release?
+□ Could we show a regulator or a customer what a specific page said on a specific date last year?
+□ If marketing moved the docs domain next month, who owns the redirect map and who measures the
+  deflection loss?
+□ What in the corpus is being cited right now by an AI assistant that we retired two releases ago?
+```
+
 ## Example
 User says: "Our refund API endpoint is live but support is drowning in tickets
 from developers who can't figure out how to issue a partial refund."

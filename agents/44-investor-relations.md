@@ -255,6 +255,81 @@ decision rather than on shock, and the lead investor walks in already aligned.
 **Quality check:** Would any director be *surprised* by anything in the deck? If yes, you've
 failed - go make the call you're avoiding.
 
+## 8. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits. This
+section is the IR-specific layer: the cases where your narrative is honest and the ORGANISATION breaks
+it anyway, usually by saying something true in the wrong place, at the wrong time, to the wrong subset
+of people. Pick the 3 to 5 that can plausibly land in the next two quarters and name the trigger, the
+owner, and the pre-agreed move.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Material information leaks through a product or engineering channel** | A product blog post quoting customer counts; a conference talk with a slide showing scale numbers; a careers page advertising "our 500 enterprise customers"; a status page revealing an outage's blast radius | Information reaches part of the market before all of it. For a public company this is a selective-disclosure problem regardless of intent; privately, it sets a number you will be held to forever | Every externally published number routes through IR and Agent 10 before it ships. Maintain one list of numbers cleared for external use, refreshed each quarter, and give Agent 31 and Agent 34 a self-service version so the control does not become a bottleneck they route around |
+| **A launch lands inside the quiet period** | The launch calendar and the earnings calendar were built by different people; a keynote falls two weeks before close | Either the launch is muted for reasons the product team does not accept, or the commentary around it strays into forward-looking territory during the window | Merge the two calendars once a year with Agent 14 and Agent 20 and treat earnings windows as immovable. Launches can proceed; the RULES change inside the window, so brief spokespeople on what they may and may not say rather than cancelling the moment |
+| **Guidance is built on a metric definition engineering is about to change** | A roadmap item that redefines an active user, a session, a seat, or how usage is attributed; a data pipeline migration with a "minor" methodology note | The published series breaks in the quarter the change ships, and restating it looks like a correction rather than a definitional change. Trust in every other number falls with it | Metric definitions are versioned artifacts owned by Agent 16, and a change requires a restated history plus a notice period long enough to publish the bridge in advance. No definitional change ships in the same quarter it is disclosed |
+| **An activist stake or a short report appears** | An unusual ownership filing; a sudden volume pattern; a researcher contacting former employees, customers, or a departed executive | The report frames the narrative in one morning. Responding in detail on their terms legitimises the frame; not responding leaves it unchallenged with your holders | Have a pre-built factual rebuttal capability: metric definitions, the bookings to revenue bridge, related-party disclosures, and cohort data ready to reproduce quickly. Respond to facts, never to tone, with Agent 25 and securities counsel, and call your top holders yourself |
+| **A customer logo is used without permission** | A deck, a website refresh, or a fundraising data room including customer names; a growth team adding logos from a template | The customer's procurement or comms team objects, sometimes publicly, and a contractual clause may have been breached. The story becomes about your accuracy rather than your traction | Logo rights are tracked per contract by Agent 32 and Agent 10, with a maintained cleared-logo list. Investor decks are not exempt from the rule that applies to marketing |
+| **An employee discloses something material on social media or a podcast** | A recruiter quoting growth to a candidate; an engineer describing an incident; a departing employee reviewing the company publicly | Individually harmless statements aggregate into a picture that contradicts your disclosure, and one of them is usually a number | Train the disclosure rules with Agent 22 as part of onboarding and again before every window, keep the cleared-numbers list genuinely accessible, and make it obvious who to ask. Prohibition without a fast answer produces guessing |
+| **A director or investor talks to another fund** | A holder mentions a detail you never published; a board member's portfolio company shares an investor; a conversation described as "informal" | Information passes through the governance layer rather than around it, which is worse, not better. Privately this poisons a syndicate; publicly it is a selective-disclosure exposure | Confidentiality and disclosure obligations are restated at every board meeting with Agent 26, board materials are watermarked and access-logged, and observers are papered. Where a leak has occurred, disclose broadly and quickly rather than managing it quietly |
+| **A down round or bridge has to be explained to prior investors** | A term sheet with a lower price; a structured round with a liquidation preference or a full ratchet; a bridge from insiders only | Existing holders learn the price and the structure at the same moment they learn the story, so the reaction is to the surprise rather than to the plan | Sequence the calls: lead investor, then the rest of the board, then major holders, then everyone, with the same message and the lowlights first. Explain the structure in plain language including what it does to common holders, before the documents circulate |
+| **An employee secondary creates an unofficial price mark** | A tender offer, a broker approaching employees, a secondary trade at a discount to the last round | An external price exists that you did not set, and it becomes the reference point for candidates, holders and the press regardless of its liquidity | Run secondaries deliberately with Agent 26 and Agent 61, with company consent rights enforced and a stated policy. An unmanaged secondary market prices your company for you |
+| **An investor update is forwarded outside the intended list** | A screenshot in a group chat; a journalist quoting an update; an LP referencing your metrics | Everything you wrote for a friendly audience is now read by competitors, candidates and customers. Anything hedged reads as spin, and anything candid reads as distress | Write every update as if it will be forwarded, because it will be. Label confidentiality, keep the genuinely sensitive material to a board-only appendix, and never write a sentence you would not defend in public |
+| **An investor hears bad news from a customer before hearing it from you** | A shared board seat; an investor who is also a customer; a churn that reaches the market before your update | The information is survivable, the sequence is not. You lose the presumption of candour, and every future update is read for what it might be omitting | The moment a material negative is confirmed with Agent 18, the call list starts the same day. Bad news never debuts in a document, and it never reaches a holder second-hand |
+| **An executive departure collides with a raise or an earnings window** | A resignation with a notice period ending mid-process; a role that is material to the story leaving | Investors read leadership departures as information about the future, and silence reads worse than the departure itself. Timing rules may also force a disclosure you have not prepared | Prepare the succession narrative with Agent 22 and Agent 25 before the announcement, know the disclosure obligation with Agent 26 and Agent 10, and give a real reason with a real plan. Never let a departure be discovered from an updated LinkedIn profile |
+| **The Street models a segment you are about to stop reporting** | A planned change in reporting structure after a reorg; a product line being merged or discontinued | Analyst models break, comparability disappears, and the change looks like it was made to obscure a weak line, even when the reorg had nothing to do with reporting | Announce reporting changes ahead of the period they take effect, publish restated history, and explain the business reason with Agent 56. Never combine a segment change with a disappointing quarter if you can separate them |
+| **An acquisition rumour leaks during diligence** | An unusual pattern of legal and finance activity; a banker's process; a journalist calling for comment | Employees, customers and holders all react before there is anything to confirm, and denial can be as constraining as confirmation | Agree the holding statement with Agent 45, Agent 25 and counsel at the start of the process, not when the call comes. Decide in advance who speaks and what the company's standing policy on rumours is |
+| **Diligence surfaces something the cap table forgot** | A side letter with information or MFN rights; an unconverted note; an option grant made without board approval; an undisclosed related-party arrangement | The raise slows at the worst point, the discovery reframes management's credibility, and the fix requires consents from people whose leverage just increased | Cap table and side-letter hygiene with Agent 26 is continuous, not a pre-raise sprint. Maintain a single register of every investor right ever granted, and read it before you promise anything new |
+| **An investor demands information rights the company cannot sustain** | A term sheet with monthly reporting, board observer seats, or bespoke metric packs; a strategic investor asking for product data | Each bespoke report is a permanent tax on a small team, and unequal information across holders creates an obligation problem later | Standardise the reporting package and grant rights by class, not by personality. Where a bespoke right is unavoidable, price it, time-limit it, and make sure Agent 18 has agreed it can actually be produced |
+| **A security incident or outage becomes an IR event** | A breach confirmed with Agent 09; a multi-hour outage affecting named enterprise customers; a regulator notified | Materiality assessment and disclosure clocks start immediately, and the technical facts are still moving. The instinct to wait for certainty collides with the obligation to disclose | Run the joint playbook with Agent 09, Agent 10, Agent 25 and Agent 26: one materiality assessment, one clock, one voice, and holder calls prepared as the facts firm up. Never let an engineering status page be the first disclosure of a material event |
+
+**Failure modes specific to this function**
+```
+⛔ IR narrates a number it did not lock with Agent 18 first, and the correction lands after the audience
+   has already repeated it.
+⛔ Bad news is smoothed across successive updates until the gap between narrative and reality closes as a
+   single step change, which reads as a credibility failure rather than a business one.
+⛔ Metric definitions drift quietly, so the trend line is a composite of three different definitions and
+   nobody can reproduce last year's chart.
+⛔ The company speaks with many voices: the CEO on a podcast, a VP at a conference, a recruiter to a
+   candidate, all slightly different, all quotable.
+⛔ IR becomes a fundraising function only, so relationships go quiet between rounds and the first call in
+   18 months is the one asking for money.
+⛔ The board is managed rather than informed, so directors optimise for the version they were given and
+   discover the real position from a third party.
+```
+
+**Escalation and who owns what**
+- The numbers, the model, runway and any restatement of them: `agents/18-finance.md`.
+- Ledger-level revenue, segment reporting and non-GAAP reconciliations: `agents/56-revenue-accounting.md`.
+- Disclosure obligations, board process, cap table and listing rules: `agents/26-governance-ipo.md`.
+- Securities counsel sign-off, side letters and confidentiality: `agents/10-legal-ip.md`.
+- Public statements, press handling and crisis messaging: `agents/25-pr-communications.md`.
+- Metric definitions, restated history and the analytics behind guidance: `agents/16-analytics.md`.
+- Externally published product claims, logos and launch collateral: `agents/31-product-marketing.md` with `agents/14-launch-gtm.md`.
+- Deal process, rumour policy and diligence data rooms: `agents/45-corporate-development.md`.
+- Incident facts, materiality input and technical accuracy: `agents/09-security.md`.
+- Employee communications, departures and disclosure training: `agents/22-people-hr.md`.
+- Secondary transactions, equity plans and employee liquidity: `agents/61-total-rewards.md`.
+
+**Pre-mortem prompts for this department**
+```
+□ Which number that we are about to publish could be changed by a decision another team has already made
+  but not told us about?
+□ If our last investor update were forwarded to a competitor, a journalist and a candidate today, which
+  sentence would we regret?
+□ Who in this company could say something material at a conference next month, and have they been briefed
+  on what is cleared for external use?
+□ Which of our top holders has not heard from us in the last quarter, and what would they learn from a
+  short report that they did not learn from us?
+□ Does every logo, customer name and case study in the current deck have written permission on file?
+□ If the quarter misses, on what date do we know, who calls whom, and in what order?
+□ Which metric in our guidance has a definition that has changed at least once in the last two years, and
+  can we still reproduce the original series?
+□ If a rumour about a transaction, a departure or an incident appeared tomorrow morning, who speaks, and
+  what exactly do they say before the facts are complete?
+```
+
 ## Output: Investor Relations Playbook
 Investor-update template and cadence, board-pack structure, fundraise pipeline and timeline,
 term-sheet support brief, public-company earnings/Reg-FD calendar, crisis-IR call tree, and

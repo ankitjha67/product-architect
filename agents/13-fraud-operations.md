@@ -306,6 +306,65 @@ past its danger line 2 consecutive weeks → trigger the fraud-spike playbook
 (frameworks/scenario-playbooks.md).
 ```
 
+### 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the fraud-specific
+layer: the cases where the model is calibrated, the rules are sound, and the ORGANISATION is
+the failure mode. Pick the 3 to 5 that can plausibly land in the next two quarters and name
+the trigger, the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A rule change quietly blocks a legitimate high-value segment** | Approval rate flat overall but down 10 points in one BIN range, corridor, corporate-card cohort or diaspora segment; support tickets from customers who "always paid fine"; a rule shipped without a segment-level backtest | Slice approval and insult rate by segment, not in aggregate: aggregate metrics hide the segment that pays your margin. Roll the rule back to shadow mode for that segment while you retune, and add the segment cut to the weekly scorecard permanently | 13 Fraud Operations with 55 Billing & Monetization Engineering, 16 Analytics |
+| **A chargeback spike pushes you toward a card-network monitoring programme** | Dispute ratio climbing 2 consecutive months toward the §9 danger line; one product, promo or geography contributing most of it; your acquirer's risk team asking for a written remediation plan | Treat entry thresholds as a cliff you must never approach, not a target you may touch. Cut the specific attack vector first (that SKU, that corridor, that promo), then negotiate the remediation plan with the acquirer in writing. Programme thresholds and fee schedules change: verify current network rules with the acquirer and counsel | 13 Fraud Operations, 55 Billing Engineering, 18 Finance |
+| **An account-takeover wave lands in the middle of a growth campaign** | Credential-stuffing spikes timed to a promo launch; wallet or loyalty balance drains; password-reset and OTP volume anomalies; a spike in "wasn't me" support contacts | Protect the balance before the funnel: step up authentication on high-risk actions (payout, address change, balance transfer) rather than on signup, so the campaign survives. Pre-agree with Growth which controls turn on at which ATO rate, before the campaign, not during it | 13 Fraud Operations, 09 Security, 37 Growth |
+| **Sanctions and AML screening false positives clog onboarding** | Onboarding conversion dropping in one market; a manual review queue full of common-name matches; screening thresholds set by a vendor default nobody has tuned; a backlog measured in days | Tune the matching threshold with a measured false-positive rate and a documented rationale, and staff the queue to the demand you actually have. Never resolve a backlog by loosening screening without a formal, signed compliance decision. Verify obligations and tuning limits with qualified counsel and the compliance owner | 11 Compliance & Ethics, 13 Fraud Operations, 10 Legal & IP |
+| **The fraud model cannot be explained to a regulator or an ombudsman** | A complaint asking why a specific customer was declined or frozen; a model with no reason codes; features derived from third-party data with unclear provenance; no record of which model version scored which decision | Log decision-level reason codes, model version and the human override on every action from now on. Adverse-action and explainability duties vary by market and product: verify the applicable standard with qualified counsel, then treat explainability as a launch requirement, not a research topic | 13 Fraud Operations, 49 ML Engineering, 11 Compliance & Ethics |
+| **Growth targets and loss targets are held by different executives** | Fraud comped on loss bps alone, growth comped on approvals alone; a friction control reversed in a meeting with no data; the insult rate absent from the exec dashboard | Put both numbers in ONE scorecard owned by one executive, expressed in the same currency: rupees or dollars of loss versus rupees or dollars of declined good volume (§6). A control argued in metric terms never resolves; the same argument in profit terms resolves in one meeting | 18 Finance, 13 Fraud Operations, 37 Growth |
+| **Peak season arrives with a single-threaded review team** | One analyst who knows the queue; leave requests refused; a festival or sale calendar that collides with the manual-review SLA; auto-decision rate drifting below 92 percent (§9) | Raise the auto-decision rate BEFORE peak by pre-approving trusted cohorts, and pre-agree the degradation order: which segments auto-approve, which auto-decline, which wait. Cross-train two analysts per queue as a standing rule, not a peak-season scramble | 13 Fraud Operations, 19 Operations, 22 People & HR |
+| **A PSP, acquirer or sponsor bank changes terms, holds a reserve or exits** | Rolling reserve introduced or increased; settlement delayed; a risk review after a dispute spike; a vendor exiting your category or geography | Model the cash impact with Treasury the same week, since a reserve is a working-capital event before it is a fraud event. Keep a second processor integrated and periodically live-tested; single-processor concentration is the real risk, and it is discovered only when it fails | 58 Treasury, 55 Billing Engineering, 46 Procurement & Supply Chain, 13 Fraud Operations |
+| **Insider fraud runs through legitimate admin tools** | Refunds, coupon grants, credit adjustments or KYC overrides clustered on one operator; approvals outside working hours; a shared admin login; a support macro that bypasses limits | Do not confront first: preserve the logs and charter the investigation in writing with HR, Legal and Security. Then fix the design: maker-checker on money-touching actions, per-operator limits, and anomaly detection on internal actions, which almost nobody instruments | 09 Security, 59 Internal Audit & Risk, 22 People & HR, 13 Fraud Operations |
+| **Leadership will not allow enforcement against first-party (friendly) fraud** | A named partner, influencer cohort or enterprise account with an abnormal dispute or refund-abuse rate; "they are our best customer" as the stated reason to do nothing; promo abuse concentrated in one acquisition channel | Quantify the concentration in money and present it as a commercial decision with three options (tolerate and price it in, restrict the specific behaviour, exit the account or channel). An unpriced exception becomes a permanent subsidy that grows with the account | 13 Fraud Operations, 32 Sales & RevOps, 18 Finance |
+| **Privacy deletion or retention limits break model retraining** | Chargeback labels arriving 30 to 90 days late while the retention rule deletes at 30 days; a deletion request removing the only labelled examples of a ring; a residency rule blocking a global training set | Agree per data category, in advance, what is retained as fraud-prevention evidence, on what lawful basis, for how long, and in aggregated or pseudonymised form where possible. Retrofitting this after a deletion sweep is not possible: the labels are gone. Verify the basis with the privacy owner and counsel | 39 Privacy & DPO, 13 Fraud Operations, 38 Data Engineering |
+| **An acquisition arrives with its own fraud stack and its own loss rate** | Diligence with no insult-rate number; a different processor, different rules engine and a merged customer base on a deal timeline; a chargeback ratio that will be reported under YOUR merchant IDs | Keep the merchant IDs and the rule sets separate until you have measured their true loss and dispute rates for at least one full chargeback maturity cycle. Merging portfolios before measuring imports their ratio into your network standing | 45 Corporate Development, 13 Fraud Operations, 55 Billing Engineering |
+| **Fraud losses sit in a cost centre nobody owns** | Write-offs booked below the line where no product team sees them; disputes over which P&L absorbs the loss; a fraud budget approved annually while the attack pattern changes monthly | Allocate losses to the product or channel that generates them, monthly, in one visible line. Fraud stops being an argument the moment the team that ships the risky flow also carries the loss on its own number | 18 Finance, 56 Revenue Accounting, 13 Fraud Operations |
+
+```
+⛔ HOW FRAUD OPERATIONS FAILS UNDER ORGANISATIONAL PRESSURE:
+□ THE LOSS IS COUNTED, THE INSULT IS NOT: only one side of §6 has an owner, a ledger line and
+  a review, so the organisation optimises the visible half and pays the invisible half forever.
+□ RULES OUTLIVE THEIR AUTHORS: a reorg leaves hundreds of rules with no owner. Nobody dares
+  delete one, so the rule set becomes an unreadable archaeology of past incidents.
+□ THE ANALYST TEAM IS SIZED AS A COST, NOT A CAPACITY: review headcount is negotiated
+  annually while attack volume moves weekly. Peak season is where that mismatch becomes public.
+□ CONTROLS REVERSED IN MEETINGS, NOT IN MODELS: a senior leader turns a threshold down after
+  one complaint from one customer. Without a decision log and a dated review, it stays down.
+□ SINGLE-PROCESSOR AND SINGLE-VENDOR CONCENTRATION: the fallback processor was integrated once
+  and never tested. Discovering that during a reserve, an outage or a termination is fatal.
+□ CLIFF-ADJACENT COMPLACENCY AS AN ORG HABIT: operating just under a network or partner
+  threshold reads as efficient right up to the month one attack tips you over it.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Fraud teams are told they fail by losing money to fraudsters. In a large organisation they
+almost always fail by BLOCKING revenue they cannot see, in a segment nobody slices. Fraud loss
+has a ledger account, a monthly review and an owner; declined good customers have none of
+those, they simply do not come back. The result is a slow, structurally invisible bias toward
+tightening, one rule at a time, each individually defensible. The counter is organisational
+rather than technical: give the insult rate the same accounting treatment as the loss rate,
+report both in money in the same line, and require every rule to carry an owner, a hit rate
+and a retirement date. A fraud function that cannot state how much good volume it declined
+last month is not managing risk, it is only managing one half of it.
+
+⚠️ Card-network monitoring thresholds and fees, sanctions and AML obligations, adverse-action
+   and explainability duties, and fraud-data retention bases are jurisdiction-specific and
+   change frequently. Treat the principles above as durable, verify current network rules with
+   your acquirer, and verify legal obligations with qualified counsel.
+   See references/DISCLAIMER.md.
+```
+
 ## Failure Modes (⛔)
 
 ```

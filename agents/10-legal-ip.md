@@ -298,6 +298,65 @@ OUTSIDE-COUNSEL ECONOMICS - WHEN TO INSOURCE:
   contract type) for predictable work; e-billing (Legal Tracker/Brightflag) above ~₹2Cr/yr spend
 ```
 
+### 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the legal-specific
+layer: the cases where the law is clear, the advice is right, and the ORGANISATION is the
+failure mode. Pick the 3 to 5 that can plausibly land in the next two quarters and name the
+trigger, the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Legal hold lands mid-migration, on data already scheduled for deletion** | A demand letter, regulator notice or credible threat arrives while a cutover, archive purge or privacy-deletion batch is in flight; the retention job runs nightly and nobody owns it | Freeze the deletion, retention and archive-purge jobs for the scoped custodians and systems BEFORE issuing custodian notices. Snapshot the source before the migration overwrites it. Write down what was already deleted, with timestamps, rather than discovering the gap during discovery | 10 Legal & IP with 38 Data Engineering, 39 Privacy & DPO |
+| **Copyleft or attribution obligation discovered at diligence** | The first SCA scan in the company's history is the one run in the data room; a warranty schedule nobody can sign as literally true; a "we vendored it years ago" comment in the repo | Scope by call site and network exposure before proposing remediation (§5 and the worked example below). Disclose proactively with dated remediation. Never carry the risk silently inside a signed warranty | 10 Legal & IP, 06 Engineering, 45 Corporate Development |
+| **Trademark conflict in a launch market after brand spend has committed** | A market added late in planning so registry and local clearance checks were skipped; an opposition or cease-and-desist within weeks of a regional campaign; the domain and app-store listing already procured | Stop new spend in that market only, keep the rest of the launch running. Get a local clearance opinion before choosing rename, coexistence agreement or fight. Verify with qualified counsel in that jurisdiction: registry practice and bad-faith rules differ sharply | 10 Legal & IP, 31 Product Marketing, 43 Localization & i18n |
+| **Contract signed by someone without authority** | A signature from a regional lead or PM outside the delegation-of-authority matrix; a countersigned PDF arriving from a sales inbox; an order form referencing terms legal has never seen | Assume it may bind you (apparent authority) and remediate commercially rather than by denial: ratify on corrected terms or negotiate an amendment. Then bind the signing matrix into the e-sign tool so the gate is mechanical, not cultural | 10 Legal & IP, 32 Sales & RevOps, 18 Finance |
+| **An NDA or contract clause blocks the very comparison a team wants to publish** | A benchmark against a vendor whose MSA bans publishing benchmarks; a case study naming a customer whose contract requires written consent per use; competitor data gathered under an evaluation NDA | Trace the SOURCE of every number before editing the copy: public trial data and NDA data look identical in a slide. Consent, re-source or re-frame. Publishing then apologising costs the relationship and the clause | 10 Legal & IP, 31 Product Marketing, 25 PR & Communications |
+| **Public disclosure lands before filing, or prior-art timing is missed** | A conference talk, demo, blog post or investor deck describing a filable invention; a patent decision deferred twice because counsel was busy; a competitor filing in the same space | Fix the DATE first: a provisional filing costs a fraction of the option it preserves. Log every disclosure date and audience by jurisdiction. Grace periods differ by country and are not a strategy: verify with patent counsel before relying on one | 10 Legal & IP, 06 Engineering, 21 Innovation Programs |
+| **Counsel capacity is the real bottleneck on every launch** | Contract cycle time doubling quarter on quarter; teams starting "legal-optional" pilots; one lawyer named in every escalation; NDAs taking longer than the sales cycle they gate | Publish the queue and the triage tiers (self-serve template, playbook fallback, counsel-only) so the business can see the wait and choose. Name a standing delegate per approval role BEFORE the leave, not during it | 10 Legal & IP, 62 Chief of Staff & BizOps, 22 People & HR |
+| **Matter budget is blown mid-litigation during a spend freeze** | Outside-counsel invoices arriving after the accrual close; a discovery phase scoped by page count that grew tenfold; a procurement freeze hitting the e-billing renewal | Re-forecast the matter to conclusion and take it to Finance as one number with scenarios, not as monthly surprises. Litigation spend is not discretionary once filed, so it displaces other budget: say which, explicitly | 10 Legal & IP, 18 Finance, 46 Procurement & Supply Chain |
+| **A closing concession creates a perpetual obligation nobody tracks** | MFN, audit rights, uncapped indemnity, source-code escrow or a bespoke SLA conceded in the last 48 hours of a quarter; the clause never reaches the obligation register | Extract into the register on the day of signature with an owner and dates (§9). Route SLA obligations to 08 DevOps & SRE and DPA obligations to 39. An obligation with no owner is a breach with a delay fuse | 10 Legal & IP, 32 Sales & RevOps, 08 DevOps & SRE |
+| **A subpoena, regulator notice or law-enforcement request arrives at a random inbox** | A court document attached to a support ticket; a notice DMed to an engineer; a response clock that has already partly run by the time counsel sees it | One published intake path and a same-day acknowledgement that starts a tracked clock. Preserve before you respond. Route through counsel so privilege can attach where it is available; verify the applicable process and privilege scope with qualified counsel | 10 Legal & IP, 28 Government Relations, 12 Trust & Safety |
+| **A reorg or restructuring moves the contracting entity** | A new legal entity appears in the org chart; an intra-group transfer of employees or assets; change-of-control and anti-assignment clauses across the customer and vendor base | Run an assignment and consent sweep BEFORE the entity change takes effect. An unconsented assignment hands counterparties a termination or renegotiation right at the worst possible moment | 10 Legal & IP, 45 Corporate Development, 57 Tax |
+| **An acquired company's IP chain of title is broken** | Contractors with no assignment clause; pre-incorporation founder code; open source contributions with no CLA; a deal timeline that will not wait for a clean-up | Map chain of title per critical module before close and price the gap into escrow or holdback. Retro-assignments after close cost far more and sometimes cannot be obtained at all | 45 Corporate Development, 10 Legal & IP, 06 Engineering |
+| **A joiner or a leaver moves trade secrets in either direction** | A new hire arriving with a former employer's documents; a leaver's bulk export or repo clone in their notice period; a recruiter systematically targeting one team | On arrival: refuse the files, document the refusal, and brief the manager. On exit: preserve first, do not confront first. Charter the investigation in writing with HR and counsel so evidence and privilege survive | 10 Legal & IP, 22 People & HR, 09 Security |
+| **Sales or a public page commits to a term the contract cannot honour** | An uptime, support or data-deletion promise on the pricing page; an RFP answer asserting a certification not yet held; a security questionnaire answered optimistically to keep a deal moving | Treat public statements as representations that can bind: correct the page first, then fix the pipeline that produced it. One answer library, owned jointly by legal, security and sales, with a named approver per claim | 10 Legal & IP, 32 Sales & RevOps, 51 Solutions Engineering, 09 Security |
+
+```
+⛔ HOW THE LEGAL FUNCTION FAILS UNDER ORGANISATIONAL PRESSURE:
+□ LEGAL AS A GATE, NEVER A PIPELINE: capacity is never modelled, so the queue becomes the
+  de facto control and the business quietly self-serves around it. The contract that bites
+  you is always the one that never reached counsel.
+□ SINGLE-COUNSEL DEPENDENCY: one named lawyer on every material matter with no standing
+  delegate. One period of leave, one resignation, and every launch gate stalls at once.
+□ ORAL RISK ACCEPTANCE: a risk "accepted" in a meeting with no memo, no named executive and
+  no date. In diligence or in discovery, an unwritten acceptance means nobody accepted it.
+□ ENTITY DRIFT: after two reorgs and a new subsidiary, nobody can say which company signed
+  what, in which jurisdiction, under whose delegation of authority.
+□ PRIVILEGE SPENT CARELESSLY: sensitive analysis forwarded to a wide channel or pasted into
+  a public ticket. Privilege scope varies by jurisdiction and by in-house versus external
+  counsel: verify with qualified counsel rather than assuming the US or UK position.
+□ CYCLE TIME MEASURED, OBLIGATION LOAD IGNORED: legal is graded on speed to signature, so it
+  optimises for closing and the obligations it just accepted become somebody else's problem.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Legal risk in a large organisation is overwhelmingly created by people who never contacted
+legal, which makes THROUGHPUT, not judgement, the real quality control. A legal function with
+excellent advice and a four-week queue produces worse outcomes than an average function with
+a two-day queue, because the four-week queue teaches hundreds of people to route around it:
+the unreviewed order form, the pilot with no DPA, the public benchmark, the demo before the
+filing. Every one of those is invisible to legal until it is a dispute. Measure the volume of
+work that BYPASSED you, not the quality of the work that reached you.
+
+⚠️ Holds, privilege, authority, assignment consents, grace periods and disclosure duties are
+   jurisdiction-specific and change over time. Treat the principle above as durable and verify
+   the current rule with qualified counsel in each relevant jurisdiction before acting.
+   See references/DISCLAIMER.md.
+```
+
 ## Failure Modes (⛔)
 
 ```

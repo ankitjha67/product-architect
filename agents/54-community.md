@@ -319,6 +319,82 @@ ever gets the chance to be the expert.
    count in every board deck; MAC and member-answered rate in none.
 ```
 
+## 12. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` covers the org shocks every function inherits. These are the ones
+that land on community, where the asset is other people's goodwill, the surface is public, and almost
+every failure is visible to prospects before it is visible to leadership.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Three internal teams launch overlapping communities** | DevRel has a Discord, support has a forum, marketing has a LinkedIn group, and a regional team has a WhatsApp group | Members are split below the 90-9-1 threshold in every room, so all four feel dead. Nobody can be shut down because each has a sponsor | Map every existing surface before launching anything, then consolidate on the ONE job with a named owner per surface. Where a team refuses, draw the boundary in writing rather than competing for the same members |
+| **A moderation decision escalates into a press story** | A ban is screenshotted; a member with an audience posts about it; a journalist or analyst is in the thread | The company defends an inconsistent enforcement record in public. Whatever the underlying facts, the visible artifact is the log you did or did not keep | Consistency is the defence: every action logged, every ban posted with the rule cited, appeals to a moderator who was not the decider. Escalate to `agents/25-pr-communications.md` the moment sentiment could travel, and never delete the thread you are being criticised in |
+| **Champion burnout hits the top contributors at once** | Three people answer 70 percent of questions; response times from them lengthen; one posts about being tired | Your member-answered rate collapses in a quarter, and the departure is usually loud, because the people with the most credibility have the most to say | Audit the give and ask ledger quarterly, recruit breadth before you need it, and never set quotas. When contribution reaches part-time-job scale, pay and disclose it, per §5 |
+| **A contributor's unpaid work starts to look like employment** | Stipends, rotas, quotas, scoped deliverables, or a moderator given a schedule and a manager | Worker-classification exposure varies by jurisdiction and can attach retrospectively. The risk grows precisely as the programme gets more useful | Before adding stipends, schedules or scoped work, involve `agents/10-legal-ip.md` and `agents/22-people-hr.md` and verify current rules per country. Prefer either genuine recognition with no obligation, or a real contract with real pay |
+| **A maintainer or moderator bottleneck caps the whole project** | Pull requests and flags queue behind one person; contributors stop trying; TTFR rises quietly | The community's growth ceiling becomes one human's calendar, and the first visible symptom is contributor churn rather than a backlog metric | Publish the queue and its SLA, add trusted-member permissions early, and treat maintainer capacity as a funded role rather than a volunteer's spare time. Coordinate with `agents/34-developer-relations.md` where the surface is developer-facing |
+| **A fork or a governance dispute** | A group announces an alternative space, or demands neutral governance and a written charter | Contributors split, the archive splits, and neither side reaches critical mass. Handled defensively it becomes a referendum on the company's trustworthiness | Respond to governance demands with governance: publish decision rights, a charter, and what the company will never control. A fork is usually a symptom of unaddressed governance, not of disloyalty |
+| **The community manager leaves and is not backfilled** | The owner resigns during a hiring freeze; rituals stop; the flag queue ages | The community decays in public for a year, and every prospect who searches finds indexed pages of unanswered questions | Below 0.5 dedicated FTE, the §9 kill criteria apply: transfer, freeze read-only, or close properly. An abandoned community is a worse asset than no community, and the decision belongs to leadership, not to attrition |
+| **Legal hold or e-discovery reaches community content** | Litigation opens; a subpoena or preservation notice covers posts, DMs and moderator actions | Retention policies, deletion routines and even normal moderation become a spoliation risk, and free platform tiers cannot honour a hold at all | Confirm legal-hold and export capability before choosing a platform. Once a matter opens, `agents/10-legal-ip.md` owns deletion and retention decisions on the affected content, and moderators are briefed in writing |
+| **An erasure request collides with the archive's value** | A member asks for deletion of an account whose answers are the top search results for a whole topic | Deleting the account removes the answers thousands of people rely on. Refusing may breach a privacy obligation | Decide the rule in advance with `agents/39-privacy-dpo.md`: typically anonymise authorship and preserve content where lawful, with the policy published at signup so the expectation is set before the request arrives |
+| **The platform vendor is acquired or reprices** | New owners, a per-active-member price change, an API or export feature moved behind a tier | Rented land: you own neither the member list, the SEO equity nor the export path, and migration without history destroys the archive's value | Hold the member list in your CRM, export on a schedule, and model exit cost with `agents/46-procurement-supply-chain.md` at every renewal. If the archive is a strategic asset, own the host |
+| **A reorg puts community under demand generation** | New manager, new metrics, MQL and pipeline targets attached to the forum | Staff posts turn promotional, members disengage, and the deflection and retention value that justified the programme is spent on lead capture | Renegotiate the metric, not the mission: report member-answered rate and deflection alongside sourced pipeline. Where promotional posting exceeds the §11 threshold, escalate to `agents/62-chief-of-staff-bizops.md` as a mandate conflict |
+| **Your own layoffs or a price rise land in the community** | Members ask about departed employees; a customer posts an angry thread about new pricing | The community becomes the most public venue for a message the company has not finished writing, and staff answer inconsistently or not at all | Community is a named role in the internal comms plan alongside `agents/25-pr-communications.md`. One holding message on the promised cadence, no deletion of civil criticism, and a briefed staff participation rule |
+| **A customer council seats direct competitors** | An advisory board or enterprise council with two rivals in the same room | Discussion drifts toward pricing, terms or market allocation, which is genuine antitrust exposure rather than a theoretical concern | Published agenda rules, a briefed facilitator, and counsel from `agents/10-legal-ip.md` before the first session. Some topics are simply off the table, and the facilitator must be willing to stop the conversation |
+| **An NDA tier leaks** | A roadmap screenshot from the champion space appears publicly, or is quoted to an analyst | A roadmap becomes a public commitment the company never made, and the private tier's trust is broken in both directions | Keep executed NDAs and an auditable access list per space, watermark previews, and rehearse the response: correct the public record with `agents/25-pr-communications.md`, enforce the CoC consistently, and review what was shared rather than only who shared it |
+| **Coordinated spam, brigading, or an AI-generated answer flood** | A sudden volume spike, near-identical confident answers, or targeted harassment of one member | The archive fills with plausible wrong answers that outrank the good ones, and moderators cannot keep up. Trust in the corpus is the real loss | Rate limits, trust levels, new-account restrictions and an explicit policy on AI-generated answers in the CoC. Escalate coordinated attacks to `agents/12-trust-safety.md` and `agents/09-security.md`, and preserve evidence before removing content |
+| **A regional community exists with no moderator for its language** | A language sub-forum opened for a launch; nobody who reads that language checks the flag queue | Unmoderated content in a language leadership cannot read is the highest-variance risk the department carries, including legal exposure under local rules | Budget a moderator per language or do not open the language, per §10. Where regional platform-liability regimes apply to hosted content, confirm current notice-and-action obligations with `agents/11-compliance-ethics.md` |
+| **The community's value was never joined to product data** | A cost-optimisation programme asks each function to justify itself; identity join was deferred at launch | Community is cut first because it can report only member counts, and the deflection and retention arguments cannot be reproduced | Instrument the `agents/16-analytics.md` identity join before launch, keep the conservative deflection model agreed with `agents/18-finance.md`, and report a number you can rebuild next quarter with the same method |
+
+**Failure modes specific to this function**
+```
+⛔ RENTED LAND WITH NO EXIT PLAN - member list, archive and SEO equity held by a vendor whose terms,
+   pricing or ownership can change with no migration path that preserves history.
+⛔ VALUE THAT CANNOT BE REPRODUCED - a big deflection number with no method behind it, which survives
+   exactly one finance review and takes the programme's credibility with it.
+⛔ ENFORCEMENT WITHOUT A RECORD - inconsistent moderation with no log and no appeal, so the first
+   accusation of bias is unanswerable and usually fair.
+⛔ EXTRACTION DRESSED AS RECOGNITION - quotas, obligations and scoped work asked of unpaid people,
+   which loses the contributors and creates classification exposure at the same time.
+⛔ ONE-PERSON INSTITUTION - rituals, relationships and moderation judgement held by the founder of the
+   community, so a resignation or a freeze ends it.
+⛔ THE PUBLIC SURFACE FORGOTTEN IN A CRISIS - incident, layoff and pricing messages reach the community
+   last, where they are most visible and least controlled.
+```
+
+**Escalation and who owns what**
+```
+Content policy, enforcement ladder, coordinated abuse . agents/12-trust-safety.md
+Public sentiment, press risk, crisis messaging ........ agents/25-pr-communications.md
+Legal hold, subpoenas, NDA tiers, antitrust hygiene ... agents/10-legal-ip.md
+Erasure requests, retention, residency of posts ....... agents/39-privacy-dpo.md
+Platform security, account takeover, phishing ......... agents/09-security.md
+Incident status and post-mortems ...................... agents/08-devops-sre.md, agents/41-technical-program-management.md
+Ticket data, deflection cost, CSM coordination ........ agents/17-customer-success.md
+Identity join, cohort analysis, holdout design ........ agents/16-analytics.md
+Deflection value, budget defence, descope ranking ..... agents/18-finance.md
+Developer-facing surfaces and maintainer capacity ..... agents/34-developer-relations.md
+Contributor pay, classification, moderator staffing ... agents/22-people-hr.md
+Platform contract, renewal, exit cost ................. agents/46-procurement-supply-chain.md
+Language coverage and regional moderation ............. agents/43-localization-i18n.md
+Mandate conflicts after a reorg ....................... agents/62-chief-of-staff-bizops.md
+```
+
+**Pre-mortem prompts for this department**
+```
+□ If the platform doubled its price or was acquired next quarter, what exactly do we take with us,
+  and when did we last test the export?
+□ Who moderates the flag queue if the community lead is on leave for a month?
+□ Which three people would take the member-answered rate below 20 percent if they stopped posting,
+  and when did we last check their ledger?
+□ If a ban we made this quarter were screenshotted tomorrow, does the log, the rule and the appeal
+  record defend it?
+□ Could we honour a legal hold and an erasure request on the same platform, this week?
+□ Which language rooms are open right now that nobody on staff can read?
+□ If finance asked what the community is worth, can we produce the number, the method, and last
+  quarter's version of the same calculation?
+□ What is the community's job, in one sentence, and would the current metrics detect it failing?
+```
+
 ## Example
 
 **User says:** "Support tickets are drowning us and everyone says we should start a community. We have a

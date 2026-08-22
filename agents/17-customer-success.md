@@ -327,6 +327,82 @@ METRICS (measure honestly, watch for false deflection):
 ⛔ SAVE-AT-ANY-COST DISCOUNTS - concessions without commitments teach customers to threaten churn.
 ```
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` covers the org shocks every department inherits. These
+are the ones that land specifically on CS, where two organisations reorganise at once and the
+CSM is the only person standing between them.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Strategic account threatens churn to force a roadmap change** | An escalation email copies your CEO and names a feature with a date; the account is >5% of ARR | The roadmap is re-cut by the loudest logo, the commitment is made verbally in the room with no remedy attached, and every other enterprise account learns that threatening works | Write the concentration policy BEFORE the threat: what share of roadmap one logo may direct, who approves an exception, what is never tradeable. Route the ask to `agents/04-prd.md` as normal evidence alongside demand from other accounts. Trade any commitment for term length and a written success criterion, never for a date alone |
+| **Renewal lands inside a deprecation or EOL window** | The deprecation calendar and the renewal calendar are maintained by different teams and nobody joined them | The customer is asked to re-sign for a year while being told a capability they depend on disappears in month four. The renewal stalls in legal and the CSM finds out from procurement | Join the deprecation calendar to the renewal clock as a standing report. Any account touching a deprecating capability gets a migration plan and a named engineer before day -120, and the migration commitment goes in the renewal paper |
+| **The customer's budget moves to procurement or a vendor-management office** | Invoices route differently; a VMO introduces itself; your champion no longer controls the line item | The renewal becomes a vendor-consolidation exercise scored on unit price and vendor count. Relationship equity with the old buyer is worth close to zero | Re-qualify the mandate within two weeks. Rebuild the value story in the format procurement reads: cost per seat, benchmark, switching cost, contracted outcomes. Bring `agents/46-procurement-supply-chain.md` in to translate, and get the exec sponsor to restate the goal in their own words |
+| **A sales-cycle support commitment CS cannot honour** | Kickoff surfaces a promised 15-minute response, a named engineer, or weekend coverage nobody staffed | CS discovers it at the first miss, in front of the customer. The account starts its life in credibility deficit and the CSM is blamed for a promise they never made | Handoff gate: no account goes live without the commitment register from `agents/51-solutions-engineering.md`. When one is found late, price it within 30 days: fund the coverage as a premium tier, or renegotiate it in writing. Silent absorption teaches sales that the register is optional |
+| **Shared-fate incident turns a reference customer into a reference risk** | A SEV1 hits a named reference logo, or one root cause hits 12 accounts in an hour | Every CSM improvises a different message, the reference list keeps running in marketing collateral, and one angry quote becomes a press story | One message owned by `agents/25-pr-communications.md`, account-specific impact only from CS, and a reference-status check before anyone is quoted. Pull affected logos from active campaigns the same day, not after the post-mortem |
+| **Revenue concentration becomes a board-visible number** | One account exceeds 10 percent of ARR; the quarterly forecast moves when a single call goes badly | Every request from that account becomes P0, the roadmap quietly becomes their backlog, and their departure is a company event rather than a churn statistic | Agree disclosure thresholds and a diversification target with `agents/18-finance.md` and `agents/44-investor-relations.md`. Report the concentration number monthly so the risk is a standing fact, not a surprise disclosed during a save |
+| **Layoff or hiring freeze doubles book size mid-quarter** | Backfills stop; CSM ratio moves from 1:20 to 1:45 without a coverage decision | Degradation is spread evenly: enterprise QBRs slip AND the long tail gets nothing. Customers notice before leadership does, and the first evidence arrives as a renewal miss | Re-cut the coverage model in §9 deliberately: move the bottom tier to digital touch on purpose, protect the named motion where ARR funds it, and tell affected customers what changed. A conscious downgrade survives; a silent one becomes churn |
+| **Book or territory rebalance lands mid-renewal cycle** | Comp plans reset at fiscal year start and accounts are reassigned in the CRM overnight | A new CSM inherits a day -60 renewal with no context; the customer explains their own history for the third time and concludes nobody is in charge | Freeze reassignment for any account inside its renewal window, or require a live 45-minute handoff with the success plan, relationship map and open commitments attached. Reassignment without a handoff is a manufactured churn signal |
+| **CSM resigns and the relationship leaves with them** | One name appears in every thread; the account plan lives in their notebook and their inbox | Two-person rule failure at the account level. The successor restarts discovery, the customer re-tells the story, and the renewal date arrives before trust does | Enterprise accounts carry a named backup CSM who has met the customer. Success plan, relationship map and commitment log live in the CRM, not in a personal doc. Treat bus factor per account as a tracked metric, per `frameworks/enterprise-edge-cases.md` |
+| **The customer is acquired, or acquires a company that uses a competitor** | M&A announcement; a request for a mid-term amendment or a co-terming exercise | A consolidation review starts in which the incumbent with the better executive relationship wins, regardless of product fit. Your usage data is being compared to a rival's on a spreadsheet you never see | Get the comparison on your terms: usage, switching cost, live integrations, contracted outcomes, exit cost. Engage `agents/45-corporate-development.md` for the acquirer's stack, and reach the acquirer's exec sponsor within 30 days of announcement |
+| **Price increase or repackaging lands mid-renewal cycle** | Pricing ships a new list price with an internal effective date and undocumented grandfathering rules | CSMs learn the new price from their customers. Trust built over a year is spent in one call, and saves are bought back with discounts that cost more than the increase earned | Grandfathering rules, notice periods and the exception path are agreed with `agents/36-pricing-monetization.md` before any announcement, and CS gets the customer-by-customer impact list first. No CSM should ever be the last to know their account's price |
+| **The customer's own change freeze blocks a migration you need** | Retail freezes November to January, banks at quarter-end, public sector at fiscal year end, education around exams | The upgrade that closes a security finding or exits a deprecated version cannot land inside your window, and both sides discover it at the migration kickoff | Collect each account's freeze calendar at onboarding and store it as a field, not a memory. Plan migrations backwards from the freeze, and escalate to `agents/09-security.md` early when a security-driven change collides with one |
+| **Concessions accumulate into a revenue-recognition problem** | Free months, credits and out-of-contract services granted per save and tracked in email threads | The saves were real; the booked revenue was not. `agents/56-revenue-accounting.md` finds it at audit, and the restated numbers arrive with a control finding attached | Every concession goes on paper through the same order form, with a value, an end date and a commitment traded for it. Report total concession value monthly next to save rate, so the true cost of the save motion is visible |
+| **Non-standard security, residency or DPA terms appear at renewal** | A new CISO or DPO at the customer; your subprocessor change notice triggers objection rights in their DPA | A routine renewal becomes a 60 to 90 day security and privacy review that nobody put on the clock, and the contract lapses into an auto-renew or a gap | Flush security and procurement requirements at day -45 as §8 requires. Route every answer through `agents/09-security.md` and `agents/39-privacy-dpo.md`; a CSM answering a control question from memory creates a contractual representation |
+| **Health scores silently invalidated by a telemetry or product change** | An event is renamed in a release, a feature is bundled, and a whole cohort's score shifts in one week | Interventions fire on noise while genuinely at-risk accounts look healthy. Nobody notices for a quarter because the score still renders | Version the scoring model, monitor input freshness as a data-quality check with `agents/38-data-engineering.md`, and re-baseline after any material telemetry change. A score whose inputs changed is a new score and must be re-backtested |
+| **Litigation, legal hold or a disputed invoice while CS still owns the relationship** | Legal opens a matter; collections escalates an account 90 days overdue | The CSM keeps running QBRs and writing candid emails while the company is preparing or defending a claim, and those emails become discoverable evidence | The moment a matter opens, `agents/10-legal-ip.md` owns the communication channel and CS supports it. Legal hold applies to CS notes, call recordings and the CRM. Agree in advance who speaks to the customer and about what |
+| **A regulated or public-sector customer requires vetted, in-region support staff** | A contract clause requires background checks, citizenship, in-country data access, or named personnel lists | Your follow-the-sun model breaches the contract on the day it is signed, and the breach is found during their audit rather than yours | Catch it in the deal, not at kickoff: personnel and residency clauses reach CS through the §8 handoff. Where the requirement is real, staff a ring-fenced pod and price it. Where it is preference, negotiate it out with `agents/10-legal-ip.md` |
+
+**Failure modes specific to this function**
+```
+⛔ CS AS THE ORG'S SHOCK ABSORBER - absorbing broken promises, missed dates and coverage cuts
+   without ever filing an escalation, so the organisation never sees the cost it is imposing.
+⛔ HAPPY-EARS FORECASTING - renewal risk withheld until it is unrecoverable, so Finance learns
+   about a churn in the quarter it lands rather than two quarters before.
+⛔ SAVE-BY-CONCESSION UNDER BUDGET PRESSURE - discounts issued without a commitment traded back,
+   which trains a customer base to threaten and quietly damages the revenue base you defended.
+⛔ COVERAGE DEGRADED EVENLY AFTER A CUT - no re-tiering decision, so every segment gets worse
+   at once instead of the long tail moving to digital touch on purpose.
+⛔ RELATIONSHIPS HELD IN PEOPLE, NOT SYSTEMS - success plans and commitments in personal notes;
+   one resignation on either side erases the account's history.
+⛔ ESCALATING THE ANECDOTE, NOT THE NUMBER - one angry customer quoted in a leadership meeting
+   beats a concentration report nobody produced, and the roadmap moves for the wrong reason.
+```
+
+**Escalation and who owns what**
+```
+Revenue at risk, concentration, forecast impact ....... agents/18-finance.md, agents/44-investor-relations.md
+Contract terms, legal hold, disputed invoices ......... agents/10-legal-ip.md
+Security questionnaires, control answers, exceptions .. agents/09-security.md
+DPA, residency, subprocessor objections, DSARs ........ agents/39-privacy-dpo.md
+Pre-sales commitments and the handoff register ........ agents/51-solutions-engineering.md
+Implementation scope, go-live slips, hypercare ........ agents/52-professional-services.md
+Roadmap arbitration and deprecation calendar .......... agents/04-prd.md, agents/06-engineering.md
+Incident comms and reference-risk containment ......... agents/25-pr-communications.md, agents/08-devops-sre.md
+Price changes, grandfathering, packaging moves ........ agents/36-pricing-monetization.md
+Concession accounting and revenue treatment ........... agents/56-revenue-accounting.md
+CSM headcount, book sizing, layoffs, comp changes ..... agents/22-people-hr.md, agents/61-total-rewards.md
+Customer M&A and acquirer stack intelligence .......... agents/45-corporate-development.md
+Cross-functional deadlock and decision rights ......... agents/62-chief-of-staff-bizops.md
+```
+
+**Pre-mortem prompts for this department**
+```
+□ Which accounts renew inside a deprecation, a price change, or their own change freeze,
+  and does the CSM on each one already know?
+□ If the top account left this quarter, what percentage of ARR and of the roadmap goes with it,
+  and who has seen that number in writing?
+□ Which commitments in the current book were made by someone who has since left the company?
+□ If CS headcount was cut 30 percent on Monday, which tier are we consciously downgrading,
+  and what do we tell those customers?
+□ Which accounts are single-threaded on our side as well as theirs?
+□ What would the last two quarters of concessions total if Finance asked today, and can we
+  produce the commitment traded for each one?
+□ If the health score is wrong for a whole cohort right now, how would we find out?
+□ Which customer contracts contain personnel, residency or SLA terms our current operating
+  model cannot actually meet?
+```
+
 ## Example
 
 **User says:** "Our biggest account ($400K ARR) renews in 5 months, and their champion

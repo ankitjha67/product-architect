@@ -285,6 +285,65 @@ POLICY RED-TEAM DISCIPLINE:
   whether detection still fires (detection regression tests, run like CI)
 ```
 
+### 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the T&S-specific layer:
+the cases where the policy is sound, the pipeline works, and the ORGANISATION is the failure
+mode. Pick the 3 to 5 that can plausibly land in the next two quarters and name the trigger,
+the owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A routine moderation decision becomes a press or political incident** | A screenshot of the enforcement notice spreading on another platform; a journalist asking for comment on a single account; a politician or their staff naming the case | Freeze the account state and pull the full decision record (policy clause, evidence, reviewer, timestamps, appeal status) within 2 hours. Decide correctness on the record BEFORE anyone drafts a statement. Reversing on volume rather than on evidence teaches everyone that outrage is the appeals process | 12 Trust & Safety with 25 PR & Communications, 10 Legal & IP |
+| **A regulator demands transparency reporting the system was never instrumented for** | A reporting obligation (DSA-style statements of reasons, OSA-style risk reporting, local IT-rules reporting) that requires per-decision counts by policy clause, market and automation tier that your tooling does not emit | State the true coverage period and the date instrumentation begins. Never reconstruct decision counts from spreadsheets: an inconsistent regulatory filing is a worse finding than a gap. Then treat telemetry as a P0 product requirement, not a reporting chore. Verify the current filing format with qualified counsel | 12 Trust & Safety, 11 Compliance & Ethics, 16 Analytics, 38 Data Engineering |
+| **Enforcement that is lawful in one market is unlawful in another** | A takedown demand under local law that conflicts with a rights obligation elsewhere; a market where a policy category is protected speech and another where hosting it is criminal; a global rule shipped without a jurisdiction switch | Separate what is legally REQUIRED to differ from what is preference. Implement geo-scoped enforcement (restrict in-market, not global removal) where the law allows, log the legal basis per action, and get local counsel on the specific demand before responding | 12 Trust & Safety, 10 Legal & IP, 28 Government Relations, 43 Localization & i18n |
+| **Moderator wellbeing turns into a duty-of-care and retention crisis** | Graphic-queue exposure with no rotation cap; wellness sessions cancelled to clear a backlog; attrition above roughly 50 percent annualised in the severe queues; a BPO site where the counselling line is a contract clause nobody uses | Cap severe-queue exposure hours per shift and enforce rotation in the routing tool, not in a policy PDF. Wellness capacity must scale with queue volume in the same budget line. Audit the vendor's actual practice on site, since the contract clause is not the control | 12 Trust & Safety, 24 Wellness & Performance, 22 People & HR, 46 Procurement & Supply Chain |
+| **An appeals backlog turns into a legal exposure** | Median appeal resolution drifting past the statutory or committed window; the backlog concentrated in one language or market; overturn rate above 20 percent, meaning the first layer is broken (§5) | Triage appeals by SEVERITY of the original action (permanent bans and monetisation loss first), publish the true wait, and add capacity or auto-restore low-severity actions older than the committed window. A silent backlog becomes a systemic-failure finding, not a case-by-case one | 12 Trust & Safety, 19 Operations, 11 Compliance & Ethics |
+| **A policy change is applied retroactively to old content** | A new rule shipped with a backfill job over the archive; creators losing monetisation for posts that were compliant when published; a classifier retrained and re-scored over historical content | Default to prospective enforcement with a stated effective date. Retroactive action requires an explicit decision with a named executive owner, a notice plan and an appeal path, because it hits the most-loyal users hardest and is the fastest route to an organised creator revolt | 12 Trust & Safety, 54 Community, 10 Legal & IP |
+| **A growth campaign floods a market with no local-language review capacity** | Marketing launching a market that the reviewer coverage map does not include; report volume rising faster than staffed hours; machine translation used as a substitute for local context | Gate the market launch on coverage, or launch with reduced surfaces (no DMs, no live, no monetisation) until reviewers exist. English-only classifiers plus no local reviewers in a market you actively serve is the canonical catastrophic pattern (see Failure Modes) | 12 Trust & Safety, 14 Launch & GTM, 43 Localization & i18n |
+| **A government demand arrives through an informal channel** | A request by phone, DM or meeting rather than a formal order; a deadline shorter than any legal process; pressure applied to a local employee who has personal legal exposure | Route every demand to one published intake path and require it in writing with a legal basis. Protect the local employee by removing them from the decision. Log the demand for the transparency report, and verify the applicable process with qualified counsel before complying or refusing | 28 Government Relations, 10 Legal & IP, 12 Trust & Safety |
+| **T&S budget is cut or repriced while volume grows** | A per-ticket vendor renegotiation at lower unit cost; a hiring freeze during a user-growth quarter; the T&S line moved under a growth org that is measured on signups | Publish the coverage map: which harm classes are proactively detected, which are report-only, and what you are formally ceasing to cover from which date. Silent de-scoping in T&S becomes negligence; stated de-scoping becomes an executive decision with an owner | 12 Trust & Safety, 18 Finance, 62 Chief of Staff & BizOps |
+| **A VIP or partner enforcement carve-out leaks** | A whitelist, a "check with partnerships first" rule, or an escalation path that exists only for accounts above a revenue threshold; reviewers told to route famous accounts to a different queue | Distinguish a defensible difference (extra review before action on high-impact accounts, same policy) from an indefensible one (different rules). Document the standard, apply the same policy outcome, and expect the list itself to become public | 12 Trust & Safety, 33 Partnerships & BizDev, 25 PR & Communications |
+| **A new surface ships without the capacity math because the date is committed** | A launch review where T&S is listed as "informed"; the §7 staffing model run after the launch date is announced; automation tiers described as "we will tune post-launch" | Convert the objection into a dated, signed scope decision: launch with the surface limited (invite-only, no minors, no DMs) or launch fully with the queue funded. Never let it resolve as an unrecorded acceptance | 12 Trust & Safety, 41 Technical Program Management, 04 PRD |
+| **An election, conflict or crisis window generates novel harms faster than policy** | Coordinated inauthentic behaviour spikes; harm types with no existing policy clause; a spike in local-language content nobody on the team reads | Stand up a time-boxed crisis policy with an expiry date, daily review, and a named decision-maker who can act inside hours. Pre-agree the escalation ladder BEFORE the window opens; the window is on a public calendar every time | 12 Trust & Safety, 28 Government Relations, 63 AI Evaluation & Red Teaming |
+| **Another team wants the moderation data or classifiers for a different purpose** | Growth asking for the abuse graph for targeting; ads asking to reuse the risk score; a data-warehouse copy of the report and evidence corpus with wide access | Purpose-limit the T&S data set with an explicit lawful basis and access control; evidence, especially S0 material, must not leave its restricted store. Reuse is a privacy decision and a safety decision at once, and it is not the requester's to make | 39 Privacy & DPO, 12 Trust & Safety, 38 Data Engineering |
+| **A vendor site, strike or country event removes queue capacity overnight** | Single-site concentration for a language; a BPO renegotiation or works-council process; local unrest or an internet shutdown in the delivery country | Have a pre-agreed degradation order: which harm classes keep full review, which fall back to automation with a higher threshold, which surfaces get throttled. Concentration risk is a T&S availability risk, not just a procurement one | 19 Operations, 46 Procurement & Supply Chain, 12 Trust & Safety |
+
+```
+⛔ HOW TRUST & SAFETY FAILS UNDER ORGANISATIONAL PRESSURE:
+□ REPORTING LINE DECIDES THE THRESHOLD: T&S sitting inside a growth or ads org quietly gets
+  the friction dial turned down. The policy never changes; the enforcement rate does.
+□ CAPACITY SET BY FINANCE, HARM SET BY THE WORLD: staffing is negotiated as a cost line while
+  volume is set by attackers, virality and market launches. The gap surfaces as a backlog.
+□ POLICY WRITTEN BY PEOPLE WHO NEVER REVIEW: rules that cannot be applied in the 30 seconds a
+  reviewer actually has produce inconsistent enforcement, then an overturn rate nobody can fix.
+□ VENDOR INCENTIVES POINT AT SPEED: per-ticket pricing and handle-time targets pay for
+  throughput, not accuracy. Quality is whatever the QA sample is, so the sample IS the policy.
+□ ESCALATION EXISTS ONLY FOR THE FAMOUS: a routine case with no route upward stays wrong until
+  it is public, and by then the record, not the judgement, is what everyone is arguing about.
+□ TRANSPARENCY AS A QUARTERLY SCRAMBLE: numbers assembled by hand from four systems, so each
+  report is a new interpretation and the year-on-year comparison cannot survive a regulator.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+The T&S decision that becomes a company crisis is almost never a hard case. Hard cases get
+senior attention, a written rationale and a defensible record. The crisis case is a ROUTINE
+case, decided in 30 seconds by a queue that was correct on the policy as written, with no
+path upward and no record beyond a policy code. The organisation then discovers it cannot
+answer the only three questions that matter (which clause, on what evidence, reviewed by
+whom), so it reverses on volume of noise, which teaches every future complainant that outrage
+outranks appeals. Build the decision RECORD and the routine-case escalation path first; they
+matter more than any refinement of the policy text.
+
+⚠️ Transparency-reporting duties, notice-and-action timelines, government-demand handling,
+   age-assurance requirements and moderator employment obligations are jurisdiction-specific
+   and change frequently. Treat the principle above as durable and verify current requirements
+   with qualified counsel and Agents 10, 11 and 39 before acting.
+   See references/DISCLAIMER.md.
+```
+
 ## Failure Modes (⛔)
 
 ```

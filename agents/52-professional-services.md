@@ -298,6 +298,81 @@ highest-leverage hour in the entire delivery process.
 ⛔ SERVICES REVENUE CELEBRATED WHILE MARGIN AND TTFV DECAY - growth in the wrong number.
 ```
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` covers the org shocks every function inherits. These are the ones
+that land on delivery, where a dated commitment runs through two organisations, a partner and a contract.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **The customer's sponsor changes mid-project** | Your executive sponsor is reorganised out; a new sponsor asks for a "quick recap" and then questions the scope | The SOW is treated as the previous regime's decision. Scope is reopened, the plan is re-litigated, and weeks of delivery are spent re-selling work already paid for | Re-qualify the mandate within two weeks: a one-page restatement of outcomes, milestones and the assumptions register, signed by the new sponsor. Log the elapsed time as a customer-caused delay under the SOW rather than absorbing it |
+| **Scope creep arrives without a change order** | Small favours accumulate; the absorbed-hours log crosses 40 hours on one project | Margin leaks invisibly, the go-live date slips, and the customer sincerely believes the extra work was always in scope because nobody ever priced it | Enforce §4's thresholds mechanically: every request over the absorb line generates a written change order before work starts. Report absorbed hours per project monthly; unlogged goodwill is untraceable margin loss |
+| **Fixed-fee milestones slip and revenue recognition slips with them** | A milestone-based engagement misses its acceptance date near a period close | Revenue that finance forecast does not recognise, and the miss is discovered by `agents/56-revenue-accounting.md` during close rather than by delivery in advance | Milestone dates and acceptance criteria are a shared artifact with revenue accounting from SOW signature. Flag at-risk milestones 30 days before period end, and never restructure a milestone to pull revenue forward without accounting sign-off |
+| **Customer-side resources are pulled by their own freeze or layoff** | Their named admin stops attending; access requests sit unactioned; the data owner is "no longer with the company" | The project stalls on their dependency while your consultants stay allocated and billable expectations continue. The delay is later reported as your slip | The customer-responsibilities section of the SOW is the instrument: log the missed dependency in writing the week it happens, invoke the delay clause, and re-plan formally. Offer a paused engagement over a silently drifting one |
+| **The go-live weekend collides with a change freeze or a CAB slot** | Their CAB meets fortnightly; a retail, banking or public-sector freeze covers your cutover window | The technical work finishes and the cutover waits six weeks, consuming hypercare capacity and pushing time to first value past the point the sponsor forms an opinion | Book the CAB slot and confirm freeze calendars at kickoff, not at UAT. Plan cutover backwards from their approved windows and treat those windows as the immovable constraint |
+| **A legacy system owner inside the customer has a six-month queue** | The integration depends on a team that does not report to your sponsor and has its own roadmap | The dependency is discovered in discovery and ignored in planning, then becomes the critical path four weeks from go-live | Design around it: anti-corruption layer, flat-file interim, or a phased scope that delivers value without them. Any plan whose critical path runs through another department's backlog needs their written slot before the date is committed |
+| **A subcontractor or partner handles data differently to you** | Staff augmentation onboarded quickly; offshore delivery centre added to relieve a backlog | Customer data reaches a jurisdiction or a device the DPA does not permit, background checks were never done, and the finding appears in the customer's vendor audit | Subcontractor approval, background checks and data-handling terms flow down from the MSA before anyone is staffed. Coordinate with `agents/39-privacy-dpo.md` and `agents/46-procurement-supply-chain.md`; an unapproved subprocessor on a project is a contract breach, not a staffing shortcut |
+| **Residency or clearance terms rule out your offshore delivery model** | A clause requires in-country processing, citizenship, or on-site badged consultants | The engagement is quoted at blended offshore rates and delivered at onshore cost, destroying project margin on a signed fixed fee | Read personnel and residency clauses at quote time, through `agents/51-solutions-engineering.md`'s handoff. Price restricted engagements on a separate rate basis and never mix rate bases inside one SOW |
+| **Utilisation targets push consultants onto the wrong work** | A quarter-end utilisation push; the architect is billed on a straightforward configuration | Realisation falls while utilisation rises, enablement and accelerator work stops, and estimate accuracy degrades because nobody is improving the model | Manage utilisation and realisation as a pair, per §7, and protect planned bench work as capacity rather than waste. A 90 percent utilisation quarter that damages estimate accuracy costs more than the bench it eliminated |
+| **A sales miss creates bench that arrives as pressure to discount services** | Pipeline drops; the bench passes 25 percent; someone proposes free implementation to win logos | Services become the discount lever, procurement learns implementation is worthless, and the rate card never recovers at renewal | Trade scope, never rate, per §2. Free implementation is a budgeted decision by `agents/18-finance.md` with a scoped boundary, and bench time is redirected to accelerators and partner enablement that reduce future cost |
+| **A services promise quietly becomes a product requirement** | The same custom script appears in the fifth implementation; consultants maintain it for customers | The company is now shipping unmanaged software with no owner, no tests and no support path, discovered when it breaks after a platform upgrade | Track "percent of implementations needing custom code" as product debt to `agents/04-prd.md` and `agents/06-engineering.md`, and hand recurring artifacts to product or formally deprecate them. Delivery must never become an unfunded engineering team |
+| **A consultant leaves mid-engagement** | One name holds the customer's configuration rationale; handover notes live in their laptop | The replacement re-discovers the environment on billable time or, worse, on absorbed time, and the customer loses confidence in week nine | Two-person rule on every enterprise engagement, project state in one system of record, and a weekly written status that a stranger could pick up. Bus factor per project is a tracked delivery risk, not an HR concern |
+| **The customer disputes an invoice or stops paying mid-project** | Collections escalates; a change order is contested; procurement queries the rate card | Delivery keeps working to preserve the relationship while the commercial position weakens, then stop-work becomes an escalation instead of a clause | Agree the stop-work trigger and who authorises it before it is needed, with `agents/10-legal-ip.md` and finance. Continue only on a written decision, and separate the commercial dispute from the delivery channel |
+| **Migration hits personal data, legal hold or retention conflicts** | Profiling finds PII in free-text fields; the customer has records under legal hold or a deletion obligation | The migration plan moves data that must not move, or deletes data that must be retained, and the discovery happens after cutover | Data classification is part of profiling, not an afterthought. Legal hold and retention rules per data category are confirmed with 39 and the customer's counsel before mapping, and production data never lands in a test environment unscrubbed |
+| **A partner-led delivery goes wrong and the churn is yours** | Partner CSAT falls, escalations arrive from the customer rather than the partner, milestones are reported green until they are not | The customer experiences your product as the failed implementation, and you have no contractual right to intervene | Certification, a delivery-quality scorecard and inspection rights are set with `agents/33-partnerships-bizdev.md` before the first joint project. Keep a defined intervention path and the right to remove a partner from the approved list |
+| **Two services organisations merge after an acquisition** | Different rate cards, methodologies, utilisation definitions and project accounting arrive on day one | Metrics become incomparable, consultants are staffed across incompatible playbooks, and margin reporting silently breaks for two quarters | Harmonise definitions before headcount: one definition of billable, realisation and acceptance, one project system of record, one rate card with a documented transition. Coordinate with `agents/45-corporate-development.md` on the integration sequence |
+| **Marketing books a reference before hypercare closes** | A case study or launch mention scheduled against a project still carrying open defects | The reference commitment locks the account into a public position it may not hold, and a hypercare escalation becomes a public relations problem | Reference eligibility starts after hypercare exit criteria are met and the CSM agrees, per `agents/17-customer-success.md`. Delivery holds a veto on referencing an unfinished project |
+
+**Failure modes specific to this function**
+```
+⛔ SILENT ABSORPTION UNDER RELATIONSHIP PRESSURE - the delay, the extra integration and the sponsor
+   change all handled by goodwill, so the organisation never sees the cost and never fixes the cause.
+⛔ COMMITTING A DATE THROUGH SOMEONE ELSE'S QUEUE - a go-live built on the customer's legacy team,
+   their CAB, or a partner's staffing, with no written slot behind it.
+⛔ UTILISATION MANAGED AS THE HEADLINE NUMBER - realisation, estimate accuracy and enablement decay
+   while the dashboard improves, and the margin utilisation was meant to protect disappears anyway.
+⛔ STAFFING FIRST, COMPLIANCE SECOND - subcontractors, offshore centres and new hires placed on a
+   project before background checks, subprocessor approval and residency terms are confirmed.
+⛔ DELIVERY AS AN UNFUNDED ENGINEERING TEAM - recurring custom artifacts maintained by consultants,
+   with no owner, no tests and no upgrade path.
+⛔ PROJECT STATE IN PEOPLE, NOT SYSTEMS - one consultant holds the configuration rationale, so any
+   reassignment, resignation or leave restarts discovery on someone's budget.
+```
+
+**Escalation and who owns what**
+```
+Milestone slippage, revenue recognition, credits ...... agents/56-revenue-accounting.md, agents/18-finance.md
+SOW terms, stop-work, liability, change disputes ...... agents/10-legal-ip.md
+Subcontractors, subprocessors, vendor onboarding ...... agents/46-procurement-supply-chain.md
+Data classification, legal hold, residency, DSARs ..... agents/39-privacy-dpo.md
+Pre-sales commitments and the handoff register ........ agents/51-solutions-engineering.md
+Post-go-live value, references, renewal risk .......... agents/17-customer-success.md
+Product debt from repeated custom work ................ agents/04-prd.md, agents/06-engineering.md
+Cutover windows, rollback authority, RPO/RTO .......... agents/08-devops-sre.md
+Partner quality, certification, intervention rights ... agents/33-partnerships-bizdev.md
+Consultant headcount, attrition, backfills ............ agents/22-people-hr.md, agents/60-talent-acquisition.md
+Customer-side enablement and adoption programmes ...... agents/53-customer-education.md
+Post-acquisition integration of a services org ........ agents/45-corporate-development.md
+Cross-functional deadlock and decision rights ......... agents/62-chief-of-staff-bizops.md
+```
+
+**Pre-mortem prompts for this department**
+```
+□ Which live projects have a critical path running through a team that does not report to our
+  sponsor, and do we have their slot in writing?
+□ Which committed go-live dates sit inside a customer change freeze, a CAB cadence, or a
+  fiscal-year lock we have not confirmed?
+□ If the customer's executive sponsor changed tomorrow, which projects would have their scope
+  reopened, and is the assumptions register signed?
+□ How many absorbed hours has each project logged this quarter, and what would the margin look
+  like if every one of them had been a priced change order?
+□ Which milestones due this quarter carry revenue that finance is already forecasting?
+□ Is every person touching customer data on every project background-checked, approved as a
+  subprocessor, and working from a permitted jurisdiction?
+□ Which project would lose its history if one named consultant resigned this week?
+□ What is our stop-work trigger if a customer stops paying, and who is authorised to pull it?
+```
+
 ## Example
 
 **User says:** "We're a $14M ARR SaaS. Services is $3.1M of it at 12% margin, every enterprise deal needs

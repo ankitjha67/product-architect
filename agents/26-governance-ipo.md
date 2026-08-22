@@ -400,6 +400,81 @@ scorecard, and an investor memo explaining the date in evidence, not vibes.
 **Quality check:** Every hard gate has a numeric score, an owner, and a remediation date;
 the reversal condition is written down; no gate was waived for the window.
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits. This
+section is the governance-specific layer: the cases where the framework on paper is correct and the
+ORGANISATION defeats it, because a decision was taken outside the body that owns it, a control existed
+without ever operating, or a threshold moved while nobody was watching. Pick the 3 to 5 that can
+plausibly land in the next two quarters and name the trigger, the owner, and the pre-agreed move.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **The committee charter does not actually cover the decision being made** | A cyber-risk item arriving at the audit committee by default; an AI deployment decision with no owning body; a compensation matter split between NRC and the board | The decision is taken by whoever is in the room, and the minutes record an approval that the charter does not authorise. In diligence it reads as a governance gap, and it may be one | Map every recurring decision type to an owning body annually, and amend charters deliberately rather than stretching them. Where no body owns it, the board takes it explicitly and the charter is updated at the next cycle |
+| **SOX or control scoping misses a system that became material** | A billing tool, a spreadsheet, or a data pipeline that grew from a side project into the source of a material balance; a new revenue stream on an unscoped platform | Controls are tested over the systems that were material two years ago, while the number that matters flows through one nobody scoped. The first evidence is a deficiency at year end | Re-perform scoping annually against the current financially significant systems with Agent 59 and Agent 56, driven by data flows rather than by last year's list. A new material revenue stream triggers a scoping review, not a note to revisit later |
+| **A related-party transaction is discovered late** | A vendor whose director shares a surname; a founder's spouse's agency invoicing marketing; a portfolio company of an investor becoming a supplier | Prior audit committee approval is the requirement, so a transaction found afterwards cannot be cured by approving it now. The disclosure lands in the DRHP or the S-1 as a finding rather than a footnote | Refresh the related-party register quarterly from HR, procurement and cap-table data, screen new vendors against it in Agent 46's onboarding, and ratify or unwind anything found immediately with disclosure to the committee |
+| **A control was designed but never operated** | A policy document with no evidence of execution; an access review that has not run in three quarters; a quarterly certification signed retroactively | Design without operation is worse than no control, because the company relied on it and the auditor will conclude that management's representation was wrong | Every control has an owner, a frequency, and an evidence artifact that is produced automatically where possible. Test operation, not existence, and report the operating rate to the audit committee rather than the design count |
+| **Auditor independence is tripped by a consulting engagement** | The audit firm's advisory arm implementing the ERP, doing the valuation, building the tax structure, or seconding staff into finance | The engagement can impair independence, and the remedy is expensive: unwind the work, change auditors near a filing, or explain it to a regulator | Independence pre-clearance is mandatory for every engagement with the audit firm or its network, owned by the audit committee chair with Agent 46 gating procurement. Budget for two firms before you need them |
+| **Independent director count falls below the required number** | A resignation, a term expiry, an independence-impairing new role, or a director taking an executive position elsewhere in the group | Composition requirements are usually absolute rather than proportionate, and the cure period is short. Committee quorum can fail at the same time, which stalls every approval that runs through it | Maintain a warm bench of two vetted candidates and track term expiries, independence status and other commitments in a live register. **Verify current composition and cure-period requirements for your exchange and jurisdiction** |
+| **The delegation-of-authority matrix is not enforced** | A contract signed above threshold; an unbudgeted commitment approved by email; a vendor invoicing against a purchase order nobody could approve | An unenforced DoA is an audit finding and, worse, a live authority question about whether the company is bound. It also removes the board's actual control over commitments | Wire the matrix into the systems that execute it with Agent 46 and Agent 40 so thresholds are enforced by workflow, not by memory. Report violations to the audit committee quarterly and review the matrix annually against revenue scale |
+| **Minutes are drafted late, or a real decision has no minute at all** | Minutes circulated weeks after the meeting; a decision taken over a chat thread between meetings; a resolution passed by circulation with no record of the materials | Diligence reads minutes for texture, and thin or retrospective minutes read as fabricated ones. A decision with no record may also be unenforceable against a dissenting party later | Draft minutes within a defined window while the discussion is fresh, record the materials relied on and the dissent, and formalise between-meeting decisions as written resolutions with the same rigour as a meeting |
+| **A subsidiary board is dormant and its filings lapse** | A subsidiary with the same three directors as the parent that has not met in two years; a local filing penalty notice; a struck-off warning | The parent inherits the consequence, and a struck-off or non-compliant subsidiary can block an acquisition, a bank account, or a licence renewal at the worst moment | One consolidated compliance calendar covering every entity with named owners, plus a minimum meeting cadence per subsidiary. Dissolve entities you do not need instead of carrying them dormant |
+| **A subsidiary crosses a materiality threshold and triggers enhanced obligations** | A fast-growing entity passing the income or net-worth test; a newly acquired business becoming significant | Enhanced obligations attach automatically. Board composition, audit, and disclosure requirements change with no notice period, and the company discovers them after the fact | Monitor subsidiary materiality tests quarterly with Agent 56, and model the governance consequences at the point a subsidiary is planned to grow. **Verify current thresholds and the obligations they trigger** |
+| **Equity is issued without proper approval or on a stale valuation** | Option grants made by a hiring manager's offer letter; a grant list approved months after the start dates; a valuation older than the last material event | Invalid grants have to be re-issued, sometimes at a higher price, which is an employee-relations problem as well as a compliance one. A stale valuation creates tax exposure for the employee | Grants are batched to a board or committee calendar with a documented approval date, and a valuation refresh is triggered by defined events, not only by the calendar. Run this jointly with Agent 61 and Agent 57 |
+| **Pre-IPO diligence finds a founder loan or personal expense on the company** | A director's current account balance; a personal vehicle, travel, or family payroll in the ledger; a company guarantee for a personal obligation | These are close to disqualifying in a listing context, and they cannot be cleaned quietly at the last minute because the history is in the audited accounts | Clean them at least two audited years before any filing. Personal-expense screening belongs in the close with Agent 56, and a director's current account should be zero and stay zero |
+| **Employees hold vested equity with no insider-trading discipline** | A pre-IPO company with a secondary market, or a newly listed company where the trading window was announced by email once | Insider trading exposure attaches to individuals and to the company, and a structured record of who knew what is often required. Enforcement failures are personal | Adopt the insider policy, the trading window calendar, and the record of persons with access to unpublished price-sensitive information BEFORE listing, and train against it with Agent 22 and Agent 44 |
+| **A whistleblower complaint reaches the person it is about** | A hotline that routes to a shared management inbox; a complaint escalated through the line manager; an anonymous report handled by the implicated function | The complaint stops being about the underlying issue and becomes a retaliation matter, which is usually the more serious exposure and is separately protected in most jurisdictions | The channel routes to the audit committee chair independently of management, with a documented triage and investigation protocol owned with Agent 10 and Agent 59, and a non-retaliation rule that is enforced visibly at least once |
+| **A director's independence quietly lapses** | A new advisory role with a supplier; a family member joining the company; a consulting arrangement approved by management without committee visibility | Committee decisions taken while a member was not independent can be challenged, and proxy advisers and regulators will re-read the year retrospectively | Annual independence declarations plus an obligation to notify changes within a defined period, checked against the related-party register. Treat the declaration as a control with evidence, not as a formality |
+| **Window pressure to file with a hard gate unmet** | A banker's view that the window is open; an investor demanding a date; a scorecard with a hard gate at 3 of 5 | Filing with an unremediated material weakness or an unresolved audit qualification converts a timing problem into a permanent record. Windows reopen; restatements do not un-happen | The reversal condition is written down in advance and owned by the board, not renegotiated under pressure. A hard gate below its threshold moves the date, and the investor memo says so with the scorecard attached |
+| **Board materials live in personal email and chat** | Directors forwarding packs to personal accounts; decisions taken in a messaging group; no retention or legal-hold coverage over any of it | Records that must be produced in litigation, an investigation, or diligence are outside the company's control, and a legal hold cannot reach them | A board portal with access logging, watermarking and retention, agreed with Agent 40 and Agent 39, plus an explicit rule that substantive decisions are not taken in unmanaged channels |
+| **An acquisition brings a minority shareholder and its own governance** | A target with a shareholder agreement, reserved matters, or an option held by a founder who stays | Reserved matters can block integration decisions, and the minority's consent rights survive the transaction. Nobody reads the shareholder agreement until the first blocked decision | Read every reserved-matters clause during diligence with Agent 45 and Agent 10, plan the buyout or the governance accommodation before close, and add the entity to the compliance calendar on day one |
+
+**Failure modes specific to this function**
+```
+⛔ GOVERNANCE PRODUCED RETROSPECTIVELY. Minutes, approvals and evidence assembled after the decision to
+   satisfy a reviewer. It is detectable, and it converts a process gap into an integrity question.
+⛔ THE CALENDAR BECOMES THE OBSTACLE. Committees meet quarterly, so decisions route around them via
+   management approval and are ratified later. Ratification is not approval.
+⛔ CONTROLS BUILT FOR THE AUDITOR, NOT THE BUSINESS. They pass testing, nobody uses them to run anything,
+   and they are the first thing abandoned under headcount pressure.
+⛔ THE ENTITY AND REGISTER LAYER IS OUTSOURCED WITH NO INTERNAL OWNER, so the company secretary function
+   discovers lapses through penalty notices.
+⛔ THE COMPANY SECRETARY SEES THE DECISION AFTER EXECUTION, which makes governance a documentation service
+   rather than a control on authority.
+⛔ INDEPENDENCE AND RELATED-PARTY DATA ARE COLLECTED ANNUALLY AND NEVER REFRESHED, so the register is
+   accurate on one day of the year.
+```
+
+**Escalation and who owns what**
+- Control design, SOX scoping, testing, deficiency evaluation and remediation: `agents/59-internal-audit-risk.md`.
+- Ledger, materiality, subsidiary tests, segment reporting and the auditor relationship: `agents/56-revenue-accounting.md`.
+- Entity register, transfer pricing and the tax consequences of any structure: `agents/57-tax.md`.
+- Banking mandates, covenants, guarantees and delegated payment authority: `agents/58-treasury.md`.
+- Securities counsel, shareholder agreements, reserved matters and privilege: `agents/10-legal-ip.md`.
+- What may be said to holders and when, and the disclosure calendar: `agents/44-investor-relations.md`.
+- Deal governance, minority rights and post-close integration: `agents/45-corporate-development.md`.
+- Whistleblower channel operation, investigations and employee conduct: `agents/22-people-hr.md` with `agents/11-compliance-ethics.md`.
+- Equity plans, grant mechanics, secondaries and valuation refresh triggers: `agents/61-total-rewards.md`.
+- Board portal, access logging, retention and records hygiene: `agents/40-it-corporate-engineering.md` with `agents/39-privacy-dpo.md`.
+- Vendor onboarding screening and audit-firm independence pre-clearance: `agents/46-procurement-supply-chain.md`.
+- Regulatory examinations and horizon scanning on listing obligations: `agents/28-government-relations.md`.
+
+**Pre-mortem prompts for this department**
+```
+□ Which decision taken in the last quarter was approved by a body whose charter does not clearly cover it?
+□ Which of our controls has a documented design and no evidence that it operated in the last two quarters?
+□ If the related-party register were rebuilt from scratch today using HR, procurement and cap-table data,
+  what would appear on it that is not on it now?
+□ Which system carrying a material balance was not in scope the last time we scoped controls, and when did
+  it become material?
+□ If two independent directors resigned in the same month, would we still have a compliant board and a
+  quorate audit committee, and how long is the cure period?
+□ Which engagement with our audit firm or its network has not been independence pre-cleared?
+□ Which entity in the group has not met, filed, or been reviewed in the last 12 months?
+□ If we filed on the current window with the scorecard as it stands, which hard gate would we be waiving,
+  and who has written down that we agreed to waive it?
+```
+
 ## Output: Corporate Governance & IPO Readiness
 Governance framework by stage, board composition plan (with LODR/exchange math), IPO
 readiness scorecard and path decision, IPO timeline and checklist, roadshow preparation

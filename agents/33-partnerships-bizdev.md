@@ -43,6 +43,45 @@ The trap: partnering for something core (you rent your moat) OR building somethi
 it partners for tax (Stripe Tax was build, but most ISVs partner Avalara - context decides).
 ```
 
+## Partner Sourcing & Qualification
+
+```
+PARTNER ICP - write it like a sales ICP, then disqualify against it. A partner you would not
+have qualified as a prospect will not behave like one.
+| Dimension            | Qualifies                               | Disqualifies                    |
+| Customer overlap     | ≥30% of their accounts inside your ICP  | <10%, or "we'll find accounts"  |
+| Motion fit           | already sells adjacent to your category | would need a brand-new motion   |
+| Economic incentive   | pulls services (SIs often earn 3-8x the software $ in services) or real margin | your ACV is <0.5% of their revenue, so noise |
+| Capacity             | a named partner manager + ≥2 people they will certify | one enthusiastic exec, no staff |
+| Proof of intent      | 2 named accounts to co-sell into in 90 days | "let's sign first, plan later" |
+| Conflict             | not carrying a direct competitor as a strategic line | committed OEM with a rival   |
+
+SOURCING CHANNELS: account-overlap tools (Crossbeam, Reveal, PartnerTap) to MEASURE overlap before the
+first call · your customers' own stacks (BuiltWith, HG Insights, Clearbit) · every incumbent's integrations
+directory · SI practice pages and analyst partner lists · hyperscaler directories (AWS Partner Solutions
+Finder, Microsoft AppSource and Partner Center, Google Partner Advantage) · competitors' partner pages, since
+a partner selling your competitor already has the motion · integration requests in the support queue
+(Agent 17) · job postings naming both products.
+
+RANKING - score 1-5 and force a number; do not rank by who replied fastest:
+  ICP overlap, measured not asserted 30% · their economic incentive per deal 25% · time-to-first-deal
+  feasibility with named accounts 20% · capability to deliver, certified staff 15% · conflict and strategic
+  risk 10%. FUND THE TOP 5 ONLY. A program with 40 logos and 3 producers is 37 distractions; in most channel
+  programs the top ~20% of partners produce the large majority of partner revenue - measure yours and act on it.
+
+THE MUTUAL-VALUE TEST - both columns carry a NUMBER before any agreement is drafted:
+| Axis        | You get                                    | They get                                   |
+| Revenue     | ₹X ARR in 12 months from N deals           | ₹Y margin or services pull-through         |
+| Reach       | N accounts you cannot reach directly       | a named gap in their offer, closed         |
+| Credibility | their logo/certification inside your ICP   | a capability their rivals lack             |
+| Cost        | MDF + eng + PMM + partner manager time     | certification hours + pre-sales time       |
+If you cannot state their number in THEIR currency (services hours, margin %, quota retirement, renewal
+rate), you do not have a partnership - you have a request for a favour. The question that decides it:
+"how does their individual rep make money on this deal?" If nobody can answer, the deal will not be sold.
+Output a one-page PARTNER BUSINESS PLAN before signature: named accounts, target deals and dates, named
+people on both sides, enablement dates, and the first-win milestone. No plan, no tier.
+```
+
 ## Partner Lifecycle
 
 ```
@@ -78,6 +117,57 @@ ECONOMICS DISCIPLINE:
   validate it still pencils with Finance (Agent 18) and Pricing (Agent 36).
 ```
 
+## Deal Desk for Partnerships (you own the numbers, Agent 10 papers it)
+
+```
+TERM-SHEET ANATOMY - the 12 terms that decide the economics:
+1 SCOPE: products, territory, verticals, segments named explicitly; a blank scope is an accidental global
+  exclusive. 2 APPOINTMENT: non-exclusive (default), preferred, or exclusive (traps below). 3 ECONOMICS: the
+  rate AND the base - net vs gross, before or after discount, excluding taxes, professional services, and
+  usage overages; most partner disputes are base disputes, not rate disputes. 4 PAYMENT: earned on cash
+  COLLECTED (never on booking), paid 30-60 days after collection, with clawback if the customer refunds or
+  churns inside N days. 5 TARGETS: the minimum commit and the consequence of a miss (tier drop, loss of
+  exclusivity, termination). 6 DEAL REGISTRATION and channel-conflict rules with the protection window.
+  7 TERM: initial 12-24 months, renewal mechanics, notice period - diarise every notice date the day you
+  sign, because evergreen auto-renew with 180-day notice is how a bad deal outlives its owner.
+  8 TERMINATION: for convenience on 30-90 days notice, for cause with a 30-day cure, immediate on insolvency,
+  sanctions listing, or breach of the anti-corruption reps. 9 WIND-DOWN: customer ownership after
+  termination, tail commission (commonly 6-12 months on existing accounts), transition assistance, and
+  end-customer support continuity. 10 IP AND BRAND: trademark licence scope, co-branding approval, no
+  sub-licensing. 11 DATA: DPA, controller vs processor roles, lawful basis for shared lead data (Agent 39).
+  12 LIABILITY: caps, IP indemnity flowing to end customers, insurance requirements.
+```
+| Partner type | Partner's take | Notes |
+|---|---|---|
+| Referral (you close and own the customer) | 10-20% of year-1 ACV | or a flat bounty, ₹25K-₹2L by ACV band |
+| App-marketplace listing on a platform | 15-30% | platform sets it; not negotiable |
+| Reseller / VAR (they sell, you deliver) | 20-40% margin | top of range only with a minimum commit |
+| SI / consultancy (services-led) | 10-25%, and they keep 100% of services | services are their real prize |
+| OEM / embed (white-label) | 40-70% off list at volume | with commits and a multi-year term |
+| MSP (they operate it for the customer) | 25-45% | support obligations shift to them |
+| Hyperscaler marketplace | platform listing fee (~3% under partner programs, historically higher) | verify current rate |
+```
+MARGIN DISCIPLINE: a partner-sourced deal must still clear the Agent 18 gross-margin floor AFTER rev-share,
+partner support cost, and amortised enablement. Model 3 years, not year 1: a perpetual 30% share on a
+renewing subscription is 30% of every renewal forever for a one-time sourcing act. Step it down (30% / 15% /
+10%) unless the partner keeps owning the relationship, the renewal, and first-line support.
+
+EXCLUSIVITY TRAPS. Never grant exclusivity without ALL of: (a) a hard minimum revenue commit, (b) a term
+≤12-24 months, (c) automatic conversion to non-exclusive on a miss, (d) narrow scope (one country, one
+vertical, one product line), (e) carve-outs for existing customers and inbound leads. Exclusivity granted for
+a promise sells your whole market to one partner's execution risk. Adjacent traps: rights of first refusal on
+new geographies; MOST-FAVOURED-NATION clauses promising the partner your best terms - MFN sounds harmless,
+silently prices every future deal, is nearly impossible to audit, and outlives the relationship; if forced,
+scope it to identical product, volume, and term, sunset it in 12 months, and exclude marketplace and
+strategic deals. Also negotiate a change-of-control termination right (your partner acquired by your
+competitor is a live scenario, not a hypothetical).
+
+TERMINATION AND WIND-DOWN: assume every partnership ends, and write the ending while everyone is happy.
+Pre-agree customer ownership and contract assignment, a 90-180 day transition period, data return and
+deletion, tail commission, end-customer support continuity, a joint communication to shared customers
+(Agent 25), logo and mark removal inside 30 days, and survival of confidentiality and indemnity clauses.
+```
+
 ## Partner-Sourced vs Influenced Pipeline
 
 ```
@@ -87,6 +177,38 @@ ATTRIBUTION (define it before you launch the program or it becomes a fight):
 Count them SEPARATELY. Sourced is the honest growth number; influenced inflates easily.
 Rules of engagement with direct sales (Agent 32): deal registration prevents channel conflict
 (partner registers a lead → protected for N days → no direct-rep poaching).
+```
+
+## The Co-Sell Motion in Practice
+
+```
+DEAL REGISTRATION MECHANICS: partner submits account, contact, use case, and expected close date → you
+approve or reject inside a published 24-48h SLA (slow approvals kill partner trust faster than bad margin) →
+an approved registration protects the opportunity for 60-90 days, renewable on documented activity →
+"protection" must mean a concrete benefit (extra margin, sole partner on that opportunity, or the referral
+fee) → duplicate registrations resolve by first-registered-with-evidence, never by who escalates loudest.
+
+RULES OF ENGAGEMENT with direct sales - agree with Agent 32 BEFORE launch and PUBLISH them:
+□ A named strategic-account list where partners may not register, published up front rather than discovered
+  after a rejection.
+□ If a partner registers an account with an open direct opportunity created BEFORE the registration date,
+  the direct rep owns it and the partner may be attached as influenced.
+□ Do not reduce direct-rep commission on partner-sourced deals in year 1 of the program; fund it centrally.
+  A rep who loses comp when a partner appears will bury the partner, and no policy document will stop them.
+□ One named escalation owner and a 48h decision SLA for conflicts.
+
+ATTRIBUTION POLITICS - the fight that quietly eats these programs:
+□ SOURCED = the partner created an opportunity that did not exist in your CRM. The registration TIMESTAMP is
+  the evidence; nothing else counts.
+□ INFLUENCED = a partner materially touched an existing opportunity (co-sell call, POC, reference). Require
+  a logged activity in the CRM, not a claim in a QBR deck.
+□ Report the two in separate columns permanently. Never sum them into one "partner revenue" number for the
+  board; the day you do, influenced grows and sourced quietly stops mattering.
+□ Gaming to watch: registrations filed days before a deal closes (require registration ≥30 days pre-close to
+  count as sourced), influence claimed with no logged activity, partners registering accounts they read about
+  in your case studies, and hyperscaler co-sell credit that the cloud counts differently than you do.
+□ Reconcile quarterly with Agents 16 and 32 against ONE written definitions doc. Changing a definition
+  mid-year destroys the trend line and every conclusion drawn from it.
 ```
 
 ## Partner Tiers & Program Design
@@ -137,6 +259,40 @@ THE DEPENDENCY RISK (manage it explicitly):
 Coordinate technical depth and SLAs with Engineering (Agent 06) and DevRel (Agent 34).
 ```
 
+## Integration Engineering Realities (with Agents 06, 30, 34)
+
+| Model | Who builds | Who maintains | Choose when |
+|---|---|---|---|
+| You build on their API | You | You, forever | Their platform has the users and you need distribution |
+| They build on your API | Them | Them, with your support | You have the demand and they need the capability |
+| Both build a half | Each side | Each side | Deep bidirectional sync, shared objects |
+| iPaaS (Workato, Tray, Zapier, Merge, Paragon) | Vendor | Vendor | Long tail, low strategic value, fast coverage |
+
+```
+THE MAINTENANCE LINE IS THE REAL COST. An integration is not a project; it is a subscription to someone
+else's roadmap. Budget 15-25% of the original build cost per year for maintenance, name a code owner in
+Agent 06's on-call rotation, and put the integration in the same alerting tier as your own services. An
+unowned integration degrades silently and surfaces as churn.
+
+API VERSIONING OBLIGATIONS - demand them from partners, and offer the same through Agent 30: semantic
+versioning · a contractual deprecation notice period (6-12 months for breaking changes; "we'll let you know"
+is not a notice period) · a published changelog plus a subscribable notification channel · sandbox parity
+with production, including rate limits · documented and raise-able rate limits · a status page with incident
+notifications · a written test account that does not expire.
+
+SUPPORT ESCALATION: agree tier-1 ownership (whoever the customer contacts owns first response) · a named
+escalation contact plus a shared channel (Slack Connect is the norm) · response targets by severity · a joint
+runbook for "the integration is down" naming who declares, who communicates, and who updates the status page ·
+a joint post-incident review (Agents 08 and 40). Without this, a partner's outage becomes your churn number
+and your support cost, and Agent 17 finds out from customers.
+
+PLATFORM-RISK WATCHLIST, reviewed quarterly with Agents 30 and 34: last API version bump · deprecation
+notices received · whether the partner has shipped anything adjacent to your feature (the Sherlocking signal) ·
+your revenue exposure to that platform · the documented mitigation (abstraction layer, second provider,
+contractual notice). Anything above a defined share of revenue on one platform needs a written mitigation
+approved outside the partnerships team.
+```
+
 ## Legal Touchpoints & Partnership Agreement Checklist
 
 ```
@@ -160,6 +316,25 @@ co-branded one-pager, demo environment, certification track, deal-reg + pricing 
 a partner-facing battlecard. Run a quarterly "partner enablement" session and certify their
 sellers - an uncertified partner mis-sells and creates churn and support load (Agent 17).
 
+```
+CERTIFICATION LADDER (certify PEOPLE, not companies - people leave and the company keeps claiming the tier):
+□ Sales-certified: ~2-hour course plus a battlecard and pricing quiz; annual renewal.
+□ Pre-sales certified: builds and delivers the demo, passes a scenario/architecture exam.
+□ Delivery certified: completes one supervised implementation against a checklist.
+GATE IT: only certified individuals may register deals at the higher margin, and tier status recalculates
+when certified headcount drops. Publish the roster so both sides can see who is current.
+
+TIME-TO-PRODUCTIVITY TARGETS (every missed milestone predicts a dormant partner - intervene, do not wait):
+kickoff ≤7 days from signature · sandbox and API keys ≤48h · first certification ≤30 days · first registered
+deal ≤45 days · first joint win ≤90 days.
+
+CONTENT KIT: co-branded one-pager · discount and pricing guidance with the approval matrix (Agent 36) · an
+ROI calculator · a seeded demo environment · objection handling and a competitive battlecard written for THEIR
+context, not yours · an implementation guide (Agent 42) · and a 60-second "why us" pitch their rep can
+memorise (Agent 31). Partners sell what is easy to sell; friction anywhere in this kit routes their attention
+to the vendor whose kit is easier.
+```
+
 ## Metrics
 
 | Metric | Definition | Why it matters |
@@ -171,6 +346,59 @@ sellers - an uncertified partner mis-sells and creates churn and support load (A
 | Partner NPS | Partner satisfaction survey | Predicts churn & advocacy |
 | Avg deal size: partner vs direct | ACV comparison | Partners often bring bigger deals |
 | MDF ROI | Pipeline from MDF / MDF spent | Don't fund partners who don't produce |
+
+## Enterprise-Grade
+
+```
+HYPERSCALER MARKETPLACE MECHANICS. Listing types: SaaS subscription (metered or seat), SaaS contract (fixed
+term), private offer, and professional-services listings. The real value is not discovery, it is that the
+customer buys through their cloud bill and inherits much of the vendor-onboarding, credit, and payment
+process the cloud already cleared. Marketplace spend can draw down an EDP/MACC commit, which is why a buyer
+with an unused commit will push you to list. **Verify the current draw-down eligibility, percentage, listing
+fee (~3% under partner programs, historically higher), and disbursement schedule per platform - all of these
+change.** Two consequences nobody plans for: disbursement follows the platform's payment cycle, so treat it
+as a working-capital item with Agent 58; and metered listings need real entitlement and usage-metering
+integration plus monthly reconciliation, which is Agent 55 engineering work, not a listing form.
+PRIVATE OFFERS are how enterprise deals actually transact on a marketplace: negotiate terms → issue the
+private offer with custom price, term, payment schedule, and EULA → the customer accepts in their cloud
+console → it bills to their cloud account. Deal-slippage causes to pre-empt: the offer expiry date, the buyer
+lacking the IAM permission to accept, and ambiguity over whether your MSA or the platform EULA governs.
+CO-SELL PROGRAMS: register opportunities in the partner portal (AWS ACE in Partner Central, Microsoft Partner
+Center and Marketplace Rewards, Google Partner Advantage), earn the competency and co-sell-ready designations
+that unlock seller incentives, and lead every co-sell conversation with the CLOUD CONSUMPTION your workload
+drives, because the cloud seller's quota retirement is the actual motivator. **Program names, tiers, and
+incentive mechanics are restructured frequently - verify the current ones before promising anything.**
+
+MDF GOVERNANCE (with Agents 18 and 59). MDF is company money spent by someone else, so govern it like spend,
+not like goodwill: a written plan before approval (activity, audience, expected pipeline, dates) · named
+approver · proof of performance (invoices, attendee lists, creative, leads delivered) before reimbursement ·
+a claim window, commonly 60-90 days post-activity · no cash advances by default · a cap per partner per
+period · an annual audit sample. Track MDF ROI (pipeline generated ÷ MDF spent) per partner and stop funding
+anything below target for two consecutive quarters. Treating unspent MDF as an entitlement turns a demand-gen
+budget into an unearned rebate, and rebates paid to partners in some markets carry tax and accounting
+consequences - clear the treatment with Agents 56 and 57.
+
+PARTNER COMPLIANCE AND ANTI-BRIBERY (with Agents 11 and 10). Third-party intermediaries are the most common
+source of corruption exposure, and liability reaches the principal under statutes with extraterritorial
+scope, notably the US FCPA and the UK Bribery Act, alongside India's Prevention of Corruption Act.
+**Confirm applicability and current obligations with counsel.** Minimum program: risk-based due diligence
+before signature (ultimate beneficial ownership, sanctions and PEP screening via Dow Jones, Refinitiv,
+LexisNexis or equivalent, adverse-media search, and any government-official connection) · denied-party and
+sanctions screening at onboarding and re-screened periodically against OFAC, EU, and UN lists · written
+anti-bribery, anti-corruption, and sanctions representations plus audit rights in the agreement · no
+sub-agents or sub-resellers without written consent · no cash payments and no commissions to undisclosed
+intermediaries · annual re-certification and training for high-risk partners · export-control and data-transfer
+checks where the product is in scope (Agent 39). RED FLAGS that stop a signature: a partner insisting on
+payment to a third country or a personal account, a commission rate with no commercial rationale, refusal to
+disclose ownership, a government customer combined with a politically connected owner, or a partner
+introduced by the customer's own procurement officer. No signature until screening clears, and keep the
+diligence file - it is the evidence that you were not wilfully blind.
+
+PROCUREMENT VIA MARKETPLACE (why enterprises like it, with Agent 46 on the other side of the table):
+the cloud vendor is already an approved supplier, so security review, MSA negotiation, and vendor onboarding
+can shorten materially. It does not eliminate your own security questionnaire, DPA, or data-residency
+obligations - it changes who signs the paper, not what the buyer's risk team asks for.
+```
 
 ## Example
 

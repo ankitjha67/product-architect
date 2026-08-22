@@ -234,6 +234,59 @@ sign-off log, open-risk acceptance list - appended to the standard audit report.
 ⛔ SEVERITY-BY-VISIBILITY: grading what's easy to see over what's expensive to reverse.
 ```
 
+## Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the review-specific
+layer: the cases where the method is sound, the finding is correct, and the REVIEW FUNCTION
+still fails. Pick the 3 to 5 that can plausibly hit this audit and name the trigger, the
+owner and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **Rejecting has become politically expensive (the rubber stamp)** | VETO count drifts to zero across a quarter while escaped defects hold steady; S1/C2 findings arrive worded as FLAG; the sentence "we can't be the ones who slip this" appears in review | Publish two numbers for the last 10 audits: VETO rate, and % of VETOs confirmed real on verification. Zero VETOs and 100% confirmation are both miscalibration. Route the next S1 to the named accountable human, not to the delivery owner | 00 Chief Reviewer, 59 Internal Audit, 62 Chief of Staff |
+| **Review depth collapses under volume** | More than 2 S1-domain packages per reviewer per week; time-per-artifact halving month on month; the finding mix shifting from S1/S2 toward S4 | Declare sampling in the report header: what was audited in depth, what was sampled, what was NOT reviewed at all. Coverage may shrink; it may never shrink silently | 00, 41 Technical Program Management, 62 |
+| **A correct finding arrives after the decision is already communicated** | The board deck, customer email or press note went out before the audit closed; the decision meeting sits earlier in the calendar than the review SLA ends | Do not soften the finding to fit the announcement. Restate it as reversal cost ("undoing this in 12 months costs X") and hand the choice to the accountable owner in writing. Then move the review gate ahead of the communication gate permanently | 00, 62, 25 PR and Communications |
+| **The author outranks the reviewer** | The artifact arrives from a VP with "just a formality"; challenges are answered with tenure rather than evidence; the reviewer starts pre-lowering their own severities | Verdict on evidence rung, never on author grade. Escalate S1 findings to the accountable human named in the sign-off chain, and record any override as written risk acceptance with a currency figure and an expiry | 00, 62, 59 |
+| **Consistency passes because two documents are equally wrong** | Two artifacts agree to the digit on a number neither one sources; the same assumption appears in five docs with one untraced origin; nobody can say where the CAC figure came from | Reconcile to the SOURCE, not to the sibling document. Any figure appearing in 2+ artifacts needs one cited origin. Agreement without provenance is a finding, not a pass | 00, 16 Analytics, 18 Finance |
+| **The audit nobody reads** | The findings register has no closure dates; the same S2 reappears in the next package; the report's only reader is its author | Cut to the 5 findings that carry owners and dates and file them in the delivery team's own tracker, not yours. An unowned finding is a note to yourself, not an audit output | 00, 41, 62 |
+| **A VETO is overridden verbally in a corridor** | "We discussed it and we're comfortable" with no artefact; the KDR is unchanged; the risk acceptance has no name, no number and no date | Reconstruct the override in writing within 24 hours: who accepted, what exposure, until when, what reverses it. Send it for correction rather than for agreement, so silence becomes the record | 00, 62, 59, 10 Legal |
+| **The reviewer becomes the bottleneck and gets routed around** | Work shipping with "review waived for speed"; artifacts in production that never entered the queue; the review SLA table breached three weeks running | Triage by reversal cost, not arrival order: S1 domains keep the full gate, supporting artifacts drop to a 1-day checklist. A gate everyone bypasses gives less assurance than a shallow gate everyone uses | 00, 41, 20 BAU |
+| **Reviewer capture after long tenure with the same teams** | Same reviewer, same 3 teams, 18 months; findings increasingly phrased as suggestions; the reviewer defending the team's plan in other meetings | Rotate the S1-domain reviewer, or add a second reviewer for one audit in four. Independence is a scheduling property, not a character trait | 00, 59, 22 People and HR |
+| **A reorg orphans the open findings register** | Owners listed against teams that no longer exist; a batch of findings closed as "no longer applicable"; the tracker forked in two after a tooling migration | Re-point every open finding to a current named owner within two weeks and re-verify every closure made during the transition. The register is append-only: findings get closed, never disappeared | 00, 62, 41 |
+| **The auditee scopes the audit** | The request arrives as "just review the pricing section"; awkward artifacts are "still in draft"; the package omits the module that failed last time | Accept the scope AND print the exclusions. Reviewing what you were handed is legitimate; letting the reader infer you reviewed the whole package is not | 00, 59 |
+| **Deadline compression on a 30-artifact package ("audit it by Monday")** | Build start already booked; the package arrives complete and late; the ask is phrased as a verdict rather than an audit | Return a scoped audit, not a scoped opinion: full depth on S1 domains, negative-space scan on the rest, plus an explicit list of what a Monday answer cannot cover | 00, 41, 62 |
+| **At 50,000 people: two divisions each pass their own review and the seam fails** | Both packages are internally consistent; neither names the other; the integration contract lives in nobody's artifact | Audit the seam as a first-class artifact with both owners in the room. Cross-entity contradictions are only ever found at the boundary, never inside either document | 00, 62, 06 Engineering |
+
+```
+⛔ HOW THE REVIEW FUNCTION FAILS UNDER ORGANISATIONAL PRESSURE:
+□ COVERAGE DECAY: the queue grows, the audit shortens, and the report keeps the same
+  confident header. Depth falls silently while the artefact still claims "audited".
+□ AUTHORITY MATCHING: severity indexed to the author's grade instead of reversal cost.
+  Measurable: your S1 rate on VP-authored packages versus everyone else's.
+□ CLOSURE THEATRE: findings closed by the person who raised them or by the person who
+  fixed them. Verifier ≠ fixer is the first rule a reorg quietly breaks.
+□ LATE-GATE CAPTURE: review scheduled after the decision is communicated, so every finding
+  becomes a request to reverse an announcement rather than a choice between options.
+□ FINDING TRADES: "I'll drop this if you fix that." Legitimate at S3/S4, corrosive at S1/S2,
+  and invisible in the report either way.
+□ ORPHANED REGISTER: open findings inherited by nobody after a reorg, then cleared as stale.
+  The audit trail dies quietly and its death is reported by nobody.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Everyone assumes the review function fails by being too soft. In a large organisation it
+fails by being too LATE and too WIDE at the same time. Softness is visible and gets
+corrected; a reviewer who audits everything shallowly, after the decision window has closed,
+produces findings that are all technically correct and organisationally inert.
+
+Independence is less about courage than about calendar position and coverage honesty. A
+reviewer who lands before the announcement, and who states plainly what they did NOT review,
+carries more weight at S3 than a fearless reviewer carries at S1 the day after the press
+release. Guard the position in the sequence before you guard the strength of the verdict.
+```
+
 ## Example
 **User says:** "Everything's done - audit the fintech lending MVP package so we can start building Monday."
 

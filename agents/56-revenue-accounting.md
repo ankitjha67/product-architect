@@ -397,6 +397,80 @@ subledger; a capitalized commission with a documented amortization period; and a
 before the close rather than after it. **Quality check:** could an auditor reperform every number in this
 contract's schedule from the folder alone, without asking a single question? If not, the file is not finished.
 
+## 10. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits. This
+section is the controller-specific layer: the cases where the accounting is knowable and the
+ORGANISATION is what breaks it, because a term was agreed somewhere you could not see it, a system was
+changed without you, or the calendar you depend on moved. Pick the 3 to 5 that can plausibly hit the
+next two closes and name the trigger, the owner, and the pre-agreed move.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Sales bundles a new SKU into an existing contract without telling you** | A new product name appears on an invoice line; the CRM shows "new ARR" on an account whose contract you never re-read; a discount that only makes sense across two products | The transaction price has to be reallocated across performance obligations at relative SSP, and there is no SSP evidence for the new SKU. The previously booked schedule for the original contract is now wrong, retroactively | Deal desk in front of signature with Agent 32, and a standing rule that any new SKU requires an SSP file and a one-page policy memo BEFORE it can be quoted. Where the bundle already shipped, treat it as a modification under §3 and document which of the three modification outcomes applies, with dated evidence |
+| **A side letter changes revenue timing and accounting never sees it** | The contract in the CLM is clean but the account manager's email thread mentions an extended termination right, an acceptance clause, or a contingent go-live | Extended termination rights, unilateral acceptance or a contingent obligation can mean there is no enforceable contract for part or all of the term. Revenue booked on the master agreement unwinds, and one side letter can restate a whole cohort | Contract completeness is a control, not a filing habit: signature authority limited to a named list, all executed documents landing in one repository, and a quarterly certification from Sales leadership that no unrecorded side agreements exist. Ask the question in the audit rep letter too |
+| **A mid-quarter pricing change breaks every open deferred-revenue schedule** | Pricing or Growth announces a new list price, a plan merge, or a grandfathering rule with a live date inside the quarter | Existing contracts become modifications, migrated customers create material rights, and the revenue engine's rate tables no longer match the contracts behind them. The waterfall you published last month is wrong | Pricing changes get an accounting impact assessment with Agent 36 and Agent 55 before the launch date is announced, and a migration cohort schedule. A grandfathering rule with no end date is a permanent reconciliation liability |
+| **Usage data arrives late, incomplete, or restated** | The metering pipeline misses a day; a backfill lands after BD2; a customer disputes overage and engineering confirms a double count | Revenue for the period is an estimate rather than a measurement. If the correction is material and the pattern repeats, it becomes an out-of-period adjustment and, at scale, a restatement question | Treat metering as a financially material system with Agent 38 and Agent 55: completeness checks, a daily volume tie-out, a documented estimation policy for late data, and a true-up entry with a named threshold. Never close on a pipeline whose failure queue you have not looked at |
+| **Quarter-end pressure to change an accounting conclusion** | "Can we look at this again", a sudden interest in your SSP method, a request routed around you to a junior team member, a promise already made to the board | The conclusion is defensible or it is not, but the pressure arrives with the authority to make your life difficult and a deadline measured in hours. Junior staff capitulate quietly and you learn about it at audit | Escalate the same day, in writing, to the audit committee chair, and document the request and the response. Every material judgment carries a dated memo and, where it matters, written auditor concurrence obtained BEFORE the pressure exists |
+| **The close calendar collides with something the company scheduled without you** | An all-hands, an offsite, a systems freeze, a public holiday in the entity that owns intercompany, or a payroll cutover landing on BD2 | The close slips two days, the board pack slips with it, and for a filer that slip is a reporting obligation rather than an inconvenience. The team absorbs it as overtime and nobody records the cause | Publish the close calendar into the company calendar as a protected window with Agent 20, and review the next quarter's org events against it at each quarter start. Any conflict is resolved before it lands, not on BD2 |
+| **The one person who understands the revenue subledger resigns** | A single name appears in every close escalation; one person maintains the rate tables; they decline to take leave | The close is a set of undocumented judgments held in one head. The first close without them takes 50 percent longer and produces errors the auditor finds first | Two-person rule on every subledger and every reconciliation with a preparer and a separate reviewer, a recorded walkthrough per process, and a written runbook per schedule. Bus factor is a control metric, not an HR concern |
+| **Billing platform migration silently drops or duplicates records** | The daily billing to GL tie-out variance stops being zero; invoice counts diverge; a failed-record queue nobody owns starts filling up | Two months of missing invoices become an ageing exercise, a revenue completeness finding, and a customer-facing rebilling project all at once. It is discovered on BD3, not on day one | The daily automated tie-out job (count and sum) with an alert is non-negotiable through migration, plus a dual-run period with an explicit exit criterion such as full invoice match for two consecutive cycles rather than a date on a plan |
+| **Auditor rotation reopens a settled judgment** | A new engagement partner, a firm rotation, a mandated partner change, or a PCAOB or regulatory inspection focus area landing on your industry | A position accepted for three years is challenged in year four, sometimes correctly. Re-performing the analysis lands in the middle of the year-end close with no capacity reserved | Keep every material judgment in a memo that a stranger could re-perform: facts, alternatives considered, standard references, conclusion, date, signature. Re-confirm the top three judgments at each audit planning meeting rather than assuming continuity |
+| **An acquisition arrives with a second policy set, a second COA and a second GAAP** | Diligence closes; the acquired entity keeps its own ledger, its own revenue policy, and a finance manager who reports elsewhere | Two sets of books, two SSP methods, two capitalisation policies, and a group consolidation that ties only because someone plugs it. Purchase accounting and deferred revenue haircut arrive at the same time | Day-one policy alignment memo with Agent 45: one group policy, mapped local statutory differences, one COA with a mapping layer, and a named intercompany owner in each entity. Never allow a divergent local chart of accounts to survive "temporarily" |
+| **Sales compensation pays on bookings that accounting will never recognise** | A comp plan tied to contract value; a large multi-year deal with a ramp; a deal desk that reports into the same leader as the quota | Commission is paid in cash on revenue that is spread over three years or never recognised at all, and the ASC 340-40 amortisation nobody modelled turns into a P&L surprise plus a clawback conversation | Model the commission capitalisation and amortisation with Agent 32 and Agent 61 at plan design, not at payout. Clawback terms and the amortisation period are accounting inputs, so review the comp plan before it is published |
+| **A pilot or POC is converted with a backdated start date** | Contract start dates preceding signature; a "commercial courtesy" free month; a sales ops user editing effective dates in the CRM | Cut-off failure. Revenue is pulled into a period it does not belong in, and the pattern looks deliberate in aggregate even when each instance was well meant | Lock effective-date editing in the CRM and billing system with Agent 55 and Agent 40, make the go-live evidence the recognition trigger, and sample backdated contracts every close as a standing control |
+| **The company publishes an ARR number that does not tie to revenue** | A board deck, a press release, or a careers page citing a growth number your ledger cannot reproduce | Once an external number exists, someone will ask for the bridge, and building it under time pressure with no agreed definition is how "non-GAAP" becomes a disclosure problem | Own the bookings to billings to revenue to cash bridge as a published monthly artifact with Agent 18 and Agent 44. Every externally used operating metric has a written definition, an owner, and a reconciliation to the ledger |
+| **A reorg puts billing operations under the revenue owner** | An org chart where the team that raises invoices and the team that carries the quota share a leader | Segregation of duties collapses without anyone deciding to break it. Credit memos, invoice edits and revenue timing all sit inside a single incentive structure, which is exactly what an auditor tests | Raise it as a control design issue in writing with Agent 59 at the moment the chart is published. Where the reporting line cannot change, put compensating controls in place: independent credit-memo approval, edit logging, and monthly review of manual invoice adjustments |
+| **A deletion request collides with statutory retention** | A privacy erasure request, or a customer demanding data destruction at contract exit, on a record class inside your books-and-records retention period | Privacy says delete, statute and audit say retain for years. Improvising per request produces inconsistent treatment, which is worse than either answer applied consistently | Agree the retention-versus-erasure position per data category in advance with Agent 39 and Agent 10, documented once, and make the legal-hold flag a real field in the system rather than a note in a ticket |
+| **Accounting headcount is cut while transaction volume grows** | Reconciliations slipping past BD5; the same person preparing and reviewing; manual journal entries rising each month | Close quality degrades before close speed does, so the warning sign is invisible in the metric everyone watches. For a filer, this ends as a material weakness rather than as a late report | Publish the coverage map: what is reconciled monthly, what has moved to quarterly, and what is no longer reviewed independently from this date. Silent de-scoping of controls becomes a finding; a stated, board-accepted de-scope is a decision |
+| **Engineering time tracking dies after a reorg and capitalisation loses its evidence** | Project codes disappear in the new hierarchy; timesheets stop; the capitalised balance keeps growing on an estimate | Capitalised development with no project-level evidence is the classic diligence red flag, and the correction is an expense catch-up in the period it is found | Capitalisation depends on evidence that survives reorgs: project-level codes owned by finance rather than by an engineering manager, monthly sign-off by the project owner, and an automatic stop to capitalisation when evidence stops arriving |
+
+**Failure modes specific to this function**
+```
+⛔ The close survives on the heroics of two people, so every improvement is deferred and every absence
+   is a crisis. A process that only works when everyone is present is not a process.
+⛔ Accounting is told about commercial terms after signature, which converts the controller from a party
+   to the decision into a recorder of other people's choices.
+⛔ Policy memos exist but were written for a product that has since changed, and nobody owns the trigger
+   that says a memo needs refreshing.
+⛔ Segregation of duties collapses quietly after a headcount cut or a reorg, and the first evidence is an
+   audit finding rather than a decision anyone made.
+⛔ Materiality becomes a coping mechanism for a broken process, so the same immaterial error recurs in the
+   same direction every month.
+⛔ The controller absorbs pressure instead of escalating it, and the audit committee learns about a
+   contested judgment from the auditor rather than from you.
+```
+
+**Escalation and who owns what**
+- Invoicing, metering, credit memos, subledger integrity and migration dual-run: `agents/55-billing-monetization-engineering.md`.
+- Deal desk, non-standard terms, comp plans and quota mechanics: `agents/32-sales-revops.md`.
+- Pricing changes, grandfathering and plan migrations: `agents/36-pricing-monetization.md`.
+- Tax positions, intercompany agreements and indirect tax on the same contracts: `agents/57-tax.md`.
+- Cash application, banking, FX rate source and covenants: `agents/58-treasury.md`.
+- Control design, SOX scoping, deficiency evaluation and remediation: `agents/59-internal-audit-risk.md`.
+- Retention versus erasure conflicts and legal hold: `agents/39-privacy-dpo.md` with `agents/10-legal-ip.md`.
+- Externally published metrics and non-GAAP measures: `agents/44-investor-relations.md` and `agents/26-governance-ipo.md`.
+- Acquisition policy alignment and opening balance sheet: `agents/45-corporate-development.md`.
+- Metering and data pipeline reliability behind usage revenue: `agents/38-data-engineering.md`.
+
+**Pre-mortem prompts for this department**
+```
+□ Which contracts signed this quarter did accounting not read before signature, and what is the largest
+  of them worth?
+□ If a side letter exists that we have never seen, which revenue stream would it most plausibly affect,
+  and how much revenue is exposed?
+□ What breaks in the close if the one person who owns the revenue subledger is unavailable for two weeks?
+□ Which of our material judgments has not been re-confirmed with the auditor in the last 12 months?
+□ If the usage pipeline delivered nothing for three days at quarter end, what would we book, and is that
+  policy written down anywhere?
+□ Which control did we quietly stop performing after the last headcount change, and who outside finance
+  knows that?
+□ If an externally published growth number were challenged tomorrow, could we produce the bridge to the
+  ledger in a day, or would we be building it under deadline?
+□ Which system that touches revenue is scheduled to change in the next two quarters, and who agreed that
+  date with us?
+```
+
 ## Output: Controller's Close & Revenue Package
 Revenue-recognition policy memos per stream (with the SSP evidence file), the deferred-revenue rollforward
 and revenue waterfall, the published close calendar with owners, the balance-sheet reconciliation register,

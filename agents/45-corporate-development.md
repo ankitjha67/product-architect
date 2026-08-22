@@ -96,7 +96,53 @@ this do to EPS / dilution / cash and the post-deal model? A deal that's "cheap" 
 but dilutive and un-integratable is expensive.
 ```
 
-## 4. The Deal Process & Timeline
+## 4. Valuation Mechanics (the four things that decide the number)
+```
+COMPARABLE SELECTION DISCIPLINE. A comp set is an argument, not a data pull, and whoever picks the set picks
+the price. Screen on BUSINESS MODEL first (recurring vs one-time, gross margin band, net revenue retention,
+sales motion), then size, then growth, then geography - never on industry label alone. Rules: use ≥5 comps or
+say why · state the metric consistently (forward vs trailing, ARR vs revenue, EV vs equity value - EV is the
+right numerator against revenue/EBITDA) · adjust for growth (a 60%-growth peer does not price a 15%-growth
+target; look at growth-adjusted multiples) · discount PRIVATE targets against public peers for illiquidity
+and disclosure quality · treat precedent transactions as the least reliable anchor, because they embed the
+control premium, the strategic buyer's synergies, and the market conditions of a different cycle · re-run the
+set at signing if months have passed, since a frothy comp set that has since de-rated is the fastest route to
+an impairment. **Every multiple must be verified against a current source; do not carry forward a number from
+last quarter's deck.**
+
+THE CONTROL PREMIUM. Buying control of a company costs more than buying a share of it: the acquirer gains the
+right to direct cash flows, replace management, and capture synergies, so trading comps (minority, liquid
+stakes) systematically understate a control price. Conversely, a minority investment should carry a
+MINORITY/marketability DISCOUNT rather than a premium. Do not stack: if the comps are precedent CONTROL
+transactions, the premium is already inside them and adding another is double counting. State explicitly
+which of the three you are computing - minority value, control value, or control value plus your specific
+synergies - because the seller will quote the third and call it the first.
+
+SYNERGY QUANTIFICATION, split and credibility-weighted (never one blended "synergy" number):
+| Type | Examples | Typical credibility | How to weight it in the price |
+| COST | duplicate tooling and cloud spend, overlapping G&A, office consolidation, vendor renegotiation, role overlap | High - you control both sides | Count most of it, net of the cost to achieve |
+| REVENUE | cross-sell to your base, their channel selling your product, pricing uplift, new segment access | Low - depends on customers, who did not sign the deal | Discount heavily; many acquirers assume zero for the price and treat any capture as upside |
+Rules: every synergy line names an OWNER, a DATE, and a COST TO ACHIEVE (severance, retention, migration,
+integration engineering, contract break fees) · phase them (year 1 / 2 / 3) and net-present them, because a
+synergy captured in year 3 is worth far less than the one you paid for at close · do not pay the seller for
+synergies only YOU can create, and never pay for revenue synergies at close - structure them into an earnout
+if the seller insists they are real (§9).
+
+WALK-AWAY PRICE (set it in writing, before negotiation, approved by the deal sponsor and the board committee):
+  Standalone value of the target (DCF or comps, no synergies)
+  + Cost synergies × credibility weight, NPV'd, net of cost-to-achieve
+  + Revenue synergies × a deliberately harsh weight (or zero)
+  - Integration cost, retention pool, systems migration, and the run-rate cost of the combined entity
+  - Quantified diligence risk (customer concentration, IP defects, tax and indirect-tax exposure per Agent 57)
+  - The value of your next-best alternative (build it, partner it, or do nothing) - if BUILD is ₹15Cr and
+    2 quarters, no acquisition of that capability is worth ₹40Cr just because the seller asked for it
+  = WALK-AWAY PRICE. Seal it, date it, and give one named person the authority to enforce it in the room.
+Anti-fever devices: a pre-committed maximum with a required board re-approval to exceed it · a "red team"
+that argues the deal is wrong · and the rule that the walk-away number may be revised only when NEW
+information changes it, never when negotiation pressure does.
+```
+
+## 5. The Deal Process & Timeline
 ```
 | Stage                  | Typical duration | What it is                                  |
 | Outreach → NDA         | days–weeks       | Mutual NDA; clean-team for competitive info |
@@ -111,7 +157,7 @@ EXCLUSIVITY is the inflection point - once you grant/obtain it, leverage shifts.
 diligence tight inside the exclusivity window or it expires and the seller re-shops.
 ```
 
-## 5. Due Diligence Checklist (pull from the relevant agents)
+## 6. Due Diligence Checklist (pull from the relevant agents)
 ```
 | Workstream  | Lead Agent | What you're hunting for                                  |
 | Financial   | 18         | Quality of earnings, real ARR vs billings, hidden churn  |
@@ -130,7 +176,41 @@ RED-FLAG DILIGENCE FINDINGS (any one can kill or re-price a deal):
 ⚠ A change-of-control clause lets their biggest customer walk on the deal
 ```
 
-## 6. Deal Structures (coordinate Agents 10 & 18)
+## 7. The Red-Flag Catalogue, by Workstream
+```
+Diligence is a hunt for the finding that kills or re-prices the deal. Each line below is a re-price trigger,
+an escrow trigger, or a walk trigger - decide which BEFORE you find it, so the answer is not negotiated in
+the heat of a signing week.
+FINANCIAL (18/56/57): "ARR" containing one-time fees, services, or hardware · revenue recognised on billings ·
+  churn hidden by upsell netting (ask for gross logo and gross dollar churn separately) · cohort retention
+  never shown by cohort · deferred revenue that will not survive purchase accounting · related-party revenue ·
+  unregistered indirect-tax exposure (GST, VAT, US sales tax) accruing for years, per Agent 57 · payroll and
+  contractor misclassification liabilities · a working-capital pattern that is seasonal, not structural.
+LEGAL (10): core IP built by contractors with no written assignment (it is not theirs to sell) ·
+  change-of-control clauses letting major customers or key vendors walk · unassignable contracts requiring
+  third-party consent · open-source components under copyleft licences embedded in shipped code · undisclosed
+  litigation, demand letters, or regulatory correspondence · trademark not registered in core markets ·
+  founder side letters and undocumented promises.
+TECH (06/38): an architecture that cannot be separated from the seller's other products · a single-provider
+  dependency with no exit · no test coverage on the revenue-critical path · undocumented tribal knowledge in
+  one person's head · data models that make migration a rewrite · unlicensed or expired third-party components.
+SECURITY & PRIVACY (09/39): an unreported past breach · no evidence trail for SOC 2 or ISO claims · personal
+  data processed without a lawful basis or transfer mechanism · data residency incompatible with your
+  customers' commitments · sub-processors never disclosed to their customers · credentials shared across
+  environments.
+PEOPLE (22/61): key engineers already fully vested (no retention left to structure against) · a comp band
+  far above or below yours, so post-close levelling costs money or morale · unfunded statutory liabilities
+  (gratuity, PF, accrued leave) · undocumented promises about titles or equity · a culture diligenced only
+  by talking to the founders.
+COMMERCIAL (03/33/32): one customer above 25% of revenue · a pipeline built from unqualified opportunities ·
+  discounts and non-standard terms across the top accounts · a reseller agreement with exclusivity or an MFN
+  that binds you post-close · references chosen entirely by the seller.
+COMPLIANCE (11): a licence or registration that is not transferable · third-party intermediaries with no
+  anti-bribery diligence file · sanctions or denied-party exposure · sector approvals that lapse on a
+  change of control.
+```
+
+## 8. Deal Structures (coordinate Agents 10 & 18)
 ```
 ASSET vs STOCK:
 - Asset purchase: buy specific assets/IP, leave liabilities behind. Buyer-friendly. Messier
@@ -151,7 +231,56 @@ numbers? Earnout. Worried about undisclosed liabilities? Bigger escrow, tighter 
 about people walking? Most of the consideration vests over time, tied to retention.
 ```
 
-## 7. Integration Planning (hand to physical-ops-pmi framework)
+## 9. Structure Mechanics (where deals are actually won or lost)
+```
+EARNOUT DESIGN - and why earnouts fail. An earnout defers part of the price against post-close performance.
+It bridges a valuation gap and it manufactures a dispute: the buyer now controls the business whose targets
+the seller must hit. Design rules: choose ONE metric, and prefer the least manipulable one (cash collected or
+gross revenue over EBITDA, which every allocation policy can move) · a short measurement period (12-24
+months; beyond that the acquired business no longer exists as a separate thing to measure) · write the
+operating covenants that protect the metric (headcount, pricing authority, sales-team allocation, no forced
+migration mid-period) · define the accounting policy for the metric IN the agreement, with a worked example ·
+specify the dispute mechanism (independent accountant, whose decision binds) · make it linear or tiered, not
+a cliff, because cliffs create end-of-period behaviour that damages customers. WHY THEY FAIL: the metric is
+contaminated by integration itself (you migrate the product and the seller's revenue line disappears); the
+seller's team optimises for the earnout instead of the combined business; the earnout keeps two companies
+operating separately for two years, killing the synergies that justified the price; and the founder who is
+now your employee is litigating against you. Rule of thumb: if the earnout is the reason the deal works, the
+deal probably does not work. Prefer retention-vested consideration when the risk is people, not performance.
+
+ESCROW AND INDEMNITY SIZING (norms move by market, size, and whether R&W insurance is used - **verify current
+market practice with M&A counsel**): a general escrow or holdback commonly sits around 10-15% of price for
+12-24 months in mid-market private deals, and materially lower where R&W insurance is placed. Structure:
+a BASKET (deductible or tipping) so trivial claims do not flow · a CAP on general reps · uncapped or
+separately capped FUNDAMENTAL reps (title, authority, capitalisation) and often tax and fraud · survival
+periods per rep category, with tax reps typically running to the statute of limitations · a separate
+special indemnity for any known diligence issue, sized to the quantified exposure rather than folded into
+the general cap.
+
+R&W INSURANCE ECONOMICS: the policy insures the buyer against breaches of the seller's reps, letting sellers
+exit with little or no escrow. Typical structure is a premium expressed as a percentage of the limit, a
+retention (deductible) expressed as a percentage of enterprise value that often steps down after 12 months,
+plus underwriting fees and a 2-3 week underwriting process that requires a genuine diligence record - the
+underwriter will exclude anything you diligenced badly or anything already known. **Confirm current premium
+rates, retentions, and minimum deal sizes with a broker; they move with the cycle.** It makes sense when the
+seller demands a clean exit (funds, multiple sellers, a founder retiring), when escrow negotiation threatens
+the deal, or when you want recourse against an insurer rather than the people you just hired. It does not
+cover known issues, forward-looking statements, or the diligence you skipped.
+
+WORKING-CAPITAL ADJUSTMENT MECHANICS - the quiet price term. Deals are usually done on a cash-free,
+debt-free basis with a normalised working-capital TARGET (a PEG), because the seller should hand over enough
+working capital to run the business the day after close. Mechanics: agree the target from a trailing 12-month
+average of a defined working-capital measure · agree the DEFINITION line by line (which accruals, deferred
+revenue, unbilled receivables, and customer deposits are in or out - deferred revenue in a SaaS deal is the
+single most litigated line) · the seller delivers an estimated closing statement pre-close, price adjusts at
+close on the estimate, then a true-up 60-90 days post-close against actuals, with a dispute path to an
+independent accountant · also settle the DEBT-LIKE ITEMS list (unpaid taxes, accrued bonuses, deferred
+comp, capital leases, customer refunds due), because whether an item is "debt-like" or "working capital" is
+a pure transfer of money between the parties. A vague working-capital clause can move more value than the
+last two turns of multiple you negotiated.
+```
+
+## 10. Integration Planning (hand to physical-ops-pmi framework)
 ```
 INTEGRATION IS PART OF THE THESIS, NOT AN AFTERTHOUGHT. Write the integration plan and name
 the Integration Lead BEFORE you sign - the value case assumes integration happens.
@@ -164,7 +293,73 @@ THE THESIS-TO-INTEGRATION HAND-OFF:
   What you promised the board is what you measure against monthly.
 ```
 
-## 8. Failure Modes
+## 11. Integration Depth (the plan `frameworks/physical-ops-pmi.md` executes)
+```
+DAY-1 READINESS CHECKLIST - everything below must be true before the close date, not discovered on it:
+□ Legal entity, bank accounts, signing authorities, and insurance in place; payroll able to run on the next
+  cycle in every jurisdiction (Agent 22 and Agent 57 confirm registrations exist before day 1).
+□ Every acquired employee has a written offer or transfer letter, a manager, a start-day schedule, and an
+  answer to "am I still employed, at what pay, reporting to whom?" delivered on day 1, in person where possible.
+□ IT day-1: email, SSO, laptops, VPN, access to their own systems preserved (do NOT cut their tooling on day
+  1), and a written IT coexistence plan (Agent 40).
+□ Customer and partner communication approved and timed: who calls the top 20 accounts, in what order, with
+  what commitment about product continuity and pricing (Agents 17, 25, 33).
+□ Security and access: acquired systems inventoried, admin credentials rotated, logging on, and the acquired
+  environment segmented until Agent 09 signs off. This is the highest-risk window of the whole deal.
+□ A named INTEGRATION LEAD with authority, a decision log, and a weekly cadence with a single escalation path.
+□ Regulatory and contractual consents obtained, and change-of-control notices sent.
+
+THE FIRST 100 DAYS: choose the integration model on day 1 and say it out loud - STANDALONE (keep separate;
+lowest disruption, lowest synergy), PARTIAL (back office and GTM combined, product separate), or FULL
+ABSORPTION (one product, one team, one system). Ambiguity here is the single most reliable predictor of value
+leakage: employees who do not know which model applies optimise for their own survival. Sequence: weeks 1-2
+people and communication · weeks 2-6 customer contact and commercial continuity · weeks 4-12 systems and
+process (finance close, CRM, support queue, security posture) · product and roadmap merge last, and only
+after the retention risk is settled. Front-load the decisions that people are waiting on (org, titles,
+comp, brand, tooling) even if they are imperfect; delayed decisions cost more than wrong ones here.
+
+RETENTION PACKAGE DESIGN: identify the 5-15 people the thesis actually depends on and price them
+individually. Vest over 24-36 months with a real cliff, keep it CASH-heavy for people who just had a
+liquidity event and no longer need paper, and tie a portion to a deliverable (the integrated feature ships,
+the migration completes) rather than to attendance alone. Separate the retention pool from the purchase price
+so it is not a seller negotiation. Never let the acquired team's comp arbitrarily exceed the equivalent
+in-house band without a plan to converge (Agent 61) - internal equity failures show up as attrition in YOUR
+team, not theirs. Track the retention cliff date as a board-level risk, because the quarter after the cliff
+is when acqui-hires actually leave.
+
+SYNERGY TRACKING DISCIPLINE: the acquisition business case becomes the integration scorecard, unchanged.
+Every synergy line gets an owner, a baseline, a monthly actual, a cost-to-achieve actual, and a RAG status;
+report captured vs promised monthly to the same forum that approved the deal, with cost and revenue synergies
+in separate columns. Do not allow the baseline to be restated (restating the baseline is how a missed synergy
+becomes a green square). Publish a post-close review at month 12 and month 24 against the original thesis,
+including the deals you killed for comparison - an M&A function that never audits its own outcomes repeats
+its mistakes at increasing size.
+```
+
+## 12. Divestitures & Carve-Outs (the reverse motion)
+```
+SELLING OR SEPARATING A BUSINESS IS AN M&A PROJECT RUN BACKWARDS, and it is usually harder than buying,
+because you must first prove the thing you are selling can exist on its own.
+THE STANDALONE PROBLEM: build carve-out financials showing the unit's true P&L, including the shared costs it
+consumed and the stranded costs left behind when it leaves (Agent 18/56). Buyers discount aggressively for
+allocations they cannot verify, so a clean quality-of-earnings on the carve-out unit is the highest-ROI spend
+in the process.
+SEPARATION WORKSTREAMS: shared IP and code (licence-back or transfer, and which one) · shared customers with
+one contract covering both businesses (needs assignment or novation) · shared employees (who follows the
+business, who stays, and the local employment-transfer rules) · shared systems, data, and the personal data
+that must be split or copied lawfully (Agent 39) · shared vendor contracts and their consent requirements ·
+brand and domain rights.
+TRANSITION SERVICES AGREEMENT (TSA): the seller keeps running defined services (payroll, IT, finance,
+support) for the buyer for a defined period at a defined price. Scope every service with a named owner, a
+service level, an exit date, and an extension price that rises over time so nobody drifts. A TSA with no
+priced exit ramp becomes a permanent, unfunded obligation on the seller's team.
+DECISION TEST BEFORE YOU START: would we buy this business today at the price we expect to receive? If yes,
+keep it and fix it. If no, sell it - but sell it before it is visibly failing, because a distressed carve-out
+attracts only distressed pricing. Divest for FOCUS (management attention is the scarcest input), for
+STRATEGIC FIT, or for CAPITAL, and say which one publicly (Agents 25 and 44 own that narrative).
+```
+
+## 13. Failure Modes
 ```
 ⛔ OVERPAYING: deal fever + an auction + a banker's spreadsheet = the winner's curse. The
    bidder who "wins" the auction often paid the most to be wrong. Walk-away price set in
@@ -178,7 +373,7 @@ THE THESIS-TO-INTEGRATION HAND-OFF:
 ⛔ DILIGENCE THEATER: confirming what you hoped instead of hunting for what kills the deal.
 ```
 
-## 9. Metrics
+## 14. Metrics
 ```
 | Metric                       | What it tells you                       | Signal             |
 | Deal ROIC                    | Return on invested capital vs hurdle    | > cost of capital  |
@@ -188,6 +383,55 @@ THE THESIS-TO-INTEGRATION HAND-OFF:
 | Integration milestone on-track| Plan adherence                          | Green by 100 days  |
 | Pipeline coverage            | Targets cultivated vs deals needed      | Multi-year warmth  |
 | Deals killed in diligence    | Discipline indicator (healthy if >0)    | You're saying no   |
+```
+
+## Enterprise-Grade
+```
+ANTITRUST AND MERGER CONTROL. Many jurisdictions require a pre-closing filing and a waiting period once
+size-of-parties, size-of-transaction, or local-nexus thresholds are met, and closing before clearance
+("gun-jumping") carries serious penalties. India's Competition Act regime is administered by the CCI, with
+notification thresholds and a small-target exemption, and recent amendments introduced a deal-value based
+threshold with local-nexus tests; the US uses HSR premerger notification with annually adjusted thresholds
+and a waiting period; the EU has EUMR turnover thresholds with national regimes underneath. **Every one of
+these thresholds, forms, fees, and timelines changes - verify the current position with competition counsel
+in each relevant jurisdiction before assuming a deal is non-notifiable.** Practical consequences for you:
+build the filing analysis into the timeline BEFORE signing (a merger-control review can add weeks to months
+between sign and close) · put the allocation of regulatory risk in the agreement (who files, who pays, what
+efforts standard applies, is there a reverse break fee) · run a CLEAN TEAM for competitively sensitive
+information exchanged in diligence, and keep pricing, customer, and roadmap data away from operational
+decision-makers until close · police gun-jumping in the interim period: no joint pricing, no customer
+allocation, no integrating operations before clearance, however tempting.
+
+FOREIGN-INVESTMENT AND NATIONAL-SECURITY REVIEW. Many countries screen inbound acquisitions on national
+security or public order grounds; the US CFIUS process is the best-known example, with mandatory filings in
+defined circumstances (certain critical technology, critical infrastructure, and sensitive personal data
+cases) and voluntary filings elsewhere, while the EU operates a screening cooperation mechanism over member
+state regimes and India applies press-note restrictions on investment from certain neighbouring countries.
+**Treat this as a concept to test with counsel, not a checklist to self-apply - the criteria, mandatory
+triggers, and timelines differ by country and change frequently.** Screen early for the three things that
+usually trigger review: sensitive personal data at scale, dual-use or critical technology, and any
+government or defence customer base. A review can add months and can impose mitigation conditions on how you
+run the business after close.
+
+WORKS COUNCILS AND EMPLOYEE CONSULTATION (EU and several other jurisdictions). Where a works council or
+employee representative body exists, the employer typically must INFORM AND CONSULT it before a transaction
+or restructuring affecting employees is concluded, and business-transfer rules (the EU Acquired Rights
+Directive, implemented locally, for example TUPE in the UK) can transfer employees automatically with their
+existing terms, restrict dismissals connected to the transfer, and impose their own information and
+consultation duties. **Confirm the specific obligations, timing, and consequences with local employment
+counsel; they vary by country and by whether the deal is a share or asset transaction.** Plan for it: the
+consultation timetable sits on the critical path, communications must not run ahead of the council process,
+and "we will decide the org structure after close" is not always an available answer.
+
+CROSS-BORDER INTEGRATION SEQUENCING: sequence by legal permissibility first, then by risk, never by
+convenience - some countries do not allow you to change terms, transfer data, or make redundancies on your
+preferred timetable. Practical order: legal entity, payroll, and statutory registrations in each country
+(Agents 22 and 57) → security and access control → finance close and statutory reporting → HR policy and
+comp convergence → systems consolidation → brand and product. Add: personal-data transfer mechanisms before
+any system merge (Agent 39), transfer-pricing and intercompany agreements before intercompany cash moves
+(Agent 57), and a country-by-country integration owner, because a single global plan applied uniformly across
+jurisdictions is how integrations acquire employment claims. Where the target has a permanent establishment,
+a licence, or a regulated entity, assume the local structure survives longer than the plan wants it to.
 ```
 
 ## Example

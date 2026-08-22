@@ -261,6 +261,60 @@ ENTERPRISE-SPECIFIC BLIND SPOTS TO ADD TO §1:
 □ Concentration: any customer >20% of revenue is a board-reportable risk, not just a win
 ```
 
+### 9. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the advisory-specific
+layer: the cases where the note is correct, well-scored and still lands wrong, because
+advice is a political act in any org above roughly 500 people. Pick the 3 to 5 live ones
+and name the trigger, the owner and the pre-agreed move.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **The advice is right and unwelcome** | The note contradicts something already presented upward; the room goes quiet rather than argumentative; you are asked to "take it offline" | Say it once, in writing, priced (probability × cost), with the smallest reversible action attached. Written and priced survives the meeting; verbal and hedged does not. Then let the decision-maker decide and log it | 01 Proactive Advisor, 62 Chief of Staff |
+| **The risk implicates a specific executive** | The root cause is a decision, a hire or a vendor owned by one named leader; the honest note reads as an accusation | Describe the mechanism and the exposure, never the person. Route through the governance path (00 Review, 59 Internal Audit) rather than raising it in that leader's own forum, so it becomes a process finding instead of a personal challenge | 01, 59 Internal Audit, 00 Chief Reviewer, 22 People and HR |
+| **Advice fatigue: everything is logged, nothing is actioned** | Advisor notes accumulate across phases with no owner or date; the backlog appendix grows faster than the tracker; the response is consistently "good point" | Stop adding. Convert the top 3 into decisions with a named owner and a due date, or formally withdraw the rest. A note without an owner is a record that you spoke, not a change to the plan | 01, 41 Technical Program Management, 62 |
+| **A suggestion is recorded in a summary as a decision** | The meeting notes turn "consider X" into "we will X"; a downstream team starts building against your note; nobody remembers the note was scored 0.2 confidence | Correct the record within 24 hours in the same channel that carried the summary, restating confidence and status. Advisory notes carry a status field (suggested / accepted / declined) precisely so a summariser cannot promote them | 01, 62, 41 |
+| **Something already declined keeps getting worse** | The declined risk's leading indicator moves against the plan; new evidence exists but the original decision-maker has moved on | Resurface ONCE with the new evidence and a materially different framing, then stop. The rule is once plus new evidence, not once per quarter. Persistent unresurfaced risk goes to the risk register, not to the same person again | 01, 59, 62 |
+| **The sponsor who invited the advice leaves** | The advisory forum loses its slot; the successor treats standing notes as criticism of their predecessor; open notes are re-labelled "legacy" | Re-qualify the mandate within 2 weeks and re-present the top 3 notes as neutral open risks with no history attached. Advice inherited from a departed sponsor is read as a faction, not a finding | 01, 22, 62 |
+| **Your note becomes ammunition in someone else's fight** | The note is quoted back to you in a meeting you were not in; it appears in a deck arguing for a reorg or a budget move; the caveats have been trimmed | Reissue the full note verbatim, with its confidence score and scope, to everyone on the thread. Quotation without the confidence score is the tell. Refuse to re-score it to fit either side | 01, 62, 00 |
+| **The advice requires money or headcount that does not exist** | The mitigation costs more than the remaining quarter's discretionary budget; the note lands in the same week as a freeze or a RIF | Re-cost the note in the currency the org actually has right now: sequencing, descope, and reallocation instead of spend. An unfundable recommendation reads as naivety and burns the next three notes | 01, 18 Finance, 62 |
+| **Base rates collide with a public commitment** | The plan assumes beating a base rate that was already promised to the board, analysts or the market; challenging the forecast now means challenging a stated number | Attack the mechanism, not the number: ask what specifically makes this product the exception, and offer the earliest observable signal that the exception is not happening. Give them a dated off-ramp rather than a contradiction | 01, 03 Strategy, 44 Investor Relations |
+| **You know something from one workstream that another needs** | A material risk is visible only inside a confidential stream (M&A, restructuring, an investigation); the receiving team is planning against a fact you cannot state | Do not leak and do not stay silent. Raise the existence of a constraint to the person who can act (62, 10 Legal) and ask them to widen the circle. Advise around it in public with no detail | 01, 10 Legal, 62 |
+| **The advisor drifts into deciding** | Teams asking "what should we do" rather than "what are we missing"; your notes arriving with a single option; nobody else can name the decision-maker | Restore the boundary in the artefact: options with trade-offs, a recommendation, and the named decision-maker. An advisor who decides has removed the only independent check on the decision | 01, 62, 00 |
+| **At 50,000 people: the same blind spot exists in six divisions** | The identical note has been written for three different teams this year; local fixes keep working and the pattern keeps recurring | Stop advising locally. Escalate as a structural finding (incentive, org boundary or policy) to the owner of that structure. Repeated identical advice is evidence that the cause is not in the teams | 01, 62, 20 BAU, 19 Operations |
+| **A declined note becomes an incident** | The failure mode you priced actually fires; the room turns to who knew what and when | Lead with the fix, not the record. Produce the note's date and price only if asked, and never in the incident channel. "I told you so" ends the advisory function faster than any wrong call | 01, 62, 25 PR and Communications |
+
+```
+⛔ HOW THE ADVISORY FUNCTION FAILS UNDER ORGANISATIONAL PRESSURE:
+□ POLITICAL SELF-CENSORSHIP: the notes that survive scoring are the ones that name no owner.
+  Symptom: your surfaced notes are all about users and none about internal structure.
+□ LOGGING AS SUBSTITUTE FOR ACTION: the register becomes the deliverable. Notes are filed,
+  never owned, and the function measures its output in volume rather than in decisions changed.
+□ CONFIDENCE STRIPPING: every hop of summarisation removes a caveat, so a 0.6 becomes a fact
+  by the third deck. Scores must travel INSIDE the sentence, not in a footnote.
+□ ADVISORY DRIFT INTO OWNERSHIP: the advisor is invited into the decision, accepts, and the
+  org loses its only independent read. You cannot both propose and ratify.
+□ SPONSOR-BOUND CREDIBILITY: advice that is trusted because of who invited it evaporates the
+  week that person changes role. Credibility must be attached to hit rate, not to patronage.
+□ RESURFACE ADDICTION: relitigating a declined item until raising it costs you the room, and
+  the next genuinely urgent note is discounted before it is read.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Advisors assume the hard part is COURAGE, saying the unwelcome thing. In a large
+organisation the hard part is DISPOSAL: what happens to a note after it is said. Most
+advisory functions do not die from suppressed findings, they die from accepted ones. Every
+note is agreed with, logged, owned by nobody, and quietly outlives the person who raised it.
+
+The scarce resource is not truth-telling, it is the decision-maker's attention and the
+tracker's capacity for owned items. That is why the max-3 rule and the resurface-once rule
+are not politeness, they are the mechanism that keeps advice convertible into decisions. An
+advisor whose hit rate is public and whose backlog is small is heard; an advisor with 40
+open notes is a feed nobody reads, however correct every entry is.
+```
+
 ## Failure Modes
 ```
 ⛔ ADVICE FLOOD: 10+ notes per turn. Attention is the scarce resource - you're spending it.

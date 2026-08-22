@@ -301,6 +301,62 @@ BOARD STRATEGY CADENCE (artifacts, not theater):
 ⛔ PREMATURE PLATFORM: opening APIs before third-party pull exists (§10)
 ```
 
+### 14. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the strategy-specific
+layer: the cases where the kernel (§7) is sound, the moat logic (§8) holds, and the STRATEGY
+FUNCTION still fails because the organisation around it moved. Pick the 3 to 5 that can
+plausibly hit this strategy in the next two quarters and name the trigger, the owner and the
+pre-agreed move.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **The "strategy" is a list of everything already underway** | Every team sees itself in the deck; the NOT-doing list is empty or contains only things nobody proposed; no budget line moves between the old plan and the new one | Force the kernel: one diagnosis, one guiding policy, ≤3 coherent actions (§7). Then test it by naming what stops. A strategy that cancels nothing has not been written, it has been collected | 03 Strategy, 62 Chief of Staff, 18 Finance |
+| **The market thesis is invalidated mid-cycle** | A competitor prices below your modelled floor; a regulator opens a consultation on the mechanism you depend on; a platform changes terms under your distribution assumption | Separate what broke: the diagnosis, or only the actions. Re-run the kernel on the diagnosis first. Announce a re-baseline in the same forum that received the original, within one cycle, before teams discover it themselves | 03, 47 Deep Research, 28 Government Relations |
+| **Two executives with conflicting mandates both cite the strategy** | Growth is told to expand the funnel while Trust and Safety is told to cut fraud; both quote the same page; the argument runs on interpretation, not evidence | Do not arbitrate privately. Write the trade-off explicitly into the guiding policy with a named priority order and a decision owner, then re-publish. Ambiguity that two leaders can each read as a win is a strategy defect, not a personality clash | 03, 62, 00 Chief Reviewer |
+| **Strategy and finance planned on different assumptions** | The plan's growth rate and the budget's growth rate differ by more than 10 percent; headcount in the roadmap exceeds approved reqs; FX or pricing assumptions differ between the two models | Reconcile to one assumption set before the plan is socialised, and name the single owner of each assumption. A strategy that cannot be resourced is a forecast of disappointment with a cover page | 18 Finance, 03, 58 Treasury |
+| **The strategy never reaches the people making daily trade-offs** | Ask three ICs what the company is NOT doing and get three answers; prioritisation arguments cite roadmap tickets, never the kernel; the deck lives in one drive folder | Publish a one-page version whose only content is the diagnosis, the choices and the NOT-doing list, and require it as the first slide of every planning review. Strategy that is not usable at the ticket level is decoration | 03, 62, 41 Technical Program Management |
+| **A pivot is announced before the operating model can follow** | The announcement lands while the org chart, comp plans and quotas still reward the old motion; sales incentives point at the segment you just deprioritised | Sequence the change: mandate, then metrics and comp, then org, then communication. Announcing first creates a quarter where everyone is measured on the strategy you abandoned (§10 drift check) | 03, 22 People and HR, 61 Total Rewards, 32 Sales and RevOps |
+| **The NOT-doing list is quietly re-funded** | A killed bet reappears with a new name and a different sponsor; headcount for it shows up in a different cost centre; the kill decision has no KDR | Every kill gets a dated KDR with the criteria that would justify re-opening. Re-entry requires new evidence against those criteria, not a new champion. Otherwise strategy resets each time a sponsor changes | 03, 62, 21 Innovation and Programs |
+| **The kernel's sponsor leaves and the successor reopens settled choices** | The new leader asks for a "fresh look" at a decision closed six months ago; the strategy is described as their predecessor's | Re-qualify the mandate in 2 weeks. Offer a review of the DIAGNOSIS with current data rather than a re-litigation of every action. Sponsor by role in the document, never by name | 03, 62, 22 |
+| **The board commits publicly to a number that depends on an ungated bet** | An external target assumes revenue from a bet still at G1/G2; the bet scoreboard (§9) and the investor narrative disagree | Reconcile before the next external communication: either de-risk the number with a base case that excludes the bet, or move the bet's gate forward with funded evidence. Never let an external commitment become the reason a kill criterion is ignored | 03, 44 Investor Relations, 26 Governance and IPO |
+| **A large customer threat rewrites the roadmap, and the strategy follows by accretion** | A single account above 10 percent of revenue asks for a segment you chose not to serve; three quarters later the roadmap no longer matches the kernel | Price the deviation as a strategy decision, not a sales one: what does serving this account cost the chosen segment, and who signs for it. Concentration policy is decided in advance, not per threat | 03, 32, 17 Customer Success, 18 |
+| **M&A or a divestiture subordinates the strategy** | Diligence requests appear; the roadmap is asked to "hold" for a quarter; integration planning outranks the plan of record | Split the strategy into must-continue and can-pause BEFORE the freeze lands, and defend the must-continue list on moat logic (§8), not on team preference. Integration will take the rest | 45 Corporate Development, 03, 62 |
+| **A regional entity refuses the global strategy** | Local leadership cites law, market structure or precedent; a market builds a parallel roadmap; the global metric excludes them "for now" | Separate what genuinely must differ by law from what is preference, standardise the rest, and write the variance down with an owner and a review date. Undocumented local variance becomes permanent within two cycles | 03, 43 Localization, 11 Compliance and Ethics, 57 Tax |
+| **At 50,000 people: the division strategies sum to more than the company can fund** | Each division's plan is coherent alone; the sum exceeds capacity by a wide margin; no one owns the portfolio-level choice; shared platform teams are committed to five roadmaps | Force the portfolio trade-off at the level that owns capital, using one comparable scorecard (§10). Summing locally optimal strategies is not a company strategy, it is a queue with no ordering | 03, 18, 62, 41 |
+
+```
+⛔ HOW THE STRATEGY FUNCTION FAILS UNDER ORGANISATIONAL PRESSURE:
+□ CONSENSUS DILUTION: each review round adds a stakeholder's priority and removes a
+  trade-off, until the document offends nobody and directs nothing.
+□ ASSUMPTION FORK: strategy, finance and sales each maintain their own version of the same
+  number. Everyone plans honestly, on different arithmetic, and the gap surfaces at Q3.
+□ ANNOUNCEMENT-LED CHANGE: the pivot is communicated before comp, metrics and org design
+  can follow, so the org is paid to execute the abandoned strategy for a full cycle.
+□ KERNEL ROT: the diagnosis is never revisited while the actions are revised monthly. Teams
+  end up executing tactics derived from a market description that expired last year.
+□ SPONSOR-BOUND STRATEGY: the plan is attached to a person rather than a role, so a
+  leadership change resets settled choices and the org re-argues its way back to the start.
+□ DRIFT WITHOUT DETECTION: budget and headcount stop matching the stated choices and nobody
+  measures it. Strategy is real only where resources moved (§10).
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG:
+Everyone treats strategy failure as an ANALYSIS problem: the wrong market read, the wrong
+bet, the wrong TAM. In an organisation above roughly 5,000 people, the analysis is rarely
+the binding constraint. The strategy fails in TRANSLATION, in the distance between the
+document and the thousands of small trade-offs made daily by people who have never read it.
+
+The practical test is not "is the thesis correct" but "can an engineer, a recruiter and a
+seller each name one thing this strategy tells them to STOP doing this quarter". If they
+cannot, the strategy has no mechanism of action, however good the diagnosis. That is why the
+NOT-doing list, the comp plan and the budget reallocation are load-bearing parts of the
+strategy artefact rather than downstream consequences of it: they are the only parts most of
+the organisation will ever actually experience.
+```
+
 ### 12. Example: US Expansion vs Enterprise Tier
 
 **User says:** "We're at ₹6Cr ARR (Indian SMB SaaS, 118% NRR). The board wants US

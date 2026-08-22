@@ -287,6 +287,81 @@ GLOBAL:
 □ Withholding tax on cross-border payments: Varies by treaty
 ```
 
+## 8. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits
+(sponsor loss, freezes, reorgs, budget cuts). This section is the finance-specific layer: the cases
+where the model is arithmetically correct and the ORGANISATION is the failure mode, because someone
+changed a structure, a definition, or a commitment that your number depended on. Pick the 3 to 5 that
+can plausibly land in the next two quarters and name the trigger, the owner, and the pre-agreed move.
+
+| Edge case | Trigger / how you notice | What actually happens | The move |
+|---|---|---|---|
+| **Mid-year budget cut lands after headcount is already offered** | An unscheduled re-forecast; a downside case appears in the board pack; req approvals slow from days to weeks | Signed offers are commitments, so the cut lands on whatever is easy to stop: travel, tooling, contractors, and the one programme with a junior sponsor. The loss-making initiative with a loud VP survives | Keep a ranked descope list costed BEFORE anyone asks. Protect signed offers, freeze unsigned reqs, convert the remaining ask to contractor or reallocation with Agent 22, and republish the plan inside a week. The team that answers in 24 hours keeps more budget than the team that argues for two |
+| **Capex versus opex reclassification breaks a capitalised engineering plan** | The auditor challenges timesheet evidence; the controller revises policy; the project drifts from development into maintenance | Cost that sat on the balance sheet moves into operating expense. Cash does not change, but reported EBITDA and the margin story the board was shown both fall, and the programme can become unfundable overnight | Confirm the treatment with Agent 56 before spend is committed, never after. Model both treatments in every build business case, and keep project-level time evidence from day one so the position survives challenge |
+| **Cost-centre reorg orphans a live project mid-quarter** | A new org chart is published; a purchase order fails approval routing; the project has no owner in the new hierarchy | Budget does not follow work. The project keeps spending against a cost centre nobody owns until month end, when the new owner disputes the charge and the spend sits unallocated | Re-secure funding explicitly and in writing within two weeks. Freeze new commitments until the mapping is signed, and maintain a cost-centre-to-owner map as a live artifact reviewed at every reorg |
+| **FX swing on a multi-currency vendor or offshore build** | A move of 10 percent or more against the plan rate; vendor invoices landing materially above accrual; an offshore cost base rising in reporting currency | A location or vendor decision that was justified at last year's rate is now marginal. The variance shows up as "cost overrun" and the team gets blamed for a currency move | Separate rate variance from volume and price variance in every flux. Re-run location and vendor economics annually at current rates with Agent 58, and state the rate assumption on the face of the model |
+| **Audit reclassifies a spend category retroactively** | A sampled contractor population looks like employees; an R&D credit claim is questioned; a marketing rebate is recharacterised | The prior-period comparatives move, the incentive or credit built into the plan is reduced, and remediation work jumps every other finance priority because it has an auditor-facing deadline | Reserve capacity for remediation every year, because there is always some. Route any judgment-heavy classification to Agent 56 and Agent 57 for a dated memo before it is booked, not after it is questioned |
+| **Shared-cost allocation makes a business unit look unprofitable** | A GM disputes the platform, cloud, or G&A recharge in a QBR; two units both claim the same headcount benefit | The allocation argument consumes a full planning cycle, and the unit with the loudest GM gets a bespoke driver, which destroys comparability across the portfolio | Publish the allocation methodology and the driver for each pool once a year, change it only at year start, and always show contribution margin before allocation next to fully loaded margin. Never negotiate a driver mid-year |
+| **Headcount is defined three different ways** | Finance counts funded FTE, HR counts people on the system, hiring counts open reqs, and the three numbers never agree in a board pack | The plan reconciles to nothing, cuts are sized against the wrong base, and every "we are 40 under plan" conversation restarts from definitions | Agree one headcount taxonomy with Agent 22 in writing (funded, filled, offered, open, contractor, intern, EOR) and publish the bridge between the three systems monthly. The bridge is the artifact, not the number |
+| **Sales submits a commit that finance knows is wrong** | Commit sits far above weighted pipeline; the same account has slipped three quarters; coverage ratio below the historical conversion needed | Finance publishes a number it does not believe, then owns the miss. Spend was already authorised against revenue that will not arrive, so the correction becomes a cut instead of a slowdown | Publish two numbers: the sales commit and the finance-adjusted forecast with the delta and the reason named. Tie spend authorisation to the finance number and to a trigger-based release schedule with Agent 32 |
+| **Procurement or spend freeze catches a renewal that cannot lapse** | Freeze announced at quarter end or fiscal year end; a critical vendor renewal date sits inside the window | Lapsing a production dependency is worse than the spend it saves, so the renewal becomes an emergency exception, negotiated with no leverage at a price the vendor sets | Map every renewal date against the known freeze calendar at planning time with Agent 46, and pre-agree the exception path and the approver before the freeze starts |
+| **Use-it-or-lose-it year-end spending** | Underspent budgets in month 11; a rush of purchase requests in the last three weeks of the year | Rushed low-quality purchases and shelfware, followed by an audit observation and a smaller budget next year because the spend produced nothing visible | Run a pre-approved "if funds free up" list built during planning, so the rush buys something real. Push for multi-year or carry-forward treatment for genuinely lumpy programmes rather than pretending they are annual |
+| **A metric definition changes mid-year** | Product redefines an active user; sales changes what counts as ARR; a churn rule moves from 30 to 60 days | Every trend chart in the board pack breaks, the growth rate looks manufactured, and the investor narrative and the internal number diverge without anyone deciding that they should | Metric definitions are versioned and change only at period boundaries, with a restated history published alongside. Agent 16 owns the definition, you own the restatement, Agent 44 owns the external explanation |
+| **A large accrual is missing because the invoice never arrived** | Goods received not invoiced ageing past 60 days; a vendor with a known contract and no charges in three months | A quarter looks good, then a single catch-up entry lands in the next period and the variance story becomes a credibility story rather than a cost story | Accrue from the contract and the delivery evidence, not from the invoice queue. Review the open GRNI and the top vendors with no activity every close with Agent 56 |
+| **An intercompany recharge makes a country P&L look terrible** | A local MD challenges the cost-plus markup; a subsidiary shows a loss the local team cannot influence | The recharge is a tax and transfer-pricing requirement, but it lands as a performance signal, and local leadership starts managing to a number that is not theirs to manage | Report local performance twice: statutory P&L and management P&L before intercompany. Explain the markup with Agent 57 once, in writing, and never let a recharge dispute become a compensation dispute |
+| **M&A or diligence consumes FP&A for two months** | A data room appears; the CFO's calendar clears; ad-hoc requests arrive daily with same-day deadlines | Business-as-usual forecasting quietly rots. The close still happens, but scenario work, hiring plans and vendor negotiations all stall, and nobody records why the quarter slipped | Treat diligence as a named workstream with dedicated people and a stated pause list of BAU work, agreed with Agent 45 and Agent 62. Silent absorption is how a finance team burns out inside one deal |
+| **ERP or chart-of-accounts migration mid-year destroys comparatives** | A systems programme with a go-live inside the fiscal year; a proposed COA restructure landing in Q3 | Prior-period comparatives stop tying, variance analysis becomes archaeology, and the first close on the new system takes twice as long during the busiest reporting month | Cut over at a period boundary, ideally year start, and maintain a mapped bridge from old to new for at least four quarters. Never accept a go-live inside a quarter that also carries an audit or a board reporting deadline |
+| **A budget owner leaves and the budget is swept** | An open req list with no hiring manager; a cost centre with spend and no approver; a project sponsor who has stopped attending reviews | Unowned budget is the first thing a cost programme takes, including money committed to a contract that still has to be paid, which converts a saving into an overspend | Run an owner check on every material cost centre at each re-forecast. Any centre with no named owner is escalated within two weeks, with committed versus discretionary spend split out so only the discretionary part is genuinely available |
+| **A layoff triggers impairment of capitalised development** | A programme cut while its capitalised balance is still on the balance sheet | The saving is partly offset by a non-cash write-off in the same period, and the announced cost reduction is smaller than the number given to the board or the market | Model the impairment with Agent 56 BEFORE the cut is announced, and give the board the net number. Announcing a gross saving that a write-off halves is a credibility failure that outlives the saving |
+| **Profitable on paper and unable to fund payroll** | Growing receivables, lengthening DSO, a large annual prepay that has not landed, cash sitting in a subsidiary | The P&L conversation and the cash conversation are held by different people in different meetings, and nobody owns the bridge between them until the week it matters | Report P&L, cash and runway in the same pack every month, with the bridge explicit. Cash forecasting, trapped cash and banking sit with Agent 58, and no runway number is published without them |
+
+**Failure modes specific to this function**
+```
+⛔ Finance becomes the "no" function and gets routed around: spend migrates to corporate cards,
+   shadow SaaS and consulting line items, and the picture you defend is not the picture that exists.
+⛔ The plan is negotiated rather than modelled. Both sandbagging and stretch inflation are present in
+   the same file, they partially cancel, and nobody can say what the real number is.
+⛔ Forecast accuracy is never measured, so no submitter is ever held to a number and the incentive to
+   forecast honestly does not exist.
+⛔ Allocations are designed for accounting completeness rather than for decisions, producing unit
+   economics no operator can act on and every operator disputes.
+⛔ Finance hears about material commitments after signature, which turns the CFO into a bookkeeper of
+   other people's decisions rather than a party to them.
+⛔ The embedded business partner goes native, softening bad news to protect their team, and head
+   office learns of the problem one quarter late.
+```
+
+**Escalation and who owns what**
+- Revenue recognition, close, capitalisation policy and audit adjustments: `agents/56-revenue-accounting.md`.
+- Tax positions, intercompany markup, permanent establishment and indirect tax: `agents/57-tax.md`.
+- Cash, banking counterparties, FX execution, covenants and trapped cash: `agents/58-treasury.md`.
+- Headcount definitions, offers, freezes, RIF mechanics and works-council duties: `agents/22-people-hr.md`.
+- Vendor renewals, freeze windows, concentration and exit costs: `agents/46-procurement-supply-chain.md`.
+- Control design, SOX scoping and remediation of audit findings: `agents/59-internal-audit-risk.md`.
+- Metric definitions and the restated history behind them: `agents/16-analytics.md`.
+- What may be said externally about any number: `agents/44-investor-relations.md` and `agents/26-governance-ipo.md`.
+- Cross-functional deadlock on budget ownership or decision rights: `agents/62-chief-of-staff-bizops.md`.
+
+**Pre-mortem prompts for this department**
+```
+□ If the budget were cut by 10 to 30 percent tomorrow, what exactly would we stop, in what order,
+  and which of those stops is already impossible because a contract or an offer is signed?
+□ Which numbers in this plan depend on a treatment decision (capitalisation, allocation, recharge,
+  metric definition) that another function can change without telling us?
+□ Which single assumption, if wrong by 20 percent, breaks the funding case rather than just the margin?
+□ Who is the named owner of every material cost centre, and how many of them have left, changed role,
+  or stopped attending reviews in the last two quarters?
+□ What is the FX rate in this model, when was it last refreshed, and what does the decision look like
+  at a rate 10 percent worse?
+□ If sales delivers 70 percent of commit, at what point in the quarter do we find out, and what is
+  pre-agreed to stop on that date?
+□ Which of our top five vendor renewals fall inside a known freeze window, and who is the pre-agreed
+  approver for the exception?
+□ If an auditor reclassified our single largest judgment call against us, how large is the hit, and
+  does anyone outside finance already know that number?
+```
+
 ## Output: Financial Strategy Document
 Unit economics model, 3-year P&L projection, cash flow forecast, pricing strategy,
 fundraising readiness assessment, and financial controls framework.

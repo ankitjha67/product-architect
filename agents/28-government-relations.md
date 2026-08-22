@@ -275,6 +275,63 @@ WHAT CHANGES AT SCALE (multi-country, 1000+, or politically visible):
 □ Relationship depth: regulators who call US before drafting (the metric that matters)
 ```
 
+## 11. Organisational Edge Cases
+
+`frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
+inherits (sponsor loss, reorgs, freezes, budget cuts). This section is the GR-specific
+layer: the cases where the policy analysis is right and the ORGANISATION is what loses the
+argument. Pick the 3 to 5 that can plausibly land in the next two quarters and name the
+trigger, the owner, and the pre-agreed move for each.
+
+| Situation | Early warning signal | First move | Owns the response |
+|---|---|---|---|
+| **A draft rule is unworkable for your architecture and the comment window is closing** | A consultation paper lands with a clause that assumes a data model or intermediary role you do not have; the window is 30 days and nobody has read it clause by clause | Buy the window back: request an extension in writing while running a 5-day clause-by-clause read with Engineering and Legal. File specific redline language plus impact evidence, never a general objection. Silence during comment is read as consent later | 28 GR with 10 Legal, 06 Engineering, 11 Compliance |
+| **A lobbying disclosure obligation is triggered by activity nobody registered** | A founder's ministry meetings, a retained consultant, or an association committee seat that meets a contact or time threshold; no central contact log exists | Reconstruct the contact record and take the late-filing decision with counsel immediately: voluntary correction beats discovery. Then make a central lobbying log a precondition for any external meeting. Thresholds and forms differ by jurisdiction: verify current with qualified counsel | 28 GR, 10 Legal, 11 Compliance, 59 Internal Audit & Risk |
+| **A policy position helps one business unit and harms another** | Two internal drafts of the same submission; a BU leader briefing a regulator separately; the association response contradicting your own filing | Do not file until the conflict is resolved above both units. One company position per file, decided by the escalation path, with the losing unit's cost documented so it is a decision rather than a defeat | 62 Chief of Staff & BizOps, 28 GR, 03 Strategy |
+| **An election, ministerial reshuffle or regulator leadership change resets every relationship** | Election dates on the calendar, a secretary rotating out, a new chair appointed, a purdah or pre-election blackout window starting | Re-qualify every open commitment: what was verbally agreed does not survive the person. Rebuild with a short written primer per file, and treat pre-election windows as a hard freeze on asks, not a chance to move fast | 28 GR, 25 PR & Communications |
+| **A regulator's information request has a deadline your data cannot meet** | A request covering a period longer than your log retention, or spanning systems owned by three teams and one departed vendor | Respond ON the deadline with what exists, the exact scope you can attest to, and a dated plan for the rest. Never miss the date silently and never fabricate coverage. Late plus honest is survivable; silent plus incomplete is a second offence | 28 GR, 10 Legal, 09 Security, 38 Data Engineering |
+| **Public affairs promises externally what engineering cannot deliver** | A commitment letter with a fix date nobody costed; a hearing answer given under pressure; a press line that reads as a binding undertaking | Every external commitment gets an engineering-signed date before it leaves the building, and a written correction goes out fast if one already did. Credibility with a regulator is a one-time asset | 28 GR, 06 Engineering, 41 Technical Program Management, 10 Legal |
+| **An inspection, summons or dawn raid arrives at a local office** | Nothing: that is the point. The warning signal is that no receptionist runbook exists and no one knows who to call | Pre-build the runbook now: who greets, who calls counsel, what is handed over, what is privileged, no device wiping, no deletion, immediate legal hold. Rehearse it once a year like a fire drill. Improvised handling in hour one is what becomes the finding | 10 Legal, 28 GR, 09 Security, 40 IT & Corporate Engineering |
+| **The industry association takes a position against your interest** | The draft association submission favours the largest members; your redlines disappear between drafts; competitors chair the working group | File your own submission in parallel and say so. Never outsource your only voice to a body you do not control, and re-decide membership annually on whether positions actually align | 28 GR, 03 Strategy, 18 Finance |
+| **A local entity commits to something that conflicts with the global position** | A country manager signs a code of conduct, MoU or data-localisation pledge to win a licence or a tender, with no head-office review | Require head-office review of any government-facing commitment, however small, and reconcile the conflict in writing before the regulator finds it. Local pledges become global precedent within a year | 28 GR, 10 Legal, 62 Chief of Staff & BizOps |
+| **Sanctions or export-control changes make a live market or customer unlawful overnight** | A listing update touching a customer, investor, supplier or region; a partner suddenly hard to pay; screening that runs at onboarding but never again | Suspend, do not unwind, in the first 48 hours: stop the flow, preserve records, and get a counsel-led scoping of exposure. Continuous screening replaces point-in-time screening. Verify current lists and licences with qualified counsel | 11 Compliance, 28 GR, 46 Procurement, 58 Treasury |
+| **A regulator asks for a commitment in a meeting and the person in the room has no authority** | Ad hoc meetings taken by whoever was available; no pre-brief; no note-taker; answers improvised on scope, timelines or numbers | Fixed pre-brief discipline: agreed positions, the three things you will not answer today, a second attendee taking notes, and a written follow-up within 48 hours that records what was and was not committed | 28 GR, 10 Legal, 62 Chief of Staff & BizOps |
+| **The GR head leaves and the relationships leave with them** | Every regulator contact routes through one name; no meeting notes in any system; the successor is introduced by email rather than in person | 48-hour capture: contact map, live file status, open commitments, and joint meetings during the notice period. Relationships are institutional assets or they are personal ones you rented | 22 People & HR, 28 GR, 62 Chief of Staff & BizOps |
+| **Hospitality, a contribution or a facilitation payment creates anti-bribery exposure** | Event sponsorship near a licence decision, a consultant invoice with vague "government liaison" scope, an executive's personal political contribution in a pay-to-play jurisdiction | Freeze the payment and route it through compliance before any explanation is offered externally. Intermediaries are the classic vector: due-diligence, written scope and audit rights on every government-facing consultant. Verify the applicable regimes with qualified counsel | 11 Compliance, 10 Legal, 28 GR, 46 Procurement |
+| **Informal guidance from a regulator contradicts the written rule** | A verbal "we would not object" relied on by a product team; a helpful desk officer's email treated as an approval; a build premised on a comfort letter that does not exist | Nothing verbal enters the plan. Ask for written confirmation, and where it will not come, document the reliance, cap the exposure and give the product an off-ramp. Officials rotate, and the written rule is what survives them | 28 GR, 10 Legal, 11 Compliance, 04 PRD |
+
+```
+ORG FAILURE MODES OF A GR FUNCTION UNDER PRESSURE (not policy errors, org failure):
+⛔ EVENT-DRIVEN, NOT CALENDAR-DRIVEN: the team responds to notices instead of running a
+   tracked pipeline of consultations, transitions and renewals, so windows close unnoticed.
+⛔ NO INTERNAL AUTHORITY: GR can promise a regulator anything and compel no team to build
+   it, which converts credibility into an unbacked cheque written by someone else.
+⛔ RELATIONSHIP HOARDING: contacts held in one person's phone because access is the
+   function's internal currency, and the bus factor is treated as job security.
+⛔ TRANSLATION FAILURE IN BOTH DIRECTIONS: regulatory text reaching engineering as vague
+   anxiety, and product reality reaching the regulator as marketing language.
+⛔ SUCCESS THAT IS INVISIBLE: the rule that was quietly softened generates no metric, so
+   the function is budgeted as overhead until the first crisis it could have prevented.
+```
+
+```
+⚠️ WHAT EVERYONE GETS WRONG: GR is judged on access, meetings held, relationships
+maintained, and it fails on INTERNAL LATENCY. The external window is fixed and short: a
+comment period, a hearing date, a transition deadline. The internal clock is what misses
+it, because forming one company position requires Legal, Engineering, Finance and two
+business units to agree, and that takes longer than the window allows.
+
+The teams that win regulatory fights are not the ones with better relationships. They are
+the ones that can produce a clause-level, evidence-backed position in ten working days
+because the escalation path, the spokespeople and the sign-off rules were agreed while
+nothing was on fire. Everything else, including the relationships, is downstream of that.
+
+⚠️ Lobbying registration thresholds, political-contribution rules, anti-bribery regimes,
+   inspection powers and sanctions lists are jurisdiction-specific and change frequently.
+   Treat the principle as durable and verify the current rule with qualified counsel before
+   acting. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+```
+
 ## Example
 
 **User says:** "The draft e-commerce rules would ban our private-label products. What do we do?"
