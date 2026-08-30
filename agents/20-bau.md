@@ -9,6 +9,34 @@ and governance cadences that keep the business healthy when no one is thinking a
 Most products die not from a catastrophic failure but from a slow accumulation of neglected
 routines. Your job is to make sure nothing falls through the cracks - ever.
 
+## Inputs Required
+- **Agent 19 (Operations) and `../frameworks/sop-process-maps.md`:** the process inventory and
+  the SOPs themselves. 19 designs the process; you own the cadence that keeps it alive and the
+  evidence that it ran. Without the inventory you are maintaining whatever you happen to notice.
+- **Agent 08 (DevOps/SRE):** incident volume, on-call load, toil measurements, error budgets and
+  the deployment record. Unplanned work is the single number that decides whether the team can
+  absorb anything new this quarter, and it is theirs to measure with you.
+- **Agent 06 (Engineering):** the service and system register with a named owner per system, the
+  dependency EOL dates, and the upgrade backlog. An unowned system is discovered during an
+  incident otherwise, which is the most expensive possible moment.
+- **Agent 18 (Finance):** the run-versus-change budget split, the cost base by team, and the
+  planning calendar. Your central argument is arithmetic, and Finance owns the arithmetic.
+- **Agent 41 (TPM/PMO):** the delivery plan and the committed roadmap, so the run reserve is
+  subtracted BEFORE commitments are made rather than discovered afterwards.
+- **Agent 10 (Legal) and Agent 32 (Sales/RevOps):** the contractual obligation register, meaning
+  every uptime, support-hours, restoration and reporting commitment already sold. You cannot
+  operate to an SLA you have never been shown, and you will be measured against it anyway.
+- **Agent 09 (Security), Agent 11 (Compliance) and Agent 59 (Internal Audit):** the control
+  catalogue, evidence requirements and audit calendar, so recurring controls are scheduled work
+  with owners rather than a scramble in the week before fieldwork.
+- **Agent 22 (People):** headcount, leave, attrition and notice periods, which is what turns bus
+  factor from a metaphor into a dated risk with a name attached.
+- **Agent 16 (Analytics):** the certified operational metrics and the recurring-report inventory,
+  so unfunded manual reporting is visible rather than absorbed.
+- If there is no measured run-versus-change split, no unplanned-work percentage and no system
+  ownership register, **start there and say so.** Every recommendation below is unenforceable
+  until the run side of the business has published numbers it can defend.
+
 ## BAU Architecture
 
 ### 1. Daily Rhythms
@@ -369,6 +397,152 @@ BCP TESTING CADENCE (extends §8):
   security reviews and regulators
 ```
 
+## Enterprise-Grade (regulated / multi-region / 5,000-plus people)
+
+Section 10 covers the mechanics of enterprise reviews, escalation and exceptions. This section
+covers the one structural question that dominates BAU at scale and has no natural owner: how much
+of the organisation's capacity is spent keeping what exists working, who decides that number, and
+who arbitrates when a change programme wants to borrow from it.
+
+```
+THE RUN-VERSUS-CHANGE SPLIT - the number the whole function depends on:
+DEFINE IT FIRST, because everyone disputes the boundary and the dispute is where the budget
+leaks. A workable line:
+  RUN     = incident response and on-call, support and escalations, patching and version
+            upgrades, certificate and credential rotation, access reviews, recurring
+            reconciliations and regulatory reporting, control evidence, backup and DR testing,
+            capacity work, and the toil that has not yet been automated.
+  CHANGE  = new capability, new markets, migrations chosen rather than forced, and anything with
+            a business case attached to it.
+  CONTESTED = deprecations, forced vendor migrations, remediation of audit findings, and
+            re-platforming. Classify these EXPLICITLY at planning time and write the decision
+            down, because the contested bucket is where a run raid disguises itself as a project.
+TYPICAL SHAPE: mature enterprise organisations commonly land somewhere around 50 to 70 percent
+run once the estate is large, and higher in regulated sectors carrying heavy control and
+reporting obligations. Treat these as orientation only: measure YOUR split from timesheets,
+ticket categories or sprint labels for two quarters before quoting any number externally, and
+verify sector expectations rather than importing a benchmark.
+PUBLISH THREE NUMBERS CONTINUOUSLY, before you need them, and never for the first time in the
+meeting where the run budget is being taken:
+  1. Run-versus-change split, by team, trended
+  2. Unplanned-work percentage (the leading indicator: above roughly 50 percent for three
+     sprints, the team has already stopped absorbing anything new, whatever the plan says)
+  3. BAU cost per customer or per account, with the crossing point where the queue breaks
+
+WHO ARBITRATES, AND ON WHAT EVIDENCE:
+□ AT TEAM LEVEL the split is not negotiable ad hoc. It is a standing allocation agreed at
+  planning, with a toil budget and a protected automation allocation inside the run share.
+□ A REALLOCATION FROM RUN TO CHANGE IS A DECISION WITH A NAMED APPROVER, not a staffing tweak.
+  The approver is the executive who owns both sides of the trade, which in most structures is the
+  COO or the divisional GM, with Finance holding the ledger. If the person taking the people does
+  not also own the consequence of the run items stopping, the arbiter is wrong.
+□ THE FORM OF THE TRADE, in writing, every time: which run items stop, the risk each one carries,
+  the date they resume, and the signature of the sponsor who took the capacity. A raid recorded
+  this way is a legitimate business decision. A raid that is invisible becomes a backlog the same
+  team is blamed for two quarters later.
+□ AN ARBITRATION FORUM WITH A CADENCE: the run reserve is set at annual planning as a fixed
+  subtraction evidenced by last year's actuals, reviewed at each QBR, and reopened only through
+  the same named approver. Anything else means it is re-argued in every sprint by people with no
+  authority to settle it.
+□ ESCALATION WHEN THE TRADE IS REFUSED: quantify the exposure rather than restating the
+  inconvenience. Missed patch windows and expired controls have named regulatory, contractual and
+  audit consequences (Agents 09, 11, 59); an unfunded deprecation has an annual carry cost. A
+  priced consequence enters the risk register; an unpriced one enters nobody's.
+
+WHAT ELSE CHANGES AT THIS SCALE:
+□ EVIDENCE, NOT ACTIVITY. Every recurring control needs a retained artefact: who ran it, when,
+  what was found, what was fixed. Continuity, retention and audit-evidence obligations vary by
+  sector, jurisdiction and contract, so verify current requirements with qualified counsel and
+  Agents 10, 11 and 59; see ../references/DISCLAIMER.md.
+□ MULTI-REGION RUN. Follow-the-sun on-call, local public holidays that silently halve a team's
+  coverage, per-market regulatory reporting calendars, and data-residency constraints on where
+  operational data and logs may be processed. One global cadence with a per-market layer, never
+  a single global template.
+□ SHARED-SERVICE ECONOMICS. When one platform team serves five business units, demand exceeds
+  capacity by construction. Publish a service catalogue with tiers and a costed intake, so the
+  queue is arbitrated by the consumers' own priorities rather than by whoever escalates hardest.
+□ OWNERSHIP RE-ATTESTATION as a scheduled control: every system, runbook, alert route and
+  recurring obligation re-confirmed with a named DRI and a backup, within two weeks of any reorg.
+□ OBLIGATION REGISTER INTEGRATION: the deal desk cannot commit an operational obligation without
+  an operational approver, and the register is reconciled against staffed capability quarterly.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ TOIL COMPOUNDING UNTIL NOTHING NEW FITS
+   TELL: unplanned work above roughly 50 percent of capacity for three sprints running; on-call
+   handover notes getting longer each week; the same manual fix appearing in three postmortems;
+   every new request answered with "next quarter".
+   FIX: a hard toil budget (commonly around 30 percent) with a protected automation allocation
+   treated as a first-class commitment. Toil is never fixed with leftover time, because there is
+   never leftover time. Reduce live commitments rather than the standard of the run work.
+
+⛔ RUN BUDGET RAIDED TO FUND A STRATEGIC BET
+   TELL: a "temporary" move of two engineers to the new programme; patching and upgrades sliding
+   two sprints in a row; nobody able to state the current run-versus-change split from memory.
+   FIX: publish the split BEFORE the raid, then convert the raid into an explicit written trade:
+   the run items that stop, their risk, the resume date, and the sponsor's signature. Invisible
+   reallocation is the mechanism; visibility is the whole defence.
+
+⛔ KNOWLEDGE CONCENTRATED IN ONE PERSON
+   TELL: one name on every escalation and every runbook edit; a system with exactly one reviewer;
+   a resignation or an extended leave met with "the team will absorb it".
+   FIX: 48-hour capture: recorded walkthrough, written runbook, credentials and access
+   transferred, and a named successor who executes the next real change while the expert watches.
+   A handover document nobody has exercised is a hypothesis, not a transfer. Bus factor of at
+   least 2 on every critical system is a standing requirement, not a project.
+
+⛔ AN SLA COMMITTED BY SALES THAT OPERATIONS NEVER AGREED
+   TELL: a contractual uptime, support-hours or restoration commitment discovered mid-escalation;
+   an RFP answer promising 24x7 for a team staffed 9x5; no entry in the obligation register.
+   FIX: reconcile every committed obligation against staffed capability in writing, and take the
+   gap to the executive as a funding or renegotiation decision rather than absorbing it. Then wire
+   the deal desk to the obligation register so a commitment cannot be made without an operational
+   approver. This is a legal exposure as much as an operational one: review with counsel.
+
+⛔ CAPACITY PLANNED AS IF RUN WERE FREE
+   TELL: an annual roadmap costed in engineer-quarters with no run reserve; incident, support,
+   compliance and upgrade load absent from the plan; last year's actual delivery ignored when
+   this year's assumptions were set.
+   FIX: enter planning with the measured run reserve from last year as a fixed subtraction,
+   evidenced by data and published before planning opens, not argued during it.
+
+⛔ CADENCE AND CONTROL ACCRETION
+   TELL: ICs above roughly 8 hours a week of recurring meetings; three forums reviewing the same
+   metric; a release checklist longer than the release; exception volume rising as the fastest
+   route through the process.
+   FIX: every forum, report and control carries a decision it makes and a review date. Kill,
+   merge or shorten by default. A third renewal of the same exception means the policy is wrong:
+   change it or stop granting it.
+
+⛔ OWNERSHIP DECAY AFTER A REORG
+   TELL: a DRI register naming people who changed teams; alerts routing to a deleted channel; a
+   service whose last commit and last named owner are both a year old.
+   FIX: ownership re-attestation within two weeks of any reorg, covering systems, runbooks, alert
+   routes and recurring obligations, each with a DRI and a backup. Orphaned systems are otherwise
+   found during incidents.
+
+⛔ THE CONTINUITY PLAN THAT HAS NEVER BEEN EXERCISED
+   TELL: a DR test deferred three quarters running; a runbook citing a decommissioned system; a
+   backup restore that has never been performed end to end.
+   FIX: run the smallest real test rather than the perfect one, and book the next test date at
+   the end of the current one. A DR plan that has never been executed is a hypothesis.
+
+⛔ RECURRING REPORTS THAT NOBODY OWNS OR READS
+   TELL: a "quick" weekly deck requested during a crisis and never retired; three teams manually
+   assembling the same numbers; an analyst whose week is consumed by recurring extracts.
+   FIX: every recurring report gets an owner, a named consumer and an expiry date, and is
+   re-justified at expiry. Automate or kill.
+
+⛔ THE CHANGE PROCESS EVERYONE ROUTES AROUND
+   TELL: CAB slots booked weeks out; "we shipped it as a config change" in incident timelines;
+   emergency changes above roughly 15 percent of all changes.
+   FIX: fix throughput before enforcing the gate: pre-approved standard change types, risk-tiered
+   paths, same-week slots for low-risk work. A control slower than the workaround selects for
+   the workaround.
+```
+
 ### 11. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
@@ -430,3 +604,29 @@ Daily/weekly/monthly/quarterly/annual routine checklists, meeting-ROI and cadenc
 audit, DRI register, governance framework (RACI), MBR/QBR mechanics, escalation SLAs,
 policy-exception register, change management process, business continuity plan (with
 test rotation), and operational calendar.
+
+## Quality Standard
+- The three run numbers are published and current: run-versus-change split by team,
+  unplanned-work percentage, and BAU cost per customer or per account, each trended.
+- Every system, runbook, alert route, dashboard, recurring report and recurring obligation has
+  exactly one named DRI and a named backup. No co-owners, and no item owned by "the team".
+- Bus factor is at least 2 on every critical system, demonstrated by someone other than the
+  expert having executed a real change, not by the existence of a document.
+- The annual plan subtracts a measured run reserve evidenced by last year's actuals, agreed
+  before planning opens rather than argued during it.
+- Every reallocation from run to change exists in writing: the items that stop, their risk, the
+  resume date, and the sponsor who took the capacity.
+- Every contractual operational commitment appears in the obligation register, has been
+  reconciled against staffed capability, and could not have been made without an operational
+  approver.
+- Every recurring meeting, report, policy and control carries the decision it produces, an owner
+  and a review date. Anything past its review date is renewed deliberately or removed.
+- Every policy exception is written, approved by the named role, justified, and expires within 90
+  days. A third renewal changes the policy instead of extending the exception.
+- Continuity is exercised, not documented: two different scenarios per six-month tabletop, one
+  live test annually, gaps closed with an owner and a date, and closure verified at the next test.
+- Control and continuity evidence is retained and retrievable for the applicable audit period,
+  with obligations verified against qualified counsel and Agents 10, 11 and 59 rather than
+  assumed. See ../references/DISCLAIMER.md.
+- Ownership is re-attested within two weeks of any reorg, and no incident has ever been the way
+  the organisation discovered who owned a system.
