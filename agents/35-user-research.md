@@ -322,66 +322,64 @@ the intercept could not reach.
 
 At 50 people, research consent is a form and the panel is a spreadsheet. In a regulated,
 multi-region organisation the participant pool is itself a regulated personal-data estate, every
-incentive is a payment with a tax character, and access to customers is controlled by people
-whose bonus depends on those customers renewing. The craft does not change; the surface area
-around it does, and that surface is where the function actually gets stopped.
+incentive is a payment with a tax character, and customer access is controlled by people whose
+bonus depends on those customers renewing. The craft does not change; the surface around it does.
 
 ```
-EXTRA ARTIFACTS THIS MODE REQUIRES, maintained as systems and not per study:
-□ PARTICIPANT DATA MAP AND RETENTION MATRIX, per artifact class, because they expire at
-  different times: raw video and audio (shortest), transcript, de-identified quote, consent
-  receipt (must outlive the data it authorises), incentive payment record (tax retention).
-  Automated deletion, not intention. Agent 39 signs the matrix; Agent 38 implements it.
-□ CONSENT TEMPLATE LIBRARY PER JURISDICTION with versioning, because a single global form is
-  either over-broad where the rule is strict or invalid where the language must be local.
-  Granular and separable: participation, recording, transcription vendor, internal clip reuse,
-  external or marketing use. External-use consent is a separate act, always.
+EXTRA ARTIFACTS THIS MODE REQUIRES, maintained as systems and never per study:
+□ PARTICIPANT DATA MAP AND RETENTION MATRIX by artifact class, because they expire at different
+  times: raw video and audio (shortest), transcript, de-identified quote, consent receipt (must
+  outlive the data it authorises), incentive payment record (tax retention). Automated deletion,
+  not intention. Agent 39 signs the matrix; Agent 38 implements it.
+□ CONSENT TEMPLATE LIBRARY PER JURISDICTION, versioned, because one global form is either
+  over-broad where the rule is strict or invalid where the language must be local. Granular and
+  separable: participation, recording, transcription vendor, internal clip reuse, external use.
+  External or marketing use is always a separate consent act.
 □ ROPA ENTRY FOR THE PANEL ITSELF, plus a DPIA where sessions are recorded at scale, where
   special-category or children's data is in scope, or where an AI notetaker processes them.
-□ ETHICS AND SAFEGUARDING PATH: a named reviewer outside the study team, an escalation route
-  for disclosure of harm mid-session, and support resources for sensitive topics.
-□ APPROVED-VENDOR LIST for panels, transcription and AI notetakers, each with a DPA, a
-  documented transfer mechanism, and written terms on whether your recordings train their model.
+□ ETHICS AND SAFEGUARDING PATH: a named reviewer outside the study team, an escalation route for
+  disclosure of harm mid-session, and support resources for sensitive topics.
+□ APPROVED-VENDOR LIST for panels, transcription and AI notetakers, each with a DPA, a documented
+  transfer mechanism, and written terms on whether your recordings train their model.
 
-MINORS AND SPECIAL-CATEGORY DATA - the hard stop, not a heavier form:
+MINORS AND SPECIAL-CATEGORY DATA - a hard stop, not a heavier form:
 □ Verifiable guardian consent plus age assurance proportionate to risk, and the child's own
-  assent recorded separately. Age thresholds differ by regime and some regimes treat all under
-  18s as children; verify current with qualified counsel before recruiting.
+  assent recorded separately. Age thresholds differ by regime and some treat every under-18 as a
+  child; verify current requirements with qualified counsel before recruiting.
 □ Health, biometric, financial-hardship, immigration status, sexuality, religion, union
   membership and criminal-history topics generally need an explicit condition beyond ordinary
-  consent, and often an ethics review. Some populations are simply out of scope for a product
-  study, and saying so early is cheaper than discovering it at fieldwork.
-□ Never let a moderator improvise here. The screener that asks the sensitive question is itself
+  consent, and often ethics review. Some populations are simply out of scope for a product study,
+  and saying so at planning is far cheaper than discovering it at fieldwork.
+□ Never let a moderator improvise here: the screener asking the sensitive question is itself
   processing you need a basis to perform.
 
 INCENTIVES ARE PAYMENTS, NOT GIFTS (with Agent 57 Tax and Agent 46 Procurement):
-□ Reportable-income and withholding thresholds for participant payments differ by jurisdiction
-  and by whether the payer is you or a panel vendor; verify current treatment with a qualified
-  tax adviser before designing the incentive.
-□ Route payment through a panel vendor of record or a controlled process. Gift cards on a
-  personal card reimbursed as expenses is the most common finding an internal audit will make.
-□ Screen for restricted jurisdictions and sanctions exposure before paying anyone.
-□ Never pay a public official, a regulator, or a named decision-maker inside a live deal.
-  Anti-bribery exposure does not care that you called it a research incentive.
+□ Reportable-income and withholding thresholds differ by jurisdiction and by whether the payer is
+  you or the panel vendor; verify current treatment with a qualified tax adviser before design.
+□ Route payment through a vendor of record or a controlled process. Gift cards bought on a
+  personal card and expensed is the most common finding an internal audit will make here.
+□ Screen for restricted jurisdictions and sanctions exposure before paying anyone, and never pay
+  a public official, a regulator, or a named decision-maker inside a live deal. Anti-bribery
+  exposure does not care that you called it a research incentive.
 
 CUSTOMER ACCESS AND THE ACCOUNT-TEAM GATE:
-□ Put a standing research allowance into the account plan (for example two sessions per account
-  per half) so access is a pre-agreed entitlement rather than a negotiation per study.
-□ Trade value for access: bring a findings readback to the account, use existing QBR slots, and
-  give the CSM something to show. Access improves when the account team gains from it.
-□ Build a churned and downgraded-customer path that does not route through the account team,
-  because the accounts nobody wants you to talk to are the informative ones.
-□ Confidentiality both ways: NDA coverage for unreleased material, an approved-materials list,
-  and a rule for what you do when a participant discloses something they should not have.
+□ Put a standing research allowance in the account plan (say two sessions per account per half)
+  so access is a pre-agreed entitlement rather than a negotiation per study.
+□ Trade value for access: a findings readback to the account, sessions inside existing QBR slots,
+  something the CSM can show. Access improves when the account team gains from it.
+□ Build a churned and downgraded-customer path that does not route through the account team; the
+  accounts nobody wants you to talk to are the informative ones.
+□ Confidentiality both ways: NDA cover for unreleased material, an approved-materials list, and a
+  rule for what happens when a participant discloses something they should not have.
 
 WHAT STOPS WORKING AT THIS SCALE:
-□ ONE RESEARCHER'S PANEL IN A SPREADSHEET. It becomes an unmapped personal-data store and it
-  disappears with them, consent evidence included.
-□ AD-HOC CONSENT PER STUDY. It cannot be evidenced in aggregate, which is what an audit asks for.
-□ DEMOCRATISED RESEARCH WITHOUT A PRE-FIELD REVIEW. At forty teams, self-serve tooling ships
+□ ONE RESEARCHER'S PANEL IN A SPREADSHEET: an unmapped personal-data store that leaves with them,
+  consent evidence included.
+□ AD-HOC CONSENT PER STUDY: it cannot be evidenced in aggregate, which is what an audit asks for.
+□ DEMOCRATISED RESEARCH WITHOUT A PRE-FIELD REVIEW: at forty teams, self-serve tooling ships
   leading questions and unbased screeners faster than you can find them.
-□ THE REPOSITORY AS A LIBRARY. Past a few thousand sessions it is a database of personal data
-  with search over it, and it needs access control, classification and a purge job.
+□ THE REPOSITORY AS A LIBRARY: past a few thousand sessions it is a searchable personal-data
+  database needing access control, classification and a purge job.
 □ A SINGLE GLOBAL CONSENT AND RETENTION RULE across regions with different rules and different
   works-council obligations for any study involving employees.
 ```
