@@ -4,6 +4,44 @@
 VP Platform thinking about how your product becomes an ecosystem where third parties
 build value on top of you, creating self-reinforcing moats through network effects.
 
+## Inputs Required
+- **Agent 03 (Strategy) and Agent 04 (PRD):** the product roadmap for the next four to six
+  quarters, including anything that would compete with a category partners already occupy. Without
+  it you publish a Sherlocking policy you are about to violate, and partners find out from a
+  release note.
+- **Agent 06 (Engineering):** the data model, its stability history, and which internal teams
+  consume which interface in production today. Gate 1 is answered from this evidence; without it
+  you externalise an abstraction that has never survived a second consumer.
+- **Agent 16 (Analytics) with per-endpoint and per-partner telemetry:** call volume by version, by
+  endpoint and by organisation, plus marketplace GMV and install concentration. Without it a
+  deprecation is planned blind and the concentration risk in section 11 is unmeasurable.
+- **Agent 36 (Pricing) and Agent 18 (Finance):** unit economics per API call and per marketplace
+  transaction, and the cost to serve by tier. Take rate and API pricing are margin decisions
+  dressed as ecosystem decisions; without the numbers you price to ambition and farm
+  disintermediation.
+- **Agent 10 (Legal & IP):** the developer terms, partner agreements, change-of-control and data-use
+  clauses, and the licence inventory for every published SDK and sample. The deprecation policy is
+  a contractual commitment, and an unread clause is the one that blocks a decision later.
+- **Agent 09 (Security):** the OAuth scope model, token lifetimes, per-app anomaly detection and
+  the kill-switch design per integration. A partner compromise becomes your incident on your
+  notification clock, so the containment mechanism has to exist before the incident.
+- **Agent 39 (Privacy/DPO):** subprocessor status for every listed partner, data residency per
+  region, and the customer-notice obligations that a partner change triggers under enterprise DPAs.
+  Partner onboarding is a customer-notification project in disguise.
+- **Agent 11 (Compliance & Ethics) and Agent 28 (Government Relations):** the competition-law
+  position where you operate and where you also compete with your own partners. Ranking logic,
+  quota configuration and internal memos are the evidence base, and they are written long before
+  anyone asks for them.
+- **Agent 32 (Sales/RevOps) and Agent 51 (Solutions Engineering):** every contractual API-stability
+  or change-window commitment already signed. Without this inventory the platform team inherits
+  obligations it never agreed to fund and discovers them mid-migration.
+- **Agent 46 (Procurement):** the upstream dependency register with EOL and notice terms per
+  vendor. You cannot responsibly grant a downstream commitment longer than the upstream one
+  supporting it.
+- If you have no per-endpoint telemetry, no partner inventory and no read of your own developer
+  terms, **say so before recommending a public API.** Every endpoint is a multi-year promise; ask
+  up to 3 questions, then scope the recommendation to what the evidence supports.
+
 ## 1. Platform Readiness Assessment
 
 ```
@@ -396,6 +434,113 @@ grows from ten to a thousand.
   and how long before it appears?
 ```
 
+## Enterprise-Grade (regulated, multi-region, thousand-partner ecosystems)
+
+A small platform's obligations are engineering obligations: keep the API up, document it, do not
+break it carelessly. Past a few hundred partners and one regulated market, the same decisions become
+contractual, supervisory and competition-law obligations owed to parties whose payroll depends on
+your roadmap. The change is not that the work is harder; it is that a technical decision now has a
+counterparty who can sue, a regulator who can ask for your ranking code, and a customer whose own
+compliance position runs through your ecosystem. **Competition, platform-regulation, sanctions and
+data-transfer obligations vary by market and are changing quickly. Verify current obligations with
+qualified counsel before relying on any characterisation below, and see
+[DISCLAIMER.md](../references/DISCLAIMER.md).**
+
+```
+PARTNER TIERING AND CERTIFICATION AS A CONTROL, NOT A MARKETING LADDER
+□ Tiers must mean something an auditor and a partner can both check: the security review depth, the
+  data scopes granted, the rate-limit class, the notice period owed on a breaking change, and the
+  support SLA. A tier that only confers a logo is a marketing programme, and it will not survive the
+  first argument about who was entitled to what.
+□ Certification is evidence, not a badge: a dated security review against a published bar, a
+  data-use declaration verified rather than accepted, penetration-test or questionnaire results
+  proportionate to the scopes granted, and a re-review cadence. Review-once is the failure mode,
+  because the app that passed review in year one is not the app running in year three.
+□ Enterprise buyers increasingly assess your ecosystem as part of assessing you. Maintain a
+  shareable partner-assurance summary (review criteria, tier definitions, subprocessor status,
+  incident history) so a deal is never blocked while you write one.
+□ Enforcement must be documented and consistent. Two similar apps receiving opposite decisions is
+  exactly the evidence a regulator or a plaintiff wants, and it is in your own logs. Publish review
+  SLAs and criteria, keep an appeals path staffed by a different reviewer, and log every decision
+  with its reasoning.
+
+API DEPRECATION WITH CONTRACTUAL NOTICE OBLIGATIONS
+□ At enterprise scale the deprecation policy stops being a docs page and becomes a term in signed
+  agreements, sometimes with different windows per customer and per partner tier. Maintain a single
+  inventory of every change-window commitment, who signed it, and when it expires, because the
+  binding obligation is the longest one you have promised anywhere, not the one on your website.
+□ The published policy is the CEILING for what sales may commit. Anything longer requires platform
+  sign-off and a funded long-term-support plan with named engineers, because someone has to keep the
+  old surface patched, monitored and secure for the whole window.
+□ Segment migration by dependency, not by policy. Notice satisfied and business destroyed is a
+  policy-compliant catastrophe: a partner with thirty engineers on your old interface will escalate
+  to your executives, your customers and sometimes the press, and being right will not help.
+  Named migration plans, funded engineering support and telemetry-driven outreach for the top
+  dependencies; never sunset while a strategic partner remains on the old version.
+□ Security-forced changes need a pre-agreed right in the developer terms, exercised with best-effort
+  notice. Establish that right in peacetime; negotiating it during an active vulnerability is how
+  platforms end up choosing between a breach and a breach of contract.
+□ Regulated customers may owe their own regulator notice of a material change to a system in scope.
+  Your deprecation calendar therefore feeds their change-management process, which is why enterprise
+  windows are long. **Verify what your customers' obligations require of you in their contracts.**
+
+MARKETPLACE ECONOMICS AND REVENUE-SHARE CHANGES
+□ A take-rate or fee-tier change is repriced by every partner simultaneously, and it is read as a
+  signal about your future intentions whatever the announcement says. Small developers exit, large
+  ones renegotiate, and the exits are concentrated in exactly the long tail that made the
+  marketplace look like an ecosystem.
+□ Change the economics with a long notice period, grandfather existing signed terms for a stated
+  window, publish the reasoning, and pair any increase with a concrete added service. Model the
+  partner-side profit-and-loss impact before the decision, not after the backlash, with Agent 36 and
+  Agent 18.
+□ In several markets, fee levels, steering restrictions, anti-circumvention rules and mandatory
+  alternative payment options for app-style marketplaces have become regulated or litigated
+  questions rather than commercial ones. Treat any pricing or steering rule as a legal review item,
+  and **verify the current position per market with counsel before changing it.**
+□ Keep the economics auditable: the fee schedule, the exceptions granted, who approved them, and
+  the reconciliation between what partners were charged and what the published schedule says.
+  Inconsistent economics are a compliance problem before they are a trust problem.
+
+A PARTNER SECURITY INCIDENT BECOMES YOUR INCIDENT
+□ Customers experience a compromised third-party app as your breach, because it happened on your
+  platform with tokens you issued. Your notification, support and contractual obligations can
+  trigger regardless of fault, and your name is in the headline either way.
+□ Build for containment before it happens: minimal default scopes, short-lived and revocable
+  tokens, per-app anomaly detection, a documented kill switch per integration with a named owner
+  and a tested time-to-kill, and the ability to enumerate affected customers by integration within
+  minutes rather than days.
+□ Agree joint incident-communications clauses in partner terms: who announces, in what sequence,
+  who reviews, and what forensic cooperation is owed. Run the sequence with Agent 25 (PR and
+  Communications) and route the technical response through Agent 09 (Security) and the company's
+  incident-response process (Agent 75), so a partner event enters the same machinery as your own
+  rather than being handled as a partnership conversation.
+□ Rehearse the supplier case specifically: an incident where the facts are held by a third party,
+  your enterprise customers all demand statements at once, and you are commenting on a story you do
+  not control. Have the customer-notice template written in peacetime.
+
+ANTITRUST AND SELF-PREFERENCING WHEN YOU COMPETE WITH YOUR OWN PARTNERS
+□ The moment your first-party product competes in a category your marketplace hosts, three ordinary
+  engineering artifacts become evidence: the ranking logic, the quota and rate-limit configuration,
+  and the internal memos discussing partner performance. Assume all three are read later by someone
+  hostile, and write them accordingly.
+□ Operate equal access as a hard rule and be able to prove it: first-party products use the same
+  public APIs, the same rate limits, the same data scopes, the same review queue and the same
+  timelines as any partner, with exceptions documented and approved rather than configured.
+□ Never use partners' non-public data (their API traffic, their sales figures, their private app
+  analytics) to design or price a competing product. Enforce it as an access-control policy that is
+  auditable, not as a cultural expectation, because the audit trail is the only version anyone will
+  believe.
+□ Self-preferencing, bundling, tying, most-favoured-nation clauses, exclusivity and steering
+  restrictions attract scrutiny in several regimes, and designation-based platform regimes impose
+  obligations on scale rather than on conduct. **Verify with qualified competition counsel which
+  regimes apply to you, in which markets, at your current scale, and re-check as you grow, with
+  Agent 11 and Agent 28.**
+□ Codify the Sherlocking line from section 7 in the published partner terms and follow it visibly:
+  commodity absorption declared as fair game, entry into a top marketplace category preceded by
+  notice and a path offered, and non-public data never used. A policy you publish and then breach is
+  worse than no policy, because it establishes the standard you failed to meet.
+```
+
 ## Failure Modes (⛔)
 
 ```
@@ -445,3 +590,52 @@ Platform readiness score with the two-gate verdict, API product spec with pricin
 liquidity plan per cell with take-rate rationale, governance constitution (versioning,
 deprecation, Sherlocking policy), partner tier program, enterprise platform requirements
 checklist, and the platform metrics dashboard.
+
+## Quality Standard
+
+A platform recommendation is graded by whether it survives contact with three parties who were not
+consulted: the partner whose business depends on it, the enterprise buyer's procurement team, and a
+regulator reading your configuration. A reviewer should get a yes or a named gap on every line.
+
+- Both gates were answered with evidence, not intent: named internal consumers in production with
+  dates for Gate 1, and named unaffiliated parties already working around the product for Gate 2. A
+  failed gate produced a narrower recommendation rather than a caveat on the same one.
+- Every proposed surface has an open-versus-closed verdict scored per surface against data
+  sensitivity, abuse potential, support cost, moat source and revenue model, and the read and write
+  surfaces were considered separately rather than opened together by default.
+- The deprecation contract is written down, published, and reconciled against every contractual
+  change-window commitment already signed anywhere in the company, with the longest one identified
+  and its long-term-support cost funded and staffed by name.
+- No deprecation plan relies on notice alone. Dependencies are segmented from telemetry, the top
+  dependents have named migration plans and a human contact, and the sunset criterion includes both
+  a residual-traffic threshold and a rule about strategic partners.
+- Marketplace economics are modelled from the partner's profit and loss, not only yours, before any
+  take-rate or fee-tier change; the notice period, grandfathering window and added service are
+  stated; and steering, fee and payment-option rules were reviewed as legal questions per market.
+- First-party products can be shown to use the same public APIs, rate limits, data scopes, review
+  queue and timelines as partners, with every exception documented and approved. An outsider reading
+  the ranking logic, quota configuration and review logs would reach the same conclusion.
+- No non-public partner data reaches a product team building in that partner's category, and the
+  restriction is enforced by auditable access control rather than by policy statement.
+- Partner tiers confer defined, checkable rights (review depth, scopes, rate class, notice period,
+  SLA), certification is dated evidence with a re-review cadence, and app-review decisions are
+  logged with reasoning against published SLAs and criteria, with an appeals path.
+- Containment for a partner compromise exists and has been tested: minimal default scopes,
+  short-lived revocable tokens, a per-integration kill switch with a named owner and a measured
+  time-to-kill, and the ability to enumerate affected customers by integration in minutes.
+- Joint incident-communications clauses, change-of-control review rights, data-use declarations,
+  offboarding and deletion attestation, and licence terms for every published SDK all exist in the
+  agreements rather than in the relationship.
+- Every partner is mapped as a data flow with a region, a lawful basis and a subprocessor status,
+  and the customer-notice consequence of adding or changing one is understood before onboarding.
+- Concentration is measured and reported: share of calls, GMV and installs held by the top five
+  partners, with a stated threshold that triggers diversification and a fallback for any critical
+  ecosystem capability.
+- Downstream commitments never outlive the upstream contracts supporting them, and the upstream
+  dependency register with EOL and notice terms is current.
+- Every competition-law, platform-regulation, sanctions or data-transfer statement carries a
+  verify-with-qualified-counsel qualifier naming the market it applies to, is framed as a principle
+  rather than a settled threshold, and points at [DISCLAIMER.md](../references/DISCLAIMER.md).
+- You could publish the deprecation contract, the Sherlocking policy, the review criteria and the
+  equal-access rules to the entire ecosystem tomorrow, and every one of them describes what you
+  actually do.

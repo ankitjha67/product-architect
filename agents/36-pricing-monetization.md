@@ -397,10 +397,9 @@ reduce decision frequency, usage caps/alerts, re-onboard low-usage accounts, val
 
 ## Decision Framework: Raising Price on an Existing Base
 
-Setting a price for a new customer is an analytical exercise. Raising it on a base that is
-already paying is the hardest recurring judgement in this function, because the base is not one
-population: it is five, each governed by different paper, different notice duties and different
-elasticity. Section 8 gives the playbook. This is the decision procedure underneath it.
+Pricing a new customer is analysis. Raising price on a base that already pays is the hardest
+recurring judgement here, because the base is five populations with different paper, notice duties
+and elasticity. Section 8 is the playbook; this is the decision procedure underneath it.
 
 ```
 STEP 1 - SEGMENT THE BASE BEFORE YOU PICK A NUMBER. One increase, five populations:
@@ -413,9 +412,8 @@ STEP 1 - SEGMENT THE BASE BEFORE YOU PICK A NUMBER. One increase, five populatio
                          benchmarking and price-protection clauses BEFORE modelling anything.
   E LEGACY AND UNDOCUMENTED  discontinued plans and accounts carrying a promise nobody can
                          produce. Register them; do not touch them in the same cycle.
-Cut each segment again by VALUE REALISATION (usage per unit of price), by CONCENTRATION
-(accounts above ~5% of segment ARR), and by REFERENCE RISK (public logos, community voices,
-analyst references). The last cut has no revenue in it and decides the narrative.
+Cut each segment again by VALUE REALISATION (usage per unit of price), CONCENTRATION (>5% of
+segment ARR) and REFERENCE RISK (logos, community voices, analysts) - no revenue, but it sets tone.
 
 STEP 2 - THE GRANDFATHERING DECISION. Four options; pick per segment, never globally:
 | Option | Cost | Right when |
@@ -431,9 +429,8 @@ else is a discount you have agreed to give forever without pricing it.
 STEP 3 - NOTICE AND CONTRACTUAL OBLIGATIONS (verify current with qualified counsel):
 □ Contractual notice window per template, and whether the clause permits a unilateral change
   at renewal or requires express agreement. These differ across your own paper generations.
-□ Consumer-subscription regimes in several markets impose their own advance-notice, clear-
-  disclosure and cancellation-route duties for a price change on a recurring plan, separate
-  from anything in your contract. Auto-renewal statutes add more.
+□ Consumer-subscription and auto-renewal regimes in several markets impose their own advance-notice,
+  disclosure and cancellation-route duties, separate from anything in your own contract.
 □ App-store and marketplace price changes run through the platform's own consent mechanics
   and timelines, which you do not control and must schedule around.
 □ Public-sector and framework agreements may fix the reference price entirely.
@@ -445,10 +442,9 @@ STEP 4 - MODEL THE CHURN, WITH THE ELASTICITY ASSUMPTIONS WRITTEN DOWN:
     c = INCREMENTAL churn attributable to the increase, above the segment baseline
   Breakeven incremental churn:  c* = p / (1 + p)
     p = 10% -> c* = 9.1%    p = 15% -> c* = 13.0%    p = 20% -> c* = 16.7%
-STATE THESE FIVE ASSUMPTIONS EXPLICITLY OR THE MODEL IS DECORATION: baseline churn per
-segment; the share of cancellations already citing price; save-offer take rate and average
-depth; downgrade (contraction) rate; and the lag, because annual contracts defer the entire
-effect to renewal and the first two quarters will look better than the truth.
+STATE THESE FIVE ASSUMPTIONS OR THE MODEL IS DECORATION: baseline churn per segment; share of
+cancellations already citing price; save-offer take rate and depth; downgrade rate; and the lag,
+because annual contracts defer the whole effect to renewal and quarter one flatters you.
 ```
 
 **WORKED JUDGEMENT.** ₹40 crore ARR, 3,800 accounts, proposed 15% list increase. Segments:
@@ -476,10 +472,9 @@ yet reached renewal, and re-cut the increase at 8%.
 
 ## Enterprise-Grade (regulated, multi-entity, 5,000-plus people)
 
-At small scale, pricing is a page and a spreadsheet, and an exception is a conversation. In a
-large or regulated organisation, price is a control environment: it feeds revenue recognition,
-it is evidence in an audit, it is a term in framework agreements, and it moves between legal
-entities. The practices that stop working are the informal ones, and they stop working quietly.
+At small scale, pricing is a page and a spreadsheet and an exception is a conversation. In a large
+or regulated organisation price is a control environment: it feeds revenue recognition, it is audit
+evidence, it is a term in framework agreements, and it moves between legal entities.
 
 ```
 DEAL DESK - the function that replaces "ask the VP":
@@ -498,10 +493,9 @@ DEAL DESK - the function that replaces "ask the VP":
 
 NON-STANDARD TERMS REGISTER - the artifact whose absence causes the expensive surprises:
 □ Every deviation from the standard order form gets a register row: account, clause type, exact
-  text, effective date, expiry, the ARR exposed, and a named owner. Clause types to track at
-  minimum: MFN and best-pricing, price protection and uplift caps, benchmarking rights,
-  termination for convenience, extended notice, non-standard payment terms, custom SLA and
-  service credits, unusual usage definitions, and any revenue-share or rebate.
+  text, effective date, expiry, ARR exposed, named owner. Track at minimum: MFN and best-pricing,
+  price protection and uplift caps, benchmarking rights, termination for convenience, extended
+  notice, non-standard payment terms, custom SLA and credits, odd usage definitions, rebates.
 □ The register is queried BEFORE any price change, promotion, packaging change or acquisition
   integration is modelled. Modelling on the price book while the signed paper decides the
   outcome is the most common expensive error in this function.
@@ -518,10 +512,9 @@ REVENUE RECOGNITION AND TAX (Agent 56 Revenue Accounting, Agent 57 Tax):
   schedule. A model that cannot be recognised cleanly is not cheaper, it is slower.
 □ Discounting policy has an accounting consequence: heavily discounted bundles distort the SSP
   evidence you rely on, so the discount matrix and the SSP analysis are reviewed together.
-□ Multi-entity pricing carries transfer-pricing consequences between the selling and delivering
-  entities. Indirect tax (VAT, GST, digital-services taxes), e-invoicing mandates, registration
-  thresholds and tax-inclusive display duties vary by market and change; verify current
-  treatment with a qualified tax adviser. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+□ Multi-entity pricing carries transfer-pricing consequences between selling and delivering
+  entities; indirect tax, e-invoicing mandates, registration thresholds and tax-inclusive display
+  duties vary and change. Verify with a qualified tax adviser: [DISCLAIMER.md](../references/DISCLAIMER.md).
 □ Price changes and their approvals are an audit population. Retain the evidence: the approved
   price book version, the exception record, the notice sent, and the effective date per account.
 

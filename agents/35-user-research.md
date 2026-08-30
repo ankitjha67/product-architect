@@ -321,73 +321,62 @@ the intercept could not reach.
 ## Enterprise-Grade (regulated, multi-region, 5,000-plus people)
 
 At 50 people, research consent is a form and the panel is a spreadsheet. In a regulated,
-multi-region organisation the participant pool is itself a regulated personal-data estate, every
-incentive is a payment with a tax character, and customer access is controlled by people whose
-bonus depends on those customers renewing. The craft does not change; the surface around it does.
+multi-region organisation the panel is a regulated personal-data estate, every incentive is a
+payment with a tax character, and customer access is gated by people paid to keep those customers.
 
 ```
 EXTRA ARTIFACTS THIS MODE REQUIRES, maintained as systems and never per study:
 □ PARTICIPANT DATA MAP AND RETENTION MATRIX by artifact class, because they expire at different
-  times: raw video and audio (shortest), transcript, de-identified quote, consent receipt (must
-  outlive the data it authorises), incentive payment record (tax retention). Automated deletion,
-  not intention. Agent 39 signs the matrix; Agent 38 implements it.
-□ CONSENT TEMPLATE LIBRARY PER JURISDICTION, versioned, because one global form is either
-  over-broad where the rule is strict or invalid where the language must be local. Granular and
-  separable: participation, recording, transcription vendor, internal clip reuse, external use.
-  External or marketing use is always a separate consent act.
-□ ROPA ENTRY FOR THE PANEL ITSELF, plus a DPIA where sessions are recorded at scale, where
-  special-category or children's data is in scope, or where an AI notetaker processes them.
-□ ETHICS AND SAFEGUARDING PATH: a named reviewer outside the study team, an escalation route for
-  disclosure of harm mid-session, and support resources for sensitive topics.
-□ APPROVED-VENDOR LIST for panels, transcription and AI notetakers, each with a DPA, a documented
-  transfer mechanism, and written terms on whether your recordings train their model.
+  times: raw media (shortest), transcript, de-identified quote, consent receipt (must outlive the
+  data it authorises), incentive payment record (tax retention). Automated deletion, not
+  intention: Agent 39 signs the matrix, Agent 38 implements it.
+□ CONSENT TEMPLATE LIBRARY PER JURISDICTION, versioned and granular: participation, recording,
+  transcription vendor, internal clip reuse, external use. One global form is over-broad where
+  the rule is strict or invalid where the language must be local, and external or marketing use
+  is always a separate consent act.
+□ ROPA ENTRY FOR THE PANEL ITSELF; a DPIA where sessions are recorded at scale or special-category
+  or children's data is in scope; an ethics and safeguarding path with a named reviewer outside
+  the study team; and an approved-vendor list (panels, transcription, AI notetakers), each with a
+  DPA, a transfer mechanism, and written terms on whether your recordings train their model.
 
 MINORS AND SPECIAL-CATEGORY DATA - a hard stop, not a heavier form:
-□ Verifiable guardian consent plus age assurance proportionate to risk, and the child's own
-  assent recorded separately. Age thresholds differ by regime and some treat every under-18 as a
-  child; verify current requirements with qualified counsel before recruiting.
-□ Health, biometric, financial-hardship, immigration status, sexuality, religion, union
-  membership and criminal-history topics generally need an explicit condition beyond ordinary
-  consent, and often ethics review. Some populations are simply out of scope for a product study,
-  and saying so at planning is far cheaper than discovering it at fieldwork.
-□ Never let a moderator improvise here: the screener asking the sensitive question is itself
-  processing you need a basis to perform.
+□ Verifiable guardian consent plus risk-proportionate age assurance, with the child's own assent
+  recorded separately. Age thresholds differ by regime; verify with qualified counsel first.
+□ Health, biometric, financial-hardship, immigration status, sexuality, religion, union membership
+  and criminal-history topics generally need an explicit condition beyond ordinary consent, and
+  often ethics review. Some populations are out of scope for a product study. Never let a moderator
+  improvise: the screener asking the sensitive question is itself processing you need a basis for.
 
 INCENTIVES ARE PAYMENTS, NOT GIFTS (with Agent 57 Tax and Agent 46 Procurement):
-□ Reportable-income and withholding thresholds differ by jurisdiction and by whether the payer is
-  you or the panel vendor; verify current treatment with a qualified tax adviser before design.
-□ Route payment through a vendor of record or a controlled process. Gift cards bought on a
-  personal card and expensed is the most common finding an internal audit will make here.
-□ Screen for restricted jurisdictions and sanctions exposure before paying anyone, and never pay
-  a public official, a regulator, or a named decision-maker inside a live deal. Anti-bribery
-  exposure does not care that you called it a research incentive.
+□ Reportable-income and withholding thresholds differ by jurisdiction and by whether you or the
+  panel vendor pays; verify with a qualified tax adviser first, and route payment through a vendor
+  of record. Gift cards on a personal card and expensed is the commonest audit finding here.
+□ Screen for restricted jurisdictions and sanctions exposure before paying anyone, and never pay a
+  public official, a regulator, or a named decision-maker inside a live deal. Anti-bribery exposure
+  does not care that you called it a research incentive.
 
 CUSTOMER ACCESS AND THE ACCOUNT-TEAM GATE:
 □ Put a standing research allowance in the account plan (say two sessions per account per half)
   so access is a pre-agreed entitlement rather than a negotiation per study.
-□ Trade value for access: a findings readback to the account, sessions inside existing QBR slots,
-  something the CSM can show. Access improves when the account team gains from it.
-□ Build a churned and downgraded-customer path that does not route through the account team; the
-  accounts nobody wants you to talk to are the informative ones.
+□ Trade value for access: a findings readback, sessions inside existing QBR slots, something the
+  CSM can show. And build a churned-customer path that does NOT route through the account team,
+  because the accounts nobody wants you to talk to are the informative ones.
 □ Confidentiality both ways: NDA cover for unreleased material, an approved-materials list, and a
   rule for what happens when a participant discloses something they should not have.
 
 WHAT STOPS WORKING AT THIS SCALE:
-□ ONE RESEARCHER'S PANEL IN A SPREADSHEET: an unmapped personal-data store that leaves with them,
-  consent evidence included.
+□ ONE RESEARCHER'S PANEL IN A SPREADSHEET: it leaves with them, consent evidence included.
 □ AD-HOC CONSENT PER STUDY: it cannot be evidenced in aggregate, which is what an audit asks for.
-□ DEMOCRATISED RESEARCH WITHOUT A PRE-FIELD REVIEW: at forty teams, self-serve tooling ships
-  leading questions and unbased screeners faster than you can find them.
+□ SELF-SERVE TOOLING WITH NO PRE-FIELD REVIEW: at forty teams, leading questions and unbased
+  screeners ship faster than you can find them.
 □ THE REPOSITORY AS A LIBRARY: past a few thousand sessions it is a searchable personal-data
-  database needing access control, classification and a purge job.
-□ A SINGLE GLOBAL CONSENT AND RETENTION RULE across regions with different rules and different
-  works-council obligations for any study involving employees.
+  database and must be run as one, with access control, classification and a purge job.
+□ ONE GLOBAL CONSENT AND RETENTION RULE across regions, and across any study of employees.
 ```
 
-⚠️ Consent standards, age thresholds, special-category conditions, cross-border transfer,
-incentive tax treatment and employee-monitoring duties are jurisdiction-specific and change.
-Treat the principle as durable and verify the current rule with Agent 39 and qualified counsel
-before fielding. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+⚠️ Consent standards, age thresholds, special-category conditions, cross-border transfer, incentive
+tax treatment and employee-monitoring duties are jurisdiction-specific and change. Verify with
+Agent 39 and qualified counsel before fielding. See [DISCLAIMER.md](../references/DISCLAIMER.md).
 
 ## Failure Modes (⛔)
 

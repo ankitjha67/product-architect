@@ -395,63 +395,58 @@ thousand it is throughput and evidence: exposure is created by people who will n
 paper is signed in entities you did not incorporate, and the question is "show me the record".
 
 ```
-WHAT STOPS WORKING AT THIS SCALE:
-□ ONE UNDIFFERENTIATED QUEUE: an NDA and a bet-the-company regulatory question waiting behind each
-  other, which makes COUNSEL CAPACITY rather than legal risk the constraint on every launch.
-□ SIGNATURE BY SENIORITY: "a VP signed it" is not authority, and apparent authority can bind you
-  whatever the internal rule said. HOLD BY EMAIL: a notice that never suspends the deletion jobs.
-□ THE ANNUAL LICENCE AUDIT on a graph that changes weekly, and ADVICE WITH NO RECORD.
+WHAT STOPS WORKING: one undifferentiated queue, where an NDA and a bet-the-company regulatory
+question wait behind each other, so COUNSEL CAPACITY rather than legal risk becomes the constraint
+on every launch. Signature by seniority, because "a VP signed it" is not authority and apparent
+authority can bind you regardless. A hold issued by email that never suspends the deletion jobs. An
+annual licence audit over a graph that changes weekly. Oral advice nobody can evidence later.
 
 MATTER INTAKE AND TRIAGE, because counsel capacity is the real bottleneck on every launch:
 □ THREE LANES, PUBLISHED WITH THEIR REAL WAIT TIMES: self-serve (approved template, no review),
   playbook (a trained non-lawyer applies §7's fallback column, counsel sees only deviations), and
-  counsel-only (novel, regulated, precedent-setting, or above a value band). Triage on exposure
-  and irreversibility, never on arrival order or on requester seniority.
+  counsel-only (novel, regulated, or above a value band). Triage on exposure and irreversibility.
 □ A STANDING DELEGATE PER APPROVAL ROLE, named before the leave rather than during it, and a
   BYPASS RATE measured monthly: work that never reached you is the work that becomes a dispute.
 
 OUTSIDE COUNSEL AND SPEND CONTROL: a PANEL rather than a phonebook (few firms per discipline and
-region, negotiated rates, agreed staffing meaning who does the work rather than who pitched, a
-real re-tender at review); every matter opened with a scope, a phase plan, a budget and a named
-partner; invoices reviewed against the budget rather than filed against it; accruals returned
-monthly so an unbudgeted matter displaces named spend instead of surprising Finance (Agent 18);
-fixed fees for anything repeatable and hourly for genuine uncertainty. CONFLICTS AND PRIVILEGE ARE
-A DESIGN INPUT: which entity instructs, through whom, and how the advice travels afterwards.
-Privilege scope differs sharply by jurisdiction and between in-house and external counsel.
-**Verify the position with qualified counsel in each relevant jurisdiction.**
+region, negotiated rates, agreed staffing meaning who does the work rather than who pitched, a real
+re-tender at review); every matter opened with a scope, a phase plan, a budget and a named partner;
+invoices reviewed against that budget rather than filed against it; accruals returned monthly so an
+unbudgeted matter displaces named spend instead of surprising Finance (Agent 18); fixed fees for
+anything repeatable. CONFLICTS AND PRIVILEGE ARE A DESIGN INPUT: which entity instructs, through
+whom, and how advice travels afterwards. Privilege scope differs sharply by jurisdiction and by
+in-house versus external counsel: **verify the position with qualified counsel.**
 
 LEGAL HOLD AGAINST THE DELETION SCHEDULE, a collision that exists only once both are automated:
 build the hold as a SYSTEM FLAG suspending retention, archive purge and erasure workflows for the
 scoped custodians and systems, released only in writing when the matter closes. Map those systems
-ONCE, in advance: mail, chat, tickets, code, warehouse, backups, endpoints and every SaaS tool
-outside SSO, because a hold naming systems nobody can freeze is not a control. Reconcile the
-register against open erasure requests and log each conflict. **Hold triggers, preservation scope
-and erasure duties are jurisdiction-specific: verify with qualified counsel and Agent 39.**
+ONCE, in advance (mail, chat, tickets, code, warehouse, backups, endpoints, SaaS outside SSO),
+because a hold naming systems nobody can freeze is not a control. Reconcile it against open erasure
+requests and log each conflict. **Hold triggers, preservation scope and erasure duties are
+jurisdiction-specific: verify current obligations with qualified counsel and Agent 39 Privacy.**
 
 CLM AT VOLUME (extends §9): a versioned clause library with effective dates so "which version did
-we sign" is answerable; an approval matrix by clause and value enforced in the workflow;
-obligation extraction at signature as the default; deviation rate reported per team rather than
-per lawyer, because concentration names the process to fix rather than the person to talk to.
+we sign" is answerable; an approval matrix by clause and value enforced in the workflow; obligation
+extraction at signature as the default; deviation rate reported per team rather than per lawyer,
+because concentration names the process to fix rather than the person to talk to.
 
 IP PORTFOLIO AND FREEDOM TO OPERATE: run filings as a portfolio with an annual prune, because
-maintenance fees recur and a patent nobody would assert is a subscription to a filing cabinet.
-Make invention capture a process (disclosure, review, decision, entity assignment), and run FTO
-before major R&D commitment and before a high-litigation market, with written opinions obtained
-BEFORE shipping. **Verify practice, fees and timelines with patent counsel per market.**
+maintenance fees recur and a patent nobody would assert is a subscription to a filing cabinet. Make
+invention capture a process (disclosure, review, decision, entity assignment), and run FTO before
+major R&D commitment and before a high-litigation market, with written opinions obtained BEFORE
+shipping. **Verify practice, fees and timelines with patent counsel per market.**
 
 OPEN SOURCE, AS THE ACQUIRER'S SCANNER WILL SEE IT: continuous SCA in CI with a policy gate, an
-approved-licence list, exceptions carrying an owner and an expiry, an SBOM generated by the build
-per artifact, and a stated position on outbound contribution and CLAs. The first scan in the
-company's history should never be the one run inside a data room.
+approved-licence list, exceptions with an owner and an expiry, an SBOM generated by the build per
+artifact, and a stated position on outbound contribution and CLAs. The first licence scan in the
+company's history should never be the one run inside somebody else's data room.
 
 DELEGATION OF SIGNATURE AUTHORITY: a matrix by entity, value band, contract type and counterparty
-risk, reviewed on every reorg and every new entity, enforced by the signing workflow rather than
-by culture, plus a ratification path for the signature that happened anyway.
-
-EXTRA ARTIFACTS: the matter register with budgets and accruals; the panel and rate card; the hold
-register with system-level freeze evidence; the obligation register; the signature-authority and
-entity matrix; the IP and assignment register; the licence policy with its exception log; and §6's
-memos with named executives and expiry dates.
+risk, reviewed on every reorg and new entity, enforced by the signing workflow rather than by
+culture, plus a ratification path for the signature that happened anyway. EXTRA ARTIFACTS: the
+matter register with budgets and accruals; the panel and rate card; the hold register with freeze
+evidence; the obligation register; the entity and signature-authority matrix; the IP and assignment
+register; the licence policy with its exception log; and §6's memos with executives and expiries.
 ```
 
 ## Failure Modes (⛔)

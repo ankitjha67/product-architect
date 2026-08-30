@@ -395,6 +395,126 @@ D&O INSURANCE SIZING LOGIC (broker-validated; heuristics only):
 □ Policies must be bound BEFORE the prospectus is signed - never lapse at listing
 ```
 
+## Enterprise-Grade (regulated, multi-entity, listed or filing)
+
+Private-company governance is mostly about whether decisions get made well. Listed and pre-listing
+governance is about whether you can demonstrate, to an auditor and a regulator, that the decision
+was made by the body authorised to make it, on information that was accurate, with the conflicts
+declared, and with a control that actually operated. Those are different tests, and a company can
+pass the first for years while failing the second. **None of the following is legal, accounting or
+securities advice. Listing rules, composition requirements, control frameworks, materiality
+thresholds and independence standards differ by exchange and jurisdiction and are revised regularly.
+Verify every point with qualified securities counsel, a practising company secretary and your
+auditor before relying on it, and see [DISCLAIMER.md](../references/DISCLAIMER.md).**
+
+```
+CHARTERS, AND WHETHER THEY COVER THE DECISION IN FRONT OF YOU
+□ The recurring enterprise failure is not an absent committee but a decision arriving at whichever
+  body has a meeting soonest. Cyber risk lands at the audit committee by default; an AI deployment
+  has no owning body at all; a compensation matter splits between the nomination and remuneration
+  committee and the full board. The minute then records an approval the charter does not authorise.
+□ Maintain a decision-to-body map, refreshed annually: every recurring decision type, the body that
+  owns it, and the charter clause that says so. Where nothing covers it, the board takes it
+  explicitly and the charter is amended at the next cycle rather than stretched quietly.
+□ Charters carry composition, quorum, independence and financial-expertise requirements that
+  regulators treat as absolute rather than proportionate. Track term expiries, independence status
+  and external commitments in a live register, and keep a warm bench of vetted candidates, because
+  a single resignation can break quorum on every approval that runs through that committee.
+□ Test independence as a fact, not a label. Prior employment, supplier or advisory relationships,
+  family connections and cross-directorships are what a proxy adviser and a regulator re-read
+  retrospectively. Annual declarations plus a duty to notify changes, checked against the
+  related-party register, is the minimum operating standard.
+
+INTERNAL CONTROL OVER FINANCIAL REPORTING AND WHAT "SCOPE" MEANS
+□ Scoping is the decision that determines everything downstream: which entities, accounts,
+  processes and systems are financially significant, and therefore which controls get documented,
+  tested and reported. Scope drift is the characteristic failure. A billing tool, a spreadsheet or
+  a data pipeline that grew into the source of a material balance stays outside the scope set two
+  years ago, and the first evidence is a deficiency at year end.
+□ Re-perform scoping annually from current data flows, not from last year's list, with Agent 59 and
+  Agent 56. A new revenue stream, a new platform, an acquisition or a materially grown subsidiary
+  triggers a scoping review at the time, not at the next annual cycle.
+□ Distinguish, in writing, a deficiency from a significant deficiency from a material weakness, and
+  aggregate related deficiencies before concluding, because individually minor gaps in the same
+  process can combine. **Verify the current evaluation framework and reporting obligations with
+  your auditor; this is one of the areas where practice and guidance move.**
+□ Management's assessment and the auditor's opinion are separate work products with separate
+  standards. Design your evidence so both can rely on it, and never let the audit firm's advisory
+  arm build the controls its audit arm will then test.
+
+THE DIFFERENCE BETWEEN A CONTROL DESIGNED AND A CONTROL OPERATED
+□ A documented policy with no evidence of execution is worse than no control, because the company
+  relied on it and management's representation about it was wrong. Design failures are cheap;
+  operating failures are the ones that become findings.
+□ Every control carries four attributes or it is not a control: an owner, a frequency, an evidence
+  artifact produced as a by-product of doing the work, and a defined exception path. Automate the
+  artifact wherever possible, because a control whose evidence is a screenshot taken at year end
+  did not operate, it was reconstructed.
+□ Report the operating rate to the audit committee, not the design count. "Fourteen controls
+  documented" is a project status; "the quarterly access review ran in three of the last four
+  quarters, and here is the gap" is a control report.
+□ Retrospective evidence is the integrity line. Minutes drafted weeks later, certifications signed
+  after the period, and access reviews reconstructed to satisfy a tester convert a process gap into
+  a question about management's representations. If it did not operate, say it did not operate.
+
+RELATED-PARTY TRANSACTIONS
+□ The governing feature is that approval is usually required BEFORE the transaction, so a
+  transaction discovered afterwards cannot be cured by approving it now. It gets disclosed as a
+  finding rather than a footnote, and in a filing context it is read as a control failure about
+  everything else.
+□ Rebuild the register quarterly from HR, procurement and cap-table data rather than refreshing a
+  declaration form annually. Screen every new vendor against it inside Agent 46's onboarding, so
+  the check happens at the point the relationship is created.
+□ Arm's-length testing is documented, not asserted. Where an omnibus approval is permitted, review
+  its use quarterly and confirm the individual transactions actually fell within it.
+□ Materiality thresholds that trigger shareholder approval, and the requirement for interested
+  parties to abstain, vary by jurisdiction and change. **Verify the current thresholds and approval
+  route with counsel before concluding that a transaction is below the line.**
+
+AUDITOR INDEPENDENCE
+□ Independence is impaired by the relationship, not by the intention. Implementation work, valuation
+  services, tax structuring, internal-audit outsourcing, secondments into finance, contingent fees
+  and certain employment relationships are the usual sources, and the network firm counts as the
+  firm.
+□ Pre-clearance is mandatory and owned by the audit committee chair, with Agent 46 gating any
+  purchase from the audit firm or its network. Maintain a live engagement inventory with fees split
+  audit versus non-audit, because the ratio is itself scrutinised.
+□ Plan for two firms before you need them, and manage partner rotation and cooling-off periods as
+  calendar items. Changing auditors near a filing is expensive, slow and independently newsworthy.
+□ **Independence rules differ materially between jurisdictions and between listing venues. Confirm
+  the applicable standard with counsel and with the audit committee chair, not from a summary.**
+
+DISCLOSURE CONTROLS AS A SEPARATE SYSTEM FROM FINANCIAL CONTROLS
+□ Disclosure controls answer a different question: does information that must be disclosed reach
+  the people who decide, accurately, in time to decide. They cover material events, litigation,
+  cyber incidents, related-party matters and subsidiary developments, most of which never touch the
+  ledger and therefore fall outside financial-control scoping entirely.
+□ Stand up a disclosure committee with a written charter, a standing agenda and a documented
+  sub-certification chain from business owners upward, so the executives certifying have an
+  evidence trail rather than an assurance from memory.
+□ Material-event timetables are short and unforgiving. Map the sources of a disclosable event
+  (security incident, regulatory action, covenant breach, key departure, deal signing) to a named
+  owner who is obliged to notify the committee, and rehearse it with Agent 25 and Agent 44.
+□ Insider-trading discipline is part of this system: the policy, the trading-window calendar, the
+  record of persons with access to unpublished price-sensitive information, and training against
+  it, all adopted before listing rather than after. **Verify current disclosure timetables and
+  insider-trading obligations per venue with securities counsel.**
+
+MULTI-ENTITY AND MULTI-REGION MECHANICS
+□ One consolidated compliance calendar covering every entity, with a named owner per obligation. A
+  subsidiary's missed filing is the parent's problem, and a dormant or struck-off entity blocks
+  acquisitions, bank accounts and licence renewals at the least convenient moment.
+□ Monitor subsidiary materiality tests quarterly, because enhanced governance, audit and disclosure
+  obligations attach automatically when a threshold is crossed, with no notice period. Model the
+  governance consequence at the point growth is planned, not when it is discovered.
+□ Board materials live in a governed portal with access logging, watermarking, retention and legal
+  hold, agreed with Agent 40 and Agent 39. Substantive decisions taken in personal email or chat
+  are records outside the company's control that a legal hold cannot reach.
+□ At 5,000-plus people, publish the coverage position: which entities and processes are inside the
+  control, register and calendar scope, and which are not. A stated de-scope is a decision someone
+  owns; a silent one is the finding.
+```
+
 ## Failure Modes
 ```
 ⛔ GOVERNANCE THEATER: committees that exist on paper, minutes drafted after the fact.
@@ -528,3 +648,53 @@ thresholds change and vary by exchange and jurisdiction. Everything above must b
 reviewed by qualified securities counsel, a practicing company secretary, and the
 merchant banker/underwriters before real-world use - figures cited (SEBI LODR, SOX,
 lock-ins, thresholds) must be verified against current regulations at the time of filing.
+
+## Quality Standard
+
+Governance output is graded by people who were not in the room: an auditor, a regulator, a banker's
+diligence team, and eventually a plaintiff. A reviewer should be able to walk this list and find a
+dated artifact behind every line. Anything that can only be answered by explaining the intention
+behind a decision has already failed the test.
+
+- Every recurring decision type maps to a body whose charter demonstrably authorises it, and any
+  decision taken in the last four quarters by a body outside its charter is named, with the
+  amendment or ratification route stated rather than left implied.
+- Board and committee composition is verified against the current requirement for the venue and
+  jurisdiction, with independence tested as a fact and not as a label, term expiries tracked, and a
+  named answer to what happens if two independent directors resign in the same month.
+- Control scoping was re-performed this year against current data flows, not carried forward, and
+  every financially significant system, entity and process added since the last exercise is either
+  in scope or explicitly and datedly excluded by someone with the authority to exclude it.
+- Every control has an owner, a frequency, an evidence artifact produced as a by-product of the
+  work, and a defined exception path, and the report to the audit committee states the OPERATING
+  rate rather than the design count.
+- No evidence in the package was reconstructed after the fact. Minutes were drafted inside the
+  defined window, certifications are dated within their period, and any control that did not
+  operate is reported as not having operated.
+- The related-party register was rebuilt this quarter from HR, procurement and cap-table data, new
+  vendors are screened against it at onboarding, and every related-party transaction has prior
+  approval by the correct body, with arm's-length testing documented rather than asserted.
+- Every engagement with the audit firm or its network has been independence pre-cleared by the audit
+  committee chair, the fee split between audit and non-audit work is known, and rotation and
+  cooling-off dates are on the calendar.
+- Disclosure controls exist as a distinct system with a charter, a sub-certification chain, named
+  event owners, and a rehearsal, and the insider policy, trading-window calendar and record of
+  persons with price-sensitive access were adopted before they were needed.
+- The cap table reconciles to the statutory registers and to the ledger, every grant has a
+  documented approval date and a valuation that was current at the time, and no director's current
+  account or personal expense sits in the accounts.
+- Every entity in the group has met, filed and been reviewed within the last twelve months, or
+  appears on a named remediation or dissolution list, and subsidiary materiality tests were run
+  this quarter with their governance consequences modelled.
+- Board materials sit in a governed portal with access logging, retention and legal-hold coverage,
+  and no substantive decision in the period was taken in a channel outside that control.
+- Every readiness verdict is scored against the hard gates with a number, an owner and a remediation
+  date; no hard gate was waived for a window; and the reversal condition was written down before
+  pressure arrived rather than negotiated under it.
+- Every regulatory, listing, threshold, timetable or independence statement in the output is framed
+  as a principle with a verify-current qualifier naming the jurisdiction, is attributed to counsel
+  or the auditor for confirmation, and points at
+  [DISCLAIMER.md](../references/DISCLAIMER.md). Nothing is asserted as a settled current rule.
+- You would hand the minute book, the control evidence, the related-party register and the
+  independence pre-clearance log to a diligence team unedited, and the story they tell is the same
+  one you have been telling the board.
