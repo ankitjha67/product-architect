@@ -234,6 +234,200 @@ EVERY program and every incident closes with a learning loop:
   back into the program plan so the same failure can't recur. Track recurrence as a metric.
 ```
 
+## Decision Framework: The Verbal Commitment That Is Slipping, With Nothing in Writing
+
+The single most common way a multi-team programme dies. A dependency team said yes in a room.
+The date has since moved twice, each time by a little, always verbally, and there is no artefact
+anywhere that either team could point at. You have no authority over them, escalation costs
+something real, and the need-by date is approaching. The temptation is to keep asking politely
+until the week it becomes an issue. That is the failure, not the slip.
+
+```
+STEP 1 - SCORE THE COMMITMENT AGAINST THE FOUR PROPERTIES. A durable commitment has all four;
+anything less is an ASSUMPTION in the RAID log wearing a dependency's clothes (§1, §10).
+□ NAMED PROVIDER - an individual, not a team. "Platform will do it" has no owner.
+□ DATED ARTEFACT WITH A DONE-DEFINITION - "the ledger events API in staging, passing our
+  integration test, by 14 March". Not "in the next cycle", not "we're on it".
+□ WRITTEN AND MANAGER-SEEN - it exists in their tracker or in a message their EM has replied
+  to. A commitment their own manager has never seen does not survive their planning cycle.
+□ DEFINED CONSEQUENCE - what happens if it moves, agreed in advance: the fallback, who builds
+  it, and by when. Without this, a slip is a conversation instead of a trigger.
+
+SCORE  ACTION
+ 4/4   Dependency. Track normally, verify at their cycle boundary.
+ 3/4   Dependency at risk. Close the missing property this week; usually it is the written one.
+ 2/4   Assumption. Validate or convert within 5 working days; do not plan on it.
+ 0-1/4 Risk, and if it sits on the critical path with no float, an Issue today.
+
+STEP 2 - COMPUTE THE REAL DEADLINE, WHICH IS NOT THE NEED-BY DATE:
+  escalation deadline = need-by date - fallback build time - fallback integration time
+Past that point escalation cannot change the outcome, because even a yes arrives too late to
+matter. This single line converts "we should give them another week" into arithmetic, and it is
+the most useful number a TPM produces all quarter.
+
+STEP 3 - THE ESCALATION LADDER, WITH A CLOCK PER RUNG. Announce the ladder at kickoff so no
+rung is ever a surprise; a telegraphed escalation is a tool, an ambush is a weapon (§5).
+| Rung | Trigger | Who | Response SLA | What you send |
+|---|---|---|---|---|
+| 0 | Any critical-path dependency unconfirmed, or a slip of any size | You, in writing | 48h | The four properties, restated as a question with a date to confirm |
+| 1 | No response at 48h, or a restatement with no date | EM to EM | 3 working days | Dependency age, need-by, float remaining, the escalation deadline |
+| 2 | 5 working days unresolved, or a date past need-by | Directors | 3 working days | Two costed options, the trade in team-weeks, your recommendation |
+| 3 | 10 working days, or the trade is cross-org or budgetary | VP or sponsor | 48h | One decision framed as scope vs date vs capacity, never "make them help us" |
+GOOD ESCALATION carries the decision, the impact in days and money, two options and a
+recommendation. It never carries a complaint about a person. The named provider should see the
+escalation before their director does; escalating around someone buys you one date and costs
+you every future one.
+
+STEP 4 - ESCALATE OR DESCOPE? The question TPMs get wrong, because escalation feels like doing
+your job and descoping feels like losing. Descope instead of escalating when ANY of these hold:
+□ The dependent scope is worth LESS than the work the other team would have to displace. If you
+  cannot win that comparison at portfolio level, you will lose the escalation anyway, slowly.
+□ A fallback exists that costs less than the expected delay, even discounted by the probability
+  the escalation succeeds. Compute it: P(success) x days saved, against the fallback's cost.
+□ The dependency sits at a cycle boundary you cannot move (their PI, their freeze, their audit).
+□ You have escalated to the same forum twice this quarter. Escalation capital is finite and it
+  is drawn from the sponsor's account, not yours.
+ESCALATE when the decision genuinely sits above both teams: a portfolio priority conflict, a
+budget release, an external commitment, or a trade only the sponsor can authorise. And note the
+distinction that keeps you credible: you escalate the DECISION, never the dependency team.
+```
+
+**WORKED JUDGEMENT.** Eight-week payments programme. The critical path runs through the
+platform team's ledger events API, need-by end of week 4. The commitment is one sentence in a
+kickoff meeting six weeks ago; since then the dependency has been "requested, not committed"
+for 19 days, their EM has changed, and their answer has moved from "week 4" to "next cycle".
+Score: named provider yes, dated artefact no, written and manager-seen no, defined consequence
+no. **1 of 4, on a critical path with zero float, so it is an Issue today, not a risk.**
+
+The fallback adapter is 3 engineer-weeks plus 2 days of integration, and you have two engineers
+free from week 1, so it delivers at week 2.5 if started now. That sets the escalation deadline
+at end of week 1, not week 4. Options, costed: (a) escalate to the VP, where the last three
+comparable escalations took 6, 9 and 12 days to a decision and two of three produced a
+re-prioritisation, so roughly 60 percent at a median of 9 days, and even a yes lands after
+their cycle boundary in week 3, giving a 1.5-week slip on success; (b) build the fallback, 3
+engineer-weeks now plus about 1 engineer-week to remove it later; (c) descope to single-currency
+settlement at launch, which removes the dependency entirely, holds the date, costs an estimated
+12 percent of launch-window transaction volume, and is re-addable next quarter for 2
+engineer-weeks. **Recommendation: (c), with (a) reframed.** The escalation still happens, but it
+carries the descope decision to the sponsor and Agent 04 Product rather than a request that
+another team reprioritise. TPM frames the trade; Product owns the scope call; it is recorded.
+
+**REVERSAL CONDITION.** If the platform team's published cycle plan at week 3 contains the API
+with a dated done-definition and a written record their EM has acknowledged, that is 4 of 4, and
+the scope is re-added at week 5 behind a feature flag. If it is not in the plan, the descope is
+final for this release and the re-add is logged as a dated backlog item, not a hope.
+
+## Enterprise-Grade (portfolio scale, regulated, multi-region)
+
+At one programme with six teams, the TPM's job is dependencies. At forty programmes across five
+divisions, dependencies between PROGRAMMES become the dominant failure mode, and the critical
+path stops running through engineering entirely. It runs through decisions, approvals, and
+calendars, and the calendar is the part nobody plans backwards from.
+
+```
+PROGRAMME GOVERNANCE AT PORTFOLIO SCALE:
+□ ONE REGISTER OF PROGRAMMES with a named sponsor, an accountable executive, a stage, a
+  confidence rating and its inter-programme dependencies. Two registers means the true picture
+  exists in neither, and the forked one is always the one leadership reads.
+□ STAGE GATES rather than continuous reporting to the portfolio board: idea, funded, planned,
+  in delivery, launched, benefits realised. Each gate has entry evidence and a decision, so the
+  board decides a small number of things well rather than reviewing forty status slides badly.
+□ CAPACITY ALLOCATED AT PORTFOLIO LEVEL, never negotiated peer to peer. A shared specialist
+  (the payments SME, the one platform architect) planned above 60 percent utilisation is a
+  guaranteed slip in whichever programme escalates second.
+□ BENEFITS OWNERSHIP survives the programme: the sponsor still owns the outcome after delivery.
+  Programmes that close at launch never learn whether the portfolio bet was right.
+□ PROGRAMME RECORDS ARE AN AUDIT POPULATION in regulated environments: decisions, approvals,
+  test evidence and sign-offs are sampled by Agent 59 Internal Audit and sometimes by a
+  regulator. Keep the decision log and the approval trail as deliverables, not as side effects.
+
+CROSS-ORG DEPENDENCY MANAGEMENT (the seams between divisions, not between teams):
+□ Every division has a DIFFERENT PLANNING CYCLE, and their commit window closes before your
+  scope is final. Map every dependency division's planning calendar at kickoff and submit into
+  THEIR cycle, not yours. This one habit removes more slips than any tooling change.
+□ NAMED SINGLE POINT OF CONTACT per division, with a standing delegate. Cross-org work routed
+  through relationships rather than roles evaporates the moment either person changes job.
+□ DEPENDENCY CONTRACTS, not requests: provider, consumer, artefact, done-definition, date,
+  fallback and consequence, in one line each, reviewed in a standing cross-division forum.
+□ STANDING CAPACITY RESERVATIONS beat item-by-item asks: a stated percentage of a division's
+  cycle allocated to inbound cross-org work, agreed by their sponsor, with a queue you can see.
+
+THE CHANGE-CONTROL CADENCE, AND THE WEEKS IT ADDS:
+In a regulated or ITIL-governed environment, code complete is not the end of the timeline, it
+is the start of a second one, and the second one is entirely calendar-driven. Worked arithmetic
+for a single production change, all of it containing zero engineering:
+  5 serial approvals at a 3-working-day SLA each ............................ 15 working days
+  CAB submission cut-off, then the weekly CAB slot ......................... up to 10 working days
+  quarter-end or peak-trading freeze overlapping the window ................ 10 working days
+  = roughly 7 calendar weeks between "it works" and "it is live"
+Consequences you plan around rather than complain about: schedule backwards from CAB dates, not
+from code complete; parallelise approvals that are not genuinely serial and get that agreed in
+writing; pre-book the CAB slot at planning time; know the emergency-change path and its
+after-the-fact evidence requirements before you need it; and merge every freeze calendar, public
+holiday and fiscal-close window across delivery locations BEFORE committing a date (§10). Five
+serial approvals spanning a holiday period stretch from 15 working days to 25.
+MULTI-REGION adds two more: works-council consultation where a change alters how people work,
+which is a consultation clock rather than an approval clock and cannot be compressed by
+escalation; and follow-the-sun handoffs, where a 24-hour handoff cycle on a blocking question
+costs a working day per exchange. Verify consultation obligations per country with qualified
+counsel and Agent 22 People, and see ../references/DISCLAIMER.md.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ A RAID LOG NOBODY READS. Tell: 60 equally weighted risks, none retired in six weeks, no
+   triggers, and a review meeting where the log is screen-shared and scrolled. Correction: cap
+   the actively managed list at the top 10 by likelihood x impact, give every entry an owner, a
+   mitigation and a TRIGGER, retire entries out loud, and report risk burn-down as a number. A
+   register that only grows is documentation, not risk management.
+⛔ WATERMELON STATUS: GREEN UNTIL IT IS RED. Tell: eight weeks of green then a red in the week
+   of the milestone; RAG changing only after a date is already missed; teams telling each other
+   something different from what they tell you. Correction: report leading indicators, not
+   sentiment (dependency age, say-do ratio, unconfirmed critical-path items), default to Amber
+   for anything with an unconfirmed critical-path dependency, and enforce the rule that status
+   never moves from green to red in one step. The durable fix is cultural: the sponsor has to
+   visibly reward one early red, or the next eight weeks of green are already written.
+⛔ A CRITICAL PATH DERIVED FROM OPTIMISTIC ESTIMATES. Tell: single-point estimates with no
+   range, no buffer at integration points, and a plan where every task finishes exactly on time
+   for the first time in company history. Correction: estimate ranges, put targeted buffer on
+   the risky links (integrations, vendors, approvals) rather than a uniform 20 percent, and
+   validate the plan with the people who will execute it. Uniform padding gets spent uniformly.
+⛔ ESCALATION USED AS A WEAPON. Tell: the first the named provider hears of an escalation is
+   from their director; escalations that name a person rather than a decision; a TPM whose
+   escalation rate rises while their resolution rate falls. Correction: telegraph the ladder at
+   kickoff, show the provider the escalation before it goes up, escalate the decision with two
+   costed options, and track escalation cycle time as a measure of the forum above you, not of
+   the team below you.
+⛔ THE TPM AS STATUS SCRIBE. Tell: your week is spent collecting updates and reformatting them;
+   nobody asks you a question they could not answer themselves; you have no opinion on the
+   critical path. Correction: your output is the surfaced trade-off and the forced decision, not
+   the summary. If the status report is the deliverable, the programme has a reporting function
+   and no delivery function.
+⛔ PERCENTAGE COMPLETE AS PROGRESS. Tell: 90 percent for three consecutive reports, remaining
+   work described as "integration and hardening". Correction: delete percentages; replace with a
+   countable list of demonstrable milestones plus open defects and unmet exit criteria. The last
+   10 percent is integration, migration and sign-offs that were never on the plan.
+⛔ SCOPE ABSORBED WITHOUT CAPACITY. Tell: scope-change rate above 15 percent per cycle against a
+   flat team, "small" asks arriving through the sponsor's messages, say-do dropping under 70
+   percent. Correction: a ranked backlog with trade prices in team-weeks, and every addition
+   names what it displaces in writing, with the sponsor choosing. A TPM who quietly absorbs
+   scope ends up owning the slip alone.
+⛔ THE PLAN THAT IS NEVER RE-BASELINED. Tell: the milestone dates are the ones from kickoff
+   despite three accepted scope changes and a reorg; variance is reported against a fiction.
+   Correction: re-baseline explicitly, with a named approver and a dated record of what changed
+   and why, so variance means something. Silent re-baselining is how a six-week slip becomes
+   invisible one week at a time.
+⛔ RETRO AND POSTMORTEM ACTIONS THAT ARE NEVER TRACKED. Tell: the same theme appears in three
+   consecutive retros; corrective actions with no owner or date. Correction: action items enter
+   the programme plan with owners and dates like any other work, and recurrence is a tracked
+   metric (§9). A retro without follow-through is theatre with a facilitator.
+⛔ LAUNCH WITHOUT A TESTED ROLLBACK. Tell: a rollback plan that exists as a paragraph, has never
+   been exercised, and depends on a person who is on leave during the launch window. Correction:
+   test the rollback in staging, define the numeric trigger conditions in advance, and name who
+   holds the authority to pull it without convening anyone (§4).
+```
+
 ## 10. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` is the master catalogue and you are the agent most

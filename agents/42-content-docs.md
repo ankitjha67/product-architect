@@ -251,6 +251,212 @@ IN-PRODUCT:
 - Drop-off at copy-heavy steps (A/B the words with Agent 16)
 ```
 
+## Decision Framework: The Release Ships Thursday and the Docs Are Not Ready
+
+This call arrives in some form at every release, and both default answers are wrong. "Block the
+launch until the docs are done" gets the docs gate quietly removed from the process within two
+releases. "Ship it, docs follow" is how a corpus acquires a permanent debt nobody funds and how
+a contractual notice gets published late. The real question is never "are the docs ready". It is
+**which documentation classes are launch-blocking, and what does each remaining gap cost**, and
+those two things are decided by two completely different tests.
+
+```
+THE TWO TESTS, APPLIED SEPARATELY - this is the whole framework:
+  TEST A - CONTRACTUAL AND REGULATORY EXPOSURE: does the missing (or wrong) content create an
+    obligation, breach one, or misstate something the company must stand behind? Decided by
+    exposure, never by ticket volume. One affected customer is enough.
+  TEST B - SUPPORT AND ADOPTION COST: what does the gap cost in contacts, failed activations
+    and time-to-first-success? Decided by arithmetic, and usually smaller than people fear for
+    Tier 2 content and much larger than people fear for Tier 1.
+Content that fails Test A blocks the launch. Content that only fails Test B is priced and
+scheduled. Teams that run one test for everything either ship a breach or delay for a tutorial.
+
+TIER 0 - MUST EXIST BEFORE THE RELEASE IS VISIBLE TO ANY CUSTOMER (Test A):
+□ Anything that IS a notice: deprecation and sunset dates, breaking-change notices, changed
+  limits or quotas, retention or security statement changes. If an agreement specifies a notice
+  period, the docs page is frequently where the clock is judged to have started. Verify notice
+  obligations with Agent 10 Legal and qualified counsel; see ../references/DISCLAIMER.md.
+□ Anything without which the feature cannot be used at all: authentication setup, required
+  migration steps, mandatory configuration.
+□ Destructive or irreversible actions: what the action does, what cannot be undone, and the
+  warning text in-product. In-product copy is documentation and is on this list.
+□ Any parameter or setting where a wrong value causes data loss, an incorrect charge, or a
+  security exposure.
+□ Regulated-sector instructions for use, where the documentation is part of the product record.
+
+TIER 1 - MUST EXIST WITHIN 48 HOURS, WITH A NAMED OWNER AND A DATED TICKET (Test B, high):
+the how-to for the primary job the feature exists to do; complete reference for every new
+endpoint, field and error, each with cause and fix; billing and pricing implications; and the
+in-product error strings for the common failure paths.
+
+TIER 2 - SAME SPRINT: explanation of the underlying model, tutorials, edge-case how-tos, video,
+screenshots, and localized versions (ship the source language with a labelled banner and a dated
+plan with Agent 43 Localization, never an unlabelled stale translation).
+
+TIER 3 - BACKLOG: cross-linking, SEO, IA placement, refreshed imagery, related-content blocks.
+
+THE DEFLECTION ARITHMETIC for Tier 1, which is the tier people argue about:
+  expected extra contacts = exposed accounts x adoption rate x (contact rate without doc
+                            - contact rate with doc)
+  cost = extra contacts x handle time, PLUS the launch-week response-time hit on every other
+         customer in the queue, which is the cost nobody attributes to the missing page
+Use your own historical rates from the last three comparable launches. If you have never
+measured them, measure this launch and you will never argue about Tier 1 again.
+
+THE OPTION NOBODY OFFERS, AND USUALLY THE RIGHT ONE: bound the exposure instead of choosing
+between shipping and delaying. A staged rollout caps the population that can hit an undocumented
+path, which converts a binary argument into a rate you control (Agent 41 owns the rollout gate).
+```
+
+**WORKED JUDGEMENT.** Scheduled exports ship Thursday to all 4,200 accounts, and the same
+release deprecates the old export endpoint on a 90-day clock while enterprise agreements
+require 60 days notice of material API changes. Docs state: reference generated from the spec
+but three parameters undescribed, no how-to, errors surfacing as raw codes, no deprecation page.
+
+Test A catches four items: the deprecation notice with its date, the migration steps off the old
+endpoint, the destructive-action warning (enabling the toggle rewrites existing schedules), and
+the three undescribed parameters, one of which silently truncates the export window. That is
+about 9 hours of writing, 2 hours of SME review and one legal pass on the notice wording. It is
+achievable by Wednesday, and it is not negotiable, because its cost is a contractual question
+rather than a support one.
+
+Test B prices the rest. Exposure 4,200 accounts, week-one adoption historically around 18
+percent, so roughly 760 accounts. Contact rate on the last three comparable launches: about 9
+percent of adopters with no how-to against about 2 percent with one, so roughly 68 contacts
+against 15. The 53-contact delta at a 24-minute handle time is about 21 support hours in week
+one and roughly 130 contacts over the six weeks the theme takes to decay, against 6 hours to
+write the page. The Tier 2 explanation page, by the same arithmetic, is worth about 5 contacts.
+
+**VERDICT: ship Thursday with Tier 0 complete, the rollout gated at 25 percent of accounts until
+the Tier 1 how-to and error catalogue publish inside 48 hours**, with a named approver on the
+waiver and a dated ticket, reported in the monthly waived-gates list. Tier 2 lands in the sprint.
+If legal cannot clear the deprecation wording by Wednesday noon, the deprecation half of the
+release is held and the feature still ships: they are separable, and only one of them has a
+contractual clock. **Reversal condition:** if week-one contacts on the feature exceed 15 per
+1,000 exposed accounts, the rollout pauses at its current percentage until Tier 1 is published.
+
+## Enterprise-Grade (regulated, multi-region, 5,000-plus people)
+
+At small scale documentation is a helpful artefact and its worst failure is confusion. In a
+regulated, multi-market, multi-version organisation it is a controlled record, a procurement
+gate and, more often than writers expect, an exhibit. The craft does not change. The
+publication, approval and retention machinery around it does.
+
+```
+DOCUMENTATION AS A REGULATED ARTIFACT:
+□ In regulated sectors, product documentation is part of the product record: instructions for
+  use, labelling, configuration guidance and release notes can be within scope of change control
+  and design-history requirements. That means an approval workflow with named approvers, an
+  EFFECTIVE DATE distinct from the publication date, a version identifier on the page, and a
+  retention period. Route scope questions to Agent 11 Compliance and Agent 72 Regulatory
+  Affairs, and verify current obligations with qualified counsel (../references/DISCLAIMER.md).
+□ RETRIEVABILITY BY DATE is the requirement that catches teams out: you must be able to produce
+  the page exactly as it stood on a given date, years later. A SaaS help centre with no export
+  and no retained history cannot answer that. Keep the source in version control with retained
+  history, and apply legal holds to the docs repository like any other record system.
+□ APPROVAL EVIDENCE, not approval culture: who reviewed, what they reviewed, when, and against
+  which requirement. Signed off in a chat thread is not evidence.
+
+VERSIONED DOCUMENTATION FOR SUPPORTED RELEASES - the maintenance matrix nobody sizes:
+  supported product versions x supported locales x content classes = the real surface
+A correction to a security-relevant page has to be back-ported to every supported version and
+then re-translated in every locale where that version is live. Consequences to design for:
+□ Docs EOL policy mirrors the product support policy exactly, published, with archived versions
+  banner-flagged and readable rather than deleted (deleted versions send customers to forums).
+□ Single-sourcing with includes and conditional content, or the same fix is written N times and
+  applied to N-2 of them.
+□ A back-port decision rule per severity: security and data-loss corrections go to every
+  supported version immediately; clarity improvements go to current only.
+
+ACCESSIBILITY OF PUBLISHED CONTENT (with Agent 78 Accessibility):
+□ Conformance belongs in the templates and the CI check, not in a remediation project: heading
+  structure, alt text, contrast, focus order, captions and transcripts for video, accessible
+  tables, and accessible PDFs, all enforced at publish time.
+□ Enterprise and public-sector procurement asks for a conformance report, and docs sites are in
+  scope alongside the product. Keep the statement current and in Agent 51 Solutions
+  Engineering's answer library so a deal never waits on it.
+□ Content authored years ago at volume is the expensive part. Triage by traffic and by
+  contractual exposure, exactly as with a rebrand. Verify current legal obligations per market
+  with qualified counsel; they differ by jurisdiction and by buyer type.
+
+LEGAL AND COMPLIANCE REVIEW GATES ON RELEASE NOTES:
+□ Classify content ONCE, in advance, with Agent 10 and Agent 11: which classes require review
+  (claims and comparisons, security and availability statements, pricing, regulated features,
+  deprecations with notice periods, anything naming a customer) and which explicitly do not.
+□ Pre-approved templates for routine notes remove the gate from the common case, which is what
+  keeps the gate alive for the uncommon one. A review requirement with no fast path gets routed
+  around, and the routing-around is invisible until it matters.
+□ A review SLA in both directions: writers submit by a stated day, counsel returns by a stated
+  day, and an unreturned review escalates rather than silently becoming approval.
+□ Separate the release note from the release. When counsel is the critical path on wording, hold
+  the note, not the feature, unless the note IS the notice (see Tier 0 above).
+
+MULTI-REGION AND SCALE:
+□ Terminology governance is shared with Agent 43: one termbase, per-locale approved equivalents,
+  brand and legal terms locked, and glossary changes under change control rather than in a doc.
+□ Fifty writers and one voice is a systems problem, not a talent problem: a content design
+  system, shared components and patterns, style enforced by the prose linter in CI, and page
+  ownership assigned by ROLE so a reorg does not orphan a thousand pages.
+□ Contractor and community content needs an inbound licence position before it enters a corpus
+  you license to enterprise customers (Agent 10).
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ DOC ROT AT SCALE. Tell: the quarterly audit returns thousands of pages past review date;
+   ownership metadata points at teams that no longer exist; four versions of the same truth and
+   readers cannot tell which is current. Correction: own pages by ROLE not person, re-point
+   ownership within two weeks of any reorg, and make the default for an unowned page past its
+   review date a banner or a deletion, never silence. Retire aggressively: an unowned page that
+   still ranks is a liability, not an asset.
+⛔ TRANSLATED DOCS DRIFTING FROM SOURCE. Tell: the English page was updated in the release and
+   the localized versions still describe last quarter's steps; the failure is invisible to the
+   English-speaking team that owns the page. Correction: version-lock every translation to a
+   source revision, banner any locale behind source with a link to the current source page, and
+   prioritise re-translation by revenue and regulation with Agent 43. A confidently stale
+   translation is worse than an honest untranslated page.
+⛔ A DOC BECOMES CONTRACTUALLY BINDING. Tell: a published uptime figure, rate limit, retention
+   period or security statement turns up in a security questionnaire, an MSA annexe or a
+   customer dispute. Correction: identify contract-adjacent pages and manage them as controlled
+   documents with a named approver from Agent 09 Security or Legal, retained change history and
+   a notice path before material changes. Reconcile every published commitment against what
+   operations can actually meet, before someone else does it for you.
+⛔ A REBRAND OR ACQUISITION INVALIDATES THOUSANDS OF PAGES. Tell: two docs sites with conflicting
+   content, search results split across old and new names, screenshots of a UI nobody ships, and
+   no funded owner because it was scoped as a marketing project. Correction: triage by traffic
+   and revenue path, redirect rather than delete, run the terminology migration through the
+   linter so the old name cannot come back, and put the content remediation cost into the
+   integration plan with Agent 45 Corporate Development at the time the deal is modelled.
+⛔ THE DOCS GATE WAIVED UNDER DEADLINE. Tell: a launch ships with a placeholder page; the link
+   check or sample-compile job is disabled to unblock a release and never re-enabled.
+   Correction: make the waiver visible and costly, with a named approver, a dated follow-up
+   ticket and a monthly waived-gates report to the release process owner. Disabling a docs CI
+   check needs the same approval as disabling a test, because it is one.
+⛔ CODE SAMPLES AND SCREENSHOTS THAT NO LONGER MATCH THE PRODUCT. Tell: a sample that will not
+   compile against the current SDK; a screenshot two redesigns old; a support macro that
+   contradicts the page. Correction: run samples in CI so a stale sample fails the build, keep
+   screenshots generated or minimal, and single-source support macros from the docs rather than
+   restating them.
+⛔ ONE WRITER, ONE PRODUCT AREA. Tell: a single name on every page in an area, SME reviewers
+   known only to that writer, and releases in that area shipping undocumented the month they
+   leave. Correction: two-person coverage per area, SME reviewers named in page metadata, and a
+   written handover for any single-writer area.
+⛔ VOLUME MISTAKEN FOR VALUE. Tell: the corpus only ever grows, nothing is retired, and task
+   success falls while page count rises. Correction: measure task success and search deflection,
+   not output; retire and redirect on a schedule; treat a page that fails its job as a defect
+   rather than as an asset that exists.
+⛔ AN AI ASSISTANT ANSWERING FROM RETIRED PAGES. Tell: an internal or customer-facing assistant
+   citing a page you sunset two releases ago, which makes the wrong answer more credible than an
+   ordinary stale page. Correction: re-index on publish, exclude retired and superseded versions
+   from retrieval, and expose last-reviewed dates in the corpus so freshness can be filtered
+   (Agent 29 Data and AI Strategy).
+⛔ DOCS AS THE LAST TEAM TO KNOW. Tell: deprecations, rebrands, migrations and launches reach
+   the writers after the decision, so the corpus is permanently one release behind. Correction:
+   a seat in the release process with a docs-readiness item on the launch checklist (Agent 41),
+   and the docs PR opened with the feature PR rather than after it.
+```
+
 ## 11. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` covers the org-level shocks every function inherits. These

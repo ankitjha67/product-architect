@@ -301,6 +301,195 @@ service desk for other teams.
   between core product and growth pods.
 ```
 
+## Decision Framework: The Test Won, but the Mechanism Is Extractive
+
+The hardest recurring call in growth is not prioritisation. It is the winner you do not want:
+a variant with a clean, significant lift whose mechanism is a dark pattern, or whose gain is
+borrowed from a cohort that will churn in ninety days. The short-term metric is real. So is the
+long-term cost. Neither is visible in the other's measurement window, which is why this decision
+gets made on temperament instead of evidence unless you build the procedure first.
+
+```
+STEP 1 - NAME THE MECHANISM. "It won" is not a finding. Why did it win? Four families:
+  REAL VALUE      the user got something better and chose it. Ship it.
+  COMPREHENSION   the same offer, finally understood. Ship it, and fix the old copy everywhere.
+  FRICTION        a genuinely unnecessary step removed. Ship it, and check what the step guarded.
+  EXTRACTION      attention, consent, data or money obtained that the user did not intend to
+                  give: urgency that is not true, defaults that opt in, an exit made harder
+                  than the entrance, a cost revealed late, copy that shames the "no".
+Only the fourth family is the problem, and a BUNDLED test cannot tell you which family you are
+in. If a variant changed four things, decompose it and re-run; in practice the extractive
+component is usually the one carrying most of the lift, which is exactly why bundling persists.
+
+STEP 2 - THE FOUR GATES. An extraction-family winner must pass all four, or it does not ship:
+  INFORMED CHOICE  would the user make the same choice if the same information were presented
+                   neutrally? If the lift depends on them not noticing, that is the answer.
+  SYMMETRY         is leaving as easy as joining, is opting out as easy as opting in, is
+                   cancelling on the same surface as subscribing? Count the clicks both ways.
+  DISCLOSURE       would we ship this screenshot next to the relevant consumer-protection
+                   guidance, in our own press release, and in the app-store review thread?
+  MEASURED REGRET  refund rate, chargeback rate, cancellation attempts, "how do I cancel"
+                   support contacts, unsubscribes, one-star reviews mentioning the surface.
+                   This gate is measured, not imagined. If you did not instrument it, the test
+                   is not finished.
+
+STEP 3 - QUANTIFY THE SHORT-VERSUS-LONG CONFLICT, on the MARGINAL cohort:
+The users converted BY the change are not average users; they are the least committed ones, so
+blended LTV overstates them badly. Judge the change on:
+  net = (extra conversions x LTV of the MARGINAL cohort)
+        - (extra refunds and servicing cost)
+        - (retention or trust cost imposed on the INFRAMARGINAL users who also saw the surface)
+The third term is the one everyone omits, and on cancellation, consent and billing surfaces it
+is frequently the largest: the people who saw the maze and stayed now trust you less.
+
+STEP 4 - THE HOLDOUT THAT WOULD SETTLE IT (a two-week A/B never can):
+□ Duration: at least one full billing cycle plus one renewal decision point. For a monthly
+  plan, 60 days minimum; report at day 90 and day 180.
+□ Design: a REVERSE HOLDOUT - keep 5% on the old variant AFTER full rollout - plus the standing
+  global holdout (§10) that measures cumulative growth impact against no growth changes at all.
+□ Metric: revenue per ACQUIRED user and retention curve shape at day 90, not the local
+  conversion metric, and reported on the marginal cohort separately from the blended one.
+□ Pre-register the abort thresholds and the guardrails, with the owning function named, BEFORE
+  the ship. A guardrail agreed after a green headline is not a guardrail.
+```
+
+**WORKED JUDGEMENT.** A cancel-flow redesign bundles three changes: a pause offer, a discount
+offer, and moving the cancel link out of account settings into a help-centre article behind two
+extra interstitials. Result at 14 days: monthly cancellations down from 1,180 to 908, a 23% drop,
+272 accounts retained, **₹38 lakh annualised at ₹14,000 average ACV**. **Mechanism check:** pause
+and discount are REAL VALUE; the link relocation is EXTRACTION. **Symmetry gate fails outright**
+- signup is 2 clicks, cancellation is now 6, one of which leaves the product. **Measured regret
+at 90 days:** of the 272 "saved", 61% cancelled anyway, so true saves are 106 accounts =
+**₹14.8 lakh**; "how do I cancel" contacts rose from 90 to 370 per month at ₹180 each =
+**₹8 lakh a year**; app-store one-star reviews naming cancellation went from 3 to 41 in the
+quarter; and the reverse holdout shows 180-day retention on the *remaining* base down **1.4
+points** against control, which on this base is worth more than the entire headline. **Call:**
+ship the pause and discount offers, which carry most of the isolated lift and pass all four
+gates; do not ship the relocation or the extra interstitials; re-run with the components
+separated, which is what should have happened first. **Sensitivity:** if the isolated re-test
+shows pause and discount alone recover under a third of the 23%, the honest conclusion is that
+the programme's saving was mostly extraction, and the correct response is to fix why people are
+cancelling rather than to make cancelling harder. **Reversal condition:** if day-90 revenue per
+acquired user in the exposed group is not at or above control, the change is reverted regardless
+of the conversion headline. **Consumer-protection exposure is a legal question, not a growth
+one:** several regimes now treat interface design of this kind as unlawful rather than clever,
+and your own experiment log is the evidence. Verify current rules per market with qualified
+counsel before shipping anything in the extraction family. See
+[DISCLAIMER.md](../references/DISCLAIMER.md).
+
+## Enterprise-Grade (regulated, multi-market, 5,000-plus people)
+
+A four-person growth pod can run on judgement and a shared Slack channel. At enterprise scale
+the same experiment engine is a regulated surface in some markets, a consented measurement
+system in others, and a brand risk everywhere, and its own log is discoverable evidence. The
+craft is unchanged; what changes is that every test now needs a record, a market scope and an
+owner who is not the person whose bonus depends on the lift.
+
+```
+CONSUMER-PROTECTION AND FAIRNESS CONSTRAINTS (verify current with qualified counsel):
+□ Interface-design rules are tightening across several regimes and now reach urgency claims,
+  pre-ticked consent, cancellation symmetry, drip-fed pricing, subscription renewal disclosure
+  and confirmshaming copy. Treat these as design constraints applied BEFORE the test is built,
+  not as a legal review applied to a winner nobody wants to give up.
+□ Referral and reward programmes attract their own rules: sweepstakes and lottery regimes,
+  endorsement and disclosure duties for incentivised sharing, and financial-promotion rules in
+  regulated sectors. A referral bonus in a financial or health product is not a growth tactic,
+  it is a regulated communication.
+□ Marketing claims made inside product growth surfaces need the same substantiation as an ad.
+□ A DESIGN-ETHICS GATE in the backlog review: any test touching cancellation, consent, pricing
+  display, urgency, defaults or minors requires sign-off from compliance and trust and safety
+  before it is built. Route through Agent 11 Compliance and Agent 12 Trust and Safety.
+□ See [DISCLAIMER.md](../references/DISCLAIMER.md). None of this is legal advice, rules differ
+  by market, and they are moving fast.
+
+CONSENT AND MEASUREMENT CONTINUITY (with Agent 39 Privacy and Agent 16 Analytics):
+□ Every measurement chain needs a lawful basis, and consent rates differ by market, which means
+  your tracked population differs by market. A global experiment on a consent-gated metric is
+  measuring different populations under one number.
+□ Re-baseline deliberately after any consent, tracking or platform change: a consent banner
+  rollout or an app-tracking prompt shifts coverage, not behaviour, and the resulting "drop" is
+  routinely mis-diagnosed as product decay and then "fixed" with a real regression.
+□ Move to server-side, first-party event collection with a documented basis; keep a holdout in
+  a stable-measurement region as the causal referee when other regions lose comparability.
+□ Classify every lifecycle message as transactional or marketing with a named owner, and
+  enforce suppression at the send layer rather than in campaign logic.
+□ Personalisation and experimentation on personal data may need a DPIA where profiling is
+  involved; Agent 39 decides, and decides before the test, not after it.
+
+BRAND AND ACQUISITION RISK:
+□ Aggressive acquisition tactics are underwritten by the brand, and the brand is not the growth
+  team's to spend. Affiliate and influencer channels inherit your name and their compliance
+  failures become yours; contract for disclosure, review creative, and audit the tail.
+□ Paid channels in regulated sectors carry approval requirements and prohibited-claim lists.
+□ Reputational guardrails belong on the dashboard next to conversion: app-store rating and
+  review sentiment, unsubscribe and complaint rates, support contacts about the growth surface.
+
+EXTRA ARTIFACTS AND APPROVALS THIS MODE REQUIRES:
+□ AN EXPERIMENT REGISTER, retained: hypothesis, variant screenshots, population and markets,
+  start and end dates, guardrails and their thresholds, decision, and who approved it. It is
+  the programme's memory, its audit evidence, and, in a dispute, the record either way.
+□ A published minimum bar by risk tier, so most tests self-serve and only the tier that touches
+  money, consent, cancellation or minors comes to a central review.
+□ Per-market rollout plans, because a mechanic that is legal and effective at home may be
+  neither abroad, and blended global reporting hides one working market carrying eight dead ones.
+□ Accessibility review on any experiment touching signup, payment or cancellation paths.
+□ Works-council consultation where an experiment affects employees or is run on internal tools.
+
+WHAT STOPS WORKING AT THIS SCALE:
+□ UNLOGGED EXPERIMENTS. At forty pods, an unregistered test is invisible until it is a finding.
+□ ONE GLOBAL HOLDOUT. Different consent regimes and tracking coverage make a single global
+  holdout uninterpretable; hold out per measurement regime.
+□ THE POD AS THE ONLY REVIEWER. The team that gains from the lift cannot also be the gate on
+  the mechanism; that review sits outside the pod, structurally.
+□ VELOCITY AS THE HEADLINE METRIC. Past a certain size it selects for small, safe, bundled
+  tests and a rising count of shipped changes that no holdout can defend.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ ADDITIVE-LIFT FICTION: summed local wins that no holdout ever confirmed, exceeding actual
+   company growth by a wide margin. TELL: finance asks what growth delivered and the answer is
+   a sum of test results. FIX: a persistent global holdout (1 to 5%), sized to your traffic and
+   agreed with finance BEFORE the results exist, reported cumulatively each quarter.
+⛔ BUNDLED MECHANISM: four changes in one variant, so the lift cannot be attributed and the
+   extractive component rides in on the legitimate one.
+   TELL: the variant description needs three sentences. FIX: decompose and re-run; assume the
+   extractive component is carrying the lift until isolation proves otherwise.
+⛔ MARGINAL-USER BLINDNESS: blended LTV applied to an incremental cohort made entirely of the
+   least-committed users. TELL: a conversion win with no day-90 retention read on the converts.
+   FIX: report the marginal cohort's curve separately, always.
+⛔ RENTED LOOP: the dominant loop lives on a platform that can change its rules with days of
+   notice. TELL: nobody can say what fraction of new users one external policy controls.
+   FIX: score every loop for platform dependency, keep one owned-channel loop at meaningful
+   scale, and make monitoring platform changelogs a named responsibility.
+⛔ INCENTIVE ABUSE AND REFERRAL FRAUD: the number is real in the dashboard and fictional in the
+   bank account. TELL: payouts spike while retention of referred users collapses; clusters
+   sharing devices, payment instruments or IP ranges. FIX: delayed payout tied to a retention
+   event, per-device and per-instrument caps, velocity rules, reward in product value rather
+   than cash, and reconciliation against the payout ledger with Agent 13 Fraud.
+⛔ GUARDRAIL THEATRE: guardrails defined, never instrumented, never breached, never blocking.
+   TELL: no experiment has ever been stopped by one. FIX: pre-registered thresholds owned by
+   the affected function, with an automatic alert that fires to them and not only to you.
+⛔ PEEKING AND EARLY STOPPING: the test is called the morning the headline turns green.
+   TELL: run lengths that vary with the result. FIX: pre-computed sample size, one full cycle
+   minimum, sequential testing methods if you genuinely need to look early.
+⛔ LOCAL MAXIMUM: a year of 2% wins on the same hill while the real gap sits in a surface the
+   pod does not own. TELL: cumulative holdout impact flattening while test velocity rises.
+   FIX: keep roughly 30% of the portfolio in bold swings, and take the structural fixes to the
+   roadmap as funded items with the cohort evidence attached.
+⛔ MEASUREMENT-SHOCK MISREAD: a consent or tracking change diagnosed as product decay, then
+   "fixed" with a change that causes a real regression. TELL: a step change in a metric on the
+   date of a platform or consent event. FIX: re-baseline deliberately and check the stable
+   region's holdout before shipping any remedy.
+⛔ BLENDED-MARKET AVERAGE: one working geography carrying eight dead ones inside the mean.
+   TELL: loop and activation metrics reported globally. FIX: report per market and re-test the
+   mechanic before scaling it, localising the incentive and not only the string.
+⛔ VELOCITY CAPTURE: the pod cannot ship without another team's queue, so it stops learning.
+   TELL: flag changes need a ticket. FIX: own flags, assignment and readout, or hold a written
+   SLA. A growth pod that cannot ship independently is a request desk.
+```
+
 ## 13. Organisational Edge Cases
 
 An experiment engine is the easiest function in the company to run into a wall it did not know

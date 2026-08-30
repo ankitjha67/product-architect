@@ -213,7 +213,217 @@ Measure offboarding COMPLETENESS, not just speed.
 □ Document recovery runbooks; test them - a BCP no one has rehearsed is fiction.
 ```
 
-### 10. Organisational Edge Cases
+### 10. Decision Framework: The Control Security Requires and Engineering Says Blocks Their Work
+
+The hardest recurring call in corporate IT is never "is this control good security". It is:
+the control is correct, and the population it lands on says it stops them working. Both
+statements are usually true at the same time, and the two lazy resolutions fail symmetrically.
+Grant a blanket exception and the control is decoration on an audit page. Enforce it unchanged
+and the population routes around it onto unmanaged machines, personal cloud accounts and
+shadow tooling, which leaves you with the original risk plus no visibility of it. Corporate IT
+is the function that has to produce the arbitration, because neither Security nor Engineering
+can score their own side of it.
+
+```
+STEP 1 - BOTH SIDES PUT A NUMBER ON THE TABLE. Neither "security requires it" nor "this
+destroys our productivity" is admissible as an adjective. You produce both numbers.
+
+SECURITY ANSWERS (with Agent 09 Security):
+□ WHICH THREAT, concretely: credential theft, malware execution, data exfiltration, lost or
+  stolen device, supply-chain compromise of the build. Name the class, not "risk".
+□ BLAST RADIUS ON THIS POPULATION SPECIFICALLY. An engineering laptop holding signing keys,
+  a cloud session and standing production credentials is a different asset from a laptop
+  holding a CRM session. Controls should be graded per population, not per company.
+□ IS IT THE ONLY MITIGATION, OR THE CHEAPEST ONE? A control duplicating an existing
+  compensating control is spending productivity to buy nothing.
+□ IS IT EXTERNALLY REQUIRED? A control demanded by a framework, a customer contract or a
+  regulator changes the question from "should we" to "how, and what is the supported path".
+  Verify what your auditor and your contracts actually require rather than assuming.
+
+ENGINEERING ANSWERS (measured, not asserted):
+□ THE EXACT TASK that got slower, timed before and after on the same hardware, n >= 10 people.
+  One dramatic screenshot in a chat channel is not a measurement.
+□ FREQUENCY per person per day. The only unit that decides anything is minutes per person per
+  day, and then hours per year across the affected population.
+□ WHAT PEOPLE DO INSTEAD. The evasion rate is the number that actually settles the argument:
+  count locally disabled agents, unmanaged devices touching corporate data, personal cloud
+  accounts in expense reports, and OAuth grants to unapproved tools.
+
+STEP 2 - CONVERT THE PRODUCTIVITY COST INTO THE SAME CURRENCY AS THE RISK:
+  minutes/person/day x population x working days = hours/year
+  hours/year / annual working hours = FTE equivalent
+  FTE equivalent x fully loaded cost per head = the annual price of the control
+Report it as an FTE count as well as money. "This control costs 14 engineers" is the sentence
+that gets a real decision; a percentage of build time is the sentence that gets ignored.
+
+STEP 3 - CHOOSE BETWEEN THREE OUTCOMES, NEVER TWO:
+| Outcome | When it is right | What it requires |
+|---|---|---|
+| ENFORCE AS IS | Externally required, or blast radius is severe and the measured cost is small | Comms, a support path, and a date. Nothing else changes |
+| PAVED ROAD | The threat is real and the control is not the only way to mitigate it | A supported alternative that is FASTER than the workaround, funded, with the residual risk written down and accepted by Agent 09 |
+| TIME-BOXED EXCEPTION | The paved road exists but a subset cannot reach it yet | Register entry, compensating control, named accountable executive, expiry date |
+THE RULE THAT DECIDES IT: IT never wins on enforcement and always wins on latency. If the
+approved path is slower than the workaround, you are choosing the workaround on everyone's
+behalf and simply not logging it.
+
+STEP 4 - THE EXCEPTION REGISTER (the artefact that separates governance from a corridor deal):
+□ Control waived, and the exact population and devices it applies to
+□ The threat being accepted, in one sentence, in the requester's words
+□ The compensating control that stands in its place, and who verifies it works
+□ Named ACCOUNTABLE EXECUTIVE, not the requesting manager
+□ EXPIRY DATE, 90 days maximum, no auto-renewal. Renewal is a fresh decision with fresh evidence
+□ REVOCATION TRIGGER stated up front: the observation that ends the exception immediately
+□ Reviewed quarterly by Agent 59 Internal Audit and reported as a count and an age profile
+An exception with no expiry is a policy change nobody announced, and it will be found by an
+assessor rather than by you.
+```
+
+**WORKED JUDGEMENT: EDR real-time scanning on 320 engineering laptops.** Security mandates the
+endpoint agent with real-time file scanning on all endpoints. Engineering says builds have
+become unbearable. Measured on identical hardware across 12 volunteers: an incremental build
+moves from 3m10s to 4m40s, and the median engineer runs 14 builds a day, so the control costs
+about 21 minutes per engineer per day. Across 320 engineers that is 112 engineer-hours a day,
+roughly 14 FTE, or on a fully loaded cost of USD 120K to 180K per head, USD 1.7M to 2.5M a
+year (illustrative rates, use your own). The evasion number is worse than the cost number: 40
+machines already have real-time scanning locally disabled and about 60 engineers are building
+in personal cloud accounts visible in expense reports, so effective coverage on the highest
+value endpoint class is around 70 percent while the dashboard reports 100 percent enrolment.
+
+Removing EDR from developer machines is not an available option: they are the highest value
+endpoints in the estate and the control sits inside the customer-facing security commitments.
+So the answer is the paved road. Scope real-time scanning out of build output and dependency
+cache paths only, keeping it on downloads, browser, email and archive paths and on every
+executable, with unchanged behavioural telemetry and a nightly full scan. Re-measured build
+penalty: 6 seconds. Residual risk, written down and accepted by Agent 09: malware written into
+an excluded path is detected on execution and at the nightly scan rather than on write. Fund
+ephemeral cloud development environments for the 60 engineers already evading the control, at
+roughly USD 120 to 250 per engineer per month, which is a rounding error against 14 FTE and
+moves the trust boundary off the laptop entirely. The 22 machines that cannot run the current
+agent build get a 90-day register entry with a named director, no standing production
+credentials, egress monitoring and a dated migration plan.
+
+**REVERSAL CONDITION.** If any EDR detection in the next two quarters originates inside an
+excluded path, or the exclusion list grows beyond the six agreed path patterns, the exclusion
+reverts on the spot and the cloud development environment becomes mandatory for that
+population. Publish the exclusion list and the detection count in the same monthly report, so
+the decision stays visibly conditional rather than quietly permanent.
+
+### 11. Enterprise-Grade (regulated, multi-region, 5,000-plus people)
+
+At 200 people identity is a tool and offboarding is a person who remembers. Past a few thousand
+people every sentence in sections 1 to 9 becomes an evidence problem: the question stops being
+whether the control works and becomes whether you can prove it worked, for a sampled population,
+on a date, to someone who does not trust you.
+
+```
+IDENTITY AT SCALE - what breaks that did not break before:
+□ MULTIPLE IdPs, permanently. Acquisitions, joint ventures and a legacy directory nobody can
+  retire mean federation is the steady state, not a migration phase. Pick one authoritative
+  source per identity TYPE (employees from the HRIS, contractors from a vendor-management
+  record, service identities from the platform) and make every other directory downstream.
+□ NON-HUMAN IDENTITIES OUTNUMBER HUMANS, often by an order of magnitude: service accounts,
+  API keys, CI tokens, bots, integration users. They have no manager, no leaver event and no
+  natural expiry, so they need an owner of record, a rotation schedule and a review cycle, or
+  the leaver control you are proud of covers a minority of your credentials.
+□ ROLE EXPLOSION. Role-based groups stop scaling somewhere past a few hundred roles. Move the
+  variable dimensions (region, cost centre, employment type, data classification) to attributes
+  and keep roles for job function, or every reorg forks the model again.
+□ PRIVILEGED ACCESS becomes its own programme: just-in-time elevation, session recording for
+  the highest tiers, separate admin identities from daily-driver identities, and break-glass
+  accounts stored offline, alarmed on use and TESTED quarterly.
+
+JOINER-MOVER-LEAVER IS THE CONTROL AUDITORS ACTUALLY TEST:
+An assessor does not read your JML policy. They pull a population of leavers and movers for
+the period, sample it, and ask for evidence of the revocation timestamp per system per person.
+That changes the design in three ways most IT teams learn the expensive way:
+□ SAMPLING MEANS ONE MISS IS A FINDING. A 25-item sample from 800 leavers turns a 4 percent
+  failure rate into a coin flip on your audit outcome. Design for completeness, not for average.
+□ EVIDENCE MUST BE RECONSTRUCTABLE FROM LOGS, not from a ticket someone closed. Retain IdP and
+  SCIM logs for the audit period, and be able to answer "when exactly did access end" per system.
+□ THE MOVER POPULATION IS THE WEAK ONE. Leavers get attention because they are visible; movers
+  accumulate entitlements forever, and access accretion is what a certification campaign
+  actually surfaces. Re-baseline on role change rather than adding to the existing grant.
+Automate the control rather than the checklist: a control executed by a human on a runbook is
+tested as a human control, which means it is sampled harder and fails more often.
+
+DEVICE COMPLIANCE AS EVIDENCE, NOT AS A DASHBOARD:
+□ "Enrolled" is not "compliant", and "compliant last week" is not "compliant at the moment of
+  access". Conditional access that evaluates posture at authentication time is the only version
+  of this control that produces evidence an assessor can use.
+□ Keep the exception population as a first-class number: unmanaged devices touching corporate
+  data, devices behind on patch baseline, encryption failures, and their ages.
+□ Multi-region: endpoint telemetry, DLP and productivity monitoring are employee personal data
+  in many jurisdictions and may require works-council consultation before, not after, rollout.
+  Scope, purpose and retention differ per market. Verify current requirements with qualified
+  counsel and Agent 39 Privacy, and see ../references/DISCLAIMER.md.
+
+INTEGRATING AN ACQUIRED COMPANY'S IT ESTATE ON A DEAL TIMELINE:
+The deal team's day-1 expectation is email, chat and a badge that works. The security answer is
+that you have just inherited an estate with an unknown posture and, frequently, shared domain
+admin credentials. Sequence it, and put the sequence in the integration plan before signing:
+□ PRE-CLOSE (what diligence must produce): asset and identity inventory, admin-account list,
+  SaaS register with data classifications, open incidents, and the transitional services
+  agreement scope with an end date. Agent 45 Corporate Development owns the plan, you own this.
+□ DAY 1: federate identity, do not merge directories. Guest access or a scoped trust for the
+  handful of systems people genuinely need. NO flat network connection, ever, on day 1.
+□ DAY 30 to 100: posture assessment closes, MFA and device baselines applied to the acquired
+  population, privileged accounts rotated and reduced, SaaS estate deduplicated against yours.
+□ DAY 100 to 365: directory merge, device re-enrolment, tool consolidation, TSA exit.
+Two compliance scopes coexist during the overlap. Say which entity is in which certification
+scope in writing, because a customer questionnaire will ask within the first quarter.
+```
+
+### 12. Failure Modes (⛔)
+
+```
+⛔ SHADOW IT DISCOVERED BY THE AUDITOR, NOT BY IT. Tell: SaaS charges on corporate cards with
+   no vendor-register entry, OAuth grants to unknown apps in IdP logs, a department fluent in a
+   tool you have never heard of. Correction: continuous discovery from expense, SSO and browser
+   signals; rank by data sensitivity before touching anything; onboard the top-risk tools to SSO
+   and a DPA inside 30 days and retire the rest on a published date. Then fix the cause, which
+   is almost always your own request latency: every unapproved tool started as a blocked ticket.
+⛔ OFFBOARDING THAT COMPLETES ON PAPER WHILE ACCESS STAYS LIVE. Tell: the checklist is closed
+   within the hour but the account still has a valid session, a personal access token, a shared
+   vault item or a local login to a non-SSO app. Correction: measure verified completeness, not
+   speed. Disable at the IdP, revoke sessions and tokens explicitly, rotate shared secrets, then
+   spot-check from an independent admin account. Report residual-access findings as a metric.
+⛔ A SaaS AUTO-RENEWAL DISCOVERED AFTER THE CANCELLATION WINDOW. Tell: a renewal invoice arrives
+   for a tool at a higher tier, and the notice window closed 30 days ago. Correction: one
+   renewal register with owner, notice window and alerts at T-120 and T-90, licence utilisation
+   pulled before the negotiation, and no renewal signed without it. After the window closes you
+   have no leverage at all, only a payable, and the seat count is the vendor's number not yours.
+⛔ AN IDENTITY-PROVIDER MIGRATION ATTEMPTED AS ONE CUTOVER. Tell: a plan with a single weekend,
+   a full app list, and no dual-federation period; non-SSO apps discovered mid-migration.
+   Correction: sequence by blast radius, pilot cohort first, dual-run federation through the
+   overlap, and test break-glass BEFORE cutover. A failed identity migration means nobody can
+   log in to the systems needed to fix the identity migration.
+⛔ ACCESS ACCRETION ON MOVERS. Tell: a five-year employee with entitlements from three former
+   roles; certification campaigns that only ever add. Correction: recalculate entitlements on
+   every role change, removing the old grant rather than layering the new one, and report the
+   population of people whose access exceeds their current role's baseline.
+⛔ THE BREAK-GLASS ACCOUNT THAT HAS NEVER BEEN USED OR TESTED. Tell: credentials in a safe
+   nobody has opened since the last audit, and an IdP-outage runbook that lives behind the SSO
+   that is down. Correction: quarterly test, alarm on use, and keep the runbook plus an
+   alternate comms channel outside the affected estate.
+⛔ THE EXCEPTION WITH NO EXPIRY. Tell: an executive off MDM "for now", a team exempted from a
+   baseline in a thread from two years ago. Correction: every exception carries a named
+   accountable executive, a compensating control and a date, and expires by default. The
+   highest-value phishing targets cannot be the least-protected accounts.
+⛔ THE CMDB THAT IS A SPREADSHEET. Tell: device counts from MDM, purchasing and finance that
+   disagree by double digits; a lost laptop nobody can attribute. Correction: reconcile MDM,
+   IdP and asset records on a schedule and treat the variance itself as the metric; offboarding
+   and audits both fail on the delta rather than on the process.
+⛔ NON-HUMAN IDENTITIES WITH NO OWNER. Tell: service accounts named after departed employees,
+   API keys with no rotation date, integration users with domain admin. Correction: an owner of
+   record and an expiry for every credential, rotation on a schedule, and inclusion of non-human
+   identities in the access-review campaign.
+⛔ MEASURING IT ON TICKET VOLUME AND UPTIME ONLY. Tell: a green service dashboard beside an
+   unmeasured tail of unmanaged devices, non-SSO apps and ungoverned SaaS. Correction: publish
+   the tail explicitly (SSO coverage, unmanaged endpoints, ungoverned apps, verified offboarding
+   completeness), because attackers and auditors both sample the tail, not the average.
+```
+
+### 13. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
 inherits (sponsor loss, freezes, reorgs, budget cuts). This section is the corporate-IT layer:

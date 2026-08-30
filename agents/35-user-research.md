@@ -243,6 +243,206 @@ Research that doesn't change a decision is theater. Track:
 - Stakeholder NPS on research usefulness
 ```
 
+## Decision Framework: The Study Is Not Finished and the Decision Ships Friday
+
+The hardest recurring call in this function is not which method to use. It is what you say on
+Thursday evening when the evidence is partial, the decision owner has a Friday date, and
+declining is not neutral: the decision still gets made, from a Slack thread and two customer
+anecdotes. Over-delivering is the worse error. A three-day study written in the vocabulary of
+a three-week one becomes a number in a deck that outlives every caveat you attached to it.
+
+```
+STEP 1 - NAME THE CLAIM THE DECISION ACTUALLY NEEDS. Four kinds, ascending in cost:
+  EXISTENCE   does this occur at all, and what is the mechanism behind it?
+  PREVALENCE  how many users hit it? (a rate)
+  MAGNITUDE   how much is it worth, how much better is B than A? (an effect size)
+  CAUSALITY   will changing X actually move Y?
+A three-day qualitative study establishes EXISTENCE and MECHANISM to a high standard, and can
+falsify a prevalence claim in ONE direction only: if 7 of 9 recruited users hit it, it is not
+rare. It cannot produce PREVALENCE, MAGNITUDE or CAUSALITY; those need n, power, or a
+controlled test. Most Friday arguments are existence questions being answered in prevalence
+words, which is exactly why they feel unresolvable in the room.
+
+STEP 2 - GRADE THE DECISION. The decision sets the evidence bar; the calendar never does.
+  REVERSIBILITY  undoable in a sprint, or a price, migration, deprecation, public claim,
+                 regulated flow, or a schema written at scale?
+  BLAST RADIUS   how many users, and WHICH users (is the affected group in your frame?)
+  ASYMMETRY      cost of a wrong yes versus a wrong no. They are almost never equal.
+
+DIRECTIONAL EVIDENCE IS LEGITIMATELY ENOUGH when all four hold:
+  1. the decision is reversible inside one cycle;
+  2. the claim needed is existence or mechanism, not a rate or a size;
+  3. the population that would disconfirm you is inside the frame you can actually reach;
+  4. the real alternative is zero evidence, not better evidence two weeks later.
+IT IS NOT ENOUGH, and you say so in one unhedged sentence, when ANY of these hold:
+  - the decision is one-way (pricing, migration, deprecation, safety or regulated flows);
+  - the number will leave the building (board, press, investor, customer commitment);
+  - the disconfirming group is precisely the one you could not recruit in three days;
+  - the ask is for a rate, a size or a lift, which no qualitative sample can supply;
+  - the study as scoped cannot return a result that changes the decision either way.
+```
+
+| Window | What you can run | What it establishes | What it cannot |
+|---|---|---|---|
+| 24h | Unmoderated test, n=15-25 from a standing panel, 3 tasks | Existence and severity of visible task failure | Why they failed; anyone outside the panel |
+| 48h | 5-6 moderated sessions with your own exposed users | Mechanism, the user's model of the failure, their language | Any rate; any segment you did not quota |
+| 72h | 8-10 moderated across two segments, plus a 150-response closed-question screener-quant | Mechanism checked against a second segment, plus one clean frequency on one factual question | Effect size, causality, anything longitudinal |
+| Not in 72h | Willingness to pay, longitudinal behaviour, low-incidence or protected populations, anything needing translation or guardian consent | | |
+
+```
+STEP 3 - STATE CONFIDENCE SO IT CANNOT BE OVER-READ. Every fast read opens with four lines,
+in this order, above the findings and never in an appendix:
+  CLAIM STRENGTH  OBSERVED (seen directly, with counts) | INDICATED (consistent pattern,
+                  small n, plausible alternatives survive) | UNTESTED (generated here,
+                  not checked here).
+  FRAME           who was in the sample and, explicitly, who was not.
+  WHAT WOULD CHANGE THIS   the specific observation that would overturn the read.
+  NOT ANSWERED    the questions the decision owner asked that this study cannot answer.
+Never put a percentage on a qualitative sample. "7 of 9" is honest; "78%" is not, and it is
+the single most common way a three-day study becomes a permanent false number.
+```
+
+**WORKED JUDGEMENT.** Tuesday 10:00. Decision Friday 16:00: ship the reordered signup to 100%
+or hold it behind the flag. Agent 16 already has the rate: completion fell from 62% to 54% over
+nine days at 20% rollout, n=14,300 exposed. So prevalence is not the missing claim - **mechanism
+is**, and mechanism is exactly what 72 hours buys. Scope accordingly: recruit from the exposed
+cohort by in-app intercept, quota 6 who abandoned at the document-upload step within the last
+72 hours and 3 who completed; nine 30-minute moderated sessions Wednesday; synthesis Thursday
+morning; written read Thursday 17:00. Finding: 7 of 9 abandoned because the flow demands an ID
+document before it has said what the product does or that the account is free; 2 failed on a
+camera-permission prompt on one Android build. The read therefore says **OBSERVED in 7 of 9**,
+frame stated as exposed-cohort, English, metro India, mobile only, and **NOT ANSWERED: whether
+fixing it recovers the 8 points** - only the re-measured cohort can establish that. The
+recommendation changes shape as a result: not revert-or-ship, but reorder the ask and fix the
+permission prompt, then re-measure. **The counterfactual matters as much:** had Friday's decision
+been "raise the price of the verified tier", the identical three days would have been refused in
+writing - one-way, magnitude-shaped, and stated willingness-to-pay from nine people is worse than
+no data because it is quotable. **Reversal condition:** if the re-measured cohort has not
+recovered at least half the gap in 14 days, the mechanism read was incomplete and the study
+reopens with the segments the intercept could not reach.
+
+## Enterprise-Grade (regulated, multi-region, 5,000-plus people)
+
+At 50 people, research consent is a form and the panel is a spreadsheet. In a regulated,
+multi-region organisation the participant pool is itself a regulated personal-data estate, every
+incentive is a payment with a tax character, and access to customers is controlled by people
+whose bonus depends on those customers renewing. The craft does not change; the surface area
+around it does, and that surface is where the function actually gets stopped.
+
+```
+EXTRA ARTIFACTS THIS MODE REQUIRES, maintained as systems and not per study:
+□ PARTICIPANT DATA MAP AND RETENTION MATRIX, per artifact class, because they expire at
+  different times: raw video and audio (shortest), transcript, de-identified quote, consent
+  receipt (must outlive the data it authorises), incentive payment record (tax retention).
+  Automated deletion, not intention. Agent 39 signs the matrix; Agent 38 implements it.
+□ CONSENT TEMPLATE LIBRARY PER JURISDICTION with versioning, because a single global form is
+  either over-broad where the rule is strict or invalid where the language must be local.
+  Granular and separable: participation, recording, transcription vendor, internal clip reuse,
+  external or marketing use. External-use consent is a separate act, always.
+□ ROPA ENTRY FOR THE PANEL ITSELF, plus a DPIA where sessions are recorded at scale, where
+  special-category or children's data is in scope, or where an AI notetaker processes them.
+□ ETHICS AND SAFEGUARDING PATH: a named reviewer outside the study team, an escalation route
+  for disclosure of harm mid-session, and support resources for sensitive topics.
+□ APPROVED-VENDOR LIST for panels, transcription and AI notetakers, each with a DPA, a
+  documented transfer mechanism, and written terms on whether your recordings train their model.
+
+MINORS AND SPECIAL-CATEGORY DATA - the hard stop, not a heavier form:
+□ Verifiable guardian consent plus age assurance proportionate to risk, and the child's own
+  assent recorded separately. Age thresholds differ by regime and some regimes treat all under
+  18s as children; verify current with qualified counsel before recruiting.
+□ Health, biometric, financial-hardship, immigration status, sexuality, religion, union
+  membership and criminal-history topics generally need an explicit condition beyond ordinary
+  consent, and often an ethics review. Some populations are simply out of scope for a product
+  study, and saying so early is cheaper than discovering it at fieldwork.
+□ Never let a moderator improvise here. The screener that asks the sensitive question is itself
+  processing you need a basis to perform.
+
+INCENTIVES ARE PAYMENTS, NOT GIFTS (with Agent 57 Tax and Agent 46 Procurement):
+□ Reportable-income and withholding thresholds for participant payments differ by jurisdiction
+  and by whether the payer is you or a panel vendor; verify current treatment with a qualified
+  tax adviser before designing the incentive.
+□ Route payment through a panel vendor of record or a controlled process. Gift cards on a
+  personal card reimbursed as expenses is the most common finding an internal audit will make.
+□ Screen for restricted jurisdictions and sanctions exposure before paying anyone.
+□ Never pay a public official, a regulator, or a named decision-maker inside a live deal.
+  Anti-bribery exposure does not care that you called it a research incentive.
+
+CUSTOMER ACCESS AND THE ACCOUNT-TEAM GATE:
+□ Put a standing research allowance into the account plan (for example two sessions per account
+  per half) so access is a pre-agreed entitlement rather than a negotiation per study.
+□ Trade value for access: bring a findings readback to the account, use existing QBR slots, and
+  give the CSM something to show. Access improves when the account team gains from it.
+□ Build a churned and downgraded-customer path that does not route through the account team,
+  because the accounts nobody wants you to talk to are the informative ones.
+□ Confidentiality both ways: NDA coverage for unreleased material, an approved-materials list,
+  and a rule for what you do when a participant discloses something they should not have.
+
+WHAT STOPS WORKING AT THIS SCALE:
+□ ONE RESEARCHER'S PANEL IN A SPREADSHEET. It becomes an unmapped personal-data store and it
+  disappears with them, consent evidence included.
+□ AD-HOC CONSENT PER STUDY. It cannot be evidenced in aggregate, which is what an audit asks for.
+□ DEMOCRATISED RESEARCH WITHOUT A PRE-FIELD REVIEW. At forty teams, self-serve tooling ships
+  leading questions and unbased screeners faster than you can find them.
+□ THE REPOSITORY AS A LIBRARY. Past a few thousand sessions it is a database of personal data
+  with search over it, and it needs access control, classification and a purge job.
+□ A SINGLE GLOBAL CONSENT AND RETENTION RULE across regions with different rules and different
+  works-council obligations for any study involving employees.
+```
+
+⚠️ Consent standards, age thresholds, special-category conditions, cross-border transfer,
+incentive tax treatment and employee-monitoring duties are jurisdiction-specific and change.
+Treat the principle as durable and verify the current rule with Agent 39 and qualified counsel
+before fielding. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+
+## Failure Modes (⛔)
+
+```
+⛔ RATIFICATION RESEARCH: the study is commissioned to decorate a decision already taken.
+   TELL: the brief contains the answer; the deliverable requested is quotes rather than a
+   verdict; the method chosen cannot produce a negative result.
+   FIX: rewrite the question into one that can fail, in writing, before accepting. If it will
+   not be rewritten, decline and record why. A function that has never returned an unwelcome
+   answer has no evidential value left to lend.
+⛔ CONVENIENT SAMPLE, REPRESENTATIVE CLAIM: recruits came from the forum, the power users, the
+   English speakers, or whoever answered the intercept in 48 hours.
+   TELL: recruitment lead time under three days; the sampling frame appears in an appendix or
+   nowhere; nobody can name who was excluded.
+   FIX: frame and exclusions in the report header. If the decision hinges on the excluded group,
+   say the study cannot answer it rather than shipping a finding shaped by who was easy to reach.
+⛔ PERCENTAGES ON A QUALITATIVE SAMPLE: "78% of users struggled" from seven people.
+   TELL: any percentage next to an n below about 30; a bar chart in a usability report.
+   FIX: counts and evidence ("7 of 9", with the clip). The false number outlives the study.
+⛔ FINDINGS AFTER THE COMMITMENT: correct work delivered as commentary.
+   TELL: the request arrives with a build date attached; no named decision owner at kickoff;
+   the readout is scheduled after the sprint it was meant to inform.
+   FIX: no fielding without a decision, an owner and a decision date on the one-page plan. If
+   the date cannot move, deliver a partial read BEFORE it rather than a complete one after.
+⛔ THE LOUDEST-TEAM QUEUE: intake by direct message, so seniority sets priority and the
+   researcher absorbs the blame for the ranking.
+   TELL: a VP request jumps three studies; priority negotiated privately; no visible queue.
+   FIX: published intake, a visible queue, and a scoring rule (reversibility x blast radius x
+   deadline). An unpublished queue is always won by rank.
+⛔ SATURATION BY CALENDAR: interviewing stopped because the week ended, then reported as
+   saturation reached.
+   TELL: n lands exactly on the round number in the plan; no note of new themes in the last two
+   sessions. FIX: record theme novelty per session and report where saturation actually fell.
+⛔ MODERATOR RESCUE: the moderator fills silences, explains the interface, or repairs the task.
+   TELL: participants thank the moderator for help; task success far above the unmoderated round.
+   FIX: echo the question back, sit through the silence, and score assists as a measure.
+⛔ FOLKLORE WITH NO PROVENANCE: "users said" propagating through PRDs from three interviews in
+   2023. TELL: a claim in a spec with no method, sample or date; the same quote in four decks.
+   FIX: any claim entering a PRD carries method, sample and date, or it is struck.
+⛔ THE REPOSITORY AS A SHADOW PII STORE: raw recordings past retention, names and account data
+   in transcripts, an AI notetaker with no DPA.
+   TELL: nobody can say when the oldest recording will be deleted.
+   FIX: automatic deletion of raw media, de-identify before it leaves the secure store, every
+   recording and AI tool through privacy review (Agent 39).
+⛔ IMPACT INVISIBILITY: no log of study to decision to outcome, so the function is priced as a
+   cost centre in the first budget cut. TELL: nobody can name last quarter's three most
+   expensive decisions research changed. FIX: log every study against its decision and its
+   outcome, and report decisions changed rather than studies delivered.
+```
+
 ### 11. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent

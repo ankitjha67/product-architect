@@ -349,6 +349,220 @@ OPERATING DISCIPLINE (this is what makes it a product, not a demo):
   cost-per-1k-chunks + vector-store spend the same way §11 tracks warehouse cost.
 ```
 
+## Decision Framework: The Upstream Schema Change You Cannot Get a Contract For
+
+Section 8 describes what a data contract is. This is the harder half: what you actually do when
+a producing team is about to change a schema you depend on, they did not know you consumed it,
+and you have no authority to make them sign anything. It is the defining judgement of this
+function, because data engineering is the only engineering discipline whose entire input surface
+is produced by teams that do not report to it and get no credit for its uptime.
+
+```
+STEP 0 - TIER THE DEPENDENCY BEFORE YOU SPEND ANY POLITICAL CAPITAL. You get a small number of
+"please change your release for us" requests per year. Spend them on:
+  T0  feeds a number that leaves the company or moves money: invoices, revenue recognition,
+      a board or investor figure, a regulatory return, a production ML model, a customer-facing
+      surface. Breakage here is a restatement, not an outage.
+  T1  feeds an operational decision inside the company: staffing, spend, prioritisation.
+  T2  exploratory, ad hoc, one analyst. Breakage is an inconvenience.
+Only T0 and T1 justify asking another team to change their plan. Say the tier out loud in the
+first message; an escalation that treats every table as critical is discounted by the second one.
+
+STEP 1 - SEPARATE THE TWO QUESTIONS. They get conflated and the conversation dies there:
+  IS THE CHANGE CORRECT?   Usually yes. An overloaded column being split, a bad name being
+                           fixed, a denormalisation being undone are all improvements, and
+                           arguing against them makes you the team that blocks progress.
+  IS THE SEQUENCE SAFE?    This is the only thing you are actually negotiating: dual-write,
+                           deprecation window, and who finds out first when it breaks.
+Ask for the sequence, never for the veto. "Do not do this" loses; "do this with a 60-day
+overlap and a check in your CI" wins, because it costs them days rather than a roadmap item.
+
+STEP 2 - TECHNICAL MITIGATIONS, cheapest first, noting WHO PAYS for each:
+| Mitigation | Cost | Who pays | What it actually buys |
+|---|---|---|---|
+| Explicit column lists, never `SELECT *` | Hours | You | A loud failure instead of a silent one |
+| Bronze captures the raw payload as a struct, parse in silver | Days | You | Added and renamed fields land as DATA, not as a broken load; replayable later |
+| Contract test in YOUR CI, alerting with a named producer | Days | You | Detection, not prevention. You still hold the pager |
+| Quarantine on drift: freeze the gold table at last-good and serve it with a staleness label | Days | You | The single highest-value control: stale-but-labelled beats silently-null, always |
+| Schema registry with backward-compatible mode; Avro or Protobuf with reserved field numbers | Weeks | Shared | Structural prevention on streaming topics |
+| CDC off the write-ahead log rather than a query | Weeks | You | DDL surfaces as an event you can alert on before the next scheduled run |
+| Contract test in the PRODUCER's CI | Days of their time, months of your credibility | Them | The only real prevention. Their build breaks before your DAG does |
+
+STEP 3 - THE ESCALATION LADDER, WITH CLOCKS. Never open at the top:
+  HOUR 0    Automated alert names the producing service, the commit, the tier and the
+            downstream business artifact. Quarantine the gold table; notify its consumers.
+  HOUR 4    Direct message to the producing team's on-call with the PR link and ONE sentence
+            naming the artifact: "this column computes the invoice run". Never "you broke our
+            pipeline" - nobody outside your team owns your pipeline, and they are right not to.
+  DAY 1     Written ask with the three options and their costs: dual-write for N days, a
+            generated column for N days, or you take the breakage deliberately. Offer to write
+            the migration and the test yourself. Removing their work is what buys the yes.
+  DAY 3     Both engineering managers, with the tier, the artifact, and the cost in hours and
+            currency. A cost with a number attached moves; an architectural principle does not.
+  DAY 10    The architecture or platform forum, as a POLICY item rather than a ticket: propose
+            the producer-side contract check as a standard, using this incident as the evidence.
+  QUARTER   Into the engineering definition of done, sponsored by the platform group or CTO.
+BE HONEST ABOUT HOW THIS ACTUALLY GETS WON: contracts are signed after the third attributable,
+costed incident, never before the first. Your job in the meantime is to make each incident
+visible, attributable and quantified, and to keep serving correct data while you do it.
+
+STEP 4 - WHEN TO ACCEPT THE BREAKAGE, deliberately and in writing:
+□ The dataset is T2 and the mitigation costs more than the dataset is worth.
+□ The producer is a third party or SaaS vendor whose roadmap you do not influence. Buy the
+  connector's drift handling and budget reactive fixes; do not build a contract regime for a
+  counterparty who will never sign one.
+□ Their change is right and your model was relying on an accident. Fix your model and say so.
+□ The producing system is being deprecated inside two quarters. Do not harden against a corpse.
+□ ACCEPT AND LABEL: publish an SLA of "best effort, breaks with upstream" for that dataset and
+  stop paging on it. An SLA you cannot hold corrodes trust in the ones you can.
+NEVER: silently remap the new fields back onto the old value set to keep dashboards green. That
+preserves the chart and destroys the semantics, and the next person to read the field will be
+confidently wrong with no way to know it.
+```
+
+**WORKED JUDGEMENT.** The payments team plans to split `orders.status` (one varchar carrying 11
+values) into `fulfilment_status` and `payment_status`, dropping the old column, and ships in 9
+days. A keyword alert on their PR is how you find out. **Consumers:** 3 gold models, 14
+dashboards, the Monday revenue figure, the monthly invoice run, a churn model in production, and
+a reverse-ETL sync into the CRM. **Tier: T0** - it computes invoices. **Step 1:** their change is
+correct; their own defect rate on the overloaded column proves it. So the ask is sequence only.
+**Step 2 ask:** keep the old column as a generated column for 60 days, plus one contract test in
+their CI that you write. **Cost to them: about 2 engineer-days plus carrying a deprecated column
+through one release.** Cost of not doing it: an invoice run computing revenue off a null column,
+which is credit notes, a restatement conversation with revenue accounting, and roughly **3 weeks
+of finance time** on top of the customer-facing credits. Stated that way, it is a two-day ask
+against a three-week loss, and it is usually granted. **If they counter with 14 days rather than
+60:** accept, and pull the migration of the 3 gold models forward into this sprint; 14 days of
+overlap is worth more than 60 days of argument. **If they refuse entirely because their release
+is tied to a regulatory date:** take the breakage deliberately - freeze `fct_orders` at last-good
+with a staleness banner, run this month's invoice cycle from bronze with a manually verified
+mapping and a second reviewer, and file the incident with the hours and the credit exposure
+attached. **That filed number is the thing that buys the producer-side check next quarter**, and
+it is worth more than winning this argument. **Reversal condition:** if a second T0 dataset
+breaks from the same producing team inside two quarters, the ask stops being a request and
+becomes an architecture-forum policy item with both incidents as evidence.
+
+## Enterprise-Grade (regulated, multi-region, 5,000-plus people)
+
+At 200 people the warehouse is one region, one bill and one team, and the platform holds together
+because everyone knows everyone. Past a few thousand, the questions change shape: where does this
+row physically sit, who certified this table, who can see this column, and can you prove any of
+it to an assessor. None of those are query problems, and all of them are far cheaper to design in
+than to retrofit.
+
+```
+DATA RESIDENCY RETROFITTED ONTO AN EXISTING WAREHOUSE - the expensive one:
+□ DO NOT SHARD FIRST. Classify by data CATEGORY what genuinely must remain in a jurisdiction,
+  because it is rarely everything. Typical outcome: a small set of identifying and regulated
+  fields is constrained, and the aggregates are not.
+□ Then choose per category, cheapest first: (a) pseudonymise or aggregate before export so what
+  leaves is no longer in scope, (b) in-region ingestion and storage with a global control plane
+  holding only metadata, (c) a full regional replica of the gold layer, (d) a separate regional
+  deployment. Cost rises roughly an order of magnitude down that list.
+□ Residency reaches further than the warehouse: object storage, backups and snapshots, table
+  time travel, logs, the BI cache, the vector index, the ML feature store, and every SaaS
+  processor in the chain. A residency claim that covers only the warehouse is not a claim.
+□ Cost the options BEFORE anyone promises a customer or a regulator, and present it as an
+  architecture decision with a number, not as a compliance objection. Requirements differ by
+  jurisdiction and change; Agent 39 Privacy and Agent 11 Compliance own the interpretation, and
+  it is verified with qualified counsel. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+
+LINEAGE AS AN AUDIT ARTIFACT, not as a diagram:
+□ Column-level lineage from source system to reported figure, produced automatically from the
+  transformation graph rather than drawn by hand. A hand-drawn diagram is accurate on the day
+  it is made and wrong for the year afterwards, while being believed throughout.
+□ It must answer four questions on demand, because these are the ones actually asked: where did
+  this number come from; what else breaks if this source changes; who has read this column; and
+  what did this table contain on the reporting date last quarter.
+□ Retain lineage and run history for the applicable statutory period (commonly around seven
+  years in financial-reporting scopes - verify current requirements with qualified counsel).
+□ Change management on transformation code becomes an audit control: peer review, no direct
+  production writes, a ticket reference on every deploy, and an owner who is not the author.
+
+CERTIFIED DATASETS - the mechanism that makes a large platform usable:
+□ A visible tier on every dataset: CERTIFIED (owned role, tested, SLA'd, lineage complete,
+  documented, breaking changes announced), SUPPORTED (owned, tested, no SLA), COMMUNITY
+  (no guarantees), DEPRECATED (dated removal). Show the tier in the BI tool, not only in the
+  catalogue, because that is where the decision to trust a number is actually made.
+□ Certification is earned and revocable, with an annual re-review. A certified table whose owner
+  left and whose tests were disabled is worse than an uncertified one, because it is trusted.
+□ A published metric register with one definition per metric, versioned. When a definition
+  changes under a number already committed externally, ship the new one ALONGSIDE the frozen
+  one with a dated cutover and a restated back series; never redefine silently.
+
+ACCESS CONTROL AT SCALE:
+□ Role-based, granted to groups from the HR system, never to individuals, so joiners and leavers
+  are handled by the identity lifecycle rather than by memory.
+□ Column-level masking and row-level policies attached to the data classification, so a new
+  table inherits the right controls by tag rather than by a reviewer remembering.
+□ Just-in-time elevated access for production incidents, time-boxed and logged, replacing the
+  standing admin group that every platform accumulates.
+□ Quarterly access recertification by the data owner, with evidence retained. This is a routine
+  audit sample and it is also how you discover the service account nobody can identify.
+□ Separate non-production entirely: masked or synthetic data only. The most common serious
+  incident at this scale is a production extract sitting in a development environment.
+
+WHAT STOPS WORKING AT THIS SCALE:
+□ THE CENTRAL TEAM AS A TICKET QUEUE. At forty consuming teams the queue is a decision to grow
+  a shadow data stack, and shadow stacks are where the next PII incident lives.
+□ OWNERSHIP BY PERSON. Every departure orphans a DAG, discovered mid-incident.
+□ ONE UNTAGGED WAREHOUSE BILL. Without per-team attribution, a cost fix becomes a budget
+  argument instead of a query fix.
+□ INFORMAL SCHEMA COORDINATION. It survives about two reorgs, which at this size is 18 months.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ ORPHAN PIPELINE: the owner left and the runbook is a Slack thread.
+   TELL: one person's name in every alert alias; failures triaged by asking who knows about it;
+   nobody will take leave during month-end close.
+   FIX: owner as a ROLE in the catalogue, runbook in the repo beside the DAG, alerts to a rota.
+   Track bus factor per pipeline and refuse new pipelines without a named second.
+⛔ THE SOCIAL CONTRACT: a data contract that exists as a Confluence page and a meeting.
+   TELL: nobody can name the CI job that enforces it; breakages are still reported by consumers.
+   FIX: every clause becomes a producer-side check plus a registry entry. A contract that is
+   not a failing test is a memo, and memos do not survive reorgs.
+⛔ SILENT NULLING: a renamed upstream column makes a field go null and everything keeps running.
+   TELL: a metric drifts toward zero over days with no error anywhere.
+   FIX: schema and null tests that block, and quarantine-with-staleness-label rather than
+   serving a table that is quietly wrong.
+⛔ SELECT-STAR INGESTION: the load adapts to any upstream change, which is the problem.
+   TELL: nobody can list which columns a pipeline depends on. FIX: explicit column lists, and
+   raw payload capture in bronze so new fields are data rather than surprises.
+⛔ PII IN A FIELD THAT WAS NEVER MEANT TO CARRY IT: government IDs in a free-text note, an email
+   in a URL parameter, a card fragment pasted into a support ticket.
+   TELL: profiling or a scanner finds it; a support workflow encourages pasting.
+   FIX: stop ingesting the field, not the pipeline; mask at the bronze boundary; purge
+   downstream copies INCLUDING any embeddings built from it; log it as a privacy incident with
+   Agent 39, not as a data-quality ticket.
+⛔ COST BLOWOUT FROM ONE DASHBOARD: a five-minute auto-refresh running an unpartitioned full
+   scan becomes the largest line on the bill.
+   TELL: spend rises sharply week over week with no new workload.
+   FIX: cost per query, per model and per team within 24 hours; fix the top offender; require
+   partition filters and per-user quotas so the next one cannot happen silently; report as
+   showback to the owning team rather than absorbing it centrally.
+⛔ GRAIN BUGS AND FAN-OUT JOINS: a duplicated dimension row doubles revenue.
+   TELL: a total that moves when an unrelated dimension is added to a report.
+   FIX: declare "one row per ___" on every model, and test uniqueness on the declared key.
+⛔ RETRY WITHOUT IDEMPOTENCY: a re-run double-counts, most visibly in billing.
+   TELL: totals that change on backfill. FIX: idempotency keys on every billable event and
+   merge-on-key semantics rather than append-on-retry.
+⛔ BACKFILL IMPOSSIBLE: a transform bug is found two quarters late and the source retained 30
+   days. TELL: nobody mapped operational retention against analytical need.
+   FIX: decide raw retention at design time - bronze is the insurance policy and it is cheaper
+   than the incident. Where the window is gone, publish explicitly what can and cannot be
+   restated instead of quietly recomputing a partial series.
+⛔ LINEAGE AND CATALOGUE ROT: accurate the day it was built, wrong for the year since, believed
+   throughout. TELL: the catalogue lists tables that no longer exist.
+   FIX: generate lineage from the transformation graph automatically; never maintain it by hand.
+⛔ REVERSE-ETL ON A FAILED MODEL: a broken segment syncs into a customer-facing system.
+   TELL: an audience jumps or collapses by an order of magnitude with no campaign change.
+   FIX: gate every sync on its source model's freshness and volume tests, plus a magnitude guard
+   that halts on an unexplained change. A data-quality failure that reaches a customer is a
+   communications incident, not a pipeline one.
+```
+
 ### 14. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` holds the master catalogue. This is the data layer of

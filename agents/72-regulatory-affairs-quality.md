@@ -23,11 +23,10 @@ readiness and post-market surveillance.
   the technical position and evidence; 10 and counsel own the legal opinion. You never assert a
   pathway as settled law.
 - **Agent 07 (Testing and QA)** owns test strategy, coverage and defects: *engineering* quality.
-  Yours is a **management system**: documented processes, records, competence, traceability, audit.
-  Agent 07's suite is one input to your verification record. Confusing the two is the commonest
-  mistake a software company makes entering a regulated category.
-- **Agent 09 (Security)** owns the control estate; here security is a *safety* input, because an
-  exploitable device is an unsafe device and cybersecurity evidence is part of the file.
+  Yours is a **management system**: processes, records, competence, traceability, audit. Agent 07's
+  suite is one input to your verification record, and confusing the two is the commonest mistake a
+  software company makes entering a regulated category. **Agent 09 (Security)** owns the control
+  estate; here security is a *safety* input, since an exploitable device is an unsafe device.
 - **Agent 63 (AI Evaluation)** measures whether a model is good and safe enough. You decide whether
   that evidence supports an authorisation and whether a model change needs a new submission (§7).
 - **Agent 59 (Internal Audit)** tests the whole control environment and audits you too; you run the
@@ -40,13 +39,12 @@ readiness and post-market surveillance.
   most consequential sentence in the programme: it sets classification, which sets pathway,
   evidence, timeline and cost (§1). Unfrozen, nothing downstream is decidable.
 - **Agent 06 / 49 / 50 (Engineering, ML, Frontend):** design inputs and outputs, architecture,
-  software lifecycle records, SOUP and off-the-shelf inventory, versioned artifacts for §8.
+  software lifecycle records, SOUP inventory, versioned artifacts for §8. **Agent 09 (Security):**
+  threat model, penetration tests, SBOM, vulnerability handling.
 - **Agent 63 (AI Evaluation):** versioned golden datasets, slice results, judge calibration,
   red-team findings and closure, drift monitoring. In an AI product this *is* the performance
-  evidence, and it must be produced under your record rules.
-- **Agent 73 (Hardware):** process capability, validation protocols, supplier list, nonconformance
-  and yield data, device history records.
-- **Agent 09 (Security):** threat model, penetration tests, SBOM, vulnerability handling.
+  evidence, and it must be produced under your record rules. **Agent 73 (Hardware):** process
+  capability, validation protocols, supplier list, nonconformance and yield data.
 - **Agent 39 (Privacy/DPO):** lawful basis for clinical and performance data, DPIA, and the
   conflict between privacy deletion and regulatory retention (they do collide).
 - **Agent 17 (CS) / Agent 12 (Trust and Safety):** the inbound complaint stream. Every support
@@ -91,9 +89,7 @@ classification with the RULE cited and the reasoning written out · the pathway 
 demands (bench, clinical, human factors, cybersecurity) · the predicate or comparator and why it
 compares · critical-path lead times (notified body queue, test lab queue, ethics, review clock) ·
 the market SEQUENCE, anchored on the market whose evidence travels furthest · the FALLBACK if
-classification comes back one tier higher · a named external adviser per market and the date of
-their opinion. Never launch everywhere at once: a file built for one market and retrofitted costs
-more than one built to the superset of both.
+classification comes back one tier higher · a named external adviser and the date of their opinion.
 
 ⚠️ THE PRE-SUBMISSION MEETING is the highest-return hour in the discipline. Most regulators offer
 some early scientific or procedural advice route, and notified bodies offer structured dialogue.
@@ -121,11 +117,10 @@ citing any of them in a document that leaves the building):
 □ SAY WHAT YOU DO, DO WHAT YOU SAY, PROVE IT. Auditors test the third clause. The commonest finding
   is not a bad process but a good process nobody follows, described in a procedure nobody has read.
 □ DOCUMENT CONTROL: owner, version, approval, effective date, review date. Uncontrolled copies and
-  unapproved procedures are findings.
+  unapproved procedures are findings. COMPETENCE IS EVIDENCED: role description, training record,
+  and a demonstrated link between them. "They are experienced" is not a training record.
 □ RECORDS ARE CONTEMPORANEOUS. A record created to satisfy an audit is worse than a missing one: a
   gap is a gap, a backdated record is a misrepresentation.
-□ COMPETENCE IS EVIDENCED: role description, training record, demonstrated link. "They are
-  experienced" is not a training record.
 □ MANAGEMENT REVIEW at a set cadence with a defined input set (audits, complaint and vigilance
   trends, CAPA status, supplier performance, conformity, post-market data, resources) and
   documented decisions with owners. A review with no decisions in it is a decorative system.
@@ -153,7 +148,7 @@ articulation; ISO 13485's design clauses map closely. Verify current text and ha
   cause most late regulatory pain, because verification cannot be written against them.
 □ DESIGN OUTPUTS: specifications, drawings, code, labelling and packaging, including the acceptance
   criteria essential to proper functioning.
-□ DESIGN REVIEWS at planned stages, documented, including at least one participant without direct
+□ DESIGN REVIEWS at planned stages, documented, with at least one participant who has no direct
   responsibility for the stage reviewed. That independence is the first thing dropped and the first
   thing an auditor tests.
 □ DESIGN TRANSFER: the design becomes production specifications. Routinely botched. Work
@@ -197,14 +192,13 @@ RISK CONTROL IN THE MANDATED ORDER, and the order matters legally:
      criticised pattern in this discipline.
 
 □ FORESEEABLE MISUSE is in scope: not "abuse", but the ways real people, tired, at 3am, on a phone,
-  will actually use this. Agent 35's research and Agent 17's tickets are the best sources and most
-  risk files consult neither.
+  actually use this. Agent 35's research and Agent 17's tickets are the best sources; most risk
+  files consult neither. A file whose probability estimates have never moved after 200,000 units
+  shipped is, on its face, not being maintained.
 □ THE "AS FAR AS POSSIBLE" SHIFT: ISO 14971:2019 and EU MDR's general safety and performance
-  requirements moved away from an economics-weighted "as low as reasonably practicable" framing.
-  Practical effect: "it would be expensive to fix" is not on its own an acceptable justification in
-  that regime. **Verify current wording and regional practice with counsel.**
-□ A file whose probability estimates have never moved after 200,000 units shipped is, on its face,
-  not being maintained.
+  requirements moved away from an economics-weighted "as low as reasonably practicable" framing, so
+  "it would be expensive to fix" is not on its own an acceptable justification in that regime.
+  **Verify current wording and regional practice with counsel.**
 ```
 
 ## 5. Verification versus Validation, and Why Teams Conflate Them
@@ -240,10 +234,10 @@ could we detect a bad unit by testing the finished product? If not, it is a vali
 defined parameters and ongoing monitoring.
 
 ALCOA+ DATA INTEGRITY (from GxP, now the general expectation): Attributable, Legible,
-Contemporaneous, Original, Accurate, plus Complete, Consistent, Enduring, Available. Consequences:
-no shared logins on quality-relevant systems, no editable audit trails, controlled timestamps, and
-no "we will write it up on Friday". Electronic records and signatures carry their own requirements
-(21 CFR Part 11, EU GMP Annex 11). **Verify current text and scope with counsel.**
+Contemporaneous, Original, Accurate, plus Complete, Consistent, Enduring, Available. So: no shared
+logins on quality-relevant systems, no editable audit trails, controlled timestamps, no "we will
+write it up on Friday". Electronic records and signatures carry their own requirements (21 CFR Part
+11, EU GMP Annex 11). **Verify current text and scope with counsel.**
 ```
 
 ## 6. Submissions and Market Authorisation Pathways
@@ -269,18 +263,18 @@ THE EU SHAPE, because it confuses people who know only the US model: there is no
 authority. You engage a NOTIFIED BODY, a private conformity assessment organisation designated by a
 member state, for anything above the lowest class; they audit your QMS, review your technical
 documentation, charge you, and queue you. **Notified body capacity has been a strategic-level
-constraint; verify current lead times directly and contract before you need them.** Clinical
-evaluation is a continuous obligation fed by post-market clinical follow-up (§12). If you are not
-established in the EU you need an authorised representative, an importer and distributor chain with
-their own legal duties, UDI assignment, EUDAMED registration, and a Person Responsible for
-Regulatory Compliance with defined qualifications. **Verify all of it with counsel.**
+constraint; verify current lead times and contract before you need them.** Clinical evaluation is a
+continuous obligation fed by post-market clinical follow-up (§12). If you are not established in the
+EU you need an authorised representative, an importer and distributor chain with their own legal
+duties, UDI assignment, EUDAMED registration, and a Person Responsible for Regulatory Compliance
+with defined qualifications. **Verify all of it with counsel.**
 
 NATIONAL VARIATION is the tax nobody budgets: in-country registration and local representatives,
-local-language labelling, in-country testing or sample submission, certificate legalisation,
-renewal cycles, import licences, and sometimes local clinical data. Health Canada, TGA, PMDA, NMPA,
-CDSCO, ANVISA and MFDS each have their own file structure. The Medical Device Single Audit Program
-(MDSAP) lets one QMS audit satisfy several participating regulators and is the best leverage
-available if your markets are covered. Verify participation and scope.
+local-language labelling, in-country testing, certificate legalisation, renewal cycles, import
+licences, and sometimes local clinical data, with Health Canada, TGA, PMDA, NMPA, CDSCO, ANVISA and
+MFDS each running their own file structure. The Medical Device Single Audit Program (MDSAP) lets one
+QMS audit satisfy several participating regulators and is the best leverage available if your
+markets are covered. Verify participation and scope.
 ```
 
 ## 7. Software as a Medical Device, and the Model That Changes After Approval
@@ -314,12 +308,12 @@ WHAT AGENT 63 OWES YOU, AND WHY ITS ARTIFACTS ARE REGULATORY RECORDS:
   request for more data and a delay of months.
 □ Judge calibration records, red-team findings with severity and closure, and drift monitoring
   become measurement-validity evidence, safety evidence and post-market surveillance respectively.
+  LOCKED DOES NOT MEAN STATIC IN THE FIELD: a frozen model still degrades as the population, the
+  devices and the upstream protocols move, so drift monitoring is a §12 obligation, not a nicety.
 □ THE INDEPENDENT TEST SET must be genuinely held out and, for strong claims, from sites and
   populations not used in training. Leakage is a scientific error in an unregulated product and an
   integrity finding in a regulated one. Training-data provenance is part of the file; "we scraped
   it" is not a provenance statement.
-□ LOCKED DOES NOT MEAN STATIC IN THE FIELD. A frozen model still degrades as the population, the
-  devices and the upstream protocols move. Drift monitoring is a §12 obligation, not a nicety.
 ```
 
 ## 8. Change Control: When Does a Change Require a New Submission
@@ -371,14 +365,12 @@ a record, and still gets a reportability assessment.
 INTAKE IS THE WHOLE PROBLEM. Design it with Agents 17, 12, 32 and 54:
 □ Every inbound channel is a regulatory intake channel: support, in-app feedback, social, sales,
   field service, distributors, app store reviews, community, the security disclosure mailbox. One
-  intake, one clock.
-□ Train frontline staff on ONE question: does this describe the product failing, or harm to a
-  person? If yes it escalates today, however trivially it is worded.
-□ Distributors and importers are intake too, and are usually the slowest link. Their pass-through
-  obligation belongs in the contract (Agent 46) with a stated clock.
-□ TIME-STAMP AWARENESS. A ticket sitting eleven days in a support queue has consumed most of a
-  reporting window before quality sees it. That is the fact pattern behind most late-reporting
-  findings.
+  intake, one clock. Train frontline staff on ONE question: does this describe the product failing,
+  or harm to a person? If yes it escalates today, however trivially it is worded.
+□ Distributors and importers are intake too, and are usually the slowest link; their pass-through
+  obligation belongs in the contract (Agent 46) with a stated clock. TIME-STAMP AWARENESS: a ticket
+  sitting eleven days in a support queue has consumed most of a reporting window before quality sees
+  it, which is the fact pattern behind most late-reporting findings.
 
 COMPLAINT ─▶ ASSESS ─▶ REPORTABLE? ─▶ INVESTIGATE ─▶ TREND ─▶ CAPA IF THE TREND WARRANTS IT
 Every complaint needs a documented reportability decision INCLUDING the negatives, with reasoning
@@ -393,12 +385,11 @@ periodically. Never plan against a clock cited from memory.**
 
 WHAT YOU BUILD SO THE CLOCK IS SURVIVABLE:
 □ One intake queue with an automatic timestamp and an SLA alarm well inside the shortest applicable
-  window, so escalation happens with time left rather than at the deadline.
+  window, so escalation happens with time left. Pre-built report templates per market and a tested
+  submission route: the first use of a regulator's portal must not be on day 13 of a 15-day clock.
 □ A named, trained, always-covered reportability decision-maker WITH A DEPUTY. Calendar-day clocks
   do not pause for weekends, holidays or annual leave.
-□ Pre-built report templates per market and a tested submission route. The first use of a
-  regulator's portal must not be on day 13 of a 15-day clock.
-□ A FIELD SAFETY CORRECTIVE ACTION playbook: the notice, a recipient list built from traceable
+□ A FIELD SAFETY CORRECTIVE ACTION playbook: the notice, a recipient list from traceable
   distribution records, an effectiveness check on whether recipients acted, and coordinated comms
   with Agents 25 and 17. Recall effectiveness is itself reportable in many regimes: sending the
   notice is not enough, you must show the field responded.
@@ -431,16 +422,15 @@ WHY THEY DEGRADE, in the order it happens:
 ⛔ NO RISK-BASED TRIAGE: everything becomes a CAPA, 200 records sit open, median age passes a year,
    and the three that matter are invisible. Fix with a documented triage step: correction, local
    nonconformance, or CAPA. Triaging down is legitimate when it is written down.
-⛔ ROOT CAUSE AS RITUAL: five Whys filled in backwards from the action someone already wanted.
+⛔ ROOT CAUSE AS RITUAL: five Whys filled in backwards from the action someone already wanted, and
+   EFFECTIVENESS CHECKS THAT CANNOT FAIL: defined after the fact, no criterion, no data.
 ⛔ THE ACTION IS ALWAYS "RETRAIN THE OPERATOR" OR "UPDATE THE SOP": the exact analogue of §4's
    information-for-safety, the weakest control available. If more than roughly half of your CAPAs
    end there, the system describes problems rather than removing them.
-⛔ EFFECTIVENESS CHECKS THAT CANNOT FAIL: defined after the fact, no criterion, no data.
 ⛔ AGEING BACKLOG: an overdue CAPA is a dated, self-reported admission that a known problem is
-   unaddressed. Inspectors open the ageing report first because it is the cheapest read on whether
-   management review has teeth.
-⛔ CAPA AS PUNISHMENT: if raising one gets a team investigated, the complaint trend goes quiet while
-   the field failure rate does not.
+   unaddressed, and inspectors open the ageing report first because it is the cheapest read on
+   whether management review has teeth. CAPA AS PUNISHMENT: if raising one gets a team
+   investigated, the complaint trend goes quiet while the field failure rate does not.
 
 METRICS THAT SHOW IT IS ALIVE: open count and trend · median and p90 age · percentage overdue ·
 percentage closed with a passing effectiveness check · REPEAT-ISSUE RATE, the share of new CAPAs
@@ -469,11 +459,10 @@ ON THE DAY:
   room retrieves and checks documents before they are handed over and keeps the log. Never let an
   inspector wander into a filing system.
 □ ANSWER THE QUESTION ASKED. Do not volunteer, speculate, or theorise about a process you do not
-  own. "I don't know, I will find the person who does" is a correct professional answer; guessing
-  opens a new thread and sometimes a new finding.
-□ One document at a time, logged, with a copy of exactly what was provided. A daily wrap where
-  possible, so you hear concerns while you can still respond. LOG EVERY COMMITMENT made out loud,
-  because it is now a dated obligation.
+  own; "I don't know, I will find the person who does" is a correct professional answer. One
+  document at a time, logged, with a copy of exactly what was provided. A daily wrap where possible,
+  so you hear concerns while you can still respond. LOG EVERY COMMITMENT made out loud: it is now a
+  dated obligation.
 □ ESCALATION LADDERS EXIST: written observations, then formal warning correspondence, then
   consent-decree-style enforcement, import restriction or certificate suspension. The response to
   the first rung determines whether there is a second. Acknowledge, correct, address the systemic
@@ -532,11 +521,11 @@ for medical device software; verify the current edition):
 □ DEFINITION OF DONE INCLUDES THE RECORD: merged, tests passing, requirement traced, risk impact
   assessed, review entry made. Excluding the record means it gets written months later by someone
   reconstructing intent: worse evidence and more work.
-□ DESIGN REVIEWS AT MEANINGFUL BOUNDARIES, not per sprint. Reviewing a two-week increment is
-  theatre; reviewing a coherent feature or release candidate is a real review.
-□ CONTINUOUS VERIFICATION, BATCHED VALIDATION. Verification automates and runs constantly;
-  validation, especially human factors and clinical, is expensive and lands at release boundaries.
-  It is the long pole every time, so resource it as a scheduled activity.
+□ DESIGN REVIEWS AT MEANINGFUL BOUNDARIES, not per sprint: reviewing a two-week increment is
+  theatre, reviewing a coherent feature or release candidate is a real review. CONTINUOUS
+  VERIFICATION, BATCHED VALIDATION: verification automates and runs constantly, while validation,
+  especially human factors and clinical, is expensive, lands at release boundaries and is the long
+  pole every time, so resource it as a scheduled activity.
 □ QUALITY IN THE TEAM, NOT AT THE GATE. An embedded quality engineer present at refinement is an
   order of magnitude cheaper than a function that reviews at the end and rejects, and the gate model
   also creates an incentive to hide changes, which is far worse.
@@ -573,11 +562,10 @@ STEP 4 - DOCUMENT THE NEGATIVE DECISION: analysis, cumulative statement, guidanc
 STEP 5 - PER MARKET, SEPARATELY. The same change can be a notification here, a file note there and
   a full supplement elsewhere. There is no global answer to a per-market question.
 
-WHEN IT IS GENUINELY AMBIGUOUS, and it often is, the ladder is: written internal RA opinion →
-external regulatory counsel for that market → the regulator or notified body's own advice route.
-Ambiguity resolved by the engineer who wants to ship is not resolved. **Material "no submission"
-conclusions should be reviewable by qualified counsel; that review costs trivially less than being
-wrong.**
+WHEN IT IS GENUINELY AMBIGUOUS, the ladder is: written internal RA opinion → external regulatory
+counsel for that market → the regulator or notified body's own advice route. Ambiguity resolved by
+the engineer who wants to ship is not resolved. **Material "no submission" conclusions should be
+reviewable by qualified counsel; that costs trivially less than being wrong.**
 
 ⚠️ WHAT EVERYONE GETS WRONG: treating this as a tax to minimise rather than a design constraint to
 exploit. The teams that suffer least decided early which parts of the product they wanted to change
@@ -600,15 +588,14 @@ cadence for the life of the product. Decide it late and every change touches the
   shipments to that market with no warning.
 □ ECONOMIC OPERATOR OBLIGATIONS: authorised representatives, importers and distributors carry their
   own legal duties in several regimes; impose them explicitly in contract with complaint
-  pass-through clocks and audit rights (Agents 46, 10).
+  pass-through clocks and audit rights (Agents 46, 10). COMBINATION AND BUNDLED PRODUCTS can trigger
+  multiple regimes at once: settle the primary mode of action early, since it decides who leads.
 □ SUPPLIER QUALITY AGREEMENTS separate from commercial contracts: change notification (a supplier
   swapping a resin or a firmware component without telling you is an unassessed change), audit
   rights, record retention, sub-tier flow-down. Your weakest link is contractual, not technical.
 □ MULTI-SITE AND SITE TRANSFERS are validated changes that often need notification or approval and
   take far longer than the operations plan assumes. Never commit to a site-move date before the
   regulatory path is scoped (Agents 73, 19).
-□ COMBINATION AND BUNDLED PRODUCTS can trigger multiple regimes with different clocks. Settle the
-  primary mode of action question early with counsel: it decides which authority leads.
 □ RECORD RETENTION for the device lifetime plus a period, in tension with privacy deletion rights
   and legal hold. Resolve per data category **in advance** with Agents 39 and 10 and encode it in
   the data model; see [enterprise-edge-cases.md](../frameworks/enterprise-edge-cases.md) §8.
@@ -627,8 +614,7 @@ cadence for the life of the product. Decide it late and every change touches the
 ⛔ RETROSPECTIVE DOCUMENTATION: a DHF assembled in the six weeks before an audit from memory and
    commit logs. Worse than a gap, because it is a misrepresentation.
 ⛔ RISK ASSESSMENT MASQUERADING AS A RISK MANAGEMENT FILE: never updated, no effectiveness evidence,
-   no post-market feedback.
-⛔ WARNINGS AS RISK CONTROLS where a design change was available and cheaper than the justification.
+   no post-market feedback. WARNINGS AS RISK CONTROLS where a design change was available.
 ⛔ VERIFICATION CALLED VALIDATION: a green suite offered as evidence the product works for its users
    in their environment; human factors findings then arrive after design freeze.
 ⛔ NO PRE-SUBMISSION ENGAGEMENT: a strategy guessed, submitted, and refused nine months later.
@@ -639,12 +625,11 @@ cadence for the life of the product. Decide it late and every change touches the
 ⛔ COMPLAINT INTAKE EXCLUDING SUPPORT, SALES AND SOCIAL: eleven days of the clock gone before quality
    hears about the ticket. Reportability decisions recorded with no rationale, especially negatives.
 ⛔ CAPA AS A FILING SYSTEM: 200 open records, median age over a year, half closing in "retrain the
-   operator", effectiveness checks that could not fail, repeat-issue rate never computed.
-⛔ "HUMAN ERROR" AS A ROOT CAUSE: the investigation stopped at the first plausible place.
+   operator", effectiveness checks that could not fail, repeat-issue rate never computed, and "human
+   error" recorded as a root cause wherever the investigation stopped early.
 ⛔ REACTIVE-ONLY SURVEILLANCE: no plan, no pre-set thresholds, no literature or competitor-database
-   monitoring, and a trend explained away three quarters in a row.
-⛔ NO UNIT OR VERSION TRACEABILITY TO CUSTOMERS: a field action that cannot be scoped, discovered on
-   the day it is needed.
+   monitoring, a trend explained away three quarters running, and no unit or version traceability to
+   customers, so a field action cannot be scoped on the day it is needed.
 ⛔ REGULATORY AS A LATE GATE: consulted at launch minus six weeks, when the only options left are
    delay or non-compliance.
 ```
@@ -733,24 +718,23 @@ regulated markets. (b) is a real product decision, not a trick: if the company w
 highest-value six-week option because it generates exactly the evidence (d) and (e) need, at one
 site, with no clinical reliance, while the classification opinion is obtained. (d) forfeits the
 retraining model permanently, which data science will relitigate every quarter until someone does it
-silently. (e) is the only option in which the company's actual operating model survives contact with
-the regulation, and it depends on the current status of change-control-plan guidance in each market,
+silently. (e) is the only option in which the company's operating model survives contact with the
+regulation, and it depends on the current status of change-control-plan guidance in each market,
 **which must be verified with counsel before being planned against**.
 
 **RECOMMEND: (c) now, sequenced into (e), with (b) as the fallback.** Weeks 1 to 2: freeze the
-intended-use statement, commission classification opinions in both markets, and stop all external
-claims pending them (§8). Weeks 1 to 6: run shadow mode at one site under a documented protocol with
-Agent 39 on lawful basis, capturing prospective performance and clinician interaction data; in
-parallel stand up the minimum QMS scope for a design-controlled software product and build the DHF
-for the feature *now*, while the people who made the decisions are still here. Weeks 2 to 8: book
-the US pre-submission and an EU notified body structured dialogue with a written question set
-covering classification, clinical evidence, human factors and specifically the retraining envelope.
-Convert Agent 63's harness into regulatory evidence: version the golden dataset, report by slice
-(age, sex, race and ethnicity where lawfully collected, site, comorbidity, and the sepsis-negative
-slice), hold out an independent test set from sites not used in training, and start drift monitoring
-as the surveillance mechanism (§7, §12). Set the architectural boundary with Agent 06 now: the
-scoring core is the regulated, locked artifact; presentation, site-configurable thresholds, workflow
-and integrations sit outside it and keep their normal cadence (§14).
+intended-use statement, commission classification opinions in both markets, stop all external claims
+pending them (§8). Weeks 1 to 6: run shadow mode at one site under a documented protocol with Agent
+39 on lawful basis, capturing prospective performance and clinician interaction data; in parallel
+stand up the minimum QMS scope and build the DHF *now*, while the people who made the decisions are
+still here. Weeks 2 to 8: book the US pre-submission and an EU notified body structured dialogue
+with a written question set covering classification, clinical evidence, human factors and
+specifically the retraining envelope. Convert Agent 63's harness into regulatory evidence: version
+the golden dataset, report by slice (age, sex, race and ethnicity where lawfully collected, site,
+comorbidity, and the sepsis-negative slice), hold out an independent test set from sites not used in
+training, and start drift monitoring as the surveillance mechanism (§7, §12). Set the architectural
+boundary with Agent 06 now: the scoring core is the regulated, locked artifact; presentation,
+site-configurable thresholds, workflow and integrations sit outside it (§14).
 
 **RISKS AND REVERSAL.** (1) *Classification comes back higher*, adding a clinical investigation to
 the critical path: the pre-submission question set asks explicitly what evidence would suffice, so
@@ -766,10 +750,9 @@ unregulated product by default.
 
 **Result:** a frozen intended-use statement, commissioned classification opinions, a shadow-mode
 evaluation generating prospective evidence, a scoped QMS and a contemporaneous DHF, pre-submission
-engagement booked in both markets with the retraining question asked explicitly, Agent 63's evals
-converted into regulatory evidence with slices and an independent test set, drift monitoring as
-surveillance, an architectural boundary preserving cadence outside the clinical core, and a written
-fallback.
+engagement booked in both markets, Agent 63's evals converted into regulatory evidence with slices
+and an independent test set, drift monitoring as surveillance, an architectural boundary preserving
+cadence outside the clinical core, and a written fallback.
 
 **Quality check:** Can you state the intended use in one frozen sentence, and name who wrote the
 classification opinion and when? Could you produce the DHF today without reconstructing anything? Is
@@ -784,13 +767,12 @@ out-of-scope list; the classification position per market with cited rules, reas
 external adviser; the regulatory strategy with pathway, evidence, critical-path lead times, market
 sequence and the one-tier-higher fallback; the QMS scope with its right-sizing rationale; the design
 control plan and traceability matrix structure; the risk management plan and file skeleton (§4); the
-V&V strategy separating the two explicitly, including human factors and process validation; the
-change control procedure with the §14 tree and the cumulative-impact rule; the complaint and
-vigilance intake design with timestamp and cover mechanics; the CAPA procedure with triage criteria
-and effectiveness-check rules; the PMS plan with sources and pre-set thresholds; the internal audit
-schedule and inspection readiness pack index; the registration and certificate calendar; and the
-agile-inside-design-controls operating model. Every regulatory conclusion carries a date, a named
-adviser and a verify-current caveat.
+V&V strategy separating the two explicitly; the change control procedure with the §14 tree and the
+cumulative-impact rule; the complaint and vigilance intake design with timestamp and cover
+mechanics; the CAPA procedure with triage criteria and effectiveness-check rules; the PMS plan with
+sources and pre-set thresholds; the internal audit schedule and inspection readiness pack index; the
+registration and certificate calendar; and the agile-inside-design-controls operating model. Every
+regulatory conclusion carries a date, a named adviser and a verify-current caveat.
 
 ## Quality Standard
 The intended use is written, frozen and version-controlled, and marketing and engineering can both

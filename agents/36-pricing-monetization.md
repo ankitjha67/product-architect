@@ -395,6 +395,196 @@ reduce decision frequency, usage caps/alerts, re-onboard low-usage accounts, val
 | LTV/CAC | Agent 18 | >3x |
 ```
 
+## Decision Framework: Raising Price on an Existing Base
+
+Setting a price for a new customer is an analytical exercise. Raising it on a base that is
+already paying is the hardest recurring judgement in this function, because the base is not one
+population: it is five, each governed by different paper, different notice duties and different
+elasticity. Section 8 gives the playbook. This is the decision procedure underneath it.
+
+```
+STEP 1 - SEGMENT THE BASE BEFORE YOU PICK A NUMBER. One increase, five populations:
+  A SELF-SERVE MONTHLY   no contractual bar, shortest notice, fastest churn signal.
+  B ANNUAL AUTO-RENEW    a contractual notice window (commonly 30 to 90 days before renewal,
+                         read each template) and a renewal decision point that DEFERS churn.
+  C CONTRACT-CAPPED      multi-year paper with an uplift cap (CPI-linked, or a fixed ceiling).
+                         The cap is the answer; the only decision is whether to open it early.
+  D BESPOKE ENTERPRISE   negotiated individually. Screen every one for MFN, best-pricing,
+                         benchmarking and price-protection clauses BEFORE modelling anything.
+  E LEGACY AND UNDOCUMENTED  discontinued plans and accounts carrying a promise nobody can
+                         produce. Register them; do not touch them in the same cycle.
+Cut each segment again by VALUE REALISATION (usage per unit of price), by CONCENTRATION
+(accounts above ~5% of segment ARR), and by REFERENCE RISK (public logos, community voices,
+analyst references). The last cut has no revenue in it and decides the narrative.
+
+STEP 2 - THE GRANDFATHERING DECISION. Four options; pick per segment, never globally:
+| Option | Cost | Right when |
+|---|---|---|
+| Permanent grandfather | A legacy estate that compounds forever; billing complexity | Only for a tiny, closed, named set with a real commitment |
+| Time-boxed (commonly 12 months, then migrate) | One deferred cohort; one more comms cycle | The default for annual and enterprise segments |
+| Smaller increase for existing | Realises less; simplest to explain | Where reference risk is high and elasticity is unknown |
+| No grandfather | Highest realisation; highest churn and narrative risk | Self-serve monthly with a demonstrated tolerance |
+THE TEST: a grandfather is worth its permanent cost only if the account would otherwise churn
+AND its lifetime value at the old price exceeds the migration value at the new one. Anything
+else is a discount you have agreed to give forever without pricing it.
+
+STEP 3 - NOTICE AND CONTRACTUAL OBLIGATIONS (verify current with qualified counsel):
+□ Contractual notice window per template, and whether the clause permits a unilateral change
+  at renewal or requires express agreement. These differ across your own paper generations.
+□ Consumer-subscription regimes in several markets impose their own advance-notice, clear-
+  disclosure and cancellation-route duties for a price change on a recurring plan, separate
+  from anything in your contract. Auto-renewal statutes add more.
+□ App-store and marketplace price changes run through the platform's own consent mechanics
+  and timelines, which you do not control and must schedule around.
+□ Public-sector and framework agreements may fix the reference price entirely.
+See [DISCLAIMER.md](../references/DISCLAIMER.md). Legal signs the notice, not marketing.
+
+STEP 4 - MODEL THE CHURN, WITH THE ELASTICITY ASSUMPTIONS WRITTEN DOWN:
+  Net revenue effect = ARR x [ (1 + p) x (1 - c) - 1 ]
+    p = REALISED uplift (list increase minus discounting, save offers and downgrades)
+    c = INCREMENTAL churn attributable to the increase, above the segment baseline
+  Breakeven incremental churn:  c* = p / (1 + p)
+    p = 10% -> c* = 9.1%    p = 15% -> c* = 13.0%    p = 20% -> c* = 16.7%
+STATE THESE FIVE ASSUMPTIONS EXPLICITLY OR THE MODEL IS DECORATION: baseline churn per
+segment; the share of cancellations already citing price; save-offer take rate and average
+depth; downgrade (contraction) rate; and the lag, because annual contracts defer the entire
+effect to renewal and the first two quarters will look better than the truth.
+```
+
+**WORKED JUDGEMENT.** ₹40 crore ARR, 3,800 accounts, proposed 15% list increase. Segments:
+A self-serve monthly, 2,600 accounts, ₹9.2 crore; B annual auto-renew, 900 accounts, ₹14.5
+crore, 60-day notice clause; C multi-year with a CPI-capped uplift, 240 accounts, ₹9.8 crore;
+D bespoke enterprise, 48 accounts, ₹5.9 crore, of which **9 carry MFN or best-pricing
+language** and the top 3 are 11% of total ARR; E legacy, 12 accounts, ₹0.6 crore, four with an
+undocumented "locked forever" email. **Call:** 15% on A and B, **0% on C** (the cap decides it,
+and opening those contracts early to renegotiate invites a worse trade), D negotiated
+individually at renewal with the MFN nine modelled at zero and quarantined from any promotional
+price, E frozen and registered. **Arithmetic on A:** p = 0.15 with no discounting available,
+so c* = 13.0%. Evidence for c: the 2023 increase of 9% produced 2.1 points of incremental churn
+over the following two quarters and lifted price-cited cancellations from 18% to 27%. Linear
+extrapolation gives ~3.5 points at 15%, well inside 13.0 - **but the assumption is stated as
+weak**, because it extrapolates a single prior event to nearly double its magnitude. Net on A:
+9.2 x (1.15 x 0.965 - 1) = **₹1.01 crore**. **On B:** assume 30% of at-risk renewals take a save
+offer averaging one third of the increase, so realised p = 0.10, c* = 9.1%; baseline churn 8%,
+incremental modelled at 2.5 points. Net: 14.5 x (1.10 x 0.975 - 1) = **₹1.05 crore**. Total
+≈ **₹2.06 crore, about 5.2% of ARR against a 15% headline** - and that gap between headline and
+realised is the number leadership does not have in its head. **Sensitivity:** the whole B case
+turns on the save-offer rate, so cap save offers in advance and route them through the §7 matrix
+before the first renewal notice goes out, not after. **Reversal condition:** if A's incremental
+churn passes 6 points inside 60 days (double the model), pause the B notice cycle, which has not
+yet reached renewal, and re-cut the increase at 8%.
+
+## Enterprise-Grade (regulated, multi-entity, 5,000-plus people)
+
+At small scale, pricing is a page and a spreadsheet, and an exception is a conversation. In a
+large or regulated organisation, price is a control environment: it feeds revenue recognition,
+it is evidence in an audit, it is a term in framework agreements, and it moves between legal
+entities. The practices that stop working are the informal ones, and they stop working quietly.
+
+```
+DEAL DESK - the function that replaces "ask the VP":
+□ A standing cross-functional desk (pricing, finance, legal, revenue accounting, sales ops)
+  with a published response clock per approval tier and a NAMED STANDING DELEGATE for every
+  approver. Serialised approval chains are how a quarter slips; parallelise the §7 matrix.
+□ The desk owns the quote, not the relationship: it reviews structure (term, ramp, floors,
+  non-standard clauses), not whether the customer is nice.
+□ CPQ enforces the floor mechanically. A floor that lives in a slide is not a floor. Every
+  below-floor quote is an exception with the same evidence burden as a §7 tier.
+□ Approval cycle time is a pricing metric reported next to discount leakage. If the desk is
+  slower than the workaround, reps will pre-inflate requests and route around it.
+□ DELEGATION OF AUTHORITY approved at board or audit-committee level in a public or regulated
+  company, with segregation of duties: the person who negotiates never approves their own
+  exception, and the approval is logged with an identity and a timestamp.
+
+NON-STANDARD TERMS REGISTER - the artifact whose absence causes the expensive surprises:
+□ Every deviation from the standard order form gets a register row: account, clause type, exact
+  text, effective date, expiry, the ARR exposed, and a named owner. Clause types to track at
+  minimum: MFN and best-pricing, price protection and uplift caps, benchmarking rights,
+  termination for convenience, extended notice, non-standard payment terms, custom SLA and
+  service credits, unusual usage definitions, and any revenue-share or rebate.
+□ The register is queried BEFORE any price change, promotion, packaging change or acquisition
+  integration is modelled. Modelling on the price book while the signed paper decides the
+  outcome is the most common expensive error in this function.
+□ Buy MFN clauses out at renewal and ban new ones in the contract playbook. One MFN converts a
+  targeted promotion into a company-wide retroactive price cut.
+□ Reconcile the register against the billing system quarterly. A commitment that exists in
+  paper but not in billing produces a wrong invoice; the reverse produces revenue you cannot
+  defend in an audit.
+
+REVENUE RECOGNITION AND TAX (Agent 56 Revenue Accounting, Agent 57 Tax):
+□ Every new packaging construct is reviewed by revenue accounting BEFORE it is sold, not at
+  quarter close. Bundles, platform-plus-usage, multi-year ramps, credits, free periods and
+  outcome-based fees all change standalone-selling-price allocation and the deferred revenue
+  schedule. A model that cannot be recognised cleanly is not cheaper, it is slower.
+□ Discounting policy has an accounting consequence: heavily discounted bundles distort the SSP
+  evidence you rely on, so the discount matrix and the SSP analysis are reviewed together.
+□ Multi-entity pricing carries transfer-pricing consequences between the selling and delivering
+  entities. Indirect tax (VAT, GST, digital-services taxes), e-invoicing mandates, registration
+  thresholds and tax-inclusive display duties vary by market and change; verify current
+  treatment with a qualified tax adviser. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+□ Price changes and their approvals are an audit population. Retain the evidence: the approved
+  price book version, the exception record, the notice sent, and the effective date per account.
+
+WHAT STOPS WORKING AT THIS SCALE:
+□ ONE GLOBAL PRICE LIST. Regulated, framework and public-sector business needs its own price
+  book with its own approval path, or a promotion leaks into a catalogue a contract references.
+□ THE SPREADSHEET PRICE BOOK. Once several entities and currencies exist, versioning by
+  filename produces two live lists and a dispute you cannot settle.
+□ EXCEPTIONS AS EMAIL. At a few thousand accounts, undocumented commitments become a legacy
+  estate no billing system can express correctly.
+□ A SINGLE PRICING OWNER DOING IT ALL. Name one accountable owner, then give them a standing
+  pricing council (finance, sales, product, legal, revenue accounting) and a monthly realisation
+  review, because the failure mode at scale is five functions with a veto and nobody accountable.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ CONTRACT BLINDNESS: the change is modelled against the price book while MFN, price-protection
+   and uplift-cap clauses in signed paper decide the actual outcome.
+   TELL: nobody can state how many accounts carry MFN language, or the ARR behind it.
+   FIX: the non-standard terms register is queried before the model is built, every time.
+⛔ UNDOCUMENTED GRANDFATHERING: a customer produces an email from a departed rep promising a
+   price forever, and support has been honouring it for three years.
+   TELL: legacy plans in billing that no current price book contains.
+   FIX: a legacy-plan register with an owner, a count, the ARR and the exact commitment.
+   Anything not in the register is not a commitment, and that rule is published BEFORE it is
+   needed rather than invoked during the argument.
+⛔ NOTICE MISSED OR MIS-SERVED: the increase is announced inside the contractual window, or
+   without the disclosure a consumer-subscription regime requires.
+   TELL: the comms date was chosen by the campaign calendar, not read off the contract.
+   FIX: legal owns the notice schedule per template and per market; verify current consumer
+   rules with qualified counsel before the send.
+⛔ LIST-PRICE FICTION: a headline increase fully absorbed by discounting and save offers inside
+   one quarter. TELL: list ARR rises, realised ARPA does not.
+   FIX: change comp and the increase together, gate CPQ on the floor, and cap save-offer depth
+   in advance. Measure realisation, not the announcement.
+⛔ APPROVAL-CHAIN DRAG: a serialised discount chain adds weeks, so reps pre-inflate requests to
+   survive it and the chain gets slower still.
+   TELL: deals cluster in the final 72 hours of the quarter; approvers on leave with no delegate.
+   FIX: parallelise, publish a clock per tier, name standing delegates, and report approval
+   cycle time next to leakage.
+⛔ PARITY ARBITRAGE: a low-PPP band becomes the world price via VPN storefronts and resellers.
+   TELL: usage region and billing region diverge; a forum thread explains the trick.
+   FIX: tie the band to a verified local payment method and billing address, cap seats per
+   low-band contract, and monitor the divergence tail rather than chasing every case.
+⛔ ANNOUNCE-THEN-BUILD: a model billing cannot meter, prorate, credit or invoice.
+   TELL: the launch date precedes the engineering estimate.
+   FIX: billing feasibility is a gate before announcement, with a written answer for proration,
+   mid-cycle change, refunds and credits.
+⛔ SHADOW DISCOUNTING THROUGH SUPPORT AND CS: retention credits, courtesy refunds and pause
+   plans issued outside the discount matrix. TELL: realised price erodes in a channel that
+   appears in no pricing report. FIX: save offers get their own approval tier and their own
+   leakage line. A credit is a discount with a different accounting entry.
+⛔ CHURN MEASURED TOO EARLY: annual contracts defer the entire effect to renewal, so a 60-day
+   read looks clean. TELL: victory declared before the first renewal cohort.
+   FIX: measure by renewal cohort, not by calendar quarter, and hold the reversal condition
+   open until the first full cohort has renewed.
+⛔ ELASTICITY BY VIBES: a churn forecast with no stated baseline, no save-offer assumption and
+   no lag. TELL: a single confident percentage with no arithmetic behind it.
+   FIX: publish c*, the five assumptions, and the sensitivity, or do not publish a forecast.
+```
+
 ## 15. Organisational Edge Cases
 
 Pricing is the one decision that touches contracts, revenue recognition, tax and trust at the
