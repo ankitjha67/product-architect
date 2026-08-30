@@ -38,6 +38,24 @@ DECIDE ON FIVE CRITERIA IN THIS ORDER - not on framework fashion:
 5. LIFESPAN: a 5-year core product justifies native; a 12-month market test does not.
 ⚠ RN→native and Flutter→native are full rewrites (6-12 months for a mature app). Treat the stack choice as IRREVERSIBLE and apply escalated
 scrutiny per the Enterprise Reasoning Protocol.
+
+WHEN NATIVE ACTUALLY WINS - state the CONDITIONS, not a preference. Any two of these together and cross-platform is the more expensive answer:
+□ You ship native-only surfaces: home-screen widgets, Live Activities / Dynamic Island, watchOS or Wear OS, App Clips / Instant Apps, CarPlay
+  or Android Auto, share/keyboard/notification-service extensions. The framework does nothing for these, so you hire the native skill anyway
+  and end up paying for both stacks. Count the extensions BEFORE the screens.
+□ Day-one OS support is a commercial requirement (a launch tied to the annual September-October iOS and the Android platform release). Bridge
+  frameworks lag a new SDK by weeks to months; if your marketing calendar cannot lag, you own the native code.
+□ The size floor binds: a cross-platform runtime adds several MB to every install before your first screen renders. Against §5's 30 MB
+  mass-market budget that is a material fraction spent on a framework. Measure the delta on YOUR build, not on a vendor blog.
+□ Deep accessibility work: cross-platform accessibility trees approximate VoiceOver/TalkBack semantics rather than expressing them, and a
+  published conformance commitment (§13) is materially cheaper to hold on native views.
+□ Regulated on-device cryptography or attestation: Secure Enclave, StrongBox, Play Integrity and App Attest all need native plumbing anyway.
+THE UPGRADE TAX NOBODY BUDGETS: a cross-platform runtime is a dependency with its own release train, and you inherit it. Budget one framework
+upgrade per one to two quarters as PLANNED work (RN's New Architecture migration and Flutter's renderer transitions are the recent examples),
+plus a re-test of every native module you wrote. A team that defers upgrades for a year does not save the cost, it converts it into a migration.
+THE HONEST DELTA TABLE: before choosing, measure four numbers on a real prototype of your hardest screen, on your tier-C reference device
+(§9): binary size added, cold start added, p90 frame time on the worst list, and engineer-days to the first App Store build. Framework
+arguments end quickly when someone produces those four numbers; they last for months when nobody does.
 ```
 
 ## 2. Release Trains, Staged Rollout & Kill Switches
@@ -64,6 +82,44 @@ KILL SWITCHES & FLAGS - mandatory, because rollback is not instant:
 □ FORCE-UPGRADE GATE: app asks the server for min_supported_version at launch; below it, a blocking screen with a store link. This is your
   only true remote remediation for a client bug no flag can reach - build it in v1, not after the first incident.
 □ Hygiene: every flag has an owner and a removal date; >90 days old enters a cleanup queue.
+
+WHY MOBILE CADENCE IS STRUCTURALLY DIFFERENT FROM WEB - four properties, none of which a backend team has:
+1. A THIRD PARTY GATES EVERY SHIP. Review is a queue you cannot page. Apple states most submissions are reviewed within 24 hours; plan on
+   24-48h, and 5+ days for a first submission, an account change, or a sensitive category (§3). Play is hours to days, longer for new
+   accounts. So your minimum incident-to-fix-on-device time is review latency + rollout ramp, not build time. Verify current SLAs per store.
+2. ROLLOUT IS A RAMP, NOT A SWITCH. A halted Play rollout leaves already-updated users on the bad build; iOS phased release only throttles
+   AUTOMATIC updates, and anyone who taps Update in the store gets it immediately. There is no "roll back the users you already served".
+3. THE INSTALLED BASE IS NOT YOURS. A fraction of users never update. Measure YOUR distribution: the share of DAU on the current version at
+   day 7, day 30 and day 90 is the single most useful mobile release metric, because it sets your server-side compatibility window (§9).
+4. THE BINARY IS IMMUTABLE. Everything remediable without a release (remote config, server-driven UI, server-side feature logic, content) is
+   worth more than the same capability in code. The mature metric is not release frequency but the SHARE OF USER-VISIBLE CHANGES SHIPPED
+   WITHOUT A BINARY: track it, target it upward, and it becomes the argument for every server-driven investment you want funded.
+RELEASE-TRAIN ARITHMETIC: with a 2-week train, a bug merged the day after the cut waits ~13 days for the next cut, 1-2 days for review, then
+5-7 days of ramp before most users have it - roughly three weeks from merge to majority coverage. Weekly trains roughly halve that. That
+number, not developer preference, is what justifies the cost of a shorter train, and it is what you quote when someone asks "can we just ship it".
+```
+
+| Signal at rollout | Halt (stop, keep old version serving) | Pause and investigate | Roll forward with a hotfix |
+|---|---|---|---|
+| Crash-free users down >0.5pp vs previous version, or a new top-3 cluster | Yes, immediately | - | Only if the fix is already built and reviewed |
+| Data loss, corruption, or an incorrect financial amount | Yes, and treat as an incident (Agent 09 / Agent 55) | - | Never roll forward blind on a data-integrity bug |
+| ANR or startup regression above the §5 budget but no data risk | - | Yes, at the current percentage | Yes, if the cause is identified and flag-gated |
+| Core funnel conversion down >2% with stable crash rate | - | Yes, verify against seasonality and the analytics pipeline first | - |
+| A single high-visibility complaint, no metric movement | - | Yes, keep ramping while you reproduce | - |
+| A server-side or config fix exists | Not required | - | Flip the flag, keep ramping, no store round trip |
+
+```
+THE HALT DECISION, MADE BEFORE YOU NEED IT:
+□ Write the halt criteria into the release ticket at cut time, with the exact metric, the exact threshold and the person who may call it.
+  A halt decided at 2am by whoever is awake is decided by seniority and adrenaline, which is how bad builds reach 100%.
+□ HALT IS CHEAP, UN-HALTING IS CHEAP, A BAD BUILD AT 100% IS NOT. Bias hard toward halting: the cost of a halted rollout is a delayed
+  feature; the cost of not halting is an installed base you cannot recall.
+□ After a halt: the already-updated cohort is your problem for as long as they stay there. Serve them a server-side mitigation, force-upgrade
+  them when the fix ships if the bug is severe enough to justify it (§9), and report the size of that cohort in the post-incident review.
+□ EXPEDITED REVIEW is the emergency lever, not a schedule tool (§3). Rehearse the request wording and the approver once a year so the first
+  real use is not the first attempt.
+□ ROLLBACK ILLUSION: Play lets you halt and resume a rollout, and re-publish an older version code only by shipping it as a NEW higher
+  version code. Verify the current mechanics per store before an incident, and never assume the web team's "revert the deploy" exists here.
 ```
 
 ## 3. App Store Submission Reality
@@ -95,6 +151,25 @@ REVIEW SLAs - never promise a marketing date inside them. Apple states most subm
 5+ days for a first submission or a sensitive category. Play runs hours to a few days, longer for new accounts and sensitive categories.
 EXPEDITED REVIEW (Apple) is for a critical user-facing bug or a legal/security emergency only - limited goodwill, and abuse gets the next
 request refused. An App Review Board appeal exists for genuine misinterpretation; win it with evidence, not tone.
+
+STORE POLICY RISK - the four areas that move under you, and how to hold them without betting the business on a rule you memorised.
+**These change frequently and differ by jurisdiction: state the principle, then VERIFY CURRENT text per store and per market before you build.**
+□ PAYMENTS AND EXTERNAL LINKS: whether you may link out to your own web checkout, what fee applies when you do, and what disclosure sheet the
+  store requires has been repeatedly reshaped by litigation, regulator action and the EU Digital Markets Act. ENGINEERING POSTURE: build the
+  purchase path as a swappable module with IAP, external-link and web-checkout implementations behind one interface and a remote flag, so a
+  policy change is a config decision rather than a rewrite. Model the fee delta with Agent 36 and Agent 55 before the enforcement date.
+□ TRACKING AND CONSENT: iOS App Tracking Transparency governs cross-app tracking and the IDFA (§11); Android's advertising ID can be deleted
+  by the user and is withheld from apps targeting children. Any measurement design that assumes a stable device identifier is already wrong.
+□ SUBSCRIPTIONS: price-rise consent rules, grace periods, billing retry, win-back and offer mechanics, and mandatory cancellation surfaces are
+  store-specific and change. Reconcile entitlement server-side from the store's server notifications, never from a client receipt alone, or a
+  refund or family-sharing event silently leaves a user entitled (Agent 55).
+□ DATA DISCLOSURE: the privacy label and Data Safety form are enforced representations, not marketing copy (§11). A mismatch between declared
+  and observed behaviour is an enforcement item that can escalate to the account, not just the release.
+□ ACCOUNT-LEVEL RISK IS THE TAIL YOU PLAN FOR: repeated guideline warnings, a payments dispute or a content complaint can threaten the LISTING
+  rather than one build. Keep a suspension response plan next to the incident runbooks, preserve every notice, and route it through Legal
+  (Agent 10) and the platform partner contact rather than arguing through the standard review reply box.
+□ AI-FEATURE DISCLOSURES: both stores have added declarations and content rules for generative features, and age-rating questionnaires now
+  ask about user-generated and model-generated content. Treat the questionnaire as a product decision reviewed by Agent 12 and Agent 11.
 ```
 
 ## 4. ASO - the Engineering Surface (strategy: Agent 31)
