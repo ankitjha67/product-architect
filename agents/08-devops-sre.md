@@ -493,6 +493,327 @@ GOLDEN PATH = the paved road that is EASIER than going off-road:
 asking, the golden-path templates aren't good enough yet - fix those first.
 ```
 
+## Toil, On-Call Load and the Sustainability Math
+
+Toil is not "work I dislike". It is operational work that is manual, repetitive, automatable,
+tactical, devoid of enduring value, and that scales linearly with the service. Reliability work
+that produces a permanent improvement is engineering; restarting the same job every Tuesday is
+toil, however skilled the person doing it.
+
+```
+THE 50% CEILING (Google SRE's central operational rule): no more than half of an SRE's time on
+toil, measured, not asserted. Above 50% the team has no capacity left to remove the cause of the
+toil, so the toil grows, which consumes more capacity. It is a positive feedback loop and it ends
+in either an outage or an attrition event, usually both.
+HOW TO MEASURE IT HONESTLY, because self-reported estimates run low:
+□ Categorise every ticket, page and interrupt at closure: toil / engineering / project / support.
+  A 3-second dropdown at close is the only measurement that survives contact with a busy team.
+□ Sample time directly for one week per quarter, at the individual level, aggregated for report.
+□ Track the top 5 toil sources by hours per month. Automating source number 1 is almost always
+  worth more than a general "reduce toil" objective nobody can act on.
+□ REPORT IT AS A PERCENTAGE OF TEAM CAPACITY IN PLANNING. Toil that is not deducted from planned
+  capacity is delivered by unpaid overtime, and it will be discovered in an exit interview.
+```
+
+| On-call parameter | Sustainable | Warning | Broken |
+|---|---|---|---|
+| Pages per 12-hour shift | Under ~2 | 2 to 5 | Above 5: no time to fix anything, and no capacity to think during the incident |
+| Pages waking someone (22:00 to 07:00) | Under ~1 per week per rotation | 1 to 3 | Above 3: sleep debt compounds, and error rates in the response itself rise |
+| Rotation size, 24/7 single site | 8 or more people | 6 to 7 | Under 6: a holiday or a resignation collapses the rota, and one person becomes permanently on |
+| Rotation size, follow-the-sun | 2 sites of 6, so nobody covers nights | Uneven site sizes | One site carrying nights for another timezone's working hours |
+| Frequency per person | 1 week in 6 to 1 week in 8 | 1 in 4 | 1 in 3 or tighter: on-call becomes the job and delivery estimates become fiction |
+| Planned delivery from the on-call engineer | Zero, budgeted as zero | "Half capacity" | Full capacity assumed: the sprint misses and the engineer is blamed |
+| Alert-to-action ratio | Above ~70% of pages lead to an action | 40 to 70% | Under 40%: the pager is noise and the real page will be missed |
+
+```
+COMPENSATION AND THE LEGAL FLOOR: paying for on-call is not a perk, it is the mechanism that
+makes the cost of a bad rotation visible to the people who can fix it. Common models are a flat
+stipend per shift, an hourly rate for time actually worked out of hours, or time off in lieu.
+**Working-time rules, minimum rest after a night call-out, and whether stand-by time counts as
+working time vary by jurisdiction and change; verify with Agent 22 People and with counsel before
+setting a policy, especially across the EU, the UK and India.** The engineering consequence is
+simple: when on-call is unpaid and uncounted, its cost is invisible, so nobody funds the work that
+would reduce it.
+
+THE ATTRITION CONSEQUENCE, stated plainly because it is the argument that actually moves budget:
+a bad rotation does not degrade gradually. People tolerate it, then they leave, and they leave in
+the order of most-employable-first, which is also the order of most-production-knowledge-first.
+The replacement takes 6 to 10 weeks to reach a first solo shift, during which the remaining
+rotation is smaller and worse, which accelerates the next departure. **Watch the leading
+indicators, not the resignation:** pages per shift trending up, the same 2 people taking every
+swap, response times to non-urgent pages lengthening, and postmortem action items ageing.
+
+RUNNING THE ROTATION WELL:
+□ HANDOFF is a written artefact at the end of every shift: open incidents, degraded systems,
+  changes in flight, anything muted and why. Verbal handoffs lose the mute.
+□ The on-call engineer's authority must match the responsibility: permission to roll back, to
+  disable a feature flag, to fail over, and to wake anyone, WITHOUT asking. An on-call who must
+  request approval to mitigate is a pager with extra steps.
+□ Every alert has a runbook link in the alert payload itself, not in a wiki someone must search.
+□ Shadow rotation for new joiners (2 to 4 weeks) before a primary shift, and never a first
+  primary shift during a peak or a launch window.
+□ Follow the sun before you accept night pages, if you have two sites. It is the single largest
+  quality-of-life improvement available and it costs nothing extra in headcount.
+```
+
+## Incident Command: Roles, Severity and the Comms Cadence
+
+An incident is a coordination problem wearing a technical costume. Beyond about three responders,
+the limiting factor is no longer diagnosis; it is who decides, who talks to whom, and who is
+writing it down. Incident command (adapted from emergency services' ICS) exists to fix that.
+
+| Role | Owns | The rule that makes it work |
+|---|---|---|
+| **Incident Commander (IC)** | The incident, not the fix. Declares severity, assigns roles, runs the loop, decides between mitigation options, calls the end | The IC does NOT debug. The moment the IC starts typing into a console, nobody is running the incident. Any responder may take IC; whoever detects it holds IC until an explicit, acknowledged handover |
+| **Operations / Tech lead** | Diagnosis and the hands on the system. Proposes actions, executes what the IC agrees | One person executes changes at a time, announced before and after. Two people mitigating in parallel is how an incident gets a second cause |
+| **Communications lead** | Internal updates on cadence, the status page, and the interface to support, sales and leadership | Exists so executives asking for updates do not interrupt the IC. This role is the highest-value one to staff early and the one most often skipped |
+| **Scribe** | The timeline in UTC, in the incident channel, as it happens | A timeline reconstructed afterwards is a story. One written live is evidence, and it is 80% of the postmortem |
+| **Customer liaison** (large or long incidents) | Named-account comms with Agent 17 and Agent 32 | Enterprise customers find out from their account team, not from a status page they do not watch |
+
+```
+SEVERITY DEFINITIONS - written so that declaring is mechanical, not a judgement call at 03:00.
+Under-declaring is far more common and far more expensive than over-declaring:
+| Sev | Definition (user impact, not component state) | Response |
+|---|---|---|
+| SEV1 | Core journey unavailable or materially broken for a large share of users; data loss or corruption; confirmed security breach; money moving incorrectly | Page immediately, IC named within 5 minutes, exec notified, external comms on the clock below |
+| SEV2 | Significant degradation, a major feature down, one region or one large tenant affected, or a SEV1 with a working mitigation in place | Page during and outside hours; IC named; status page if externally visible |
+| SEV3 | Limited or cosmetic impact, a workaround exists, one small tenant, or an internal-only system | Ticket, business hours, normal prioritisation |
+| SEV4 | No current user impact, but a control or safety margin is degraded (a failed backup, a lost replica, an expired monitor) | Ticket with a date. These are the ones that become the next SEV1 |
+RULE: severity is set on IMPACT and can be raised by anyone at any time. It is lowered only by
+the IC, and lowering it is recorded. If you are debating severity for more than 60 seconds,
+declare the higher one; the cost of an unnecessary page is minutes, the cost of a late
+declaration is the whole incident.
+
+THE COMMS CADENCE - the clock starts at declaration, and silence is the thing customers punish:
+□ SEV1 internal: an update every 20 to 30 minutes, on the clock, even when the update is "no
+  change, still investigating, next update at HH:MM". A predictable non-update stops five people
+  asking, which is worth more than the information it contains.
+□ SEV1 external status page: first post within 15 to 30 minutes of declaration, then every 30 to
+  60 minutes. Say what is affected and what a customer should do. Do not name a cause you have
+  not confirmed, and never estimate a fix time you cannot defend. **Contractual notification
+  windows in enterprise agreements can be shorter than your default; check with Agent 10 and
+  Agent 32 before setting the policy, not during the incident.**
+□ SEV2: hourly internal, status page if externally visible.
+□ Executives get the comms lead, on the same cadence as everyone else. An exec bridge that pulls
+  the IC out of the incident channel is a reliable way to extend an outage.
+
+MITIGATION IS NOT RESOLUTION, and conflating them is the most expensive habit in incident work:
+  MITIGATE = the user impact stops. Roll back, flip the flag off, fail over, drain the bad node,
+    shed load, block the abusive pattern, scale out. Aim for mitigation FIRST, always, even when
+    the cause is unknown, and especially when it is interesting.
+  RESOLVE = the underlying cause is fixed and the mitigation can be removed.
+  ⚠️ The classic long outage is a team diagnosing a fascinating root cause while a one-command
+  rollback was available in minute 4. The IC's job is to keep asking "what is the fastest way to
+  stop the impact?" and to refuse to let diagnosis outrank mitigation.
+  A rollback is a mitigation with a known blast radius; prefer it to a forward fix under
+  incident conditions unless a schema or data migration has made it unsafe, which is exactly why
+  migrations use the expand-and-contract pattern (Agent 06 Deprecation and Migration).
+  THE INCIDENT IS NOT CLOSED WHEN MITIGATED. It moves to a lower severity with a named owner, a
+  removal date for the mitigation, and the postmortem already scheduled.
+```
+
+## Postmortems, and Why Most Action Items Never Ship
+
+```
+BLAMELESS MECHANICS - blameless does not mean consequence-free; it means the analysis targets the
+system that let a reasonable person make that choice, because that system is what you can change:
+□ TIMELINE FIRST, in UTC, with the source of each entry (a graph, a log line, a message). Include
+  detection time, declaration time, mitigation time and resolution time as explicit facts.
+□ CONTRIBUTING FACTORS, PLURAL. "Root cause" is singular by construction and it is almost always
+  wrong: complex systems fail through combinations. Name the technical factor, the detection gap,
+  the process gap and the decision context.
+□ BAN COUNTERFACTUALS. "The engineer should have noticed" describes a world that did not happen
+  and teaches nothing. Ask instead why it made sense at the time, with the information available
+  on the screens that existed. Human error is where the investigation starts, never where it ends.
+□ SEPARATE THE ANALYSIS FROM THE PERFORMANCE CONVERSATION. Any hint that the document feeds an
+  appraisal ends honest reporting permanently, and you will not get it back.
+□ TIMEBOX: draft within 3 to 5 business days while memory is fresh; review meeting within 10.
+  Beyond two weeks the document becomes an archaeology exercise nobody attends.
+□ TRIGGERS, written down: every SEV1 and SEV2, every incident with customer impact, every repeat,
+  and every NEAR MISS. Near-miss postmortems are the cheapest learning available and are almost
+  never written, because nothing bad happened and nobody felt the urgency.
+
+WHY THE ACTION ITEMS DO NOT SHIP - the honest list, and the correction for each:
+| Reason it dies | The tell | The correction |
+|---|---|---|
+| No individual owner | The owner is a team name or "Platform" | One named person per item, agreed in the meeting, present in the meeting |
+| No date | "Next quarter", "when we get to it" | A date on every item; items without one are deleted rather than carried |
+| Sized as a quarter of work | "Rebuild the notification system" | Split into a 2-week first step that measurably reduces recurrence. Big items are aspirations, not actions |
+| Lives in a postmortem tracker nobody grooms | The tracker has 140 open items with a median age above 6 months | Put items in the team's NORMAL backlog with a label, prioritised against features by the same people, so they compete honestly instead of being ignored politely |
+| Too many items | 17 action items, ranked by nobody | Cap at 3 to 5. Rank them. Say out loud which ones you are deliberately not doing, and why |
+| No completion metric | Nobody knows how many closed | Report percent of P1 action items closed within 30 days, and the age distribution of the open ones, monthly to engineering leadership |
+| The fix belongs to another team | "We raised it with them" for three sprints | Route it with a severity, a dated SLA and an escalation clock, and hold a compensating control meanwhile (Agent 41) |
+
+THE METRIC THAT ACTUALLY MATTERS is the REPEAT-INCIDENT RATE: the share of incidents whose
+contributing factors appeared in an earlier postmortem. If it is not falling, the postmortem
+process is producing documents rather than change, no matter how good the documents are.
+Track alongside it: MTTD (detect), MTTA (acknowledge), MTTM (mitigate) and MTTR (resolve), as
+separate numbers. They have different fixes: MTTD is monitoring, MTTA is paging and rotation
+health, MTTM is runbooks, rollback and authority, MTTR is engineering.
+```
+
+## Progressive Delivery: Canary, Blue-Green, Flags and Automated Rollback
+
+| Technique | Blast radius during rollout | Rollback time | Cost | Where it is the right answer |
+|---|---|---|---|---|
+| **Rolling update** | Grows as it proceeds; no defined abort point | Minutes (roll back the image) | Baseline | Low-risk services with strong test coverage and no user-visible behaviour change |
+| **Blue-green** | Zero, then 100% at the switch | Seconds (switch back), the fastest available | ~2x fleet during the cutover | Fast, clean rollback matters more than gradual exposure; useful when a canary cannot get statistical signal |
+| **Canary** | Bounded to the canary share (start 1 to 5%) | Seconds to minutes | Small extra fleet plus the analysis machinery | The default for user-facing services. The only technique that measures real user impact before full exposure |
+| **Feature flag** | Per user, per tenant, per segment, decoupled from deploy | Instant, and no deploy needed | Flag infrastructure plus the debt of stale flags | Changing behaviour, not infrastructure. Also the only way to ship a change dark and enable it later |
+| **Ring / cohort rollout** | Internal users, then beta tenants, then general | Per ring | Coordination | Enterprise products where a specific tenant must never be first, and mobile releases (Agent 48) |
+
+```
+ABORT CRITERIA - a canary with no defined abort threshold is a slow big-bang. Define, before the
+rollout, in the pipeline, with the comparison against the CONTROL group and not against yesterday:
+□ Error ratio: canary error rate above control by more than an absolute margin (for example 0.5
+  percentage points) or a relative one (for example 1.5x), sustained past the noise window
+□ Latency: canary p95 or p99 above control by more than a stated margin
+□ Saturation: canary CPU, memory or connection-pool use materially above control (catches leaks
+  that error rates never show)
+□ A business metric with enough volume to be usable at canary scale: add-to-cart rate, login
+  success, payment authorisation rate. This is the one that catches a change that is technically
+  healthy and commercially broken
+□ Any new error signature that does not exist in control, at any volume
+□ AUTOMATE THE DECISION. A human watching a dashboard is not an abort criterion; they are on a
+  call, or asleep, or optimistic. Automated analysis (Argo Rollouts, Flagger, Spinnaker's
+  automated canary analysis, or your own) makes the same call at 03:00 as at 15:00.
+
+BAKE TIME - the question is not "how many minutes" but "have I seen enough events to distinguish
+signal from noise, and has the failure mode had time to appear?":
+□ VOLUME FIRST: at 1% of traffic on a service doing 100 requests per second, a canary sees ~1
+  request per second. A defect affecting 1 in 500 requests needs thousands of requests before the
+  difference is distinguishable. Compute the number of canary events you need for the smallest
+  regression you care about, then derive the duration; do not pick a round number of minutes.
+□ TIME-DEPENDENT FAILURES need wall-clock regardless of volume: memory leaks, connection-pool
+  exhaustion, cache fill and eviction behaviour, cron and batch interactions, and TTL expiry.
+  For anything touching state, bake through at least one full cycle of whatever is periodic.
+□ WORKING RANGES that behave sensibly in practice: 10 to 30 minutes at 1 to 5% for a
+  high-traffic stateless service; several hours or overnight for a change touching data access
+  patterns, caching or connection management; a full business cycle for anything whose traffic
+  shape varies by time of day. Escalate in steps (1% then 5% then 25% then 50% then 100%) with a
+  re-evaluation at each step, not a linear ramp that never pauses.
+□ Never bake a canary through a period with no traffic and call it clean. A quiet night proves
+  the deploy did not crash, and nothing else.
+
+FEATURE-FLAG HYGIENE, because flags are debt with an excellent disguise:
+□ Every flag is created with an OWNER, a PURPOSE (release / experiment / ops kill-switch /
+  permission) and an EXPIRY DATE. Release flags should die within 30 to 90 days of full rollout.
+□ Report stale-flag count and the age of the oldest flag monthly. A codebase with hundreds of
+  long-lived release flags has a combinatorial state space nobody can test and nobody can reason
+  about during an incident.
+□ Kill-switches are a permanent, deliberate category and are exempt from expiry, but they must be
+  TESTED on a schedule. An untested kill switch is a comment.
+□ Flag evaluation must fail safe and fail fast: if the flag service is unreachable, serve the
+  last known value or the default, never block the request. A flag provider outage that takes
+  down your product is a self-inflicted dependency (Agent 09 third-party risk).
+
+WHAT PROGRESSIVE DELIVERY DOES NOT SOLVE: an irreversible data migration. Once you have written
+rows in a new format, "roll back" is a fiction. Use expand and contract so that old and new code
+can both operate on the data throughout the rollout (Agent 06 Deprecation and Migration), and
+treat the contract step as its own change with its own canary.
+```
+
+## The Four DORA Metrics, and the Ways They Are Misused
+
+```
+THE FOUR, plus the fifth that stops the first four being gamed into an outage:
+1. DEPLOYMENT FREQUENCY - how often you deploy to production
+2. LEAD TIME FOR CHANGES - commit to running in production
+3. CHANGE FAILURE RATE - share of deployments causing a degradation requiring remediation
+   (rollback, hotfix, patch). Note the definition is about USER-VISIBLE degradation, not about
+   whether a pipeline stage went red
+4. FAILED DEPLOYMENT RECOVERY TIME - how long to restore service when a change causes a failure
+   (this metric has been renamed and re-scoped across editions of the research; earlier versions
+   framed it as time to restore service generally)
+5. RELIABILITY / OPERATIONAL PERFORMANCE - whether you are meeting your reliability targets. The
+   first four measure throughput and stability of the delivery system; without the fifth, a team
+   can improve all four by deploying more, smaller, riskier changes into a degrading service.
+**The performance bands (elite / high / medium / low) and the exact metric definitions are
+restated each year in the DORA State of DevOps research and have changed materially between
+editions. Do not quote a band from memory: pull the current report and cite the edition.**
+
+HOW TO INSTRUMENT THEM WITHOUT A SURVEY: deployment frequency and lead time come from the
+pipeline and version control (commit timestamp to deployment timestamp); change failure rate and
+recovery time come from linking incidents to the deploy that preceded them, which requires a
+deployment marker in your incident tool. If you cannot join an incident to a deploy
+automatically, fix that before you argue about the numbers.
+
+⚠️ THE MISUSE WARNING, and it is the most important paragraph in this section:
+□ NEVER MEASURE INDIVIDUALS. These are system metrics. Applied to a person they measure how the
+  work was allocated, and they will be gamed within one review cycle.
+□ NEVER COMPARE TEAMS WITH DIFFERENT RISK PROFILES. A payments team with a 3-day lead time and a
+  2% change failure rate may be better run than a marketing-site team deploying hourly. Compare a
+  team to its own trend, and ask what constraint is producing the number.
+□ THE METRICS ARE A DIAGNOSTIC, NOT A TARGET (Goodhart applies immediately and visibly). "Raise
+  deployment frequency" produces empty deploys and split commits. Ask instead: what is the
+  binding constraint on lead time here, is it review latency (Agent 06 Code Review), CI duration,
+  environment scarcity, or the CAB queue, and fix that one thing.
+□ ALL FOUR MOVE TOGETHER OR THE READING IS FALSE. Deployment frequency up while change failure
+  rate is also up is not an improvement, it is a team shipping faster into a worse system.
+  Report the set, always, and report the reliability metric beside them.
+□ A CHANGE FAILURE RATE OF ZERO is not excellence; it is either a definition problem or a team
+  not shipping. Somewhere between roughly 5 and 15% is normal for a team shipping regularly.
+□ These are outcome metrics for a delivery SYSTEM. They tell you nothing about whether the
+  software is worth building, which is Agent 16 and Agent 04's question, not yours.
+```
+
+## Chaos Engineering: A Hypothesis and a Blast Radius
+
+Chaos engineering is not breaking things to see what happens. It is an experiment: a written
+hypothesis about steady-state behaviour, a controlled injection, a bounded blast radius, and a
+falsifiable result. Without the hypothesis it is an outage you caused on purpose.
+
+```
+PRECONDITIONS - do not start until all four hold, or you will simply create incidents:
+□ SLIs and SLOs exist, so "steady state" is a number and not an impression
+□ Monitoring can detect the failure you are about to inject, within the time you claim it can
+□ A tested rollback, kill switch or abort for the experiment itself
+□ The error budget is not already exhausted. Running chaos during a budget breach is spending a
+  resource you do not have (see the error-budget policy above)
+
+THE EXPERIMENT TEMPLATE - every run, written down before the run:
+1. STEADY STATE: the measurable normal. "Checkout success rate is above 99.5% and p95 is under
+   800 ms, measured over 10 minutes." Not "the system is healthy."
+2. HYPOTHESIS: "When one of the three availability zones becomes unreachable, checkout success
+   rate and p95 stay within steady state, with no manual intervention, within 60 seconds."
+3. BLAST RADIUS AND CONTROLS: which environment, which share of traffic or which single cell,
+   how long, who is watching, and the abort condition stated as a threshold.
+4. RUN, and record what actually happened including the human response time.
+5. RESULT: hypothesis held, or it did not. A disproved hypothesis is a successful experiment and
+   the most valuable output the practice produces.
+6. FIX AND RE-RUN. An experiment that finds a gap and does not re-run after the fix has not
+   verified anything, and the practice becomes theatre.
+
+FAILURE INJECTIONS, roughly in order of value per unit of risk:
+□ Dependency latency and errors (the most common real production failure, and the cheapest to
+  inject): add 500 ms or 5 s to a downstream call, or return errors for a share of calls. Tests
+  your timeouts, retries, circuit breakers and fallbacks, which are almost always misconfigured.
+□ Instance and pod termination (the original Chaos Monkey, Netflix, 2011)
+□ Zone or cell removal: the highest-value infrastructure test, and the one that validates the
+  N-1 headroom arithmetic above
+□ Resource exhaustion: CPU, memory, disk fill, connection-pool saturation
+□ Network: packet loss, partition between services, DNS failure
+□ Clock skew, certificate expiry and secret rotation failure: rare, catastrophic, and never
+  tested because nobody thinks of them
+□ Region loss: this is the DR drill above, run as an experiment with the business informed
+
+BLAST-RADIUS DISCIPLINE, which is what separates this from recklessness:
+□ Start in staging, but understand that staging results are weak evidence: staging has different
+  data volumes, different traffic and different dependencies. The value is in production.
+□ In production, start with the smallest unit that can still produce signal: one cell, one
+  non-critical service, 1% of traffic, a single AZ, off-peak, time-boxed to minutes.
+□ Announce it. A chaos experiment that surprises the on-call engineer wastes an incident response
+  and destroys the practice's political capital in one afternoon. Announce, and separately
+  measure whether monitoring would have caught it unannounced.
+□ Abort conditions are automatic and anyone can trigger them, including the on-call engineer.
+□ GAME DAYS FIRST: a facilitated, scheduled exercise with humans in the loop is the honest
+  starting point for most organisations and produces most of the value, because the majority of
+  the findings are about runbooks, access, ownership and communication rather than about the
+  system's technical resilience. Automated continuous chaos is a later maturity rung.
+TOOLING: AWS Fault Injection Service, Chaos Mesh, LitmusChaos, Gremlin, Steadybit, or a few lines
+of code in a service mesh. **Verify current tool availability and pricing before committing.**
+```
+
 ## Failure Modes (⛔)
 
 ```
@@ -578,3 +899,18 @@ the cost of the next 9 is known and deliberately not purchased.
 
 ## Output: DevOps & Infrastructure Strategy
 Environment setup, CI/CD pipeline design, monitoring plan, alerting strategy, backup/DR plan, and cost optimization strategy.
+
+## Quality Standard
+Every SLO traces to a named user journey and to a number a user would recognise as pain, and it
+was set from what users expect rather than from what you happen to deliver today. The
+error-budget policy is signed by the person who could overrule it, and the consequence of
+exhausting the budget was agreed before the first breach. Pages are burn-rate based, every one
+carries a runbook link in its payload, and pages per shift is a metric someone reviews weekly.
+Toil is measured rather than estimated, and it is deducted from planned capacity in front of the
+people who plan. Every production change is progressive, with automated abort criteria and a
+rollback path that has been used recently in anger. The failover has been executed, not
+documented, and you can quote the MEASURED RTO and RPO with the date of the drill. Postmortem
+action items have named owners, dates, and a completion rate you report. Every production change
+emits its own audit evidence, so an auditor's sample is a query and not a search. And when
+somebody asks "how reliable are we?", the answer is a number against a target with a budget
+remaining, not an anecdote about the last outage.

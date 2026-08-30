@@ -547,8 +547,8 @@ THE ENGINEERING-TIME TEST - the translation problem, made arithmetical:
   consequences of an Agent 39 or Agent 11 requirement. Attribute the cost to the requirement, never
   present it as team waste.
 □ REGULATED CHANGE CONTROL: a rightsizing action is a production change with the same CAB, evidence
-  and rollback expectations as any other (Agent 20). Automated rightsizing that acts without a
-  change record fails an audit: configure it to recommend, then apply through the pipeline.
+  and rollback expectations as any other (Agent 20). Automated rightsizing acting without a change
+  record fails an audit: configure it to recommend, then apply through the pipeline.
 □ AUDIT AND SOX RELEVANCE: if cloud cost feeds COGS in a filing, the allocation model, the accrual
   and the capitalisation split become controls Agent 59 will test. Keep the model documented,
   version-controlled and reproducible from raw exports. A model living in one analyst's spreadsheet
@@ -558,12 +558,10 @@ THE ENGINEERING-TIME TEST - the translation problem, made arithmetical:
   maximum term, maximum percentage of forecast committed, approval thresholds and signature
   authority. A three-year all-upfront purchase is a financing decision wearing an engineering hat.
 □ SHOWBACK TO 200 TEAMS IS A PRODUCT, not a report: self-service, a documented method, a dispute
-  channel with an SLA, and a pipeline with an owner. Without a dispute channel you receive the
-  disputes anyway, one at a time, by direct message, forever.
-□ TEAM SIZING (benchmark, calibrate to your estate): a practitioner plus tooling is typically
-  justifiable in the low millions of annual cloud spend; above that, a small central team with
-  embedded champions per engineering group outperforms a larger central team, because the lever is
-  engineering behaviour and champions are inside it.
+  channel with an SLA, and a pipeline with an owner. TEAM SIZING (calibrate to your estate): a
+  practitioner plus tooling is typically justifiable in the low millions of annual spend; above
+  that, a small central team with embedded champions per engineering group outperforms a larger
+  central team, because the lever is engineering behaviour and champions sit inside it.
 ```
 
 ## 14. Failure Modes (⛔)
@@ -574,25 +572,23 @@ THE ENGINEERING-TIME TEST - the translation problem, made arithmetical:
 ⛔ OPTIMISING TOTAL SPEND IN A GROWTH QUARTER: the right answer looks like failure and the
    programme loses its mandate defending a number that was never the point.
 ⛔ COMMITTING BEFORE A MIGRATION: three years locked to a family the platform team is leaving.
-⛔ 100% COVERAGE: no ability to shrink, migrate, fail over or renegotiate.
-⛔ CONFUSING COVERAGE WITH UTILISATION: reporting one and being judged on the other.
+⛔ 100% COVERAGE: no ability to shrink, migrate, fail over or renegotiate. Or its twin, CONFUSING
+   COVERAGE WITH UTILISATION: reporting one and being judged on the other.
 ⛔ SPOT WITH NO INTERRUPTION BUDGET: one family, a stateful workload, a customer-visible reclaim.
 ⛔ LIFECYCLE THAT COSTS MORE THAN IT SAVES: per-object transitions on hundreds of millions of tiny
    objects, or short-lived data moved into a minimum-duration tier.
 ⛔ NAT GATEWAY AS A SILENT TAX: per-GB processing on traffic a private endpoint would carry for a
    fraction, unnoticed for years.
 ⛔ COST PER CALL INSTEAD OF COST PER RESOLVED TASK: the cheap model that retries four times.
-⛔ CACHE-DESTROYING PROMPTS: a session id at the top of the system prompt and a hit rate near zero
-   that nobody is measuring.
+⛔ CACHE-DESTROYING PROMPTS: a session id at the top of the system prompt and a hit rate near zero.
 ⛔ IDLE GPU RESERVATION: the most expensive idle resource in the estate, justified on availability
-   and never measured on utilisation.
-⛔ UNBOUNDED AGENT LOOPS: no gateway token budget, and a month of spend consumed overnight.
+   and never measured on utilisation. UNBOUNDED AGENT LOOPS: no gateway token budget at all.
 ⛔ COST ALERT WITH NO OWNER: functionally identical to no alert.
 ⛔ COMPROMISE TRIAGED AS WASTE: three days of cost analysis before anyone tells Agent 09.
 ⛔ CENTRAL SAVINGS SPREADSHEET NOBODY RECOGNISES: a number that never reached a real team's bill.
 ⛔ ENGINEERING TIME SPENT WITHOUT THE ARITHMETIC: a quarter of capacity for a saving smaller than
-   one engineer's loaded cost.
-⛔ COST CUT INTO AN OUTAGE: headroom removed, a signal deleted, a database downsized two steps.
+   one engineer's loaded cost. Or its opposite, COST CUT INTO AN OUTAGE: headroom removed, a
+   signal deleted, a database downsized two steps at once.
 ⛔ CAPITALISATION DRIVING ARCHITECTURE: work shaped to qualify for capex rather than to be right.
 ```
 
@@ -611,7 +607,6 @@ number, so it absorbs shocks from both directions and owns the reconciliation fo
 | **The migration that strands the commitment** | A platform re-architecture, an ARM or Kubernetes migration, or a region consolidation appearing after purchase | Check exchange and marketplace options immediately, sequence the migration to the expiry ladder, and put commitment expiry dates on the engineering roadmap as a shared artefact so the next purchase is not made blind | Agent 68 with Agent 08 and Agent 41 (Technical Program Management) |
 | **Cost data used in a performance conversation** | A leaderboard of teams by spend; a manager asked to explain a number in a review; workloads quietly moving | Stop it and re-frame on unit cost and trend. Ranking by absolute spend punishes whoever runs the biggest product, and the rational response is gaming: untagged resources, shared-account hiding, and the loss of the data the programme rests on | Agent 68 with Agent 22 (People and HR) and Agent 18 |
 | **A platform team is charged for everyone else's consumption** | Platform showback exceeding every product team; their budget review dominated by others' growth | Split the bill into platform-own and pass-through and metre the pass-through (section 3). A platform team accountable for a bill it does not control stops investing in the platform and starts rationing it | Agent 68 with Agent 08 and Agent 18 |
-| **Chargeback launches and the estate stops moving** | Weeks of allocation disputes; teams building shadow cost models; engineering time spent on billing arguments | Suspend the money movement, keep the reports, publish the method and the raw data, run a parallel quarter with a dispute SLA, then re-launch. Chargeback is a governance product needing change management, not an announcement | Agent 18 with Agent 68 |
 | **A cost spike turns out to be a security incident** | Spend in an unused region; GPU or high-CPU families nobody requested; charges from an unused service | Route to Agent 09's incident process on first suspicion, not after cost triage. Preserve billing evidence, rotate credentials, treat the spend as the least important consequence. Cost anomaly detection is a genuine under-used security detector: wire it to both channels | Agent 09 (Security) with Agent 68 |
 | **The AI feature moves the bill more than the platform** | A new top-five line item within weeks of launch; margin per tenant falling with no infrastructure change | Instrument cost per resolved task before general availability, set per-tenant and per-feature token budgets at the gateway, and give Agent 36 the cost floor before the price is set. An unbounded-consumption feature on a flat price is a margin decision made by whoever wrote the prompt | Agent 68 with Agent 49 (ML Engineering), Agent 36 (Pricing) and Agent 63 (AI Evaluation) |
 | **Finance and engineering report different cloud numbers in one meeting** | Two decks, two totals, an argument about credits, taxes, marketplace charges or the accrual | Agree one source of truth (the billing export at a stated amortisation and credit treatment) and publish one standing reconciliation to the ledger. The differences are almost always amortisation, credits, marketplace, taxes and the accrual: explainable once, then never again | Agent 56 (Controller) with Agent 68 and Agent 18 |

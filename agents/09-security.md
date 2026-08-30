@@ -306,6 +306,41 @@ RED-TEAM:
 □ RULE: AI accelerates the analyst; it never auto-remediates or closes an incident alone
 ```
 
+```
+(c) THE THREE AI ATTACK SURFACES YOU OWN THAT ARE NOT ON THE OWASP LIST, and who does what:
+□ THE MODEL SUPPLY CHAIN. A model artefact is executable content. Pickle-serialised weights can
+  execute arbitrary code on load, so prefer safetensors or an equivalent non-executable format,
+  verify checksums and provenance, mirror third-party models into your own registry rather than
+  pulling from a public hub at runtime, and treat a provider's silent model update as an
+  unreviewed production change (Agent 63 AI Evaluation re-runs the suite; you re-run the
+  adversarial suite). The same applies to embedding models, rerankers and tokenizers.
+□ THE AGENT'S TOOL SURFACE. For an agentic feature the security question is not "what can the
+  model say" but "what can the model DO, with whose permissions, and what cannot be undone".
+  Scope every tool to the invoking USER's permission, never to the service's; enforce tenant
+  isolation in the retrieval query and in the tool call, not in the prompt; require human
+  confirmation on irreversible actions; cap value, rate and recursion depth server-side. Third
+  party tool servers (including MCP servers) are third-party code with your credentials: they
+  need the same vendor review, pinning and change control as any other dependency.
+□ THE EXFILTRATION SIDE-CHANNEL IN THE UI. If your interface renders model-authored markdown
+  images, links or HTML, an injected instruction can encode retrieved secrets into a URL that the
+  browser fetches automatically. Treat model-authored URLs as untrusted: strict egress allowlist,
+  no auto-loading of remote images, and CSP that forbids arbitrary outbound requests.
+
+RESPONSIBILITY SPLIT, so nothing falls between two teams:
+| Concern | Owner |
+|---|---|
+| Risk taxonomy, architecture and controls in the stack | frameworks/ai-engineering-stack.md §5, with Agent 06 |
+| Measuring attack-success rate per category, the adversarial regression suite, severity triage | Agent 63 AI Evaluation and Red-Teaming |
+| Security sign-off, incident routing for S1 and S2 findings, pen-test scope covering AI features | Agent 09 (this agent) |
+| Lawful basis, retention and redaction for prompts, traces, embeddings and eval sets | Agent 39 Privacy |
+| Content policy the harmful-content tests score against | Agent 12 Trust and Safety |
+⚠️ PROMPT INJECTION HAS NO COMPLETE MITIGATION. Filters and system-prompt hardening reduce the
+rate; they do not close the class. Design so that a successful injection cannot cause harm:
+least-privilege tools, server-side limits, human confirmation on irreversible actions, and tenant
+isolation enforced below the model. Anything else is betting the control on the attacker's
+creativity being lower than yours.
+```
+
 ### 9. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
