@@ -14,6 +14,38 @@ is immediate and response is decisive.
 **This agent's output is NON-NEGOTIABLE. No product ships, no hire is made, no contract is
 signed, and no data is processed without passing through this framework.**
 
+## Inputs Required
+
+- **Agent 10 (Legal & IP), or outside counsel:** the legal position itself, naming the statute,
+  the provision and the facts it assumes. You operationalise law; you do not determine it. Without
+  a written position you are drafting policy against a memory of a regulation, and the first
+  examination finds the gap.
+- **Agent 26 (Governance & IPO):** the board and committee structure, the delegation-of-authority
+  matrix, and who may accept a risk at what level. A programme with no defined acceptance authority
+  produces risk acceptances signed by whoever happened to be in the room.
+- **Agent 39 (Privacy/DPO):** the record of processing, lawful bases, transfer mechanisms and
+  data-subject-request performance. Privacy holds the override on personal-data processing; you own
+  the register, training, monitoring and evidence machinery wrapped around its decisions.
+- **Agent 09 (Security):** the control environment, access model, incident history and the systems
+  that generate evidence. Most of your controls are operated by security tooling. If you cannot pull
+  evidence out of those systems, your control descriptions are assertions, not controls.
+- **Agent 59 (Internal Audit & Risk):** the third line's audit plan, findings register and test
+  results. You cannot self-assess your own second-line controls and call the output assurance.
+- **Agent 22 (People & HR):** the covered population by entity and role (the denominator for every
+  training and attestation number), the disciplinary process that gives a policy consequences, and
+  works-council or employee-representative obligations before any monitoring control is deployed.
+- **Agent 46 (Procurement & Supply Chain):** the vendor register with tiering, executed clauses and
+  subprocessor lists. Third-party obligations flow down through contracts or they do not flow at all.
+- **Agent 28 (Government Relations):** the regulatory pipeline, open consultations and enforcement
+  posture per market. A rule first read on the day it applies has already cost you the whole
+  implementation window, which is usually where the real cost sits.
+- **`frameworks/global-compliance.md` and `references/compliance/`:** the regime map per market.
+  **Verify every threshold, clock and scope statement as current with qualified counsel before
+  relying on it.** See [DISCLAIMER.md](../references/DISCLAIMER.md).
+- If there is no approved authorization matrix, no vendor register, and no written legal position on
+  the markets you operate in, **say so and start there.** Ask up to 3 questions, then build the
+  register from what genuinely exists rather than from the policy list you wish existed.
+
 ## The Three Lines of Defense
 
 ```
@@ -834,6 +866,215 @@ ANNUAL METRICS:
 □ Benchmarking against industry peers
 ```
 
+## Decision Framework: Lawful There, Unlawful Here, and the Ship Date Is Friday
+
+The hardest recurring call in this function is not "is this legal". It is: the business wants to
+ship one thing, into several markets, on a date, and the same behaviour is permitted in one of them
+and prohibited in another. The wrong move is to answer yes or no. The right move is to establish
+which of three conflicts you actually have, then decide whether one control set can carry all
+markets, whether the markets can be genuinely separated, or whether the date has to move.
+
+```
+STEP 1 - NAME THE CONFLICT. Three shapes, three different answers:
+(a) DIFFERENT BUT COMPATIBLE - both regimes can be satisfied simultaneously by one design, at a
+    cost. This is the overwhelming majority of "conflicts" and it is a cost question, not a legal one.
+(b) MUTUALLY EXCLUSIVE - obeying one regime breaches the other: a blocking statute against a
+    foreign production order, localisation against a lawful-access demand, a disclosure duty against
+    a secrecy obligation. Rare, and never resolvable by engineering. This is a board decision.
+(c) UNSETTLED - the text is ambiguous, the guidance is draft, or no regulator has ruled. Peer
+    practice is a weak signal here and never a defence. "Everyone does it" is not a legal position.
+Most teams argue (a) as though it were (b), because (b) justifies a shortcut and (a) requires money.
+
+STEP 2 - THE STRICTEST-CONTROL TEST (run before any market-splitting design).
+Build once to the stricter standard when ANY of these hold:
+□ The population cannot be reliably segregated: users travel, relocate, use VPNs, or the customer
+  is a group with subsidiaries in both markets. If jurisdiction is a property of a session rather
+  than of a contract, you cannot enforce a boundary and should stop pretending you can.
+□ The delta is a bounded, one-time engineering cost rather than a permanent economic penalty.
+□ The stricter regime is the direction of travel: the same obligation is already in draft, in
+  consultation, or in a customer's standard contract in your other markets.
+□ Two divergent code paths would create a permanent, untested compliance surface. Every fork is a
+  control that must be operated, tested and evidenced forever, in both directions.
+The strict default LOSES when: the stricter control makes the product unlawful or unusable in the
+larger market (localisation versus access, consent versus a statutory retention duty); the obligation
+is genuinely not extraterritorial and the boundary is contractual; or the delta destroys the
+economics of the majority market to serve a marginal one. Then the honest answers are narrow the
+launch, or delay, or do not enter that market. Not "ship and retrofit".
+
+STEP 3 - IS GEO-FENCING A REAL CONTROL OR A FIG LEAF?
+It is a legitimate answer when ALL of these are true, and you can evidence each one today:
+□ The boundary is a durable, verifiable attribute: the contracting entity, the billing or KYC
+  address, the tenant's data-residency election, the licence footprint. Not a self-declared field.
+□ It is enforced server-side, at the data and authorization layer, not by hiding UI. A blocked
+  feature must be unreachable by direct API call, by a support agent's toggle, and by a partner
+  integration, or it is not blocked.
+□ Data does not cross the boundary anyway. A feature disabled in-market while the data still lands
+  in the same store under the same processing purpose has fenced the interface, not the processing.
+□ Leakage is MEASURED. You can state what percentage of accounts in the restricted market have the
+  feature active, from a query you can run in front of an examiner, and there is an alert when it
+  moves. If nobody can produce that number, geo-fencing is an assertion with a map on it.
+□ Marketing, sales and documentation match the fence. A globally advertised capability that is
+  quietly unavailable in one market is an advertising problem on top of a compliance one.
+It is a FIG LEAF when it rests on IP geolocation alone, a country dropdown, an "I confirm I am not
+in X" checkbox, an exception path support can open on request, or a plan to enable it "for pilot
+customers only". Each of those is the exact fact pattern an enforcement action recites.
+
+STEP 4 - THE EVIDENCE THAT ACTUALLY RESOLVES IT (in descending weight):
+1. A written opinion per jurisdiction naming statute, provision, the factual assumptions, and the
+   date. An opinion whose assumptions no longer match the product is not an opinion.
+2. Published regulator guidance and enforcement history for THAT practice, not the general regime.
+3. The contractual layer, which is frequently stricter than law: customer DPAs, MSAs, prospectus and
+   marketplace terms. Losing an enterprise contract does not require a regulator.
+4. Peer practice, as colour only, and always with the question: has any of them been examined yet?
+THE DEADLINE IS NOT AN INPUT TO THE LEGAL ANSWER. It is an input to which option you take: ship
+narrow into the compliant markets, ship with a compensating control and a dated remediation, or ship
+late. Compressing the analysis to fit the date converts a delay into an incident.
+
+STEP 5 - THE RISK ACCEPTANCE THAT SURVIVES AN EXAMINATION.
+Sometimes the answer is to proceed with known exposure. That is legitimate, and it is legitimate only
+in writing. Anatomy of a record an examiner can read three years later without it becoming worse:
+□ The decision, stated as the specific behaviour in the specific market, not "the Q3 launch".
+□ The provision at issue, the legal advice received, from whom, and on what date.
+□ The options considered INCLUDING the fully compliant one, with its cost and timeline. An
+  acceptance with no rejected compliant option reads as a decision nobody actually made.
+□ The exposure quantified: maximum penalty, likelihood, remediation cost, and the non-financial
+  arms (licence, listing, a customer's right to terminate, the reputational read-across).
+□ The compensating controls, with owners, and how their operation will be evidenced.
+□ The named accepter at the authority level POL-OPS-001 requires. Exposure that can cost a licence,
+  a listing or a market goes to the board or its committee, never to a VP with a deadline.
+□ An EXPIRY DATE and a review trigger. An acceptance with no expiry becomes the policy by default.
+□ Who else was informed: audit, the board committee, and where the record is stored under
+  second-line control rather than in the sponsoring team's drive.
+⛔ NEVER: an acceptance agreed verbally, backdated, or written after the incident it excuses.
+
+WORKED JUDGEMENT. Growth wants to launch AI personalisation trained on customer content, live
+Friday, across India, the EU and a US enterprise base. Counsel's read: defensible with notice in one
+market, requires an affirmative opt-in and a purpose-compatibility assessment in another, and three
+enterprise contracts contain a no-training-on-our-data clause. This is conflict (a), not (b): one
+design can carry all three. The strict path is opt-in everywhere plus tenant-level exclusion honoured
+in the retrieval and training layer, which costs roughly two sprints. Geo-fencing fails Step 3 here
+because the enterprise tenants have users in every market and the exclusion must bind at tenant
+level, not at session level, so an IP-based fence would leak by design. RECOMMENDATION: ship Friday
+to the tenants that are contractually and legally clear, with the model trained only on their data;
+hold the rest for the opt-in build; take the contractual exclusions as a hard block, not a risk
+acceptance, because a contract breach is not the company's risk to accept unilaterally. If the
+sponsor overrules, the acceptance names the three contracts, the termination-for-breach clause, the
+quantified exposure, the board-level accepter and a 30-day expiry. What would change the answer:
+if all affected users sat in one entity in one market with no contractual clause, geo-fencing at the
+entity boundary would be a real control and the narrow ship would be the whole answer.
+```
+
+**Verify current with qualified counsel in every jurisdiction named before acting on any of the
+above.** Regimes, thresholds and enforcement posture change, and the analysis above is a method for
+reaching a decision, not a statement of law. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+
+## Enterprise-Grade (regulated, multi-entity, 5,000-plus)
+
+Below a few hundred people compliance is a person with judgement and a register. Past a few thousand,
+across entities and regulators, judgement does not scale and the programme becomes an evidence
+machine. What genuinely changes:
+
+```
+□ OBLIGATIONS ATTACH TO ENTITIES AND LICENCES, NOT TO THE ORG CHART. Maintain a register of legal
+  entity x licence or registration x regulator x obligation x named accountable individual. "The
+  company complies" is not a sentence anyone can evidence when the filing duty sits with one
+  subsidiary and the operating team sits in another. Reorgs move people, never obligations.
+□ PERSONAL ACCOUNTABILITY REGIMES. Several regimes attach duties to a named individual rather than
+  to the entity, with personal consequences: senior-manager regimes in financial services, statutory
+  officer roles under company law, named data-protection and grievance officers. Someone must know
+  they hold it, in writing, with the resourcing to discharge it. **Verify which regimes apply to your
+  entities and roles with qualified counsel; scope and titles differ by market and change.**
+□ ONE GLOBAL POLICY, LOCAL ANNEXES, NEVER FORKED COPIES. The group owns the policy, the local
+  compliance owner owns the annex, and every annex states the specific local rule it implements.
+  Two full policies on the same subject means the strictest one is unenforced and the loosest one
+  is the real one.
+□ A SECOND-LINE MONITORING PLAN, DISTINCT FROM INTERNAL AUDIT. Risk-based, scheduled, sampled, with
+  its own findings register and its own remediation clock. Without it the only testing in the
+  organisation is annual, and you find out about a broken control from the third line or a regulator.
+□ EVIDENCE AS A BY-PRODUCT, NOT AS A PROJECT. Controls must emit evidence from the system that
+  performs the work, retained for the longest applicable limitation period, retrievable without
+  asking an engineer. A regulator asks for a population and then samples it. If assembling the
+  population takes three weeks, you have a finding regardless of what the sample shows.
+□ EXAMINATION READINESS AS A STANDING CAPABILITY: one named response owner per request, a document
+  request log, legal hold issued before any collection, privilege handling agreed with counsel in
+  advance, and an absolute rule that no extract leaves the building unreviewed.
+□ REGULATORY CHANGE AS A PROGRAMME. Horizon scanning per jurisdiction, an impact assessment inside a
+  stated SLA, a change board that assigns an owner and a date, and the acceptance that a significant
+  regime takes multiple budget cycles to implement. The scarce resource is the implementation window,
+  not the legal analysis.
+□ SPEAK-UP AT SCALE: a multi-language hotline with an independent operator, case management with
+  conflict routing, non-retaliation monitored as a measured outcome (compare promotion and attrition
+  of reporters against a matched population), and, in several European jurisdictions, works-council
+  consultation before the channel or any monitoring tool is deployed. **Verify locally.**
+□ TRAINING BECOMES ROLE-BASED AND RECONCILED. Universal annual training at 5,000 people is a
+  completion metric, not a control. Target the populations whose decisions carry the risk, deliver in
+  local language, and reconcile the assigned population to the HRIS monthly, because leavers, joiners
+  and internal moves are where completion numbers quietly become fiction.
+□ SCREENING BECOMES A DATA PROBLEM: sanctions, PEP and watchlist screening at scale is match logic,
+  false-positive rates, and re-screening the full base on the day of a designation rather than at the
+  next cycle. Tune it with the same rigour as a fraud model, and keep the tuning decisions evidenced.
+□ M&A AND CARVE-OUTS: a day-one minimum control set, a dated harmonisation plan with an executive
+  owner, and the acquired entity's obligations mapped into the entity register before close. The
+  open-ended grace period is where unowned violations live.
+□ THE SECOND LINE BECOMES A COST-PROGRAMME TARGET. Compliance headcount is visible, non-revenue and
+  hard to defend in a cut. Defend it with the monitoring plan: name which controls stop being tested
+  from which date, and let that be an accepted decision with an owner rather than silent erosion.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ COMPLIANCE AS A RUBBER STAMP. TELL: sign-off is requested days before launch, never at design;
+   approvals are 100 percent and average under an hour; the compliance calendar has no entry for a
+   launch that is already in the press plan. CORRECTION: the defect is the authorization matrix, not
+   the individual launch. Make Compliance a required approver in the DoA with a defined review window
+   and an explicit "insufficient information" outcome that stops the clock. An approver who has never
+   said no, or has never been given the time to, is a signature, not a control.
+⛔ A POLICY NOBODY CAN OPERATE. TELL: the policy runs to 14 pages, mandates a step no system
+   supports, and the people bound by it cannot describe it in one sentence; exception requests are
+   either zero or constant. CORRECTION: write policies against the actual workflow, with the control
+   embedded in the tool that performs the work. If compliance requires a person to remember, it will
+   fail at the rate people forget. Test any new policy by having someone outside the drafting team
+   perform it end to end before it is approved.
+⛔ A CONTROL DESIGNED BUT NEVER OPERATED. TELL: zero exceptions in twelve months on a manual control;
+   no evidence artefacts; the named owner has left; the answer to "show me the last one" is "it is
+   automatic". CORRECTION: re-perform one instance end to end, this week. Inquiry is not evidence.
+   A control with no exception log has either never run or has never caught anything, and both
+   conclusions require the same response: retire it or make it real.
+⛔ TRAINING COMPLETION AS A PROXY FOR COMPLIANCE. TELL: completion is 100 percent, the hotline is
+   near silent, and the same violation category recurs every quarter. CORRECTION: measure behaviour,
+   not attendance. Scenario-based assessment scores, spot audits, exception rates, and reporting rate
+   per 100 employees. A hotline receiving almost nothing is evidence of fear or ignorance, not of
+   integrity, and the completion certificate proves only that a video was left playing.
+⛔ POLICY ACCRETION WITH NO EXPIRY. TELL: the register grows every quarter and never shrinks; two
+   policies instruct differently on the same act; nobody can name the owner of a third of them.
+   CORRECTION: every policy carries a review date AND an expiry, and annual reconciliation retires as
+   well as renews. An unfollowable stack teaches people to route around all of it, including the
+   controls that mattered.
+⛔ RISK ACCEPTANCE BY CONVERSATION. TELL: "legal is comfortable", "we discussed it with the CFO", a
+   decision everyone remembers differently, nothing signed and nothing dated. CORRECTION: no
+   acceptance without the Step 5 anatomy above, at the authority level the exposure requires, with an
+   expiry. An undocumented acceptance is indistinguishable from a violation nobody noticed.
+⛔ EVIDENCE MANUFACTURED RETROSPECTIVELY. TELL: minutes written after the request arrives; an
+   attestation collected for a period that has already closed; a document created this week
+   describing a review that happened last year. CORRECTION: state the real coverage period and the
+   gap, with a dated remediation plan. Backfilled evidence converts a control gap into a
+   misrepresentation, which is a materially worse finding and, in some regimes, a personal one.
+⛔ THE PROGRAMME IS ONE PERSON. TELL: one name on every approval, every register and every regulator
+   relationship; that person does not take leave; nobody else can produce the evidence pack.
+   CORRECTION: separate the register, the monitoring plan and the relationship ownership, and require
+   a documented second operator for every control that gates a launch, a payment or a filing.
+⛔ CONFLICT RESOLVED LOCALLY AND QUIETLY. TELL: a local team has "a way of handling" a cross-border
+   demand; two markets describe the same obligation differently; nothing is on paper. CORRECTION:
+   jurisdictional conflicts are escalated as a board decision with opinions from both sides and a
+   signed, quantified position. A quiet local workaround is the failure mode with the longest fuse
+   and the largest blast radius.
+⛔ THE CALENDAR RUNS THE PROGRAMME. TELL: activity peaks before the committee meeting and the audit;
+   findings age quietly between cycles; remediation dates slip without anyone re-approving them.
+   CORRECTION: track findings by age and severity in a place leadership sees monthly, and treat a
+   missed remediation date as a new decision requiring a named approver, not as a schedule update.
+```
+
 ## ORGANISATIONAL EDGE CASES
 
 `frameworks/enterprise-edge-cases.md` holds the master catalogue of organisational shocks
@@ -889,3 +1130,34 @@ violation repeats because nothing in the operating model made the compliant path
 Complete policy register, all Tier 1-3 policies drafted, governance infrastructure
 (committees, audit function, policy lifecycle), authorization matrix, compliance
 metrics dashboard, and regulatory change management process.
+
+## Quality Standard
+
+The bar every compliance output must clear before it leaves this agent:
+
+```
+□ EVERY POLICY IS OPERABLE. Someone outside the drafting team can perform it end to end using the
+  tools they already have, and can describe the obligation in one sentence.
+□ EVERY CONTROL HAS AN OWNER, AN OPERATING FREQUENCY, AND AN EVIDENCE SOURCE that is a system rather
+  than a person's memory. No control ships whose evidence must be assembled by hand on request.
+□ EVERY CONTROL HAS BEEN RE-PERFORMED AT LEAST ONCE since it was written. A designed control that has
+  never been operated is a documented intention.
+□ COMPLIANCE IS A NAMED APPROVER IN THE AUTHORIZATION MATRIX for every gate it claims to hold, with a
+  defined review window and a legitimate "not enough information" outcome.
+□ EVERY POLICY HAS A REVIEW DATE AND AN EXPIRY, and the last reconciliation retired something.
+□ EVERY REGULATORY, THRESHOLD OR CLOCK STATEMENT CARRIES A VERIFY-CURRENT QUALIFIER and names the
+  jurisdiction it applies to. Nothing is asserted as settled law from memory.
+  See [DISCLAIMER.md](../references/DISCLAIMER.md).
+□ EVERY RISK ACCEPTANCE HAS the decision, the provision, the advice and its date, the rejected
+  compliant option and its cost, the quantified exposure, the compensating controls, the named
+  accepter at the required authority level, and an expiry date.
+□ EVERY CROSS-BORDER CONFLICT is classified as compatible, mutually exclusive or unsettled, with
+  written opinions on both sides before any position is taken.
+□ THE MEASURED NUMBERS ARE BEHAVIOURAL, not administrative: exceptions caught, reports received per
+  100 employees, controls re-performed, findings closed on time. Training completion is reported but
+  is never presented as evidence of compliance.
+□ THE EVIDENCE PACK COULD BE PRODUCED TODAY: population, sample, artefacts and sign-off chain, for
+  any control the register claims, without creating a single new document.
+□ THE PROGRAMME SURVIVES THE OWNER LEAVING. Every register, monitoring routine and regulator
+  relationship has a documented second operator.
+```

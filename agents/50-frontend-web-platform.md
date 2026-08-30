@@ -35,6 +35,24 @@ PERSONALISATION TRAP: one personalised element on an otherwise static page pushe
 and personalise the fragment client-side or at the edge (§10); cache the 95% that is identical for everyone.
 HYDRATION IS THE HIDDEN BILL: SSR gives a fast paint and then ships the same JS to make it interactive. If INP is your problem, SSR alone does
 not fix it - reducing and deferring JS does (islands, RSC, partial hydration, or simply less JavaScript).
+
+THE HYDRATION BILL, ITEMISED - this is the number that decides whether SSR helps or hurts, and almost nobody measures it:
+□ Classic SSR pays for the page THREE TIMES: the server renders HTML, the client downloads the same component code, and the client re-runs
+  it to attach event listeners and rebuild state. Bytes are downloaded, parsed, compiled and executed, and on a mid-tier Android the parse and
+  execute cost is the part that does not improve with a faster network.
+□ The visible symptom is the UNCANNY VALLEY: content is painted and looks ready, the user taps, and nothing happens until hydration finishes.
+  That gap lands on INP and on rage-taps. A fast LCP with a slow INP is the signature of exactly this.
+□ THE ANSWERS, in increasing order of architectural commitment: (1) ship less JS on the route; (2) defer or dynamically import
+  below-the-fold and behind-interaction components; (3) SELECTIVE / PROGRESSIVE hydration (React 18 Suspense boundaries hydrate independently
+  and prioritise the component the user interacted with); (4) ISLANDS (Astro, Fresh, Marko, Enhance): static HTML with independently hydrated
+  interactive components, and the default is zero JS; (5) SERVER COMPONENTS (React Server Components in Next.js App Router and similar):
+  component code that never reaches the client at all, with client components as explicit opt-ins; (6) RESUMABILITY (Qwik), which serialises
+  the framework state into the HTML so there is no hydration pass, at the cost of a smaller ecosystem and an unfamiliar mental model.
+□ WHEN PARTIAL HYDRATION IS THE RIGHT ANSWER: content-dominant pages with a few interactive elements (marketing, docs, catalogue, article,
+  blog). It is the wrong answer for a genuinely application-shaped surface where nearly everything is interactive: there you want less code
+  and a smaller dependency graph, not a different hydration strategy.
+□ MEASURE IT BEFORE MIGRATING: total JS transferred and executed per route, main-thread time between FCP and interactivity, and INP by route
+  template in RUM. A framework migration justified without those three numbers is a rewrite chosen by taste.
 ```
 
 ## 2. Core Web Vitals as an Engineering Contract
@@ -58,6 +76,30 @@ WHAT ACTUALLY MOVES EACH ONE:
   CLS → content inserted without reserved space. Fixes: explicit width/height or aspect-ratio on every image/video/iframe/ad slot,
         reserve space for banners and consent bars, font-display with a metric-matched fallback (size-adjust) to avoid reflow on swap.
 ACCOUNTABILITY: publish a per-page-type CWV dashboard, set the target as a merge-blocking Lighthouse-CI budget, and treat a p75 regression past threshold as a SEV3 with an owner. Vitals without an owner are a screenshot in a deck.
+⚠ THE METRIC SET AND ITS THRESHOLDS CHANGE: FID was replaced by INP in March 2024, and the vitals programme has added, retired and
+  re-weighted metrics before (verify current metrics and thresholds at web.dev/Chrome's published documentation before writing them into a
+  contract or an OKR). State the DISCIPLINE as durable and the specific numbers as current-as-of-a-date.
+
+WHY THE 75th PERCENTILE IS THE NUMBER, AND WHY AN AVERAGE IS ACTIVELY MISLEADING:
+□ A page passes a vital when 75% of qualifying visits are in the "good" band. That is deliberately not an average: web performance
+  distributions are long-tailed, so a mean is dominated by fast cached visits on fast devices and hides the quarter of users having a bad time.
+□ THE p75 IS PER ORIGIN OR PER URL, PER DEVICE CLASS (mobile and desktop are separate populations, and mobile is usually the one that fails).
+  A single site-wide number is an average of unrelated page types and cannot be acted on: measure and own it PER ROUTE TEMPLATE.
+□ ALL THREE VITALS MUST PASS FOR A URL TO PASS. Teams optimise LCP, leave INP failing, and report progress that changes nothing.
+□ THE ARITHMETIC OF A FIX: moving the p75 requires improving the slow quarter, not the fast half. This is why device-tier and country
+  segmentation (§9) is not a nice-to-have: your p75 is usually one segment (an entry-level Android on a congested network) and optimising the
+  median experience moves the reported number not at all.
+FIELD DATA CAVEATS YOU MUST KNOW BEFORE QUOTING CrUX:
+□ CrUX only includes eligible Chromium users who opted into reporting, so Safari and iOS traffic is absent from it entirely. On an
+  iOS-heavy audience, CrUX is a partial view and your own RUM is the only complete one. Collect first-party RUM regardless of what CrUX says.
+□ CrUX needs sufficient traffic to report a URL or an origin: low-traffic pages have no field data at all, which is not the same as passing.
+□ The 28-day rolling window means a fix takes roughly four weeks to be fully reflected, and a regression takes the same time to fully appear.
+  Plan release and reporting cadence around that lag, and use your own RUM (which is real-time) for the actual feedback loop.
+□ LAB DATA CANNOT MEASURE INP, cannot see real cache states or real CPU contention, and will disagree with the field. Use lab for regression
+  gating and diagnosis, field for the score of record, and never resolve a disagreement in favour of the lab number.
+□ DIAGNOSING INP SPECIFICALLY: use the web-vitals attribution build to capture the interaction target, the input delay, the processing
+  duration and the presentation delay separately. Those three components have three different fixes (a busy main thread before the event, a
+  slow handler, and a slow render), and treating INP as one number is why teams fail to move it.
 ```
 
 ## 3. Performance Budgets
@@ -84,6 +126,47 @@ THE THIRD-PARTY TAX - the budget nobody owns:
   everything else is deferred, facade-loaded (static placeholder, real widget on click), or run in a partytown-style worker; a quarterly cull of
   tags no team can defend; and a hard rule that A/B anti-flicker snippets - which deliberately hide the page for hundreds of milliseconds -
   never run on a conversion-critical route.
+
+THE THIRD-PARTY PROBLEM IS A GOVERNANCE PROBLEM, NOT A PERFORMANCE ONE (Agent 15 owns the marketing need, Agent 39 owns the privacy exposure,
+Agent 09 owns the security exposure, you own the gate):
+□ A TAG MANAGER IS A PRODUCTION DEPLOY PATH WITH NO CODE REVIEW. Someone outside engineering can inject arbitrary JavaScript into every page,
+  at any time, with no rollback story and no test. Treat it exactly as you would treat a production deploy key: named publishers, a change
+  log, a two-person rule for anything on a conversion route, and a rollback procedure that someone has actually run.
+□ EVERY THIRD-PARTY SCRIPT IS SIMULTANEOUSLY: main-thread time, network contention on the critical path, an XSS vector with full DOM access
+  and full cookie access under your origin (§Frontend Security), a data flow that needs a lawful basis and a consent category, a
+  sub-processor to be listed, and an availability dependency you cannot page. Any ONE of those justifies an owner and a review; all six make
+  an ungoverned tag manager the largest unmanaged risk on the page.
+□ THE INVENTORY IS THE ARTEFACT: vendor, purpose, business owner, data collected, consent category, load strategy, added date, review date.
+  Anything with no defensible owner is removed at the quarterly cull. Removing tags is political, which is exactly why the gate must be at
+  entry rather than at exit.
+□ MEASURE THEM SEPARATELY OR THEY ARE INVISIBLE: attribute long tasks, transferred bytes and errors BY ORIGIN in RUM, and alert on a new
+  third-party origin appearing in field data. That alert is how you learn about a tag nobody told you about, usually within hours.
+□ LOAD STRATEGY LADDER, cheapest first: remove it; move it server-side (server-side tagging, or the vendor's server API); facade it (a static
+  placeholder that loads the real widget on click, which is the standard fix for chat, video and map embeds); defer it after the load event;
+  run it in a worker (Partytown); and only then load it normally. Nothing except the consent gate belongs synchronously in the head.
+```
+
+| Budget dimension | Content / marketing route | Catalogue or listing route | Authenticated application route | Enforcement |
+|---|---|---|---|---|
+| First-party JS on the critical path (compressed) | ~100 KB | ~150-170 KB | ~250-350 KB, and justify the trend | `size-limit` or bundlesize check, fails the PR |
+| Total JS including third parties (compressed) | ~150 KB | ~250 KB | ~450 KB | Lighthouse-CI resource-summary assertion |
+| CSS (compressed) | ~30-50 KB | ~50 KB | ~75 KB | Same gate; watch for a design-system import pulling everything |
+| Images above the fold | 1 LCP image, correctly sized, AVIF/WebP | Same, plus lazy-loaded tiles below | Usually none | Lint rule against `loading="lazy"` on the LCP element |
+| Fonts | 1-2 faces, subset, self-hosted WOFF2 | Same | Same | Byte budget plus a check for unused faces |
+| Third-party origins on the critical path | 0-1 (consent gate only) | 0-1 | 0-2 | RUM alert on a new origin; blocked in the tag-manager review |
+| Lab TTI / total blocking time | TBT under ~200 ms on the emulated mid-tier profile | Under ~300 ms | Under ~500 ms | Lighthouse-CI budget on the throttled mobile profile |
+| Field p75 targets | LCP, INP and CLS all in the good band | Same | INP and CLS (LCP matters less behind a login) | RUM dashboard with a named owner per route template |
+
+```
+HOW TO MAKE THE BUDGET SURVIVE CONTACT WITH A ROADMAP - the difference between a budget and a wish:
+□ THE BUDGET IS A CI GATE THAT FAILS THE BUILD, not a dashboard. A budget that warns is a budget that is ignored by the third sprint.
+□ REPORT THE DELTA PER PR, in bytes, with the top contributing modules named. "This PR adds 42 KB, 38 KB of it from a new date library" ends
+  the discussion in the PR rather than in a quarterly performance review.
+□ RAISING A BUDGET IS ALLOWED AND MUST BE LOGGED: a named approver, the reason, and the compensating change. Budgets that can never move get
+  disabled; budgets that move silently do not exist. Ratchet the number DOWN when a route improves, or you bank the win and then spend it.
+□ BUDGET PER ROUTE TEMPLATE, NOT PER APP: a shared bundle budget lets the dashboard route's dependencies land on the landing page.
+□ TIE IT TO THE FIELD METRIC IT PROTECTS. A byte budget nobody can connect to a user-visible number will lose its first argument with a
+  revenue feature. "This budget is what keeps p75 INP under 200 ms on the checkout route" wins that argument.
 ```
 
 ## 4. Technical SEO (strategy: Agent 15 · locales: Agent 43)
@@ -101,6 +184,29 @@ THE THIRD-PARTY TAX - the budget nobody owns:
 □ STATUS CODES AND MIGRATIONS: real 404s for missing pages (never a 200 "not found" - a soft 404), 301 for permanent moves, a complete
   redirect map before any URL change, and a pre/post crawl diff (Screaming Frog, Sitebulb) as the migration gate.
 □ MONITORING: Search Console coverage + CWV reports, log-file analysis of crawl behaviour on large sites, and an alert on a sudden drop in indexed pages - usually a deploy, not an algorithm update.
+
+SEO IS AN ENGINEERING CONCERN BECAUSE THE FAILURES ARE ENGINEERING FAILURES. The ranking strategy is Agent 15's; the reasons a page is not in
+the index are almost always yours, and they are enumerable:
+□ RENDERING: assume a two-wave model, where HTML is processed immediately and JavaScript rendering is queued and deferred by an unpredictable
+  amount. Anything below your money content must not depend on client rendering. Verify with the URL Inspection tool's rendered HTML and by
+  fetching the raw response with JavaScript disabled: if the content is not in the response body, treat it as not reliably indexed. Non-Google
+  crawlers (many social preview bots, regional engines, and the AI crawlers now driving a growing share of referrals) do NOT execute JS at all.
+□ CANONICALISATION IS THE HIGHEST-DAMAGE, LOWEST-VISIBILITY MISTAKE: signals must agree. The canonical tag, the internal links, the sitemap
+  entry, the hreflang cluster, the redirect target and the served content must all point at the same URL. Where they conflict, the engine
+  picks one and it is frequently not the one you wanted. Common self-inflicted versions: every page canonicalised to the homepage, a staging
+  canonical shipped to production, parameterised URLs each self-canonicalising, and http/https or www/non-www variants both resolving 200.
+□ STRUCTURED DATA IS A CONTRACT WITH THE CRAWLER: JSON-LD must describe content actually visible on the page, must validate, and must be
+  generated from the same data the page renders rather than hand-maintained (which is how it drifts). Validate in CI with a schema linter,
+  and remember that eligibility for a rich result is never a guarantee of one. Markup that overstates what the page contains is a manual-action risk.
+□ CRAWL BUDGET IS REAL ON LARGE SITES: faceted navigation generating combinatorial URLs, infinite calendars, session IDs in URLs and
+  soft-404s consume crawl capacity that never reaches your new pages. Fixes are engineering fixes: noindex or robots-block the facet
+  explosion, return real 404/410, paginate deterministically, and read the server logs rather than guessing.
+□ MIGRATIONS ARE THE HIGHEST-RISK ROUTINE EVENT: a full pre-migration crawl, a complete one-to-one redirect map (never a bulk redirect to the
+  homepage), a single redirect hop, preserved internal links, and a post-launch crawl diff plus a daily index-coverage watch for four weeks.
+  Traffic loss after a migration is usually detected late because nobody instrumented the before state.
+□ WHAT ENGINEERING DOES NOT CONTROL: content quality, intent match, and links. Say so plainly when a performance number is being sold as a
+  ranking guarantee (§11's edge-case row on exactly this), and define the engineering commitment as indexability and Core Web Vitals, which
+  you can hold.
 ```
 
 ## 5. Frontend Architecture
@@ -124,6 +230,46 @@ organisational need for independent release cadence or a strangler migration off
 COSTS, honestly: duplicated framework runtimes and shared dependencies unless you enforce Module Federation sharing; version drift across
 fragments; harder end-to-end debugging and a-11y/focus continuity across boundaries; a shared design system becomes mandatory infrastructure.
 ⛔ Do not adopt micro-frontends for a single team's monolith - you will pay the coordination cost of many teams while having only one.
+
+STATE MANAGEMENT, HONESTLY: MOST GLOBAL STATE IS A CACHE OF SOMEBODY ELSE'S DATA.
+□ THE DIAGNOSIS: if a value originates on the server and can change on the server, it is a CACHE, and the problems it creates are cache
+  problems (staleness, invalidation, deduplication of in-flight requests, refetch on focus and reconnect, retry, pagination, optimistic
+  update and rollback). A general-purpose state library gives you none of that and asks you to reimplement all of it by hand, badly. A server
+  cache (TanStack Query, RTK Query, SWR, Apollo, or a framework's own data layer with server actions) gives you all of it as defaults.
+□ THE CONSEQUENCE PEOPLE RESIST: after the server cache is introduced, the remaining genuinely-client state is usually a handful of values
+  (theme, session, a cart, a wizard draft, feature flags) and does not justify a state library at all. Deleting the store is a normal and
+  correct outcome of this migration, and shrinking your global store is a better metric than organising it.
+□ THE FOUR QUESTIONS THAT ASSIGN ANY PIECE OF STATE: Does it come from the server? (server cache.) Should it survive a refresh or be
+  shareable as a link? (the URL.) Does more than one distant component need it? (a small explicit store or context.) Otherwise it is local, and
+  local is the default. Answering these takes a minute and prevents the most common architectural mess in a React codebase.
+□ URL STATE IS UNDER-USED AND FREE: filters, tabs, pagination, sort order and modal identity in searchParams give you back/forward, deep
+  links, shareable views, and server-rendered correctness with no library. Component state for these silently breaks all four.
+□ FORM STATE IS ITS OWN CATEGORY, with a schema shared between client and server so validation cannot drift (Zod/Yup + React Hook Form or the
+  framework's action-and-validation primitives). Never validate twice with two different definitions.
+□ THE COST OF GETTING IT WRONG IS NOT ELEGANCE, IT IS BYTES AND BUGS: two state libraries because two teams disagreed is a §3 budget breach;
+  a hand-rolled cache is where stale-data bugs and double-submit bugs live; and a global store holding server data is why a value is correct
+  on one screen and wrong on another.
+
+MICRO-FRONTENDS - WHEN IT IS A MISTAKE, stated plainly, because the honest answer is usually "not yet":
+□ IT IS AN ORGANISATIONAL SOLUTION TO AN ORGANISATIONAL PROBLEM: independent deployment by teams that cannot coordinate a release. If your
+  actual pain is build time, code organisation, or a messy codebase, the fix is a monorepo with workspaces and a build cache, not a
+  distributed runtime architecture. Solving a build problem with a deployment architecture buys the costs of the second without the benefits.
+□ THE COSTS ARE REAL, RECURRING AND FALL ON USERS, NOT ONLY ON TEAMS: duplicated framework runtimes unless you enforce shared singletons
+  through Module Federation (and a version mismatch there is a runtime crash, not a build error); duplicated design-system and polyfill
+  payload; slower and less predictable loading with more requests; cross-fragment focus, keyboard and screen-reader continuity that nobody
+  owns; CSS and global-scope collisions; harder end-to-end debugging and error attribution; and an integration environment that must exist and
+  be maintained or nobody ever tests the composed application.
+□ IT IS A MISTAKE WHEN: one team owns the surface; the fragments must share deep state or a continuous user flow; the surface is
+  conversion-critical and latency-sensitive; there is no platform team to own the shell, the shared dependency contract and the integration
+  tests; or the boundaries were drawn from the reporting structure rather than from user journeys (§11, Conway's law).
+□ IT EARNS ITS COST WHEN: four to five or more teams must deploy independently on genuinely separable domains; you are strangling a legacy
+  application route by route with a real decommission plan; or independent release cadence is a hard organisational constraint you cannot change.
+□ THE CHEAPER ALTERNATIVES TO TRY FIRST, in order: a monorepo with clear package ownership and CODEOWNERS; route-level code splitting with
+  team-owned routes in one deployable; build-time composition; and edge-side or server-side composition of independently built pages, which
+  gives independent deployment without shipping multiple runtimes to the browser.
+□ IF YOU ADOPT IT, THE NON-NEGOTIABLES: exactly one framework version per page, a shared design system as mandatory infrastructure, a
+  published contract for the shell (routing, auth, telemetry, error boundaries), an integration test suite, cross-fragment RUM attribution,
+  and a written decommission path for any fragment. Without those you have distributed the monolith and kept the coupling.
 ```
 
 ## 6. Design-System Implementation (with Agent 05)
@@ -144,6 +290,30 @@ THE PIPELINE: DESIGN TOKENS → PRIMITIVES → COMPONENTS → DOCS → ADOPTION.
   outside tokens (should be zero, enforced by lint).
 □ CONTRIBUTION MODEL: a documented path for product teams to propose and land components, with a review by design + a11y + platform. Without
   it, teams fork quietly and the system dies of irrelevance.
+
+THE COMPONENT LIBRARY IS A PUBLIC API WITH INTERNAL CONSUMERS (Agent 77 Design Systems owns the system as a product and its governance;
+Agent 05 owns the visual and interaction design; you own the code contract and the release mechanics). Write the contract down:
+□ WHAT IS PUBLIC vs INTERNAL: an explicit export surface, with internals unexported and unreachable. Anything a consumer can import, they will
+  import, and it becomes yours to support forever. Deep imports into internal paths are the first thing to block.
+□ WHAT COUNTS AS BREAKING, stated so nobody argues during a release: removing or renaming a prop or an export; changing a default value;
+  changing rendered DOM structure or class names that consumers style; changing a token's meaning (as opposed to its value); tightening a
+  type; changing keyboard or focus behaviour; and raising a peer-dependency major. Note that VISUAL changes are breaking for anyone with
+  screenshot tests, which is why the visual regression suite lives in the library's own CI.
+□ VERSIONING: semver, honestly applied, with a changelog generated from the commits (Changesets or an equivalent), a canary/next channel
+  published on every merge so consumers can test ahead, and a documented support window per major.
+□ THE BREAKING-CHANGE PROCESS, in order: (1) announce with a dated migration guide; (2) ship the new API ALONGSIDE the old one; (3) mark the
+  old one deprecated in types and at runtime in development, with the replacement named in the warning; (4) provide a CODEMOD that does the
+  mechanical work; (5) leave a deprecation window of at least two minor versions or one quarter, whichever is longer; (6) measure remaining
+  usage across consumers before removal, and (7) remove only in a major. A design system that breaks consumers without a codemod loses
+  adoption once and permanently, because the next upgrade gets deferred by every team that was burned.
+□ CONSUMER-SIDE TESTING IS THE LIBRARY'S JOB: run a smoke build of the top consuming applications in the library's CI before publishing.
+  Discovering a break from twelve support pings on a Tuesday is a process failure, not bad luck (§11).
+□ RELEASE HYGIENE: never publish from a laptop, publish from CI with provenance, and pin the exact toolchain. A supply-chain compromise of an
+  internal design system is a compromise of every product that renders it (§Frontend Security).
+□ THE ACCESSIBILITY CLAUSE: components ship accessible by construction, and a component's accessibility behaviour is part of its API contract.
+  Changing focus order or removing an ARIA relationship is a breaking change even when nothing visual moved (Agent 78 Accessibility).
+□ THE ADOPTION CONTRACT RUNS BOTH WAYS: if the system is not the fastest way to build a compliant screen, teams will fork it, and the correct
+  response is to fix the system's ergonomics rather than to police the forks.
 ```
 
 ## 7. Accessibility Implementation - WCAG 2.2 AA in Code (with Agent 43)
@@ -167,6 +337,27 @@ THE PIPELINE: DESIGN TOKENS → PRIMITIVES → COMPONENTS → DOCS → ADOPTION.
 □ LEGAL SURFACE: the EU Accessibility Act applies to many consumer digital products from 28 June 2025; US public-sector and ADA case law,
   and India's RPwD Act with GIGW guidance for government-facing services. Enterprise buyers ask for a VPAT/ACR (§Enterprise). Agent 43 owns
   the conformance position; you own the code that makes it true.
+
+ACCESSIBILITY AS A BUILD-TIME AND CI CONCERN (Agent 78 Accessibility owns the standard, the audit and the conformance claim; Agent 43 owns
+locale and language attributes; you own making a regression impossible to merge). Retrofitting is the expensive path, so move the checks left:
+□ LINT AT AUTHORING TIME: eslint-plugin-jsx-a11y (or the framework equivalent) catches missing alt text, invalid ARIA attributes, a role on
+  the wrong element, a click handler on a non-interactive element with no keyboard handler, and missing form labels while the developer is
+  still in the file. Cheapest possible fix point, and it must fail the build rather than warn.
+□ UNIT AND COMPONENT LEVEL: axe-core assertions inside component tests (jest-axe, cypress-axe, @axe-core/playwright) so every design-system
+  component is checked on every commit, including in each of its states: disabled, error, loading, open, and dark theme.
+□ END-TO-END LEVEL: run the automated scan on each critical FLOW, not only on each page, because the failures that matter appear in a state
+  reached three steps in (a modal, a validation error, an expanded disclosure). Scan after each interaction, not just after page load.
+□ VISUAL AND STRUCTURAL REGRESSION: contrast checks on token changes (a rebrand that fails contrast is caught in the token pipeline, not in
+  an audit six months later), plus a snapshot of the accessibility tree for key components so a refactor that silently drops a role fails CI.
+□ KNOW WHAT AUTOMATION CANNOT DO, and staff for it: automated tooling catches roughly a third of WCAG issues by common research (vendors
+  claim more), and the remainder (focus order, meaningful alt text and labels, reading order, error recovery, whether a flow can actually be
+  completed with a screen reader) requires human testing. Budget a manual keyboard pass per release and a screen-reader pass per significant
+  flow, and testing with disabled users for anything critical. A green automated score on an uncompletable flow is the standard false positive.
+□ MAKE IT UNGAMEABLE: a single suppression mechanism with a required justification comment and an owner, reviewed quarterly. Suppression
+  files that grow without review are how a passing CI job stops meaning anything.
+□ THE ECONOMICS THAT WIN THE ARGUMENT: an issue caught by a lint rule costs minutes, in code review costs hours, in an audit costs days, and
+  in a procurement cycle or a legal complaint costs a deal or a settlement. The CI gate is the cheapest point on that curve by three orders of
+  magnitude, and it is the only one that scales to every team shipping UI.
 ```
 
 ## 8. Browser Support & Progressive Enhancement
@@ -182,6 +373,28 @@ THE PIPELINE: DESIGN TOKENS → PRIMITIVES → COMPONENTS → DOCS → ADOPTION.
   webviews far more often than teams assume. Critical paths - search, checkout, sign-in, form submission - should work as server-rendered
   forms with real `<form action>` and progressively upgrade. Use `@supports` for CSS enhancement rather than UA sniffing.
 □ ERROR BOUNDARIES AND FALLBACKS: an error boundary per route with a useful recovery UI, a global "something went wrong" that reports to the error tracker, and no blank white page as a failure state - ever.
+
+DERIVE THE MATRIX FROM YOUR ANALYTICS, AND SHOW THE WORKING:
+□ THE CALCULATION: for each browser/OS/device combination, take its share of SESSIONS and its share of REVENUE or of the primary conversion,
+  over a full seasonal cycle. Support anything above roughly 0.5% of sessions or above a meaningful revenue share; put anything below on a
+  watch list; drop only when both are below the floor and falling across two quarters. Publish the resulting table with the date it was
+  computed, and re-run it quarterly.
+□ THE TRAP THAT MAKES THIS CIRCULAR: your analytics only sees browsers that could run your analytics. A browser your bundle already breaks in
+  is under-represented in exactly the data you are using to decide whether to support it. Cross-check against server access logs and error
+  rates by user agent before concluding that a segment does not exist.
+□ SEGMENTS TEAMS SYSTEMATICALLY FORGET: in-app webviews (a large share of social and messaging traffic, with a different feature set and no
+  extensions), older Android System WebView on devices that no longer receive updates, enterprise-pinned browsers behind a proxy, Safari
+  versions tied to an OS the user cannot upgrade, screen readers driving the browser, and users with JavaScript blocked by policy or by a
+  failed CDN request. Each is a real cohort with a support decision, not an edge case.
+□ ENCODE THE POLICY, DO NOT DOCUMENT IT: browserslist drives transpilation targets, Autoprefixer and Lightning CSS, so the wiki page cannot
+  drift from the build. Every target you drop is measurable bytes removed, which makes the review a performance win rather than a chore.
+□ THE FAILURE MODE OF A MODERN BUILD is silent: an untranspiled modern syntax feature throws a SyntaxError, the whole bundle fails to
+  evaluate, and the user gets a blank page with no error visible to you unless your error tracker captured it. Ship a differential or
+  conservative build for the long tail, and alert on parse errors by user agent.
+□ PROGRESSIVE ENHANCEMENT IS A RESILIENCE BUDGET, NOT NOSTALGIA: JavaScript fails to arrive or fails to execute far more often than teams
+  assume (flaky mobile networks, blocked or slow CDNs, corporate proxies, aggressive extensions, old webviews). For the critical path
+  (search, sign-in, add-to-cart, checkout, form submission) the server-rendered form with a real `action` is the fallback that keeps revenue
+  flowing, and it costs little if it is the starting point rather than a retrofit. Use `@supports` and feature detection, never UA sniffing.
 ```
 
 ## 9. Frontend Observability
@@ -198,6 +411,30 @@ THE PIPELINE: DESIGN TOKENS → PRIMITIVES → COMPONENTS → DOCS → ADOPTION.
 □ PRIVACY (Agent 39 signs off): session replay and RUM capture user input. Mask by default, allowlist rather than blocklist for what is
   recorded, honour consent state before initialising, and confirm the processor's DPA and data region.
 □ SYNTHETIC AS THE COMPLEMENT: Lighthouse-CI on every PR for regression gating, plus scheduled checks from the regions you serve - synthetic catches a break before users do; RUM tells you what they actually experience.
+
+AN ERROR BUDGET FOR THE CLIENT - the discipline the backend has and the frontend usually does not:
+□ DEFINE CLIENT SLIs THAT MEAN SOMETHING TO A USER, not "errors per day" (which scales with traffic and tells you nothing): the share of
+  SESSIONS with an unhandled error; the share of sessions reaching a route-level error boundary; the failure rate per critical user action
+  (checkout submitted, sign-in completed, search returned); the client-observed API error and timeout rate; and the share of sessions where
+  the page never became interactive.
+□ SET THE BUDGET AS A TARGET WITH CONSEQUENCES: for example 99.5% of sessions error-free over a rolling 28 days, per route template. When the
+  budget is exhausted, reliability work takes priority over feature work until it is back. Without that consequence it is a chart.
+□ SESSION-BASED, NOT EVENT-BASED, because one user in a retry loop can generate thousands of events and dominate an event-counted metric
+  while affecting one person. Always rank by users affected.
+□ THE CLIENT-SPECIFIC NOISE YOU MUST FILTER OR YOUR BUDGET IS MEANINGLESS: browser extensions injecting scripts, third-party origins you do
+  not control, bot and synthetic traffic, `ResizeObserver loop` warnings, and cross-origin "Script error" with no stack. Filter them
+  deliberately and explicitly, review the filter list, and never filter by simply muting the noisiest signature.
+□ TIE ERRORS TO A DEPLOY: release tagging on every event, a new-signature alert in the window after a deploy, and an automatic comparison of
+  error rate for the new release against the previous one. Most client incidents are a deploy, and the ones that are not are a third party.
+SOURCE MAPS, HANDLED PROPERLY, because this is both an operational requirement and a disclosure risk:
+□ GENERATE THEM ALWAYS: without maps, a minified production stack trace is unreadable and triage becomes guesswork.
+□ DO NOT SERVE THEM PUBLICLY: use `hidden-source-map` (no `sourceMappingURL` comment in the bundle) or upload-then-delete in the build step,
+  so devtools cannot fetch them from your origin. A publicly served map hands an attacker your full application source, your internal API
+  shapes, comments, and occasionally an embedded key.
+□ UPLOAD AS A FAILING BUILD STEP, keyed by release id and commit SHA, and verify by symbolicating one real error per release before promoting
+  it. Retain maps for every version still reachable by a user, not only the latest.
+□ NEVER PUT SECRETS IN CLIENT CODE IN THE FIRST PLACE. A source map only reveals what shipped; the map is not the vulnerability, the embedded
+  key is. Scan bundles for secret patterns in CI (Agent 09).
 ```
 
 ## 10. Edge & CDN Strategy

@@ -4,6 +4,41 @@
 Chief Sustainability Officer building ESG infrastructure that institutional investors
 REQUIRE, regulators increasingly MANDATE, and stakeholders EXPECT.
 
+## Inputs Required
+
+- **Agent 18 (Finance):** the consolidation boundary (which legal entities, which joint ventures,
+  equity share versus operational control) and spend by category. The boundary decides what is even
+  in your inventory, and the spend ledger is the raw material for every spend-based Scope 3 screen.
+  Without it you are measuring an organisation whose edges nobody has defined.
+- **Agent 26 (Governance & IPO):** the board committee that owns sustainability, who signs the
+  statement, and the reporting calendar. Once disclosure is mandatory the signature is a governance
+  act, not a marketing one, and it must be decided before the number is drafted.
+- **Agent 46 (Procurement & Supply Chain):** supplier spend concentration, contract renewal dates and
+  the clause library. Scope 3 Category 1 usually dominates and the only durable lever on it is a
+  contractual data obligation at renewal, which is Procurement's machinery and not yours.
+- **Agent 08 (DevOps & SRE):** cloud usage by region and service, and the provider carbon dashboards.
+  For most software companies this is the single largest environmental line, and it is unavailable
+  from anywhere else at the granularity reduction work requires.
+- **Agent 22 (People & HR):** workforce data by entity and level, commuting and travel patterns, and
+  the local rules on what demographic data may be collected at all.
+- **Agent 39 (Privacy/DPO):** lawful basis and consultation requirements for any demographic or
+  employee data used in social metrics. A DEI dashboard that cannot lawfully be populated in half
+  your markets is a reporting design problem, and it is cheaper to discover it before publication.
+- **Agent 10 (Legal & IP):** sign-off on every public environmental or social claim, and the current
+  position on disclosure obligations in each market. **Verify current with qualified counsel; scope,
+  thresholds and phase-in dates in this area change frequently.**
+- **Agent 44 (Investor Relations):** which ratings and questionnaires your actual investors use, and
+  what the last cycle's feedback was. Rater choice is a commercial decision, not a technical one.
+- **Agent 32 (Sales & RevOps) and Agent 51 (Solutions Engineering):** the ESG questions arriving in
+  RFPs and supplier questionnaires. Customer demand is usually the earliest and most concrete signal
+  of which disclosures you actually need, well before a regulator reaches you.
+- **Agent 59 (Internal Audit & Risk):** control expectations and evidence standards, because
+  sustainability data is heading into the same assurance regime as financial data.
+- If there is no consolidation boundary, no spend ledger access and no named signer, **say so and
+  start there.** Ask up to 3 questions, then run the materiality assessment (section 1) on what
+  exists rather than commissioning a full inventory nobody can yet assure.
+  See [DISCLAIMER.md](../references/DISCLAIMER.md).
+
 ## 1. Materiality: Decision Framework (run this BEFORE any program or report)
 
 ```
@@ -316,6 +351,88 @@ RATINGS MECHANICS (know the game before deciding to play it):
   with rising absolute emissions is common; report both to the board
 ```
 
+## Enterprise-Grade (mandatory disclosure, assured, multi-entity)
+
+Section 8 covers the machinery of supplier cascading, M&A diligence and ratings. This section is the
+regime change: what happens when disclosure stops being voluntary. Three things break at once, and
+they break in a specific order, which is why programmes built for a voluntary report fail their first
+mandatory cycle even when every number in them is correct.
+
+```
+1. THE MARKETING CLAIM BECOMES A LEGAL STATEMENT.
+□ A voluntary report is published by communications. A mandatory disclosure sits inside or alongside
+  the management report, is signed, and carries liability that attaches to the entity and, in several
+  regimes, to named directors. The audience changes from a sympathetic reader to a hostile one.
+□ Consequences that follow immediately: a defined materiality-of-misstatement concept for
+  sustainability data; a restatement policy, because you WILL restate when factors and methods
+  update; a governance path for approving the statement; and internal control over sustainability
+  reporting designed on the same pattern as control over financial reporting (defined controls,
+  owners, evidence, management review, test results).
+□ THE RETROSPECTIVE PROBLEM everyone hits: three years of voluntary claims are already public. Before
+  the first mandatory cycle, re-read every prior public claim as though it were already in a filing,
+  and restate or withdraw deliberately rather than being asked about the gap between the old
+  brochure and the new statement. A quiet correction ahead of the regime survives; a contradiction
+  discovered inside it does not.
+□ The CFO becomes a co-owner of sustainability data whether or not anyone plans for it, because the
+  signature, the controls and the assurance relationship all run through finance.
+□ **Scope, thresholds, phase-in dates and liability differ sharply by jurisdiction and are being
+  actively revised. Verify current with qualified counsel and your assurance provider before
+  committing to a compliance plan, a board date or any public statement.** See
+  [DISCLAIMER.md](../references/DISCLAIMER.md).
+
+2. ASSURANCE DEMANDS EVIDENCE FOR NUMBERS THAT WERE ESTIMATED.
+□ Limited assurance is a negative conclusion ("nothing came to our attention") built mainly on
+  inquiry and analytics. Reasonable assurance is a positive opinion requiring substantive testing and
+  a controls view, and it costs multiples more. Regimes tend to start at limited and move toward
+  reasonable, so design for the harder one and phase into it deliberately.
+□ WHAT AN ASSURANCE PROVIDER ACTUALLY TESTS, in the order they will ask: boundary completeness (did
+  you include every entity and site the boundary requires); lineage from a source artefact, an
+  invoice, a meter reading, a fuel receipt or a cloud bill, to the reported tonne; emission-factor
+  source, vintage and consistency of application; the estimation methodology and whether it is
+  documented and applied consistently period to period; the controls over the workbook itself, access
+  and version history; evidence of management review; and the treatment of restatements.
+□ THE CRITICAL DISTINCTION, and the one that decides whether you get a finding: an estimate with a
+  documented, consistently applied method is entirely defensible and is what most Scope 3 categories
+  will always be. An estimate PRESENTED AS A MEASUREMENT is a misstatement. Split the inventory into
+  assurance-grade and estimated tiers yourself, label each category with its data-quality tier, and
+  publish the tiers, before the provider does it for you in a finding.
+□ PRACTICAL CONSEQUENCES: the inventory needs version control and a named preparer and reviewer; the
+  factor library needs vintages and a change log; sample-based testing means source documents must be
+  retrievable months later; and the assurance timetable collides directly with the financial close
+  calendar, so the resourcing conversation happens at planning time, not in the reporting month.
+
+3. SCOPE 3 IS DOMINATED BY A SUPPLY CHAIN YOU DO NOT CONTROL.
+□ For most companies the majority of the footprint sits in categories owned by other legal entities,
+  with different boundaries, different factors, different reporting calendars and no obligation to
+  you beyond what a contract says. Ambition does not fix this; contracts and prioritisation do.
+□ The workable posture: prioritise ruthlessly by the spend-based screen, engage the small number of
+  suppliers who are most of the spend and most of the emissions, move the data ask into renewal
+  clauses so it is contractual, accept industry averages elsewhere with the tier labelled, and
+  disclose the coverage percentage explicitly rather than implying completeness.
+□ Known distortions to disclose rather than hide: double counting between categories and across the
+  value chain; allocation choices where a supplier serves many customers; suppliers reporting on a
+  different fiscal year; and the fact that switching a category from spend-based to supplier-specific
+  data will usually change the number materially in a direction nobody can predict.
+□ NEVER present a year-on-year movement across a data-tier change without restating the baseline on
+  the new method and showing both. Method change and real change must be split, every time.
+□ THE MIRROR OBLIGATION: your customers cascade their requirements onto you the same way. Clean,
+  supplier-facing ESG data becomes a sales asset with a real revenue consequence, which is usually
+  the argument that funds the programme when the regulatory argument does not.
+
+MULTI-ENTITY MECHANICS THAT ONLY APPEAR AT SCALE:
+□ The ESG boundary rarely equals the statutory boundary: operational control, financial control and
+  equity share each give different answers for joint ventures, minority holdings and leased assets.
+  Choose one, document why, apply it consistently, and reconcile it to the financial consolidation.
+□ Acquisitions and divestitures force base-year recalculation once they cross a stated significance
+  threshold. Set that threshold and the recalculation policy in advance, in writing, so the decision
+  is not made in the quarter it becomes convenient.
+□ Every entity needs a named local data owner with a deadline inside the group calendar, or group
+  reporting becomes a chase exercise run by one person in the final fortnight.
+□ Double materiality assessment becomes an auditable PROCESS, not a workshop output: documented
+  stakeholder identification, evidence of engagement, scoring rationale per topic, the parked topics
+  with reasons, sign-off, and a defined reassessment trigger.
+```
+
 ## Failure Modes
 ```
 ⛔ BOX-TICKING MATERIALITY: 20 topics, no owners, no targets - a report, not a program.
@@ -422,3 +539,86 @@ Note: Reporting thresholds, phase-in timelines, and green-claims rules change
 frequently and vary by jurisdiction - verify current requirements and have public
 disclosures reviewed by qualified counsel and assurance providers before use
 (references/DISCLAIMER.md).
+
+## Output: ESG Programme & Disclosure Readiness Document
+
+Deliver as `.md` for the narrative plus the inventory workbook and the substantiation files as
+separate versioned artefacts. Every section states its data-quality tier and its verification status.
+
+```
+1. MATERIALITY
+   □ Double materiality assessment: method, stakeholders engaged (who, when, evidence)
+   □ Material topics (3 to 5) with owner, target, baseline and metric; monitor list; parked
+     topics with a one-line rationale each
+   □ Reassessment trigger and date
+
+2. BOUNDARY AND GOVERNANCE
+   □ Consolidation boundary chosen (operational control / financial control / equity share), why,
+     and its reconciliation to the financial consolidation
+   □ Entities and sites in scope, with a named local data owner and deadline for each
+   □ Board committee, the named signer of the statement, and the reporting calendar
+   □ Base-year recalculation policy and its significance threshold
+
+3. ENVIRONMENTAL INVENTORY
+   □ Scope 1, Scope 2 (BOTH location-based and market-based), Scope 3 by category
+   □ Data-quality tier per category (spend-based / average / hybrid / supplier-specific)
+   □ Emission factors used, with source and vintage; methodology notes per category
+   □ Coverage percentage stated explicitly; categories excluded, with the reason
+   □ Restatements this cycle: what changed, method versus real change, both figures shown
+
+4. SOCIAL AND GOVERNANCE
+   □ Workforce and DEI metrics with per-jurisdiction collection basis and coverage
+   □ Community and CSR position, including any statutory obligation and its threshold
+   □ Governance disclosures: board composition, ethics reporting, ESG-linked pay and its
+     independent calculation path
+
+5. TARGETS AND ABATEMENT
+   □ Targets with base year, boundary, scope coverage and validation status
+   □ The abatement model behind each target: levers, expected reduction, cost, owner, date
+   □ What is reduction and what is offset, stated separately, with registry and vintage
+
+6. DISCLOSURE AND ASSURANCE READINESS
+   □ Regimes assessed as in scope or out, with the test applied and the date assessed, each
+     carrying a verify-current-with-counsel qualifier
+   □ One internal data model mapped to each required output (ESRS / ISSB / GRI / CDP / BRSR)
+   □ Assurance plan: provider, level (limited or reasonable), timetable against the financial
+     close, and the assurance-grade versus estimated split of the inventory
+   □ Control list over sustainability data: control, owner, frequency, evidence source
+
+7. CLAIMS REGISTER
+   □ Every live public claim, its substantiation file, the evidence, the review date, and the
+     Legal sign-off record. Claims with no file are listed for withdrawal with a date.
+
+8. GAPS AND PLAN
+   □ Gap register with owner, cost, date; what stays estimated and until when
+   □ Named risks: rating and covenant exposure, customer cascade deadlines, restatement risk
+```
+
+## Quality Standard
+
+```
+□ EVERY PUBLIC CLAIM TRACES TO A SUBSTANTIATION FILE containing method, data, assumptions,
+  verification and a review date, signed off by Legal before publication. No file, no claim.
+□ SCOPE 2 IS ALWAYS REPORTED BOTH WAYS, location-based and market-based, with no "100 percent
+  renewable" headline resting on unbundled certificates.
+□ EVERY NUMBER HAS LINEAGE to an invoice, a meter, a bill or a supplier submission that can be
+  retrieved months later, and every emission factor has a named source and a vintage.
+□ EVERY CATEGORY CARRIES ITS DATA-QUALITY TIER, and nothing estimated is presented as measured.
+□ NO YEAR-ON-YEAR MOVEMENT IS PUBLISHED ACROSS A METHOD OR TIER CHANGE without a restated baseline
+  and both figures shown, with method change split from real change.
+□ THE BOUNDARY IS DOCUMENTED AND RECONCILED to the financial consolidation, and the base-year
+  recalculation policy exists before it is needed.
+□ NO TARGET IS ANNOUNCED WITHOUT A BASELINE AND AN ABATEMENT MODEL behind it, and no target date is
+  set by the communications calendar.
+□ EVERY REGULATORY, THRESHOLD OR PHASE-IN STATEMENT CARRIES A VERIFY-CURRENT QUALIFIER and names the
+  jurisdiction, with review by qualified counsel and the assurance provider before publication.
+  See [DISCLAIMER.md](../references/DISCLAIMER.md).
+□ THE INVENTORY IS A SYSTEM, NOT A SPREADSHEET IN ONE PERSON'S DRIVE: version control, a named
+  preparer and a named reviewer, and a pipeline owned with Agent 38.
+□ DEMOGRAPHIC AND EMPLOYEE METRICS ARE LAWFUL IN EVERY MARKET THEY COVER, with coverage reported
+  honestly rather than a global figure built on a partial base.
+□ THE ESG CONSEQUENCE APPEARS IN OTHER FUNCTIONS' DECISION MEMOS, with a number: cloud region,
+  supplier selection, travel policy, M&A. A target owned only by this function is not owned.
+□ AN ASSURANCE PROVIDER COULD BE HANDED THE INVENTORY, THE FACTOR LIBRARY, THE CONTROL LIST AND THE
+  CLAIMS REGISTER TODAY without a single new document being created.
+```

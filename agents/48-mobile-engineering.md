@@ -48,7 +48,7 @@ WHEN NATIVE ACTUALLY WINS - state the CONDITIONS, not a preference. Any two of t
 □ The size floor binds: a cross-platform runtime adds several MB to every install before your first screen renders. Against §5's 30 MB
   mass-market budget that is a material fraction spent on a framework. Measure the delta on YOUR build, not on a vendor blog.
 □ Deep accessibility work: cross-platform accessibility trees approximate VoiceOver/TalkBack semantics rather than expressing them, and a
-  published conformance commitment (§13) is materially cheaper to hold on native views.
+  published conformance commitment (see the mobile accessibility section below) is materially cheaper to hold on native views.
 □ Regulated on-device cryptography or attestation: Secure Enclave, StrongBox, Play Integrity and App Attest all need native plumbing anyway.
 THE UPGRADE TAX NOBODY BUDGETS: a cross-platform runtime is a dependency with its own release train, and you inherit it. Budget one framework
 upgrade per one to two quarters as PLANNED work (RN's New Architecture migration and Flutter's renderer transitions are the recent examples),
@@ -200,6 +200,53 @@ RUNTIME □ <1% frozen frames (>700ms), <5% slow frames (JankStats/Instruments).
   (~>1h/session) and excessive wakeups (~>10/hour) - use WorkManager, respect Doze and App Standby buckets, never a raw alarm loop. Per
   screen: ≤2 blocking requests, compressed payloads, CDN-resized images, exponential backoff with jitter and a hard retry cap. Test on a
   throttled 3G profile at 400ms RTT - that is a real tier-2 Indian commute.
+
+DEFINE THE STARTUP METRIC PRECISELY OR THE NUMBER IS UNFALSIFIABLE:
+□ COLD = process created, no state (post-reboot or post-kill). WARM = process alive, activity/scene recreated. HOT = brought to foreground.
+  Report all three; teams quoting "startup" almost always mean warm, which is the one users notice least.
+□ TTID (time to initial display, first frame drawn) vs TTFD (time to FULL display, when the screen is actually usable with real data). TTID is
+  what a splash screen flatters; TTFD is what the user experiences. Instrument TTFD explicitly (reportFullyDrawn on Android, a signpost or
+  MetricKit interval on iOS) or you will optimise a spinner.
+□ Budget against the MEDIAN device and the p90 user, not the mean: cold TTFD p90 under 2s on the tier-C reference device is a defensible
+  mass-market bar; a flagship p50 number is marketing.
+□ The launch-path offenders, in the order they usually appear: synchronous third-party SDK init, an eager dependency-injection graph, disk
+  and keychain reads on the main thread, a blocking remote-config fetch, an over-large main dex or dynamic-linking cost, and image decoding
+  for a hero the user has not scrolled to. Attack them in that order and measure after each, because attributing improvements later is guesswork.
+FRAME PACING - the arithmetic that ends the "it feels janky" argument:
+□ A 60Hz display gives you 16.67ms per frame, 90Hz gives 11.1ms, 120Hz gives 8.33ms. Your whole frame (input, layout, draw, GPU) fits inside
+  that or you dropped it. Budget roughly 8-10ms of main-thread work at 60Hz to leave headroom for the system.
+□ Android vitals language: SLOW frames are over ~16ms, FROZEN frames over 700ms; Play surfaces both. iOS: hitch rate via MetricKit and the
+  Animation Hitches instrument. Target: frozen frames under 1% of frames and slow frames under 5% on tier C, measured in the field.
+□ Jank correlates with retention through SCROLL ABANDONMENT and rage-taps, not through a rating. Instrument both, and segment every
+  performance metric by device tier and network class (Agent 16) - an aggregate p90 across flagships and entry devices measures nothing.
+□ Fix order that actually works: stop doing work per frame (recycle views, stable keys, memoise), then move work off the main thread, then
+  reduce overdraw and layout passes, then consider rendering tricks. Ship Baseline Profiles on Android; JIT/AOT warm-up is a real first-run cost.
+```
+
+| App size band (download) | What it costs you | Engineering response |
+|---|---|---|
+| <15 MB | Install completes on a weak connection; no cellular-download friction | Maintain it; guard with a CI size gate |
+| 15-30 MB | The mass-market target band for India-first consumer apps | Per-PR size diff; >500 KB needs written justification |
+| 30-60 MB | Measurable install-conversion drag (see §4: roughly 1% conversion lost per ~6 MB in Google's published Play analysis) and the first uninstall candidate under storage pressure | Split by feature/asset delivery, audit SDK contribution, strip unused resources and locales |
+| 60-150 MB | Meaningful abandonment on cellular; store may warn or require Wi-Fi depending on current platform limits | Treat as a defect with an owner and a burn-down plan |
+| >150 MB | Approaching platform download caps; verify the current per-store limit before assuming headroom | Mandatory on-demand/asset delivery architecture |
+
+```
+BATTERY, THERMAL AND NETWORK BUDGETS - the invisible budgets that produce uninstalls with no crash and no complaint:
+□ BATTERY: the OS attributes drain to your app in the user-visible battery screen, and that screen is where uninstall decisions get made.
+  Watch: background CPU time per session, wake locks (Android vitals flags stuck partial wake locks around an hour per session), excessive
+  wakeups (around 10 per hour is the flagged band), and location usage. Use WorkManager/BGTaskScheduler with constraints (charging, unmetered)
+  rather than alarms or timers; batch network calls so the radio wakes once rather than eleven times.
+□ THERMAL: sustained camera, video, ML inference or animation pushes the device into thermal throttling, after which your frame budget
+  silently halves. Subscribe to the thermal state (ProcessInfo.thermalState on iOS, PowerManager thermal status on Android) and DEGRADE
+  DELIBERATELY: drop frame rate, reduce resolution, pause background sync, disable on-device inference. A designed degradation beats a
+  device-decided one. Test a 15-minute sustained session on a tier-C device, not a 60-second demo.
+□ NETWORK EFFICIENCY: budget bytes per session and requests per screen, not just latency. Compress (gzip/br), use HTTP/2 or HTTP/3 with
+  connection reuse, cache with ETag/If-None-Match, coalesce polling into a single sync, and never poll on a timer when a push or a
+  server-sent event will do. On metered connections respect the OS data-saver signal. Track PAYLOAD BYTES PER DAU: it is the metric that
+  makes an over-chatty client visible, and in prepaid markets it is a direct cost to the user.
+□ MEMORY: measure peak RSS per screen and the background-kill rate. On a 4 GB device your process is evicted routinely, so state restoration
+  is a correctness requirement, not a polish item: kill the app from the recents list and verify every screen restores (Agent 07's matrix).
 ```
 
 ## 6. Offline-First & Sync
@@ -213,6 +260,27 @@ OUTBOX PATTERN (the queue-and-forward workhorse): (1) write intent to a local `o
 (2) optimistically update local state and render a pending badge; (3) one serialized worker drains the outbox IN ORDER with exponential
 backoff + jitter; (4) the server dedupes on the idempotency key - Agent 06 must implement this, or a retried payment becomes a double charge;
 (5) on permanent 4xx surface a user-resolvable conflict - never silently drop the write.
+
+THE QUEUE THAT GROWS WITHOUT BOUND - the offline failure nobody designs for, because it only appears after a long outage or a stuck item:
+□ A device offline for two weeks, or one item that fails permanently at the head of a strictly ordered queue, turns the outbox into an
+  ever-growing local table. Symptoms: storage bloat, a sync that takes minutes and drains the battery on reconnect, and a thundering herd on
+  your API when a regional outage ends and a million clients drain at once.
+□ BOUND EVERY DIMENSION, EXPLICITLY: max queue length, max total bytes, max item age (a TTL after which the write is surfaced to the user as
+  "not sent" rather than retried forever), max retry count per item, and a poison-item quarantine so one bad write cannot block the rest.
+  Decide the eviction policy deliberately: for analytics events drop oldest; for user intent NEVER drop silently, always surface.
+□ DEAD-LETTER LOCALLY: a quarantined item goes to a visible "unsent" list with a retry and a discard action. Silent loss of a user's write is
+  the single most trust-destroying offline bug, and it is invisible in your metrics because the user assumes it saved.
+□ RECONNECT STORM CONTROL: jittered backoff on the client plus a server-side accept-and-shed path. Without jitter, every device that lost
+  connectivity in the same outage retries in the same second (Agent 06 and Agent 08 co-own the capacity assumption).
+□ COMPACTION: collapse superseded intents before sending (five edits to the same note become one), and dedupe by entity key. This is what
+  keeps a two-week offline period from producing a two-minute sync.
+□ SCHEMA MIGRATION OF QUEUED ITEMS: an outbox row written by app version 3.1 may be drained by version 3.4 after an upgrade. Version the
+  payload envelope, keep the drain code able to read every payload version still plausibly on a device (§9's compatibility window), and test
+  the upgrade path with a pre-populated queue. This is the most common data-loss bug in offline-first apps.
+□ ENCRYPT THE LOCAL STORE where it holds personal or financial data (SQLCipher, Room + SQLCipher, or platform file protection classes), and
+  agree retention on the local cache with Agent 39: an offline cache is a copy of personal data living on a device you do not control.
+□ SYNC OBSERVABILITY: report queue depth, oldest-item age, drain duration and conflict rate as client telemetry. An offline system with no
+  telemetry on its queue is a system where you learn about failures from app-store reviews.
 ```
 
 | Conflict strategy | Use when | Cost |
@@ -243,6 +311,30 @@ DEEP LINKS - get this wrong and every campaign leaks users to the store:
   App Links: assetlinks.json + autoVerify. Verify BOTH in CI - a rotated signing key silently breaks Android App Links.
 □ Deferred deep links (install → land on the right screen) need Branch/AppsFlyer/Adjust (Agent 16, Agent 37). Every push carries a canonical
   link; unknown links land on a graceful fallback screen, never a blank home tab.
+
+PUSH TOKEN LIFECYCLE - the reason "we sent 2 million notifications" and "2 million people got a notification" are different sentences:
+□ A token is per app install per device, and it CHANGES: app reinstall, app restore to a new device, data cleared, and provider-side refresh
+  all rotate it. Upload the token on every launch and on every refresh callback, keyed by (user, device), never one token per user.
+□ PRUNE ON FEEDBACK: APNs returns an unregistered status and FCM returns an unregistered/invalid-token error for dead tokens. Delete them the
+  same day. A token table that only ever grows becomes a send list where a large share of rows are uninstalled apps, which inflates every
+  delivery number you report and wastes spend on your messaging vendor's per-send pricing.
+□ LOGOUT AND ACCOUNT SWITCH MUST UNBIND THE TOKEN, or the next user of a shared device receives the previous user's notifications. On shared
+  devices in emerging markets this is a real privacy incident, not a theoretical one (Agent 39).
+DELIVERY HONESTY - what each number actually means, because dashboards conflate them:
+  SENT (accepted by APNs/FCM) > DELIVERED (reached the device) > DISPLAYED (shown, given channel and Focus/DND state) > OPENED (tapped).
+□ The gap between sent and displayed is large and mostly outside your control: OS power management, Doze and App Standby buckets, per-channel
+  user settings on Android 8+, notification summaries and scheduled delivery on iOS, and aggressive OEM battery managers on several
+  China-origin Android skins that kill background processes and suppress notifications outright. Test on those OEM skins specifically.
+□ Report the funnel, not the top of it. If your only metric is sends, every optimisation looks like an improvement. Instrument a client-side
+  received receipt (a silent data payload or a notification-service extension) to measure real delivery, and reconcile it with vendor numbers.
+□ PRIORITY AND COLLAPSE: use high priority only for genuinely time-sensitive messages (over-using it is throttled and burns trust with the
+  platform), set collapse keys so five updates about one order become one, and set a TTL so a stale notification expires rather than arriving
+  at 3am after a device reconnects.
+ATTRIBUTION - the honest version. Post-ATT, deterministic cross-app attribution is unavailable for the opted-out majority, so measurement is
+  probabilistic and privacy-preserving by design: SKAdNetwork / AdAttributionKit on iOS with their conversion-value encoding, coarse timing
+  and delayed postbacks, and Google Play Install Referrer plus the Privacy Sandbox Attribution Reporting API on Android. Consequences you must
+  design for: no per-user journey, no reliable last-click across apps, campaign-level rather than user-level truth, and a reporting lag of
+  days. Pair this with geo holdouts and incrementality tests (Agent 16, Agent 37) rather than pretending a deterministic MMP number is truth.
 ```
 
 ## 8. Mobile Security (OWASP MASVS)
@@ -267,6 +359,26 @@ PLATFORM & SUPPLY CHAIN □ FLAG_SECURE / screen-capture handling on sensitive s
   ship under your own signature (Agent 46, Agent 39).
 ```
 
+| Mobile-specific attack surface | The realistic threat | Control that actually helps | The honest limit of that control |
+|---|---|---|---|
+| **Jailbroken / rooted device** | The user (or malware with the user's consent) has full read/write over your process and storage | Detect and feed a RISK SCORE (Agent 13); step up authentication, cap transaction limits, refuse only the highest-risk actions | Detection is an arms race you lose eventually. Every check runs on the attacker's hardware, so treat the verdict as a signal, never as a gate on its own |
+| **Static reverse engineering of the binary** | Extracting endpoints, keys, business logic, and the shape of your fraud rules | Ship no secrets; keep authorisation decisions server-side; obfuscate to raise cost (R8/ProGuard, commercial packers) | An IPA or APK is downloadable and decompilable. Obfuscation buys hours to weeks, not safety. Anything the client can compute, an attacker can compute |
+| **Runtime instrumentation (Frida, Objection, hooking)** | Bypassing pinning, flag checks, purchase validation and biometric prompts at runtime | Integrity attestation verified SERVER-SIDE (Play Integrity, App Attest / DeviceCheck), anti-hooking RASP, server-side receipt validation | Client attestation can be relayed; verify verdicts server-side and rate-limit. Never let the client assert its own trustworthiness |
+| **Traffic interception on a hostile network** | Reading or modifying API traffic via a proxy with a user-installed CA | TLS 1.2+ with certificate or SPKI pinning, backup pin, expiry and remote kill switch (see NETWORK above) | Pinning stops casual interception, not a rooted device. A pin that outlives its certificate bricks every install: this is a self-inflicted outage risk you must design for |
+| **Local data at rest** | Device theft, backup extraction, a shared family device, forensic tooling | Keychain / Keystore for key material with Secure Enclave or StrongBox, encrypted local DB, exclude sensitive files from cloud backup, no PII in logs or crash breadcrumbs | Data protection classes only bind while the device is locked. Assume an unlocked device is fully readable, and keep the local copy minimal (§6) |
+| **Inter-app surface (deep links, exported components, URL schemes, clipboard)** | Another app hijacking a scheme, invoking an exported activity, or reading an OTP from the clipboard | Verified App Links / Universal Links rather than custom schemes, unexported by default, validate every incoming parameter, clear the clipboard after sensitive copies | Custom URL schemes have no ownership guarantee: any app can register yours. Treat every link parameter as untrusted user input |
+| **WebViews and embedded browsers** | XSS in a webview reaching a native JS bridge; a payment page rendered in a hostile container | No JS bridge exposed to untrusted origins, allowlist origins, disable file access, use ASWebAuthenticationSession / Custom Tabs for third-party auth | A webview is a browser you ship without a browser team's patch cadence. Prefer the system browser component for anything you did not author |
+| **Third-party SDKs** | Code in your binary, signed by you, with your permissions and your network access | SDK inventory with owner, purpose, data accessed and DPA status; network inspection to verify behaviour; SBOM; a rehearsed zero-day path | You cannot audit a closed-source SDK's future versions. Pin versions, review diffs on upgrade, and keep the kill switch on SDK init (§2) |
+
+```
+BIOMETRICS AND SESSION HANDLING - the two places mobile auth quietly goes wrong:
+□ Biometrics authorise LOCAL access to a key, they do not authenticate a user to your server. Bind the biometric prompt to a Keystore/Keychain
+  key that signs a server challenge (invalidate on biometric enrolment change), or an attacker with the unlocked device simply flips your boolean.
+□ Session lifetime on mobile is longer than on web by design, which makes revocation the control that matters: server-side session
+  invalidation on logout, password change, device removal and suspected compromise, plus a visible device list the user can act on (Agent 09).
+□ Deep-link and push payloads must never carry a bearer token or a magic-link secret that survives in the OS notification store or a log.
+```
+
 ## 9. Fragmentation & Minimum-Version Policy
 
 ```
@@ -283,6 +395,38 @@ is 30fps here); shared devices and dual SIMs (multi-account and easy logout matt
 □ DEVICE TIERING: define tier A (flagship), B (mid), C (entry) reference devices and benchmark every release on tier C. Run the matrix on
   Firebase Test Lab / BrowserStack App Live / AWS Device Farm plus a physical shelf of the top 5 devices in your analytics (Agent 16 supplies
   the list; Agent 07 owns matrix design).
+
+THE MINIMUM SUPPORTED APP VERSION - a data decision, not a preference. Run it as an explicit calculation and publish the result:
+  For each OS version and each app version, compute: (share of 28-day active users) x (share of revenue or of the critical action) and the
+  trend over the last two quarters. DROP when the cohort is below 1-2% of active users AND below 1% of revenue AND falling for two
+  consecutive quarters. Announce one train ahead in-app, leave the last supported build available, and never drop a cohort in the week of a
+  peak season. Anything else is an argument between engineers about which OS is annoying.
+THREE DIFFERENT FLOORS, OFTEN CONFUSED - keep them separate in writing:
+  1. minSdk / deployment target: the oldest OS the binary installs on. Moving it strands devices permanently.
+  2. min_supported_version: the oldest APP build your servers still serve, enforced by the force-upgrade gate (§2).
+  3. targetSdk / build SDK: a store compliance requirement with an annual deadline (see TARGET SDK above), unrelated to who your users are.
+THE FORCED-UPGRADE QUESTION - answer it with a ladder, because a blocking screen is a real conversion cost and users on old builds are
+  disproportionately on weak devices and metered data (the update is a 30 MB download they did not ask for):
+  □ TIER 0 SOFT NUDGE: a dismissible in-app card. Default for feature availability. Use Play In-App Updates flexible flow or a store deep link.
+  □ TIER 1 STICKY NUDGE: shown every launch, dismissible, with a reason. For versions you intend to drop next quarter.
+  □ TIER 2 FEATURE GATE: the old build keeps working but a specific capability is disabled server-side with an explanatory message.
+  □ TIER 3 HARD BLOCK: a non-dismissible screen with a store link. RESERVED for a security defect, a data-corrupting bug, a legal or
+    regulatory requirement, or a protocol break you genuinely cannot bridge. Every hard block needs a named approver and a written reason.
+  □ ALWAYS: the gate is server-driven (min_supported_version returned at launch), fails OPEN when the config call fails, and is tested in CI.
+    A force-upgrade gate that fails closed turns a config outage into a total outage for every user, which is a worse incident than the one it prevents.
+BACKWARD COMPATIBILITY IS A MULTI-YEAR SERVER-SIDE OBLIGATION, and it is the point most backend teams misunderstand:
+□ You cannot force users to update, so the API contract consumed by a released binary is live until that binary's cohort is small enough to
+  drop. Publish a floor of at least 12 months for anything a shipped build calls (Agent 06), and derive the ACTUAL sunset date from version
+  telemetry rather than from the calendar. In practice the long tail on Android runs well beyond a year.
+□ MECHANICS THAT MAKE IT AFFORDABLE: version the API (path or header), make responses ADDITIVE (new optional fields only; a client must
+  ignore unknown fields, which you test), never repurpose an existing field's meaning, never tighten validation on an existing endpoint, and
+  keep enum handling tolerant of unknown values on the client from v1. Most "breaking change" incidents are a new required field or a
+  narrowed enum, not a removed endpoint.
+□ INSTRUMENT WHO IS STILL CALLING: per-endpoint request counts broken down by app version and OS, on a dashboard the backend team owns.
+  Deprecation without that dashboard is a guess, and the guess is always optimistic.
+□ THE FIVE-YEAR TEST: assume a build shipped today is still running in three years on some device. What in this release would be
+  unacceptable then? Hardcoded URLs, pinned certificates with no rotation path, a hardcoded tax rate, a baked-in feature list, a client-side
+  business rule. Those are the things to make server-driven now, because they cannot be fixed later.
 ```
 
 ## 10. Mobile CI/CD
@@ -313,6 +457,75 @@ PIPELINE (target: PR feedback <15 min, release build <40 min)
   privacy policy; a mismatch is a policy-enforcement item, not paperwork.
 □ Account deletion: in-app path (5.1.1(v)) plus a web-accessible deletion URL (Play), wired to the real DSAR pipeline (Agent 39, Agent 38) - a button that files a ticket nobody actions is worse than none.
 □ Children/teens: extra declarations, ad-network restrictions, age-gating (Play Families, Apple Kids Category) - escalate to 39 + 11 first.
+```
+
+## Crash Triage, Symbolication & User-Perceived Stability
+
+```
+CRASH RATE IS NOT STABILITY. Three different numbers get called "stability" and they diverge by an order of magnitude:
+□ CRASH-FREE SESSIONS (≥99.9% target): flatters you, because a heavy user has many sessions and one bad session hides among them.
+□ CRASH-FREE USERS (≥99.5%, ≥99.8% mature): the number that matters commercially, because it counts PEOPLE who had a bad day.
+□ USER-PERCEIVED STABILITY: crashes + ANRs/watchdog terminations + hangs + failed core actions + infinite spinners + silent empty states.
+  A user does not distinguish "the app crashed" from "the app did nothing for eleven seconds and then showed an error". Your dashboard must not either.
+THE FAILURE CLASSES A CRASH REPORTER DOES NOT SHOW YOU, which is why teams with 99.7% crash-free still have angry users:
+  □ ANRs and iOS watchdog terminations (0x8badf00d): the main thread blocked past the OS limit. Android surfaces user-perceived ANR in Play
+    vitals with a 0.47% bad-behaviour threshold; iOS reports hangs through MetricKit. These are usually invisible in a crash SDK's headline number.
+  □ OOM terminations: the system killed you under memory pressure. Not a crash, not a stack trace, and on low-RAM devices it can dwarf your
+    real crash rate. Detect it by inference (a launch with no clean-shutdown marker and no crash record) and track it as its own metric.
+  □ NETWORK-DEAD STATES: a request that never returns because there is no timeout, leaving a spinner. Every network call needs a timeout, a
+    retry cap, and a user-visible failure state. "Infinite spinner" is a stability defect with no stack trace and no alert.
+  □ FAILED CRITICAL ACTIONS: payment declined by a client bug, upload silently dropped, a form that loses input on rotation or on process death.
+    Instrument a success rate per critical flow (Agent 16) and treat it as a stability SLI alongside crash-free users.
+SYMBOLICATION IS INFRASTRUCTURE, NOT A STEP:
+□ Upload dSYMs (iOS) and ProGuard/R8 mapping files plus native debug symbols (Android) as an automated, FAILING build step on every release
+  and every hotfix. A release whose symbols did not upload produces unreadable production stack traces, and you will discover that during the
+  incident. Bitcode-era workflows and per-architecture builds both make this easy to get half-right: verify by symbolicating one real crash
+  from each release before promoting it.
+□ Keep symbols for every version still in the field (§9's compatibility window), not just the latest, and map every build to a git SHA.
+□ Native crashes (NDK, Swift/C++ interop) need their own symbol upload path and are frequently the ones missing.
+TRIAGE DISCIPLINE THAT SCALES:
+□ Group by SIGNATURE, then rank by USERS AFFECTED x SEVERITY OF THE FLOW, never by raw event count: one crash loop on a single device can
+  generate thousands of events and dominate a count-ordered list while affecting one person.
+□ Every release compares against the previous version at the same rollout percentage, split by OS version and device tier. A regression is a
+  DELTA, and comparing a 5% rollout against a fully-ramped previous version is comparing two different populations.
+□ Attach breadcrumbs that matter: last screen, last network call and its status, the feature-flag set in effect, connectivity class, free
+  storage and memory, and whether the session was a cold start. Never log PII or tokens into breadcrumbs (Agent 39 signs off on the schema).
+□ SET A BUDGET, NOT AN ASPIRATION: new top-5 cluster blocks promotion (§2); an S1 crash affecting a payment or data-integrity path is an
+  incident with Agent 08's process, not a backlog ticket; the weekly triage owner is a named rotation.
+□ NON-FATALS AND ASSERTIONS: log handled exceptions and violated invariants as non-fatals. The transition from "handled" to "crash" usually
+  happens one release before the crash, so a rising non-fatal signature is a leading indicator you can act on cheaply.
+```
+
+## Accessibility on Mobile (implementation; standard and conformance: Agent 78)
+
+```
+Agent 78 (Accessibility) owns the standard and the conformance position and Agent 43 owns locale rules; this section is the client-side
+implementation, because mobile accessibility is platform API work, not a CSS problem, and it fails in mobile-specific ways.
+□ THE PLATFORM APIS ARE THE CONTRACT: iOS UIAccessibility / SwiftUI accessibility modifiers (label, value, traits, hint, custom actions,
+  rotor entries) and Android accessibility node info / Compose semantics (contentDescription, role, stateDescription, custom actions,
+  traversal order). A control with a visual state and no accessibility VALUE reads as an unlabelled button to a screen-reader user.
+□ TEST WITH THE ACTUAL SCREEN READER: VoiceOver on iOS and TalkBack on Android, using the real gestures (swipe navigation, rotor, explore by
+  touch). Automated checks (Accessibility Scanner, Espresso accessibility checks, XCUITest audits, accessibility-inspector) catch contrast,
+  target size, and missing labels: they cannot judge reading order, meaningful labels, or whether a flow is completable. Budget manual passes.
+□ TOUCH TARGETS: 44x44 pt on iOS and 48x48 dp on Android as the platform minimums, measured on the HIT AREA not the drawn icon. Adjacent
+  targets need spacing, and a 24 px visual icon with a 48 dp hit area is correct, not a compromise.
+□ DYNAMIC TYPE AND FONT SCALE: support the full range including the accessibility sizes, up to at least 200%. Test every screen at maximum
+  text size on the smallest supported device: truncation, clipped buttons and unreachable submit actions are the standard failures. Never
+  disable scaling to protect a layout; use scalable layouts and allow reflow.
+□ MOTION AND VISUAL SETTINGS: honour Reduce Motion, Reduce Transparency, Increase Contrast, Bold Text, Differentiate Without Colour, and the
+  system dark mode. A parallax or auto-playing animation that ignores Reduce Motion is a vestibular-trigger defect, not a preference.
+□ FOCUS AND ANNOUNCEMENT: move accessibility focus deliberately on screen change and on modal presentation, restore it on dismiss, and
+  announce asynchronous results (a saved record, a validation error, a loading completion) through the platform's live-region equivalent.
+  Errors must be associated with their field programmatically, not merely coloured red.
+□ THE MOBILE-SPECIFIC TRAPS: custom-drawn controls and canvas/game surfaces with no semantics; a WebView whose content bypasses your native
+  accessibility work; gesture-only interactions with no alternative (provide custom accessibility actions); overlays and toasts that steal
+  focus; captchas and biometric-only flows with no accessible fallback; and cross-platform frameworks whose generated accessibility tree is an
+  approximation, which is one of the conditions under which native wins (§1).
+□ CONFORMANCE AND PROCUREMENT: WCAG 2.2 AA applies to mobile apps through the platform mappings, EN 301 549 covers non-web software for EU
+  public procurement, and enterprise and public-sector buyers ask for a VPAT/ACR by name (Agent 46). Verify the current standard version and
+  the obligations in each market before publishing a conformance claim, and never claim conformance you have not tested with assistive technology.
+□ CI POSTURE: run the automated accessibility checks on every PR that touches a screen, keep a per-screen manual audit checklist in the
+  release regression pass (Agent 07), and treat a missing label on a shipped control as a defect with the same severity as a broken tap target.
 ```
 
 ## Decision Framework: Native vs Cross-Platform (scored)
