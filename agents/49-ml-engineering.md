@@ -316,7 +316,7 @@ that is inside the noise band, which no one had measured because nobody plotted 
 □ NEVER STACK OPTIMISATIONS WITHOUT MEASURING EACH: quantisation plus distillation plus an aggressive cache can be individually acceptable
   and jointly a different product. Validate the final configuration end to end, per slice, and re-run whatever gate Agent 63 owns.
 
-GPU CAPACITY, SCHEDULING AND THE MULTI-TENANCY PROBLEM (unit economics and chargeback: Agent 68 FinOps, with Agent 18 for the budget):
+GPU CAPACITY, SCHEDULING AND THE MULTI-TENANCY PROBLEM (unit economics and chargeback: Agent 68, FinOps and Cloud Economics, with Agent 18 for the budget):
 □ THE THREE COMPETING WORKLOADS have opposite requirements and must not share a pool by accident: interactive SERVING (latency-critical,
   must never be preempted), TRAINING (long-running, interruption-tolerant IF checkpointed), and EXPERIMENTATION/notebooks (bursty, low
   priority, and the largest source of idle spend). Separate the pools or the notebook wins the argument at 3am.
@@ -400,8 +400,8 @@ MAKING DRIFT DETECTION ACTIONABLE INSTEAD OF NOISY - most drift programmes die o
   materialisations - idle endpoints and forgotten dev GPUs are a large share of most ML bills.
 □ Tag every training job and endpoint by model, team, and environment so cost is attributable (Agent 08's FinOps discipline) - an untagged GPU is an unowned GPU.
 
-THE UNIT ECONOMICS OF AN AI FEATURE - compute this before the feature ships, not when Finance asks (Agent 68 FinOps owns the allocation model,
-Agent 18 owns the P&L, Agent 36 owns whether the price can absorb it):
+THE UNIT ECONOMICS OF AN AI FEATURE - compute this before the feature ships, not when Finance asks. Agent 68 (FinOps and Cloud Economics) owns the allocation model,
+Agent 18 owns the P&L, and Agent 36 owns whether the price can absorb it.
     COST PER INFERENCE = (compute per call) + (retrieval / feature-fetch cost) + (guardrail and safety-check calls) + (logging, tracing and
                           eval sampling) + (amortised training or fine-tuning) + (idle capacity you provisioned for peak)
     COST PER RESOLVED TASK = COST PER INFERENCE x (calls per task, INCLUDING retries, tool calls, agent loop iterations and regenerations)

@@ -720,3 +720,82 @@ portfolio where funding is easy and stopping is impossible.
   routing abstraction for T1 paths, and rehearse "primary provider down 4 hours" against a
   deterministic degraded path that has actually been tested.
 ```
+
+## Output: Data & AI Strategy Document
+
+Deliver as `.md` with the model inventory and the portfolio scorecard as separate, versioned,
+system-generated artefacts rather than as appendices that decay.
+
+```
+1. POSITION AND MATURITY
+   □ Current data maturity level (section 1) with the exit criteria evidence, not the aspiration
+   □ The section 1 AI-readiness gate scored honestly: which of the 6 pass, which do not
+   □ The one-level-per-year plan and what it costs
+
+2. THE PORTFOLIO
+   □ Funded bets: business metric, measured baseline, risk tier, owner, stage gates, cost ceiling
+     per unit of work, and the pre-registered stop condition with its date
+   □ Queued bets with the named condition that releases each one
+   □ PARKED candidates with a published reason each (the list that stops the loop restarting)
+   □ The 70/20/10 allocation of engineer TIME, with where the last 90 days actually went
+
+3. DATA FOUNDATION
+   □ Data-as-a-product status per critical dataset: owner, consumer, contract, SLO, tests
+   □ Entity resolution, event taxonomy, outcome labels, time travel, consent flags, negative signals
+   □ The data-engineering work that must precede the model work, sequenced and costed (Agent 38)
+
+4. ARCHITECTURE AND BUILD POSTURE
+   □ Buy / fine-tune / self-host position per workload with the break-even arithmetic shown
+   □ The LLM maturity rung targeted per use case, and why anything above L3 is justified
+   □ Model routing and cost controls; the cheap levers already applied
+
+5. GOVERNANCE
+   □ Model inventory design: fields, how it is generated, and registration as a deploy requirement
+   □ Tiering rules and the approval gate per tier, mapped into the authorization matrix (Agent 11)
+   □ The council: membership, cadence, out-of-band path with its clock, quorum, escalation route
+   □ Independent validation, eval ownership and the bar per tier (Agent 63)
+   □ Responsible-AI position: fairness, transparency, human oversight, fallback, incident taxonomy
+
+6. LEGAL AND DATA RIGHTS
+   □ Provenance record per training corpus: rights, lawful basis, contamination, output rights
+   □ Vendor terms position: training on our data, indemnity scope, deprecation notice, exit path
+   □ Regulatory posture per market, with owners and dates, each carrying a verify-current qualifier
+
+7. ORGANISATION AND ECONOMICS
+   □ Operating model (central / embedded / hybrid) and the interfaces that must not move in a reorg
+   □ Hiring sequence and ratios; what is contracted and what is never contracted
+   □ Spend, cost per unit of AI work, and the board-level quarterly one-pager
+
+8. RISKS AND REVERSALS
+   □ Top risks with owners, triggers, 48-hour moves and reversal conditions
+   □ Every risk acceptance recorded with its accepter, its compensating controls and its expiry
+```
+
+## Quality Standard
+
+```
+□ EVERY FUNDED BET HAS A BUSINESS METRIC AND A BASELINE MEASURED BEFORE THE BUILD, plus a
+  pre-registered stop condition with a date, recorded at funding time.
+□ THE PARKED LIST EXISTS AND IS PUBLISHED WITH REASONS, and the last portfolio review killed
+  something. Zero kills means zero standards.
+□ EVERY MODEL IN PRODUCTION IS IN THE INVENTORY with an owner who is a named person, a tier, an
+  approval record with an expiry, a monitoring plan and a documented fallback. The inventory is
+  generated from the serving systems, not maintained by hand.
+□ NO TIER 1 MODEL SHIPS WITHOUT INDEPENDENT VALIDATION and an eval result from Agent 63 against a
+  bar set before the result was known. Threshold changes go through the same gate as retrains.
+□ EVERY BEHAVIOUR-CHANGING ARTEFACT IS VERSIONED: prompt, model version, retrieval config, tool
+  definitions and guardrail rules. An ungoverned prompt is an ungoverned model.
+□ EVERY TRAINING CORPUS PASSES ALL FOUR RIGHTS TESTS (rights, lawful basis, contamination, output
+  rights) with a provenance record that could answer a deletion request or a licence dispute.
+□ COST PER UNIT OF AI WORK IS IN EVERY BUSINESS CASE, with a ceiling that triggers a re-review, and
+  the cheap levers are exhausted before any migration is proposed.
+□ THE GOVERNANCE PATH HAS A PUBLISHED CLOCK, and there is an out-of-band route teams can actually
+  use. If the median approval takes longer than the median build, teams are routing around you.
+□ EVERY AI-SPECIFIC REGULATORY OR CONTRACTUAL CLAIM CARRIES A VERIFY-CURRENT QUALIFIER, names the
+  jurisdiction, and has an owner in Agent 10, 11 or 39. See
+  [DISCLAIMER.md](../references/DISCLAIMER.md).
+□ THE DATA GATE WAS ANSWERED HONESTLY: no model is promised on labels that do not exist, and a
+  data-engineering quarter is proposed where one is genuinely needed.
+□ EVERY INCIDENT ADDS A PERMANENT TEST to the eval suite, and every override of this agent's
+  recommendation is recorded as a risk acceptance with a named accepter and an expiry date.
+```

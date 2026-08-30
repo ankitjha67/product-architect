@@ -459,6 +459,94 @@ THE CACHE LAYERS, outermost first: browser cache → CDN edge PoP → CDN shield
   what may be cached, logged, or geolocated at all.
 ```
 
+## Internationalisation & RTL as an Architectural Constraint (strategy and locales: Agent 43)
+
+```
+I18N IS NOT A TRANSLATION TASK, IT IS A SET OF LAYOUT, DATA AND ROUTING CONSTRAINTS DECIDED AT DESIGN TIME. Retrofit cost is roughly
+proportional to how late the requirement lands, and the expensive parts are never the strings.
+□ NO CONCATENATION, EVER: build sentences from a single message with named placeholders and use ICU MessageFormat for plurals, gender and
+  select. Languages have different plural CATEGORIES (English has two, Russian and Arabic have several more), so `count === 1 ? "item" :
+  "items"` is a bug in most of the world. Never sort or compare strings with default byte order; use `Intl.Collator`.
+□ ALL FORMATTING GOES THROUGH `Intl`: `Intl.NumberFormat` (Indian digit grouping is 2,2,3, not 3,3,3; decimal and grouping separators swap
+  in much of Europe), `Intl.DateTimeFormat` (and non-Gregorian calendars where the locale needs them), `Intl.RelativeTimeFormat`,
+  `Intl.ListFormat`, `Intl.PluralRules`. Currency is a data problem, not a display problem: store minor units and a currency code, never a
+  formatted string, and never assume two decimal places.
+□ TEXT EXPANSION IS A LAYOUT CONSTRAINT: translations commonly run substantially longer than English (German and the Romance languages are
+  the usual offenders, and short UI strings expand the most in relative terms). Consequences: no fixed-width text containers, no truncation as
+  a layout strategy, buttons and tabs that wrap or scroll, and no text baked into images. Test with pseudo-localisation in CI, which expands
+  and accents every string automatically and finds hardcoded text at the same time.
+□ RTL IS A DIRECTION-AWARE LAYOUT SYSTEM, NOT A MIRROR: set `dir="rtl"` and `lang` on the html element and use CSS LOGICAL PROPERTIES
+  throughout (`margin-inline-start` rather than `margin-left`, `padding-block`, `inset-inline`, `text-align: start`, `border-inline-end`).
+  Then handle what must NOT flip: numbers, phone numbers, code, most logos, media player progress and playback controls, and charts whose
+  axes carry meaning. Directional ICONS must flip (back arrows, indentation, undo); non-directional ones must not. Bidirectional text mixing
+  Latin and Arabic or Hebrew needs isolation (`<bdi>` or `unicode-bidi: isolate`) or user-generated names will scramble the surrounding line.
+□ FONTS AND SCRIPTS ARE A PERFORMANCE DECISION (§3): Indic, Arabic, Thai and CJK faces are far larger than a Latin subset, CJK effectively
+  cannot be subsetted by glyph coverage the same way, and complex scripts need correct shaping and line-breaking. Load per-locale font
+  subsets, set language-appropriate line-height, and never assume a single font stack covers every supported locale.
+□ ROUTING AND SEO ARE COUPLED (Agent 43, and §4): choose the URL strategy deliberately (subdirectory `/fr/`, subdomain, or ccTLD), keep
+  reciprocal `hreflang` with an `x-default`, ensure the canonical points within the same locale, and never auto-redirect by IP without a
+  visible, persistent way to change locale. Locale detection order that works: explicit user choice, then a stored preference, then
+  `Accept-Language`, then a default, with the choice reflected in the URL so it is shareable and cacheable.
+□ CACHING AND PERSONALISATION: locale is a cache-key dimension. Vary on a normalised locale class at the edge (§10), never on the raw
+  `Accept-Language` header, which fragments the cache into uselessness.
+□ ENGINEERING HYGIENE THAT PREVENTS THE RETROFIT: no hardcoded strings (lint rule), keys with context notes for translators, a screenshot or
+  usage context attached to each string, translation files versioned in the repo and updated through the same review as code, a fallback chain
+  per locale, and lazy-loaded message bundles so a user downloads one locale rather than all of them.
+□ ALSO LOCALE-DEPENDENT AND ROUTINELY MISSED: name order and single-name users, address formats and postcode validity, phone formats,
+  first day of the week, 12- vs 24-hour clocks, timezone-correct rendering of stored UTC timestamps, sort order in dropdowns, form field
+  order, and legally required disclosures per market (Agent 11).
+```
+
+## Frontend Security: CSP, XSS and the npm Supply Chain (sign-off: Agent 09)
+
+```
+THE FRONTEND THREAT MODEL IN ONE SENTENCE: anything that executes in your origin can read every token, cookie and DOM node available to your
+application, and a large share of what executes there was not written by you. Agent 09 owns the threat model and the sign-off; this is the
+implementation and the trade-offs you will actually argue about.
+XSS - still the dominant client vulnerability, and the modern version is DOM-based:
+□ THE SINKS: `innerHTML`, `outerHTML`, `document.write`, `insertAdjacentHTML`, `eval`, `new Function`, `setTimeout` with a string,
+  `element.setAttribute` on an event handler or a `javascript:` URL, `dangerouslySetInnerHTML` and its framework equivalents (`v-html`,
+  `[innerHTML]`), and any un-validated URL rendered into `href` or `src`.
+□ THE DEFENCES, in order: let the framework escape by default and never opt out; sanitise with a maintained library (DOMPurify) when you must
+  render authored HTML, and sanitise on OUTPUT rather than on input; validate every URL against an allowlist of schemes (reject `javascript:`
+  and `data:`); and adopt TRUSTED TYPES on new code, which turns the dangerous sinks into runtime errors unless the value passed through a
+  policy. Trusted Types is the only defence in this list that fails closed by construction.
+□ Markdown, rich-text editors, user profile fields, SVG uploads and anything rendering third-party content are the recurring sources.
+CSP THAT ACTUALLY WORKS (the URL-allowlist style is widely bypassable and largely obsolete):
+□ Use `script-src 'nonce-{random}' 'strict-dynamic'` with a fresh nonce per response, plus `object-src 'none'` and `base-uri 'none'`. This
+  requires a server rendering step to inject the nonce, which is a real constraint on a purely static host: decide it at architecture time.
+□ ROLL OUT IN THREE STAGES: `Content-Security-Policy-Report-Only` with a reporting endpoint, two or more weeks of collection to build the
+  real inventory of what your page loads, then enforcement route by route rather than site-wide in one step. Every violation resolves as a
+  fix or a documented exception with an owner and an expiry, never as a permanent wildcard.
+□ THE HONEST TENSION: tag managers and A/B tools inject inline scripts and dynamically-created script elements, which is exactly what a
+  strict CSP prevents. `strict-dynamic` covers scripts loaded BY a trusted script, which resolves many cases; the rest is a deliberate
+  decision with Agent 09 about which vendor is worth weakening the policy for. Do not weaken it silently by default.
+□ THE REST OF THE HEADER SET: `Strict-Transport-Security` with a long max-age, `X-Content-Type-Options: nosniff`,
+  `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` disabling the APIs you do not use, `frame-ancestors` (which
+  supersedes X-Frame-Options), and cross-origin isolation headers where you need them. Verify current header recommendations before shipping.
+□ COOKIES: `HttpOnly` (so XSS cannot read the session), `Secure`, and `SameSite=Lax` or `Strict`. A token in `localStorage` is readable by
+  any script on the origin, including every third-party tag; that is a deliberate risk trade, so make it deliberately.
+THE npm SUPPLY CHAIN - your `node_modules` is production code from strangers, and the transitive graph is where the risk lives:
+□ THE ATTACK PATTERNS TO DESIGN AGAINST: a maintainer account compromised and a malicious version published; a maintainer handing a popular
+  package to an unknown successor; typosquatting and dependency confusion (an internal package name resolved from the public registry);
+  malicious install-time lifecycle scripts; and a compromised build tool or plugin, which is the highest-leverage target because it can inject
+  into every artifact you produce.
+□ THE CONTROLS THAT MATTER: commit the lockfile and install with `npm ci` (never a floating install in CI); pin exact versions for anything
+  in the build path; disable install scripts by default and allowlist the ones genuinely needed; scope internal packages and configure the
+  registry so internal names can never resolve publicly; automate dependency review and SCA in the pipeline with a policy on what blocks a
+  merge; generate an SBOM for the frontend bundle alongside the backend's; and keep an allowlist plus a named reviewer for NEW dependencies,
+  which is where the decision is cheapest.
+□ REDUCE THE SURFACE, WHICH IS THE ONLY CONTROL THAT COMPOUNDS: fewer dependencies, prefer the platform (Intl, fetch, structuredClone, CSS
+  over a JS library), and delete unused packages. Every dependency you do not have is a dependency that cannot be compromised, and it also
+  buys back §3's byte budget.
+□ EXTERNAL SCRIPTS YOU CANNOT ELIMINATE get Subresource Integrity plus `crossorigin`, and ideally a self-hosted, version-pinned copy under
+  your review. An SRI hash on a vendor script that changes weekly will simply break, so the real answer for those is a facade or removal.
+□ HAVE A REHEARSED RESPONSE PATH for a compromised package: how you find out (advisory feed, SCA alert), how you determine exposure (SBOM plus
+  lockfile history), how you rebuild and redeploy, whether published artifacts must be revoked, and who notifies whom (Agent 09, Agent 25).
+□ WHAT CANNOT BE FIXED IN THE CLIENT: authorisation, rate limits, price and discount calculation, entitlement checks and any secret. The
+  client is a rendering tier, and every rule enforced only there is a rule an attacker turns off in devtools (Agent 06 owns the server side).
+```
+
 ## Decision Framework: Choosing a Rendering Strategy per Route
 
 ```
