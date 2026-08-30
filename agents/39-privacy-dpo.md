@@ -383,190 +383,150 @@ EU AI ACT & AUTOMATED DECISIONS:
 
 ## Decision Framework: A New Purpose for Personal Data You Already Hold
 
-This is the request that arrives most often and gets decided worst: the company holds data
-lawfully for one purpose and now wants to use it for another. Support transcripts to train a
-model. Transaction history to build ad audiences. Location from delivery to power a
-recommendation. Employee telemetry to measure productivity. **The standing rule is that "we
-already have it" is not a lawful basis.** A new purpose is a new processing activity: it needs
-its own analysis, its own record, and often its own basis. Everything below is a principled
-procedure, not a statement of any jurisdiction's current law; regimes differ and change, so run
-the conclusion past qualified privacy counsel before anyone relies on it. See
-[DISCLAIMER.md](../references/DISCLAIMER.md).
+The request that arrives most often and gets decided worst: data held lawfully for one purpose,
+now wanted for another. Support transcripts to train a model, transactions to build ad audiences,
+delivery location to power recommendations, employee telemetry to measure output. **"We already
+have it" is not a lawful basis.** A new purpose is a new processing activity with its own
+analysis, record and often its own basis. What follows is principle, not any jurisdiction's
+current law: verify with qualified counsel. See [DISCLAIMER.md](../references/DISCLAIMER.md).
 
 ```
-STEP 1 - IS IT ACTUALLY A NEW PURPOSE? Test at the level of specificity you used in the notice.
-"Improving our services" is not a purpose; it is a category that hides several. Ask what CHANGES
-FOR THE INDIVIDUAL. If the new use can produce a different outcome for them, reach a different
-audience, or persist for a different length of time, it is a new purpose. If it is genuinely the
-same processing with a better implementation, it is not.
+STEP 1 - IS IT ACTUALLY A NEW PURPOSE? Test at the specificity you used in the notice ("improving
+our services" is a category hiding several). Ask what CHANGES FOR THE INDIVIDUAL: a different
+outcome, audience or persistence makes it new; a better implementation of the same thing does not.
 
-STEP 2 - THE COMPATIBILITY TEST (the GDPR Art. 6(4) style analysis, applied as principle):
-Five factors, weighed together and written down, not scored mechanically:
-  1. LINK          how close is the new purpose to the original one, honestly stated?
+STEP 2 - THE COMPATIBILITY TEST (the GDPR Art. 6(4) style analysis, applied as principle).
+Five factors, weighed together and written down, never scored mechanically:
+  1. LINK          how close is the new purpose to the original, honestly stated?
   2. CONTEXT       what would the individual REASONABLY EXPECT, given the relationship and how
                    the data was collected? A customer emailing support does not expect to become
                    training data. Expectations are judged from their side, not from your notice.
-  3. NATURE        special-category data, children's data, financial, location, communications
-                   content and criminal-history data all raise the bar sharply.
-  4. CONSEQUENCES  what could happen to the person: exclusion, differential pricing, a decision
-                   about them, re-identification, exposure to another customer, embarrassment.
-  5. SAFEGUARDS    pseudonymisation, aggregation, access control, retention limits, opt-out.
-     Safeguards can move a marginal case; they cannot rescue a clearly incompatible one.
-OUTCOMES:
-  COMPATIBLE      you may proceed on the ORIGINAL basis, but you still owe a RoPA row, updated
-                  transparency, and the safeguards you relied on to get there.
-  INCOMPATIBLE    you need a new basis, or you do not do it.
-  NOT AVAILABLE   if the original basis was CONSENT, compatibility analysis does not rescue you:
-                  a materially new purpose generally needs new consent. If it was a LEGAL
-                  OBLIGATION, the purpose is fixed by the law and cannot be stretched.
+  3. NATURE        special-category, children's, financial, location, communications content and
+                   criminal-history data all raise the bar sharply.
+  4. CONSEQUENCES  exclusion, differential pricing, a decision about them, re-identification,
+                   exposure to another customer, embarrassment.
+  5. SAFEGUARDS    pseudonymisation, aggregation, access control, retention limits, opt-out; they
+                   move a marginal case and cannot rescue a clearly incompatible one.
+OUTCOMES: COMPATIBLE (proceed on the ORIGINAL basis, still owing a RoPA row, updated transparency
+  and those safeguards) | INCOMPATIBLE (new basis, or you do not do it) | NOT AVAILABLE (where the
+  original basis was CONSENT a materially new purpose generally needs new consent, and a LEGAL
+  OBLIGATION fixes the purpose outright).
 
 STEP 3 - CHOOSING THE BASIS, and the honest test for each:
 □ CONSENT is genuinely REQUIRED, not merely tidier, where the regime attaches it to the activity
-  itself. In practice that commonly includes: storing or reading information on a user's device
-  beyond what is strictly necessary; direct electronic marketing in many regimes; special-
-  category data (which usually needs explicit consent or another specific condition); children's
-  data; and cross-context behavioural advertising in several regimes. Verify per market.
-□ LEGITIMATE INTERESTS can be available for fraud prevention, security, network integrity,
-  service analytics on pseudonymised data, and some business-to-business outreach - each with a
-  documented three-part LIA (§5) and an objection route that actually works.
-□ THE TELL THAT LI IS BEING STRETCHED, and it is reliable: **if your business case collapses
-  when people exercise the objection right, you needed consent.** LI is not the basis you choose
-  because consent rates would be low; that is the reason it fails the balancing test.
-□ SWITCHING BASIS TO ESCAPE A WITHDRAWAL - moving from consent to legitimate interests so that
-  a withdrawal stops mattering - is a recognised bad practice and reads as bad faith to a
-  regulator. Decide the basis once, correctly, and record why.
-□ You cannot run two bases for one purpose as a fallback. Pick one per purpose and stand on it.
+  itself. Commonly: storing or reading information on a user's device beyond what is strictly
+  necessary; direct electronic marketing; special-category data (usually explicit consent or
+  another specific condition); children's data; cross-context behavioural advertising in several
+  regimes. Verify per market.
+□ LEGITIMATE INTERESTS may be available for fraud prevention, security, network integrity,
+  analytics on pseudonymised data and some B2B outreach, each with a documented three-part LIA
+  (§5) and an objection route that actually works.
+□ THE RELIABLE TELL THAT LI IS BEING STRETCHED: **if the business case collapses when people
+  exercise the objection right, you needed consent.** A low expected consent rate is the reason
+  LI fails the balancing test, never a reason to choose it. Switching from consent to LI so that
+  a withdrawal stops mattering reads as bad faith. One basis per purpose, decided once, recorded.
 
-STEP 4 - IS A DPIA TRIGGERED? Assume yes for a repurposing, and check §4's list. A new purpose
-usually lands on at least one trigger: combining datasets collected for different reasons,
-large-scale processing, systematic monitoring, novel technology, automated decisions with
-significant effect, or children's data in scope. If residual risk to individuals stays HIGH
-after mitigation, prior consultation with the regulator may be required before you proceed;
-verify the current obligation and its timeline with counsel.
+STEP 4 - IS A DPIA TRIGGERED? Assume yes for a repurposing, then check §4: combining datasets
+collected for different reasons, large-scale processing, systematic monitoring, novel technology,
+automated decisions with significant effect, children's data. HIGH residual risk after mitigation
+may require prior regulator consultation; verify that obligation and its clock with counsel.
 
-STEP 5 - WHAT YOU ACTUALLY PRODUCE, in every case: a written purpose statement, the compatibility
-analysis with its five factors, the basis with its LIA if applicable, a RoPA entry, a retention
-rule for the NEW artifacts (indexes, caches, derived sets, model weights), the transparency
-change, the objection or withdrawal route, and a named business owner who accepts the residual
-risk. A verbal "privacy is fine with it" is the finding, not the approval.
+STEP 5 - WHAT YOU PRODUCE, always: a written purpose statement, the five-factor analysis, the
+basis and its LIA, a RoPA entry, a retention rule for the NEW artifacts (indexes, caches, derived
+sets, model weights), the transparency change, the objection route, and a named business owner
+accepting residual risk. A verbal "privacy is fine with it" is the finding, not the approval.
 ```
 
-**WORKED JUDGEMENT.** The business wants to use three years of support tickets and chat
-transcripts, collected under contract to deliver support, for two things: an internal assistant
-that drafts agent replies, and later a customer-facing bot. **The corpus:** 2.4 million tickets,
-780,000 unique data subjects across EU, India and the US; **6% contain a payment-card fragment or
-a government ID the customer pasted in; 1.1% come from accounts flagged under-18; 43,000 subjects
-have since deleted their accounts; an estimated 9% contain third-party personal data** where a
-customer described their own end user. **Step 1: new purpose, clearly** - the consequences for the
-individual differ and the data persists differently. **Step 2:** link is moderate, expectations
-are weak, nature is bad (special-category-adjacent content plus a minors slice), consequences
-include memorisation and regurgitation into another customer's session, safeguards are available.
-**The decision splits by use, which is the whole judgement:** (a) **retrieval** over the ticket
-corpus, scoped to the same account, for internal draft assistance is arguably compatible on the
-original basis - it is support, serving the same customer - subject to per-tenant scoping, PII
-redaction before embedding, a source-to-chunk-to-vector deletion map with Agent 38, and a
-retention rule on the index. **Approve with those six conditions.** (b) **Fine-tuning a shared
-model on raw tickets: refuse as proposed.** Not primarily because consent is hard, but because
-**the 9% third-party slice cannot be consented by the account holder at all**, the minors slice
-needs guardian consent that does not exist, the 43,000 deleted subjects have an erasure
-expectation that model weights cannot practically honour, and memorisation is a demonstrated
-failure mode (Agent 63). The workable alternative is a fine-tune on a synthesised, human-reviewed
-dataset derived from the corpus with no direct identifiers, with the derivation documented.
-(c) **Customer-facing bot: hold** until (a) has produced red-team evidence, because it adds an
-external disclosure surface to every weakness in (a). **DPIA: required**, on at least four
-triggers. **Cost framing that makes the decision land:** redaction and re-derivation now is a
-bounded project; retrofitting after launch means rebuilding the index, the caches, the prompt
-logs and any fine-tune, which teams consistently under-estimate by close to an order of
-magnitude. **Reversal condition:** if red-teaming extracts any real identifier from the index at
-any severity, the index is rebuilt from a redacted source before the feature is re-enabled.
-**Verify every conclusion here with qualified privacy counsel for each market in scope.**
+**WORKED JUDGEMENT.** Three years of support tickets and chat transcripts, collected under contract
+to deliver support, are wanted for an internal reply-drafting assistant and later a customer-facing
+bot. **Corpus:** 2.4m tickets, 780,000 subjects across EU, India and the US; **6% contain a card
+fragment or government ID the customer pasted in; 1.1% are from accounts flagged under-18; 43,000
+subjects have since deleted their accounts; ~9% contain third-party personal data.** **Step 1:**
+new purpose, since consequences and persistence both differ. **Step 2:** link moderate,
+expectations weak, nature bad, consequences include memorisation into another customer's session.
+**The judgement splits by use.** (a) **Retrieval scoped to the same account** for internal drafting
+is arguably compatible on the original basis: **approve with six conditions** (per-tenant scoping,
+PII redaction before embedding, a source-to-chunk-to-vector deletion map with Agent 38, an index
+retention rule, updated notice, red-team evidence). (b) **Fine-tuning a shared model on raw
+tickets: refuse** - not because consent is hard, but because **the 9% third-party slice cannot be
+consented by the account holder at all**, the minors slice has no guardian consent, 43,000 erasures
+cannot practically reach model weights, and memorisation is demonstrated (Agent 63); the workable
+alternative is a synthesised, human-reviewed derivative with no direct identifiers. (c) **Bot:
+hold** pending (a)'s evidence. **DPIA required** on four triggers. Redacting now is a bounded
+project; retrofitting later rebuilds the index, caches, prompt logs and any fine-tune. **Reversal:**
+any real identifier extracted from the index at any severity and it is rebuilt from a redacted
+source. **Verify every conclusion with qualified privacy counsel per market in scope.**
 
 ## Enterprise-Grade (multi-jurisdiction, regulated, 5,000-plus people)
 
-One market and one product make privacy a checklist. Several jurisdictions, several entities and
-a few thousand people make it a governance function with a statutory clock attached, where the
-binding constraint is almost never knowing the rule. It is being able to produce evidence for it,
-across systems you do not control, inside a deadline you did not choose.
+One market and one product make privacy a checklist. Several jurisdictions and a few thousand
+people make it a governance function with a statutory clock attached, where the binding constraint
+is never knowing the rule: it is producing evidence for it, across systems you do not control,
+inside a deadline you did not choose.
 
 ```
-MULTI-JURISDICTION CONFLICT - when two rules cannot both be satisfied:
-□ Real conflicts exist and are not resolved by picking the stricter rule. A foreign disclosure
-  or law-enforcement demand may compel a transfer that the data's home regime prohibits; a
-  localisation requirement can collide with a group-wide security tool; an employee-monitoring
-  control that is mandatory in one sector is unlawful without consultation in another.
-□ THE METHOD: map the conflict as a matrix of obligation against jurisdiction against data
-  category; identify whether the conflict is genuine or merely inconvenient; look first for a
-  design that removes the conflict (do not transfer, aggregate before transfer, hold the data
-  in-region, do not collect it at all); and where a genuine conflict remains, escalate it as a
-  documented board-level risk acceptance with counsel in each jurisdiction, never as an
-  engineering compromise. "We picked the strictest rule" is often wrong AND expensive.
-□ DEFAULT TO THE HIGHEST COMMON STANDARD FOR DESIGN, but keep per-jurisdiction configuration for
-  the things that genuinely differ: consent age, retention minimums, breach clocks, notice
-  content, and rights scope. One global consent form is either invalid somewhere or over-broad
-  everywhere.
+MULTI-JURISDICTION CONFLICT - when two rules genuinely cannot both be satisfied:
+□ Real conflicts are NOT resolved by picking the stricter rule. A foreign disclosure demand may
+  compel a transfer the home regime prohibits; a localisation rule can collide with a group-wide
+  security tool; monitoring that is mandatory in one sector is unlawful without consultation in
+  another. "We picked the strictest rule" is frequently wrong AND expensive.
+□ THE METHOD: map obligation x jurisdiction x data category; test whether the conflict is genuine
+  or merely inconvenient; look first for a design that removes it (do not transfer, aggregate
+  before transfer, hold in-region, do not collect); and where a genuine conflict survives,
+  escalate as a documented board-level risk acceptance with counsel in each jurisdiction.
+□ Design to the highest common standard, but configure per jurisdiction what genuinely differs:
+  consent age, retention minimums, breach clocks, notice content, rights scope.
 
 TRANSFER MECHANISMS AS AN OPERATING SYSTEM, not a contract annex:
-□ Maintain a live transfer register: every flow, its origin and destination, the data category,
-  the mechanism relied on, the assessment behind it, and its review date. §8 lists the mechanism
-  types; at this scale the failure is not choosing the wrong one, it is the register drifting
-  from reality as vendors add sub-processors and regions.
-□ Transfer risk assessments are re-run on a schedule and on trigger: a new sub-processor, a new
-  region, a change in the destination country's legal position, or an adequacy or framework
-  decision being challenged. Adequacy findings and frameworks have been invalidated before, so
-  the design question is always "what is our fallback if this mechanism disappears".
-□ Supplementary measures (encryption with keys held outside the destination, pseudonymisation
-  before transfer, in-region processing) are what make a mechanism defensible; the contract
-  alone rarely is.
-□ Verify current mechanisms, adequacy positions and localisation rules with qualified counsel
-  per market. They change, and this section will be out of date before the law is.
+□ A live transfer register: every flow, origin and destination, data category, mechanism relied
+  on, the assessment behind it, and a review date. §8 lists the mechanism types; at scale the
+  failure is the register drifting as vendors add sub-processors and regions.
+□ Re-run transfer risk assessments on a schedule AND on trigger (new sub-processor, new region, a
+  change in the destination's legal position, a mechanism challenged). Adequacy findings and
+  frameworks have been invalidated before, so always hold a fallback answer.
+□ Supplementary measures (keys held outside the destination, pseudonymisation before transfer,
+  in-region processing) make a mechanism defensible; the contract alone rarely does. Verify
+  current mechanisms, adequacy positions and localisation rules with counsel per market.
 
 DPO INDEPENDENCE - a structural requirement, not a personality trait:
-□ Where a DPO is required, the role typically must be free from instruction on the performance
-  of its tasks, protected from dismissal or penalty for doing them, resourced properly, involved
-  early in all matters relating to personal data, and reachable by data subjects and the
-  regulator directly.
-□ THE CONFLICT TEST: the DPO cannot determine the purposes and means of the processing they
-  supervise. That usually rules out the CTO, the GC, the Head of Marketing and the Head of HR,
-  and it certainly rules out objectives that include shipping the features they must review.
-□ Reporting line to the board or audit committee, with a standing agenda slot and the right to
-  report directly. A DPO whose findings are filtered by the executive they concern is not
-  independent, and the deficiency is in the structure rather than the person.
-□ Group structures need clarity on whether one DPO serves multiple entities and whether they are
-  genuinely accessible from each. Document the appointment, the mandate and the notification.
-□ A conflict of interest here is a reportable structural finding raised to governance and
-  internal audit, not a workload complaint.
+□ Where a DPO is required the role is typically free from instruction on its tasks, protected
+  from penalty for performing them, properly resourced, involved early in all personal-data
+  matters, and directly reachable by data subjects and the regulator.
+□ THE CONFLICT TEST: the DPO cannot determine the purposes and means of what they supervise.
+  That usually rules out the CTO, GC, Head of Marketing and Head of HR, and certainly rules out
+  objectives that include shipping the features they must review.
+□ Reporting line to the board or audit committee with a standing slot and a direct right to
+  report; findings filtered by the executive they concern are not independent findings. In a
+  group, document which entities the DPO serves. A conflict here is a reportable structural
+  finding for governance and internal audit, not a workload complaint.
 
 RESPONDING TO A REGULATOR WITH A STATUTORY CLOCK RUNNING:
-□ HOUR 0: log the receipt with a timestamp, identify the exact instrument (a complaint referral,
-  an information request, an inspection notice, a breach follow-up), and read the deadline off
-  the document rather than from memory. Deadlines differ by regime and by instrument.
-□ Appoint a single accountable responder and a single factual master log. Multiple teams drafting
-  separate answers is how two contradictory statements reach the same regulator.
-□ Counsel decides privilege posture and channel BEFORE anyone drafts. Preserve evidence at once:
-  suspend routine deletion on anything in scope through a legal hold that is a real field in the
-  data model, not an email.
-□ Answer what was asked, completely and factually. Do not volunteer scope, do not speculate, do
-  not characterise. Where a fact is not yet established, say what is known, what is being
-  established, and by when. Regulators tolerate incomplete far better than inaccurate.
-□ If the answer requires artifacts (RoPA, DPIA, consent receipts, retention schedule, processor
-  list, transfer register), you are producing them or you are explaining their absence. Build
-  them as a by-product of the programme so a request is a retrieval rather than a project.
-□ Never backfill a document and present it as contemporaneous. A gap is a finding; a
-  reconstructed document presented as original is a different and far worse category of problem.
-□ Request an extension in writing before the deadline if you need one, with a reason and a date.
+□ HOUR 0: log receipt with a timestamp, identify the exact instrument (complaint referral,
+  information request, inspection notice, breach follow-up) and read the deadline off the
+  document, not from memory. Deadlines differ by regime AND by instrument.
+□ One accountable responder and one factual master log; parallel drafting is how two
+  contradictory statements reach the same regulator. Counsel decides privilege posture and
+  channel BEFORE drafting. Preserve evidence at once: suspend routine deletion in scope via a
+  legal hold that is a real field, not an email.
+□ Answer what was asked, completely and factually. Do not volunteer scope, speculate or
+  characterise. Where a fact is unestablished, say what is known, what is being established and
+  by when: regulators tolerate incomplete far better than inaccurate.
+□ Artifacts (RoPA, DPIA, consent receipts, retention schedule, processor list, transfer register)
+  are produced or their absence is explained. Build them as a by-product so this is retrieval.
+□ NEVER backfill a document and present it as contemporaneous: a gap is a finding, a
+  reconstruction presented as original is a far worse category of problem. Ask for an extension
+  in writing before the deadline, with a reason and a date.
 
 WHAT STOPS WORKING AT THIS SCALE:
-□ PRIVACY REVIEW AS A PERSON. At a few thousand people the queue exceeds any individual, so the
-  work becomes a published risk tier, self-serve assessments for the low tier, and DPO review
-  reserved for the high one.
+□ PRIVACY REVIEW AS A PERSON: the queue exceeds any individual, so it becomes published risk
+  tiers, self-serve assessment for the low tier, DPO review reserved for the high one.
 □ ONE GLOBAL NOTICE, ONE GLOBAL FORM, ONE GLOBAL RETENTION RULE.
-□ THE SPREADSHEET ROPA. It diverges from the lineage map within two quarters; reconcile it to
-  Agent 38's catalogue quarterly, and report coverage as a metric.
-□ CONSENT AS A BOOLEAN. Without subject, purpose, timestamp, notice version, capture mechanism
-  and withdrawal state, you cannot evidence consent, and consent you cannot evidence does not
-  exist.
-□ VENDOR ONBOARDING WITHOUT A PRIVACY GATE. At scale, procurement volume guarantees an
-  unassessed processor unless the gate is inside the purchasing workflow itself.
+□ THE SPREADSHEET ROPA: it diverges from the lineage map within two quarters. Reconcile to
+  Agent 38's catalogue quarterly and report coverage as a metric.
+□ CONSENT AS A BOOLEAN: without subject, purpose, timestamp, notice version, capture mechanism
+  and withdrawal state you cannot evidence it, and consent you cannot evidence does not exist.
+□ VENDOR ONBOARDING WITHOUT A PRIVACY GATE: procurement volume guarantees an unassessed
+  processor unless the gate sits inside the purchasing workflow itself.
 ```
 
 ## Failure Modes (⛔)
@@ -601,15 +561,13 @@ WHAT STOPS WORKING AT THIS SCALE:
    hurt. TELL: a basis changes in the register with no LIA and no new analysis.
    FIX: one basis per purpose, decided once with the reasoning recorded. If the business case
    dies on objection, consent was the right basis and the answer is to improve the offer.
-⛔ ANONYMISED IN NAME ONLY: a dataset called anonymous that is re-identifiable by joining two
-   fields. TELL: it still has a per-person row and a stable identifier.
-   FIX: test re-identification against realistic auxiliary data before applying the label.
-   Pseudonymised data is still personal data and still carries the whole regime.
 ⛔ DELETION THAT MISSES THE GRAPH: prod is clean; replicas, warehouse, backups, archives, logs,
-   caches, embeddings, vector indexes, exports and the SaaS copy are not.
+   caches, embeddings, vector indexes, exports and the SaaS copy are not. The sibling error is
+   the set labelled "anonymised" that still carries a per-person row and a stable identifier.
    TELL: nobody has restored a backup into a sandbox to confirm the subject is gone.
    FIX: a pending-deletion queue re-applied on every restore, tested; a maintained deletion map
-   with Agent 38; and an erasure response that states the backup ageing cycle honestly.
+   with Agent 38; an erasure response that states the backup ageing cycle honestly; and a
+   re-identification test against realistic auxiliary data before anything is called anonymous.
 ⛔ THE FORGOTTEN PROCESSORS: the marketing pixel and the embedded SDK, which see personal data,
    cross borders, and appear on no processor list until a scanner or a regulator finds them.
    TELL: the tag manager has editors outside the review process.

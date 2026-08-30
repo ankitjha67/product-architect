@@ -245,11 +245,10 @@ Research that doesn't change a decision is theater. Track:
 
 ## Decision Framework: The Study Is Not Finished and the Decision Ships Friday
 
-The hardest recurring call in this function is not which method to use. It is what you say on
-Thursday evening when the evidence is partial, the decision owner has a Friday date, and
-declining is not neutral: the decision still gets made, from a Slack thread and two customer
-anecdotes. Over-delivering is the worse error. A three-day study written in the vocabulary of
-a three-week one becomes a number in a deck that outlives every caveat you attached to it.
+The hardest recurring call here is not which method to use. It is what you say on Thursday
+evening when evidence is partial, the decision owner has a Friday date, and declining is not
+neutral: the decision gets made anyway, from a Slack thread and two anecdotes. Over-delivering is
+worse: a three-day study written in three-week vocabulary becomes a permanent number in a deck.
 
 ```
 STEP 1 - NAME THE CLAIM THE DECISION ACTUALLY NEEDS. Four kinds, ascending in cost:
@@ -258,10 +257,9 @@ STEP 1 - NAME THE CLAIM THE DECISION ACTUALLY NEEDS. Four kinds, ascending in co
   MAGNITUDE   how much is it worth, how much better is B than A? (an effect size)
   CAUSALITY   will changing X actually move Y?
 A three-day qualitative study establishes EXISTENCE and MECHANISM to a high standard, and can
-falsify a prevalence claim in ONE direction only: if 7 of 9 recruited users hit it, it is not
-rare. It cannot produce PREVALENCE, MAGNITUDE or CAUSALITY; those need n, power, or a
-controlled test. Most Friday arguments are existence questions being answered in prevalence
-words, which is exactly why they feel unresolvable in the room.
+falsify a prevalence claim in ONE direction only: if 7 of 9 hit it, it is not rare. It cannot
+produce PREVALENCE, MAGNITUDE or CAUSALITY; those need n, power or a controlled test. Most Friday
+arguments are existence questions answered in prevalence words, which is why they stay unresolved.
 
 STEP 2 - GRADE THE DECISION. The decision sets the evidence bar; the calendar never does.
   REVERSIBILITY  undoable in a sprint, or a price, migration, deprecation, public claim,
@@ -292,9 +290,8 @@ IT IS NOT ENOUGH, and you say so in one unhedged sentence, when ANY of these hol
 ```
 STEP 3 - STATE CONFIDENCE SO IT CANNOT BE OVER-READ. Every fast read opens with four lines,
 in this order, above the findings and never in an appendix:
-  CLAIM STRENGTH  OBSERVED (seen directly, with counts) | INDICATED (consistent pattern,
-                  small n, plausible alternatives survive) | UNTESTED (generated here,
-                  not checked here).
+  CLAIM STRENGTH  OBSERVED (seen directly, with counts) | INDICATED (consistent pattern, small n,
+                  plausible alternatives survive) | UNTESTED (generated here, not checked here).
   FRAME           who was in the sample and, explicitly, who was not.
   WHAT WOULD CHANGE THIS   the specific observation that would overturn the read.
   NOT ANSWERED    the questions the decision owner asked that this study cannot answer.
@@ -317,9 +314,9 @@ recommendation changes shape as a result: not revert-or-ship, but reorder the as
 permission prompt, then re-measure. **The counterfactual matters as much:** had Friday's decision
 been "raise the price of the verified tier", the identical three days would have been refused in
 writing - one-way, magnitude-shaped, and stated willingness-to-pay from nine people is worse than
-no data because it is quotable. **Reversal condition:** if the re-measured cohort has not
-recovered at least half the gap in 14 days, the mechanism read was incomplete and the study
-reopens with the segments the intercept could not reach.
+no data because it is quotable. **Reversal condition:** if the re-measured cohort has not recovered
+half the gap in 14 days, the mechanism read was incomplete and the study reopens with the segments
+the intercept could not reach.
 
 ## Enterprise-Grade (regulated, multi-region, 5,000-plus people)
 

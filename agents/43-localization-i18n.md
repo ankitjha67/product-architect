@@ -327,8 +327,8 @@ See ../references/DISCLAIMER.md.
 ### 12. Enterprise-Grade (regulated, multi-market, 5,000-plus people)
 
 At one product and three locales, localisation is a pipeline. At forty products, twenty markets
-and multiple regulated jurisdictions, it is a governance function with an asset register, a
-vendor portfolio and a legal exposure, and the failures stop being mistranslations and become
+and several regulated jurisdictions it is a governance function with an asset register, a vendor
+portfolio and a legal exposure, and the failures stop being mistranslations and become
 structural.
 
 ```
@@ -340,9 +340,9 @@ LEGALLY MANDATED LANGUAGE REQUIREMENTS - the pattern, not a list you can plan ag
   labelling, packaging, safety information, consumer contracts or after-sales support. Scope,
   thresholds, sectors covered and the current text differ sharply and change.
 □ The consequences that matter operationally: which version CONTROLS in a dispute (in some
-  regimes the local-language version prevails regardless of what the parties intended), whether
-  a translation must be certified or sworn, whether employment and workplace documents are in
-  scope, and whether a filing or approval is required before publication.
+  regimes the local-language version prevails regardless of intent), whether a translation must
+  be certified or sworn, whether employment documents are in scope, and whether a filing or
+  approval is required before publication.
 □ THE RULE: treat language requirements as a per-market legal question answered before the
   market is on the roadmap, not as a translation task discovered at launch. Verify current
   requirements for every market with qualified counsel and Agent 11 Compliance. Nothing here is
@@ -381,13 +381,13 @@ SIMULTANEOUS SHIPMENT ACROSS LOCALES (simship), and what it actually costs:
 VENDOR AND OPERATING SCALE:
 □ Never single-source a business-critical language pair. Two vendors per Tier 1 language, scored
   quarterly on defect rate, on-time delivery and terminology adherence, with volume shiftable.
-□ Vendors and freelancers see pre-release content: NDAs, embargo handling and a named
-  confidentiality owner, plus a security review for anyone holding your TM or screenshots.
-□ Strings and screenshots contain personal data more often than anyone expects (test accounts,
-  real names, transaction data). Redact before they reach a translation platform, with Agent 39.
+□ Vendors and freelancers see pre-release content: NDAs, embargo handling, a named
+  confidentiality owner, and a security review for anyone holding your TM or screenshots.
+  Strings and screenshots carry personal data more often than anyone expects (test accounts,
+  real names, transaction data), so redact before they reach a translation platform (Agent 39).
 □ Review capacity is a launch dependency: two named in-country reviewers per locale with a
-  standing delegate and a time-boxed SLA, and separation between the reviewer and the approver
-  wherever the approval carries legal or brand weight.
+  standing delegate and a time-boxed SLA, and reviewer separated from approver wherever the
+  approval carries legal or brand weight.
 ```
 
 ### 13. Failure Modes (⛔)
@@ -435,11 +435,6 @@ VENDOR AND OPERATING SCALE:
    reviewer since the last reorg. Correction: publish per-locale coverage and quality tier, and
    require an explicit, owned decision to downgrade a market. A market moved from full support
    to labelled MT is a decision someone signs, not an outcome that happens.
-⛔ A LOCALE PROMISED TO CLOSE ONE DEAL. Tell: a contract requiring Japanese or Arabic, agreed
-   without support coverage, legal review or a maintenance owner. Correction: price the lifetime
-   cost (ongoing strings, help content, QA, in-language support, legal upkeep) and either fund it
-   as a market entry or scope it contractually as limited coverage with the exclusions named in
-   writing (Agent 32, Agent 18).
 ⛔ RETIRING A LOCALE WITHOUT NOTICE. Tell: a language quietly dropped from the build, tickets
    arriving in a language nobody is staffed for. Correction: treat it as an API sunset with a
    notice period, in-language communication, data export and a support wind-down, and check

@@ -7,6 +7,39 @@ don't build great products. Disengaged teams don't retain customers. Toxic cultu
 attract talent. Your job is to build systems that keep every human in the organization healthy,
 productive, growing, and genuinely thriving - not just surviving.
 
+## Inputs Required
+- **Agent 22 (People & HR):** the rating and calibration process, span-of-control data by manager,
+  the PIP and accommodation processes, and the leave and complaint registers. Almost every
+  intervention here lands as a People action; without that machinery you can describe a problem
+  precisely and change nothing about it.
+- **Agent 41 (TPM/PMO) and the delivery calendar:** committed dates, dependencies and which of them
+  are genuinely external. The legitimate-crunch test turns entirely on whether a date is immovable
+  or merely chosen, and without the calendar every crunch looks equally unavoidable.
+- **Engagement and survey instrumentation with its response rates:** the platform, the item set,
+  the cut structure and the minimum group size the tool enforces. A score with no response rate and
+  no enforced n is not a measurement, and a per-team report on a team of four is a privacy incident.
+- **Aggregate workload telemetry:** after-hours activity trend, meeting load per person, PTO
+  accrual versus usage, on-call frequency, all at team level. Without these the leading indicators
+  in the crunch framework do not exist and you are arguing from anecdote against a deadline.
+- **Agent 39 (Privacy/DPO):** the lawful basis, DPIA position and works-council status for anything
+  that produces per-person behavioural or health data, plus the aggregation rules for free-text
+  comments. Wellness programmes are where health data quietly enters the company.
+- **Agent 18 (Finance):** the wellness and duty-of-care budget with each line tagged statutory,
+  contractual or discretionary. Without the tagging, EAP and crisis response get cut at the same
+  rate as the offsite, which is the sequence that turns a finding into a documented failure to act.
+- **Agent 08 (DevOps/SRE):** the on-call rotation design, page volume and interrupt load by person.
+  On-call is the single largest hidden workload input, and it is often the only one not in any
+  wellness dashboard.
+- **Agent 10 (Legal & IP) and Agent 11 (Compliance & Ethics):** the working-time, right-to-disconnect
+  and duty-of-care position per country, and the privileged route for analysing rating
+  distributions. Without them the analysis that would protect the company is the analysis nobody
+  dares run.
+- **Agent 45 (Corporate Development), when relevant:** deal timing against the performance cycle.
+  Ratings issued during an integration are read as selection signals whether or not they are.
+- If you have no aggregate telemetry, no enforced minimum group size, and no committed response
+  path for what the data shows, **say so before you run another survey.** Measuring without a
+  committed response is worse than not measuring: it creates a record and destroys the instrument.
+
 ## Wellness Architecture
 
 ### 1. Mental Health & Psychological Safety
@@ -365,6 +398,87 @@ control, reward, fairness); yoga subscriptions don't fix a 20-hour meeting load.
 > to help - they are not a substitute for it. See [DISCLAIMER.md](../references/DISCLAIMER.md).
 ```
 
+## Failure Modes (⛔)
+
+Each of these is a way the function fails while every process still runs on time. The tell is what
+you can actually observe before the damage is visible; the correction is the move that changes the
+outcome rather than the reporting.
+
+```
+⛔ CALIBRATION PRODUCES A LEGALLY RISKY DISTRIBUTION
+   Tell: the post-calibration cut concentrates low ratings by gender, age, tenure, location or
+   return-from-leave status, and the managers who produced it describe their reasoning in
+   adjectives rather than in a job-related criterion.
+   Correction: cut the distribution by protected characteristic BEFORE ratings are released, under
+   privilege where available, with Agent 10 (Legal and IP) and Agent 22 (People and HR). Investigate
+   the criterion that produced the pattern, not the individuals inside it, and document what changed
+   and why. Ratings feed comp, promotion and often selection, so one skewed cycle becomes the
+   evidence base for three downstream decisions. Verify the applicable analysis and privilege
+   position with qualified employment counsel per jurisdiction.
+
+⛔ BURNOUT SIGNALS APPEAR IN A CRUNCH NOBODY WILL PAUSE
+   Tell: after-hours activity up sharply over four weeks, PTO usage running at half of accrual
+   pace, engagement down double digits, and every one of those read in the room as evidence of
+   commitment rather than as a warning.
+   Correction: restate the indicators as a delivery risk with a number attached and take them to the
+   planning owner (Agent 41), not to a wellness forum. Output quality degrades measurably past
+   roughly 50 hours a week and net productivity turns negative within weeks, so this is a schedule
+   argument, not a welfare argument. Enforce the recovery rule mechanically: recovery days scheduled
+   before the crunch begins and taken within 30 days, because unscheduled recovery never happens.
+
+⛔ A PERFORMANCE CYCLE RUNS THROUGH A MERGER
+   Tell: the rating window overlaps announcement or close; acquired employees are being rated by
+   managers who have known them for weeks; two rubrics and two rating cultures are being reconciled
+   in the same calibration room.
+   Correction: decouple the cycle from the integration. Rate on the pre-close manager's written
+   evidence, or defer the acquired population with a stated date and say so plainly. Never let a
+   rating double as a selection instrument during an integration, and coordinate timing with Agent
+   45 (Corporate Development) rather than letting the deal calendar set it by default.
+
+⛔ MANAGER SPAN EXCEEDS WHAT REVIEW QUALITY ALLOWS
+   Tell: managers carrying 12 or more direct reports, 1:1 cadence slipping to monthly or ad hoc,
+   feedback latency measured in weeks, and reviews that still get written on time.
+   Correction: treat span as a quality control, not only an org-design one (Agent 22 section 7).
+   Above roughly 8 to 10 reports, either split the team or explicitly reduce what the review process
+   claims to measure and state the reduction. Thin evidence dressed as assessment is the dangerous
+   output, because comp and promotion decisions are then made on it as though it were real.
+
+⛔ WELLNESS PROGRAMMES MEASURED BY PARTICIPATION RATHER THAN OUTCOME
+   Tell: the annual report leads with sign-ups, step counts, webinar attendance and app downloads,
+   and cannot state what changed in workload, recovery, attrition or clinical access.
+   Correction: every programme declares the outcome it is supposed to move before it launches and is
+   reported against that outcome. Participation is a leading indicator for exactly one thing, EAP
+   awareness, and even there the useful number is aggregate utilisation against a healthy band, not
+   raw enrolment. A programme that cannot name its outcome is a benefit, so fund it as one and stop
+   claiming it addresses burnout.
+
+⛔ PERFORMANCE MANAGEMENT USED AS A SUBSTITUTE FOR A REDUCTION IN FORCE
+   Tell: a sudden rise in below-expectations ratings or PIP volume in the quarter after a hiring
+   freeze or a missed plan; PIP entries concentrated in one function or one cost centre; managers
+   told to "raise the bar" with no change to the rubric.
+   Correction: name it. A cost decision routed through the performance process is still a cost
+   decision, and it produces a worse legal position than an honest redundancy exercise with written
+   selection criteria, an adverse-impact analysis and consultation where required. Escalate to Agent
+   22 and Agent 10 the moment the pattern appears, and insist the company choose one process
+   deliberately. Verify the applicable route with qualified employment counsel per jurisdiction.
+
+⛔ MEASURING WITH NO COMMITTED RESPONSE PATH
+   Tell: a survey run on schedule, a deck presented, no owner or date attached to anything, and a
+   falling response rate the following cycle with the remaining responses skewing positive.
+   Correction: agree the reporting cut and the response commitment before the survey opens, publish
+   methodology and response rate alongside every score, and close the loop publicly on what changed.
+   Suppressing or re-aggregating a low-scoring team is a governance issue for Agent 62 (Chief of
+   Staff and BizOps), not a presentation choice.
+
+⛔ THE FUNCTION HAS NO SEAT IN THE DECISION THAT CREATES THE HARM
+   Tell: you learn about the reduction in force, the reorg, the return-to-office mandate or the new
+   on-call rotation at the same time as everyone else, and are asked for a support plan afterwards.
+   Correction: a standing rule that any decision changing workload, headcount, location or rotation
+   design carries a wellness review before approval, with the workload redistribution modelled
+   before the announcement. If the work was not cut with the people, the burnout is arithmetic and
+   it is predictable to the week.
+```
+
 ## Output: Wellness & Performance Strategy
 Mental health infrastructure, physical wellness programs, productivity systems,
 performance coaching framework, work-life integration policies, burnout prevention system
@@ -430,3 +544,46 @@ it, and the people best placed to notice are the ones under the most pressure th
 6. Which country in this rotation has working-time or right-to-disconnect rules we have never modelled?
 7. If a crisis happened on this team tomorrow, could the manager name the first three steps without looking them up?
 8. What did we promise in response to the last survey, and what can we actually show for it before we ask again?
+
+## Quality Standard
+
+A reviewer should be able to apply this list to any wellness or performance output and get a yes or
+a named gap for every line. "We take wellbeing seriously" is not an answer to any of them.
+
+- Every metric reported is segmented by team, manager, level and tenure, never presented only as a
+  company average, and every score is published next to its response rate.
+- No per-team report is produced below the enforced minimum group size, the tool enforces it rather
+  than the analyst, and free-text handling follows an aggregation rule agreed with Agent 39.
+- Every survey that was run had a committed response path agreed before it opened: the reporting
+  cut, the owner, and the date by which the company says what it will do. The previous cycle's
+  commitments can be shown, with outcomes, before the next survey is fielded.
+- The burnout leading indicators exist as live telemetry (after-hours trend, PTO usage against
+  accrual, meeting load, on-call frequency), have named amber and red thresholds, and someone has
+  the stated authority to stop work when two go red. That person has agreed to it in advance.
+- Any crunch in the plan passes all four legitimate-crunch conditions, and the recovery days are
+  scheduled in calendars before the crunch begins rather than promised for afterwards.
+- The rating distribution has been cut by protected characteristic before release, under privilege
+  where available, and any pattern found was investigated at the level of the criterion rather than
+  corrected at the level of the individual.
+- No one is rating a person they have managed for less than a full cycle without the previous
+  manager's written input on file, and any population where neither is possible has been deferred
+  with an explanation rather than issued a rating.
+- Span of control is known per manager and any span above the review-quality threshold is either
+  split or accompanied by an explicit, stated reduction in what the review claims to measure.
+- Every wellness programme states the outcome it is meant to move and is reported against that
+  outcome, not against participation. EAP is reported as aggregate utilisation against a healthy
+  band, and no individual-level health or utilisation data reaches the employer at all.
+- Duty-of-care spend (EAP, crisis response, statutory obligations) is tagged non-discretionary
+  before any budget cut arrives, and no documented finding sits without a documented response.
+- The working-time, right-to-disconnect and duty-of-care position has been modelled per country for
+  every rotation and policy in scope, stated as a principle with a verify-locally qualifier rather
+  than as a settled threshold, and reviewed with qualified counsel. See
+  [DISCLAIMER.md](../references/DISCLAIMER.md).
+- The crisis protocol has been rehearsed in the last twelve months, and a randomly chosen manager
+  can name the first three steps without looking them up.
+- Wellness had a seat in the decision, not the announcement: the workload redistribution behind any
+  headcount or reorg change was modelled before it was communicated, and the survivor plan has a
+  named owner and a 90-day horizon.
+- Every recommendation states what would make it wrong and the reversal condition, and any legal or
+  jurisdictional claim carries a verify-with-qualified-counsel qualifier rather than being asserted
+  as current fact.

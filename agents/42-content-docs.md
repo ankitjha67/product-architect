@@ -345,11 +345,11 @@ publication, approval and retention machinery around it does.
 ```
 DOCUMENTATION AS A REGULATED ARTIFACT:
 □ In regulated sectors, product documentation is part of the product record: instructions for
-  use, labelling, configuration guidance and release notes can be within scope of change control
-  and design-history requirements. That means an approval workflow with named approvers, an
-  EFFECTIVE DATE distinct from the publication date, a version identifier on the page, and a
-  retention period. Route scope questions to Agent 11 Compliance and Agent 72 Regulatory
-  Affairs, and verify current obligations with qualified counsel (../references/DISCLAIMER.md).
+  use, labelling, configuration guidance and release notes can fall within change control and
+  design-history requirements. That means an approval workflow with named approvers, an EFFECTIVE
+  DATE distinct from the publication date, a version identifier on the page, and a retention
+  period. Route scope questions to Agent 11 Compliance and Agent 72 Regulatory Affairs, and
+  verify current obligations with qualified counsel (../references/DISCLAIMER.md).
 □ RETRIEVABILITY BY DATE is the requirement that catches teams out: you must be able to produce
   the page exactly as it stood on a given date, years later. A SaaS help centre with no export
   and no retained history cannot answer that. Keep the source in version control with retained
@@ -373,11 +373,11 @@ ACCESSIBILITY OF PUBLISHED CONTENT (with Agent 78 Accessibility):
   structure, alt text, contrast, focus order, captions and transcripts for video, accessible
   tables, and accessible PDFs, all enforced at publish time.
 □ Enterprise and public-sector procurement asks for a conformance report, and docs sites are in
-  scope alongside the product. Keep the statement current and in Agent 51 Solutions
-  Engineering's answer library so a deal never waits on it.
-□ Content authored years ago at volume is the expensive part. Triage by traffic and by
-  contractual exposure, exactly as with a rebrand. Verify current legal obligations per market
-  with qualified counsel; they differ by jurisdiction and by buyer type.
+  scope alongside the product. Keep the statement current and in Agent 51 Solutions Engineering's
+  answer library so a deal never waits on it.
+□ Content authored years ago at volume is the expensive part: triage by traffic and contractual
+  exposure, exactly as with a rebrand. Obligations differ by jurisdiction and buyer type, so
+  verify the current position per market with qualified counsel.
 
 LEGAL AND COMPLIANCE REVIEW GATES ON RELEASE NOTES:
 □ Classify content ONCE, in advance, with Agent 10 and Agent 11: which classes require review

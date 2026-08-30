@@ -236,6 +236,217 @@ WHEN THE STORY GOES WRONG (breach, fraud, exec misconduct, guidance pull, going-
 | Days from close to file | Reporting machine speed (public)           | Faster each quarter     |
 ```
 
+## Decision Framework: Material Information About to Become Public Through a Product Channel
+
+> **⚠️ This section states PRINCIPLES and a process, not law.** Disclosure obligations, the
+> definition of materiality, the mechanisms for broad dissemination and the clocks attached to
+> them differ by regime (for example US Reg FD and Form 8-K practice, SEBI LODR and UPSI
+> handling, UK and EU market-abuse rules), differ again by listing venue, and change over time.
+> Private companies face contractual and information-rights constraints rather than these
+> regimes. **Nothing here is legal advice, no threshold or clock below is a statement of current
+> law, and every judgement in this section is made WITH qualified securities counsel, not by
+> IR.** See [DISCLAIMER.md](../references/DISCLAIMER.md).
+
+The hardest recurring call in IR is not what to say on the earnings call. It is the launch blog,
+the status page, the conference slide, the careers page or the customer case study that contains
+a real number, is scheduled to publish inside a sensitive window, and was written by someone who
+has never heard of a disclosure calendar. The window is usually a quiet period before results,
+sometimes a live financing, a deal in diligence, or an incident that is not yet disclosed.
+
+```
+STEP 1 - IS IT NEW? Compare the item against what has ALREADY been broadly disclosed: filings,
+press releases, the webcast, previously published pages. Three outcomes:
+□ Identical to something already broadly disclosed, still current -> generally a low-risk
+  republication. Confirm the source and the date it was disclosed; do not rely on memory.
+□ Different from what was disclosed, or covers a period not yet reported -> treat as NEW.
+□ Consistent in direction but more precise ("over 1,000" becoming "1,240") -> treat as NEW.
+  Precision is itself information, and this is the case teams get wrong most often.
+
+STEP 2 - COULD IT MATTER? You do not answer this alone, and not with arithmetic alone.
+Materiality in most regimes is a qualitative judgement about what a reasonable investor would
+consider important, and small numbers routinely qualify: an anchor customer, a security
+incident, an executive departure. Flag it if ANY of these hold, and let counsel decide:
+□ It bears on a period that has not yet been reported.
+□ It is a metric the company guides on, or that the Street models.
+□ It is a number the company has never published before, or a change in how one is calculated.
+□ It concerns an incident, an investigation, a large customer, a transaction or a departure.
+□ It would surprise a holder who has read everything you have published.
+
+STEP 3 - WHO DECIDES, AND HOW FAST. Not IR alone, not the author, not the launch owner. Where a
+disclosure committee exists it decides (see the Enterprise-Grade section); where one does not,
+the standing trio is the CFO, securities counsel or the GC, and IR, with a response SLA in hours
+so the process is faster than the workaround. THE DEFAULT WHEN THE DECIDERS CANNOT BE REACHED IS
+HOLD, for one asymmetric reason: publication can be deferred and cannot be undone.
+
+STEP 4 - THE SEQUENCING OPTIONS, IN THE ORDER THEY ARE USUALLY RIGHT:
+| Option | When it fits | What it costs |
+|---|---|---|
+| STRIP the material element, ship the rest | The number is decorative to the announcement, which it usually is | A weaker page. The launch itself is almost never the problem |
+| HOLD the item until after the next broad disclosure | The item is genuinely tied to the number, and the window is short | A schedule change, and a conversation with the launch owner |
+| ACCELERATE the broad disclosure so the product channel is not first, then publish | The information is significant enough that the company wants it out, on counsel's advice and through the regime's own mechanism | Real work: drafting, review, filing, and a number you now own permanently |
+| PUBLISH SIMULTANEOUSLY with the broad channel | The two can genuinely be synchronised to the minute | Coordination across teams that do not usually coordinate |
+NEVER ON THIS LIST: publishing to a subset first, briefing one analyst or one holder "to get
+ahead of it", or letting an internal all-hands, a partner deck or a customer webinar carry the
+number first. Selective is the failure mode, not premature.
+
+STEP 5 - IF IT HAS ALREADY GONE OUT: do not quietly delete it. Preserve the record (timestamp,
+URL, audience, screenshots, distribution), notify counsel immediately, and let counsel decide
+whether prompt broad disclosure or another remedial step is required and on what clock. Deletion
+is discoverable, reads as concealment, and does not un-inform anyone who already read it.
+
+STEP 6 - THE STANDING CONTROLS THAT MAKE THIS DECISION RARE, which is the real objective:
+□ A CLEARED-NUMBERS LIST: every externally usable metric with its definition, as-of date, source,
+  owner and expiry, refreshed every period and genuinely accessible to marketing, sales,
+  recruiting and DevRel, or they will guess instead of asking.
+□ ONE REVIEW PATH with an hours-long SLA for anything not on the list. A control slower than the
+  workaround produces the workaround.
+□ ONE MERGED CALENDAR: launches, conferences, analyst days, earnings windows, board meetings.
+□ SPOKESPERSON BRIEFINGS before every window: what may be said, what may not, and the exact
+  sentence to use when asked something outside it.
+```
+
+**WORKED JUDGEMENT.** Eleven days before quarter close, the launch page for a new enterprise
+tier reads "now serving 1,240 enterprise customers, up 38 percent year on year". The last
+broadly disclosed figure was roughly 900 at the previous results, the company does not report
+enterprise customer count as a regular metric, and the current period is unreported. Apply the
+tests: it is new (more precise, higher, unreported), it bears on an unreported period, and it
+implies a growth rate against a metric the Street triangulates. It goes to the disclosure
+committee the same day.
+
+The trade is asymmetric, which is what makes the call easy once it is written down. Publishing
+costs a selective-disclosure question inside a window, starts a new reported metric through a
+blog post rather than a controlled channel, and hands the market a number it will expect every
+quarter thereafter. Stripping it costs a slightly weaker launch page. **Recommendation: strip
+the number, ship the feature, and put "should we start reporting enterprise customer count" on
+the disclosure committee's agenda for the results.** If the company adopts it, it needs a written
+definition, a system of record and a reproducible calculation from Agent 16 Analytics before it
+is published once: a metric that starts and stops is itself a signal, and one nobody can
+reproduce two years later is a liability.
+
+**The private-company variant** is wrongly treated as unconstrained. No securities regime applies
+in the same way, but a number published in a launch post becomes the anchor for your next round,
+the thing diligence will test, and something a competitor can quote back, and side letters and
+information rights can create contractual constraints of their own. Same discipline, different
+reason.
+
+## Enterprise-Grade (public company, regulated, multi-listing)
+
+Private-stage IR is a relationship function with a spreadsheet. Public-stage IR is a controlled
+process with a calendar, a committee and an audit trail, and the largest change is not the
+volume of disclosure. It is that the NUMBERS THEMSELVES become a controls question, including
+the ones that never touch the general ledger.
+
+```
+THE DISCLOSURE COMMITTEE - the mechanism that makes the framework above executable:
+□ COMPOSITION: CFO (commonly chair), General Counsel or securities counsel, IR, the Controller,
+  and the business leaders who own the reported metrics. Internal Audit attends or observes.
+□ CHARTER: what it reviews (earnings release, script and Q&A, periodic filings, any NEW metric,
+  forward-looking statements and the accompanying cautionary language, material contracts,
+  incident disclosures), what it decides, and what it escalates to the audit committee.
+□ CADENCE: every reporting period as a scheduled sequence, PLUS an ad-hoc path that can convene
+  within hours, because the decisions in the framework above arrive without notice.
+□ MINUTES: what was considered, what was decided, and the basis. This is the record that shows a
+  judgement was made deliberately, which is a different thing from the judgement being right.
+□ Verify the composition, remit and documentation expectations for your jurisdiction and listing
+  with qualified counsel. This is a widely used structure, not a universal legal requirement.
+
+THE EARNINGS PROCESS, END TO END:
+□ A published close calendar working backwards from the release date, with named owners per step
+  and sub-certifications from process owners feeding the officer certifications.
+□ RECONCILIATION of every reported number to its source: the financial statements to the ledger
+  with Agent 56 Revenue Accounting, and non-GAAP or adjusted measures defined consistently
+  period to period and reconciled to the nearest comparable measure. A definition changed
+  quietly is the fastest way to lose the benefit of every honest number beside it.
+□ Script and Q&A cleared line by line with counsel, including the anticipated hostile questions
+  and the answers to questions you will decline, drafted in advance rather than improvised.
+□ Trading windows, blackout administration, pre-clearance and, in regimes that require it, the
+  insider list or structured record of who knew what and when, administered with Agent 26
+  Governance and IPO. Verify current requirements with counsel.
+□ Post-call one-on-ones for CONTEXT and TONE only, with a written boundary briefed to every
+  executive who takes one, and a note of what was discussed.
+
+INTERNAL CONTROLS OVER THE NUMBERS YOU REPORT - the enterprise gap almost nobody closes:
+The metrics a company is judged on are frequently NOT in the general ledger: ARR, ACV, net
+revenue retention, active users, seats, bookings, pipeline, gross margin by segment. They are
+computed from operational systems by teams with no controls background, and they sit inside the
+same release as audited figures where a reader draws no distinction between them.
+□ Every externally reported metric needs a WRITTEN DEFINITION, a named system of record, a
+  documented calculation, change control on that definition, retained evidence of each period's
+  computation, and an independent review before publication.
+□ A definitional change requires restated history and a published bridge, disclosed BEFORE or
+  WITH the change, never after somebody notices the discontinuity.
+□ Agent 16 Analytics owns the definition, Agent 56 owns the ledger reconciliation, Agent 59
+  Internal Audit tests the control, IR reports the result. If nobody can reproduce last year's
+  chart from source data, the metric is the weakest link in an otherwise controlled disclosure.
+
+MULTI-REGION AND MULTI-LISTING:
+□ Two regimes means two clocks, two mechanisms and sometimes two languages. Release
+  simultaneously across venues, and treat translated disclosure as a controlled artefact with a
+  named approver and a record of which version was live where (Agent 43 Localization).
+□ Local filing agents, local listing rules and local market hours change the sequencing of a
+  crisis disclosure. Write that sequence down before you need it, with counsel in each market.
+□ RECORDS AND HOLDS: investor materials, board packs, scripts, call recordings and the
+  supporting workpapers are records with retention obligations, and a legal hold suspends the
+  ordinary schedule. Coordinate with Agent 26 and Agent 10 Legal.
+```
+
+## Failure Modes (⛔)
+
+```
+⛔ GUIDANCE BUILT ON A METRIC DEFINITION ENGINEERING IS ABOUT TO CHANGE. Tell: a roadmap item
+   that redefines an active user, a seat, a session or how usage is attributed; a data pipeline
+   migration whose release note calls the methodology change minor. Correction: externally
+   reported metric definitions are versioned artefacts under change control, changes require
+   restated history plus a published bridge, and no definitional change ships in the same period
+   it is disclosed. Put IR on the distribution list for analytics and pipeline changes, because
+   nobody will think to tell you.
+⛔ A CUSTOMER LOGO OR NAME USED WITHOUT CURRENT PERMISSION. Tell: a logo wall assembled from a
+   template, a data-room deck reusing last year's slide, a case study for a customer who has
+   since churned or been acquired. Correction: a maintained cleared-logo list with the permission
+   source, its scope (web, deck, press) and its expiry, owned with Agent 32 Sales and RevOps and
+   Agent 10. Investor decks are not exempt from the rule that applies to marketing, and a
+   permission granted once is not permanent.
+⛔ SELECTIVE DISCLOSURE THROUGH A ONE-ON-ONE. Tell: an analyst thanks you for the "extra
+   colour"; an executive walks a number down for one fund; a holder repeats a detail you never
+   published. Correction: brief every executive that one-on-ones are for context and tone only,
+   keep a written boundary and a note of each meeting, and where something new slips out, tell
+   counsel immediately and follow their remediation call. The pressure is always to be helpful
+   to the person in the room; that is precisely the mechanism.
+⛔ A QUIET PERIOD COLLIDING WITH A LAUNCH. Tell: the launch calendar and the earnings calendar
+   were built by different people; a keynote sits two weeks before close; a product blog carries
+   growth numbers. Correction: merge the calendars annually with Agent 14 Launch and Agent 20
+   BAU, treat earnings windows as immovable, and brief spokespeople on what changes inside the
+   window. Launches proceed; the RULES change. Cancelling the moment is rarely necessary and
+   teaches everyone to route around IR next time.
+⛔ THE CLEARED-NUMBERS LIST IS STALE OR INACCESSIBLE. Tell: a recruiter quoting a growth figure
+   from a deck two quarters old; a solutions engineer inventing a customer count in an RFP.
+   Correction: refresh the list every period with as-of dates and expiries, publish it where
+   people already work, and answer requests in hours. Prohibition without a fast answer produces
+   guessing, and guessing produces the number you will have to correct.
+⛔ SMOOTHING BAD NEWS ACROSS UPDATES. Tell: three consecutive updates each slightly behind plan,
+   then one large step change; language softening while the numbers do not. Correction:
+   lowlights first, every time, with the gap to plan stated as a number. Bad news delivered in
+   instalments does not become smaller; it converts a business problem into a credibility one.
+⛔ MANY VOICES, ALL QUOTABLE. Tell: the CEO on a podcast, a VP at a conference, a recruiter to a
+   candidate and a support agent in a ticket, all describing the same fact slightly differently.
+   Correction: one cleared set of facts, briefed before every window, with a single inbound route
+   for anything outside it and a standing rule that no executive freelances during a crisis.
+⛔ IR AS A FUNDRAISING-ONLY FUNCTION. Tell: relationships go quiet between rounds and the first
+   contact in 18 months is the ask. Correction: cadence discipline in the good months is what
+   buys the benefit of the doubt in the bad ones. The update that arrives like clockwork is the
+   asset; the one that slips signals trouble even when there is none.
+⛔ A BESPOKE INFORMATION RIGHT NOBODY CAN ACTUALLY PRODUCE. Tell: a term sheet promising monthly
+   metric packs or a custom cohort report, agreed without asking Finance whether it exists.
+   Correction: standardise the reporting package and grant rights by class rather than by
+   personality; where a bespoke right is unavoidable, time-limit it and confirm with Agent 18
+   Finance that it can be produced every period, forever, by a team that will be busy.
+⛔ THE BOARD MANAGED RATHER THAN INFORMED. Tell: directors learn the real position from a third
+   party; the board meeting is where bad news debuts. Correction: pre-wire every material
+   negative one to one before the pack circulates, and hold the rule that a board meeting
+   contains zero surprises. A director who is surprised twice stops trusting the first version
+   of everything.
+```
+
 ## Example
 **User says:** "We missed our quarter - MRR grew 6% against an 18% plan because our biggest
 customer churned. We have a board meeting Thursday. What do I send?"

@@ -216,13 +216,12 @@ Measure offboarding COMPLETENESS, not just speed.
 ### 10. Decision Framework: The Control Security Requires and Engineering Says Blocks Their Work
 
 The hardest recurring call in corporate IT is never "is this control good security". It is:
-the control is correct, and the population it lands on says it stops them working. Both
-statements are usually true at the same time, and the two lazy resolutions fail symmetrically.
-Grant a blanket exception and the control is decoration on an audit page. Enforce it unchanged
-and the population routes around it onto unmanaged machines, personal cloud accounts and
-shadow tooling, which leaves you with the original risk plus no visibility of it. Corporate IT
-is the function that has to produce the arbitration, because neither Security nor Engineering
-can score their own side of it.
+the control is correct, and the population it lands on says it stops them working. Both are
+usually true at once, and the two lazy resolutions fail symmetrically. Grant a blanket
+exception and the control is decoration on an audit page. Enforce it unchanged and the
+population routes around it onto unmanaged machines and personal cloud accounts, leaving you
+the original risk plus no visibility of it. IT has to produce the arbitration, because neither
+Security nor Engineering can score their own side of it.
 
 ```
 STEP 1 - BOTH SIDES PUT A NUMBER ON THE TABLE. Neither "security requires it" nor "this
@@ -231,23 +230,21 @@ destroys our productivity" is admissible as an adjective. You produce both numbe
 SECURITY ANSWERS (with Agent 09 Security):
 □ WHICH THREAT, concretely: credential theft, malware execution, data exfiltration, lost or
   stolen device, supply-chain compromise of the build. Name the class, not "risk".
-□ BLAST RADIUS ON THIS POPULATION SPECIFICALLY. An engineering laptop holding signing keys,
-  a cloud session and standing production credentials is a different asset from a laptop
-  holding a CRM session. Controls should be graded per population, not per company.
+□ BLAST RADIUS ON THIS POPULATION SPECIFICALLY. An engineering laptop holding signing keys, a
+  cloud session and standing production credentials is a different asset from one holding a CRM
+  session. Controls are graded per population, not per company.
 □ IS IT THE ONLY MITIGATION, OR THE CHEAPEST ONE? A control duplicating an existing
   compensating control is spending productivity to buy nothing.
-□ IS IT EXTERNALLY REQUIRED? A control demanded by a framework, a customer contract or a
-  regulator changes the question from "should we" to "how, and what is the supported path".
-  Verify what your auditor and your contracts actually require rather than assuming.
+□ IS IT EXTERNALLY REQUIRED? A framework, a customer contract or a regulator changes the
+  question from "should we" to "how". Verify what your auditor and contracts actually require.
 
 ENGINEERING ANSWERS (measured, not asserted):
 □ THE EXACT TASK that got slower, timed before and after on the same hardware, n >= 10 people.
   One dramatic screenshot in a chat channel is not a measurement.
 □ FREQUENCY per person per day. The only unit that decides anything is minutes per person per
   day, and then hours per year across the affected population.
-□ WHAT PEOPLE DO INSTEAD. The evasion rate is the number that actually settles the argument:
-  count locally disabled agents, unmanaged devices touching corporate data, personal cloud
-  accounts in expense reports, and OAuth grants to unapproved tools.
+□ WHAT PEOPLE DO INSTEAD. The evasion rate settles the argument: count locally disabled agents,
+  unmanaged devices touching corporate data, personal cloud spend, and OAuth grants.
 
 STEP 2 - CONVERT THE PRODUCTIVITY COST INTO THE SAME CURRENCY AS THE RISK:
   minutes/person/day x population x working days = hours/year
@@ -273,9 +270,8 @@ STEP 4 - THE EXCEPTION REGISTER (the artefact that separates governance from a c
 □ Named ACCOUNTABLE EXECUTIVE, not the requesting manager
 □ EXPIRY DATE, 90 days maximum, no auto-renewal. Renewal is a fresh decision with fresh evidence
 □ REVOCATION TRIGGER stated up front: the observation that ends the exception immediately
-□ Reviewed quarterly by Agent 59 Internal Audit and reported as a count and an age profile
-An exception with no expiry is a policy change nobody announced, and it will be found by an
-assessor rather than by you.
+□ Reviewed quarterly by Agent 59 Internal Audit, reported as a count and an age profile
+An exception with no expiry is a policy change nobody announced, found by an assessor not by you.
 ```
 
 **WORKED JUDGEMENT: EDR real-time scanning on 320 engineering laptops.** Security mandates the
@@ -283,37 +279,37 @@ endpoint agent with real-time file scanning on all endpoints. Engineering says b
 become unbearable. Measured on identical hardware across 12 volunteers: an incremental build
 moves from 3m10s to 4m40s, and the median engineer runs 14 builds a day, so the control costs
 about 21 minutes per engineer per day. Across 320 engineers that is 112 engineer-hours a day,
-roughly 14 FTE, or on a fully loaded cost of USD 120K to 180K per head, USD 1.7M to 2.5M a
-year (illustrative rates, use your own). The evasion number is worse than the cost number: 40
-machines already have real-time scanning locally disabled and about 60 engineers are building
-in personal cloud accounts visible in expense reports, so effective coverage on the highest
-value endpoint class is around 70 percent while the dashboard reports 100 percent enrolment.
+roughly 14 FTE, or USD 1.7M to 2.5M a year at a fully loaded USD 120K to 180K per head
+(illustrative rates, use your own). The evasion number is worse than the cost number: 40
+machines already have real-time scanning locally disabled and about 60 engineers build in
+personal cloud accounts visible in expense reports, so effective coverage on the highest value
+endpoint class is near 70 percent while the dashboard reports 100 percent enrolment.
 
-Removing EDR from developer machines is not an available option: they are the highest value
-endpoints in the estate and the control sits inside the customer-facing security commitments.
-So the answer is the paved road. Scope real-time scanning out of build output and dependency
-cache paths only, keeping it on downloads, browser, email and archive paths and on every
-executable, with unchanged behavioural telemetry and a nightly full scan. Re-measured build
-penalty: 6 seconds. Residual risk, written down and accepted by Agent 09: malware written into
-an excluded path is detected on execution and at the nightly scan rather than on write. Fund
-ephemeral cloud development environments for the 60 engineers already evading the control, at
-roughly USD 120 to 250 per engineer per month, which is a rounding error against 14 FTE and
-moves the trust boundary off the laptop entirely. The 22 machines that cannot run the current
-agent build get a 90-day register entry with a named director, no standing production
-credentials, egress monitoring and a dated migration plan.
+Removing EDR from developer machines is not available: they are the highest value endpoints in
+the estate and the control sits inside customer-facing security commitments. So the answer is
+the paved road. Scope real-time scanning out of build output and dependency cache paths only,
+keeping it on downloads, browser, email and archive paths and on every executable, with
+unchanged behavioural telemetry and a nightly full scan. Re-measured penalty: 6 seconds.
+Residual risk, written down and accepted by Agent 09: malware written into an excluded path is
+detected on execution and at the nightly scan rather than on write. Fund ephemeral cloud
+development environments for the 60 engineers already evading the control, at roughly USD 120
+to 250 per engineer per month, a rounding error against 14 FTE that moves the trust boundary
+off the laptop entirely. The 22 machines that cannot run the current agent build get a 90-day
+register entry with a named director, no standing production credentials, egress monitoring and
+a dated migration plan.
 
 **REVERSAL CONDITION.** If any EDR detection in the next two quarters originates inside an
 excluded path, or the exclusion list grows beyond the six agreed path patterns, the exclusion
-reverts on the spot and the cloud development environment becomes mandatory for that
-population. Publish the exclusion list and the detection count in the same monthly report, so
-the decision stays visibly conditional rather than quietly permanent.
+reverts and the cloud development environment becomes mandatory for that population. Publish
+the exclusion list and the detection count in the same monthly report, so the decision stays
+visibly conditional rather than quietly permanent.
 
 ### 11. Enterprise-Grade (regulated, multi-region, 5,000-plus people)
 
-At 200 people identity is a tool and offboarding is a person who remembers. Past a few thousand
-people every sentence in sections 1 to 9 becomes an evidence problem: the question stops being
-whether the control works and becomes whether you can prove it worked, for a sampled population,
-on a date, to someone who does not trust you.
+At 200 people identity is a tool and offboarding is a person who remembers. Past a few thousand,
+every section above becomes an evidence problem: the question stops being whether the control
+works and becomes whether you can prove it worked, for a sampled population, on a date, to
+someone who does not trust you.
 
 ```
 IDENTITY AT SCALE - what breaks that did not break before:
@@ -325,12 +321,12 @@ IDENTITY AT SCALE - what breaks that did not break before:
   API keys, CI tokens, bots, integration users. They have no manager, no leaver event and no
   natural expiry, so they need an owner of record, a rotation schedule and a review cycle, or
   the leaver control you are proud of covers a minority of your credentials.
-□ ROLE EXPLOSION. Role-based groups stop scaling somewhere past a few hundred roles. Move the
-  variable dimensions (region, cost centre, employment type, data classification) to attributes
-  and keep roles for job function, or every reorg forks the model again.
-□ PRIVILEGED ACCESS becomes its own programme: just-in-time elevation, session recording for
-  the highest tiers, separate admin identities from daily-driver identities, and break-glass
-  accounts stored offline, alarmed on use and TESTED quarterly.
+□ ROLE EXPLOSION. Role-based groups stop scaling past a few hundred roles. Move the variable
+  dimensions (region, cost centre, employment type, data classification) to attributes and keep
+  roles for job function, or every reorg forks the model again.
+□ PRIVILEGED ACCESS becomes its own programme: just-in-time elevation, session recording at the
+  highest tiers, admin identities separated from daily drivers, and break-glass accounts stored
+  offline, alarmed on use and TESTED quarterly.
 
 JOINER-MOVER-LEAVER IS THE CONTROL AUDITORS ACTUALLY TEST:
 An assessor does not read your JML policy. They pull a population of leavers and movers for
@@ -369,8 +365,8 @@ admin credentials. Sequence it, and put the sequence in the integration plan bef
 □ DAY 30 to 100: posture assessment closes, MFA and device baselines applied to the acquired
   population, privileged accounts rotated and reduced, SaaS estate deduplicated against yours.
 □ DAY 100 to 365: directory merge, device re-enrolment, tool consolidation, TSA exit.
-Two compliance scopes coexist during the overlap. Say which entity is in which certification
-scope in writing, because a customer questionnaire will ask within the first quarter.
+Two compliance scopes coexist through the overlap: say which entity is in which certification
+scope in writing, because a customer questionnaire will ask inside the first quarter.
 ```
 
 ### 12. Failure Modes (⛔)
