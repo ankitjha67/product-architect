@@ -380,6 +380,56 @@ leadership change (a token layer, an accessibility clause in a contract, an adop
 dashboard with named owners) is worth more than any single beautifully argued critique.
 ```
 
+## Enterprise-Grade (regulated / multi-region / 5,000-plus people)
+
+At small scale a designer owns the screen end to end. In a regulated, multi-region or 5,000-plus
+person org the screen is a controlled artifact with owners, approvers and an evidence trail, and the
+design function's job shifts from drawing it to governing how it is drawn, approved and kept
+compliant across teams that never meet.
+
+```
+□ DESIGN-SYSTEM GOVERNANCE AT MULTI-TEAM SCALE (with Agent 77 Design Ops and Research Ops):
+  one token layer and one accessibility contract are mandatory across divisions; components above
+  them are owned locally under a published contribution model (RFC + usage evidence, semver,
+  deprecation windows - §8). Artifacts: a versioned release changelog, an adoption dashboard with a
+  named owner per surface, and a funded system owner (>=1 FTE past three products). Mandating
+  components across divisions WITHOUT funding the migration produces compliance theatre, not reuse.
+□ ACCESSIBILITY AS A DESIGN-TIME CONSTRAINT (with Agent 78 Accessibility and Inclusive Design):
+  WCAG 2.2 AA is a spec-handoff gate, not a launch-week scan (§9). Artifacts: a11y annotations in
+  every spec (focus order, labels, contrast, reflow at 320px and 200% zoom), a per-release VPAT/ACR
+  kept current for procurement, and an escape-rate metric (a11y defects found post-release / total).
+  A constraint priced at spec is roughly 10x cheaper than a blocker found in code, and a blocker
+  discovered in launch week gets waived rather than fixed.
+□ BRAND AND LEGAL REVIEW OF INTERFACE COPY: at scale, UI strings are published claims. Pricing
+  words, guarantees, eligibility language, disclosures and comparative statements route through
+  brand (voice, Agent 31 Product Marketing) and legal (substantiation, Agent 10 Legal and IP)
+  BEFORE the string enters the build, carried in the design file as reviewable content rather than
+  discovered later in a screenshot. The artifact is a reviewed-copy register with approver and date.
+  Verify current requirements with qualified counsel and see `../references/DISCLAIMER.md`.
+□ REGULATED PRODUCT, SCREEN AS A CONTROLLED ARTIFACT (with Agent 72 Regulatory Affairs and Quality
+  Management): in medical, financial or safety-relevant products a screen change can require a
+  documented change-control record, versioning and sign-off before release, and the shipped UI must
+  match the approved design under audit. Artifacts: a controlled design baseline, a change log tied
+  to the quality-management system, and evidence that consent, disclosure and mandated wording render
+  exactly as approved. A "quick copy tweak" here is a regulated change, not a polish task.
+□ LOCALISATION AND RTL AS A GATE, NOT A RETROFIT (with Agent 43 Localization and Internationalization):
+  pseudo-locale plus at least one RTL locale run inside the design QA gate; design at +35% text
+  length by default; no text baked into images; mirroring rules for icons, carousels and progress;
+  locale-driven dates, numbers and currency (§9). The artifact is a per-component matrix tested in
+  every brand theme, dark mode, pseudo-locale and one RTL locale. If it breaks in German or Arabic,
+  it is not done.
+□ THE DESIGN OVERTURNED BY A SENIOR STAKEHOLDER AFTER BUILD STARTED: convert the taste objection
+  into a testable claim and price the reversal in engineering days, then hand the decision to the
+  named accountable human in writing as evidence versus schedule (§7). Log the outcome either way so
+  the next reversal has a precedent. A reversal absorbed silently is paid twice, once in rework and
+  once in the precedent that says a committed screen can be re-litigated on a hallway reaction.
+
+MULTI-REGION: the same component can be compliant in one market and not in another (disclosure
+wording, age gating, dark-pattern and consent rules, accessibility law). Test and sign off PER
+MARKET, name which markets were assessed and which were not, and route the legal read to Agents 72,
+11 and 39 rather than grading it inside the design review.
+```
+
 ## Failure Modes (⛔)
 
 ```

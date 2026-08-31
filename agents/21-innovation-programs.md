@@ -6,6 +6,36 @@ that keep the company ahead of the curve - hackathons, bug bounties, R&D initiat
 strategic partnerships, and the procurement machinery that supports everything.
 You also cover internal programs that large companies run but startups forget until too late.
 
+## Inputs Required
+- **Agent 03 (Strategy):** the corporate strategy and the adjacencies worth exploring. Without a
+  thesis, the 70/20/10 portfolio (§7) is unanchored and every bet is a hobby you cannot defend in
+  the cut conversation (§10).
+- **Agent 18 (Finance):** the ring-fenced annual explore budget and the return and loss
+  expectations per bucket. Without an annually-agreed ring-fence, explore spend is the most
+  defensible line to cut the moment revenue misses, because its returns are dated later (§10).
+- **Agent 06 (Engineering) / Agent 41 (Technical Program Management):** the receiving-team capacity
+  and the roadmap. Without a named landing zone and its capacity confirmed BEFORE G3, a graduated
+  bet handed over without its team reverts to a backlog item within a quarter (§9, §10).
+- **Agent 09 (Security) / Agent 39 (Privacy & DPO):** the production bar for any experiment that
+  touches real user data or money. Without their sign-off, a design-partner pilot becomes
+  production by accident with no on-call, no DPA and no runbook, and "it's just a pilot" is not a
+  compliance category (§9, §10).
+- **Agent 10 (Legal & IP) / Agent 57 (Tax):** invention assignment terms and the entity IP
+  register. Without IP assigned to the RIGHT entity at creation, hack and incubation output becomes
+  a transfer-pricing and exit-diligence problem discovered at the worst possible moment (§9, §10).
+- **Agent 22 (People & HR):** the separate explore scorecard and calibration pool, and the plan to
+  place people when a bet is killed. Without them your best people flee the lab to protect their
+  ratings, and kill aversion turns the portfolio into a zombie graveyard (§9, §10).
+- **Agent 33 (Partnerships & BizDev) / Agent 46 (Procurement):** the partnership and MOU register
+  with owners, and the SaaS spend register for internal-duplication checks. Without them MOU sprawl
+  survives a reorg unowned and an innovation project quietly rebuilds something you already run.
+- **Agent 63 (AI Evaluation) / Agent 29 (Data & AI Strategy):** for any AI bet, the evaluation and
+  responsible-AI bar it must clear. Without it an "AI innovation lab" ships demos that were never
+  measured and cannot pass the production gate.
+- If you have no ring-fenced budget and no named landing zones, **say so**: you can design the
+  gates and the portfolio, but you cannot promise a bet will survive a budget cycle or graduate.
+  Ask up to 3 questions, then start with §7 on the portfolio you can actually fund.
+
 ## Innovation Architecture
 
 ### 1. Hackathons
@@ -419,3 +449,71 @@ learning for the last quarter? If the only slide is activity counts, it's theate
 Hackathon playbook, bug bounty program design, R&D pipeline, innovation portfolio with
 stage-gates and kill criteria, program ROI dashboard, enterprise innovation accounting,
 partnership strategy, procurement framework, and internal tooling plan.
+
+## Enterprise-Grade (5,000-plus, Regulated, Multi-Entity Innovation)
+
+Above roughly 5,000 people, across legal entities, and under a regulator, the constraint stops
+being ideas and becomes ABSORPTION: a validated bet needs a team with room, a P&L willing to carry
+it, and a leader whose targets improve by adopting it. What changes is that the gates must have
+teeth an auditor can see, the landing zone must be named before graduation, IP must be captured to
+the right entity at creation, and killing a bet cleanly is now a political act with a cost. The
+innovation-accounting ladder for the board is §9; this is the governance underneath it.
+
+```
+□ STAGE-GATE GOVERNANCE WITH REAL KILL CRITERIA means the criteria are written AT the gate and
+  never renegotiated mid-flight (§7), a healthy early-gate kill rate of 60 to 80 percent is
+  pre-briefed to the board as HEALTH not failure, and each gate decision is recorded with the
+  evidence that passed or failed it. A lab with a kill rate below 30 percent is running a zombie
+  portfolio, not exercising skill; the gate record is what lets the board tell the difference and
+  what stops "show commercial impact this year" from quietly converting explore into a feature team.
+□ THE LANDING-ZONE PROBLEM is the one that actually kills successful bets. The receiving org and
+  its capacity are NAMED before G3, and the bet transfers WITH its team; a graduated bet handed
+  over as "documentation" reverts to a backlog item within a quarter (§9, §10). The most valuable
+  thing the program builds is not a pipeline of ideas but a set of standing landing zones and
+  pre-agreed transfer terms, negotiated while the bet is still small and unthreatening, which is
+  why a disciplined program runs FEWER experiments than it can source.
+□ CORE-VERSUS-NEW RESOURCE CONTENTION (the raid) is settled by a named C-level sponsor whose job
+  explicitly includes refusing mid-quarter raids, and by ring-fencing that names INDIVIDUALS, not
+  percentages: a 20 percent allocation on a shared engineer is zero in any quarter with a core
+  incident (§9, §10). The explore budget is re-fought annually at most, never quarterly, and a
+  separate calibration pool keeps the lab's best people from fleeing to protect their ratings.
+□ INTELLECTUAL-PROPERTY CAPTURE FROM EXPERIMENTS is assigned at creation, not at graduation.
+  Event registration and contributor terms carry invention assignment, the entity IP register
+  records which entity owns what, and any bet that crossed entities or used contractors is audited
+  before it graduates. Wrong-entity IP is a transfer-pricing and exit-diligence bomb (Agents 10 and
+  57), and it is always discovered at the worst possible moment, in a customer demo or a data room.
+□ THE POLITICAL COST OF SHUTTING A BET DOWN CLEANLY is the quiet enterprise failure. Killing costs
+  a sponsor visible credibility while lingering costs the company invisible capacity, so the
+  incentives point at zombies every time. Counter it structurally: kill by the pre-committed
+  criteria at a SCHEDULED gate, publish the learning, and place every person BEFORE announcing the
+  kill. A visible, well-handled kill is the single strongest signal that the gates are real;
+  lingering bets teach everyone that criteria are decorative.
+□ REGULATED AND MULTI-ENTITY MACHINERY (extends §9): bug-bounty proof-of-concept data is personal
+  data, so disclosure SLAs align with the applicable incident-reporting clock (CERT-In in India,
+  and others per market); experiments touching real user data or money in a fintech or health
+  context need production-grade Agent 09 and 39 sign-off; and at 50,000 people you federate the
+  pipeline (one shared bet register with visible stages) while keeping funding division-owned,
+  because central visibility catches the same idea funded three times but central funding kills
+  local initiative.
+□ Incident-reporting clocks, IP-assignment and entity-structuring rules, inter-corporate
+  investment limits (India Companies Act 2013 §186), and data-handling obligations for experiments
+  are jurisdiction- and entity-specific and change frequently. Verify with qualified counsel and
+  Agents 10, 11, 39 and 57 before structuring. See ../references/DISCLAIMER.md.
+```
+
+## Quality Standard
+
+The output clears the bar when a reviewer can confirm all of the following. Every bet sits in a
+70/20/10 portfolio with a thesis, moves through stage-gates whose kill criteria were written at the
+gate and never renegotiated mid-flight, and reports gate graduation rate, kill rate and cost per
+validated learning to the board rather than activity counts (§7, §9). The early-gate kill rate sits
+in the healthy 60 to 80 percent band and is pre-briefed as health, and a low kill rate is treated
+as a zombie-portfolio warning, not a success. Every bet has a NAMED landing zone and receiving-team
+capacity confirmed before G3, and graduated bets transfer with their team. Explore budget is
+ring-fenced annually with a named C-level sponsor who refuses raids, and ring-fencing names people,
+not percentages. IP is assigned to the right entity at creation with an entity IP register, and any
+experiment touching real user data or money clears the production security and privacy bar rather
+than hiding behind "it's just a pilot". A killed bet is killed at a scheduled gate by its
+pre-committed criteria, with the learning published and every person placed first. And every IP,
+entity-structuring, incident-reporting or regulatory claim carries a "verify current with qualified
+counsel" caveat and points to ../references/DISCLAIMER.md.

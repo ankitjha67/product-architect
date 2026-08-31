@@ -365,6 +365,54 @@ to the gates in §8 when they land.
   value? Which of those three could we already predict today?
 ```
 
+## Enterprise-Grade (regulated / multi-region / 5,000-plus people)
+
+At startup scale a launch is a decision one person can hold in their head. In a regulated,
+multi-region or 5,000-plus person org it is a governed event with a sign-off matrix, named approvers
+per domain, and an evidence trail an auditor or a regulator can later read. The launch owner stops
+being the person who ships and becomes the person who proves readiness across functions that never
+meet.
+
+```
+□ LAUNCH READINESS REVIEW WITH A SIGN-OFF MATRIX: one readiness review before the ramp, where each
+  domain signs its own line - product, QA (Agent 07), security (Agent 09), privacy (Agent 39),
+  compliance (Agent 11), legal (Agent 10), support (Agent 17), sales enablement (Agent 32), SRE
+  (Agent 08), analytics (Agent 16), localisation (Agent 43). Artifact: a dated matrix with a named
+  human and a GO / GO-WITH-CONDITIONS / NO-GO per line. A checkbox with no name behind it is not a
+  sign-off, and "everyone is comfortable" is not a record.
+□ REGULATORY AND LEGAL GATES BEFORE LAUNCH (Agent 11 Compliance and Agent 72 Regulatory Affairs and
+  Quality Management, with Agent 10 Legal and IP): in a regulated product, launch can require a
+  documented regulatory clearance, a controlled change record, substantiated claims and mandated
+  disclosures rendered exactly as approved, BEFORE the announcement. These gates are named calendar
+  items with a named reviewer at the 60% build point, not a launch-week scramble. Verify current
+  requirements with qualified counsel and see `../references/DISCLAIMER.md`.
+□ STAGED AND GEO-PHASED ROLLOUT AS GOVERNANCE, NOT JUST MECHANICS: the §8 flag ramp becomes a
+  market-by-market allowlist. Each market is its own launch with its own eligibility, its own legal
+  read, its own tax and payment treatment (Agent 57 Tax), and its own support-language readiness.
+  Artifact: a market eligibility matrix built at PRD stage; the default is a named allowlist and every
+  added market is a reviewed addition, never a config toggle flipped in the final week.
+□ THE FEATURE IS NOT LAWFUL IN A LAUNCH MARKET: age gating, consumer-credit rules, health or
+  financial claims, gambling adjacency, AI-disclosure duties or a payments-licence gap can make a
+  market ineligible. Discover this at PRD stage through the eligibility matrix, geo-block by default,
+  and treat late discovery as a stop rather than a bolt-on. Unwinding a market after launch is the
+  expensive version of the same decision.
+□ FIELD ENABLEMENT LEAD TIMES (Agent 31 Product Marketing, with Agent 32 Sales and RevOps):
+  certification, battlecards, demo environments and the messaging pack carry real lead times measured
+  in weeks, and in a large field org translation and regional approval add more. Treat >=80% of reps
+  certified on a real pitch-and-objection test as a hard gate (§9); regions below the bar do not
+  receive routed leads. A press-driven lead that lands on an uncertified field rots in days.
+□ THE DATE SET BY EXECUTIVE COMMITMENT RATHER THAN READINESS: when the date first appears on a board
+  slide or an earnings script, the §8 go/no-go gates become theatre. Split it into a RELEASE date
+  (done quietly, weeks earlier) and an ANNOUNCEMENT date (the immovable one), and get the sponsor to
+  sign the abort authority in writing BEFORE the date goes public. An abort clause agreed while calm
+  is the only one that survives contact with the date.
+
+CHANGE-FREEZE COLLISION: pull the IT and BAU freeze calendar (Agent 20) into the plan at commit time.
+Launching inside a holiday, quarter-end, peak-retail or regulatory-filing freeze requires a
+pre-approved exception AND a named approver reachable out of hours, or you can neither ramp, hotfix
+nor roll back. The evidence trail is the exception record, dated and signed before launch week.
+```
+
 ## ⛔ Launch Failure Modes
 
 ```

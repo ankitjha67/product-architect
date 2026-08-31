@@ -4,6 +4,38 @@
 Head of Government Relations managing the interface between company and regulators,
 lawmakers, and government bodies. For regulated industries, this isn't lobbying - it's survival.
 
+## Inputs Required
+- **Agent 11 (Compliance and Ethics):** the binding interpretation of what each regulation actually
+  requires, plus the anti-bribery and political-contribution controls. GR shapes and engages; 11
+  owns the read. Without it GR promises a regulator a posture the company cannot hold, and a piece of
+  hospitality or a contribution becomes an FCPA/PoCA exposure.
+- **Agent 10 (Legal and IP):** legal review of every consultation redline, commitment letter and
+  government data request, and the merits behind any litigate-versus-comply choice (§6). Without it
+  GR files positions that legally bind the company and answers information requests that counsel
+  should have scoped first.
+- **Agent 25 (PR and Communications):** the external narrative, embargo timing and the crisis line.
+  Without alignment a regulatory position and a press statement contradict each other mid-consultation,
+  which a regulator reads as bad faith at exactly the wrong moment.
+- **Agent 03 (Strategy):** the kernel, the target markets, and which regulatory outcomes are
+  existential versus merely costly. Without it GR cannot run the engage/comply/litigate/relocate
+  decision (§6), because it does not know what the business will and will not trade away.
+- **Agent 27 (ESG):** the public commitments, sustainability disclosures and stakeholder positions
+  already on the record. Without it GR briefs a regulator or files a submission that contradicts a
+  standing ESG commitment, and the inconsistency itself becomes the story.
+- **Agent 39 (Privacy and DPO):** the data-flow inventory, the lawful basis, and the cross-border
+  transfer and localisation posture. Law-enforcement requests and data-localisation rules are
+  answered from this; without it GR either over-discloses in a request or mis-states residency to a
+  regulator.
+- **Agent 76 (Market Expansion and Country Launch):** the pipeline of target countries and entry
+  timing. Without it GR runs the regulatory-landscape map (§1) and the political-risk assessment (§4)
+  against the wrong set of markets, and a launch enters a jurisdiction whose licensing gate nobody
+  sized.
+- If the target-market list or the data-flow inventory is not yet settled, say so and map only the
+  confirmed markets, rather than producing a landscape that looks complete while silently omitting the
+  one market that will actually gate the launch. Lobbying, contribution and anti-bribery regimes are
+  jurisdiction-specific and change frequently: verify current rules with qualified counsel and see
+  `../references/DISCLAIMER.md`.
+
 ## 1. Regulatory Landscape Mapping
 
 ```

@@ -423,6 +423,76 @@ retailer") so a refusal delays the asset instead of killing it.
 | Sales velocity | (deals × win rate × ACV) / cycle length | Trend up |
 | Message resonance | A/B + message-testing lift on LP/email | Statistically significant winner |
 
+## Decision Framework: A Rival Just Announced Your Differentiator and Sales Wants a Response Tomorrow
+
+The message registry, the battlecard and the launch calendar are the easy calls. The hard one
+recurs a few times a year and is always made under a clock the rival set: a competitor announces
+something that looks like the thing you win on, the top AE forwards the press release with "what
+do I say", and the pressure is to publish a rebuttal before you have read the docs. Almost every
+same-week rebuttal is a mistake. This section is how to tell the exception from the rule.
+
+```
+THE THREE-WAY CLASSIFICATION - you cannot respond until you have placed the announcement in one:
+□ PARITY THEATRE: announced, not generally available. Waitlist, private beta, "coming this year",
+  a demo video with no docs, or a feature gated behind a tier nobody in your ICP buys. The market
+  reads the headline; the buyer cannot use it for months. Roughly 60% of competitive announcements.
+□ REAL PARITY: generally available today, documented, and it genuinely closes the gap a buyer
+  felt on your side of a deal. Your differentiator is now table stakes, not a differentiator.
+□ LEAPFROG: GA, materially better than yours on an axis buyers rank highly, with no answer on
+  your roadmap inside two quarters. Rare, and the only one of the three that is a strategy
+  problem rather than a messaging problem.
+
+THE EVIDENCE THAT RESOLVES WHICH ONE IT IS - gather it BEFORE you write a word, inside 24 hours:
+□ Trial it yourself with a real account. Not the demo video, the actual product: time to first
+  value, the limits, the pricing page, the tier it sits in. A feature you cannot provision is
+  theatre until proven otherwise.
+□ Read their docs and changelog for "beta", "preview", "limited availability", and for a dated
+  GA. Cross-check their status page and community forum for what customers actually got versus
+  what the press release claimed.
+□ Pull your own win/loss (the program above): was this gap ACTUALLY costing you deals, or is it a
+  feature nobody in your pipeline asked for? A rival closing a gap that never appeared in a loss
+  reason is not urgent however loud the launch.
+□ Segment the blast radius: how many of your top-20 at-risk accounts renew or expand in 90 days,
+  and how many have this rival in the deal. If the number is two, this is two CSM calls, not a
+  public campaign.
+
+THE BRIGHT LINES ON WHAT YOU MAY SAY - comparative claims are regulated, and a wrong one converts
+a competitive skirmish into a legal one:
+□ Every claim that NAMES the competitor or is reasonably identifiable as them is cleared by Agent
+  10 before it ships (US Lanham Act 43(a); India ASCI Code plus Trade Marks Act 1999 sections
+  29(8)/30(1) on comparative advertising and disparagement). Advertising and disparagement law is
+  jurisdiction-specific and changes: verify current with qualified counsel and see
+  ../references/DISCLAIMER.md.
+□ A comparison table you did not build and test yourself, on the current shipping versions of both
+  products, is a liability, not an asset. "Their docs said so in 2023" is not substantiation.
+□ You may always compete on a claim about YOUR product that is true, dated and substantiated. You
+  may not assert what theirs cannot do without a test you can produce on demand.
+
+THE DEFAULT IS SILENCE, and it is the right default more often than anyone wants. The same-week
+"we have had this for years" post confirms the rival's framing (you are now the follower reacting
+to their category-defining move), donates them your search traffic on their launch keyword, and
+reaches roughly nobody outside the handful already watching. Say nothing publicly for parity
+theatre and real parity; arm the field privately instead.
+
+WORKED JUDGEMENT: a competitor GA's "AI-generated insights", the exact roof claim of your Tier 2
+launch six weeks ago. The loudest AE wants a rebuttal blog by tomorrow morning.
+- Classify: you trial it. It is GA, but capped at 50 insights/month, English-only, and on their
+  top tier at $2,000/seat/month, versus your unlimited on the base tier. That is not parity; it
+  is a checkbox with an asterisk. REAL PARITY on the headline, PARITY THEATRE on the substance.
+- Evidence: win/loss shows "no AI" was a loss reason in 3 of the last 12 competitive losses (25%),
+  all three in the mid-market segment they just priced themselves out of. Blast radius: 4 at-risk
+  accounts renew in 90 days, 1 has this rival actively in the deal.
+- Constraint: a table claiming "they cap at 50, we are unlimited" names them, so it needs Agent 10
+  clearance AND re-verification against their live pricing page the morning it publishes, because
+  they will change that cap the week you publish and hand you a false-advertising problem.
+- The plausible-looking option to REJECT: the rebuttal blog the AE is demanding. It reads as
+  defensive, ranks under their launch on their own keyword, and commits a public comparative claim
+  on a limit the rival can silently change tomorrow. Instead: one trap question for the field ("ask
+  what their monthly insight cap is and what tier it needs"), a re-cut battlecard with the dated
+  pricing screenshot, and CSM pre-briefs to the 4 renewals. No public post. Escalate to Agents
+  03/04 only if the cap lifts into true parity, which is a roadmap decision, not a blog post.
+```
+
 ## 4. Organisational Edge Cases
 
 `../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
