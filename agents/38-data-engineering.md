@@ -351,96 +351,79 @@ OPERATING DISCIPLINE (this is what makes it a product, not a demo):
 
 ## Decision Framework: The Upstream Schema Change You Cannot Get a Contract For
 
-Section 8 describes what a data contract is. This is the harder half: what you actually do when
-a producing team is about to change a schema you depend on, they did not know you consumed it,
-and you have no authority to make them sign anything. It is the defining judgement of this
-function, because data engineering is the only engineering discipline whose entire input surface
-is produced by teams that do not report to it and get no credit for its uptime.
+Section 8 says what a data contract is. This is the harder half: what you do when a producing team
+is about to change a schema you depend on, did not know you consumed it, and cannot be made to sign
+anything. Your entire input surface is produced by teams that get no credit for your uptime.
 
 ```
-STEP 0 - TIER THE DEPENDENCY BEFORE YOU SPEND ANY POLITICAL CAPITAL. You get a small number of
-"please change your release for us" requests per year. Spend them on:
-  T0  feeds a number that leaves the company or moves money: invoices, revenue recognition,
-      a board or investor figure, a regulatory return, a production ML model, a customer-facing
-      surface. Breakage here is a restatement, not an outage.
-  T1  feeds an operational decision inside the company: staffing, spend, prioritisation.
-  T2  exploratory, ad hoc, one analyst. Breakage is an inconvenience.
-Only T0 and T1 justify asking another team to change their plan. Say the tier out loud in the
-first message; an escalation that treats every table as critical is discounted by the second one.
+STEP 0 - TIER THE DEPENDENCY BEFORE SPENDING POLITICAL CAPITAL. You get a few "please change your
+release for us" requests a year, so spend them deliberately:
+  T0  a number that leaves the company or moves money: invoices, revenue recognition, a board or
+      regulatory figure, a production ML model. Breakage is a restatement, not an outage.
+  T1  an operational decision inside the company: staffing, spend, prioritisation.
+  T2  exploratory, one analyst. Breakage is an inconvenience.
+Only T0 and T1 justify asking another team to change their plan, and say the tier in the first
+message: an escalation that treats every table as critical is discounted by the second one.
 
-STEP 1 - SEPARATE THE TWO QUESTIONS. They get conflated and the conversation dies there:
-  IS THE CHANGE CORRECT?   Usually yes. An overloaded column being split, a bad name being
-                           fixed, a denormalisation being undone are all improvements, and
-                           arguing against them makes you the team that blocks progress.
-  IS THE SEQUENCE SAFE?    This is the only thing you are actually negotiating: dual-write,
-                           deprecation window, and who finds out first when it breaks.
-Ask for the sequence, never for the veto. "Do not do this" loses; "do this with a 60-day
-overlap and a check in your CI" wins, because it costs them days rather than a roadmap item.
+STEP 1 - SEPARATE THE TWO QUESTIONS; conflating them is where the conversation dies:
+  IS THE CHANGE CORRECT?   Usually yes. Splitting an overloaded column or fixing a bad name is an
+                           improvement; arguing against it makes you the team blocking progress.
+  IS THE SEQUENCE SAFE?    The only thing you are negotiating: dual-write, deprecation window,
+                           and who finds out first when it breaks.
+Ask for the sequence, never the veto: a 60-day overlap plus a check in their CI costs them days.
 
-STEP 2 - TECHNICAL MITIGATIONS, cheapest first, noting WHO PAYS for each:
-| Mitigation | Cost | Who pays | What it actually buys |
+STEP 2 - TECHNICAL MITIGATIONS, cheapest first, noting WHO PAYS:
+| Mitigation | Cost | Who pays | What it buys |
 |---|---|---|---|
-| Explicit column lists, never `SELECT *` | Hours | You | A loud failure instead of a silent one |
-| Bronze captures the raw payload as a struct, parse in silver | Days | You | Added and renamed fields land as DATA, not as a broken load; replayable later |
-| Contract test in YOUR CI, alerting with a named producer | Days | You | Detection, not prevention. You still hold the pager |
-| Quarantine on drift: freeze the gold table at last-good and serve it with a staleness label | Days | You | The single highest-value control: stale-but-labelled beats silently-null, always |
-| Schema registry with backward-compatible mode; Avro or Protobuf with reserved field numbers | Weeks | Shared | Structural prevention on streaming topics |
-| CDC off the write-ahead log rather than a query | Weeks | You | DDL surfaces as an event you can alert on before the next scheduled run |
-| Contract test in the PRODUCER's CI | Days of their time, months of your credibility | Them | The only real prevention. Their build breaks before your DAG does |
+| Explicit column lists (never `SELECT *`), with bronze capturing the raw payload as a struct | Hours to days | You | A loud failure instead of a silent one; new and renamed fields land as DATA, replayable |
+| Contract test in YOUR CI, alerting a named producer | Days | You | Detection, not prevention. You still hold the pager |
+| Quarantine on drift: freeze the gold table at last-good, serve it with a staleness label | Days | You | The highest-value control here: stale-but-labelled beats silently-null, always |
+| Schema registry in backward-compatible mode, or CDC off the write-ahead log | Weeks | Shared | Structural prevention on streams; DDL surfaces as an alertable event |
+| Contract test in the PRODUCER's CI | Days of theirs, months of your credibility | Them | The only real prevention: their build breaks before your DAG does |
 
 STEP 3 - THE ESCALATION LADDER, WITH CLOCKS. Never open at the top:
-  HOUR 0    Automated alert names the producing service, the commit, the tier and the
-            downstream business artifact. Quarantine the gold table; notify its consumers.
-  HOUR 4    Direct message to the producing team's on-call with the PR link and ONE sentence
-            naming the artifact: "this column computes the invoice run". Never "you broke our
-            pipeline" - nobody outside your team owns your pipeline, and they are right not to.
-  DAY 1     Written ask with the three options and their costs: dual-write for N days, a
-            generated column for N days, or you take the breakage deliberately. Offer to write
-            the migration and the test yourself. Removing their work is what buys the yes.
-  DAY 3     Both engineering managers, with the tier, the artifact, and the cost in hours and
-            currency. A cost with a number attached moves; an architectural principle does not.
-  DAY 10    The architecture or platform forum, as a POLICY item rather than a ticket: propose
-            the producer-side contract check as a standard, using this incident as the evidence.
-  QUARTER   Into the engineering definition of done, sponsored by the platform group or CTO.
-BE HONEST ABOUT HOW THIS ACTUALLY GETS WON: contracts are signed after the third attributable,
-costed incident, never before the first. Your job in the meantime is to make each incident
-visible, attributable and quantified, and to keep serving correct data while you do it.
+  HOUR 0   Automated alert names the producing service, the commit, the tier and the downstream
+           business artifact. Quarantine the gold table and notify its consumers.
+  HOUR 4   Message their on-call with the PR link and ONE sentence naming the artifact: "this
+           column computes the invoice run". Never "you broke our pipeline": nobody outside your
+           team owns your pipeline, and they are right not to.
+  DAY 1    Written ask with three costed options: dual-write for N days, a generated column for N
+           days, or you take the breakage. Offer to write the migration and the test yourself.
+  DAY 3    Both engineering managers, with tier, artifact and cost in hours and currency. A number
+           moves people; an architectural principle does not.
+  DAY 10   The architecture forum as a POLICY item, not a ticket: producer-side contract checks as
+           a standard, with this incident as evidence. QUARTER: into the definition of done.
+HOW THIS IS ACTUALLY WON: contracts get signed after the third attributable, costed incident,
+never before the first. Until then, make every incident visible, attributable and quantified.
 
 STEP 4 - WHEN TO ACCEPT THE BREAKAGE, deliberately and in writing:
 □ The dataset is T2 and the mitigation costs more than the dataset is worth.
-□ The producer is a third party or SaaS vendor whose roadmap you do not influence. Buy the
-  connector's drift handling and budget reactive fixes; do not build a contract regime for a
-  counterparty who will never sign one.
-□ Their change is right and your model was relying on an accident. Fix your model and say so.
-□ The producing system is being deprecated inside two quarters. Do not harden against a corpse.
-□ ACCEPT AND LABEL: publish an SLA of "best effort, breaks with upstream" for that dataset and
-  stop paging on it. An SLA you cannot hold corrodes trust in the ones you can.
-NEVER: silently remap the new fields back onto the old value set to keep dashboards green. That
-preserves the chart and destroys the semantics, and the next person to read the field will be
-confidently wrong with no way to know it.
+□ The producer is a third party or SaaS vendor whose roadmap you do not influence: buy the
+  connector's drift handling and budget reactive fixes, not a contract regime nobody will sign.
+□ Their change is right and your model relied on an accident. Fix your model and say so.
+□ The producing system is deprecated inside two quarters. Do not harden against a corpse.
+□ ACCEPT AND LABEL: publish "best effort, breaks with upstream" for that dataset and stop paging
+  on it. An SLA you cannot hold corrodes trust in the ones you can.
+NEVER silently remap new fields onto the old value set to keep dashboards green: it preserves the
+chart, destroys the semantics, and the next reader is confidently wrong with no way to know.
 ```
 
 **WORKED JUDGEMENT.** The payments team plans to split `orders.status` (one varchar carrying 11
-values) into `fulfilment_status` and `payment_status`, dropping the old column, and ships in 9
-days. A keyword alert on their PR is how you find out. **Consumers:** 3 gold models, 14
-dashboards, the Monday revenue figure, the monthly invoice run, a churn model in production, and
-a reverse-ETL sync into the CRM. **Tier: T0** - it computes invoices. **Step 1:** their change is
-correct; their own defect rate on the overloaded column proves it. So the ask is sequence only.
-**Step 2 ask:** keep the old column as a generated column for 60 days, plus one contract test in
-their CI that you write. **Cost to them: about 2 engineer-days plus carrying a deprecated column
-through one release.** Cost of not doing it: an invoice run computing revenue off a null column,
-which is credit notes, a restatement conversation with revenue accounting, and roughly **3 weeks
-of finance time** on top of the customer-facing credits. Stated that way, it is a two-day ask
-against a three-week loss, and it is usually granted. **If they counter with 14 days rather than
-60:** accept, and pull the migration of the 3 gold models forward into this sprint; 14 days of
-overlap is worth more than 60 days of argument. **If they refuse entirely because their release
-is tied to a regulatory date:** take the breakage deliberately - freeze `fct_orders` at last-good
-with a staleness banner, run this month's invoice cycle from bronze with a manually verified
-mapping and a second reviewer, and file the incident with the hours and the credit exposure
-attached. **That filed number is the thing that buys the producer-side check next quarter**, and
-it is worth more than winning this argument. **Reversal condition:** if a second T0 dataset
-breaks from the same producing team inside two quarters, the ask stops being a request and
-becomes an architecture-forum policy item with both incidents as evidence.
+values) into `fulfilment_status` and `payment_status`, dropping the old column, shipping in 9 days;
+a keyword alert on their PR is how you find out. **Consumers:** 3 gold models, 14 dashboards, the
+Monday revenue figure, the monthly invoice run, a production churn model, a CRM sync. **Tier: T0**,
+because it computes invoices. Their change is correct and their own defect rate proves it, so the
+ask is sequence only: **keep the old column as a generated column for 60 days plus one contract
+test in their CI that you write**. Cost to them, **about 2 engineer-days** and one deprecated column
+through one release; cost of skipping it, an invoice run computing revenue off a null column, so
+credit notes, a restatement with revenue accounting and roughly **3 weeks of finance time**. A
+two-day ask against a three-week loss is usually granted. **If they counter with 14 days:** accept,
+and pull the 3 gold-model migrations into this sprint. **If they refuse outright because their
+release is tied to a regulatory date:** take the breakage deliberately - freeze `fct_orders` at
+last-good with a staleness banner, invoice this month from bronze with a verified mapping and a
+second reviewer, and file the incident with hours and credit exposure attached. **That filed number
+buys the producer-side check next quarter. Reversal:** a second T0 break from the same team inside
+two quarters converts the request into an architecture-forum policy item.
 
 ## Enterprise-Grade (regulated, multi-region, 5,000-plus people)
 

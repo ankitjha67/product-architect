@@ -303,11 +303,10 @@ service desk for other teams.
 
 ## Decision Framework: The Test Won, but the Mechanism Is Extractive
 
-The hardest recurring call in growth is not prioritisation. It is the winner you do not want:
-a variant with a clean, significant lift whose mechanism is a dark pattern, or whose gain is
-borrowed from a cohort that will churn in ninety days. The short-term metric is real. So is the
-long-term cost. Neither is visible in the other's measurement window, which is why this decision
-gets made on temperament instead of evidence unless you build the procedure first.
+The hardest recurring call in growth is not prioritisation. It is the winner you do not want: a
+variant with a clean, significant lift whose mechanism is a dark pattern, or whose gain is borrowed
+from a cohort that will churn in ninety days. Both costs are real and neither is visible in the
+other's measurement window, so this gets decided on temperament unless you build the procedure.
 
 ```
 STEP 1 - NAME THE MECHANISM. "It won" is not a finding. Why did it win? Four families:
@@ -379,36 +378,30 @@ counsel before shipping anything in the extraction family. See
 
 ## Enterprise-Grade (regulated, multi-market, 5,000-plus people)
 
-A four-person growth pod can run on judgement and a shared Slack channel. At enterprise scale
-the same experiment engine is a regulated surface in some markets, a consented measurement
-system in others, and a brand risk everywhere, and its own log is discoverable evidence. The
-craft is unchanged; what changes is that every test now needs a record, a market scope and an
-owner who is not the person whose bonus depends on the lift.
+A four-person pod runs on judgement and a Slack channel. At enterprise scale the same experiment
+engine is a regulated surface in some markets, a consented measurement system in others, a brand
+risk everywhere, and its own log is discoverable evidence. Every test now needs a record, a market
+scope, and an owner who is not the person whose bonus depends on the lift.
 
 ```
 CONSUMER-PROTECTION AND FAIRNESS CONSTRAINTS (verify current with qualified counsel):
 □ Interface-design rules are tightening across several regimes and now reach urgency claims,
-  pre-ticked consent, cancellation symmetry, drip-fed pricing, subscription renewal disclosure
-  and confirmshaming copy. Treat these as design constraints applied BEFORE the test is built,
-  not as a legal review applied to a winner nobody wants to give up.
+  pre-ticked consent, cancellation symmetry, drip-fed pricing, renewal disclosure and
+  confirmshaming. Apply them as design constraints BEFORE the test, not as review of a winner.
 □ Referral and reward programmes attract their own rules: sweepstakes and lottery regimes,
-  endorsement and disclosure duties for incentivised sharing, and financial-promotion rules in
-  regulated sectors. A referral bonus in a financial or health product is not a growth tactic,
-  it is a regulated communication.
+  endorsement and disclosure duties for incentivised sharing, financial-promotion rules. A
+  referral bonus in a financial or health product is a regulated communication, not a tactic.
 □ Marketing claims made inside product growth surfaces need the same substantiation as an ad.
 □ A DESIGN-ETHICS GATE in the backlog review: any test touching cancellation, consent, pricing
   display, urgency, defaults or minors requires sign-off from compliance and trust and safety
   before it is built. Route through Agent 11 Compliance and Agent 12 Trust and Safety.
-□ See [DISCLAIMER.md](../references/DISCLAIMER.md). None of this is legal advice, rules differ
-  by market, and they are moving fast.
+□ See [DISCLAIMER.md](../references/DISCLAIMER.md): not legal advice, rules differ and move fast.
 
 CONSENT AND MEASUREMENT CONTINUITY (with Agent 39 Privacy and Agent 16 Analytics):
-□ Every measurement chain needs a lawful basis, and consent rates differ by market, which means
-  your tracked population differs by market. A global experiment on a consent-gated metric is
-  measuring different populations under one number.
-□ Re-baseline deliberately after any consent, tracking or platform change: a consent banner
-  rollout or an app-tracking prompt shifts coverage, not behaviour, and the resulting "drop" is
-  routinely mis-diagnosed as product decay and then "fixed" with a real regression.
+□ Every measurement chain needs a lawful basis and consent rates differ by market, so your tracked
+  population differs by market: a global test on a consent-gated metric mixes populations.
+□ Re-baseline deliberately after any consent, tracking or platform change: it shifts coverage, not
+  behaviour, and the "drop" gets mis-diagnosed as decay and then "fixed" with a real regression.
 □ Move to server-side, first-party event collection with a documented basis; keep a holdout in
   a stable-measurement region as the causal referee when other regions lose comparability.
 □ Classify every lifecycle message as transactional or marketing with a named owner, and
@@ -417,17 +410,15 @@ CONSENT AND MEASUREMENT CONTINUITY (with Agent 39 Privacy and Agent 16 Analytics
   involved; Agent 39 decides, and decides before the test, not after it.
 
 BRAND AND ACQUISITION RISK:
-□ Aggressive acquisition tactics are underwritten by the brand, and the brand is not the growth
-  team's to spend. Affiliate and influencer channels inherit your name and their compliance
-  failures become yours; contract for disclosure, review creative, and audit the tail.
-□ Paid channels in regulated sectors carry approval requirements and prohibited-claim lists.
+□ Aggressive acquisition is underwritten by the brand. Affiliates and influencers inherit your name
+  and their compliance failures become yours: contract for disclosure, review creative, audit the
+  tail. Paid channels in regulated sectors add approvals and prohibited-claim lists.
 □ Reputational guardrails belong on the dashboard next to conversion: app-store rating and
   review sentiment, unsubscribe and complaint rates, support contacts about the growth surface.
 
 EXTRA ARTIFACTS AND APPROVALS THIS MODE REQUIRES:
-□ AN EXPERIMENT REGISTER, retained: hypothesis, variant screenshots, population and markets,
-  start and end dates, guardrails and their thresholds, decision, and who approved it. It is
-  the programme's memory, its audit evidence, and, in a dispute, the record either way.
+□ AN EXPERIMENT REGISTER, retained: hypothesis, variant screenshots, population and markets, dates,
+  guardrails and thresholds, decision, approver. Programme memory, audit evidence, dispute record.
 □ A published minimum bar by risk tier, so most tests self-serve and only the tier that touches
   money, consent, cancellation or minors comes to a central review.
 □ Per-market rollout plans, because a mechanic that is legal and effective at home may be
@@ -485,9 +476,6 @@ WHAT STOPS WORKING AT THIS SCALE:
 ⛔ BLENDED-MARKET AVERAGE: one working geography carrying eight dead ones inside the mean.
    TELL: loop and activation metrics reported globally. FIX: report per market and re-test the
    mechanic before scaling it, localising the incentive and not only the string.
-⛔ VELOCITY CAPTURE: the pod cannot ship without another team's queue, so it stops learning.
-   TELL: flag changes need a ticket. FIX: own flags, assignment and readout, or hold a written
-   SLA. A growth pod that cannot ship independently is a request desk.
 ```
 
 ## 13. Organisational Edge Cases

@@ -366,111 +366,86 @@ Segment every metric by function, level, gender, and tenure - averages hide the 
 
 ## Enterprise-Grade (regulated, multi-country, works-council territories)
 
-At 200 people the People function is judgement plus a handbook. In a regulated, multi-country
-organisation past a few thousand people the judgement is unchanged and almost everything around it
-is not: each decision now has a body that must be consulted before it can be announced, an evidence
-file that must exist before the decision rather than after it, and at least one jurisdiction where
-the same action is routine, notifiable, or unlawful. Nothing below is legal advice. Employment law
-is national, moves constantly, and the specifics vary even between neighbouring countries.
-**Verify every point with qualified employment counsel in each affected jurisdiction before acting,
-and see [DISCLAIMER.md](../references/DISCLAIMER.md).**
+At 200 people the People function is judgement plus a handbook. Past a few thousand, across several
+countries, the judgement is unchanged and everything around it is not: each decision now has a body
+that must be consulted before it can be announced, an evidence file that must exist before the
+decision rather than after it, and at least one jurisdiction where the same action is routine,
+notifiable, or unlawful. **None of this is legal advice. Employment law is national and moves
+constantly; verify every point with qualified employment counsel in each affected jurisdiction
+before acting, and see [DISCLAIMER.md](../references/DISCLAIMER.md).**
 
 ```
 CONSULTATION COMPLETES BEFORE THE ANNOUNCEMENT EXISTS
-□ Across much of Europe, informing and consulting a works council, a European Works Council, a
-  comité social et économique or an equivalent body is a legal duty that attaches BEFORE a
-  collective redundancy, a business transfer, a restructuring, or the rollout of a tool that
-  monitors employees. The sequence is fixed: entity map, duty per entity, consultation opened with
-  the required information pack, consultation genuinely concluded, then internal and external comms.
-□ Consultation is not a briefing. It is a documented exchange with an information pack, questions
-  answered, and alternatives genuinely considered. A decision already taken and then presented is
-  contestable on that basis alone, regardless of how good the decision was.
-□ German co-determination can require agreement rather than consultation on measures affecting
-  working conditions. That is a veto in practice, not a scheduling delay, and it applies to
-  monitoring and productivity tooling as readily as to a reorg.
-□ Calendar reality: multi-country consultation on a restructuring is commonly measured in months.
-  Any board commitment made on a timeline that assumed weeks is already wrong. **Verify the duty,
-  the information required, the timetable and the available remedies per country with counsel.**
-□ Evidence you must be able to produce afterwards: the affected-population list by legal entity,
-  the information pack per body, dated minutes per session, the alternatives considered and why
-  they were rejected, and a sign-off that consultation concluded before any comms went out.
+□ Across much of Europe, informing and consulting a works council, European Works Council, comité
+  social et économique or equivalent is a legal duty attaching BEFORE a collective redundancy, a
+  business transfer, a restructuring, or a tool that monitors employees. Sequence: entity map, duty
+  per entity, consultation opened with the information pack, consultation concluded, then comms.
+□ Consultation is a documented exchange in which alternatives are genuinely considered, not a
+  briefing. A decision already taken and then presented is contestable on that basis alone.
+□ German co-determination can require agreement rather than consultation on working conditions: a
+  veto in practice, reaching monitoring and productivity tooling as readily as a reorg.
+□ Multi-country consultation is measured in months. Any board commitment made on a weeks timeline
+  is already wrong. **Verify the duty, the information required, the timetable and the available
+  remedies per country.** Retain: affected-population list by legal entity, the pack per body, dated
+  minutes, alternatives rejected and why, and sign-off that consultation closed before any comms.
 
 COLLECTIVE BARGAINING COVERAGE YOU NEVER SIGNED
-□ Sectoral or extended collective agreements can bind an employer with no union member in the
-  building, setting minimum pay, notice, working time, premia and severance for a job family.
-  Coverage is a question of sector and country, not of whether anyone unionised.
-□ Check coverage at incorporation, at first hire in a country, and annually thereafter. The
-  question is "which agreement, if any, applies to this job family in this country", and the answer
-  belongs in a country file that comp, offers and notice letters are validated against.
-□ Where coverage exists, your bands, your notice periods and your severance matrix are floors set
-  by someone else. Discovering this during a redundancy exercise means re-running the numbers.
+□ Sectoral or extended agreements can bind an employer with no union member in the building, setting
+  minimum pay, notice, working time and severance for a job family. Coverage follows sector and
+  country, not whether anyone organised.
+□ Check at incorporation, at first hire in a country, and annually. The question is which agreement
+  applies to this job family here; the answer belongs in a country file that offers, bands and
+  notice letters are validated against. Where coverage exists, your bands are somebody else's floor.
 
-MULTI-COUNTRY EMPLOYMENT LAW VARIANCE IS THE DEFAULT, NOT THE EXCEPTION
-□ At-will employment is close to unique to parts of the US. Elsewhere expect statutory notice,
-  cause requirements, mandatory severance formulas, authority approval for collective dismissals,
-  and reinstatement as a live remedy. One global handbook plus a country layer is the only design
-  that survives; a single global policy applied uniformly is a compliance defect with a nice PDF.
-□ Country-level items that change the answer materially: probation limits, fixed-term rules,
-  redundancy consultation thresholds and notification duties, transfer-of-undertaking style
-  automatic transfers on outsourcing, non-compete enforceability and mandatory compensation for
-  it, and statutory works-time and leave entitlements. **All of these are jurisdiction-specific
-  and change; confirm current rules with local counsel before relying on any of them.**
-□ Entity structure drives obligation. An employer of record shifts the legal employer but not your
-  reputational exposure or your obligations toward the work, and long-term contractor populations
-  remain a misclassification question in most regimes (section 9).
+MULTI-COUNTRY EMPLOYMENT LAW VARIANCE IS THE DEFAULT
+□ At-will employment is close to unique to parts of the US. Expect statutory notice, cause
+  requirements, mandatory severance formulas, authority notification for collective dismissals,
+  automatic transfer of employees on outsourcing, paid non-competes, and reinstatement as a live
+  remedy. One global handbook plus a country layer is the only design that survives.
+□ Entity structure drives obligation: an employer of record moves the legal employer, not your
+  exposure, and long-tenured contractor populations remain a misclassification question almost
+  everywhere. **All of this is jurisdiction-specific and changes; confirm with local counsel.**
 
 HR DATA IS SENSITIVE PERSONAL DATA, NOT AN INTERNAL SPREADSHEET
 □ Health, accommodation, union membership, complaint and investigation records attract a higher
-  protection standard in most regimes and are frequently restricted from managers entirely. Agent
-  39 (Privacy/DPO) owns lawful basis, retention, minimisation and cross-border transfer routes,
-  and holds an override on processing that you cannot argue your way past on business need.
-□ Any tool producing per-employee behavioural data (productivity dashboards, badge analytics,
-  communications metadata, sentiment scoring) goes through a DPIA and the consultation route
-  BEFORE purchase, not before launch. Aggregate by default with a minimum group size, and hold
-  individual-level access to a named, logged, justified list.
-□ Retention is a live control, not a storage decision: an over-retained investigation file is both
-  a privacy finding and a discovery liability, while an under-retained rating history removes your
-  own defence in a tribunal. Set the period from the audit and litigation use cases, jointly.
+  standard and are often restricted from managers entirely. Agent 39 (Privacy and DPO) owns lawful
+  basis, minimisation, retention and transfer route, and holds an override you cannot argue past.
+□ Any tool producing per-employee behavioural data goes through a DPIA and the consultation route
+  BEFORE purchase, not before launch: aggregate by default with a minimum group size, and individual
+  access as a named, logged, justified list.
+□ Retention cuts both ways: an over-retained investigation file is a privacy finding and a discovery
+  liability; an under-retained rating history removes your own tribunal defence.
 
-INVESTIGATIONS AND WHISTLEBLOWING REQUIRE STRUCTURAL INDEPENDENCE
-□ The channel must not route through the line management chain, because the most serious reports
-  are about it. Route to a body outside the implicated function, commonly the audit committee chair
-  or an independent ethics owner, with a documented triage protocol.
-□ Independence is a staffing question: the investigator has no reporting line to, no performance
-  relationship with, and no career dependency on the subject or the reporter. Where the population
-  is too small for that, engage external counsel rather than claiming independence you do not have.
-□ Retaliation is usually the more serious and more provable exposure than the underlying matter.
-  Remove anyone named from decisions affecting the reporter immediately and log the removal with a
-  timestamp. Several regimes impose acknowledgement and feedback deadlines on protected
-  disclosures; **verify current periods and protections per country with counsel.**
-□ Artifacts: the intake record, the conflict check, the investigation plan, evidence held under an
-  appropriate privilege or confidentiality posture, the findings, the decision, and the closure
-  note to the reporter. Investigation quality is judged on the file, years later, by strangers.
+INVESTIGATIONS AND WHISTLEBLOWING NEED STRUCTURAL INDEPENDENCE
+□ The channel must not route through line management, because the serious reports are about it.
+  Route outside the implicated function, commonly to the audit committee chair, with documented triage.
+□ Independence is a staffing fact: no reporting line, performance relationship or career dependency
+  between investigator, subject and reporter. Too small a population means external counsel, not a
+  claim of independence you cannot support.
+□ Retaliation is usually the more provable exposure. Remove anyone named from decisions affecting the
+  reporter immediately, on a timestamped record. **Acknowledgement and feedback deadlines for
+  protected disclosures vary by country; verify current periods with counsel.**
 
 DISPARATE-IMPACT ANALYSIS RUNS BEFORE A REDUCTION IN FORCE, NOT AFTER
-□ Order of operations: written, job-related selection criteria agreed first; managers score against
-  them; the draft list is then tested for adverse impact by protected characteristic; counsel
-  reviews the analysis under privilege where available; only then are names final.
-□ Test the criteria, not the individuals. If the pattern is real, revisit the criterion that
-  produced it and document the revision. Adjusting people to fix a distribution creates a second,
-  worse problem and is visible in the version history of the same spreadsheet.
-□ Run the register cross-check as a hard gate: leave, accommodation, open complaint, protected
-  disclosure and recent-return status. Selection is not automatically barred, but each such case
-  needs a pre-existing, documented, job-related rationale and counsel review.
-□ Selection thresholds, notification duties to authorities, and the analysis expected of you differ
-  sharply by country and by the size of the exercise. **Verify current requirements per
-  jurisdiction with qualified employment counsel before the list is circulated to anyone.**
+□ Order of operations: written job-related criteria agreed first, managers score against them, the
+  draft list tested for adverse impact by protected characteristic, counsel reviews under privilege
+  where available, and only then are names final.
+□ Test the criteria, not the individuals. If the pattern is real, revisit the criterion and document
+  the revision; adjusting people to fix a distribution is visible in the file's own version history.
+□ Cross-check the registers as a hard gate: leave, accommodation, open complaint, protected
+  disclosure, recent return. Each hit needs a pre-existing, documented, job-related rationale.
+□ **Selection thresholds, authority notification duties and the analysis expected of you differ
+  sharply by country and by exercise size; verify with counsel before any list circulates.**
 
-EVIDENCE, SEGREGATION AND AUDIT AT SCALE
-□ Every people control that an auditor will test needs an owner, a frequency and an artifact:
-  same-day leaver access revocation, quarterly access reviews, the annual pay-equity analysis and
-  its remediation, mandatory-training completion, and the exception register for severance.
-□ Segregation of duties applies to people decisions too: the manager who proposes a termination is
-  not the sole approver, and the person who runs payroll does not also create employees.
-□ At 5,000-plus people the binding constraint is coverage, not skill. Publish which entities,
-  populations and processes are in scope for pay-equity analysis, classification audit and
-  register maintenance, and which are not. A stated, dated de-scope is a resourcing decision; a
-  silent one is what an assessor finds.
+EVIDENCE, SEGREGATION AND COVERAGE
+□ Every testable people control needs an owner, a frequency and an artifact: same-day leaver
+  revocation, quarterly access reviews, the pay-equity analysis and its remediation, training
+  completion, and the severance exception register.
+□ Segregation applies here too: the manager proposing a termination is not its sole approver, and
+  whoever runs payroll does not also create employees.
+□ At 5,000-plus the binding constraint is coverage, not skill. Publish which entities and populations
+  are in scope for pay-equity analysis, classification audit and register maintenance, and which are
+  not. A dated de-scope is a decision someone owns; a silent one is the finding.
 ```
 
 ## Failure Modes (⛔)
