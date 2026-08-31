@@ -347,6 +347,103 @@ to the vendor whose kit is easier.
 | Avg deal size: partner vs direct | ACV comparison | Partners often bring bigger deals |
 | MDF ROI | Pipeline from MDF / MDF spent | Don't fund partners who don't produce |
 
+## Decision Framework: A Partner Wants Exclusivity in Exchange for a Large Commitment
+
+A partner offers a number large enough to change the year, a minimum commit, an upfront, a marquee
+logo, and asks for exclusivity in return. It is the most seductive and most dangerous ask in the
+function, because the revenue is visible today and the cost (every deal the exclusive forecloses
+for its whole term) is invisible until later. Exclusivity granted for a promise sells your entire
+market to one partner's execution risk. This is how to size that trade.
+
+```
+WHAT EXCLUSIVITY ACTUALLY FORECLOSES - price this before the commit, not after:
+□ The total addressable revenue inside the scope for the FULL TERM, not just the deals you can
+  name today. If the scope is "all of India" and India is 30% of your three-year plan, you have
+  handed 30% of the company's growth to one partner's quota attainment.
+□ Every OTHER partner and every DIRECT deal inside the scope, for the term. A second partner who
+  appears next quarter with a better book cannot be signed.
+□ Your own optionality: if the exclusive partner underperforms, you are contractually barred from
+  the market you gave them until the term lapses or you litigate the exit.
+
+THE FIVE SCOPE LIMITS THAT MAKE IT SURVIVABLE - never grant exclusivity without ALL of them:
+□ FIELD OF USE: one product line, one use case, one customer segment, never "our products".
+□ TERRITORY: one named country or region, never "worldwide" and never "and any market we later enter".
+□ TIME: 12-24 months maximum, with the burden on the partner to renew by performance, not on you
+  to exit by notice.
+□ PERFORMANCE THRESHOLD WITH AUTOMATIC LAPSE: a hard minimum (revenue, units, certified heads,
+  net-new logos) measured quarterly, and a written term that exclusivity CONVERTS TO NON-EXCLUSIVE
+  automatically on a miss, with no notice, no cure period, no renegotiation. "We can revisit if it
+  is not working" is not a lapse; it is a future argument you will lose.
+□ CARVE-OUTS: existing customers, inbound leads, and marketplace and strategic deals are excluded up front.
+
+CHANGE-OF-CONTROL - the scenario that is live, not hypothetical: your exclusive partner is acquired
+by your largest competitor, and your route to 30% of your market now belongs to them. Negotiate an
+explicit termination right on change of control, effective on the closing of their acquisition,
+with customer and pipeline reversion to you. Without it, an M&A event you do not control hands your
+market to whoever buys them.
+
+ANTITRUST EXPOSURE - exclusive dealing is lawful in most cases and unlawful in some, and the line
+depends on market power and foreclosure share, which you are not qualified to judge alone:
+□ The risk rises with your (or the partner's) market share and with the share of the market the
+  exclusive forecloses to rivals. A dominant firm's exclusivity is scrutinised where a small
+  entrant's is not. Relevant regimes include US Sherman Act section 1 and Clayton Act section 3,
+  EU Articles 101 and 102, and India's Competition Act 2002 (vertical restraints, abuse of dominance).
+□ Any exclusive of meaningful scope, duration or market share is reviewed by Agent 10 and, where
+  dominance is plausible, competition counsel BEFORE signature. Antitrust exposure is fact-specific,
+  jurisdiction-specific and changes: verify current with qualified counsel and see
+  ../references/DISCLAIMER.md.
+
+WORKED JUDGEMENT: a large SI offers a ₹3Cr three-year minimum commit (₹1Cr/year) for exclusive
+reseller rights to your platform across all of India. India is roughly 35% of your three-year plan.
+- Foreclosure: exclusive across all of India for 3 years hands 35% of the plan to one partner's
+  execution. If they book ₹1Cr/year but the market was worth ₹4Cr/year to you across all channels,
+  the "commit" costs you ₹9Cr of foreclosed revenue to collect ₹3Cr.
+- Restructure: accept the commit, refuse the scope. Narrow to (a) field of use = your core product
+  only, not the new modules; (b) territory = India, but carve out the top-20 named enterprise
+  accounts as direct; (c) time = 18 months; (d) threshold = ₹25L/quarter with automatic conversion
+  to non-exclusive on any single miss; (e) a change-of-control termination if they are acquired.
+- The plausible-looking option to REJECT: "take the ₹3Cr, grant all-India exclusivity, they are a
+  strong partner and ₹1Cr/year is real money." It books a visible ₹3Cr and forecloses an invisible
+  ₹9Cr, it has no automatic lapse so a soft first year cannot be recovered without a fight, and one
+  acquisition of the SI by a competitor hands your largest market to your largest rival with no exit.
+  Better to sign the same commit on 18-month, single-product, threshold-lapsing, carve-out terms, or
+  to run non-exclusive and let performance earn the scope.
+```
+
+## Failure Modes (⛔)
+```
+⛔ SIGNED BUT NEVER ACTIVATED: a logo in the portal that never transacts, counted as a partnership.
+   Tell: partners past 90 days from signature with no registered deal. Correction: measure and
+   protect time-to-first-deal above all; a signature is not a partnership, the first joint win is.
+⛔ EXCLUSIVITY FOR A PROMISE: granting exclusive scope against a commit with no automatic lapse.
+   Tell: "we can revisit if it underperforms" instead of a quarterly threshold. Correction: a hard
+   minimum, automatic conversion to non-exclusive on a miss, narrow field/territory/time, carve-outs.
+⛔ THE REQUEST FOR A FAVOUR DRESSED AS A PARTNERSHIP: no number in the partner's own currency. Tell:
+   you cannot say how their individual rep makes money on the deal. Correction: the mutual-value
+   test with a number in both columns before any agreement is drafted.
+⛔ INFLUENCED-REVENUE INFLATION: summing sourced and influenced into one "partner revenue" number.
+   Tell: influenced grows every quarter while sourced flattens. Correction: report the two in
+   separate columns permanently; sourced needs a registration timestamp, influenced a logged activity.
+⛔ THE PERPETUAL REV-SHARE: 30% of every renewal forever for a one-time sourcing act. Tell: the
+   share never steps down and the partner no longer touches the account. Correction: step it down
+   (30/15/10) unless the partner keeps owning the relationship, the renewal and first-line support.
+⛔ COMPENSATION BEATS POLICY: a channel-conflict rule that loses to a comp plan paying reps more for
+   direct. Tell: reps burying partners despite a written rule. Correction: neutral comp on
+   partner-sourced deals funded centrally; fix the plan, do not write a third memo.
+⛔ MARGIN STACKED BELOW COST: a rep discount piled on top of partner margin and a marketplace fee.
+   Tell: net revenue after all stacked fees never checked against the floor. Correction: model the
+   full margin stack against the Agent 36 floor before approving the discount.
+⛔ THE UNOWNED INTEGRATION: built for one deal with no owner in Engineering's rotation. Tell:
+   breakage found by a customer ticket, not by monitoring. Correction: name a code owner, budget
+   15-25% of build cost per year for maintenance, or deprecate it with notice.
+⛔ OBLIGATIONS UNKNOWABLE: exclusivity, MFN, notice and change-of-control clauses scattered across
+   PDFs and departed lawyers. Tell: nobody can enumerate what existing deals promised. Correction:
+   an obligations register built from executed agreements before any new negotiation opens.
+⛔ PLATFORM DEPENDENCY UNPRICED: betting the company on one platform's goodwill and its Sherlocking
+   risk. Tell: revenue exposure to one API above a defined share with no mitigation. Correction: a
+   written mitigation (abstraction layer, second provider, contractual notice) approved outside the team.
+```
+
 ## Organisational Edge Cases
 
 `../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits
