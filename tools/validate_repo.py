@@ -190,6 +190,57 @@ def check_no_em_dashes(paths):
             )
 
 
+# Sections every agent file must carry. Each entry is (label, list of regexes);
+# a file satisfies the requirement if ANY regex in the list matches. Alternatives
+# exist because a few sections are legitimately phrased two ways across the roster
+# (a numbered "## 12. Decision Framework" or an unnumbered "## Decision Framework";
+# "Organisational" or "Organizational"). The point is a guaranteed shape: every
+# agent states who it is, what it needs, how it makes its hardest call, how it
+# fails, the org edge cases it owns, and the bar its output must clear.
+# The section names that must appear are matched inside an H2 or H3 heading line.
+# Role, Inputs Required and Quality Standard appear verbatim across the roster, so
+# they anchor tightly. Decision Framework, Failure Modes and Organisational Edge
+# Cases legitimately carry descriptive text in the heading itself (for example
+# "## Decision Framework: Whose Number Wins", "### 7. Governance Decision
+# Framework", "## ⛔ Launch Failure Modes"), so those match the phrase anywhere in
+# the heading line rather than requiring it to lead. The bold-text variant
+# "**Failure modes specific to this function**" inside an edge-case section is a
+# list label, not a heading, so the leading-# anchor correctly ignores it.
+REQUIRED_AGENT_SECTIONS = [
+    ("Role", [r"(?im)^#{2,3}\s+Role\b"]),
+    ("Inputs Required", [r"(?im)^#{2,3}\s+Inputs Required\b"]),
+    ("Decision Framework", [r"(?im)^#{2,3}\s+.*Decision Framework"]),
+    ("Failure Modes", [r"(?im)^#{2,3}\s+.*Failure Modes"]),
+    ("Organisational Edge Cases",
+     [r"(?im)^#{2,3}\s+.*Organi[sz]ational Edge Cases"]),
+    ("Quality Standard", [r"(?im)^#{2,3}\s+Quality Standard\b"]),
+]
+
+
+def check_agent_house_structure(directory):
+    """Every agent file must carry the standard house sections.
+
+    Added once all 80 agents actually satisfied it, so it locks in the shape
+    rather than describing an aspiration. Like the em-dash check, this is here
+    because the drift it prevents already happened once: 46 of the agents had
+    quietly diverged, each missing a Decision Framework, a Failure Modes section,
+    or the like, and nothing caught it until a manual audit did.
+    """
+    for name in md_files(directory):
+        path = os.path.join(directory, name)
+        with open(path, encoding="utf-8") as fh:
+            content = fh.read()
+        missing = [
+            label
+            for label, patterns in REQUIRED_AGENT_SECTIONS
+            if not any(re.search(p, content) for p in patterns)
+        ]
+        if missing:
+            errors.append(
+                f"Agent {name} is missing house section(s): {', '.join(missing)}"
+            )
+
+
 def main():
     print("\n--- Product Architect: Repository Validation ---\n")
 
@@ -209,6 +260,7 @@ def main():
 
     check_files_well_formed(AGENTS_DIR, "Agent")
     check_files_well_formed(FRAMEWORKS_DIR, "Framework")
+    check_agent_house_structure(AGENTS_DIR)
     cross_check_docs(agent_count, framework_count)
     check_code_fences(markdown)
     check_internal_links(markdown)
