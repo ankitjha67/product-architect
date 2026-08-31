@@ -1,6 +1,6 @@
 ---
 name: product-architect
-description: Complete product development system with 64 agents and 35 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, vector database, embeddings, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 80 agents and 36 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, customer support, backend and distributed systems, enterprise architecture, developer productivity, FinOps and cloud cost, business continuity, physical security, facilities, regulatory affairs, hardware, internal comms, vendor risk, market expansion, accessibility, data science and experimentation, unit economics, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
@@ -13,8 +13,8 @@ metadata:
 
 # Product Architect
 
-64 specialized agents covering every department from solo founder Day 0 to IPO.
-35 frameworks with tactical playbooks, compliance guides, process maps, and a
+80 specialized agents covering every department from solo founder Day 0 to IPO.
+36 frameworks with tactical playbooks, compliance guides, process maps, and a
 modern AI-engineering stack (LangGraph, RAG, agents) applied across every department.
 
 ## Depth Promise: Research-First, Never Surface-Level
@@ -22,7 +22,7 @@ modern AI-engineering stack (LangGraph, RAG, agents) applied across every depart
 This system goes deep "until the Mariana Trench." Before recommending building
 ANY feature, product, or bet, agents run the **Deep Research Protocol**
 (`frameworks/deep-research-protocol.md`, owned by Agent 47): they investigate the
-market end to end and return a grounded verdict — **"this already exists, here are
+market end to end and return a grounded verdict - **"this already exists, here are
 the competitors + citations, refine it"** or **"this is white-space, no competition
 or citations found in this niche"** (with the honest caveat that absence of evidence
 is not proof of novelty). Every agent inherits this via `references/agent-standards.md`
@@ -107,6 +107,23 @@ QUICK ROUTING:
 "Compensation/equity/benefits" → agents/61-total-rewards.md + frameworks/compensation-bands.md
 "Chief of staff/BizOps/operating cadence" → agents/62-chief-of-staff-bizops.md
 "AI evals/red-team/is it safe to ship" → agents/63-ai-evaluation-red-teaming.md
+"Support queue/tickets/deflection/CSAT" → agents/64-customer-support.md
+"Backend/API/distributed/consistency"   → agents/65-backend-distributed-systems.md
+"Enterprise architecture/ARB/tech radar"→ agents/66-enterprise-architecture.md
+"Dev productivity/DORA/build times/platform" → agents/67-developer-productivity-platform.md
+"Cloud cost/FinOps/unit economics of infra" → agents/68-finops-cloud-economics.md
+"Business continuity/DR/RTO/RPO/resilience"  → agents/69-business-continuity-resilience.md
+"Physical security/badging/travel risk" → agents/70-corporate-physical-security.md
+"Office/facilities/lease/real estate"   → agents/71-workplace-facilities.md
+"Regulatory approval/QMS/medical device"→ agents/72-regulatory-affairs-quality.md
+"Hardware/manufacturing/BOM/NPI"        → agents/73-hardware-manufacturing.md
+"Internal comms/all-hands/change comms" → agents/74-internal-communications.md
+"Vendor risk/third-party/SOC 2 review"  → agents/75-third-party-risk.md
+"Market entry/new country/expansion"    → agents/76-market-expansion.md
+"Design ops/research ops/design system" → agents/77-design-research-ops.md
+"Accessibility/WCAG/VPAT/inclusive"     → agents/78-accessibility-inclusive-design.md
+"Data science/causal/experiment design" → agents/79-data-science-experimentation.md
+"What could go wrong/pre-mortem/org risk" → frameworks/enterprise-edge-cases.md
 "LangGraph/RAG/AI agent"→ frameworks/ai-engineering-stack.md + agents/29-data-ai-strategy.md + agents/06-engineering.md
 "AI feature/LLM/embed"  → frameworks/ai-engineering-stack.md + frameworks/ai-department-playbooks.md
 "AI for [department]"   → frameworks/ai-department-playbooks.md
@@ -128,10 +145,45 @@ Load the primary agent file, then apply quality standards from
 
 ```
 LOADING PRIORITY:
-1. SMART-LOADER.md (routing — always)
+1. SMART-LOADER.md (routing - always)
 2. Primary agent (produces the deliverable)
-3. Relevant framework (template/structure — see agent-standards.md cross-reference table)
-4. Secondary agent (validation — if budget allows)
+3. Relevant framework (template/structure - see agent-standards.md cross-reference table)
+4. Secondary agent (validation - if budget allows)
+```
+
+### Step 2b: Apply the Edge-Case Doctrine (three layers)
+
+Most plans do not fail on the thing that was specified. They fail on the thing
+that was not. Three separate layers of edge case exist, they fail independently,
+and covering one does not cover the others.
+
+```
+LAYER 1 - PRODUCT EDGE CASES        frameworks/stress-test-framework.md
+  What breaks in the product: empty/loading/error states, boundary values,
+  concurrency, offline, partial failure, adversarial input, scale.
+
+LAYER 2 - ORGANISATIONAL EDGE CASES  frameworks/enterprise-edge-cases.md
+  What breaks around the product: sponsor departure, mid-year budget cut,
+  approval-gate latency, change freeze, reorg, M&A, regulatory examination,
+  competing internal mandates, scale pathologies. Every agent file also
+  carries its own "Organisational Edge Cases" section for its function.
+
+LAYER 3 - ROUTING & SESSION EDGE CASES  SMART-LOADER.md
+  What breaks in this system: ambiguous or contradictory requests, governance
+  deadlocks, circular dependencies, stale or divergent KDRs, context pressure,
+  and outputs that are fluent but unsourced.
+```
+
+```
+THE RULE:
+□ Any deliverable that describes product behaviour        → run Layer 1
+□ Any plan spanning >1 team or >1 quarter                 → run Layer 2's
+  Pre-Mortem Sweep and name the top 3 to 5 organisational risks, each with a
+  trigger, an owner, a pre-agreed 48-hour move, and a reversal condition
+□ Every turn                                              → Layer 3 applies
+
+⛔ A plan with zero named organisational risks has not been pre-mortemed.
+   It has been written optimistically.
 ```
 
 ### Step 3: Enforce Cross-Agent Governance
@@ -139,11 +191,11 @@ LOADING PRIORITY:
 When multiple agents are active, apply the authority hierarchy:
 
 ```
-Level 5 (highest): Agent 11 (Compliance) — OVERRIDE on legal/regulatory risk
-Level 4: Agent 39 (Privacy/DPO) — OVERRIDE on personal-data processing & rights
-Level 3: Agent 09 (Security) — OVERRIDE on security vulnerabilities
-Level 2: Agent 18 (Finance) — VETO on budget/cost violations
-Level 1: Agent 00 (Chief Reviewer) — VETO on quality/consistency
+Level 5 (highest): Agent 11 (Compliance) - OVERRIDE on legal/regulatory risk
+Level 4: Agent 39 (Privacy/DPO) - OVERRIDE on personal-data processing & rights
+Level 3: Agent 09 (Security) - OVERRIDE on security vulnerabilities
+Level 2: Agent 18 (Finance) - VETO on budget/cost violations
+Level 1: Agent 00 (Chief Reviewer) - VETO on quality/consistency
 ```
 
 Note: Privacy (39) and Compliance (11) are adjacent authorities. When a question is
@@ -152,7 +204,7 @@ Privacy leads. When it is about *which statute/regulator* governs and broader le
 regulatory exposure, Compliance leads. If they disagree, the stricter control wins.
 
 If two agents produce conflicting recommendations:
-1. STOP — do not proceed with either
+1. STOP - do not proceed with either
 2. STATE the conflict explicitly
 3. APPLY the hierarchy (higher authority wins)
 4. DOCUMENT in KDR with decision number
@@ -180,7 +232,7 @@ Developer & Research: `34-developer-relations` `35-user-research` `42-content-do
 Data & Privacy: `38-data-engineering` `39-privacy-dpo`
 Internal & Delivery: `40-it-corporate-engineering` `41-technical-program-management`
 Corporate Finance: `44-investor-relations` `45-corporate-development` `46-procurement-supply-chain`
-Research: `47-deep-research` (research-first gate — invoked before any build/bet)
+Research: `47-deep-research` (research-first gate - invoked before any build/bet)
 Engineering Specialisms: `48-mobile-engineering` `49-ml-engineering` `50-frontend-web-platform`
 Customer-Facing Delivery: `51-solutions-engineering` `52-professional-services` `53-customer-education` `54-community`
 Revenue Systems: `55-billing-monetization-engineering`
@@ -188,6 +240,12 @@ Finance Specialisms: `56-revenue-accounting` `57-tax` `58-treasury`
 Risk & People: `59-internal-audit-risk` `60-talent-acquisition` `61-total-rewards`
 Executive: `62-chief-of-staff-bizops`
 AI Assurance: `63-ai-evaluation-red-teaming` (gates whether an AI feature is good/safe enough to ship)
+Support & Platform Eng: `64-customer-support` `65-backend-distributed-systems` `66-enterprise-architecture` `67-developer-productivity-platform`
+Infra Economics & Resilience: `68-finops-cloud-economics` `69-business-continuity-resilience`
+Corporate Security & Workplace: `70-corporate-physical-security` `71-workplace-facilities`
+Regulated Product & Hardware: `72-regulatory-affairs-quality` `73-hardware-manufacturing`
+Comms & Vendor Risk: `74-internal-communications` `75-third-party-risk`
+Expansion, Ops & Insight: `76-market-expansion` `77-design-research-ops` `78-accessibility-inclusive-design` `79-data-science-experimentation`
 
 All agent files are in `agents/` directory.
 
@@ -203,9 +261,9 @@ All framework files are in `frameworks/` directory:
 `okr-goal-setting` `pricing-packaging` `growth-model` `sales-playbook`
 `data-governance` `incident-management` `partnership-framework` `brand-messaging`
 `customer-journey` `deep-research-protocol` `ai-engineering-stack`
-`ai-department-playbooks`
+`ai-department-playbooks` `enterprise-edge-cases`
 
-Country compliance: `references/compliance/` — india, us, eu, uk, sea.
+Country compliance: `references/compliance/` - india, us, eu, uk, sea.
 
 ## Examples
 
@@ -255,6 +313,34 @@ Inconsistent outputs across agents:
 Context lost after chat compaction:
 - KDR system outputs structured state after every phase
 - User pastes MASTER KDR into new conversation to restore full context
+
+Request is ambiguous, contradictory, or built on a false premise:
+- Ask ONE disambiguating question, or state the contradiction and recommend a resolution
+- Never silently pick a reading, and never build on a premise you know is wrong
+- Full handling in `SMART-LOADER.md` section A (Request-Level Edge Cases)
+
+Two governance agents disagree, or the hierarchy does not resolve it:
+- Compliance (11) and Privacy (39) are adjacent: the stricter control wins
+- Authority is scoped to domain. Security has no veto over pricing
+- True deadlock is a user decision, not a routing decision. Present both positions and stop
+- Full handling in `SMART-LOADER.md` section C (Governance Hierarchy Edge Cases)
+
+The right agent does not exist, or too many agents match:
+- Never invent an agent number or cite a file that is not in `agents/`
+- 6+ agents scoring high means the request is a programme. Phase it, do not load 6
+- Full handling in `SMART-LOADER.md` section B (Routing Engine Edge Cases)
+
+Research returns nothing, or sources contradict each other:
+- No sources found is Verdict D (white-space) only if the absence is meaningful,
+  otherwise Verdict E (inconclusive). Absence of evidence in one search is not
+  evidence of absence
+- Report source disagreement and tier it. Do not silently pick the convenient one
+- Full handling in `SMART-LOADER.md` section D and `frameworks/deep-research-protocol.md`
+
+A plan is about to ship with no organisational risks named:
+- That is not a low-risk plan, it is an un-pre-mortemed one
+- Run the Pre-Mortem Sweep in `frameworks/enterprise-edge-cases.md` section 9
+- See Step 2b above for the three-layer Edge-Case Doctrine
 
 ## Important
 

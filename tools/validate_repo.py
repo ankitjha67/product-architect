@@ -3,7 +3,7 @@
 Repository structure validator for Product Architect.
 
 Checks that the repo's structure is internally consistent:
-  - counts agents and frameworks (dynamically — never hard-coded)
+  - counts agents and frameworks (dynamically - never hard-coded)
   - verifies agent files are numbered sequentially with no gaps (00..N)
   - verifies every agent/framework file is non-empty and has an H1 heading
   - cross-checks the agent/framework counts asserted in SKILL.md and README.md
@@ -64,7 +64,7 @@ def validate_agent_numbering():
     expected = list(range(min(numbers), max(numbers) + 1))
     missing = sorted(set(expected) - set(numbers))
     if missing:
-        errors.append(f"Gap in agent numbering — missing: {missing}")
+        errors.append(f"Gap in agent numbering - missing: {missing}")
     if min(numbers) != 0:
         warnings.append(f"Agent numbering starts at {min(numbers):02d}, expected 00.")
     return sorted(numbers)
@@ -102,13 +102,13 @@ def all_markdown_files():
 
 
 def check_code_fences(paths):
-    """Every ``` must be closed — an unbalanced fence silently swallows content."""
+    """Every ``` must be closed - an unbalanced fence silently swallows content."""
     for path in paths:
         with open(path, encoding="utf-8") as fh:
             count = sum(1 for line in fh if line.startswith("```"))
         if count % 2 != 0:
             rel = os.path.relpath(path, ROOT)
-            errors.append(f"Unbalanced code fences ({count}) in {rel} — every ``` must be closed.")
+            errors.append(f"Unbalanced code fences ({count}) in {rel} - every ``` must be closed.")
 
 
 # Markdown links to local .md targets. Skips URLs (http:, mailto:) and pure anchors.
@@ -116,15 +116,129 @@ LINK_RE = re.compile(r"\]\((?!https?:|mailto:|#)([^)\s#]+\.md)(?:#[^)\s]*)?\)")
 
 
 def check_internal_links(paths):
-    """Every relative link to a .md file must resolve — catches renames and typos."""
+    """Every relative link to a .md file must resolve - catches renames and typos.
+
+    The most common mistake is writing a repo-root path from inside a
+    subdirectory: agents/09-security.md cited from another file in agents/
+    resolves to agents/agents/09-security.md and does not exist. That case gets
+    a specific message, because "broken link" alone sends people hunting for a
+    missing file that is actually right there.
+    """
     for path in paths:
         with open(path, encoding="utf-8") as fh:
             content = fh.read()
         base = os.path.dirname(path)
+        rel = os.path.relpath(path, ROOT)
         for link in set(LINK_RE.findall(content)):
-            if not os.path.isfile(os.path.normpath(os.path.join(base, link))):
-                rel = os.path.relpath(path, ROOT)
+            if os.path.isfile(os.path.normpath(os.path.join(base, link))):
+                continue
+            from_root = os.path.normpath(os.path.join(ROOT, link))
+            if os.path.isfile(from_root):
+                correct = os.path.relpath(from_root, base)
+                errors.append(
+                    f"Wrong relative path in {rel} -> {link} "
+                    f"(repo-root path used from a subdirectory; write {correct})"
+                )
+            else:
                 errors.append(f"Broken link in {rel} -> {link}")
+
+
+SECTION_RE = re.compile(r"^(#{2,3}) (\d+)\.(?!\d)")
+
+
+def check_section_order(paths):
+    """Numbered sections must read in order.
+
+    Appending a new section before an existing trailing block (Example, Output)
+    and giving it the next free number produces a file that reads 10, 11, 14,
+    12, 13. Each heading is individually valid and nothing is duplicated, so
+    neither a duplicate check nor a link check catches it. Levels are tracked
+    separately because ## and ### series are independent, and the negative
+    lookahead keeps `### 3.1` style subsections out of the ## sequence.
+    """
+    for path in paths:
+        found = []
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                m = SECTION_RE.match(line)
+                if m:
+                    found.append((len(m.group(1)), int(m.group(2))))
+        for level in (2, 3):
+            seq = [n for lv, n in found if lv == level]
+            if seq != sorted(seq):
+                rel = os.path.relpath(path, ROOT)
+                errors.append(
+                    f"Section numbers out of reading order in {rel} "
+                    f"(H{level}): {seq}"
+                )
+
+
+def check_no_em_dashes(paths):
+    """House style: no em dashes. Enforced mechanically so it cannot drift back."""
+    for path in paths:
+        with open(path, encoding="utf-8") as fh:
+            content = fh.read()
+        count = content.count("—")
+        if count:
+            rel = os.path.relpath(path, ROOT)
+            line = next(
+                i for i, text in enumerate(content.splitlines(), 1) if "—" in text
+            )
+            errors.append(
+                f"Em dash (U+2014) x{count} in {rel}, first at line {line} - "
+                f"use a comma, a colon, or a spaced hyphen."
+            )
+
+
+# Sections every agent file must carry. Each entry is (label, list of regexes);
+# a file satisfies the requirement if ANY regex in the list matches. Alternatives
+# exist because a few sections are legitimately phrased two ways across the roster
+# (a numbered "## 12. Decision Framework" or an unnumbered "## Decision Framework";
+# "Organisational" or "Organizational"). The point is a guaranteed shape: every
+# agent states who it is, what it needs, how it makes its hardest call, how it
+# fails, the org edge cases it owns, and the bar its output must clear.
+# The section names that must appear are matched inside an H2 or H3 heading line.
+# Role, Inputs Required and Quality Standard appear verbatim across the roster, so
+# they anchor tightly. Decision Framework, Failure Modes and Organisational Edge
+# Cases legitimately carry descriptive text in the heading itself (for example
+# "## Decision Framework: Whose Number Wins", "### 7. Governance Decision
+# Framework", "## ⛔ Launch Failure Modes"), so those match the phrase anywhere in
+# the heading line rather than requiring it to lead. The bold-text variant
+# "**Failure modes specific to this function**" inside an edge-case section is a
+# list label, not a heading, so the leading-# anchor correctly ignores it.
+REQUIRED_AGENT_SECTIONS = [
+    ("Role", [r"(?im)^#{2,3}\s+Role\b"]),
+    ("Inputs Required", [r"(?im)^#{2,3}\s+Inputs Required\b"]),
+    ("Decision Framework", [r"(?im)^#{2,3}\s+.*Decision Framework"]),
+    ("Failure Modes", [r"(?im)^#{2,3}\s+.*Failure Modes"]),
+    ("Organisational Edge Cases",
+     [r"(?im)^#{2,3}\s+.*Organi[sz]ational Edge Cases"]),
+    ("Quality Standard", [r"(?im)^#{2,3}\s+Quality Standard\b"]),
+]
+
+
+def check_agent_house_structure(directory):
+    """Every agent file must carry the standard house sections.
+
+    Added once all 80 agents actually satisfied it, so it locks in the shape
+    rather than describing an aspiration. Like the em-dash check, this is here
+    because the drift it prevents already happened once: 46 of the agents had
+    quietly diverged, each missing a Decision Framework, a Failure Modes section,
+    or the like, and nothing caught it until a manual audit did.
+    """
+    for name in md_files(directory):
+        path = os.path.join(directory, name)
+        with open(path, encoding="utf-8") as fh:
+            content = fh.read()
+        missing = [
+            label
+            for label, patterns in REQUIRED_AGENT_SECTIONS
+            if not any(re.search(p, content) for p in patterns)
+        ]
+        if missing:
+            errors.append(
+                f"Agent {name} is missing house section(s): {', '.join(missing)}"
+            )
 
 
 def main():
@@ -146,9 +260,12 @@ def main():
 
     check_files_well_formed(AGENTS_DIR, "Agent")
     check_files_well_formed(FRAMEWORKS_DIR, "Framework")
+    check_agent_house_structure(AGENTS_DIR)
     cross_check_docs(agent_count, framework_count)
     check_code_fences(markdown)
     check_internal_links(markdown)
+    check_section_order(markdown)
+    check_no_em_dashes(markdown)
 
     print()
     for w in warnings:

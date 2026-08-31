@@ -14,13 +14,13 @@ Everything else is a distraction until that loop is proven.
 ## 1. LOOPS VS FUNNELS
 
 ```
-FUNNEL (linear — describes a single user's journey):
+FUNNEL (linear - describes a single user's journey):
 
   Acquisition → Activation → Retention → Revenue → Referral
   100 ───────→  40 ──────→  18 ──────→  9 ─────→  2
   (each stage leaks; you constantly re-fill the top by spending money)
 
-LOOP (circular — describes how the system grows itself):
+LOOP (circular - describes how the system grows itself):
 
         ┌──────────────────────────────────────────┐
         │                                            │
@@ -134,7 +134,7 @@ Below it, the equation that produces it. Below that, the inputs teams actually m
      ▼             ▼      ▼             ▼      ▼             ▼
   Signups   Activation  D7 ret    Feature    Dormant     Win-back
   by chan.  rate %      curve     depth      pool        campaign CTR
-  (INPUTS — teams own these and run experiments against them)
+  (INPUTS - teams own these and run experiments against them)
 
 NORTH STAR EXAMPLES BY MODEL:
   Marketplace : completed transactions/week (both sides matched)
@@ -151,10 +151,10 @@ NORTH STAR EXAMPLES BY MODEL:
 ```
 GOAL: Define the precise event + threshold that predicts long-term retention.
 
-STEP 1 — List candidate "value events" (the things users do early).
-STEP 2 — For each, split users who did vs. didn't in their first 7 days.
-STEP 3 — Compare D30 retention between the two groups. Biggest gap wins.
-STEP 4 — Find the threshold (the "magic number") where retention curve flattens.
+STEP 1 - List candidate "value events" (the things users do early).
+STEP 2 - For each, split users who did vs. didn't in their first 7 days.
+STEP 3 - Compare D30 retention between the two groups. Biggest gap wins.
+STEP 4 - Find the threshold (the "magic number") where retention curve flattens.
 
 THE FORMULA:  Activation = [core action] × [count] × [time window]
 
@@ -168,7 +168,7 @@ WORKED EXAMPLE (collaboration tool):
   Every onboarding experiment now optimizes for THIS, not generic signups.
 
 (Slack's famous version: "2,000 messages sent by a team." Facebook's: "7 friends
-in 10 days." Yours is specific to your product — go find it in your data.)
+in 10 days." Yours is specific to your product - go find it in your data.)
 ```
 
 ---
@@ -249,7 +249,7 @@ Worked: Reach 5,000 × Impact 2 × Confidence 0.8 ÷ Effort 1.5 = 5,333.
 EXPERIMENT: [name]                              Owner: ___  Ship date: ___
 HYPOTHESIS: We believe [change] will [move metric] by [MDE] because [evidence].
 PRIMARY METRIC: ____ (one only)   CURRENT BASELINE: ____
-GUARDRAIL METRICS: ____, ____ (must NOT worsen — e.g. revenue, latency, churn)
+GUARDRAIL METRICS: ____, ____ (must NOT worsen - e.g. revenue, latency, churn)
 DESIGN: variants ___ | split ___ | randomization unit: user | segment: ___
 SAMPLE SIZE: ___ per variant   DURATION: ___ (min 1 full week; 2 wks if novelty risk)
 HOLDOUT: ___% kept on control to measure long-term/cumulative effect
@@ -322,14 +322,14 @@ Tie triggers to the metrics tree: each fires when an INPUT metric breaches a lin
 ACTIVATION RATE (signup → first value):
   Consumer app   : 20–40% (great >40%)        B2B SaaS: 30–60% (great >60%)
 
-RETENTION (% of cohort still active) — these vary widely; use as rough goalposts:
+RETENTION (% of cohort still active) - these vary widely; use as rough goalposts:
 ┌────────────────┬───────┬───────┬───────┐
 │ Category       │  D1   │  D7   │  D30  │
 ├────────────────┼───────┼───────┼───────┤
 │ Social/comms   │ 50%   │ 30%   │ 22%   │
 │ Games (casual) │ 35%   │ 15%   │  6%   │
 │ Productivity   │ 40%   │ 25%   │ 16%   │
-│ B2B SaaS (mo)  │  —    │  —    │ 80%+  │ ← logo retention, monthly
+│ B2B SaaS (mo)  │  -    │  -    │ 80%+  │ ← logo retention, monthly
 └────────────────┴───────┴───────┴───────┘
 
 K-FACTOR        : >1 viral; 0.5–1 strong amplifier; <0.3 minor.
@@ -341,11 +341,11 @@ GROSS CHURN/mo  : <2% great, 2–4% ok, >5% leaky (SMB SaaS tolerates higher).
 
 ---
 
-## 11. WORKED EXAMPLE A — B2B SaaS (team analytics tool)
+## 11. WORKED EXAMPLE A - B2B SaaS (team analytics tool)
 
 ```
 North Star : "Weekly active workspaces with 3+ active members"
-Loop       : SALES-ASSISTED PLG — free workspace → teammate invites (viral assist)
+Loop       : SALES-ASSISTED PLG - free workspace → teammate invites (viral assist)
              → usage limit → AE engages → paid → more seats (expansion loop)
 Activation : "Connected 1 data source AND invited 2 teammates in first 7 days"
 Funnel     : 1,000 signups → 55% activate → 80% M1 retain → 9% to paid → NRR 118%
@@ -354,11 +354,11 @@ Key metrics: CAC $1,800 | ARPU $90/mo | gross margin 82% | payback = 1800/(90×.
 Top experiment: "Auto-suggest teammates from email domain" → +14% invites (shipped).
 ```
 
-## 12. WORKED EXAMPLE B — Consumer app (habit/journaling)
+## 12. WORKED EXAMPLE B - Consumer app (habit/journaling)
 
 ```
 North Star : "DAU who logged an entry" (the habit action, not "opened app")
-Loop       : CONTENT + VIRAL — users share streak cards → friends install → streak
+Loop       : CONTENT + VIRAL - users share streak cards → friends install → streak
 Activation : "Logged entries on 3 of first 7 days" (D30 ret 58% vs 11% if not)
 Funnel     : 10,000 installs → 32% activate → D1 44% / D7 26% / D30 15%
 Monetize   : freemium → 4% to paid at $40/yr → ARPU $1.60/yr blended

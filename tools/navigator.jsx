@@ -20,7 +20,7 @@ const phases = [
       "Open business bank account",
       "Register domain (.com mandatory) + social handles",
       "File trademark application (India ₹4,500 / US $250-350)",
-      "Register on Startup India / DPIIT (India — free, gives tax benefits)",
+      "Register on Startup India / DPIIT (India - free, gives tax benefits)",
       "Create basic brand identity (logo, colors, fonts)",
     ],
     framework: "founders-playbook.md", cost: "₹15-50K one-time" },
@@ -29,7 +29,7 @@ const phases = [
     checklist: [
       "Interview 30+ potential users (strangers, not friends)",
       "Ask 'Tell me about the last time you experienced [problem]'",
-      "Map 5+ competitors — USE their products yourself",
+      "Map 5+ competitors - USE their products yourself",
       "Read last 100 App Store reviews of each competitor",
       "Calculate TAM/SAM/SOM with real data sources",
       "Write your ONE-SENTENCE hypothesis",
@@ -50,7 +50,7 @@ const phases = [
   { id: "build", icon: "□", label: "Week 5-10: Build", color: "#BF5AF2", agent: "06,08,09",
     desc: "Build MVP, integrate payments, set up analytics, deploy",
     checklist: [
-      "Choose tech stack (use what you know — speed > perfection)",
+      "Choose tech stack (use what you know - speed > perfection)",
       "Set up CI/CD pipeline (GitHub Actions free tier)",
       "Build core flow end-to-end (signup → action → result)",
       "Integrate payments (Razorpay sandbox for India / Stripe for global)",
@@ -65,8 +65,8 @@ const phases = [
     checklist: [
       "Soft launch to 50-200 hand-picked users",
       "Track: Signup → First value (activation rate, target >30%)",
-      "Track: D1 and D7 retention — are they coming back?",
-      "Talk to EVERY early user. Not surveys — conversations.",
+      "Track: D1 and D7 retention - are they coming back?",
+      "Talk to EVERY early user. Not surveys - conversations.",
       "Fix top 3 things preventing activation or retention",
       "Measure NPS: 'How likely to recommend?' (target >30)",
       "Publish: Privacy Policy, Terms of Service, Cookie Policy",
@@ -135,6 +135,14 @@ const agentMap = {
   "56": "Revenue Accounting", "57": "Tax", "58": "Treasury",
   "59": "Internal Audit & Risk", "60": "Talent Acquisition", "61": "Total Rewards",
   "62": "Chief of Staff & BizOps", "63": "AI Evaluation & Red-Teaming",
+  "64": "Customer Support", "65": "Backend & Distributed Systems",
+  "66": "Enterprise Architecture", "67": "Developer Productivity & Platform",
+  "68": "FinOps & Cloud Economics", "69": "Business Continuity & Resilience",
+  "70": "Corporate & Physical Security", "71": "Workplace & Facilities",
+  "72": "Regulatory Affairs & Quality", "73": "Hardware & Manufacturing",
+  "74": "Internal Communications", "75": "Third-Party & Vendor Risk",
+  "76": "Market Expansion", "77": "Design Ops & Research Ops",
+  "78": "Accessibility & Inclusive Design", "79": "Data Science & Experimentation",
 };
 
 const quickLinks = [
@@ -196,7 +204,7 @@ export default function ProductArchitectUI() {
           <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: -0.5 }}>
             <span style={{ color: C.accent }}>Product</span> Architect
           </div>
-          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>64 agents. 35 frameworks. AI-native. Research-first. Zero to legend.</div>
+          <div style={{ fontSize: 12, color: C.textDim, marginTop: 2 }}>80 agents. 36 frameworks. AI-native. Research-first. Zero to legend.</div>
         </div>
         <div style={{ display: "flex", gap: 4 }}>
           <div className={`tab ${view === "journey" ? "tab-active" : ""}`} style={{ color: C.textMid }} onClick={() => setView("journey")}>Journey</div>
@@ -377,9 +385,9 @@ export default function ProductArchitectUI() {
             <div style={{ background: C.surface, borderRadius: 14, border: `1px solid ${C.border}`, padding: 20 }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 10 }}>How to use with Claude</h3>
               <div style={{ fontSize: 13, color: C.textMid, lineHeight: 1.8 }}>
-                <p style={{ marginBottom: 8 }}><strong style={{ color: C.text }}>Option 1 — Full product:</strong> Upload the product-architect/ folder to Claude Skills. Say "I want to build [your idea]." The system activates automatically in phases.</p>
-                <p style={{ marginBottom: 8 }}><strong style={{ color: C.text }}>Option 2 — Single topic:</strong> Say "Write a PRD for [feature]" or "Create a financial model for [product]." Only the relevant agent loads.</p>
-                <p style={{ marginBottom: 8 }}><strong style={{ color: C.text }}>Option 3 — Reference:</strong> Browse the agents/ and frameworks/ folders directly. Every file is self-contained.</p>
+                <p style={{ marginBottom: 8 }}><strong style={{ color: C.text }}>Option 1 - Full product:</strong> Upload the product-architect/ folder to Claude Skills. Say "I want to build [your idea]." The system activates automatically in phases.</p>
+                <p style={{ marginBottom: 8 }}><strong style={{ color: C.text }}>Option 2 - Single topic:</strong> Say "Write a PRD for [feature]" or "Create a financial model for [product]." Only the relevant agent loads.</p>
+                <p style={{ marginBottom: 8 }}><strong style={{ color: C.text }}>Option 3 - Reference:</strong> Browse the agents/ and frameworks/ folders directly. Every file is self-contained.</p>
                 <p><strong style={{ color: C.text }}>Context persistence:</strong> The system outputs Key Decision Records (KDRs) after each phase. Save the MASTER KDR and paste it into any new conversation to resume exactly where you left off.</p>
               </div>
             </div>

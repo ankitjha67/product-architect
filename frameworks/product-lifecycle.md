@@ -111,7 +111,7 @@ WEEKLY PRODUCT REVIEW (1 hour):
 - Discuss: Top 3 user feedback themes from past week
 - Action: Prioritize quick wins for next sprint
 - Experiment: Review running experiments, launch new ones
-- Support: Top support issues — systemic fixes needed?
+- Support: Top support issues - systemic fixes needed?
 ```
 
 ### Monthly

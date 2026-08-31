@@ -3,7 +3,7 @@
 A customer journey is the end-to-end path from "never heard of you" to "tells
 everyone about you." This framework maps every stage, who owns it, where the
 moments of truth are, how to instrument it, and the plays that move people from
-one stage to the next — with filled templates and worked B2B + B2C examples.
+one stage to the next - with filled templates and worked B2B + B2C examples.
 
 ---
 
@@ -37,7 +37,7 @@ AWARENESS ──► CONSIDERATION ──► PURCHASE ──► ONBOARDING ──
 For each stage, map: actions, thoughts, emotions, touchpoints, pain points,
 opportunities. Build from real research, not assumptions.
 
-EXAMPLE — "Consideration" stage of a B2B SaaS journey:
+EXAMPLE - "Consideration" stage of a B2B SaaS journey:
 | Lens         | Content                                                         |
 |--------------|-----------------------------------------------------------------|
 | ACTIONS      | Reads reviews, books demo, compares 3 vendors, loops in team    |
@@ -57,7 +57,7 @@ EMOTION CURVE (plot the highs and lows across the whole journey):
 
 ---
 
-## 3. MOMENTS OF TRUTH — "WOW" vs "OW"
+## 3. MOMENTS OF TRUTH - "WOW" vs "OW"
 
 ```
 MOMENTS OF TRUTH = high-stakes interactions that disproportionately shape
@@ -95,7 +95,7 @@ if nothing had gone wrong. Map your moments and over-engineer them.
 | Churn-save    | Customer Success (Agent 17)    | Product, Finance               |
 
 RULE: every stage has ONE accountable owner. The handoffs between owners
-(especially Sales → CS at purchase→onboarding) are where customers get dropped —
+(especially Sales → CS at purchase→onboarding) are where customers get dropped -
 make them explicit (see sales-playbook.md §10 warm handoff).
 ```
 
@@ -104,10 +104,10 @@ make them explicit (see sales-playbook.md §10 warm handoff).
 ## 5. SERVICE BLUEPRINT (frontstage / backstage / support)
 
 ```
-A service blueprint extends the journey map DOWN into your operations — it shows
+A service blueprint extends the journey map DOWN into your operations - it shows
 what has to happen behind the scenes to deliver each customer-facing moment.
 
-EXAMPLE — "Onboarding kickoff":
+EXAMPLE - "Onboarding kickoff":
   ───────────────────────── LINE OF INTERACTION ─────────────────────────
   CUSTOMER ACTION:   joins kickoff call → connects data → invites team
   ─────────────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ EXAMPLE — "Onboarding kickoff":
   SUPPORT PROCESSES:     CRM→CS sync, integration API, onboarding checklist tool
 
 USE IT TO: find where a great customer moment depends on a fragile internal
-process — and fix the backstage before it breaks the frontstage.
+process - and fix the backstage before it breaks the frontstage.
 ```
 
 ---
@@ -129,7 +129,7 @@ process — and fix the backstage before it breaks the frontstage.
 ONBOARDING is the highest-leverage stage: it sets retention for the whole life.
 Goal = reach TIME-TO-VALUE (TTV) as fast as possible.
 
-ACTIVATION MILESTONES (map the path to first value — see growth-model.md §5):
+ACTIVATION MILESTONES (map the path to first value - see growth-model.md §5):
   Signup → Setup complete → First core action → Aha moment → Habit formed
             │                  │                  │            │
         (remove friction)  (guide to it)     (celebrate)   (make it routine)
@@ -143,7 +143,7 @@ ONBOARDING PLAYBOOK:
   ✓ Measure: activation rate, TTV (median days/hours), onboarding completion %
 
 BENCHMARK: activation 30-50% (B2B self-serve), 20-40% (consumer). TTV: faster is
-always better — every hour of delay leaks users.
+always better - every hour of delay leaks users.
 ```
 
 ---
@@ -156,7 +156,7 @@ RETENTION LOOP (the habit):
   Levers: re-engagement triggers, increasing value over time, switching cost
   (data, integrations, workflows embedded), and continuous "next value."
 
-EXPANSION LOOP (grow the account — drives NRR > 100%):
+EXPANSION LOOP (grow the account - drives NRR > 100%):
   | Expansion type | Trigger                          | Play                   |
   |----------------|----------------------------------|------------------------|
   | Seat expansion | More team members invited/active | usage-based prompt     |
@@ -197,7 +197,7 @@ the cancel, not after. Proactive beats reactive every time.
 ## 9. VOICE-OF-CUSTOMER INSTRUMENTATION (tie to Agent 17)
 
 ```
-Place the right survey at the right moment — don't spray NPS everywhere.
+Place the right survey at the right moment - don't spray NPS everywhere.
 
 | Metric | Measures              | Best placement                    | Scale     |
 |--------|-----------------------|-----------------------------------|-----------|
@@ -227,7 +227,7 @@ See Agent 17 for CS operating model and the de-escalation/save scripts.
 | Renewal    | 60/30 days pre-renewal        | reinforce value/ROI | email + CSM    |
 | Churn-save | cancel initiated              | save offer/feedback | human email    |
 | Advocacy   | high NPS / power user         | referral/review ask | email + in-app |
-(Shared with growth-model.md §9 — keep these in sync as one source of truth.)
+(Shared with growth-model.md §9 - keep these in sync as one source of truth.)
 ```
 
 ---
@@ -256,7 +256,7 @@ acquisition, activation, or retention problem. See Agent 16 (Analytics).
 
 ---
 
-## 12. WORKED EXAMPLE A — B2B SaaS journey
+## 12. WORKED EXAMPLE A - B2B SaaS journey
 
 ```
 Product: design-review platform. ACV ₹6L/yr. Sales-assisted.
@@ -276,7 +276,7 @@ MOMENT OF TRUTH: the Sales→CS handoff at purchase→onboarding. Warm handoff d
 
 ---
 
-## 13. WORKED EXAMPLE B — B2C app journey
+## 13. WORKED EXAMPLE B - B2C app journey
 
 ```
 Product: habit-tracking app. Freemium, ₹399/mo premium. Mobile.

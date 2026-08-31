@@ -1,10 +1,10 @@
 # Brand & Messaging Framework
 
-Messaging is not copywriting — it's the strategic decision about what you mean to
+Messaging is not copywriting - it's the strategic decision about what you mean to
 customers and why they should choose you. This framework gives you the positioning
 statement, Dunford's positioning process, the messaging house, the persona-message
 matrix, voice & tone, the strategic narrative, naming, and the precise definitions
-of value prop vs tagline vs pitch vs boilerplate — all as copy-paste templates.
+of value prop vs tagline vs pitch vs boilerplate - all as copy-paste templates.
 
 ---
 
@@ -39,16 +39,16 @@ RULES:
 Positioning is the CONTEXT you set so customers instantly "get" your value.
 Work these in order:
 
-1. COMPETITIVE ALTERNATIVES — what would customers use if you didn't exist?
+1. COMPETITIVE ALTERNATIVES - what would customers use if you didn't exist?
    (Often "a spreadsheet" or "nothing/manual," not a named competitor.)
-2. UNIQUE ATTRIBUTES — what do you have that the alternatives don't? (features,
+2. UNIQUE ATTRIBUTES - what do you have that the alternatives don't? (features,
    capabilities, model, data, relationships)
-3. VALUE — what those attributes ENABLE for the customer (map attribute → benefit).
-4. WHO CARES MOST — the customers for whom that value is most acute (your best-fit
+3. VALUE - what those attributes ENABLE for the customer (map attribute → benefit).
+4. WHO CARES MOST - the customers for whom that value is most acute (your best-fit
    segment). Their characteristics define your target.
-5. MARKET CATEGORY — the frame of reference that makes your value obvious. Choosing
+5. MARKET CATEGORY - the frame of reference that makes your value obvious. Choosing
    the category is a strategic act (it sets expectations & competitors).
-6. (Optional) RELEVANT TREND — a "why now" trend that makes you timely without
+6. (Optional) RELEVANT TREND - a "why now" trend that makes you timely without
    overwhelming the positioning.
 
 KEY INSIGHT: don't start from "what is my product?" Start from "what's the best
@@ -99,7 +99,7 @@ Different buyers care about different things. Same product, tailored message.
 | Technical evaluator| Security, integration| "SOC2, API, SSO"               | docs, compliance|
 | Skeptic/blocker  | Switching risk         | "Migrate in a day, no lock-in" | migration guide|
 
-Fill one row per persona. Each gets a different headline, proof, and CTA — but
+Fill one row per persona. Each gets a different headline, proof, and CTA - but
 all ladder to the SAME positioning. Consistency in meaning, variety in emphasis.
 ```
 
@@ -122,7 +122,7 @@ DO / DON'T (make it concrete with examples):
   DO:    "Your file's ready. Here's what changed."
   DON'T: "Operation completed successfully. The system has processed your request."
 
-  DO:    "That didn't work. Try again or contact us — we'll fix it fast."
+  DO:    "That didn't work. Try again or contact us - we'll fix it fast."
   DON'T: "Error 0x004: An unexpected exception occurred."
 
 TONE BY CONTEXT:
@@ -140,21 +140,21 @@ TONE BY CONTEXT:
 ## 5. THE STRATEGIC NARRATIVE ("Why Now")
 
 ```
-A strategic narrative isn't about your product — it's about a SHIFT in the world
+A strategic narrative isn't about your product - it's about a SHIFT in the world
 that makes your product inevitable. (The "why now" that great categories ride.)
 
 STRUCTURE:
-  1. NAME THE SHIFT — a change in the world (tech, behavior, regulation, economics).
+  1. NAME THE SHIFT - a change in the world (tech, behavior, regulation, economics).
      "The way teams work has gone fully async and distributed."
-  2. STAKES — winners and losers of this shift. Create urgency, not fear.
+  2. STAKES - winners and losers of this shift. Create urgency, not fear.
      "Teams still relying on real-time, in-person rituals are falling behind."
-  3. PROMISED LAND — the better future for those who adapt (aspirational, not your feature list).
+  3. PROMISED LAND - the better future for those who adapt (aspirational, not your feature list).
      "Imagine feedback that's captured, tracked, and resolved without a single meeting."
-  4. OBSTACLES — why it's hard to reach that future today.
-  5. YOUR PRODUCT AS THE BRIDGE — you, as the way to cross to the promised land.
+  4. OBSTACLES - why it's hard to reach that future today.
+  5. YOUR PRODUCT AS THE BRIDGE - you, as the way to cross to the promised land.
 
 USE IT FOR: keynotes, fundraising, vision decks, category creation. The narrative
-sits ABOVE the messaging house — it's the worldview; the house is the pitch.
+sits ABOVE the messaging house - it's the worldview; the house is the pitch.
 ```
 
 ---
@@ -172,10 +172,10 @@ NAME TYPES:
   | Compound      | Facebook, Snowflake| descriptive+ownable| can feel literal   |
 
 EVALUATION CHECKLIST (score each candidate):
-  ☐ Easy to say & spell (the "radio test" — say it aloud, no spelling needed)
+  ☐ Easy to say & spell (the "radio test" - say it aloud, no spelling needed)
   ☐ Memorable & distinct in the category
   ☐ .com (or acceptable domain) and handles available
-  ☐ Trademark-clear in your classes & geographies (⚠ legal check — see disclaimer)
+  ☐ Trademark-clear in your classes & geographies (⚠ legal check - see disclaimer)
   ☐ No negative meaning in target languages
   ☐ Room to grow (won't box you into one product/market)
 ```
@@ -234,7 +234,7 @@ The same core message, adapted (not reinvented) per surface:
 | Social            | narrative + proof points, human tone      |
 
 GOVERNANCE: maintain a single messaging source-of-truth (the house + voice guide).
-Every surface references it. Inconsistency erodes trust — if the ad promises X and
+Every surface references it. Inconsistency erodes trust - if the ad promises X and
 onboarding delivers Y, you've created churn.
 ```
 
@@ -243,22 +243,22 @@ onboarding delivers Y, you've created churn.
 ## 10. BRAND ARCHITECTURE
 
 ```
-MASTERBRAND (branded house) — one strong brand spans products.
+MASTERBRAND (branded house) - one strong brand spans products.
   Google → Gmail, Maps, Drive.  Apple → iPhone, iPad, Watch.
   ✓ Efficient, equity compounds. ✗ One scandal touches everything.
 
-HOUSE OF BRANDS — independent brands, parent invisible.
+HOUSE OF BRANDS - independent brands, parent invisible.
   P&G → Tide, Gillette, Pampers.  Unilever → Dove, Axe.
-  ✓ Segment/risk isolation. ✗ Expensive — each brand built from scratch.
+  ✓ Segment/risk isolation. ✗ Expensive - each brand built from scratch.
 
-ENDORSED — sub-brands with parent endorsement.
+ENDORSED - sub-brands with parent endorsement.
   "Marriott" → Courtyard by Marriott.  ✓ borrows trust + own identity.
 
-SUB-BRAND — parent + product brand share billing.
+SUB-BRAND - parent + product brand share billing.
   Google Pixel, PlayStation by Sony.
 
 DECISION: branded house when products serve overlapping audiences & values align
-(most startups — don't fragment early). House of brands when audiences/values
+(most startups - don't fragment early). House of brands when audiences/values
 diverge or you need risk isolation. Default for a startup: masterbrand.
 ```
 

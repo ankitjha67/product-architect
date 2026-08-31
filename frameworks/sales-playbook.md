@@ -3,7 +3,7 @@
 Repeatable selling is a system, not a personality. This playbook gives you the
 ICP canvas, the stage model with exit criteria, the qualification frameworks
 (MEDDICC/BANT/SPICED), discovery and demo scripts, objection handling, the
-mutual action plan, pipeline math, forecasting, comp, and the dashboard — all
+mutual action plan, pipeline math, forecasting, comp, and the dashboard - all
 copy-paste ready.
 
 ---
@@ -27,7 +27,7 @@ BUYING COMMITTEE (the PEOPLE):
   End user:                   _______ Title: _______ Cares about: _______
   Blocker (can say no):       _______ Title: _______ Cares about: _______
 
-DISQUALIFIERS (instant no — protect your time):
+DISQUALIFIERS (instant no - protect your time):
   ⛔ _______________________  ⛔ _______________________
 
 WHY THEY BUY (top 3 pains, in their words):
@@ -38,7 +38,7 @@ ANTI-ICP: who looks like a fit but churns/never closes? _______________
 
 ---
 
-## 2. SALES STAGE MODEL — WITH EXIT CRITERIA
+## 2. SALES STAGE MODEL - WITH EXIT CRITERIA
 
 Stages are defined by what the BUYER has done, not what the rep hopes. A deal
 only advances when the exit criteria are objectively met.
@@ -46,14 +46,14 @@ only advances when the exit criteria are objectively met.
 ```
 | # | Stage          | Exit criteria (must be TRUE to advance)                  | Default % |
 |---|----------------|----------------------------------------------------------|-----------|
-| 0 | Lead/Prospect  | Fits ICP; contact info verified                          | —         |
+| 0 | Lead/Prospect  | Fits ICP; contact info verified                          | -         |
 | 1 | Qualified      | Pain + fit confirmed in conversation; meeting booked     | 10%       |
 | 2 | Discovery      | Pain, impact, timeline, decision process documented      | 20%       |
 | 3 | Demo/Eval      | Champion identified; tailored demo done; next step set   | 40%       |
 | 4 | Proposal       | Pricing presented; economic buyer engaged; MAP started   | 60%       |
 | 5 | Negotiation    | Verbal yes; redlines/terms in progress; close date firm  | 80%       |
 | 6 | Closed-Won     | Signed contract; payment terms agreed                    | 100%      |
-| — | Closed-Lost    | Documented reason + competitor (feeds win/loss analysis) | 0%        |
+| - | Closed-Lost    | Documented reason + competitor (feeds win/loss analysis) | 0%        |
 
 RULE: If you can't prove the exit criteria, the deal is NOT in that stage.
 "Sandbagging" (deals stuck) and "happy ears" (inflated stages) both kill forecasts.
@@ -84,17 +84,17 @@ MEDDICC SCORECARD (score each 0-2: 0=unknown, 1=partial, 2=confirmed):
 
 ### BANT (fast, transactional / SMB)
 ```
-Budget — can they afford it?   Authority — are we talking to the decider?
-Need — is the pain real?       Timeline — when must this be solved?
+Budget - can they afford it?   Authority - are we talking to the decider?
+Need - is the pain real?       Timeline - when must this be solved?
 Use when: short cycles, low ACV, single decision-maker.
 ```
 
-### SPICED (modern, outcome-led — Winning by Design)
+### SPICED (modern, outcome-led - Winning by Design)
 ```
-Situation — current state    Pain — the problem + impact
-Impact — quantified business consequence of the pain
-Critical event — a date forcing action (compliance, contract end, launch)
-Decision — process & criteria
+Situation - current state    Pain - the problem + impact
+Impact - quantified business consequence of the pain
+Critical event - a date forcing action (compliance, contract end, launch)
+Decision - process & criteria
 Use when: consultative, value-selling motions where outcomes drive the deal.
 ```
 
@@ -109,7 +109,7 @@ committees, SPICED when you sell business outcomes and need a "why now."
 STRUCTURE (30-45 min):
   0-3 min   Rapport + agenda: "I'd love to understand your world, share how we
             help teams like yours, and figure out together if it's a fit. Fair?"
-  3-25 min  Discovery (talk <30% of the time — they should talk 70%)
+  3-25 min  Discovery (talk <30% of the time - they should talk 70%)
   25-35 min Tailored value framing based on what you heard
   35-40 min Mutual next step (book it live, don't "follow up")
 
@@ -118,7 +118,7 @@ QUESTION BANK:
               "What tools/workarounds are involved?"
   Pain:       "What's the hardest part of that?"
               "What made you take this call now?"  ← surfaces the trigger
-  Impact:     "What does that cost you — in time, money, or risk?"
+  Impact:     "What does that cost you - in time, money, or risk?"
               "If nothing changes in 6 months, what happens?"
   Decision:   "Who else would weigh in on a decision like this?"
               "What does your evaluation/buying process usually look like?"
@@ -134,13 +134,13 @@ feature dump that converts at a fraction of the rate.
 
 ```
 TELL-SHOW-TELL (per feature):
-  TELL  — "You mentioned [their pain]. Here's how we solve it."
-  SHOW  — demonstrate the exact path to that outcome (their data if possible)
-  TELL  — "So that means [their metric] improves because [reason]."
+  TELL  - "You mentioned [their pain]. Here's how we solve it."
+  SHOW  - demonstrate the exact path to that outcome (their data if possible)
+  TELL  - "So that means [their metric] improves because [reason]."
 
 DO-NO-HARM RULES:
   ✓ Demo only what maps to discovered pain (3-5 things, not the whole product)
-  ✓ Start with the "wow" outcome, then show how — not a UI tour
+  ✓ Start with the "wow" outcome, then show how - not a UI tour
   ✓ Use their language, their use case, ideally their logo/data in a sandbox
   ✓ Pause for reactions: "How does that compare to how you do it today?"
   ⛔ Don't show features they didn't ask about ("happy to dig into X later")
@@ -166,7 +166,7 @@ Acknowledge → Reframe → Prove → Advance.  Never argue.
 | "Not the right time"       | Surface the real blocker             | Champion + critical event  |
 | "Have to check with [X]"   | Loop them in now                     | Multi-thread the deal      |
 
-TECHNIQUE: "Feel, Felt, Found" — "I understand why you feel that way; other
+TECHNIQUE: "Feel, Felt, Found" - "I understand why you feel that way; other
 [role]s felt the same; what they found was [outcome]."
 ```
 
@@ -176,10 +176,10 @@ TECHNIQUE: "Feel, Felt, Found" — "I understand why you feel that way; other
 
 ```
 PROPOSAL STRUCTURE (1-3 pages, never a 40-slide deck):
-  1. Their goals & pain (mirror their words — proves you listened)
+  1. Their goals & pain (mirror their words - proves you listened)
   2. Recommended solution (mapped to each pain)
   3. Expected outcomes / ROI (quantified)
-  4. Investment (pricing — anchor to value, present highest tier first)
+  4. Investment (pricing - anchor to value, present highest tier first)
   5. Implementation plan / timeline
   6. Next steps (the MAP)
 
@@ -219,7 +219,7 @@ go live by [date]?"). A buyer who won't build a MAP with you isn't ready.
 GUARDRAILS:
   ✓ Never discount without a concession in return (longer term, case study,
     upfront payment, multi-year, reference, faster signature)
-  ✓ Hold price until late — discount is your last lever, not your first
+  ✓ Hold price until late - discount is your last lever, not your first
   ✓ Trade, don't cave: "I can do [discount] IF we sign by [date] and do 2-year"
   ⛔ Never negotiate against yourself (don't drop price twice unprompted)
   ⛔ Never let price drop without the deal advancing in return
@@ -282,7 +282,7 @@ COVERAGE EXAMPLE:
 | Commit      | Rep stakes reputation it closes this period| ~90%       |
 | Best Case   | Could close with everything going right    | ~50%       |
 | Pipeline    | In-quarter but needs work                  | ~20%       |
-| Omitted     | Not this period                            | —          |
+| Omitted     | Not this period                            | -          |
 
 FORECAST CALL DISCIPLINE: each Commit deal must have MEDDICC ≥12, a MAP,
 economic-buyer engagement, and a firm close date. Forecast = Commit + a
@@ -304,7 +304,7 @@ COMMISSION STRUCTURE:
   Add SPIFs for strategic priorities (new logos, target product, multi-year).
   Clawback for churn within X months (aligns sales with retention).
 
-⚠️ Comp plans are powerful behavior levers — design with finance and review
+⚠️ Comp plans are powerful behavior levers - design with finance and review
 annually. Plan terms can have legal/tax implications; see the disclaimer.
 ```
 

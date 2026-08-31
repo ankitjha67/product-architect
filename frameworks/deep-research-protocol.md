@@ -1,7 +1,7 @@
-# Deep Research Protocol — Market Existence & Novelty Engine
+# Deep Research Protocol - Market Existence & Novelty Engine
 
 > **⚠️ DISCLAIMER:** Research verdicts are decision-support, not proof. "No competitor
-> found" never means "no competitor exists" — see the Honesty Doctrine (§9). Patent,
+> found" never means "no competitor exists" - see the Honesty Doctrine (§9). Patent,
 > regulatory, and freedom-to-operate conclusions require qualified professional review.
 > See `references/DISCLAIMER.md`.
 
@@ -19,7 +19,7 @@ the Depth Doctrine in `references/agent-standards.md`.
 
 ## 0. When This Fires (Auto-Trigger Conditions)
 
-Run the protocol — without being asked — whenever a request implies building or
+Run the protocol - without being asked - whenever a request implies building or
 betting on something:
 
 ```
@@ -29,7 +29,7 @@ ALWAYS TRIGGER ON:
 □ "is there a market for…", "does this exist", "who else does this", "is this novel"
 □ A pricing, positioning, or GTM decision (needs competitor reality, Agents 31/32/36)
 □ A technical approach decision (needs prior-art / reference architectures, Agent 06)
-□ Any claim of "first", "only", "no one does this" — these MUST be verified, never asserted
+□ Any claim of "first", "only", "no one does this" - these MUST be verified, never asserted
 
 DEPTH BY STAKES:
   Reversible / cheap decision  → Tier-1 scan (15-min equivalent): products + app stores + search
@@ -45,7 +45,7 @@ still apply the Depth Rubric (§8) to whatever you produce.
 ## 1. Decompose the Feature into Research Objects
 
 Never search the user's phrasing verbatim. Translate it into canonical, searchable
-objects first — most "novel" ideas are just unfamiliar vocabulary.
+objects first - most "novel" ideas are just unfamiliar vocabulary.
 
 ```
 FEATURE: "<what the user wants to build, in their words>"
@@ -63,10 +63,10 @@ FEATURE: "<what the user wants to build, in their words>"
    Q4 Where do incumbents fail (the refinement wedge)?
    Q5 Is there prior art / patents / research that bounds the space?
    Q6 Is there demand evidence (search volume, funding, communities, complaints)?
-   Q7 If it truly doesn't exist — WHY not? (the most important question)
+   Q7 If it truly doesn't exist - WHY not? (the most important question)
 ```
 
-## 2. Source Layers — Search All That The Stakes Require
+## 2. Source Layers - Search All That The Stakes Require
 
 Cover layers top-to-bottom. Higher layers = market reality; lower = signal & prior art.
 
@@ -82,7 +82,7 @@ Cover layers top-to-bottom. Higher layers = market reality; lower = signal & pri
 | **Regulatory** | Is it allowed / why it may not exist | Regulator sites, `references/compliance/*` |
 
 > **Tool use is mandatory when available.** If `WebSearch`/`WebFetch` or the
-> `deep-research` skill exists in the environment, USE them — run real queries, open
+> `deep-research` skill exists in the environment, USE them - run real queries, open
 > real sources, capture real URLs. If they do NOT exist, you MUST say so explicitly
 > (see §9) and downgrade every claim to a clearly-labeled hypothesis. Never invent a
 > citation, statistic, company, or URL to fill the gap.
@@ -103,7 +103,7 @@ Every finding gets a row. No row → it does not enter the verdict.
 **Source quality tiering (use to weight, not just collect):**
 - **T1 (primary):** the company's own product/pricing page, the patent, the filing, the dataset, the paper.
 - **T2 (reputable secondary):** established press, analyst notes, well-run review platforms.
-- **T3 (community/anecdotal):** Reddit/forum/social — great for demand & pain signals, weak for facts.
+- **T3 (community/anecdotal):** Reddit/forum/social - great for demand & pain signals, weak for facts.
 
 A verdict of "exists" needs ≥1 T1 or ≥2 T2 sources. A verdict of "novel" requires a
 *documented, exhausted* search (§5), not silence.
@@ -114,13 +114,13 @@ Before anything reaches the dossier, run the red-team pass:
 
 ```
 FOR EACH claim/citation:
-□ Does the URL actually exist and open? (If you can't verify it, mark UNVERIFIED — do not cite it.)
+□ Does the URL actually exist and open? (If you can't verify it, mark UNVERIFIED - do not cite it.)
 □ Does the source actually say what you claim, or did you pattern-match a title?
 □ Is the company/product real and currently operating (not dead/renamed/fictional)?
 □ Is the number traceable to a primary source, or is it folklore repeated everywhere?
 □ Am I forcing a "novel" verdict by under-searching, or an "exists" verdict by over-stretching analogies?
 
-IF a claim cannot survive this pass → DROP it or label it "UNVERIFIED — needs confirmation".
+IF a claim cannot survive this pass → DROP it or label it "UNVERIFIED - needs confirmation".
 A smaller set of true, cited claims beats a large set of confident guesses. Always.
 ```
 
@@ -146,27 +146,27 @@ Found ≥1 product doing the SAME job for the SAME user, verifiable?
 
 ```
 ╔════════════════════════════════════════════════════════════╗
-║ 🟥 VERDICT A — THIS ALREADY EXISTS (ESTABLISHED)            ║
+║ 🟥 VERDICT A - THIS ALREADY EXISTS (ESTABLISHED)            ║
 ║ N direct competitors found. This is a refine-not-reinvent   ║
 ║ play. Your edge must come from differentiation (§6), not    ║
 ║ novelty. Top players: [X, Y, Z]. See citations [E1…En].     ║
 ╚════════════════════════════════════════════════════════════╝
 
 ╔════════════════════════════════════════════════════════════╗
-║ 🟧 VERDICT B — EMERGING (EARLY MARKET)                      ║
+║ 🟧 VERDICT B - EMERGING (EARLY MARKET)                      ║
 ║ A few early entrants exist but none dominant. Window is open.║
 ║ Differentiate on [gap] and move faster. Citations [E1…En].  ║
 ╚════════════════════════════════════════════════════════════╝
 
 ╔════════════════════════════════════════════════════════════╗
-║ 🟨 VERDICT C — ADJACENT SOLUTIONS ONLY                      ║
+║ 🟨 VERDICT C - ADJACENT SOLUTIONS ONLY                      ║
 ║ No direct equivalent, but the job is solved differently by  ║
 ║ [substitutes]. You're competing with a workaround, not a    ║
 ║ product. Beating "good enough" is the real bar. [E1…En].    ║
 ╚════════════════════════════════════════════════════════════╝
 
 ╔════════════════════════════════════════════════════════════╗
-║ 🟩 VERDICT D — WHITE-SPACE (NO EVIDENCE OF AN EQUIVALENT)   ║
+║ 🟩 VERDICT D - WHITE-SPACE (NO EVIDENCE OF AN EQUIVALENT)   ║
 ║ An exhausted search across [synonyms]×[layers] surfaced NO  ║
 ║ direct competitor and NO citations for this niche.          ║
 ║ ⚠️ Absence of evidence ≠ proof of novelty. Before you       ║
@@ -174,7 +174,7 @@ Found ≥1 product doing the SAME job for the SAME user, verifiable?
 ╚════════════════════════════════════════════════════════════╝
 
 ╔════════════════════════════════════════════════════════════╗
-║ ⬜ VERDICT E — INCONCLUSIVE                                  ║
+║ ⬜ VERDICT E - INCONCLUSIVE                                  ║
 ║ Not enough searched/verified to rule either way. Listed     ║
 ║ exactly what was checked and the next queries to run.       ║
 ╚════════════════════════════════════════════════════════════╝
@@ -187,12 +187,12 @@ PER DIRECT COMPETITOR (deepest for the top 3):
   WHO: company, stage, funding, headcount trend, geography
   PRODUCT: how the feature actually works (you walked the flow / read the docs)
   PRICING: exact tiers, the price metric, what's gated
-  TRACTION: installs/reviews/ratings/traffic — orders of magnitude
+  TRACTION: installs/reviews/ratings/traffic - orders of magnitude
   STRENGTH: what they're genuinely good at (don't fight here)
   WEAKNESS: the 1-star themes, the ignored segment, the clunky flow ← YOUR WEDGE
   MOAT: what would be hard for you to replicate (and for them to copy you)
 
-REFINEMENT OUTPUT — "here's how to do it better":
+REFINEMENT OUTPUT - "here's how to do it better":
   • Differentiation thesis: the one axis where you'll be clearly better
   • Underserved segment they ignore
   • The 3 concrete things to do differently (feature/price/experience)
@@ -207,13 +207,13 @@ empty for a reason. Interrogate it:
 
 ```
 WHY MIGHT THIS NOT EXIST? (rule each in/out with evidence)
-  □ NO DEMAND — people don't actually want this (check: search volume, communities, prior failed startups)
-  □ TRIED & FAILED — it existed and died (search "[idea] shut down / dead pool / acquihire")
-  □ REGULATORY WALL — it's not legal / licensable yet (Agents 10/11/28, compliance refs)
-  □ TECHNICALLY INFEASIBLE / TOO EXPENSIVE — until recently (what just changed? "why now?")
-  □ TOO SMALL — real but sub-scale market (size it, Agent 02/18)
-  □ INCUMBENT-OWNED ADJACENT — a giant would crush it as a feature (platform risk)
-  □ GENUINELY EARLY — a real "why now" unlock (new tech, regulation, behavior shift)
+  □ NO DEMAND - people don't actually want this (check: search volume, communities, prior failed startups)
+  □ TRIED & FAILED - it existed and died (search "[idea] shut down / dead pool / acquihire")
+  □ REGULATORY WALL - it's not legal / licensable yet (Agents 10/11/28, compliance refs)
+  □ TECHNICALLY INFEASIBLE / TOO EXPENSIVE - until recently (what just changed? "why now?")
+  □ TOO SMALL - real but sub-scale market (size it, Agent 02/18)
+  □ INCUMBENT-OWNED ADJACENT - a giant would crush it as a feature (platform risk)
+  □ GENUINELY EARLY - a real "why now" unlock (new tech, regulation, behavior shift)
 
 NOVELTY VALIDATION PLAN (cheapest test first):
   1. Demand test: landing page / fake-door / pre-orders / interviews (target: N signals)
@@ -221,7 +221,7 @@ NOVELTY VALIDATION PLAN (cheapest test first):
   3. Smallest experiment that would change your mind → run it before building
 ```
 
-## 8. Depth Rubric — What "Mariana Trench" Means (0–4)
+## 8. Depth Rubric - What "Mariana Trench" Means (0–4)
 
 Every agent grades its own output before delivering. Below Level 3 is not shippable.
 
@@ -255,7 +255,7 @@ L4 TRENCH (target): L3 + the non-consensus insight; what everyone gets wrong her
 
 ## 10. Per-Agent Depth Map (every agent's domain-specific deep dive)
 
-This is how "every agent goes deep" — each has a required research move set and a
+This is how "every agent goes deep" - each has a required research move set and a
 depth definition. Agents consult their row before producing output.
 
 ```
@@ -311,7 +311,7 @@ depth definition. Agents consult their row before producing output.
 
 ```
 # Feature Research Dossier: <feature>
-TOOLS USED: <WebSearch/WebFetch/deep-research skill / NONE — claims are hypotheses>
+TOOLS USED: <WebSearch/WebFetch/deep-research skill / NONE - claims are hypotheses>
 SEARCH COVERAGE: synonyms [..] × layers [..]  (exhausted? Y/N)
 
 ## VERDICT  → [A/B/C/D/E banner + one-paragraph "so what"]
@@ -329,4 +329,4 @@ SEARCH COVERAGE: synonyms [..] × layers [..]  (exhausted? Y/N)
 ---
 
 *This protocol is the spine of the system's depth. An agent that produces an
-uncited, edge-case-free, "it depends" answer has failed it — regardless of length.*
+uncited, edge-case-free, "it depends" answer has failed it - regardless of length.*

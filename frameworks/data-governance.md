@@ -54,12 +54,12 @@ SENSITIVITY TIERS (every dataset/field gets exactly one):
 | CONFIDENTIAL | Material harm if leaked             | Contracts, financials, roadmaps|
 | RESTRICTED   | Severe harm; legal/regulatory       | PII, PHI, PCI, secrets    |
 
-SPECIAL-CATEGORY TAGS (orthogonal — a field can be CONFIDENTIAL + PII):
-  PII  — personally identifiable (name, email, phone, IP, device ID)
-  PHI  — protected health information (HIPAA)
-  PCI  — payment card data (PAN, CVV) — PCI-DSS scope
-  SPI  — sensitive PII (biometrics, religion, sexual orientation, Aadhaar)
-  SECRET — credentials, API keys, encryption keys
+SPECIAL-CATEGORY TAGS (orthogonal - a field can be CONFIDENTIAL + PII):
+  PII  - personally identifiable (name, email, phone, IP, device ID)
+  PHI  - protected health information (HIPAA)
+  PCI  - payment card data (PAN, CVV) - PCI-DSS scope
+  SPI  - sensitive PII (biometrics, religion, sexual orientation, Aadhaar)
+  SECRET - credentials, API keys, encryption keys
 ```
 
 **Handling rules by tier:**
@@ -80,7 +80,7 @@ SPECIAL-CATEGORY TAGS (orthogonal — a field can be CONFIDENTIAL + PII):
 ## 3. DATA CONTRACT TEMPLATE
 
 A data contract is an enforceable agreement between a data producer and consumers
-defining schema, semantics, quality, and ownership — so downstream doesn't break.
+defining schema, semantics, quality, and ownership - so downstream doesn't break.
 
 ```
 DATA CONTRACT: <dataset / table / event name>           Version: __  Status: __
@@ -94,7 +94,7 @@ SCHEMA:
   | user_id      | string   | no       | stable UUID, PII-pseudonymous key  |
   | signup_ts    | timestamp| no       | UTC, ISO-8601, event time          |
   | plan         | enum     | no       | one of {free,pro,enterprise}       |
-  | email        | string   | yes      | PII — masked in non-prod           |
+  | email        | string   | yes      | PII - masked in non-prod           |
 
 SEMANTICS:        what a row means (grain), how metrics are derived
 SLA:              freshness (e.g. <1h lag), availability (99.9%), completeness
@@ -171,8 +171,8 @@ RULES:
 
 ```
 PRINCIPLES:
-  ✓ Least privilege — grant the minimum needed, default-deny
-  ✓ Role-based (RBAC) or attribute-based (ABAC) — never per-person ad hoc grants
+  ✓ Least privilege - grant the minimum needed, default-deny
+  ✓ Role-based (RBAC) or attribute-based (ABAC) - never per-person ad hoc grants
   ✓ Just-in-time elevation for restricted data (time-boxed, approved, logged)
   ✓ Separate prod from non-prod; non-prod gets masked/synthetic data only
   ✓ Column- and row-level security for PII (mask email, filter by region/tenant)
@@ -194,7 +194,7 @@ ACCESS REQUEST FLOW:
 | PII (active customer)| life of relationship    | delete on DSR  | DPDP/GDPR     |
 | PII (churned)        | 30-90 days post-churn   | delete/anonymize| minimization  |
 | Financial records    | 7-8 years               | archive        | tax/statutory |
-| Payment card (PAN)   | do NOT store; tokenize  | —              | PCI-DSS       |
+| Payment card (PAN)   | do NOT store; tokenize  | -              | PCI-DSS       |
 | Health records (PHI) | per jurisdiction        | secure delete  | HIPAA/local   |
 | Backups              | rolling 30-90 days      | rotate/expire  | recovery      |
 | Security/audit logs  | 1 year+                 | archive        | forensics     |
@@ -242,7 +242,7 @@ METRIC: mean time to detect/resolve DQ incidents; repeat-incident rate.
 ## 11. PRIVACY HOOKS (Agent 39)
 
 ```
-GOVERNANCE FEEDS PRIVACY — these are the integration points:
+GOVERNANCE FEEDS PRIVACY - these are the integration points:
   ☐ Data inventory / RoPA (Record of Processing) built from the catalog
   ☐ Classification tags drive privacy controls (PII → consent, masking, DSR)
   ☐ Lineage powers DSR fulfillment (find every copy of a person's data)
@@ -264,7 +264,7 @@ THE COUNCIL (meets monthly):
   Mandate: approve policies, classification standards, resolve cross-domain
   disputes, prioritize quality investments, review metrics & incidents.
 
-FEDERATED MODEL (scales best — central standards, domain execution):
+FEDERATED MODEL (scales best - central standards, domain execution):
   CENTRAL team: sets policy, owns the catalog/platform, runs the council.
   DOMAIN teams: own their data products, stewards, and quality (data mesh style).
 

@@ -7,7 +7,7 @@
 ## Purpose
 This is the ONE document a solo founder reads on Day 0. It answers: What do I do?
 In what order? How much does it cost? When do I hire? When do I raise? How do I
-not die? Every other agent and framework provides depth — this provides SEQUENCE.
+not die? Every other agent and framework provides depth - this provides SEQUENCE.
 
 ---
 
@@ -16,20 +16,20 @@ not die? Every other agent and framework provides depth — this provides SEQUEN
 ### Vision, Mission & Values
 
 ```
-VISION (what the world looks like if you succeed — 10-year horizon):
+VISION (what the world looks like if you succeed - 10-year horizon):
 Template: "A world where [target users] can [desired outcome] without [current pain]."
 Example: "A world where every small business in India can accept payments as easily as cash."
-Rules: Aspirational. Not about your product — about the WORLD your product creates.
+Rules: Aspirational. Not about your product - about the WORLD your product creates.
        Should make you emotional. If it doesn't, it's not big enough.
 
-MISSION (how you'll make the vision real — 3-year horizon):
+MISSION (how you'll make the vision real - 3-year horizon):
 Template: "We [action] for [target users] by [method], enabling them to [outcome]."
 Example: "We build instant digital payment tools for India's 60M small businesses,
 enabling them to grow revenue and serve customers better."
 Rules: Specific, actionable, measurable progress toward the vision.
 
-VALUES (how you behave on the journey — these are your hiring/firing criteria):
-DON'T: List generic values ("integrity, innovation, teamwork" — meaningless).
+VALUES (how you behave on the journey - these are your hiring/firing criteria):
+DON'T: List generic values ("integrity, innovation, teamwork" - meaningless).
 DO: List specific behaviors with examples of what they look like in practice.
 
 EXAMPLE VALUES:
@@ -57,7 +57,7 @@ INDIA PATH:
   - Authorized capital: ₹10L initially (sufficient for seed stage)
 □ Register for GST (if turnover expected >₹40L goods / ₹20L services)
 □ Open current (business) bank account (ICICI Startup, HDFC, Razorpay X)
-□ Register on Startup India (DPIIT recognition — free, gives tax benefits)
+□ Register on Startup India (DPIIT recognition - free, gives tax benefits)
 □ File for trademark of your brand name (₹4,500 government fee)
 
 US PATH:
@@ -66,16 +66,16 @@ US PATH:
   - Timeline: 1-3 days
 □ Get EIN from IRS (free, online)
 □ Open business bank account (Mercury, Brex, SVB)
-□ File 83(b) election within 30 days of receiving founder shares (CRITICAL — saves massive taxes later)
+□ File 83(b) election within 30 days of receiving founder shares (CRITICAL - saves massive taxes later)
 
 WEBSITE LEGAL REQUIREMENTS (before going live):
-□ Privacy Policy — MANDATORY everywhere. What data you collect, why, how you protect it.
+□ Privacy Policy - MANDATORY everywhere. What data you collect, why, how you protect it.
   Use a template from iubenda, Termly, or have a lawyer draft (₹10-30K)
-□ Terms of Service — MANDATORY. Liability limits, acceptable use, dispute resolution.
-□ Cookie Policy + Consent Banner — MANDATORY for EU/UK users, best practice globally.
+□ Terms of Service - MANDATORY. Liability limits, acceptable use, dispute resolution.
+□ Cookie Policy + Consent Banner - MANDATORY for EU/UK users, best practice globally.
   Use Cookiebot, OneTrust, or CookieYes
-□ Refund/Cancellation Policy — MANDATORY for e-commerce (Consumer Protection Act India)
-□ Impressum — MANDATORY for Germany/Austria (company details on website)
+□ Refund/Cancellation Policy - MANDATORY for e-commerce (Consumer Protection Act India)
+□ Impressum - MANDATORY for Germany/Austria (company details on website)
 
 WEBSITE FOOTER (what MUST be there legally):
 □ © [Year] [Company Name]. All rights reserved.
@@ -83,9 +83,9 @@ WEBSITE FOOTER (what MUST be there legally):
 □ Company registration: CIN number (India) or incorporation state (US)
 □ GST number (India, if registered)
 □ Registered address
-□ Grievance Officer contact (India — mandatory for platforms)
+□ Grievance Officer contact (India - mandatory for platforms)
 □ "Made in India" / country of origin (if applicable)
-□ Accessibility statement (increasingly required — EU, US Section 508)
+□ Accessibility statement (increasingly required - EU, US Section 508)
 ```
 
 ---
@@ -95,7 +95,7 @@ WEBSITE FOOTER (what MUST be there legally):
 ```
 COST: ₹0-5K (mostly your time)
 
-□ Talk to 30 potential users (minimum). Not friends — strangers who have the problem.
+□ Talk to 30 potential users (minimum). Not friends - strangers who have the problem.
   Ask: "Tell me about the last time you experienced [problem]."
   DON'T ask: "Would you use an app that does X?" (everyone says yes, nobody means it)
 
@@ -129,7 +129,7 @@ COST: ₹0-30K (design tools, maybe a freelance designer)
 □ Design the screens (Agent 05 + anti-slop-design skill)
   - Use Figma (free for 3 projects)
   - Design: Default + Loading + Empty + Error states for each screen
-  - Don't obsess over pixel-perfection — focus on flow clarity
+  - Don't obsess over pixel-perfection - focus on flow clarity
 
 □ Write the PRD for MVP features ONLY (Agent 04 + PRD Framework)
 ```
@@ -143,7 +143,7 @@ SOLO FOUNDER (no co-founder, building yourself):
 - Tech stack: Whatever you know best. Ship speed > architecture perfection.
 - Hosting: Vercel/Railway/Render free tier → AWS/GCP when you need scale
 - Database: Supabase (free tier) or PlanetScale or Railway Postgres
-- Payments: Razorpay (India) or Stripe (global) — sandbox first
+- Payments: Razorpay (India) or Stripe (global) - sandbox first
 - Analytics: PostHog (free, self-hosted) or Mixpanel free tier
 - Monitoring: Sentry free tier
 - Total monthly cost: ₹0-5K on free tiers
@@ -156,7 +156,7 @@ WITH CO-FOUNDER / SMALL TEAM (2-3 people):
 OUTSOURCING (if non-technical founder):
 - Agency: ₹3-15L for MVP (be VERY specific with requirements)
 - Freelancer: ₹1-5L for MVP (higher risk, needs strong project management)
-- No-code: ₹0-1L (Bubble, FlutterFlow — fine for validation, plan to rebuild)
+- No-code: ₹0-1L (Bubble, FlutterFlow - fine for validation, plan to rebuild)
 - WARNING: Own your code. Ensure contract gives you full IP ownership.
 
 TIMELINE: 6-8 weeks maximum. If it's taking longer, you're building too much.
@@ -172,12 +172,12 @@ COST: ₹5-20K (marketing, tools)
   - Personal outreach: "I built this to solve [problem]. Would you try it and tell me honestly?"
 
 □ Track these metrics from Day 1 (Agent 16):
-  - Signup → First value action (activation rate) — target: >30%
-  - D1 / D7 retention — are they coming back?
-  - Core action completion rate — does the thing actually work?
-  - NPS: "How likely to recommend?" — target: >30
+  - Signup → First value action (activation rate) - target: >30%
+  - D1 / D7 retention - are they coming back?
+  - Core action completion rate - does the thing actually work?
+  - NPS: "How likely to recommend?" - target: >30
 
-□ Talk to EVERY early user. Not surveys — actual conversations.
+□ Talk to EVERY early user. Not surveys - actual conversations.
   "What almost made you stop? What confused you? What's missing?"
 
 □ Fix the top 3 things that prevent activation or retention. Nothing else matters yet.
@@ -193,7 +193,7 @@ COST: ₹5-20K (marketing, tools)
 WHEN: You have an idea + initial validation (30+ user interviews)
 RAISE: ₹10-50L ($10-50K)
 FROM: Personal savings, friends, family, angel investors
-VALUATION: ₹1-5 Cr ($100K-500K) — often a convertible note/SAFE to avoid valuation discussion
+VALUATION: ₹1-5 Cr ($100K-500K) - often a convertible note/SAFE to avoid valuation discussion
 WHAT YOU NEED: Pitch (verbal, 5 min), 1-page summary, demo or prototype
 WHAT YOU USE IT FOR: Build MVP, survive 4-6 months
 ```
@@ -206,7 +206,7 @@ RAISE: ₹50L-5Cr ($50K-500K)
 FROM: Angel investors, micro-VCs, accelerators (Y Combinator, Antler, 100X.VC)
 VALUATION: ₹5-30 Cr ($500K-3M)
 WHAT YOU NEED:
-  □ Pitch deck (10-12 slides — see below)
+  □ Pitch deck (10-12 slides - see below)
   □ Product demo (live, not screenshots)
   □ Metrics: Users, retention, activation rate, growth rate
   □ Cap table, incorporation docs
@@ -224,7 +224,7 @@ FROM: Institutional VCs (Sequoia, Accel, Matrix, Elevation for India)
 VALUATION: ₹50-200 Cr ($5-20M)
 WHAT YOU NEED:
   □ Pitch deck (12-15 slides, data-heavy)
-  □ Detailed financial model (3-year P&L, unit economics, cohort analysis) — Agent 18
+  □ Detailed financial model (3-year P&L, unit economics, cohort analysis) - Agent 18
   □ Data room: Financials, legal docs, cap table, contracts, metrics dashboard access
   □ Clear answer to: "Why will this be a $100M+ company?"
 WHAT YOU USE IT FOR: Scale team (15-40 people), grow 3-5x, build competitive moat
@@ -247,18 +247,18 @@ WHAT YOU NEED:
 ### Pitch Deck Structure (10-12 slides)
 
 ```
-SLIDE 1: Title — Company name, one-line description, your name
-SLIDE 2: Problem — Specific, painful, validated with data
-SLIDE 3: Solution — Your product, clear value proposition
-SLIDE 4: Demo / Product — Screenshots or live demo (NOT mockups if product is live)
-SLIDE 5: Market — TAM/SAM/SOM with credible sources (bottom-up, not fantasy)
-SLIDE 6: Business Model — How you make money, pricing, unit economics
-SLIDE 7: Traction — Metrics graph going up and to the right (if you have it)
-SLIDE 8: Competition — Honest positioning (matrix, not "we have no competitors")
-SLIDE 9: Team — Why THIS team? Relevant experience, unfair advantage
-SLIDE 10: Financials — Revenue projection, key assumptions, path to profitability
-SLIDE 11: Ask — How much, what you'll do with it, milestones it enables
-SLIDE 12: Appendix — Detailed metrics, customer quotes, technical architecture
+SLIDE 1: Title - Company name, one-line description, your name
+SLIDE 2: Problem - Specific, painful, validated with data
+SLIDE 3: Solution - Your product, clear value proposition
+SLIDE 4: Demo / Product - Screenshots or live demo (NOT mockups if product is live)
+SLIDE 5: Market - TAM/SAM/SOM with credible sources (bottom-up, not fantasy)
+SLIDE 6: Business Model - How you make money, pricing, unit economics
+SLIDE 7: Traction - Metrics graph going up and to the right (if you have it)
+SLIDE 8: Competition - Honest positioning (matrix, not "we have no competitors")
+SLIDE 9: Team - Why THIS team? Relevant experience, unfair advantage
+SLIDE 10: Financials - Revenue projection, key assumptions, path to profitability
+SLIDE 11: Ask - How much, what you'll do with it, milestones it enables
+SLIDE 12: Appendix - Detailed metrics, customer quotes, technical architecture
 
 RULES:
 - Less text, more visuals. If you can't explain a slide in 30 seconds, simplify it.
@@ -346,7 +346,7 @@ Fundraising takes 3-6 months. Don't start too late.
   - Categories: Essential, functional, analytics, marketing
   - Specific cookies listed with purpose and expiry
   - How to opt out / manage preferences
-  - Cookie consent mechanism (not just a banner — actual consent)
+  - Cookie consent mechanism (not just a banner - actual consent)
 
 □ Refund/Cancellation Policy (/refund)
   - Eligibility criteria
@@ -361,7 +361,7 @@ Fundraising takes 3-6 months. Don't start too late.
   - How to report accessibility issues
   - Contact information
 
-□ Security page (/security) — optional but builds trust
+□ Security page (/security) - optional but builds trust
   - How you protect user data
   - Certifications (SOC 2, ISO 27001 if obtained)
   - Responsible disclosure / bug bounty program
@@ -381,7 +381,7 @@ EVERY PAGE FOOTER MUST INCLUDE:
 □ Contact: support@company.com or contact page link
 □ Grievance Officer: [Name, email] (MANDATORY in India for intermediaries/e-commerce)
 □ Social links (if applicable)
-□ "Made with ♥ in [City]" — optional, adds personality
+□ "Made with ♥ in [City]" - optional, adds personality
 
 FOR SPECIFIC INDUSTRIES:
 □ Financial products: "Investments are subject to market risk..." disclaimers
@@ -429,7 +429,7 @@ COPYRIGHTS:
 □ Content: All original content (blog, docs, marketing) is yours
 □ Open source: Audit ALL dependencies for license compatibility (especially AGPL)
 □ Employee agreements: IP assignment clause in every employment contract
-□ Contractor agreements: "Work for hire" clause — IP belongs to company
+□ Contractor agreements: "Work for hire" clause - IP belongs to company
 
 TRADE SECRETS:
 □ NDA with every employee, contractor, advisor, investor (before sharing details)

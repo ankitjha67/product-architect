@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development system ever built.**
 
-64 specialized AI agents. 35 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO — and everything a product team needs to operate at Fortune 500 caliber.
+80 specialized AI agents. 36 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO - and everything a product team needs to operate at Fortune 500 caliber.
 
 ---
 
@@ -10,15 +10,15 @@
 
 Product Architect is a multi-agent skill system for [Claude](https://claude.ai) that transforms any product idea into a complete, executable blueprint. It covers **every department, function, process, and policy** that exists in a world-class company.
 
-Think of it as having the entire C-suite — CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 53 more department heads — available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
+Think of it as having the entire C-suite - CPO, CTO, CFO, COO, CMO, CRO, CISO, GC, CHRO, DPO, CDO, and 53 more department heads - available as specialized agents that work together, review each other's output, and ensure nothing falls through the cracks.
 
 ### Who Is This For?
 
-- **Solo founders** — A complete roadmap from Day 0 with costs, timelines, and what to do at each stage
-- **Product managers** — Production-grade PRDs, user flows, edge case coverage, A/B testing frameworks
-- **Engineering leads** — Architecture docs, test strategies, DevOps plans, security audits
-- **Startup teams** — Financial models, hiring plans, compliance checklists, governance structures
-- **Anyone building a product** — The reference library you wish existed when you started
+- **Solo founders** - A complete roadmap from Day 0 with costs, timelines, and what to do at each stage
+- **Product managers** - Production-grade PRDs, user flows, edge case coverage, A/B testing frameworks
+- **Engineering leads** - Architecture docs, test strategies, DevOps plans, security audits
+- **Startup teams** - Financial models, hiring plans, compliance checklists, governance structures
+- **Anyone building a product** - The reference library you wish existed when you started
 
 ---
 
@@ -53,13 +53,13 @@ Every file is self-contained. Browse `agents/` and `frameworks/` for any topic:
 
 ## The 64 Agents
 
-Organized by lifecycle phase — the natural order of building a company:
+Organized by lifecycle phase - the natural order of building a company:
 
 ### 🔍 Research & Audit
 | # | Agent | What It Does |
 |---|-------|-------------|
 | 47 | Deep Research | Exists-vs-novel market verdict with citations; research-first gate; depth enforcer |
-| 00 | Chief Reviewer | Final audit with veto — reviews ALL other agents |
+| 00 | Chief Reviewer | Final audit with veto - reviews ALL other agents |
 | 01 | Proactive Advisor | Surfaces ideas and blind spots you didn't think of |
 
 ### 📐 Product Development
@@ -203,17 +203,17 @@ Organized by lifecycle phase — the natural order of building a company:
 
 ## Key Features
 
-**Smart Loading** — The system is 38,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
+**Smart Loading** - The system is 38,000+ lines but never loads everything at once. `SMART-LOADER.md` routes each request to only the relevant agents, keeping Claude fast and context-efficient.
 
-**Memory That Survives** — The KDR (Key Decision Record) system outputs structured state summaries after every phase. These survive chat compaction and can be pasted into new conversations to resume exactly where you left off. Works on free tier.
+**Memory That Survives** - The KDR (Key Decision Record) system outputs structured state summaries after every phase. These survive chat compaction and can be pasted into new conversations to resume exactly where you left off. Works on free tier.
 
-**Global by Default** — Dedicated compliance deep-dives for India, US, EU, UK, and 6 Southeast Asian countries. Payment methods, tax rules, employment law, and industry regulations per market.
+**Global by Default** - Dedicated compliance deep-dives for India, US, EU, UK, and 6 Southeast Asian countries. Payment methods, tax rules, employment law, and industry regulations per market.
 
-**Founder's Playbook** — A week-by-week guide from Day 0 with exact costs at each stage, fundraising amounts by round, pitch deck structure, website legal requirements, and scaling milestones.
+**Founder's Playbook** - A week-by-week guide from Day 0 with exact costs at each stage, fundraising amounts by round, pitch deck structure, website legal requirements, and scaling milestones.
 
-**24 SOPs with Process Maps** — Step-by-step processes for every department with automation opportunities flagged and recommended tools.
+**24 SOPs with Process Maps** - Step-by-step processes for every department with automation opportunities flagged and recommended tools.
 
-**14 Complete Policies** — Code of conduct, anti-harassment (POSH), whistleblower, information security, data protection, anti-bribery, conflict of interest, insider trading, and more. Not templates — actual policies ready to customize.
+**14 Complete Policies** - Code of conduct, anti-harassment (POSH), whistleblower, information security, data protection, anti-bribery, conflict of interest, insider trading, and more. Not templates - actual policies ready to customize.
 
 ---
 
@@ -227,8 +227,8 @@ product-architect/
 ├── START-HERE.md                Free-tier guided entry point
 ├── ENHANCEMENTS.md              Enhancement roadmap (what was added & why)
 ├── LICENSE                      MIT License
-├── agents/                      64 specialized agents (00-63)
-├── frameworks/                  35 strategic & operational frameworks
+├── agents/                      80 specialized agents (00-79)
+├── frameworks/                  36 strategic & operational frameworks
 ├── references/
 │   ├── agent-standards.md       Quality + Depth Doctrine inherited by all agents
 │   ├── DISCLAIMER.md            Professional-review requirements
@@ -245,7 +245,7 @@ product-architect/
 | Metric | Value |
 |--------|-------|
 | Agents | 64 |
-| Frameworks | 35 |
+| Frameworks | 36 |
 | Country deep-dives | 5 (covering 11 countries) |
 | Total files | 122 |
 | Total lines | 38,000+ |
@@ -269,7 +269,7 @@ Contributions welcome:
 
 ## License
 
-MIT — use it however you want. Build great products.
+MIT - use it however you want. Build great products.
 
 ## Important Disclaimers
 
@@ -279,7 +279,7 @@ This repository is an educational and operational reference framework created th
 human-AI collaboration. It is **not a substitute for professional legal, financial,
 security, or HR advice.** All policies, compliance frameworks, and legal templates
 must be reviewed by qualified professionals before adoption. The 14 policy drafts,
-country compliance guides, salary bands, and financial models are starting frameworks —
+country compliance guides, salary bands, and financial models are starting frameworks -
 not final documents. Many processes described here require qualified human involvement
 and cannot be fully automated. See DISCLAIMER.md for full details.
 

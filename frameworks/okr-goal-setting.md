@@ -2,7 +2,7 @@
 
 ## Purpose
 This framework turns strategy into a small number of measurable goals everyone can rally
-behind — and away from a long to-do list nobody remembers by week three. It covers the North
+behind - and away from a long to-do list nobody remembers by week three. It covers the North
 Star Metric, the metrics tree beneath it, the mechanics of OKRs, how to cascade and run them
 without bureaucracy, and the failure modes that quietly kill goal-setting at most companies.
 
@@ -12,15 +12,15 @@ work lives in **Agent 37**.
 
 ---
 
-## PART 1 — THE NORTH STAR METRIC (NSM)
+## PART 1 - THE NORTH STAR METRIC (NSM)
 
 ```
 DEFINITION: the ONE metric that best captures the core value your product delivers to
-customers. Everything else ladders up to it. It is a LEADING proxy for long-term success —
+customers. Everything else ladders up to it. It is a LEADING proxy for long-term success -
 not revenue itself (revenue is a lagging output; the NSM predicts it).
 
-HOW TO CHOOSE — a good NSM is:
-□ A measure of customer VALUE RECEIVED (not value extracted) — when it goes up, customers
+HOW TO CHOOSE - a good NSM is:
+□ A measure of customer VALUE RECEIVED (not value extracted) - when it goes up, customers
   are genuinely better off.
 □ A LEADING indicator of revenue/retention (it moves before the money does).
 □ Something the whole company can influence and rally around.
@@ -44,17 +44,17 @@ EXAMPLES BY BUSINESS MODEL:
 (Real-world: Airbnb ~nights booked; Spotify ~time spent listening; Slack ~messages by teams.)
 
 ANTI-PATTERNS (NSMs that lie to you):
-⛔ Revenue or GMV as the NSM — lagging, and tempts you to extract instead of deliver value.
-⛔ Registered users / total signups — a vanity count; says nothing about value received.
-⛔ Page views / sessions — measures activity, not value (more sessions can mean confusion).
-⛔ A number you can't decompose into things teams control — un-actionable.
-⛔ TWO north stars — then it isn't north. Pick one; the rest are supporting metrics.
+⛔ Revenue or GMV as the NSM - lagging, and tempts you to extract instead of deliver value.
+⛔ Registered users / total signups - a vanity count; says nothing about value received.
+⛔ Page views / sessions - measures activity, not value (more sessions can mean confusion).
+⛔ A number you can't decompose into things teams control - un-actionable.
+⛔ TWO north stars - then it isn't north. Pick one; the rest are supporting metrics.
 ```
 
 ### The Metrics Tree (input → output decomposition)
 
 ```
-The NSM is an OUTPUT. You cannot work on an output directly — you work on the INPUTS that
+The NSM is an OUTPUT. You cannot work on an output directly - you work on the INPUTS that
 drive it. Decompose the NSM into a tree of input metrics that teams can own.
 
   NORTH STAR (output)
@@ -63,7 +63,7 @@ drive it. Decompose the NSM into a tree of input metrics that teams can own.
         ├── Input metric B  ── owned by Team 2
         └── Input metric C  ── owned by Team 3
 
-WORKED EXAMPLE — NSM = Weekly Active Teams performing the core action:
+WORKED EXAMPLE - NSM = Weekly Active Teams performing the core action:
   NSM = (new teams) × (% activated) × (% retained W/W) × (actions per active team)
         └ Acquisition   └ Activation   └ Retention        └ Engagement/depth
 Each factor is an input metric a team owns and writes a Key Result against. This is how the
@@ -75,7 +75,7 @@ or your tree is incomplete. Build the tree first; write OKRs against its branche
 
 ---
 
-## PART 2 — OKR MECHANICS
+## PART 2 - OKR MECHANICS
 
 ```
 OKR = OBJECTIVE + KEY RESULTS.
@@ -96,25 +96,25 @@ THE CONSTRAINTS THAT MAKE OKRs WORK:
 □ MAX 3 OBJECTIVES per team per quarter. Focus is the entire point. 7 objectives = 0 priorities.
 □ 2-5 Key Results per Objective. Fewer is better.
 □ KRs are OUTCOMES, not a checklist of initiatives.
-□ OKRs are TRANSPARENT — everyone can see everyone's. Alignment requires visibility.
+□ OKRs are TRANSPARENT - everyone can see everyone's. Alignment requires visibility.
 
 SCORING (0.0 – 1.0):
   Score each KR 0.0–1.0 (e.g., went 31%→44% on a 31%→50% target ≈ (44-31)/(50-31) = 0.68).
   THE 70% SWEET SPOT: for ASPIRATIONAL OKRs, an average score of ~0.7 is the target. Hitting
   1.0 means you sandbagged (the goal was too easy). Scoring ~0.3 consistently means you're
-  setting fantasies. ~0.7 means you reached just beyond your grasp — exactly the point.
+  setting fantasies. ~0.7 means you reached just beyond your grasp - exactly the point.
   GRADE the score, then INTERPRET it (a 0.4 with huge learning can beat a 0.7 of busywork).
 
 ASPIRATIONAL vs COMMITTED OKRs (distinguish them explicitly):
   - COMMITTED: must hit 1.0 (e.g., ship compliance feature by deadline, keep uptime ≥99.9%).
     Missing one is a serious miss requiring re-planning. Score target = 1.0.
   - ASPIRATIONAL / "moonshot": deliberately set so ~0.7 is a great result. Stretch the org.
-  Mixing them without labeling causes confusion — mark each OKR's type.
+  Mixing them without labeling causes confusion - mark each OKR's type.
 ```
 
 ---
 
-## PART 3 — THE CASCADE (alignment without rigid waterfall)
+## PART 3 - THE CASCADE (alignment without rigid waterfall)
 
 ```
 GOAL: every team's OKRs visibly serve the company's, WITHOUT a mechanical top-down dictation
@@ -124,20 +124,20 @@ HOW IT ACTUALLY WORKS:
   Company sets 3 Objectives + KRs (from Strategy, Agent 03).
         │  (published, transparent)
         ▼
-  Teams DRAFT their own OKRs that they believe will move the company KRs — bottom-up.
+  Teams DRAFT their own OKRs that they believe will move the company KRs - bottom-up.
         │  (negotiate up + sideways)
         ▼
   Leadership + teams reconcile: ensure coverage (every company KR has a team driving it),
   resolve conflicts and dependencies, kill OKRs that don't ladder up.
         ▼
-  (Optional) Individuals align — many high-performing orgs STOP at the team level and don't
+  (Optional) Individuals align - many high-performing orgs STOP at the team level and don't
   do individual OKRs at all (they conflate with performance reviews and create busywork).
 
 PRINCIPLES:
 □ ~60% of team OKRs should be set bottom-up. Ownership comes from authorship.
 □ Alignment is achieved by TRANSPARENCY + reconciliation, not by copy-pasting KRs downward.
 □ Map cross-team DEPENDENCIES explicitly ("our KR depends on Platform shipping X").
-□ NOT every team needs to ladder to every company OKR — but every company OKR needs an owner.
+□ NOT every team needs to ladder to every company OKR - but every company OKR needs an owner.
 □ Keep OKRs SEPARATE from performance reviews and compensation. The moment bonuses ride on
   OKR scores, everyone sandbags and aspiration dies. (Grade for learning, pay for impact
   judged holistically.)
@@ -145,7 +145,7 @@ PRINCIPLES:
 
 ---
 
-## PART 4 — CADENCE (the operating rhythm)
+## PART 4 - CADENCE (the operating rhythm)
 
 ```
 OKRs are not a document you write and file. They're a RHYTHM. The cadence is the product.
@@ -160,7 +160,7 @@ OKRs are not a document you write and file. They're a RHYTHM. The cadence is the
 
 WEEKLY CONFIDENCE CHECK: for each KR, owners post a confidence level (e.g., 1-10 or
 red/yellow/green) that they'll hit it, plus what changed and what's blocked. The TREND in
-confidence is the early-warning system — a KR sliding from green→yellow→red in weeks 2-4 lets
+confidence is the early-warning system - a KR sliding from green→yellow→red in weeks 2-4 lets
 you act while there's still time, instead of discovering the miss at quarter-end.
 
 ANNUAL vs QUARTERLY: keep annual OKRs few and directional; do the real work quarterly.
@@ -170,7 +170,7 @@ Don't re-plan annual goals every quarter (whiplash), and don't set-and-forget qu
 
 ---
 
-## PART 5 — COMMON FAILURE MODES
+## PART 5 - COMMON FAILURE MODES
 
 ```
 ⛔ SANDBAGGING: setting targets you know you'll hit (so the score looks good / bonus is safe).
@@ -192,16 +192,16 @@ Don't re-plan annual goals every quarter (whiplash), and don't set-and-forget qu
 
 ---
 
-## PART 6 — OKRs vs KPIs vs INITIATIVES
+## PART 6 - OKRs vs KPIs vs INITIATIVES
 
 ```
 These three get conflated constantly. Keep them distinct:
 
-KPIs (Key Performance Indicators): the ONGOING health metrics you ALWAYS watch — uptime,
+KPIs (Key Performance Indicators): the ONGOING health metrics you ALWAYS watch - uptime,
   NRR, gross margin, NPS, churn. They have no end date; they're the dashboard of the business.
   A KPI becomes a KR only when you decide to CHANGE it this quarter.
 
-OKRs: the FEW things you want to CHANGE or ACHIEVE this period — focused, time-boxed, ambitious.
+OKRs: the FEW things you want to CHANGE or ACHIEVE this period - focused, time-boxed, ambitious.
   Not everything; the things that matter most right now.
 
 INITIATIVES / PROJECTS: the WORK you do to move a KR. The bets, features, campaigns, experiments.
@@ -214,12 +214,12 @@ RELATIONSHIP:
   → Initiatives: launch expansion add-on, build PQL upsell, ship the new analytics dashboard.
 
 RULE: most metrics are KPIs (watch). A handful become KRs (change). Initiatives are how. Don't
-turn your whole KPI dashboard into OKRs — that's how you get 40 "goals" and zero focus.
+turn your whole KPI dashboard into OKRs - that's how you get 40 "goals" and zero focus.
 ```
 
 ---
 
-## PART 7 — WORKED EXAMPLE (SaaS startup, one quarter)
+## PART 7 - WORKED EXAMPLE (SaaS startup, one quarter)
 
 ```
 NORTH STAR: Weekly Active Teams performing the core action.
@@ -242,8 +242,8 @@ COMPANY OBJECTIVE 3 (aspirational): "Existing customers grow with us."
 
 QUARTER-END GRADING (illustrative):
   Obj 1: KR1 0.68, KR2 0.9, KR3 0.4  → avg 0.66 (good aspirational result; retention KR taught us
-         most — depth, not just speed, drives W4). Carry the learning forward.
-  Obj 2: 1.0 (committed — met, as required).
+         most - depth, not just speed, drives W4). Carry the learning forward.
+  Obj 2: 1.0 (committed - met, as required).
   Obj 3: KR1 0.54, KR2 0.7 → 0.62. Expansion add-on landed; NRR lags (slower to show in cohorts).
 ```
 
@@ -293,5 +293,5 @@ BEFORE you finalize OKRs for the quarter:
 □ Are cross-team dependencies mapped?
 □ Are OKRs transparent to everyone, and SEPARATE from comp/reviews?
 □ Is the cadence scheduled (weekly check-in, mid-quarter review, end-quarter grading)?
-□ Could you complete every KR and still have nothing actually improve? If yes — they're tasks. Rewrite.
+□ Could you complete every KR and still have nothing actually improve? If yes - they're tasks. Rewrite.
 ```

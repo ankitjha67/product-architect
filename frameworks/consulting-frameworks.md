@@ -43,7 +43,7 @@ BUYER POWER: [Low/Medium/High]
 
 THREAT OF SUBSTITUTES: [Low/Medium/High]
 - Can users solve this problem differently? (Not just direct competitors)
-- Example: Uber's substitute isn't just Ola — it's public transport, walking, working from home
+- Example: Uber's substitute isn't just Ola - it's public transport, walking, working from home
 
 COMPETITIVE RIVALRY: [Low/Medium/High]
 - Number of competitors, their relative size
@@ -137,7 +137,7 @@ SOFT ELEMENTS (harder but more impactful):
 - Shared Values: Core beliefs that drive behavior (speed? quality? user-first?)
 - Skills: Capabilities the team has (and gaps that need filling)
 - Style: Leadership approach and organizational culture
-- Staff: People — hiring, development, retention
+- Staff: People - hiring, development, retention
 
 ALL 7 MUST ALIGN. Strategy without skills = failure. Structure without culture = dysfunction.
 ```

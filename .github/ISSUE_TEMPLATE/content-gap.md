@@ -17,7 +17,7 @@ labels: content
 ## What good would look like
 
 <!-- The numbers, edge cases, frameworks, or decision logic that should be there.
-     Sources welcome — this repo never fabricates statistics. -->
+     Sources welcome - this repo never fabricates statistics. -->
 
 ## Domain check
 

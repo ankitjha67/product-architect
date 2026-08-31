@@ -40,7 +40,7 @@ TRIAGE    Assess severity (matrix above). If SEV1/2: declare incident,
           ⚡ auto-create Slack channel #inc-YYYYMMDD-name, assign roles.
           Update status page → "Investigating."
 
-MITIGATE  STOP THE BLEEDING FIRST — restore service before finding root cause.
+MITIGATE  STOP THE BLEEDING FIRST - restore service before finding root cause.
           Fastest safe lever: roll back, feature-flag off, failover, scale up,
           drain a bad node. Mitigation ≠ fix. Buy time, reduce impact.
           Status page → "Identified."
@@ -52,7 +52,7 @@ LEARN     Blameless postmortem within 72h (SEV1/2). Action items with owners
           + dates. Track to completion. Add detection/prevention so it can't recur.
 
 KEY PRINCIPLE: mitigate before you diagnose. A customer doesn't care WHY it's
-broken while it's broken — they care that it's fixed.
+broken while it's broken - they care that it's fixed.
 ```
 
 ---
@@ -66,7 +66,7 @@ one person may wear multiple hats; for SEV1, always split them.
 | Role                  | Owns                                                  |
 |-----------------------|------------------------------------------------------|
 | INCIDENT COMMANDER (IC)| The incident. Coordinates, decides, delegates.       |
-|                       | Does NOT fix — keeps the response organized. The      |
+|                       | Does NOT fix - keeps the response organized. The      |
 |                       | single decision-maker. Everyone reports to the IC.    |
 | OPS / RESOLVER(S)     | Hands on keyboard. Investigates and applies fixes.    |
 |                       | The only people changing the system.                  |
@@ -91,7 +91,7 @@ ROTATION:
   ✓ Primary + secondary (backup) on every shift
   ✓ Weekly rotation, handoff every Monday with a written summary of open issues
   ✓ Follow-the-sun for global teams (no one paged at 3am if avoidable)
-  ✓ Compensate on-call (stipend / time-off) — it's real labor
+  ✓ Compensate on-call (stipend / time-off) - it's real labor
 
 ESCALATION POLICY:
   Page primary → no ack in X min → page secondary → no ack → page eng lead → manager
@@ -121,10 +121,10 @@ Silence makes people assume the worst and DM the responders.
 
 INTERNAL UPDATE (Slack):
   [SEV1][UPDATE 14:30] Impact: checkout failing for ~30% of users since 14:05.
-  Current status: identified — bad deploy v2.3.1, rolling back now.
+  Current status: identified - bad deploy v2.3.1, rolling back now.
   ETA to mitigation: ~10 min. Next update: 15:00. IC: @alice  Comms: @bob
 
-STATUS PAGE (external, customer-facing — calm, factual, no internal jargon):
+STATUS PAGE (external, customer-facing - calm, factual, no internal jargon):
   "We're investigating reports of errors during checkout. Some users may be
    unable to complete purchases. We're working on it and will update shortly."
   → Identified → Monitoring a fix → Resolved (with brief recap).
@@ -200,7 +200,7 @@ HOW IT DRIVES BEHAVIOR:
   between product and engineering instead of an argument.
 
 BURN-RATE ALERTS: page when the budget is being consumed too fast (e.g. 2% of
-30-day budget burned in 1 hour) — catches slow-bleed incidents early.
+30-day budget burned in 1 hour) - catches slow-bleed incidents early.
 See Agent 08 (SRE/Reliability) for SLO definition and budget policy.
 ```
 
@@ -217,7 +217,7 @@ DIAGNOSIS STEPS:
   1. Check ___ (expected: ___; if abnormal → ___)
   2. Check ___
 MITIGATION (in order of preference):
-  1. <fastest safe action — e.g. "feature-flag X off">
+  1. <fastest safe action - e.g. "feature-flag X off">
   2. <rollback / failover / scale>
 ESCALATION: if not resolved in ___ min, page <team/owner>
 ROLLBACK: how to undo any change made here
@@ -269,11 +269,11 @@ while burning out on-call) is not real progress.
 ## ONE-PAGE INCIDENT QUICK CARD
 
 ```
-1. DECLARE  — any engineer; pick severity (when unsure, go HIGHER)
-2. ASSIGN   — IC first, then Comms + Scribe (SEV1/2)
-3. COMMUNICATE — open the channel, update status page "Investigating"
-4. MITIGATE — stop the bleeding (rollback / flag off / failover) BEFORE root cause
-5. UPDATE   — every 30 min (SEV1) / 60 min (SEV2), internal + external
-6. RESOLVE  — confirm healthy, status "Resolved," verify the real fix
-7. LEARN    — blameless postmortem in 72h, action items with owners + dates
+1. DECLARE  - any engineer; pick severity (when unsure, go HIGHER)
+2. ASSIGN   - IC first, then Comms + Scribe (SEV1/2)
+3. COMMUNICATE - open the channel, update status page "Investigating"
+4. MITIGATE - stop the bleeding (rollback / flag off / failover) BEFORE root cause
+5. UPDATE   - every 30 min (SEV1) / 60 min (SEV2), internal + external
+6. RESOLVE  - confirm healthy, status "Resolved," verify the real fix
+7. LEARN    - blameless postmortem in 72h, action items with owners + dates
 ```

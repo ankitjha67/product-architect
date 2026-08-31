@@ -1,7 +1,7 @@
-# AI for Every Department — Applied LLM / RAG / Agent Playbooks
+# AI for Every Department - Applied LLM / RAG / Agent Playbooks
 
 This is the concrete, department-by-department map of how each of the 64 agents applies
-modern AI (LLMs, RAG, LangGraph/agents) in real work — so "every department gets an AI
+modern AI (LLMs, RAG, LangGraph/agents) in real work - so "every department gets an AI
 upgrade" means something specific. For the **how** (the maturity ladder, RAG pipeline,
 LangGraph, evals, guardrails, OWASP LLM Top 10), see `frameworks/ai-engineering-stack.md`;
 this file is the **where**. The discipline is the same everywhere: pick the **lowest
@@ -11,7 +11,7 @@ sign off** on anything touching untrusted input or personal data.
 
 > **How to read the Pattern column:** RAG = grounded retrieval; tool = function calling;
 > workflow = code-orchestrated multi-step (L3, usually the right answer); agent = model
-> decides steps in a loop (L4/L5 — justify it). Default to the latest Claude with adaptive
+> decides steps in a loop (L4/L5 - justify it). Default to the latest Claude with adaptive
 > thinking; prefer MCP for integrations. Every use case assumes RAG-grounding on YOUR data
 > before generating.
 
@@ -20,7 +20,7 @@ sign off** on anything touching untrusted input or personal data.
 ## Product & Strategy (00, 01, 02, 03, 04, 05, 35, 47)
 
 *AI theme: turn unstructured signal (interviews, market noise, past specs) into grounded,
-cited insight — synthesis and red-teaming, never autonomous decision-making. Humans still
+cited insight - synthesis and red-teaming, never autonomous decision-making. Humans still
 own the bets, the acceptance criteria, and the roadmap.*
 
 | Agent | High-value AI use case (specific, real) | Pattern | Stack / tools | Guardrail & metric |
@@ -31,8 +31,8 @@ own the bets, the acceptance criteria, and the roadmap.*
 | **05 Design** | Generate UI variants and heuristic-critique them against the design system | tool + RAG | RAG over design tokens/component library; vision model critique | WCAG check + designer sign-off; metric: a11y pass rate, rework loops |
 | **35 User Research** | Interview transcription + thematic analysis; synthetic-user pretest (with caveats) | RAG | Whisper/Otter transcription → RAG synthesis; insights repo | Cite quotes; synthetic answers are a pretest, never ground truth; metric: insight reuse |
 | **47 Deep Research** | Agentic RAG + web search to produce the exists-vs-novel feature dossier | agent (L4) | LangGraph agent, web + RAG tools, reranked sources | Cite every claim with a live URL; metric: source quality + recall of prior art |
-| **01 Advisor** | Blind-spot detection — surface missed best practices from the playbook corpus | RAG + workflow | RAG over frameworks/past-product KDRs | Output as *suggestions*, never silent decisions; metric: suggestion acceptance rate |
-| **00 Chief Review** | Cross-agent consistency audit — detect contradictions across all KDRs/artifacts | RAG + workflow | RAG over KDR chain; LLM-as-judge conflict grader | Cite the conflicting decision numbers; metric: conflicts caught vs. manual audit |
+| **01 Advisor** | Blind-spot detection - surface missed best practices from the playbook corpus | RAG + workflow | RAG over frameworks/past-product KDRs | Output as *suggestions*, never silent decisions; metric: suggestion acceptance rate |
+| **00 Chief Review** | Cross-agent consistency audit - detect contradictions across all KDRs/artifacts | RAG + workflow | RAG over KDR chain; LLM-as-judge conflict grader | Cite the conflicting decision numbers; metric: conflicts caught vs. manual audit |
 
 ---
 
@@ -40,14 +40,14 @@ own the bets, the acceptance criteria, and the roadmap.*
 
 *AI theme: this bucket both **builds** the AI platform (38 owns the vector pipeline, 29 owns
 evals & governance) and **consumes** it (code review, docs bots, incident copilots). Every
-generated artifact — code, SDK snippet, sample, migration — is verified by a test or a human
+generated artifact - code, SDK snippet, sample, migration - is verified by a test or a human
 before it ships.*
 
 | Agent | High-value AI use case (specific, real) | Pattern | Stack / tools | Guardrail & metric |
 |-------|------------------------------------------|---------|---------------|--------------------|
 | **06 Engineering** | AI code review grounded in the codebase + ADRs; agentic test generation | agent + RAG | Agent SDK, RAG over repo/ADRs, MCP to CI | Tests must pass; human merges; metric: defect escape rate, review latency |
 | **07 Testing** | Generate test cases from acceptance criteria; triage & cluster flaky tests | workflow | LLM from AC → test skeletons; failure-log clustering | Coverage gate in CI; metric: coverage %, escaped defects |
-| **08 DevOps** | Incident copilot — RAG over runbooks/logs, ranked root-cause hypotheses | agentic RAG | RAG over runbooks + log store; MCP to observability | Human runs remediation (irreversible); metric: MTTR, hypothesis hit-rate |
+| **08 DevOps** | Incident copilot - RAG over runbooks/logs, ranked root-cause hypotheses | agentic RAG | RAG over runbooks + log store; MCP to observability | Human runs remediation (irreversible); metric: MTTR, hypothesis hit-rate |
 | **29 Data/AI** | Own the eval harness, model routing, and responsible-AI scorecards for all AI features | workflow (meta) | LLM-as-judge, RAGAS/promptfoo, model gateway | Eval-in-CI gates every prompt/model change; metric: eval pass rate, drift |
 | **30 Platform** | Partner/API support copilot + spec-driven SDK snippet generation | RAG | RAG over OpenAPI spec + API docs; codegen | Schema-validate generated calls; metric: TTFHW, API-ticket deflection |
 | **34 DevRel** | Docs Q&A bot + runnable code samples; community-question triage | RAG | RAG over docs + repo; samples executed in CI | Run every sample in CI before publishing; metric: TTFHW, deflection rate |
@@ -61,7 +61,7 @@ before it ships.*
 
 ## Trust, Risk, Legal & Compliance (09, 10, 11, 12, 13, 28, 39)
 
-*AI theme: the highest-stakes bucket — AI accelerates triage and drafting, but a qualified
+*AI theme: the highest-stakes bucket - AI accelerates triage and drafting, but a qualified
 human (analyst, lawyer, DPO) always makes the call. Every output cites the clause, policy,
 or regulation it relies on. This bucket also **defends** the product's own AI (09 owns OWASP
 LLM Top 10; 39 owns PII across prompts/logs/embeddings).*
@@ -69,8 +69,8 @@ LLM Top 10; 39 owns PII across prompts/logs/embeddings).*
 | Agent | High-value AI use case (specific, real) | Pattern | Stack / tools | Guardrail & metric |
 |-------|------------------------------------------|---------|---------------|--------------------|
 | **09 Security** | LLM-powered triage/enrichment of security alerts + OWASP LLM Top 10 defense for the product's own AI | workflow + RAG | SIEM + RAG over past incidents; injection/PII filters | Analyst confirms before action; metric: false-positive reduction, injection catch rate |
-| **10 Legal** | Contract review — RAG over the negotiation playbook/templates, flag deviations | RAG | RAG over template + prior redlines; clause extraction | Lawyer signs; cite the clause; metric: review cycle time, deviations missed |
-| **11 Compliance** | Map a feature to its regulatory obligations — RAG over the regulations | RAG | RAG over regulation corpus (DPDP/GDPR/etc.) | Lawyer review; cite the specific clause; metric: obligation coverage |
+| **10 Legal** | Contract review - RAG over the negotiation playbook/templates, flag deviations | RAG | RAG over template + prior redlines; clause extraction | Lawyer signs; cite the clause; metric: review cycle time, deviations missed |
+| **11 Compliance** | Map a feature to its regulatory obligations - RAG over the regulations | RAG | RAG over regulation corpus (DPDP/GDPR/etc.) | Lawyer review; cite the specific clause; metric: obligation coverage |
 | **12 Trust & Safety** | Policy-grounded content moderation (multimodal) with classification + rationale | tool + RAG | Vision/text classifier + RAG over policy | Human appeal path; metric: precision/recall, appeal overturn rate |
 | **13 Fraud** | Anomaly explanation + auto-drafted SAR/case narratives from transaction signals | tool + LLM | Feature store + LLM narration over flagged events | Analyst decides; numbers verified vs. source; metric: fraud recall, false-positive rate |
 | **28 Gov Relations** | Monitor regulatory changes and auto-draft impact briefs | agentic RAG + web | Web + RAG over filings/regulations | Legal reviews; cite the regulation; metric: change-to-brief lead time |
@@ -80,7 +80,7 @@ LLM Top 10; 39 owns PII across prompts/logs/embeddings).*
 
 ## Growth & Revenue (14, 15, 16, 31, 32, 33, 36, 37)
 
-*AI theme: content and analysis at volume — brand-voice drafting, call intelligence, and
+*AI theme: content and analysis at volume - brand-voice drafting, call intelligence, and
 natural-language analytics. The two recurring guardrails: **no hallucinated claims** (about
 the product or competitors) and **every number verified against source**.*
 
@@ -99,7 +99,7 @@ the product or competitors) and **every number verified against source**.*
 
 ## Customer, Operations & Programs (17, 19, 20, 21, 46)
 
-*AI theme: deflection and throughput — grounded assistants over docs/SOPs/tickets that
+*AI theme: deflection and throughput - grounded assistants over docs/SOPs/tickets that
 resolve the routine and cleanly hand off the rest. The failure mode to design against is a
 confident wrong answer, so "I don't know → human" is a first-class path.*
 
@@ -145,7 +145,7 @@ tolerance for fabricated figures.*
 
 ---
 
-## The shared AI platform — build once, every department reuses
+## The shared AI platform - build once, every department reuses
 
 Do not let 48 departments each build their own RAG stack. Agents 06/29/38 stand up **one**
 platform; everyone above plugs into it. This is what keeps the "AI upgrade" consistent,
@@ -165,21 +165,21 @@ Each department brings its **corpus** (its docs, tickets, transcripts, contracts
 tracing. When a department's use case needs a new tool, register it via **MCP** so every
 other department (and every agent) can reuse it under the same least-privilege controls.
 
-## Rollout sequence — where every department should start
+## Rollout sequence - where every department should start
 
 Most departments over-reach to "agent" on day one and ship something unreliable. Sequence it:
 
 ```
 STEP 1  Pick ONE painful, high-volume, low-risk task (deflection, drafting, synthesis).
-STEP 2  Solve it at the LOWEST rung — usually L1 RAG or an L3 workflow, not an agent.
+STEP 2  Solve it at the LOWEST rung - usually L1 RAG or an L3 workflow, not an agent.
 STEP 3  Build a golden eval set from real examples BEFORE tuning; wire it into CI.
 STEP 4  Add guardrails (input: injection/PII; output: schema/citation/hallucination).
 STEP 5  Ship to a human-in-the-loop pilot; measure the department metric in this file.
-STEP 6  Only then climb: add tools, then a workflow, then an agent — if the metric demands it.
+STEP 6  Only then climb: add tools, then a workflow, then an agent - if the metric demands it.
 ```
 
 A department is "AI-upgraded" when it has (1) a grounded feature in production, (2) an eval
-set gating changes, (3) guardrails in and out, and (4) a metric trending the right way —
+set gating changes, (3) guardrails in and out, and (4) a metric trending the right way -
 **not** when it has an impressive demo. Regulated departments add a required human sign-off
 gate at STEP 5 (see disclaimer below).
 
@@ -191,31 +191,31 @@ Security (09) and Privacy (39) sign off on untrusted input or personal data.*
 | Agent | High-value AI use case (specific, real) | Pattern | Stack / tools | Guardrail & metric |
 |-------|------------------------------------------|---------|---------------|--------------------|
 | **48 Mobile Engineering** | Triage crash/ANR clusters into likely root cause + suspect commit from stack traces and release diffs | RAG + workflow | Crashlytics/Sentry traces + RAG over the repo and release notes | Never auto-file a fix; engineer confirms. Metric: triage time, false-attribution rate |
-| **49 ML Engineering** | Diagnose a drift alert — summarize which features shifted, when, and the likely upstream cause | tool + workflow | Feature store + monitoring metrics as tools; LLM narrates, does not decide | Numbers come from the monitoring system, never generated. Metric: time-to-diagnosis |
+| **49 ML Engineering** | Diagnose a drift alert - summarize which features shifted, when, and the likely upstream cause | tool + workflow | Feature store + monitoring metrics as tools; LLM narrates, does not decide | Numbers come from the monitoring system, never generated. Metric: time-to-diagnosis |
 | **50 Frontend & Web Platform** | Explain a Core Web Vitals regression from RUM + bundle diff and propose the specific fix | RAG + tool | CrUX/RUM data + bundle analyzer output + RAG over the design system | Verify against a lab run before acting. Metric: regression-to-fix cycle time |
-| **51 Solutions Engineering** | Auto-draft security-questionnaire answers from the approved answer library | RAG | pgvector over past responses + policy docs; human approves every answer | Never invent a control you don't have — an unverified "yes" is a contract risk. Metric: turnaround, edit rate |
+| **51 Solutions Engineering** | Auto-draft security-questionnaire answers from the approved answer library | RAG | pgvector over past responses + policy docs; human approves every answer | Never invent a control you don't have - an unverified "yes" is a contract risk. Metric: turnaround, edit rate |
 | **52 Professional Services** | Draft the SOW and surface scope-creep risk by comparing against past over-run projects | RAG | RAG over historical SOWs, change orders, and post-mortems | Legal reviews every SOW (contract). Metric: change-order rate, margin variance |
 | **53 Customer Education** | Generate first-draft course modules and assessment items from product docs + release notes | RAG | RAG over docs (Agent 42) + LMS; SME reviews before publish | SME sign-off mandatory; test items validated for psychometrics. Metric: time-to-course, pass-rate validity |
 | **54 Community** | Surface unanswered questions and auto-suggest an answer to a human moderator | RAG + workflow | RAG over forum history + docs; suggestion queue, never auto-post as staff | Disclose AI assistance; never impersonate a community member. Metric: time-to-first-response, member-answered rate |
-| **55 Billing & Monetization Eng** | Explain "why is this invoice this amount" in plain language from the billing event log | RAG + tool | Query the metering/invoice records as tools; LLM narrates only | Every figure read from the ledger — zero generated numbers. Metric: billing-dispute deflection |
+| **55 Billing & Monetization Eng** | Explain "why is this invoice this amount" in plain language from the billing event log | RAG + tool | Query the metering/invoice records as tools; LLM narrates only | Every figure read from the ledger - zero generated numbers. Metric: billing-dispute deflection |
 | **56 Revenue Accounting** | Draft the ASC 606 memo for a non-standard contract, citing the clause and the five-step analysis | RAG | RAG over the contract, policy manual, and prior memos | Controller and auditor review; never a filing without human sign-off. Metric: close-cycle days, audit adjustments |
 | **57 Tax** | Map a new market's registration and filing obligations from the product's actual transaction flows | RAG | RAG over compliance references (`references/compliance/*`) + the transaction model | Tax counsel verifies before any registration or position is taken. Metric: missed-deadline count (target 0) |
-| **58 Treasury** | Narrate the 13-week cash forecast — what changed, which assumptions drive it | tool + workflow | Bank/ERP balances as tools; LLM explains the delta, never forecasts unaided | All figures sourced; no generated projections. Metric: forecast accuracy vs actual |
+| **58 Treasury** | Narrate the 13-week cash forecast - what changed, which assumptions drive it | tool + workflow | Bank/ERP balances as tools; LLM explains the delta, never forecasts unaided | All figures sourced; no generated projections. Metric: forecast accuracy vs actual |
 | **59 Internal Audit & Risk** | Draft the audit work programme and sample selection from the risk register and prior findings | RAG | RAG over risk register, prior audits, control matrix | Auditor owns scope and conclusions; AI drafts, never opines. Metric: repeat-finding rate |
 | **60 Talent Acquisition** | Structure interview scorecards and summarize debrief notes against the job scorecard | workflow | Structured output over interviewer notes; ATS integration | **Never score or rank candidates** (bias + EU AI Act high-risk). Human decides. Metric: time-to-fill, scorecard completeness |
 | **61 Total Rewards** | Draft compensation-review talking points per manager from band position and performance inputs | RAG + workflow | RAG over comp philosophy + band data; manager edits before delivery | Pay decisions are human; AI never sets numbers. Privacy-critical data (Agent 39). Metric: cycle time, manager confidence |
 | **62 Chief of Staff & BizOps** | Turn meeting transcripts into a decision log with owners, dates, and open questions | workflow | Transcription → structured extraction → decision-log system | Attendees confirm decisions before the log is authoritative. Metric: decision cycle time, action closure |
-| **63 AI Evaluation & Red-Teaming** | Automated red-teaming and LLM-as-judge scoring of the org's own AI features | agent (L4) | garak / PyRIT / promptfoo / Inspect; judge calibrated against human labels | The judge itself is calibrated (Cohen's κ) — an unchecked judge is not evidence. Metric: attack success rate, judge-human agreement |
+| **63 AI Evaluation & Red-Teaming** | Automated red-teaming and LLM-as-judge scoring of the org's own AI features | agent (L4) | garak / PyRIT / promptfoo / Inspect; judge calibrated against human labels | The judge itself is calibrated (Cohen's κ) - an unchecked judge is not evidence. Metric: attack success rate, judge-human agreement |
 
 ## Cross-cutting rules
 
-- **RAG-ground first.** Always retrieve from YOUR data (docs, tickets, code, policies) before generating — never answer from model memory when a corpus exists.
+- **RAG-ground first.** Always retrieve from YOUR data (docs, tickets, code, policies) before generating - never answer from model memory when a corpus exists.
 - **Cite, never fabricate.** Every claim traces to a source; force explicit "not found / I don't know" behavior when context is empty.
 - **Guardrail both ends.** INPUT: prompt-injection, jailbreak, and PII/secret scrubbing. OUTPUT: schema/format validation, hallucination & citation checks, PII-leak checks.
-- **Eval-in-CI.** A frozen, versioned eval set gates every prompt/model/index change — "it looked fine in the demo" is not a release gate.
+- **Eval-in-CI.** A frozen, versioned eval set gates every prompt/model/index change - "it looked fine in the demo" is not a release gate.
 - **Least-privilege tools.** Scope every tool narrowly; treat all model output and retrieved content as untrusted (OWASP LLM01/LLM08).
 - **Human-in-the-loop for irreversible actions.** Money movement, data deletion, production changes, legal commitments, and access grants always require human confirmation.
-- **Log & trace everything.** Every step, token, and cost is observable (LangSmith/Langfuse/Phoenix) — you cannot debug an agent you can't see.
+- **Log & trace everything.** Every step, token, and cost is observable (LangSmith/Langfuse/Phoenix) - you cannot debug an agent you can't see.
 - **Climb the ladder only when forced.** Ship the lowest rung that solves it; most value is a tight L1–L3 (RAG + workflow), not an autonomous agent.
 - **Model & integration defaults.** Latest Claude with adaptive thinking + tuned effort; prompt caching on repeated context; prefer MCP for tool/data integrations.
 - **Sign-offs.** Security (09) & Privacy (39) sign off on anything touching untrusted input or personal data; Data/AI (29) owns eval policy and responsible-AI governance.

@@ -1,4 +1,4 @@
-# Risk Matrix — Enterprise Risk Instrument
+# Risk Matrix - Enterprise Risk Instrument
 
 A complete instrument for identifying, scoring, treating, and monitoring risk. Use the
 5×5 rubric to score, the register to track, the heat-map to communicate, and the
@@ -6,7 +6,7 @@ escalation thresholds to act.
 
 ---
 
-## 1. Scoring Rubric — Likelihood × Impact (5×5)
+## 1. Scoring Rubric - Likelihood × Impact (5×5)
 
 ### Likelihood (probability of occurring within the review horizon, ~12 months)
 
@@ -123,10 +123,10 @@ applied. Treatment chosen against residual vs appetite. Review date set by band 
 
 | Category | Appetite | Tolerance threshold (escalate above) |
 |----------|----------|--------------------------------------|
-| Security | **Low** — minimize | Any residual ≥ 10, or any breach of customer PII |
-| Privacy/Compliance | **Very low** — near-zero | Any residual ≥ 9; any reportable regulatory gap |
+| Security | **Low** - minimize | Any residual ≥ 10, or any breach of customer PII |
+| Privacy/Compliance | **Very low** - near-zero | Any residual ≥ 9; any reportable regulatory gap |
 | Financial (runway) | **Low** | Runway < 9 months |
-| Product/Strategic | **Moderate–High** — we bet to win | Residual ≥ 15 |
+| Product/Strategic | **Moderate–High** - we bet to win | Residual ≥ 15 |
 | Reputational | **Low** | Any residual ≥ 12 |
 | Third-party | **Moderate** | Single-vendor dependency with residual ≥ 12 |
 
@@ -150,7 +150,7 @@ band between reviews; a Tolerate decision needs renewal; a new regulation change
 
 ---
 
-## 8. Key Risk Indicators (KRIs) — examples
+## 8. Key Risk Indicators (KRIs) - examples
 
 Leading metrics that warn *before* a risk materializes. Pair each top risk with ≥1 KRI + threshold.
 
@@ -167,7 +167,7 @@ Leading metrics that warn *before* a risk materializes. Pair each top risk with 
 
 ---
 
-## 9. Worked Example — Seed-Stage Fintech Startup
+## 9. Worked Example - Seed-Stage Fintech Startup
 
 | ID | Category | Risk | L | I | Inherent | Band | Controls | Residual | Treatment |
 |----|----------|------|:-:|:-:|:-------:|:----:|----------|:--------:|-----------|
@@ -182,7 +182,7 @@ Leading metrics that warn *before* a risk materializes. Pair each top risk with 
 | R-9 | Reputational | Viral support failure | 3 | 3 | 9 | MED | SLAs, escalation path, proactive comms | 4 | Treat |
 | R-10 | Privacy | DPDP/GDPR non-compliance (consent, DSR) | 3 | 5 | 15 | CRIT | Consent mgmt, DSR flow, DPO, data map, retention policy | 8 | Treat |
 
-> Read-out: R-1, R-3, R-4, R-10 are CRITICAL inherent — these get weekly review and a
+> Read-out: R-1, R-3, R-4, R-10 are CRITICAL inherent - these get weekly review and a
 > dated plan. After controls, R-3/R-4 remain HIGH residual (runway + PMF are the real
 > startup killers) → keep at the top of the register until residual drops a band.
 

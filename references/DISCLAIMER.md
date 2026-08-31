@@ -12,7 +12,7 @@ Copyright Office has indicated that works generated entirely by AI without human
 creative input may not be copyrightable, while works involving sufficient human
 authorship in their selection, arrangement, and creative direction may qualify.
 This repository involves substantial human creative direction, selection of topics
-and structure, editorial judgment, and iterative refinement — but users should
+and structure, editorial judgment, and iterative refinement - but users should
 be aware of the ongoing legal landscape.
 
 The MIT license is applied in good faith to maximize community benefit. Users

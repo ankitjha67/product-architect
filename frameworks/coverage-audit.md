@@ -1,4 +1,4 @@
-# Coverage Audit — Cross-Functional Gap-Analysis Instrument
+# Coverage Audit - Cross-Functional Gap-Analysis Instrument
 
 A repeatable instrument to answer one question: **"Have we covered everything, or are
 there silent gaps?"** Run it across departments, edge cases, and maturity. Output a RAG
@@ -93,21 +93,21 @@ Score each. `Owner` = named human. `Mat` = maturity 0–4. `RAG` = R/A/G. Map to
 
 For **each critical surface/feature**, confirm behavior is defined, built, AND tested for:
 
-- [ ] **Empty state** — no data yet, first-run, zero results, new account
-- [ ] **Error state** — validation, 4xx/5xx, timeout, partial failure, retry, user-facing message
-- [ ] **Loading / latency** — slow network, skeletons, optimistic UI, stale data
-- [ ] **Concurrent state** — two users/tabs/devices editing same resource; race conditions; idempotency; double-submit
-- [ ] **Scale state** — 10×/100× volume, pagination, large lists, hot keys, N+1, rate limits, backpressure
-- [ ] **Security state** — authn/authz on every path, IDOR, injection, secrets, least privilege, audit log
-- [ ] **Privacy state** — consent, data minimization, retention/deletion, DSR/export, PII in logs, third-party sharing
-- [ ] **Legal / compliance state** — jurisdiction-specific rules, age gating, disclosures, T&Cs, licensing
-- [ ] **Financial state** — money math (rounding, currency, tax), reconciliation, refunds, double-charge, ledger integrity
-- [ ] **Abuse state** — spam, fraud, scraping, automation/bots, content harms, sybil, velocity
-- [ ] **Accessibility state** — keyboard, screen reader, contrast, focus, ARIA, captions (WCAG 2.x AA)
-- [ ] **i18n / l10n state** — translations, RTL, date/number/currency formats, timezones, locale fallbacks
-- [ ] **Offline / degraded state** — no connectivity, third-party dependency down, graceful degradation, queue & sync
-- [ ] **Migration / upgrade state** — schema changes, backfills, rollback, versioning, deprecation, data import/export
-- [ ] **Lifecycle / deletion state** — account closure, churn, data export-then-delete, tombstoning, legal holds
+- [ ] **Empty state** - no data yet, first-run, zero results, new account
+- [ ] **Error state** - validation, 4xx/5xx, timeout, partial failure, retry, user-facing message
+- [ ] **Loading / latency** - slow network, skeletons, optimistic UI, stale data
+- [ ] **Concurrent state** - two users/tabs/devices editing same resource; race conditions; idempotency; double-submit
+- [ ] **Scale state** - 10×/100× volume, pagination, large lists, hot keys, N+1, rate limits, backpressure
+- [ ] **Security state** - authn/authz on every path, IDOR, injection, secrets, least privilege, audit log
+- [ ] **Privacy state** - consent, data minimization, retention/deletion, DSR/export, PII in logs, third-party sharing
+- [ ] **Legal / compliance state** - jurisdiction-specific rules, age gating, disclosures, T&Cs, licensing
+- [ ] **Financial state** - money math (rounding, currency, tax), reconciliation, refunds, double-charge, ledger integrity
+- [ ] **Abuse state** - spam, fraud, scraping, automation/bots, content harms, sybil, velocity
+- [ ] **Accessibility state** - keyboard, screen reader, contrast, focus, ARIA, captions (WCAG 2.x AA)
+- [ ] **i18n / l10n state** - translations, RTL, date/number/currency formats, timezones, locale fallbacks
+- [ ] **Offline / degraded state** - no connectivity, third-party dependency down, graceful degradation, queue & sync
+- [ ] **Migration / upgrade state** - schema changes, backfills, rollback, versioning, deprecation, data import/export
+- [ ] **Lifecycle / deletion state** - account closure, churn, data export-then-delete, tombstoning, legal holds
 
 > Score each surface: count of confirmed checkboxes / 15. <10 = RED, 10–13 = AMBER, 14–15 = GREEN.
 
@@ -128,9 +128,9 @@ For **each critical surface/feature**, confirm behavior is defined, built, AND t
 | Data & AI governance | | /15 | | | |
 
 **RAG definitions:**
-- **GREEN** — owned, maturity ≥3 (or stage-appropriate), edge coverage ≥14/15, no critical gaps.
-- **AMBER** — owned but maturity below target OR 1–2 known gaps with a dated plan.
-- **RED** — no owner, OR maturity ≤1 on a critical function, OR an unmitigated catastrophic gap.
+- **GREEN** - owned, maturity ≥3 (or stage-appropriate), edge coverage ≥14/15, no critical gaps.
+- **AMBER** - owned but maturity below target OR 1–2 known gaps with a dated plan.
+- **RED** - no owner, OR maturity ≤1 on a critical function, OR an unmitigated catastrophic gap.
 
 ---
 
@@ -154,7 +154,7 @@ Rank by **(Severity × Likelihood-of-bite) ÷ Effort**. Severity uses risk-matri
 
 | Trigger | Scope |
 |---------|-------|
-| **Quarterly** (default) | Full audit — all departments + edge-case sweep of top surfaces |
+| **Quarterly** (default) | Full audit - all departments + edge-case sweep of top surfaces |
 | **Pre-launch / pre-GA** | Edge-case master checklist for the launching surface + Security/Privacy/Legal RAG |
 | **Pre-fundraise / due diligence** | Full audit; aim all critical functions ≥ maturity 3 |
 | **Post-incident** | Re-score the affected area + adjacent ones; add gaps to backlog |

@@ -69,7 +69,7 @@ IMPLEMENTATION:
 
 ### Pre-Close Planning (signing → closing, typically 2-6 months)
 ```
-INTEGRATION PLANNING OFFICE (IPO — not that IPO):
+INTEGRATION PLANNING OFFICE (IPO - not that IPO):
 □ Appoint Integration Lead (dedicated, not part-time)
 □ Integration team: Representatives from every function (Eng, Product, HR, Finance, Legal, Ops)
 □ Day 1 readiness plan: What MUST work on the first day after close?
@@ -89,7 +89,7 @@ KEY WORKSTREAMS:
 | Brand | CMO | Brand transition plan | Unified brand rollout |
 ```
 
-### Day 1 (close date — everything must be ready)
+### Day 1 (close date - everything must be ready)
 ```
 □ All-hands announcement (both companies, simultaneously)
 □ Welcome message from CEO to acquired team
@@ -104,7 +104,7 @@ KEY WORKSTREAMS:
 
 ### First 100 Days
 ```
-PEOPLE (most important — losing key people = losing the acquisition value):
+PEOPLE (most important - losing key people = losing the acquisition value):
 □ Retention bonuses: For critical employees, typically 6-18 month retention packages
 □ Career path clarity: Where does each person fit? What's their growth path?
 □ Cultural integration: Joint team events, buddy system (acquirer ↔ acquired)
@@ -139,7 +139,7 @@ METRICS:
 □ Key talent retention: % of identified key people still employed at 6/12 months
 □ Customer retention: % of acquired company's customers retained at 6/12 months
 □ Integration milestone completion: On track vs. plan
-□ Employee engagement: Survey both teams at 30/60/90 days — catch issues early
+□ Employee engagement: Survey both teams at 30/60/90 days - catch issues early
 ```
 
 ### Common PMI Mistakes

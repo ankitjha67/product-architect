@@ -12,7 +12,7 @@ Strategy comes later, after you have 100 paying users and know what actually wor
 
 ## THE THREE DECISIONS (make these before Day 1)
 
-### Decision 1: Positioning — Who is this for and why should they care?
+### Decision 1: Positioning - Who is this for and why should they care?
 
 ```
 POSITIONING STATEMENT (fill in every blank):
@@ -30,7 +30,7 @@ BAD:  "An AI-powered productivity platform for modern teams"
 
 GOOD: "For freelance designers who waste 5+ hours/week on invoicing,
        this is an invoicing tool that auto-generates invoices from your
-       Figma project names — unlike FreshBooks, it knows your projects
+       Figma project names - unlike FreshBooks, it knows your projects
        because it connects directly to your design tools."
 
 RULES:
@@ -45,7 +45,7 @@ RULES:
   YES: "generates invoices from your Figma projects automatically."
 ```
 
-### Decision 2: Channel — Where do these people already gather?
+### Decision 2: Channel - Where do these people already gather?
 
 ```
 PICK ONE. MAXIMUM TWO.
@@ -70,7 +70,7 @@ CHANNEL OPTIONS BY USER TYPE:
 
 B2C (consumers):
 □ Reddit: Find 3-5 subreddits where your users discuss the problem.
-  NOT to spam — to genuinely help, then mention your solution when relevant.
+  NOT to spam - to genuinely help, then mention your solution when relevant.
 □ WhatsApp/Telegram groups: Industry/interest groups. Ask to share, don't spam.
 □ Instagram/TikTok: If your product is visual. Create 1 piece of content/day showing the problem→solution.
 □ YouTube: "How to [solve problem]" videos. Product is the answer, not the pitch.
@@ -99,32 +99,32 @@ YOUR ANTI-PATTERN DETECTOR:
 ✅ "I will personally reach 10 potential users per day in [specific channel]" → THIS is a 30-day strategy.
 ```
 
-### Decision 3: Offer — What's the simplest thing I can ask them to do?
+### Decision 3: Offer - What's the simplest thing I can ask them to do?
 
 ```
 THE OFFER LADDER (start at the bottom, move up):
 
-LEVEL 1 — FREE TRIAL / FREEMIUM (lowest friction):
+LEVEL 1 - FREE TRIAL / FREEMIUM (lowest friction):
 "Try it free for 14 days. No credit card required."
 Use when: Product value is obvious once they use it. Self-serve onboarding works.
 Risk: Lots of signups, few conversions. Need strong activation flow.
 
-LEVEL 2 — FREE + PAID UPGRADE (most common for SaaS):
+LEVEL 2 - FREE + PAID UPGRADE (most common for SaaS):
 "Free forever for basic use. ₹499/month for [specific premium feature]."
 Use when: Free version delivers real value. Paid version is clearly worth more.
 Risk: Users stay free forever. Need clear "aha moment" that makes them want more.
 
-LEVEL 3 — PAID WITH MONEY-BACK GUARANTEE (good for trust):
+LEVEL 3 - PAID WITH MONEY-BACK GUARANTEE (good for trust):
 "₹999/month. Try for 30 days. If it doesn't [specific outcome], full refund."
 Use when: Product delivers measurable results. You're confident in the value.
 Risk: Refund rate. But honest refund policy builds trust.
 
-LEVEL 4 — PAID PILOT / DONE-FOR-YOU (B2B):
+LEVEL 4 - PAID PILOT / DONE-FOR-YOU (B2B):
 "We'll set it up for your team, run it for 2 weeks, show you the results. ₹25,000."
 Use when: B2B, complex product, buyer needs hand-holding. Premium positioning.
-Risk: Doesn't scale. But that's fine — you're learning, not scaling.
+Risk: Doesn't scale. But that's fine - you're learning, not scaling.
 
-LEVEL 5 — WAITLIST / APPLICATION (scarcity):
+LEVEL 5 - WAITLIST / APPLICATION (scarcity):
 "Apply to join our beta. We're accepting 50 companies this month."
 Use when: You want high-quality users who are invested. Works for premium products.
 Risk: Fewer signups. But higher quality.
@@ -165,10 +165,10 @@ DAY -1:
 □ Test the entire flow yourself: Landing page → Signup → First value moment
 □ Time it. If first value moment takes >5 minutes, simplify.
 □ Prepare 5-10 personal outreach messages tailored to your channel.
-□ Tell 10 friends/colleagues about launch (not to use it — to spread the word).
+□ Tell 10 friends/colleagues about launch (not to use it - to spread the word).
 ```
 
-### Week 1 (Day 1-7): Manual Hustle — Get First 20 Users
+### Week 1 (Day 1-7): Manual Hustle - Get First 20 Users
 
 ```
 DAILY ROUTINE (2-3 hours/day):
@@ -178,7 +178,7 @@ DAILY ROUTINE (2-3 hours/day):
 
 DAY 1-2: WARM NETWORK
 □ Personal message to 50 people who might be your target user or know someone who is.
-  Not "check out my app" — "I built something that solves [problem]. Would you try it
+  Not "check out my app" - "I built something that solves [problem]. Would you try it
   and give me honest feedback? Takes 3 minutes."
 □ Post in 2-3 relevant communities (Reddit, Slack, Discord, WhatsApp groups).
   NOT "I built this." YES: "I was frustrated by [problem], so I built [solution].
@@ -205,7 +205,7 @@ WEEK 1 TARGETS:
 □ 1 product fix based on feedback
 ```
 
-### Week 2 (Day 8-14): Find What Works — Double Down
+### Week 2 (Day 8-14): Find What Works - Double Down
 
 ```
 DAY 8-9: ANALYZE
@@ -231,7 +231,7 @@ WEEK 2 TARGETS:
 □ Positioning refined based on real user language
 ```
 
-### Week 3 (Day 15-21): Activate and Convert — Get First Revenue
+### Week 3 (Day 15-21): Activate and Convert - Get First Revenue
 
 ```
 DAY 15-17: ACTIVATION FOCUS
@@ -240,7 +240,7 @@ DAY 15-17: ACTIVATION FOCUS
 □ Add an email sequence (3 emails over 5 days) nudging inactive signups:
   Email 1 (Day 0): "Welcome! Here's how to get started in 2 minutes."
   Email 2 (Day 2): "Did you try [key feature]? Here's what [user] got from it."
-  Email 3 (Day 5): "Need help? Reply to this email — I'll personally walk you through it."
+  Email 3 (Day 5): "Need help? Reply to this email - I'll personally walk you through it."
 
 DAY 18-21: CONVERSION
 □ If freemium: Personally message your most active free users.
@@ -258,7 +258,7 @@ WEEK 3 TARGETS:
 □ One testimonial or case study from a real user
 ```
 
-### Week 4 (Day 22-30): Systematize — Build Repeatability
+### Week 4 (Day 22-30): Systematize - Build Repeatability
 
 ```
 DAY 22-25: SYSTEMATIZE WHAT WORKS
