@@ -398,6 +398,111 @@ NRR/GRR and CAC payback are the bridge to Finance (Agent 18); win rate and cycle
 bridge to PMM (Agent 31). When win rate drops, it's usually a positioning/competitive problem
 (Agent 31), not a "reps need to try harder" problem.
 
+## Decision Framework: The Nine-Days-Left Deal That Needs Non-Standard Terms
+
+Every quarter one deal large enough to change the number arrives in the final two weeks needing
+something the standard paper does not allow. The AE frames it as binary, grant the terms or lose
+the deal, and the clock does the arguing. The discipline is to separate the terms that cost almost
+nothing from the ones that silently re-price every future deal, and to know which you will sign
+under pressure BEFORE the pressure arrives.
+
+```
+THE CHEAP-VERSUS-EXPENSIVE SORT - the single most important distinction, because they feel
+identical across a table at 6pm on the last Friday:
+CHEAP (grant these to save a real deal; they bind THIS contract only):
+□ Payment timing: net-45 or net-60 instead of net-30 (a working-capital cost, quantify with Agent
+  18, not a precedent). □ A one-time logo or PR concession. □ A modest one-time discount inside the
+  Agent 36 matrix. □ A pilot success criterion in writing. □ A capped, dated professional-services
+  credit. These cost cash or margin you can measure and forecast, and the next deal does not inherit them.
+STRUCTURALLY EXPENSIVE (these price every future deal and every renewal, often invisibly):
+□ MOST-FAVOURED-NATION ("no customer pays less"): un-auditable, silently caps all future pricing,
+  outlives the relationship. □ UNCAPPED liability or indemnity: a balance-sheet event, not a term.
+□ UNLIMITED usage at a fixed price on a metered product: margin goes negative as they grow.
+□ Termination for convenience WITH a refund of prepaid fees: converts booked ARR into a contingent
+  liability. □ A custom SLA with penalty credits Engineering never agreed to. □ A perpetual or
+  auto-renewing discount. □ A right of return or an unpriced extension/renewal option. □ Source-code
+  escrow with broad release triggers. □ A most-favoured-terms clause (the terms version of MFN).
+THE TEST: does the term bind only this contract, or does it set the price and terms of the next
+fifty? If the latter, it is not a discount, it is a policy change made by an AE under deadline.
+
+THE REVENUE-RECOGNITION CONSEQUENCE (with 56-revenue-accounting.md, BEFORE signature, never after):
+Some "commercial" terms move or destroy the revenue the deal appears to book, and the assessment
+happens before the ink, because a side letter discovered at audit is the classic finding:
+□ A right of return or acceptance clause can DELAY recognition of the whole contract until it lapses.
+□ Bundled implementation or training is a separate performance obligation allocated at standalone
+  selling price, not at the discounted line rate Sales negotiated, so the licence revenue you think
+  you closed is smaller than the order form says.
+□ Prepaid credits with rollover create deferred revenue plus a breakage estimate.
+□ An unpriced extension option or a material future discount can be a separate performance
+  obligation that pulls revenue out of this period. Accounting treatment is standard-specific
+  (ASC 606 / IFRS 15) and fact-specific: verify with your auditor and see ../references/DISCLAIMER.md.
+
+WHO APPROVES WHAT - published in advance so the approver is not invented at 6pm:
+□ Discount within matrix goes to the Agent 36 / Deal Desk thresholds (AE / Manager / VP / CRO+CFO).
+□ Any non-standard LEGAL term goes to Deal Desk plus Legal (Agent 10). □ Anything touching a
+  liability cap, MFN, termination for convenience, or unlimited usage goes to CRO plus CFO, and it
+  does not close this quarter on a verbal. □ Anything that changes recognition is signed by Revenue
+  Accounting before signature. No approver reachable in time is itself the answer: the term is not granted.
+
+THE PRECEDENT COST is the number nobody puts on the deal: the next fifty comparable buyers, and
+every renewal of this one, will demand what you granted here, because sophisticated procurement
+shares terms. A term granted once to hit a quarter is priced against every future quarter.
+
+WORKED JUDGEMENT: a $480K new-logo deal, 30% of the AE's number, nine days left. Buyer's
+procurement demands three things: net-60 payment, an MFN clause, and termination for convenience
+with a refund of the unused prepaid annual fee.
+- Sort: net-60 is CHEAP (a ~$8K working-capital cost at their rate, Agent 18 confirms). MFN is
+  STRUCTURALLY EXPENSIVE and un-auditable. Termination-for-convenience-with-refund is EXPENSIVE and
+  hits recognition: Revenue Accounting confirms the refund right likely bars recognising the full
+  annual contract value up front, so "$480K closed" is not $480K of revenue this year.
+- Decide: grant net-60 today (Manager approval, logged). Refuse MFN outright, offering instead a
+  12-month price-hold on THIS account, which gives the buyer the security they actually want without
+  the un-auditable forever-clause. On termination, offer a defined off-ramp (90-day notice, no
+  refund of the current term) rather than a refundable prepay.
+- The plausible-looking option to REJECT: "grant all three, book the $480K, we clean it up at
+  renewal." It closes the quarter and it is wrong three ways: the MFN silently caps pricing across
+  the base, the refund right means Finance cannot recognise the revenue you just celebrated, and
+  "clean it up at renewal" means asking a customer to hand back rights you granted, which never
+  happens. Better to close $480K net-60 with a price-hold and a clean off-ramp, or let it slip into
+  next quarter as a clean deal. A quarter made on terms that re-price the base is borrowed from
+  every quarter after it.
+```
+
+## Failure Modes (⛔)
+```
+⛔ SANDBAGGING AS CULTURE: commit consistently 15%+ under actual because a comp cliff or a
+   punitive miss-culture makes hiding deals rational. Tell: signed error negative across 4+
+   quarters. Correction: fix the incentive that rewards parking, publish a model-derived number
+   beside the called one, and never punish the first honest downgrade.
+⛔ HAPPY EARS: a forecast built on rep confidence instead of buyer actions. Tell: round amounts
+   unchanged since stage 1, single-threaded deals, "verbal yes" older than three weeks. Correction:
+   stages move on artefacts (written pain, named EB, redlines received), never on optimism.
+⛔ THE ARITHMETIC PLAN: a target divided by headcount with no ramp, attrition or coverage. Tell:
+   assigned quota equals the company number exactly. Correction: capacity = sum of quota x ramp x
+   retention, over-assigned 10-20%, sanity-checked at 60-70% attainment.
+⛔ STAGE-SKIP INFLATION: deals jumping two stages in a week, so the gates were never met. Tell:
+   probability set by rep gut, not by stage. Correction: validation rules enforce stage-exit
+   evidence; probability is a property of the stage.
+⛔ THE PROCESS REPS ROUTE AROUND: a field or approval added without enablement, so reps
+   pre-negotiate outside the system. Tell: quotes in spreadsheets, side letters, a spike of
+   last-week submissions. Correction: ship process like product, trained, migrated, measured.
+⛔ THE EXCEPTION THAT BECAME POLICY: a quarter-end non-standard term granted under pressure that
+   the next fifty deals demand. Tell: no register of deviations with expiry dates. Correction: log
+   every deviation with approver, date and expiry; a term granted every time belongs in standard paper.
+⛔ COMP PAYING FOR LAST YEAR'S STRATEGY: an annual plan rewarding the motion the strategy has left
+   behind. Tell: reps selling what pays, not what the company needs. Correction: change at period
+   boundaries with per-rep modelling, never retroactively.
+⛔ THREE NUMBERS WITH ONE NAME: CRM, billing and the board deck disagree on ARR. Tell: a manual
+   spreadsheet bridges two systems. Correction: one system of record per metric, a published
+   definition and reconciliation, every deck derived from that source.
+⛔ CLAWBACK AS WAGE RECOVERY: recovering paid commission in a jurisdiction that restricts it. Tell:
+   the plan recovers earned wages after payout. Correction: hold back a portion until cash is
+   collected instead; employment counsel reviews the mechanics (see ../references/DISCLAIMER.md).
+⛔ FORECAST AS NEGOTIATION: the number reported up is the one that keeps a manager comfortable.
+   Tell: forecast accuracy never measured per manager. Correction: objective stage gates plus a
+   model number published beside the called one, bias tracked per manager.
+```
+
 ## Organisational Edge Cases
 
 `../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
