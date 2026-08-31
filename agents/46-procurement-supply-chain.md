@@ -387,6 +387,108 @@ SUPPLIER-FAILURE PLAYBOOK (written per Tier-1 BEFORE you need it):
   this gap and is a common mid-market loss (Agent 13).
 ```
 
+## Decision Framework: The Business Already Chose the Vendor and Wants You to Paper It
+
+The most common request procurement receives is not "help me buy this", it is "raise a PO for the
+thing I already picked". By the time the requisition arrives, the specification was written from one
+vendor's datasheet, the champion has a relationship, and often a start date is in calendars. The
+question is not the naive "run a full RFP or comply", it is which of a few responses fits, given
+that most of your leverage is already spent and the goal is the best defensible outcome from here.
+
+```
+WHAT LEVERAGE IS ACTUALLY LEFT - name it honestly, because it decides the response:
+□ SELECTION leverage (choosing among competitors) is largely gone once a spec is single-vendor and
+  a champion is committed. Pretending otherwise wastes weeks and earns you a reputation as a blocker.
+□ COMMERCIAL leverage (price, uplift cap, payment terms, exit rights, SLA credits) survives right up
+  to signature, because the vendor still wants the signed deal and quarter-end still exists. This is
+  the leverage you fight for even in a sole-source.
+□ TIMING leverage survives if the start date is not yet public to the vendor. The moment the
+  requester tells the rep the go-live date, that leverage is gone, which is itself a failure mode to
+  police (never let the requester disclose the date or the budget).
+
+WHEN TO RUN A COMPETITIVE PROCESS ANYWAY, over the requester's objection:
+□ Spend is above the policy threshold that MANDATES three bids or a documented exception (the section
+  1 matrix). Below it, competing a genuinely small buy costs more process than it saves.
+□ The category is STRATEGIC or high supply-risk (Kraljic), where a single-vendor lock re-locks the
+  org for years and the switching cost compounds.
+□ The "obvious" vendor is a Tier-1 data or security dependency with no qualified backup.
+□ There is time. A competitive process needs weeks the requester usually did not leave, so a credible
+  second quote is often the realistic tool rather than a full RFP. Even ONE more qualified bidder
+  moves price more than any negotiation tactic; a benchmark quote you never intend to switch to is
+  legitimate leverage as long as it is real.
+
+WHEN ACCEPTING THE CHOSEN VENDOR IS THE CORRECT ANSWER - sole-source is not automatically wrong:
+□ Genuine sole-source: only one vendor can meet a hard requirement (a certification body, a
+  proprietary integration, a regulated approval, true technical uniqueness). Competing it is theatre.
+□ The switching cost from an embedded incumbent exceeds any credible saving.
+□ The spend is small, low-risk, and the process cost would exceed the negotiated upside.
+□ Speed has a quantified value exceeding the expected saving from competition (a revenue-linked
+  deadline, a compliance date). Here you accept the vendor AND still negotiate commercials.
+
+SINGLE-SOURCE JUSTIFICATION THAT SURVIVES AUDIT - the document that protects the company later:
+□ A written justification stating WHY only this vendor qualifies (the specific hard requirement, not
+  "the team prefers it"), approved ONE LEVEL UP from the normal approver, and logged in the register.
+□ Evidence you tested the market even lightly (a benchmark quote, a market scan) so the price is
+  defensible without a full competition.
+□ The commercial terms you extracted anyway (uplift cap, exit rights, DPA, audit rights).
+□ Track the SOLE-SOURCE RATE as a governance metric: a rising rate means the process is being routed
+  around, not that the market shrank. Splitting a purchase to duck a threshold is a disciplinary
+  matter, not a workaround. Anti-bribery and procurement-integrity obligations apply and are
+  jurisdiction-specific: verify current with counsel (Agents 10 and 11) and see ../references/DISCLAIMER.md.
+
+WORKED JUDGEMENT: an engineering team has run a 3-month POC on a $180K/year observability vendor, it
+is already ingesting production telemetry, and they want a PO "this week" before their trial converts
+to list price. Two credible competitors exist.
+- Leverage left: selection is effectively gone (production traffic already flows, migration would
+  cost the team weeks). Commercial and timing leverage remain: the vendor wants the logo and it is
+  their quarter-end.
+- Process call: $180K is above the threshold that mandates three bids, but a full RFP is theatre when
+  production data already depends on the tool. The right tool is TWO real benchmark quotes from the
+  competitors (obtainable in days), used to anchor price, not a switch you intend to make.
+- Sole-source handling: document why the incumbent effectively won on switching cost, approve one
+  level up, log it, and use the benchmark quotes plus quarter-end to negotiate a multi-year price
+  with a capped uplift, an exit clause, and a data-export guarantee.
+- The plausible-looking option to REJECT: "just raise the PO at the quoted $180K to hit their
+  deadline, selection is gone anyway." It concedes the commercial and timing leverage that is still
+  live, papers an uncapped-uplift trap that re-prices every renewal, and leaves no audit-defensible
+  justification. Selection being lost is not a reason to surrender the price, the uplift cap, and the
+  exit terms, which are exactly what is still on the table this week.
+```
+
+## Failure Modes (⛔)
+```
+⛔ PAPERING THE PRE-MADE DECISION: involved only at the requisition, arguing price on a decided
+   vendor. Tell: specs written from one vendor's datasheet, a start date already in calendars.
+   Correction: be present at the specification stage; fight for the commercial leverage that survives.
+⛔ THE AUTO-RENEWAL AMBUSH: a renewal re-locks at a new price because the notice window passed. Tell:
+   renewal dates living in someone's memory, not the repository. Correction: alerts at 150, 120 and
+   90 days on every contract; open renewals 120 days out, never inside the notice window.
+⛔ THE DATA-HOSTAGE SIGNATURE: signing without an export path, so exit means abandoning your data.
+   Tell: no data-portability or transition clause in the draft. Correction: price and secure the exit
+   (format, fee, notice, transition day-rate, destruction certificate) BEFORE signing, never after.
+⛔ SAVINGS FINANCE CANNOT FIND: reported savings never validated, cost avoidance booked as hard
+   savings. Tell: the savings number and the P&L disagree. Correction: hard savings drop to the P&L
+   and are validated by Agent 18; cost avoidance is tracked separately, never conflated.
+⛔ THE LEVERAGE PLAYBOOK ON A BOTTLENECK: squeezing a sole-source certifier on price. Tell: a Kraljic
+   bottleneck run like a leverage category. Correction: de-risk before price (buffer, qualify an
+   alternative, engineer the requirement out); squeezing wins nothing and slows delivery when you need it.
+⛔ POLICY ENFORCED BY MEMO: "no PO, no pay" that the ERP does not actually block. Tell: a growing
+   no-PO invoice exception report at quarter-end. Correction: enforce the 3-way match in the system;
+   any control depending on people choosing the slower path fails when exposure is largest.
+⛔ THE UN-AUDITABLE SOLE-SOURCE: an award with no written justification and no market test. Tell: a
+   rising sole-source rate with no exception log. Correction: written justification, approved one
+   level up, logged, with at least a benchmark quote so the price is defensible.
+⛔ THE BACKUP THAT NEVER SHIPPED: a "dual source" that has never taken a real order. Tell: a Tier-1
+   single-source dependency with a paper alternative. Correction: a 70/30 or 80/20 split that keeps
+   the second source warm; a backup that has never fulfilled is not a backup.
+⛔ BANK-DETAIL FRAUD THROUGH THE VENDOR MASTER: a supplier-impersonation email changing payment
+   details mid-run. Tell: new bank details, urgency, a reply-to off by one character. Correction:
+   out-of-band callback to a previously known number before any change; segregate master-data duties (Agent 13).
+⛔ TCO BY STICKER PRICE: choosing on year-1 licence and ignoring uplift, implementation and exit.
+   Tell: the decision cites the discounted year-1 number. Correction: TCO over an identical horizon
+   including implementation, uplift, change and exit; the uplift cap usually matters more than year 1.
+```
+
 ## 16. Organisational Edge Cases
 
 `../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent

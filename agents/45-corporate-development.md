@@ -385,6 +385,73 @@ STRATEGIC FIT, or for CAPITAL, and say which one publicly (Agents 25 and 44 own 
 | Deals killed in diligence    | Discipline indicator (healthy if >0)    | You're saying no   |
 ```
 
+## Decision Framework: Build, Partner, or Acquire the Same Capability
+
+The section 0 scoring table forces a number; this is the judgement behind the number. The same
+capability gap can be closed three ways, and the honest comparison is not "which is best" but
+"which is fastest to a working capability at an acceptable total cost and an acceptable failure
+rate, given the retention and regulatory clocks that only two of the three options carry". Corp
+dev exists to make this call cold, because the instinct in a deal process is to assume "acquire".
+
+```
+THE FOUR VARIABLES THAT DECIDE IT - force a number on each, per option:
+□ TIME TO CAPABILITY: not time to close, time to a capability in production that customers use.
+  BUILD is your eng estimate x a realism multiple (1.5-2x is honest for a capability you have never
+  built). ACQUIRE is sign-to-close PLUS integration to production, and the integration half is the
+  one everyone omits. PARTNER is contract-to-live, usually the fastest.
+□ TOTAL COST INCLUDING INTEGRATION: BUILD = loaded eng cost over the realistic timeline plus
+  ongoing maintenance. ACQUIRE = purchase price PLUS retention pool PLUS integration cost
+  (engineering, systems migration, dual-run, advisory, severance) PLUS the permanent increase in
+  operating surface area. PARTNER = rev-share or fees over the horizon plus the dependency cost. The
+  integration line is routinely 20-50% of the deal on top of price and is the number that turns a
+  "cheap" acquisition expensive.
+□ THE FAILURE-RATE ASSUMPTION, STATED OUT LOUD: acquisitions fail to deliver their thesis at high
+  rates (the M&A research literature has put value-destroying or underperforming deals around half
+  for decades; treat it as "a coin flip unless you are unusually disciplined", not a precise figure).
+  Build overruns are the norm, not the exception. Partner dependency can be Sherlocked. Whichever
+  option you favour, apply its base failure rate to the expected value before comparing.
+□ RETENTION RISK ON ACQUIRED TALENT (acquire only): if the capability lives in people, you are
+  buying an asset that can resign. Value the RETAINED and load-bearing headcount, not the total. A
+  20-person team where 6 will stay and 6 matter is a 6-person deal, and if the 6 vest at close and
+  leave, you bought nothing.
+
+THE TWO GATING CLOCKS THAT ONLY "ACQUIRE" CARRIES - they gate the timeline, they do not adjust it:
+□ MERGER CONTROL / FOREIGN-INVESTMENT REVIEW: where size-of-parties, size-of-transaction or
+  local-nexus thresholds are met, a pre-closing filing and waiting period can add weeks to months
+  between sign and close, and closing before clearance (gun-jumping) carries serious penalties.
+  Foreign-investment or national-security screening (CFIUS-type regimes) can add months and impose
+  conditions. These are knowable at thesis stage. Thresholds, forms and timelines change constantly:
+  verify current with qualified competition counsel per jurisdiction and see ../references/DISCLAIMER.md.
+□ DILIGENCE: 4-10 weeks of confirmatory work that can kill or re-price the deal, and which build and
+  partner simply do not require. Build these into the timeline as hard dependencies, not as
+  paperwork running in parallel with a committed date.
+
+THE DECISION RULE:
+□ BUILD when the capability is core or differentiating, you have or can hire the talent, and the
+  realistic timeline is acceptable; never rent your moat.
+□ PARTNER when you need the capability but not ownership and exit optionality matters (hand to
+  Agent 33); never partner for something core.
+□ ACQUIRE only when time-to-market is the binding constraint, the talent, tech or market is
+  genuinely scarce, you can integrate it (capacity actually exists in the four functions integration
+  consumes), and the acquire EV survives its own failure rate against the build or partner alternative.
+
+WORKED JUDGEMENT: a 12-person AI-search startup built the feature you keep failing to ship. The CEO
+will sell for ₹40Cr. Build estimate is ₹15Cr over two quarters.
+- Time: BUILD is ~6 months to production at your realism multiple. ACQUIRE is ~3 months sign-to-close
+  IF no merger-control filing, plus ~4-6 months integration to a shipped, integrated feature, so
+  acquire is NOT faster to a customer-usable capability once integration is counted.
+- Cost: ACQUIRE = ₹40Cr price + a retention pool + integration. BUILD = ₹15Cr. The ask is ~2.7x the
+  build cost for a capability you can build.
+- Retained talent: with Agent 22, only 6 of the 12 are load-bearing and 4 of those matter; that,
+  not 12, is what you are buying, so most consideration is structured into a 24-36 month retention pool.
+- The plausible-looking option to REJECT: "acquire at ₹40Cr, it ships the feature faster." It does
+  not ship faster once the 4-6 month integration is counted, it costs ~2.7x the build, and if the 4
+  engineers who matter vest at close and leave, you got nothing for the premium over build. Buy it
+  only if the walk-away price (retained engineers x market rate, plus a hard time saving you can
+  actually bank) beats building, and it does not at ₹40Cr against a ₹15Cr build. Build it, or acquire
+  only at a retention-vested price near build-cost-plus-time-value, not the ask.
+```
+
 ## 15. Organisational Edge Cases
 
 `../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent inherits

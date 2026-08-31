@@ -394,6 +394,109 @@ DEVELOPER ADVISORY BOARD (post-GA, ongoing):
   about your API that are worth very little. Where both matter, run two separate forums.
 ```
 
+## Decision Framework: Deprecating an API a Meaningful Share of the Ecosystem Depends On
+
+The API is the product, and every consumer of a surface you want to remove is a working integration
+you are about to break. Engineering wants the old code gone on a timeline that suits the codebase;
+the ecosystem experiences that timeline as a forced, unpaid migration project it did not schedule.
+The deprecation date is not an engineering convenience, it is a function of how long the migration
+actually takes the people who have to do it, plus what your contracts oblige.
+
+```
+THE TIMELINE IS SET BY MEASURED MIGRATION EFFORT, NOT BY WHEN THE OLD CODE IS INCONVENIENT:
+□ Measure the real migration effort before proposing a date. Take three representative consumers
+  (a large one, a small one, a community one), migrate a sample yourself or with them, and record
+  the person-hours. A 20-minute find-and-replace and a 3-week rewrite of their webhook handling
+  deserve completely different notice periods.
+□ The floor is your published policy (section 9): minimum 12 months' notice on an API version
+  sunset, 90 days on a breaking change in a beta surface. That is a floor, not a target.
+□ The real date = max(contractual notice, published policy, measured-migration-effort headroom).
+  If the measured migration is a multi-week rewrite for your largest consumers, 12 months of
+  calendar may still be too short once you subtract their change-freeze windows and release cycles.
+
+CONTRACTUAL NOTICE OBLIGATIONS OVERRIDE POLICY - read them before a date is spoken aloud:
+□ Enterprise MSAs frequently mandate 12-24 months' notice on breaking changes, which a public
+  "12-month sunset" does not override. A terms or data-use change with technical effect IS a
+  breaking change and earns the same notice. Route every deprecation through Agent 10 before
+  announcement; contract terms are jurisdiction-specific and change, so verify with qualified
+  counsel and see ../references/DISCLAIMER.md.
+
+SEGMENT THE AFFECTED CONSUMERS - a single blended date is wrong for everyone:
+□ Pull telemetry by consumer: who calls the deprecated path, how often, on what SDK version, under
+  what contract. Rank by call volume AND by contractual notice AND by revenue.
+□ TIER 1 (enterprise, under MSA notice, high volume): named outreach, a personalised diff, a
+  migration owner assigned, cut-off driven by MIGRATION COMPLETION, not calendar.
+□ TIER 2 (mid, self-serve, moderate volume): email by name, migration guide, a dashboard of their
+  own deprecated calls, a proactive nudge on the first 4xx after cutover staging.
+□ TIER 3 (long tail, community, low volume): changelog, banner, the automated tooling below.
+Never let a partner or a large consumer learn of the sunset from a 410 in production.
+
+MIGRATION TOOLING CHANGES THE MATHS - the biggest lever on the timeline is making migration cheaper:
+□ A codemod, an automatic request translator or shim, a compatibility layer, or a one-flag SDK
+  upgrade can turn a 3-week rewrite into an afternoon, which legitimately shortens the notice you owe.
+□ A dual-write or transparent proxy that serves the old shape from the new backend can let you
+  remove the old CODE while keeping the old SURFACE alive, decoupling the internal cleanup from the
+  external break. This is often the correct answer.
+□ Per-consumer migration dashboards (who has moved, who has not) turn cut-off day into a formality.
+
+SOMETIMES THE ANSWER IS TO KEEP THE OLD SURFACE ALIVE LONGER THAN IS COMFORTABLE:
+If a meaningful share of revenue or a strategic enterprise account cannot migrate inside the window,
+the correct call is to extend, via a paid extension with a firm end date or by keeping the shim
+running, even though it costs engineering carrying cost and offends the instinct to delete. The
+alternative, breaking a production integration a renewal depends on, costs the account. Trust in a
+developer platform is earned over quarters and spent in a single 410.
+
+WORKED JUDGEMENT: Engineering wants to remove a legacy v1 webhook format in 3 months to unblock a
+refactor. Telemetry shows 1,100 active consumers still on v1; 12 of them are enterprise accounts
+under 18-month-notice MSAs, and those 12 are 40% of platform revenue.
+- Measured effort: migrating a sample enterprise consumer off v1 takes their team ~2 weeks plus a
+  change-freeze window. The long tail is a ~1-hour SDK bump.
+- Contract floor: 12 of the 1,100 have an 18-month notice right. Three months is not merely
+  uncomfortable, it is a contract breach for the accounts that are 40% of revenue.
+- Tooling: you can ship a v1-to-v2 translation shim in ~3 weeks that serves the old webhook shape
+  from the new backend, letting Engineering do their refactor now while the external surface stays up.
+- The plausible-looking option to REJECT: "announce a 3-month sunset with a good migration guide and
+  personalised emails." The guide is necessary and insufficient: it does not change that 3 months
+  breaches the MSA notice for the 12 accounts that are 40% of revenue, and no communication quality
+  converts a contractual 18-month right into 3 months. Instead: ship the shim (Engineering gets the
+  refactor now), announce v1 sunset at the 18-month contractual floor, drive the long tail off with
+  an SDK codemod inside two quarters, and manage the 12 enterprise accounts to completion by name.
+  Keep v1's surface alive, uncomfortably, until the contract and the migration curve both allow the break.
+```
+
+## Failure Modes (⛔)
+```
+⛔ THE DEMO-ON-DEMAND TRAP: DevRel quietly becomes unpaid sales engineering. Tell: advocates
+   spending over 50% in pre-sales demos, office hours reframed as a demo channel. Correction: cap
+   demo time, define ownership explicitly, escalate; DevRel earns trust, it does not close deals.
+⛔ ACTIVITY REPORTED AS IMPACT: stars, followers, talks, booth scans presented as results. Tell: a
+   "DevRel-sourced ARR" number from last-touch attribution. Correction: report causal leading
+   indicators (TTFHW, activation by cohort, docs-gap tickets) and matched-cohort holdouts.
+⛔ THE SAMPLE THAT NO LONGER RUNS: a failing code sample teaches the developer the product is broken.
+   Tell: a sample failing in CI for 14 days, still linked from docs. Correction: every sample
+   compiles and runs against the sandbox in CI weekly; a failing one is archived, not left up.
+⛔ HELLO-WORLD ACTIVATION: the quickstart ends at "hello world" while the real job needs six more
+   steps. Tell: healthy first-call rate, activation under 40% at 7 days. Correction: task-based
+   tutorials for the top-3 JTBD with seeded sandbox data and deterministic error triggers.
+⛔ THE UNSEGMENTED FUNNEL: a 4-minute Node TTFHW hiding a 40-minute Go TTFHW. Tell: only aggregate
+   numbers reported. Correction: segment every funnel stage by language, region and signup source
+   before concluding anything about "developer quality".
+⛔ TIER-1 SDK ON A BUS FACTOR OF ONE: an official-looking client with a single maintainer and no
+   declared status. Tell: one name on every commit for 18 months, the parity SLA missed twice.
+   Correction: declare the tier honestly (maintained / community / deprecated with a date) within a week.
+⛔ THE HALLUCINATING DOCS ASSISTANT: a RAG "ask the docs" that invents endpoints. Tell: confident
+   answers not grounded in the current corpus. Correction: answer only from retrieved docs with
+   citations, say "I don't find that in the docs" otherwise, weight faithfulness highest in evals.
+⛔ TIER-2 SUPPORT DRIFT: ticket load creeping past 20% of DevRel time, answered one at a time. Tell:
+   recurring tickets never converted to fixes. Correction: cap ticket time at ~20%, turn every
+   recurring ticket into a docs fix, a better error message, or a product change.
+⛔ DEPRECATION BY CHANGELOG: the ecosystem learns of a sunset from a 410 in production. Tell: no
+   telemetry pulled on who still calls the path, migration guide written after the announcement.
+   Correction: query callers first, ship the migration guide before the announcement, notify by name.
+⛔ DEFLECTION TARGETED, NOT MEASURED: hiding the humans and calling it efficiency. Tell: deflection
+   rate rising alongside churn. Correction: pair every deflection number with activation and retention.
+```
+
 ## 14. Organisational Edge Cases
 
 `../frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
