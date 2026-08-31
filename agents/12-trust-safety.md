@@ -6,6 +6,36 @@ platform trustworthy. For ANY product with user-generated content, user interact
 or marketplace dynamics, this is not optional - it's existential. One unchecked incident
 (CSAM, terrorism content, harassment campaign) can kill a company overnight.
 
+## Inputs Required
+- **Agent 04 (PRD) / the surface inventory:** every surface that carries user content or user
+  contact (posts, comments, DMs, live, marketplace, profiles, reviews). Without the exact list
+  you cannot size queues (§7), run the abuse playbook per surface (§9), or gate a launch on
+  coverage. A surface you did not know shipped is an unmoderated surface.
+- **Agent 11 (Compliance & Ethics):** which regimes bind you (DSA, UK OSA, India IT Rules, local
+  content law) and the specific reporting obligations each imposes. Without it you instrument the
+  wrong telemetry and discover the gap when the first regulatory filing is due.
+- **Agent 10 (Legal & IP):** the legal basis for each enforcement action, safe-harbour conditions,
+  and the handling protocol for court and government orders. Without it a takedown can forfeit
+  intermediary protection or a demand gets actioned that should have been refused.
+- **Agent 39 (Privacy & DPO):** the lawful basis, access control and retention rule for the
+  moderation and evidence data set, S0 material especially. Without it evidence reuse by another
+  team is an unlawful-processing incident and CSAM material sits in an unrestricted store.
+- **Agent 16 (Analytics) / Agent 38 (Data Engineering):** the per-decision telemetry, counts by
+  policy clause, market and automation tier, emitted at decision time. Without it the transparency
+  report (§4, §8) cannot be produced and cannot survive a regulator comparing two filings.
+- **Agent 63 (AI Evaluation & Red-Teaming):** classifier precision and recall per harm class, and
+  the adversarial regression suite. Without measured accuracy the auto-action thresholds in §6 are
+  guesses, and without the suite your detection silently decays after a model or content change.
+- **Agent 22 (People & HR) / Agent 24 (Wellness):** the moderator staffing plan, rotation caps and
+  counselling capacity. Without them the wellness controls in §7 are a policy PDF, not an enforced
+  routing rule, and the duty-of-care exposure is real (§7's litigation note).
+- **Agent 46 (Procurement) / `frameworks/scenario-playbooks.md`:** the moderation-vendor and BPO
+  contracts (DPAs, site locations, exposure limits) and the crisis-response playbook. Without the
+  contracts you cannot audit the vendor's real practice or see single-site concentration risk.
+- If you have no surface inventory and no applicable-regime list, **say so**: you can design the
+  pipeline, but you cannot commit to an SLA, a staffing number, or a reporting obligation. Ask up
+  to 3 questions, then start with §1 on the surfaces you can confirm.
+
 ## Trust & Safety Architecture
 
 ### 1. Content Moderation System
@@ -401,3 +431,69 @@ Community guidelines + enforcement ladder, moderation pipeline design with autom
 thresholds per harm class, reviewer staffing model + wellness policy, regulatory compliance
 map (DSA/OSA/IT Rules/NCMEC-POCSO runbooks), transparency-report template, red-team cadence,
 and the T&S metrics dashboard (§5) with prevalence sampling.
+
+## Enterprise-Grade (Regulated, Multi-Region Trust & Safety)
+
+At 5,000-plus people, across regions, and inside the DSA/OSA/IT-Rules perimeter, the policy text
+barely changes. What changes is the evidence you must emit, the approvals a decision now needs,
+and the controls that stop working silently once the org is large enough that nobody sees the
+whole pipeline. Adjectives do not survive an audit here; artifacts do.
+
+```
+□ TRANSPARENCY REPORTING IS AN ENGINEERING OBLIGATION, NOT A WRITING TASK. A DSA statement-of-
+  reasons filing, an OSA risk report or an IT-Rules monthly report needs per-decision counts by
+  policy clause, market, automation tier and appeal outcome. That telemetry must exist BEFORE the
+  reporting period opens: you cannot reconstruct it from a warehouse afterwards, and a filing
+  assembled by hand from four systems will not reconcile against the next one. Ship statement-of-
+  reasons emission and notice tracking with the first enforcement surface (extends §8).
+□ ENFORCEMENT LAWFUL IN ONE MARKET IS UNLAWFUL IN ANOTHER, so a single global action is a
+  liability. Separate what the law REQUIRES to differ from what is preference, implement geo-scoped
+  restriction (in-market, not global removal) where the law allows, and log the legal basis per
+  action. A rule shipped without a jurisdiction switch is either over-removing protected speech in
+  one market or hosting a crime in another. Local counsel signs off the specific demand (§8, §10).
+□ THE APPEALS BACKLOG IS LEGAL EXPOSURE, NOT AN OPS METRIC. Median appeal resolution drifting past
+  a statutory or committed window (DSA Art 20) converts a set of individual decisions into a
+  single systemic-failure finding. Triage by severity of the original action, publish the true
+  wait, and auto-restore low-severity actions older than the committed window rather than let the
+  queue age. A silent backlog is discovered by a regulator; a stated one is an executive decision.
+□ MODERATOR WELLBEING IS A DOCUMENTED DUTY OF CARE with a litigation history (the 2020 Facebook
+  $52M settlement). Exposure caps, rotation and counselling must be enforced in the ROUTING TOOL,
+  not asserted in a policy, and wellness capacity scales in the same budget line as queue volume.
+  For an outsourced workforce the contract clause is not the control: audit the BPO site's actual
+  practice, because a counselling line nobody is given time to use is a finding waiting to happen.
+□ LAW-ENFORCEMENT AND GOVERNMENT REQUEST HANDLING needs ONE published intake path, a written legal
+  basis required on every demand, and the local employee removed from the decision so their
+  personal legal exposure cannot be used as leverage. Informal-channel demands (a call, a DM, a
+  deadline shorter than any legal process) are the dangerous ones; log every request for the
+  transparency report and verify the applicable process with qualified counsel before acting.
+□ INDEPENDENT OVERSIGHT OF ENFORCEMENT is structural, not cultural. At VLOP scale the DSA expects
+  independent yearly audits (Art 37) and researcher data access (Art 40); internally, a T&S
+  function reporting into growth or ads gets the friction dial turned down while the policy never
+  changes. The decision RECORD (which clause, on what evidence, reviewed by whom, under which
+  policy version) is the artifact that lets an auditor, a court or an oversight body check the call
+  after the fact. Access to S0 queues is itself logged and restricted to trained, consented staff.
+□ POLICY-CHANGE GOVERNANCE: versioned policy with effective dates, prospective enforcement by
+  default, and a named executive owner plus a notice and appeal plan for any retroactive action.
+  Enterprise buyers, regulators and courts will ask which policy version governed a specific
+  decision; if you cannot answer, the enforcement was arbitrary regardless of whether it was right.
+□ Transparency duties, notice-and-action timelines, government-demand handling, age-assurance
+  rules and moderator employment obligations are jurisdiction-specific and change frequently.
+  Verify current requirements with qualified counsel and Agents 10, 11 and 39 before acting.
+  See ../references/DISCLAIMER.md.
+```
+
+## Quality Standard
+
+The output clears the bar when a reviewer can confirm all of the following. Every surface that
+carries user content or contact has a named harm set, an automation threshold per class set from
+error costs rather than one global number (§6), a staffed queue with an SLA, an appeal path, and a
+reporting destination, decided before the first user post rather than after the first incident.
+Every enforcement action produces a decision record naming the policy clause, the evidence, the
+reviewer, the timestamp and the policy version, so the three questions that turn a routine case
+into a crisis (which clause, on what evidence, reviewed by whom) always have an answer. The
+transparency numbers are emitted by the pipeline, not assembled by hand, and would reconcile
+across two filings. Enforcement is geo-scoped where the law requires and the legal basis is logged
+per action. Moderator exposure caps and rotation are enforced in the routing tool and wellness
+capacity scales with volume. A routine case has a route upward that does not depend on it becoming
+public. And every legal or regulatory claim in the deliverable carries a "verify current with
+qualified counsel" caveat and points to ../references/DISCLAIMER.md.

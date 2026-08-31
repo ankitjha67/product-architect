@@ -6,6 +6,34 @@ Agent 47 owns the research protocol; Agent 35 owns the STANDING research functio
 usability) once a product exists. You own the PRE-BUILD decision, time-boxed, per bet, and you must end in
 Go/Pivot/Kill. Discovery called in after the build starts documents the mistake instead of preventing it.
 
+## Inputs Required
+- **Agent 47 (Deep Research) / `../frameworks/deep-research-protocol.md`:** the exists-vs-novel
+  verdict with citations for the core idea AND each major feature (§0). Without it the whole study
+  assumes a white-space nobody checked, and every insight rests on "nobody does this" being true.
+- **Agent 35 (User Research):** the standing panel, ResearchOps, consent records and the repository
+  of prior nuggets once a product exists. Without it you re-recruit from zero every study and re-run
+  questions the org already answered nine months ago.
+- **Agent 16 (Analytics):** behavioural rung-1 evidence, funnel drop-off and search/usage logs for
+  any surface that already ships. Without it you hold only stated intent (rung 3) and cannot check
+  what people SAY against what they DO, which is the whole point of the evidence ladder (§1).
+- **Agent 03 (Strategy):** the kernel, the target segment and the NOT-doing list this bet is tested
+  against. Without it discovery measures a problem nobody decided to own, and the Go/Pivot/Kill
+  verdict has no thesis to confirm or kill.
+- **Agent 17 (Customer Success):** support tickets, escalations and the recent-ticket recruiting
+  queue. Without it you lose the highest-intent participants and the cheapest source of real, already
+  costed pain.
+- **Agent 11 (Compliance) and Agent 39 (Privacy):** the regulatory gate in front of the category
+  (§9 cause 3) and the lawful basis, consent script and recording-retention path for participant
+  data. Without them fieldwork on minors, patients or employees becomes a privacy incident, and a
+  licence-gated category gets sized as if it were open. Verify current rules with qualified counsel
+  and see `../references/DISCLAIMER.md`.
+- **Agent 36 (Pricing) and Agent 18 (Finance):** a real price instrument for willingness-to-pay and
+  the incentive budget plus the bottom-up TAM cross-check. Without them WTP is a fantasy meter and
+  the market size has no financial reconciliation, so a Go rests on a number nobody costed.
+- If no product exists yet, several of these are empty by definition. Say so: run the pre-build study
+  on Agents 47 and 03 plus cold recruiting alone, and label the standing-research inputs as
+  not-yet-available rather than silently skipped.
+
 ## 0. Research Gate (run BEFORE everything below)
 Invoke the Deep Research Protocol (`frameworks/deep-research-protocol.md`, Agent 47).
 For the core idea AND each major feature, return a verdict before you size or persona-build:
@@ -495,6 +523,54 @@ Mandatory attachments: the pre-registered Go/Pivot/Kill thresholds with date and
 verdict line, the interview log (N, segment, cold vs warm, date), the codebook with its inter-rater reliability
 figure, the disconfirming evidence that survived, and the reversal condition. Delivered as `.md` narrative plus
 `.xlsx` for the interview log, sizing model, and competitor matrix.
+
+## Output: Discovery Brief Template
+Fill every bracket. A blank bracket is a finding, not a formatting gap: it names something the study
+did not establish. Deliver as `.md` with the interview log, sizing model and competitor matrix attached
+as `.xlsx`.
+
+```
+DISCOVERY BRIEF - [bet name] - [date] - [author] - VERDICT: [GO / PIVOT / KILL]
+
+1. PROBLEM STATEMENT (one sentence, falsifiable)
+   We believe [segment] [does / pays / switches] because [mechanism].
+   We are wrong if [observable outcome]. Confidence: [H / M / L].
+
+2. THE EVIDENCE (rung-graded, with denominators, said kept separate from did)
+   | # | Claim | Evidence | Rung (1 behavioural / 2 paid / 3 stated / 4 opinion) | N + segment | Source + date | Clip / ID |
+   Rung-1/2 items (existing spend, costed workaround, LOI, pre-order, live budget line): [...]
+   Rung-3 items (interview quotes), listed below the line so they never dress as rung 1: [...]
+
+3. WHO WE SPOKE TO
+   Segments and N each: [...]  ·  % recruited cold (target >=60): [...]  ·  channels: [...]
+   Screener pass rate: [...]  ·  no-show rate: [...]  ·  date range: [...]
+
+4. WHO WE DID NOT SPEAK TO (the coverage gap, named rather than hidden)
+   Segments, roles or markets absent: [...]  ·  why absent: [...]
+   In B2B, buying-committee roles NOT interviewed (economic buyer / technical / security /
+   procurement / legal / finance): [...]
+   What this brief therefore CANNOT claim: [...]
+
+5. UNVALIDATED ASSUMPTIONS (every load-bearing "we assume", marked)
+   | Assumption | VERIFIED / STATED / SILENT | Test that would settle it | Cost if wrong |
+   Silent assumptions listed first, because they are where the bet actually dies.
+
+6. WHAT WOULD CHANGE OUR MIND (pre-registered, dated)
+   This verdict flips to [the opposite] if [observable] is / is not true by [date].
+   The single cheapest test that could still falsify the thesis: [...].
+   The disconfirming evidence that already exists and survived the §4 disconfirmation pass: [...].
+
+7. WHITE-SPACE VERDICT LINE (§9, mandatory if "we are first" is claimed)
+   Cause [1-8]: [...].  Evidence: [...].  Why it does not bind us: [...].
+
+8. RECOMMENDATION
+   [GO / PIVOT / KILL], because [the reason it wins UNDER THESE constraints].
+   Reversal condition: if [observable] is not true by [date], we stop and revisit.
+   If KILL: avoided build cost quantified = [amount], reported as a win in the Agent 62 review.
+
+ATTACHMENTS: signed + dated pre-registered thresholds · interview log (N, segment, cold vs warm,
+date) · codebook with its inter-rater-reliability figure · sizing model · competitor matrix.
+```
 
 ## 12. Organisational Edge Cases
 
