@@ -3,6 +3,57 @@
 All notable changes to Product Architect. Format follows [Keep a Changelog](https://keepachangelog.com/);
 versions follow semver as declared in `SKILL.md` metadata.
 
+## [5.0.0] - 2026-08
+
+### Added
+- **16 new department agents (64-79)**, each 665 to 790 lines with full house structure
+  (Role, Inputs Required, Decision Framework, Enterprise-Grade, Failure Modes,
+  Organisational Edge Cases, a worked Example, Output and Quality Standard). Each is
+  positioned explicitly against its neighbours rather than overlapping them:
+  - **Support and platform engineering:** 64 Customer Support (reactive queue, tiering,
+    deflection economics, staffing maths, distinct from 17 Customer Success),
+    65 Backend and Distributed Systems (consistency, idempotency, tail latency, the
+    server-side sibling to 48/49/50), 66 Enterprise Architecture (reference
+    architectures, tech radar, ARB, TIME portfolio), 67 Developer Productivity and
+    Internal Platform (DORA/SPACE, build economics, golden paths).
+  - **Infra economics and resilience:** 68 FinOps and Cloud Economics (allocation,
+    unit economics, commitments, AI workload cost), 69 Business Continuity and
+    Enterprise Resilience (BIA, RTO/RPO, DR patterns, crisis command).
+  - **Corporate security and workplace:** 70 Corporate and Physical Security (site and
+    people threat, access, travel, insider threat), 71 Workplace, Facilities and Real
+    Estate (portfolio, lease economics, space planning, HSE).
+  - **Regulated product and hardware:** 72 Regulatory Affairs and Quality Management
+    (QMS, design controls, submissions, CAPA), 73 Hardware Engineering and Manufacturing
+    (NPI stage gates, BOM, DFM, certification, RMA).
+  - **Comms and vendor risk:** 74 Internal Communications (channel architecture,
+    cascades, change and reorg comms), 75 Third-Party and Vendor Risk (tiering,
+    diligence, evidence review, fourth-party risk).
+  - **Expansion, ops and insight:** 76 Market Expansion and Country Launch (market
+    selection, entry mode, entity, payments), 77 Design Ops and Research Ops (design
+    system governance, participant panel, repository), 78 Accessibility and Inclusive
+    Design (conformance floor, testing pyramid, VPAT), 79 Data Science and
+    Experimentation (causal inference, experiment platform, SUTVA, holdouts).
+- **Three-layer Edge-Case Doctrine** with a new `frameworks/enterprise-edge-cases.md`
+  (organisational edge cases), the routing and session edge cases in `SMART-LOADER.md`,
+  and a per-function Organisational Edge Cases section in every agent: 1,135 rows across
+  all 80 agents plus a 54-entry shared catalogue.
+
+### Changed
+- **House structure completed across the whole roster.** An audit found 46 of the
+  original 64 agents were missing standard sections (a Decision Framework, Failure Modes,
+  Enterprise-Grade, Inputs Required or Quality Standard). All 80 agents now carry the
+  full set. Core agents were deepened substantially in the process (Security 09 to 1,124
+  lines, Engineering 06 to 966, DevOps 08 to 916), alongside deeper A/B testing, roadmap
+  and MVP frameworks.
+- All asserted counts updated to 80 agents across SKILL.md, SMART-LOADER.md, README.md,
+  START-HERE.md, references/github-readme.md and tools/navigator.jsx.
+
+### Fixed
+- Stripped all em dashes repo-wide and made the rule mechanical in the validator.
+- `tools/validate_repo.py` now also enforces agent house structure, catches numbered
+  sections that read out of order, and distinguishes a genuinely broken internal link
+  from a repo-root path written inside a subdirectory.
+
 ## [4.0.0] - 2026-07
 
 ### Added

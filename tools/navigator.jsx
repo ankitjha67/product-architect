@@ -135,6 +135,14 @@ const agentMap = {
   "56": "Revenue Accounting", "57": "Tax", "58": "Treasury",
   "59": "Internal Audit & Risk", "60": "Talent Acquisition", "61": "Total Rewards",
   "62": "Chief of Staff & BizOps", "63": "AI Evaluation & Red-Teaming",
+  "64": "Customer Support", "65": "Backend & Distributed Systems",
+  "66": "Enterprise Architecture", "67": "Developer Productivity & Platform",
+  "68": "FinOps & Cloud Economics", "69": "Business Continuity & Resilience",
+  "70": "Corporate & Physical Security", "71": "Workplace & Facilities",
+  "72": "Regulatory Affairs & Quality", "73": "Hardware & Manufacturing",
+  "74": "Internal Communications", "75": "Third-Party & Vendor Risk",
+  "76": "Market Expansion", "77": "Design Ops & Research Ops",
+  "78": "Accessibility & Inclusive Design", "79": "Data Science & Experimentation",
 };
 
 const quickLinks = [
