@@ -1,6 +1,6 @@
 ---
 name: product-architect
-description: Complete product development system with 64 agents and 36 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, vector database, embeddings, unit economics, user personas, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 80 agents and 36 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, customer support, backend and distributed systems, enterprise architecture, developer productivity, FinOps and cloud cost, business continuity, physical security, facilities, regulatory affairs, hardware, internal comms, vendor risk, market expansion, accessibility, data science and experimentation, unit economics, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
@@ -13,7 +13,7 @@ metadata:
 
 # Product Architect
 
-64 specialized agents covering every department from solo founder Day 0 to IPO.
+80 specialized agents covering every department from solo founder Day 0 to IPO.
 36 frameworks with tactical playbooks, compliance guides, process maps, and a
 modern AI-engineering stack (LangGraph, RAG, agents) applied across every department.
 
@@ -107,6 +107,22 @@ QUICK ROUTING:
 "Compensation/equity/benefits" → agents/61-total-rewards.md + frameworks/compensation-bands.md
 "Chief of staff/BizOps/operating cadence" → agents/62-chief-of-staff-bizops.md
 "AI evals/red-team/is it safe to ship" → agents/63-ai-evaluation-red-teaming.md
+"Support queue/tickets/deflection/CSAT" → agents/64-customer-support.md
+"Backend/API/distributed/consistency"   → agents/65-backend-distributed-systems.md
+"Enterprise architecture/ARB/tech radar"→ agents/66-enterprise-architecture.md
+"Dev productivity/DORA/build times/platform" → agents/67-developer-productivity-platform.md
+"Cloud cost/FinOps/unit economics of infra" → agents/68-finops-cloud-economics.md
+"Business continuity/DR/RTO/RPO/resilience"  → agents/69-business-continuity-resilience.md
+"Physical security/badging/travel risk" → agents/70-corporate-physical-security.md
+"Office/facilities/lease/real estate"   → agents/71-workplace-facilities.md
+"Regulatory approval/QMS/medical device"→ agents/72-regulatory-affairs-quality.md
+"Hardware/manufacturing/BOM/NPI"        → agents/73-hardware-manufacturing.md
+"Internal comms/all-hands/change comms" → agents/74-internal-communications.md
+"Vendor risk/third-party/SOC 2 review"  → agents/75-third-party-risk.md
+"Market entry/new country/expansion"    → agents/76-market-expansion.md
+"Design ops/research ops/design system" → agents/77-design-research-ops.md
+"Accessibility/WCAG/VPAT/inclusive"     → agents/78-accessibility-inclusive-design.md
+"Data science/causal/experiment design" → agents/79-data-science-experimentation.md
 "What could go wrong/pre-mortem/org risk" → frameworks/enterprise-edge-cases.md
 "LangGraph/RAG/AI agent"→ frameworks/ai-engineering-stack.md + agents/29-data-ai-strategy.md + agents/06-engineering.md
 "AI feature/LLM/embed"  → frameworks/ai-engineering-stack.md + frameworks/ai-department-playbooks.md
@@ -224,6 +240,12 @@ Finance Specialisms: `56-revenue-accounting` `57-tax` `58-treasury`
 Risk & People: `59-internal-audit-risk` `60-talent-acquisition` `61-total-rewards`
 Executive: `62-chief-of-staff-bizops`
 AI Assurance: `63-ai-evaluation-red-teaming` (gates whether an AI feature is good/safe enough to ship)
+Support & Platform Eng: `64-customer-support` `65-backend-distributed-systems` `66-enterprise-architecture` `67-developer-productivity-platform`
+Infra Economics & Resilience: `68-finops-cloud-economics` `69-business-continuity-resilience`
+Corporate Security & Workplace: `70-corporate-physical-security` `71-workplace-facilities`
+Regulated Product & Hardware: `72-regulatory-affairs-quality` `73-hardware-manufacturing`
+Comms & Vendor Risk: `74-internal-communications` `75-third-party-risk`
+Expansion, Ops & Insight: `76-market-expansion` `77-design-research-ops` `78-accessibility-inclusive-design` `79-data-science-experimentation`
 
 All agent files are in `agents/` directory.
 

@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development system ever built.**
 
-64 specialized AI agents. 36 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO - and everything a product team needs to operate at Fortune 500 caliber.
+80 specialized AI agents. 36 strategic frameworks. 5 country compliance deep-dives. An interactive navigator. A complete founder's playbook. Everything a solo founder needs to build a world-class company from Day 0 to IPO - and everything a product team needs to operate at Fortune 500 caliber.
 
 ---
 
@@ -227,7 +227,7 @@ product-architect/
 ├── START-HERE.md                Free-tier guided entry point
 ├── ENHANCEMENTS.md              Enhancement roadmap (what was added & why)
 ├── LICENSE                      MIT License
-├── agents/                      64 specialized agents (00-63)
+├── agents/                      80 specialized agents (00-79)
 ├── frameworks/                  36 strategic & operational frameworks
 ├── references/
 │   ├── agent-standards.md       Quality + Depth Doctrine inherited by all agents

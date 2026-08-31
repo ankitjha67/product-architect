@@ -134,6 +134,22 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "compensation"/"equity"/"benefits"→ 61 (Rewards)→ compensation-bands       → 22 (People)+18
 "chief of staff"/"BizOps"/"cadence"→ 62 (CoS)   → okr-goal-setting         → 20 (BAU)+03
 "AI eval"/"red team"/"safe to ship"→ 63 (AI Eval)→ ai-engineering-stack    → 29 (AI)+09
+"support"/"tickets"/"deflection"/"CSAT"→ 64 (Support)→ customer-journey      → 17 (CS)+07
+"backend"/"API"/"distributed"/"consistency"→ 65 (Backend)→ -                → 06 (Eng)+08
+"enterprise architecture"/"ARB"/"tech radar"→ 66 (EA)→ -                     → 06 (Eng)+41
+"dev productivity"/"DORA"/"build time"/"platform team"→ 67 (DevProd)→ -      → 08 (DevOps)+06
+"cloud cost"/"FinOps"/"unit economics of infra"→ 68 (FinOps)→ -              → 18 (Fin)+08
+"business continuity"/"DR"/"RTO"/"RPO"→ 69 (BCM)→ risk-matrix                → 08 (DevOps)+59
+"physical security"/"badging"/"travel risk"→ 70 (PhysSec)→ -                 → 09 (Sec)+22
+"office"/"facilities"/"lease"/"real estate"→ 71 (Workplace)→ -               → 18 (Fin)+22
+"regulatory approval"/"QMS"/"medical device"→ 72 (RegAffairs)→ global-compliance → 11 (Comp)+63
+"hardware"/"manufacturing"/"BOM"/"NPI"→ 73 (Hardware)→ physical-ops-pmi      → 46 (Procurement)+18
+"internal comms"/"all-hands"/"change comms"→ 74 (IntComms)→ -                → 25 (PR)+22
+"vendor risk"/"third-party"/"SOC 2 review"→ 75 (TPRM)→ risk-matrix           → 46 (Proc)+09
+"market entry"/"new country"/"expansion"→ 76 (Expansion)→ global-compliance  → 57 (Tax)+58
+"design ops"/"research ops"/"design system"→ 77 (DesignOps)→ -               → 05 (Design)+35
+"accessibility"/"WCAG"/"VPAT"/"a11y"→ 78 (Accessibility)→ accessibility-i18n → 50 (FE)+05
+"data science"/"causal"/"experiment design"→ 79 (DataSci)→ ab-testing-framework → 16 (Analytics)+38
 "what could go wrong"/"pre-mortem"→ (that agent) → enterprise-edge-cases    → 62 (CoS)+20 (BAU)
 "does this exist"/"is this novel"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "market research"/"who else does"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
@@ -793,6 +809,22 @@ YOU DO NOT KNOW
 61 Total Rewards → Comp & Benefits Framework (philosophy, job architecture, bands, comp cycle, equity, pay equity)
 62 Chief of Staff→ Operating System (charter, cadence stack, planning process, decision rights, BizOps portfolio)
 63 AI Evaluation → AI Safety Case (golden sets, judge calibration, CI gates, red-team findings, ship/hold verdict)
+64 Support       → Support Operating Plan (tiering, deflection model, SLA/SLO, staffing maths, QA)
+65 Backend       → Backend Design (service boundaries, consistency, idempotency, capacity, migration plan)
+66 Enterprise Arch→ Architecture Governance (reference architectures, radar, ADRs, portfolio TIME map)
+67 Dev Productivity→ Platform Plan (golden paths, DORA/SPACE baseline, build economics, migration engineering)
+68 FinOps        → Cloud Economics Plan (allocation model, unit economics, commitment strategy, anomaly runbook)
+69 Business Continuity→ Resilience Plan (BIA, RTO/RPO, DR pattern, crisis command, exercise schedule)
+70 Physical Security→ Corporate Security Plan (threat model, access, travel, insider threat, emergency response)
+71 Workplace     → Workplace Strategy (portfolio, lease economics, space plan, HSE, estate continuity)
+72 Regulatory Affairs→ Regulatory Plan (classification, QMS, design controls, submission path, CAPA, vigilance)
+73 Hardware      → NPI Plan (stage gates, BOM, DFM, tooling, certification path, RMA and warranty reserve)
+74 Internal Comms→ Comms Plan (channel architecture, cascade, change and reorg sequencing, measurement)
+75 Third-Party Risk→ Vendor Risk Programme (tiering, diligence, evidence review, monitoring, offboarding)
+76 Market Expansion→ Country Launch Plan (market selection, entry mode, entity, payments, exit criteria)
+77 Design/Research Ops→ Ops Playbook (design system governance, participant panel, research repository)
+78 Accessibility → Accessibility Programme (conformance plan, testing pyramid, VPAT, remediation triage)
+79 Data Science  → Inference Plan (method selection, experiment design, causal analysis, holdout strategy)
 01 Advisor       → Proactive Suggestions (runs parallel - blind spots, ideas, best practices)
 00 Chief Review  → Final Audit (cross-agent consistency, gaps, risks, recommendations)
 ```
