@@ -49,6 +49,26 @@ and validate performance before traffic does.
            ╱                  ╲
 ```
 
+```
+PYRAMID INVERSIONS - name the shape you actually have, because each one fails differently:
+ICE-CREAM CONE (inverted pyramid): most tests are E2E/UI, few unit. The default failure mode of automation
+  bought after the fact. Symptom: a 90-120 min suite, >5% flake, feedback measured in hours not seconds, and
+  a CI budget spent on re-runs. It happens because E2E needs no code seams, so a team with an untestable
+  architecture reaches for the only lever it has - the pyramid inverts as a SYMPTOM of missing dependency
+  injection and mockable boundaries (Agent 06), not as a testing choice.
+HOURGLASS: many unit plus many E2E, missing integration. The seams between services are never tested, so
+  mocks pass and the wire format breaks in prod. Fix with contract tests (§2), not more E2E.
+TESTING TROPHY (Kent C. Dodds): weights integration heaviest, thin unit and E2E, over a static-analysis
+  base (types, lint). Rational for front-end and thin-service code where most value is in wiring, not
+  algorithms. It is NOT a licence to skip unit tests on money or algorithmic logic.
+HONEYCOMB / DIAMOND (microservices): fat integration middle, thin unit and E2E. Fits a service whose own
+  logic is small but whose correctness is defined by its collaborators.
+THE RULE: the pyramid is a heuristic about FEEDBACK SPEED and ISOLATION, not a quota. Push each test to the
+  LOWEST level that can still fail for the real reason. A test that only fails when three services and a
+  browser align is a slow, flaky proxy for a fast unit assertion someone refused to write. Grade the shape
+  by cost-per-signal (pipeline minutes plus flake tax per real bug caught), never by hitting 70/20/10 exactly.
+```
+
 ### 2. Test Categories & Requirements
 
 ```
@@ -86,6 +106,23 @@ Rules:
 □ Test with slow network simulation (3G throttle)
 □ Test with network interruption mid-flow
 □ Record video/screenshots on failure for debugging
+
+CONTRACT TESTS (consumer-driven, coordinated with Agent 80):
+Target: every service-to-service boundary and every published API - the seam the hourglass (§1) misses
+Tools: Pact (consumer-driven), Spring Cloud Contract, schema-diff on OpenAPI/AsyncAPI, Postman contract tests
+Speed: fast - each side verifies in isolation, so nothing has to be spun up together
+Why: microservices make full E2E combinatorial (N services means exponentially many integration paths) and
+  integration tests that MOCK the provider stay green while the real provider drifts. A contract pins the
+  request/response shape both sides agreed on, verified independently against each side.
+Rules:
+□ The CONSUMER writes the contract (what it actually sends and needs back); the PROVIDER verifies it in its
+  own CI. A provider-authored contract tests what the provider assumes, not what breaks the consumer.
+□ Publish contracts to a broker (Pact Broker / PactFlow); the provider's pipeline fails if a change breaks
+  any published consumer contract - this is the "can I deploy?" gate.
+□ Version the contract; a breaking change to a shared API is a coordinated deploy (Agent 80), not a merge.
+□ Contract tests displace roughly 60-80% of cross-service E2E; keep a thin E2E layer for true user journeys.
+□ For events/queues, contract-test the MESSAGE SCHEMA and the consumer's tolerance (Postel's law: be liberal
+  in what you accept) - a new optional field must not break a consumer, and the test is what proves it.
 ```
 
 ### 3. Specialized Test Plans
@@ -168,6 +205,34 @@ SPECIFIC SCENARIOS:
 - 10,000 search queries/minute → search service response time
 - 500 concurrent file uploads → storage and processing pipeline
 - 100 webhook deliveries/second → processing queue depth
+
+READING THE NUMBERS - percentiles, never the average:
+□ The MEAN hides the tail. A p50 of 120ms with a p99 of 4s is a bad experience for 1 request in 100, and a
+  user who makes 100 requests per session hits that tail almost every session. Report p50/p95/p99/p99.9 and
+  the MAX - the average is the metric that lets a broken system look healthy.
+□ TAIL AMPLIFICATION: a page that fans out to 20 backend calls waits for the slowest. At p99 = 1% per call,
+  p(all fast) = 0.99^20 ≈ 82%, so the page's effective p99 is driven by each service's p95-p99, not its p50.
+  This is why microservice latency budgets must be set at the tail, not the median.
+□ Turn each SLO into a gate: "p95 < 500ms at 2x expected peak" is testable (§11); "feels fast" is not.
+
+THE LOAD TEST THAT LIES - four ways a green load test hides a system that will fall over:
+□ COORDINATED OMISSION (Gil Tene): a closed-loop tool that waits for a slow response before sending the next
+  request under-counts the slow ones - it stops generating load exactly when the system stalls, so the
+  recorded p99 is optimistic by one to two orders of magnitude. Use an open-model / constant-arrival-rate
+  generator (k6 arrival-rate executor, wrk2, Gatling open model) that fires on a schedule regardless of
+  responses.
+□ CLOSED vs OPEN WORKLOAD: the closed model (fixed N virtual users, each waits for its reply) self-throttles
+  and cannot reproduce a real spike; the open model (X new arrivals per second) can, and is the only one that
+  exposes queue build-up and the retry storm. Real traffic is open, so test open.
+□ WARM CACHES / SEEDED DATA: a test that hits the same 100 hot rows measures the cache, not the system. Use a
+  realistic key distribution (Zipfian), a cold-start run, and a dataset at production scale - a 1,000-row
+  table and a 100M-row table get different query plans.
+□ NO THINK TIME / SINGLE ENDPOINT: hammering one endpoint at machine speed with no pacing is a
+  microbenchmark, not a load test. Model real journeys with think time, mix the read/write ratio to
+  production shape, and run long enough to see GC pauses, connection-pool exhaustion and autoscaler lag.
+□ ENVIRONMENT PARITY: a load test on half the prod instance count, a smaller DB tier, or with the
+  WAF/rate-limiter out of path measures a system nobody runs. State the fidelity gap (§12) or the number is
+  fiction.
 ```
 
 ### 5. Security Testing (coordinated with Agent 09)
@@ -236,6 +301,25 @@ FAILURE INJECTION SCENARIOS:
 □ Animations respect "prefers-reduced-motion"
 □ Content readable at 200% zoom (web)
 □ Dynamic type support (iOS), font scale support (Android)
+
+THE AUTOMATION CEILING (with Agent 78): automated scanners (axe-core, Lighthouse, Pa11y, WAVE, IBM Equal
+Access) reliably catch only ~30-40% of WCAG 2.2 AA failures - the machine-detectable ones (missing alt,
+contrast, absent labels, ARIA misuse, missing lang). The other ~60-70% are judgement calls a machine cannot
+make, and they are exactly where real users get blocked:
+□ Is the alt text MEANINGFUL, or is it "image123.png"? (present, so the scanner passes it)
+□ Is the focus ORDER logical, or does Tab jump around the page?
+□ Does the screen-reader announcement make SENSE in context, or is it a wall of "button button button"?
+□ Do error messages get ANNOUNCED, and is focus moved to them?
+□ Is a custom widget operable by keyboard through its full state machine, or only clickable?
+MANUAL PROTOCOL - per release on critical flows, full audit quarterly:
+□ Real assistive tech in real pairings: NVDA+Firefox and JAWS+Chrome (Windows), VoiceOver+Safari
+  (macOS/iOS), TalkBack+Chrome (Android). AT behaviour differs by browser, so test the PAIR, not the AT alone.
+□ Keyboard-only completion of each critical flow, end to end, no mouse.
+□ 200% and 400% zoom, reflow to 320px CSS width, prefers-reduced-motion, and forced-colors/high-contrast mode.
+□ Task-based testing WITH disabled users on high-stakes flows beats any checklist.
+□ Produce and version a VPAT/ACR (EAA obligations apply to many products from June 2025 - verify current
+  scope with Agent 10). Enterprise buyers ask for it, and "conformance" claimed without a manual pass is a
+  misrepresentation the first screen-reader user disproves.
 ```
 
 ### 9. Decision Framework: Where the Next Test Hour Goes
@@ -275,6 +359,63 @@ e.g. 2% flake × 100 runs/day × 15 min ≈ 30 eng-hours/week wasted
 Coverage is an input, not quality. The right target is asymmetric - 100% on the 5%
 of code that moves money or data, deliberate under-testing of stable low-impact code.
 Uniform bars make teams test getters and skip the payment race condition.
+```
+
+```
+AUTOMATE vs MANUAL vs DON'T-TEST - the three-way call most teams collapse into "automate everything":
+| Signal | Automate (regression) | Manual / exploratory | Don't test (logged) |
+|---|---|---|---|
+| Run frequency | Every PR / release | Once or rarely | n/a |
+| Oracle | Stable expected result exists | Judgement, feel, novelty | n/a |
+| Change rate of the feature | Stable | Churning weekly | n/a |
+| Failure impact | Money / data / auth / legal | Explore to FIND the unknown | Cosmetic + stable + low traffic |
+| Cost-to-automate vs value | Payback within ~5-10 runs | UI still moving; automating now is throwaway | Never breaks even |
+RULE: automate the CHECK (known result, run often), have a human do the TEST (probe the unknown). Automating
+an unstable UI too early is negative ROI - you maintain brittle selectors to re-confirm a thing that changes
+next sprint. "Don't test" is a legitimate, logged decision (a §10 waiver), not an accident: gold-plating
+footer-link tests steals the hours the payment race condition needed.
+
+EXPLORATORY TESTING and SESSION-BASED TEST MANAGEMENT (SBTM - Bach/Bolton): the highest-yield way to find
+what scripted tests cannot, made accountable so it is not "just clicking around":
+□ CHARTER: a one-line mission ("explore the refund flow with expired cards, focus on reconciliation"),
+  time-boxed to a 60-90 minute SESSION.
+□ RECORD: notes, bugs, questions, and a coverage split of the time (setup / test design / bug investigation).
+□ DEBRIEF with PROOF (Past, Results, Obstacles, Outlook, Feelings) - a 5-minute structured readout per session.
+□ METRIC: bugs-per-session and areas-covered, not test-case count. Exploratory finds the bug CLASSES (state,
+  timing, emergent) that scripted cases - written from the same assumptions as the code - are blind to.
+□ Deploy it on new or changed high-risk areas as soon as they are buildable, BEFORE anything is automated.
+
+SHIFT-LEFT and the COST-OF-A-BUG-BY-STAGE CURVE: the cost of fixing a defect rises roughly by an order of
+magnitude per stage it escapes (requirements → design → code → test → production). The classic Boehm/IBM
+shape of ~1:6:10:...:100+ is directionally right even though the exact multipliers are disputed - verify
+before quoting a precise number. The lever is not "test harder later", it is "move the check earlier":
+□ REQUIREMENTS: a testable acceptance criterion (Agent 04) kills the ambiguity bug before code exists.
+□ DESIGN: a contract and a threat model (Agents 80, 09) catch integration and auth bugs at near-zero cost.
+□ CODE: types, lint, unit tests, and a fast PR gate - the cheapest place a machine can catch a bug.
+□ SHIFT-RIGHT is the complement, not the opposite: canary, feature flags, synthetic monitoring and prod
+  observability catch the classes that only exist in production (§12). Do both; neither alone is enough.
+
+THE ESCAPE RATE - the one metric that grades the whole system, not a slice of it:
+□ ESCAPE RATE = defects found in production ÷ (defects found in production + defects caught pre-prod), per
+  release, trended. It answers the only question that matters: of the bugs that existed, what fraction did we
+  catch before users did? DDP (Defect Detection Percentage) is its inverse and the same idea.
+□ Coverage %, test count and pass rate are INPUTS; escape rate is the OUTCOME. A team can raise all three
+  inputs while the outcome worsens (coverage theater, above). Report the outcome to leadership, keep the
+  inputs for the team.
+□ A rising escape rate is the signal that FIDELITY (§12), not case count, is the gap - move budget to
+  environment and data realism, not to writing more tests against a fiction.
+□ Segment escapes by root-cause class (missing case / wrong environment / flake-masked / non-deterministic
+  AI) so the fix targets the real gap rather than adding cases everywhere.
+
+TESTING NON-DETERMINISTIC / AI-BACKED PATHS (route to Agent 63; never assert on exact output):
+□ The moment a path calls an LLM, a ranking model, or anything whose same input yields different output,
+  assertEqual is invalid. Gate those paths through Agent 63's distributional evals (k samples, score a
+  statistic with a confidence interval, paired vs baseline), not your deterministic suite.
+□ Keep tier-1 DETERMINISTIC contract checks in YOUR suite even for AI output: valid JSON/schema, required
+  citation present, no PII/secret pattern, refusal on a must-refuse input, latency/cost ceiling. These are
+  the only AI checks that can be a hard binary gate.
+□ A single-run "it worked" is a demo, not a test. A flaky AI item whose k samples straddle the pass line is a
+  product bug (Agent 63) - quarantined and filed, never blanket-retried into green.
 ```
 
 ### 10. Quality Gates as Merge-Blocking Contracts
@@ -341,6 +482,15 @@ ACCESSIBILITY: AUTOMATION vs MANUAL SPLIT:
 ⛔ QA AS PHASE: testing "after dev complete" - gates must live in the PR, not a stage
 ⛔ MOCKED INTO FICTION: every integration mocked → green suite, broken prod (contract tests fix this)
 ⛔ NO PROD VERIFICATION: zero synthetic monitoring - staging-only confidence (with Agent 08)
+⛔ COORDINATED OMISSION: a closed-loop load test that stops sending when the system stalls, reporting a p99
+   optimistic by 10-100x - the outage's first surprise is the "tested" latency
+⛔ HOURGLASS SUITE: fat unit + fat E2E, no contract tests - every service green alone, the wire format broken
+⛔ AUTOMATING A MOVING UI: brittle E2E on a churning screen, maintained forever to re-confirm what changes
+   next sprint - negative ROI dressed as coverage
+⛔ MANAGED BY COVERAGE, NOT ESCAPE RATE: coverage %, count and pass rate all rising while the outcome (bugs
+   users actually hit) gets worse
+⛔ EXACT-MATCH ON AI OUTPUT: asserting a fixed string against a non-deterministic model, so the suite flakes
+   until it is disabled (route those paths to Agent 63)
 ```
 
 ## Test Automation Strategy
@@ -353,6 +503,24 @@ CI/CD INTEGRATION:
 - Weekly: Load test against staging
 - Monthly: Full penetration test scan + dependency audit
 - Pre-release: Full regression suite + manual exploratory testing
+```
+
+```
+TEST DATA MANAGEMENT (the other half of the environment-fidelity problem in §12):
+□ FOUR STRATEGIES, cheapest to highest-fidelity: (1) synthetic factories/fixtures - fast, deterministic, but
+  only test what you imagined; (2) golden personas - 12-20 named accounts with realistic long tails
+  (multi-currency, 10k-line orders, expired cards, dormant accounts, unicode/RTL names), versioned in-repo
+  (§12); (3) subsetted-and-masked prod - a referentially-intact slice with PII irreversibly masked; (4) full
+  prod clone - highest fidelity, highest legal risk, rarely justified.
+□ MASKING MUST BE IRREVERSIBLE and SCHEMA-DRIFT-SAFE: format-preserving masking keeps types valid; a column
+  added last sprint must default to MASKED, or a "test" dataset ships real PII (a §12 privacy incident, route
+  to Agent 39). Gate every non-prod refresh on a scanner that fails on real email/phone/PAN/card patterns.
+□ DETERMINISM: seed data and clocks so a run reproduces. A test that depends on "today" or on ambient DB
+  state is a flake generator.
+□ ISOLATION: each test creates and tears down its own data, or runs inside a transaction rolled back at the
+  end. Shared mutable fixtures are the second-biggest flake source after real concurrency.
+□ REFERENTIAL INTEGRITY on subsets: a masked customer with orphaned orders breaks foreign keys and tests the
+  wrong failure. Subset by walking the graph, not by truncating tables.
 ```
 
 ## 12. Organisational Edge Cases

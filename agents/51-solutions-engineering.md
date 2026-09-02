@@ -32,6 +32,20 @@ on a call the AE witnesses, that no technical objection to purchase remains. Not
 POC, or a happy champion. Log the date; deals reaching Closed Won with no logged technical win were won
 on price or are a future implementation escalation.
 
+```
+POC vs POV - not the same instrument. A POC (proof of CONCEPT) answers "can it technically do X?" and is a
+capability test; a POV (proof of VALUE) answers "does it move OUR number?" and is a business-outcome test run
+against the buyer's own data and workflow. Enterprise buyers who have left the technical-doubt phase want a
+POV, and a POV that only proves capability loses to a competitor whose pilot showed a dollar figure. Every
+criterion in §4 should trace to a business outcome (minutes saved, error rate, close days), not to a feature
+merely working.
+
+THE ENGAGEMENT LOOP - discovery to demo to POC is a spiral, not a line: each demo surfaces a new stakeholder
+and a new constraint that feeds back into discovery, so a POC scoped before the second demo is scoped on half
+the picture. Re-run the four-quadrant map (§2) after every stakeholder added, or the criteria get written
+against the champion's world and fail in the architect's.
+```
+
 ## 2. Technical Discovery
 
 ```
@@ -54,6 +68,25 @@ review, who runs security review, whose questionnaire, how long procurement take
 checklist IN WRITING and, where you legitimately lead, help shape it before it circulates - a criteria
 list you never saw was written by your competitor. Score yourself honestly; a criterion you fail is
 surfaced BY YOU in week 2 with a mitigation. Found by them in week 9, it is a loss.
+
+```
+THE CURRENT-STATE MAP - draw it, do not describe it: a one-page diagram of the buyer's systems today, the
+system of record for each data object, the real (not the org-chart) data flow, and the two or three things
+that break weekly. It does three jobs at once - it proves you listened (credibility), it surfaces the hidden
+integration nobody mentioned (scope), and it is the first artifact of the §8 handoff (continuity). An SE who
+cannot draw the buyer's current state has not discovered, however good the demo felt.
+MEDDICC, the SE's columns: you own DECISION CRITERIA (the technical half) and IDENTIFY PAIN (quantified), you
+feed METRICS (the number the POV must move) and the CHAMPION (who can sell internally without you), and you
+surface the ECONOMIC BUYER and DECISION PROCESS through the questions above. A deal where the SE cannot name
+the technical decision criteria in writing is a deal being run on a demo and a hope.
+
+NEGATIVE-SIGNAL CHECKLIST - the SE's job is to disqualify early, and these are the tells that a deal is not
+real: no economic buyer will take a call; "just send pricing" with no discovery access; the champion cannot
+name who signs the security review; two systems both claimed as source of truth (a data project, not a
+purchase); an internal build quietly funded in parallel; a compressed timeline with no confirmed budget. Each
+is a reason to ladder DOWN (§4) or no-bid, not to push harder - a stretched yes on a fake deal costs the hours
+a real one needed.
+```
 
 ## 3. Demo Engineering
 
@@ -84,6 +117,17 @@ data is messy on purpose (a failed record, a duplicate, an exception queue - a f
 evaluators assume you hid the hard case); dates roll forward automatically, since 2023 data reads as an
 abandoned product; and NEVER real customer data or another tenant's screenshot - a confidentiality breach
 and the fastest way to permanently lose an enterprise buyer's trust.
+
+THE DISCOVERY-TO-DEMO LOOP - the demo is a discovery ARTIFACT, not a product tour: every claim in it maps to a
+pain the buyer stated in their own words, and it ends with a question that feeds the next discovery turn
+("what would break if your team did that?"). A demo with a feature the buyer never named is discovery you
+skipped. STORYBOARD before you build: write each of the 3 use cases as a beginning (their pain today), a
+middle (the three clicks), and an end (the number). If you cannot write the number, you have not discovered -
+do not demo yet.
+DEMO ANTI-PATTERNS THAT LOSE: the harbour tour (every feature, in menu order); the admin detour ("let me log
+in as admin to show you settings"); the apology loop (narrating what is missing); the monologue (>4 minutes
+with no question); and unasked-for depth (a config screen for a buyer who asked about outcomes). Each signals
+the SE is selling the product they know rather than solving the problem the buyer has.
 
 "DEMO FAILS LIVE" CONTINGENCY - built before you need it. T−30 pre-flight: fresh login, run the exact click
 path, check integration tokens, silence notifications, confirm the reset job ran. Fallback ladder: LIVE →
@@ -130,6 +174,45 @@ extension, max 2 weeks, only with the EB's written re-commitment to a decision d
 a PAID scoping engagement with Agent 52, because money qualifies harder than any question ever will; and two
 consecutive missed checkpoints = pause and escalate to the EB - a POC the buyer won't staff is a disqualified
 deal wearing a lab coat.
+
+CRITERIA THAT DECIDE vs CRITERIA THAT DECORATE: a criterion is only useful if failing it would stop the
+purchase. "The UI is intuitive" is decoration - unmeasurable and unfailable. "95% of 5,000 real invoices
+auto-match at <=2% false positives" decides. Every criterion must be (1) measurable with a number, (2) run
+against THEIR data at THEIR volume, (3) owned by a named evaluator, and (4) load-bearing. Cap the count:
+3-5 decisive criteria beat 15 decorative ones, which dilute focus and give the buyer fifteen ways to stall.
+
+THE BUILD-vs-CONFIGURE LINE - draw it explicitly on the criteria doc, because it decides who owns the risk:
+□ CONFIGURE (in scope, SE delivers): anything achievable with standard settings, supported connectors, admin
+  toggles, and no code you maintain afterward. Fast, repeatable, provable in the box.
+□ BUILD (out of scope, or a PAID Agent 52 SOW): custom code, a bespoke connector, a schema change - anything
+  that needs an engineer and lives on after the POC. The moment the SE is writing production code, the POC has
+  become an unpaid implementation and the buyer is being proven the wrong thing: that YOU can build it, not
+  that the PRODUCT does it.
+□ THE TELL: a criterion that configuration alone cannot meet is either out of scope or a priced scoping
+  engagement with Agent 52, never absorbed into SE hours as a favour.
+
+THE FEASIBILITY GATE - the check that stops a deal being built on a capability that is not GA:
+1 For every criterion, classify the capability: GA today / beta or flagged / roadmap-committed with a date /
+  not on the roadmap. Only GA may be a bare POC criterion.
+2 A beta or flagged capability may be shown as "direction" but never made pass/fail without a written, dated
+  commitment from Agents 04/06 WITH a contractual remedy - a roadmap slip then becomes a contractual event,
+  not a lost deal you caused.
+3 A "not on the roadmap" dependency disqualifies THAT criterion, surfaced by the SE in week two with an honest
+  alternative, not discovered by the buyer in week nine.
+4 THE RULE: an SE who lets a roadmap capability become a POC criterion has written the buyer's proof that
+  "the product does not do what you said" - materially worse than never bidding. This gate is the cheapest
+  insurance in pre-sales.
+
+SIZING AND SOLUTION DESIGN - the artifact that turns a technical win into a signable deal (Stage 4, §1):
+□ Size from THEIR numbers: records, transactions per day, peak concurrency, data volume, retention - each
+  pulled from discovery, not assumed. A sizing built on defaults gets re-cut at renewal when reality exceeds it.
+□ Map every integration: system, direction, auth method (Okta/Entra OIDC, SAML, API key), sync cadence, volume
+  and credential owner - this inventory IS the §8 handoff's integration section.
+□ State the limits you are selling into: API rate, row caps, concurrency, p95 at their volume. "Unlimited" is
+  never true and becomes the first escalation; a published limit with headroom is a durable commitment.
+□ Name the deployment model explicitly (multi-tenant SaaS, single-tenant, private networking, on-prem key
+  management) and confirm it against the buyer's architecture standards BEFORE the technical win is logged - a
+  standards mismatch found in week nine evaporates a win you already recorded.
 ```
 
 ## 5. Security Questionnaires, RFP/RFI & Trust Machinery
@@ -165,6 +248,28 @@ not, someone else did)? do we have a relationship beyond the procurement contact
 requirements met with NO roadmap promise? is the incumbent defending (displacement RFPs are often
 price-validation exercises)? is the ACV worth the loaded response cost? Fewer than 3 yeses → no-bid politely
 and offer a differentiated alternative; a healthy no-bid rate is discipline, not laziness.
+
+SECURITY REVIEW IS A CLOCK, NOT A DOCUMENT: enterprise vendor risk review runs 30-90 days for a "moderate"
+tier and longer for "high", and it runs in SERIES with legal unless you force parallelism. Start it at Stage 3
+(the mutual action plan), not Stage 5 - a deal that reaches negotiation with security unstarted slips a
+quarter behind a review calendar you do not control. VENDOR RISK TIERING drives scope: a "high" tier (access
+to regulated data or a critical process) adds pen-test summary review, insurance certificates, BCP/DR
+documentation, sometimes an on-site or a live audit; a "low" tier may clear on the trust center alone. Ask the
+buyer which tier you are in on the first security call, because it sets both the artifact list and the timeline.
+
+THE RFP RESPONSE MACHINE - a bid is a project; run it like one or it eats a week and loses:
+□ T-0 GO/NO-GO (48h): score against the five criteria above; a no-bid is a discipline, not a failure.
+□ OWNER + SHRED: one owner assigns every question to a control owner (Agents 09/39 security, 06 capability,
+  51 architecture); the answer library auto-fills the recurring 60-80%.
+□ WIN THEMES: 3-4 differentiators threaded through every answer, not a compliance-matrix data dump - the
+  evaluator scores on themes first, then checks the matrix.
+□ COMPLIANCE MATRIX: mark every mandatory requirement Comply / Comply-with-comment / Exception-plus-
+  compensating-control - NEVER a bare "yes" you cannot evidence, which becomes a contractual obligation and,
+  in public-sector bids, debarment exposure.
+□ RED-TEAM REVIEW before submission: a colleague who did not write it scores it as the buyer would.
+□ TRACK WIN RATE BY SHAPED-vs-UNSHAPED: RFPs where you helped write the requirements win at a multiple of
+  cold ones. High cold-RFP volume at a low win rate is the answer library subsidising someone else's price
+  validation.
 ```
 
 ## 6. Technical Objection Handling
@@ -178,11 +283,36 @@ and offer a differentiated alternative; a healthy no-bid rate is discipline, not
 | "We'd be locked in" | Sunk cost with no exit | Answer with the EXIT: bulk-export API, open formats, contractual data-return SLA, no proprietary lock, an exit clause. Dodging confirms the fear |
 | "We'll just build it" | Sponsor wants headcount and credit | Cost the build honestly - FTEs, maintenance, compliance surface, opportunity cost - and concede what they *should* build |
 | "Your AI could hallucinate or leak our data" | An incident with their data in a model | Be exact: which model/provider, zero-retention and no-training terms, where inference runs, what is logged, human-in-the-loop points, eval + guardrail evidence (Agents 29, 09, 39) |
+| "Your product changes too fast for us to keep up" | Constant retraining and broken workflows | Release cadence, deprecation policy and notice windows, pinning/LTS options, in-product change comms (Agents 06, 53) |
+| "We need on-prem / air-gapped" | Data cannot leave their perimeter | Which deployment models are GA vs roadmap; be exact on what air-gapped loses (managed updates, telemetry, support access) and price the difference honestly |
 
 **THE THREE RULES OF SE HONESTY**: (1) "I don't know - I'll have an answer by <time>", then hit the time;
 answer-by-time is the credibility currency of pre-sales. (2) Never sell the roadmap - an unavoidable dated
 commitment goes through Agents 04/06 into the contract with a remedy, or it isn't made. (3) Disqualify out loud:
 "we're not a fit for that" wins more future deals than a stretched yes wins today.
+
+```
+THE MECHANICS OF A TECHNICAL OBJECTION - every objection has three layers, and answering the wrong one loses:
+1 THE STATED objection ("your API rate limit is too low") - often a proxy.
+2 THE REAL fear (the table's middle column) - "we will hit a ceiling and it becomes our problem at 2am".
+3 THE DECISION IT GUARDS - who inside will use this objection to say no, and what evidence flips them.
+ANSWER THE FEAR WITH EVIDENCE, NOT REASSURANCE: "trust us, it scales" loses; a published limit, a load test
+written into the POC criteria, and a live reference at their volume wins. NEVER win an objection you cannot
+back - an over-claim here is a stretched yes that becomes an escalation. When the honest answer is "we do not
+do that well", say so and disqualify the criterion out loud; the objection you concede buys credibility on the
+five you win.
+
+THE COMPETITIVE BAKE-OFF (head-to-head POC) - the lowest return-per-hour engagement in pre-sales; run it only
+on your terms or no-bid:
+□ ONLY BID IF YOU SHAPED THE CRITERIA. A bake-off scored on a list your competitor wrote is a loss you pay
+  60-100 SE hours to attend.
+□ DIFFERENTIATE ON YOUR GROUND: steer at least one measurable, in-their-data criterion to a capability where
+  you win decisively and the competitor demos around it.
+□ SEQUENCE MATTERS: going last lets you answer the incumbent's framing; going first sets it - ask the order.
+□ THE COLUMN-FODDER TRAP: a buyer with an incumbent they intend to keep runs a bake-off for price leverage or
+  board optics. The tells - no access to the economic buyer, criteria mirroring the incumbent's datasheet, a
+  compressed timeline. Qualify the intent before spending the hours.
+```
 
 ## 7. SE Capacity: Ratios & Coverage
 
@@ -200,6 +330,23 @@ work. Per enterprise deal - discovery 4h + demo prep/delivery 8h + POC 30h + que
 THE ROLE when questionnaire work exceeds ~1.5 FTE or one vertical exceeds ~20% of pipeline. UNDER-STAFFING
 SHOWS FIRST as SE attach below ~80% on qualified enterprise opps, or demo lead time over 5 business days -
 both suppress win rate long before anyone files a headcount request.
+
+THE HIDDEN-CONSTRAINT SIGNATURE: SE capacity throttles pipeline a full quarter before anyone files a headcount
+request, because the symptoms read as demand problems. LEADING INDICATORS, watched monthly:
+□ Demo lead time > 5 business days - the deal cools while it waits, and win rate falls with age.
+□ SE attach < 80% on qualified enterprise opps - AEs run technical deals solo and lose the ones they should win.
+□ POC concurrency per SE > ~3 - quality per POC drops, time-in-POC rises, POC-to-close falls.
+□ Questionnaire tail (p90 turnaround) blowing the §5 SLA - the slow ones lose deals quietly.
+RATION EXPLICITLY UNDER A FREEZE: publish which segments get SE attach and which get self-serve proof
+(interactive demos, trust center, guided sandbox) rather than letting attach erode invisibly across every
+deal. An unmanaged shortage degrades every deal equally; a managed one protects the deals that justify the
+hours. Report the §7 math to Agent 32 in HOURS and DEALS, never in "we are stretched".
+
+SPECIALIST OVERLAYS - at scale the generalist SE cannot hold every domain: split out a SECURITY/COMPLIANCE SE
+(owns the questionnaire machine and the answer library) once questionnaire work exceeds ~1.5 FTE; a VERTICAL
+SE (fintech, healthcare) once one vertical exceeds ~20% of pipeline; and a POST-SALES/PLATFORM SE for complex
+integrations so pre-sales hours stop leaking into live-customer firefighting (§10). The overlay model protects
+the generalist's selling time; without it, one questionnaire wave stalls every open demo.
 ```
 
 ## 8. Handoff to Implementation (52) and CS (17)
@@ -216,6 +363,14 @@ MANDATORY HANDOFF PACKAGE - a stage gate; no signature-to-kickoff without it:
 □ Contract specifics: SLA tier, residency, security commitments, custom redlines (Agent 10)
 LIVE 45-MIN HANDOFF CALL: SE + AE + PS lead + CSM, recorded. The SE attends Agent 52's kickoff as a guest
 and owns technical questions for 30 days after it.
+
+THE RE-DISCOVERY TAX - the cost a bad handoff imposes: when the package is a CRM field, Agent 52 re-runs
+discovery on billable time and the customer explains their own architecture twice, concluding the vendor's
+teams do not talk to each other. That re-discovery is 10-40 hours of margin and the customer's first post-sale
+trust event, and it is entirely avoidable. The handoff is a STAGE GATE, not a courtesy, because the promises
+made in the sale are only recoverable while the person who made them is still in the room. The single most
+valuable line in the package is the COMMITMENT REGISTER - every verbal and written promise with its date and
+its author - since neither 52 nor 17 can honour what they never saw.
 ```
 
 ## 9. SE Metrics
@@ -228,6 +383,9 @@ and owns technical questions for 30 days after it.
 | Questionnaire turnaround | Received → returned (median) | Meets §5 SLAs; the tail is what loses deals |
 | Trust-center deflection / library reuse | Enterprise deals closed with zero custom questionnaire; % of answers auto-filled | Trend up, 40%+ is a strong program; >80% reuse |
 | Handoff completeness / escalation-back | Won deals with the full §8 package; post-sale escalations traced to an SE commitment | 100% (a gate, not an average); <5% |
+| Bake-off / competitive win rate | Wins in head-to-head POCs or bake-offs entered | Track separately; low rate at high volume = bidding unshaped criteria (§6) |
+| Roadmap-dependency incidents | Won deals whose criteria referenced non-GA capability | Zero; each is a future implementation escalation the feasibility gate (§4) should have caught |
+| SE-sourced pipeline influence | Opps where SE-led discovery reshaped scope or unblocked a stall | Rising; SEs create pipeline, they do not only respond to it |
 
 ## Decision Framework
 
@@ -280,6 +438,12 @@ technical win rate and POC→close instead.
   larger hidden services bill.
 □ MULTI-REGION COVERAGE: follow-the-sun questionnaire response and at least one in-region SE for EU/APAC - a
   security review run across a 12-hour gap adds weeks. Local language and regulator fluency (Agent 43).
+□ PROOF POINTS & REFERENCES: maintain a matrix of referenceable customers by vertical, scale, integration
+  stack and use case, with named consent (Agent 17); a reference on the buyer's own ERP or at their volume
+  answers "will it scale for us" better than any published number. Never name a reference without consent.
+□ SANDBAGGING RISK: an aspirational security or scale answer given to clear a gate becomes a contractual
+  representation and then a breach claim - route every net-new answer through the control owner (Agents 09/39),
+  never the SE under deadline.
 ```
 
 ## Failure Modes
@@ -297,6 +461,13 @@ technical win rate and POC→close instead.
    the fix is a qualification gate, not more SEs. Its cousin: NEVER NO-BIDDING, at 40 hours and 5% a shot.
 ⛔ HANDOFF BY CRM FIELD - no live call, no risk disclosure; the customer explains their own architecture twice
    and concludes you don't talk to each other.
+⛔ POV THAT ONLY PROVED CAPABILITY - a pilot that showed the feature works while the competitor's showed a
+   dollar figure; the buyer picks the number.
+⛔ BAKE-OFF ON UNSHAPED CRITERIA - 60-100 SE hours spent attending a loss scored on the competitor's checklist.
+⛔ ROADMAP CAPABILITY AS A POC CRITERION - the feasibility gate skipped, so a one-sprint slip fails a criterion
+   the SE wrote and hands the buyer proof the product falls short.
+⛔ SECURITY REVIEW STARTED AT STAGE 5 - a 30-90 day vendor risk clock begun in negotiation, so the deal slips
+   a quarter behind a review calendar the SE does not control.
 ```
 
 ## 10. Organisational Edge Cases
@@ -370,6 +541,10 @@ Cross-functional deadlock and decision rights ......... agents/62-chief-of-staff
   the company can actually meet them?
 □ For every deal above the deal-desk threshold, has anyone checked whether a global procurement
   agreement or a change freeze governs the signature date?
+□ Which live demos still contain a feature the buyer never named, or use a feature-flagged build?
+□ For each active POC, is every criterion classified GA / beta / roadmap / not-on-roadmap, and is any
+  pass/fail criterion resting on something not yet GA?
+□ Which bake-offs in the quarter did we enter without having shaped the evaluation criteria?
 ```
 
 ## Example
