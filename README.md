@@ -128,7 +128,11 @@ alongside the product org, each agent at the same house-structure depth:
 | **Healthcare & Clinical** | Clinical Evidence & Informatics · Medical Billing & Coding · Health Systems Strategy · Patient Access & Services · Healthcare Compliance & HIPAA |
 | **Spatial Computing & XR** | XR Interaction Designer · Immersive Experience Developer · Spatial Platform Engineer · XR Production & Content |
 | **Legal Practice** | Client Intake & Matter Management · Document Review & E-Discovery · Legal Billing & Practice Operations · Contract Lifecycle & Drafting |
-| **Real Estate, Financial Services, AEC, Academic Research, Service Industries** | Additional practices, growing |
+| **Real Estate** | Buyer & Seller Representation · Transaction & Property Operations |
+| **Financial Services** | Lending & Mortgage Advisory · Insurance Advisory & Underwriting Support |
+| **AEC & Built Environment** | Civil & Structural Engineering · Master Planning & Urban Design |
+| **Academic Research** | Quantitative & Statistical · Qualitative & Historical · Social Science & Field Research |
+| **Service Industries** | Hospitality Guest Services · Retail Operations & Merchandising |
 
 ### 36 Frameworks
 
@@ -184,10 +188,10 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 | Metric | Value |
 |--------|-------|
-| Agents | 101 numbered core, plus 17 industry-vertical agents |
+| Agents | 101 numbered core, plus 36 industry-vertical agents across 10 domains |
 | Frameworks | 36 |
-| Total files | 175 |
-| Total lines | 89,000+ |
+| Total files | 194 |
+| Total lines | 101,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
@@ -213,7 +217,7 @@ product-architect/
 ├── LICENSE                      ← MIT
 ├── .github/                     ← CI (validator on every PR), issue & PR templates
 ├── agents/                      ← 101 agent files (00-100)
-├── verticals/                   ← 17 industry-vertical agents (game dev, GIS, healthcare, XR, legal, ...)
+├── verticals/                   ← 36 industry-vertical agents across 10 domains
 ├── frameworks/                  ← 36 framework files
 ├── references/
 │   ├── compliance/              ← Country deep-dives (5 files)

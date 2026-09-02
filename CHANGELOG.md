@@ -31,8 +31,13 @@ deeper per agent, so the work was breadth: whole domains not previously covered.
     sensing, geoprocessing.
   - healthcare-clinical (5): clinical evidence, medical billing and coding,
     health systems, patient access, HIPAA compliance.
-  - spatial-xr, legal-practice, real-estate, financial-services,
-    aec-built-environment, academic-research and service-industries follow.
+  - spatial-xr (4): XR interaction, immersive development, spatial platform,
+    production and content.
+  - legal-practice (4): client intake and matter management, document review and
+    e-discovery, legal billing and practice operations, contract lifecycle.
+  - real-estate (2), financial-services (2), aec-built-environment (2),
+    academic-research (3) and service-industries (2).
+  All ten domains complete: 36 industry-vertical agents in total.
 - `docs/AGENCY-AGENTS-GAP-ANALYSIS.md`: the full comparison and build plan.
 
 ### Changed
