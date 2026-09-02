@@ -138,6 +138,30 @@ REGULATORY AUDITS/INSPECTIONS:
 □ Post-audit: Remediate any findings within specified timeline
 ```
 
+```
+INFORMATION-REQUEST RESPONSE (the discipline that keeps a request from becoming a finding):
+□ ACKNOWLEDGE within the stated window even if you cannot yet answer - silence reads as
+  obstruction, and obstruction is punished harder than the underlying issue.
+□ SCOPE before you produce: the exact period, systems, data categories and legal basis of
+  the ask. An over-broad response leaks; an under-scoped one looks evasive. Legal (Agent 10)
+  scopes; you never answer a regulator's request that counsel has not seen first.
+□ RESPOND ON THE DEADLINE with what genuinely exists, the scope you can attest to, and a
+  dated plan for the remainder. Late-plus-honest is survivable; silent-plus-incomplete is a
+  second offence. NEVER fabricate coverage your logs cannot support.
+□ ANSWER IN WRITING, log every exchange (what was asked, what was provided, on what date),
+  and route through ONE designated spokesperson - improvised answers by whoever was available
+  are what become the finding.
+□ PRIVILEGE and RETENTION: mark what is privileged with counsel; a legal hold freezes
+  deletion the moment a request lands - no device wiping, no "tidying up", no deletion.
+
+THE REGULATOR RELATIONSHIP IS AN ASSET WITH A BALANCE (build it before you draw on it):
+□ A regulator whose first contact with you is a show-cause notice has already formed a view.
+□ Model-of-compliance track record is the cheapest lobbying there is: an agency extends
+  discretion to the company it trusts, and discretion is what ambiguous rules actually run on.
+□ Institutionalise every contact in a CRM with meeting notes - relationships are corporate
+  assets, or they are personal ones the departing GR head rents back to you.
+```
+
 ## 4. Political Risk Assessment (International Expansion)
 
 ```
@@ -157,6 +181,23 @@ RISK RESPONSE:
 Low (0-2 high factors): Enter market with standard approach
 Medium (3-4 high factors): Enter with local partnerships, legal counsel, cautious rollout
 High (5+ high factors): Delay entry, monitor, or use distributor model
+```
+
+```
+THE ELECTION / LEADERSHIP-CHANGE RESET (political capital does not survive the person):
+□ What was verbally agreed with a secretary, chair or minister DIES when they rotate out.
+  Re-qualify every open commitment on a leadership change; assume nothing carries over.
+□ Rebuild fast with a short written primer PER FILE for the incoming official - one page of
+  history, position and the ask - because the relationship starts from zero and the calendar
+  does not wait.
+□ Treat PRE-ELECTION / purdah / caretaker / blackout windows as a HARD FREEZE on asks, not a
+  chance to move fast. Engaging during a caretaker period reads as trying to bind an outgoing
+  administration and poisons the incoming one.
+□ A change of government can re-open settled policy: keep the hedge (the alternative
+  structure) scoped so a reversal is a decision, not a scramble.
+POLITICAL-RISK REFRESH CADENCE: re-score each market quarterly AND on any trigger event
+(election, coup, sanctions listing, currency-control change, data-localisation ruling). A
+risk score from before the last election is describing a country that no longer exists.
 ```
 
 ## 5. Regulatory Change Management
@@ -253,6 +294,25 @@ REVOLVING-DOOR HIRING (ex-regulator hires):
 □ Optics test: would this hire look corrupt on a newspaper front page? If yes, don't.
 ```
 
+```
+TRADE ASSOCIATIONS - HOW TO USE THEM WITHOUT BEING CAPTURED BY THEM:
+□ WHAT THEY BUY YOU: borrowed weight (a small company speaks with the sector's voice),
+  early sight of drafts, a coalition filing that lands harder than a solo one, and shared
+  cost on economist studies and legal analysis nobody could fund alone.
+□ WHAT THEY COST YOU: the association's position is set by its largest dues-payers, so it
+  drifts toward incumbents whose interests diverge from a challenger's - and you are BOUND
+  by what it files in your name.
+□ THE RULES OF ENGAGEMENT: chair or co-chair the working group rather than only paying dues
+  (the chair holds the pen); track whether YOUR redlines survive between drafts; file your
+  OWN submission in parallel and say so when the association position diverges from what you
+  can live with; re-decide membership annually on whether positions actually align, not habit.
+□ THE UNUSUAL-ALLY SIGNAL: startups + consumer groups agreeing on a clause gets a regulator's
+  attention; a big-tech-only coalition is discounted as self-interest. Broaden the coalition
+  before you amplify it.
+□ NEVER outsource your ONLY voice to a body you do not control. The association is an
+  amplifier, not a substitute for your own filed position.
+```
+
 ## 8. Enterprise-Grade Government Relations
 
 ```
@@ -307,7 +367,182 @@ WHAT CHANGES AT SCALE (multi-country, 1000+, or politically visible):
 □ Relationship depth: regulators who call US before drafting (the metric that matters)
 ```
 
-## 11. Organisational Edge Cases
+## 11. Lobbying, Advocacy and Public Affairs: The Distinctions That Have Legal Consequences
+
+```
+THESE THREE WORDS ARE NOT SYNONYMS, AND THE DIFFERENCE DECIDES WHAT YOU MUST DISCLOSE:
+| Term | What it is | Registration / disclosure it can trigger |
+| LOBBYING | Direct contact with named officials/legislators to influence a specific
+  decision, rule or bill | The regulated activity: registration + activity/spend reports in
+  many regimes once a threshold is met |
+| ADVOCACY | Arguing a public-interest position (op-eds, position papers, coalitions,
+  "grassroots") without necessarily contacting an official | Often lighter, but funded
+  "grassroots lobbying" campaigns are disclosable in some regimes |
+| PUBLIC AFFAIRS | The umbrella function: reputation, stakeholder and policy management, of
+  which lobbying is one regulated subset | The function is not regulated; the lobbying inside
+  it is |
+Mislabeling lobbying as "public affairs" or "stakeholder engagement" does not exempt it -
+regulators and journalists look at the ACTIVITY, not the job title on the org chart.
+
+REGISTRATION / DISCLOSURE OBLIGATIONS AS PRINCIPLES (thresholds and forms differ by
+jurisdiction and change frequently - verify current with qualified counsel):
+□ US federal (Lobbying Disclosure Act, as a principle): registration is triggered once an
+  individual makes lobbying contacts AND crosses a time-share threshold of their work on
+  lobbying activity, with periodic activity and contribution reports thereafter. Many US
+  STATES run their own separate, often stricter, regimes on top.
+□ EU: entry in the Transparency Register is expected for meetings with Commission and
+  Parliament decision-makers; member states maintain their own registers.
+□ UK and other jurisdictions: consultant-lobbyist registers and statutory codes exist, each
+  with its own trigger and its own filing form.
+□ THE UNIVERSAL PRINCIPLES that survive any jurisdiction: (1) keep a CENTRAL LOG of every
+  contact (who, when, which official, which file) from day one - reconstructing it after a
+  question is the classic own-goal; (2) file ON TIME, because a late or missed filing is a
+  clean, provable, embarrassing breach independent of the underlying merits; (3) treat a
+  founder's ministry meeting or a retained consultant's activity as potentially registrable,
+  not exempt because it felt informal.
+
+WHO OWNS WHAT: Compliance (Agent 11) owns the binding read of which regime applies and the
+filing calendar; Legal (Agent 10) reviews scope; GR runs the activity and feeds the log.
+Verify every programme with qualified counsel. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+```
+
+## 12. The Policy Lifecycle and the Intervention Windows
+
+A rule is cheapest to shape early and nearly immovable once enforced. Know exactly where in
+the lifecycle a given proposal sits, because the move is different at each stage.
+
+```
+| Stage | What exists | What you can still change | The move |
+| 1. AGENDA / GREEN PAPER | a problem named, no text | the FRAMING and the definitions - the
+  most valuable and most overlooked window | offer data and a technical briefing with NO ask
+  attached; become the trusted explainer before anyone drafts |
+| 2. WHITE PAPER / DRAFT | a text with specific clauses | specific provisions, thresholds,
+  carve-outs, transition periods | clause-level redlines + impact evidence (below) |
+| 3. FORMAL CONSULTATION / COMMENT PERIOD | a published draft with a fixed, short window
+  (often ~30-90 days) | the same provisions, but the clock is now hard | file inside the
+  window through BOTH channels; silence during comment is read as CONSENT later |
+| 4. ENACTED, PRE-EFFECTIVE | final text, not yet in force | transition periods, FAQs,
+  implementation guidance, carve-outs | shift from "change the rule" to "make it workable" |
+| 5. ENFORCED | live rule + enforcement | guidance, enforcement discretion, amendment (years)
+  | compliance-first; amendment is a multi-year campaign |
+
+THE COMMENT PERIOD IS A DEADLINE, NOT AN INVITATION:
+□ Read the draft CLAUSE BY CLAUSE with Engineering and Legal within days of publication - the
+  clause that assumes a data model or intermediary role you do not have is the one that kills
+  you, and it is never in the summary.
+□ If the window is too short to respond properly, REQUEST AN EXTENSION IN WRITING while you
+  run the read - the request itself goes on the record as good-faith engagement.
+□ File SPECIFIC REDLINE LANGUAGE ("delete clause 4(a), insert: ...") plus quantified impact,
+  never a general objection. Regulators copy-paste good drafting; they ignore position essays.
+□ A submission that arrives after the window, however brilliant, changes nothing. Internal
+  latency - getting one company position agreed across Legal, Engineering, Finance and two
+  business units - is what misses the window, so pre-agree the escalation path while nothing
+  is on fire.
+
+ENGAGE BEFORE BUILDING when licensing gates operation (fintech/health) or the category is
+undefined (the regulator will define it with or without you). Engage AT LAUNCH when the
+category is settled and you are clearly compliant. Waiting to be contacted is a strategy only
+for products squarely inside settled rules.
+```
+
+## 13. Anti-Corruption Bright Lines and the Revolving Door
+
+The bright lines below are principles that hold across regimes; the specific elements,
+thresholds and defences differ by jurisdiction and change - verify with qualified counsel and
+Agent 11's anti-bribery controls before relying on any of this.
+
+```
+THE TWO REGIMES MOST OFTEN IN SCOPE (as principles, not legal advice):
+□ US FCPA: prohibits corrupt payments to FOREIGN officials to obtain or retain business;
+  reaches conduct with a US nexus; its books-and-records and internal-controls provisions
+  apply to issuers regardless of whether any bribe occurred. A NARROW facilitation-payment
+  exception exists but is risky and is not available under other regimes.
+□ UK Bribery Act: broader - covers commercial (private-to-private) bribery AND foreign
+  officials, has NO facilitation-payment exception, and creates a corporate "failure to
+  prevent bribery" offence whose only defence is having ADEQUATE PROCEDURES in place. Several
+  other countries have adopted similar failure-to-prevent models.
+
+THE BRIGHT LINES (when in doubt, do not; route to Compliance BEFORE acting):
+□ GIFTS & HOSPITALITY: modest, transparent, business-purposed, recorded, and NEVER near a
+  live decision (a licence, a tender, an inspection). Sponsorship or hospitality timed to a
+  pending approval is the classic vector; the test is whether it would read as corrupt on a
+  newspaper front page.
+□ FACILITATION PAYMENTS: small payments to speed a routine act. Treat as PROHIBITED as a
+  house rule regardless of the FCPA carve-out - the carve-out is narrow, contested, and
+  unlawful under the UK Act and most local law.
+□ THIRD-PARTY INTERMEDIARIES ARE THE #1 ENFORCEMENT VECTOR: a consultant with vague
+  "government liaison" scope, a local "fixer", an agent on a success fee. You are liable for
+  what they do in your name. Non-negotiable controls: due diligence before engagement, a
+  WRITTEN scope, audit rights, and no vague success fees. Freeze any payment that looks off
+  and route it through Compliance before offering any external explanation.
+□ POLITICAL CONTRIBUTIONS: a written policy (many companies have NONE at corporate level),
+  pre-clearance for executives' personal contributions where pay-to-play rules apply, and
+  ZERO tolerance for contributions routed through intermediaries.
+
+THE REVOLVING DOOR (ex-regulator and ex-official hires):
+□ LEGITIMATE: buying genuine expertise in how the agency thinks and how its process runs.
+□ RUINOUS / ILLEGAL: trading on confidential information, or on influence over current staff.
+□ CHECK COOLING-OFF RULES BEFORE HIRING - they are real and jurisdiction-specific (for
+  example, post-employment restrictions on former officials contacting their old agency, and
+  post-retirement permission requirements for senior civil servants in some countries).
+  Verify the specific rule with counsel; the optics test applies on top of the legal one.
+```
+
+Verify every element above with qualified counsel. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+
+## 14. Public Commitments, ESG Alignment, and the Deliverability Gap
+
+```
+THE DELIVERABILITY GAP (what public affairs promises externally vs what the company can ship):
+□ A regulator remembers a commitment as a binding undertaking; the product team remembers a
+  best-effort aspiration. That gap is where credibility dies. Every external commitment - a
+  commitment letter, a hearing answer, a press line that reads as an undertaking - gets an
+  ENGINEERING-SIGNED DATE before it leaves the building.
+□ Credibility with a regulator is a ONE-TIME asset: one over-promise ("the fix ships in 30
+  days" when it needs 6 months) spends goodwill that does not refill. Under-promise the date
+  and beat it.
+□ If a commitment already went out that cannot be met, a WRITTEN correction goes out FAST - a
+  corrected record survives; a discovered miss does not.
+□ A local entity's pledge is a global precedent within a year: a country manager signing a
+  code, MoU or data-localisation commitment to win a tender needs head-office review, however
+  small it looks.
+
+ESG AND PUBLIC COMMITMENTS (tie: 27 ESG - the standing positions already on the record):
+□ Before briefing a regulator or filing a submission, reconcile it against the company's
+  PUBLISHED ESG commitments and sustainability disclosures (owned by Agent 27). A regulatory
+  position that contradicts a standing net-zero, labour, data-ethics or DEI commitment makes
+  the INCONSISTENCY the story - and a public sustainability claim that outruns reality is a
+  greenwashing and disclosure exposure, not just a comms problem.
+□ Public commitments (ESG targets, transparency reports, safety pledges) get quoted back to
+  you by regulators and NGOs. Say only what the company will actually do, and route any
+  externally-facing target through the function that owns delivering it.
+
+DECISION: A PROPOSED RULE IS UNWORKABLE FOR YOUR ARCHITECTURE AND THE COMMENT WINDOW IS CLOSING
+Worked reasoning chain (frame -> options -> evidence -> trade-offs -> recommend -> reversal):
+1. FRAME: the draft assumes a data model, intermediary role or key-access capability you do
+   not have and cannot build without compromising the product; the window closes in N days.
+2. BUY THE WINDOW: request an extension in writing TODAY while running a 5-day clause-by-clause
+   read with Engineering (Agent 06) and Legal (Agent 10). Do not let the window lapse in
+   silence - silence is consent later.
+3. OPTIONS: (a) engage - file redlines + impact evidence to make it workable; (b) comply -
+   re-architect if feasible and costed; (c) litigate-later - only if the final text is likely
+   ultra vires and compliance is existential; (d) relocate/exit the market. Score on §6.
+4. EVIDENCE: quantify the impact in the regulator's OWN terms ("clause 4 as drafted forces
+   plaintext key escrow, which breaks end-to-end encryption for M million users") with data
+   they do not have; check which industry bodies are filing and where they stand.
+5. RECOMMEND: default to dual-track - file a specific, data-backed redline through BOTH your
+   own submission and the association, offering an implementable alternative that meets the
+   regulator's STATED objective more cheaply, while quietly scoping the fallback
+   (re-architecture or exit) as the hedge.
+6. REVERSAL: if the final rule keeps the unworkable clause, execute the hedge within the
+   transition period; reserve litigation for a clearly ultra vires final text, and only if you
+   can survive the regulator's displeasure for years while needing licences from them.
+```
+
+Regulatory positions bind the company and are jurisdiction-specific - verify with qualified
+counsel. See [DISCLAIMER.md](../references/DISCLAIMER.md).
+
+## 15. Organisational Edge Cases
 
 `frameworks/enterprise-edge-cases.md` is the master catalogue of org shocks every agent
 inherits (sponsor loss, reorgs, freezes, budget cuts). This section is the GR-specific
