@@ -1,6 +1,6 @@
 ---
 name: product-architect
-description: Complete product development system with 80 agents and 36 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, customer support, backend and distributed systems, enterprise architecture, developer productivity, FinOps and cloud cost, business continuity, physical security, facilities, regulatory affairs, hardware, internal comms, vendor risk, market expansion, accessibility, data science and experimentation, unit economics, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
+description: Complete product development system with 101 agents and 36 frameworks. Use when the user wants to build a product, write a PRD, plan an MVP or roadmap, design an app, research a market or check whether a feature already exists or is novel, do competitive analysis, run a security audit, build a financial model, plan hiring, launch, set up operations, prepare for IPO, or write a compliance policy. Also triggers on market research, does this exist, product marketing, positioning, pricing, packaging, sales, RevOps, partnerships, developer relations, user research, growth, PLG, data engineering, data governance, privacy, DPO, DSAR, incident management, OKRs, program management, docs, localization, investor relations, M&A, procurement, RAG, LangGraph, AI agents, LLM features, customer support, backend and distributed systems, enterprise architecture, developer productivity, FinOps and cloud cost, business continuity, physical security, facilities, regulatory affairs, hardware, internal comms, vendor risk, market expansion, accessibility, data science and experimentation, unit economics, SOP, or checklist for X. Do NOT use for general knowledge questions, coding tutorials, or creative writing unrelated to product development.
 license: MIT
 compatibility: Works on Claude.ai, Claude Code, and API. No external dependencies. Enhanced with anti-slop-design skill for UI/UX.
 metadata:
@@ -13,7 +13,7 @@ metadata:
 
 # Product Architect
 
-80 specialized agents covering every department from solo founder Day 0 to IPO.
+101 specialized agents covering every department from solo founder Day 0 to IPO.
 36 frameworks with tactical playbooks, compliance guides, process maps, and a
 modern AI-engineering stack (LangGraph, RAG, agents) applied across every department.
 
@@ -123,6 +123,33 @@ QUICK ROUTING:
 "Design ops/research ops/design system" → agents/77-design-research-ops.md
 "Accessibility/WCAG/VPAT/inclusive"     → agents/78-accessibility-inclusive-design.md
 "Data science/causal/experiment design" → agents/79-data-science-experimentation.md
+"API design/versioning/gateway/rate limit" → agents/80-api-platform-engineering.md
+"Auth/OAuth/SSO/RBAC/identity"          → agents/81-identity-access-engineering.md
+"Network/DNS/CDN/load balancing/VPC"    → agents/82-network-engineering.md
+"DB reliability/replication/failover/backup" → agents/83-database-reliability-engineering.md
+"Embedded/firmware/IoT/OTA/device fleet" → agents/84-embedded-firmware-iot.md
+"Blockchain/smart contract/web3/on-chain" → agents/85-blockchain-web3-engineering.md
+"Video/streaming/WebRTC/real-time media" → agents/86-streaming-realtime-media.md
+"Search/ranking/relevance/retrieval"    → agents/87-search-relevance-engineering.md
+"Knowledge graph/ontology/entity resolution" → agents/88-knowledge-graph-semantic-data.md
+"Voice/ASR/TTS/conversational AI"       → agents/89-voice-conversational-ai.md
+"Desktop app/Electron/Tauri/native"     → agents/90-desktop-application-engineering.md
+"RAG/retrieval-augmented/chunking/vector app" → agents/91-rag-ai-application-engineering.md
+"Multi-agent/orchestration/agent architecture" → agents/92-multi-agent-systems-architecture.md
+"Pentest/offensive security/red team"   → agents/93-offensive-security-pentest.md
+"Threat intel/SOC/detection/SIEM"       → agents/94-threat-intelligence-detection.md
+"AppSec/secure SDLC/SAST/DAST"          → agents/95-application-product-security.md
+"Paid media/PPC/programmatic/CAC"       → agents/96-performance-paid-media.md
+"SEO/AEO/answer engine/search visibility" → agents/97-seo-answer-engine-optimization.md
+"Social/channel/TikTok/China marketing" → agents/98-social-channel-marketing.md
+"Email/lifecycle/CRM/deliverability"    → agents/99-lifecycle-email-marketing.md
+"Sales enablement/deal strategy/MEDDICC" → agents/100-sales-enablement-deal-strategy.md
+"Game/level/narrative/economy/game audio" → verticals/game-development/
+"GIS/geospatial/cartography/remote sensing" → verticals/gis-geospatial/
+"Clinical/medical billing/HIPAA/health system" → verticals/healthcare-clinical/
+"XR/VR/AR/spatial computing/visionOS"   → verticals/spatial-xr/
+"Law firm/legal intake/e-discovery/CLM" → verticals/legal-practice/
+"Industry vertical (game/GIS/health/XR/legal/...)" → verticals/ (see verticals/README.md)
 "What could go wrong/pre-mortem/org risk" → frameworks/enterprise-edge-cases.md
 "LangGraph/RAG/AI agent"→ frameworks/ai-engineering-stack.md + agents/29-data-ai-strategy.md + agents/06-engineering.md
 "AI feature/LLM/embed"  → frameworks/ai-engineering-stack.md + frameworks/ai-department-playbooks.md
@@ -246,8 +273,21 @@ Corporate Security & Workplace: `70-corporate-physical-security` `71-workplace-f
 Regulated Product & Hardware: `72-regulatory-affairs-quality` `73-hardware-manufacturing`
 Comms & Vendor Risk: `74-internal-communications` `75-third-party-risk`
 Expansion, Ops & Insight: `76-market-expansion` `77-design-research-ops` `78-accessibility-inclusive-design` `79-data-science-experimentation`
+Engineering Platform: `80-api-platform-engineering` `81-identity-access-engineering` `82-network-engineering` `83-database-reliability-engineering` `84-embedded-firmware-iot` `85-blockchain-web3-engineering` `86-streaming-realtime-media` `87-search-relevance-engineering`
+AI & Data Systems: `88-knowledge-graph-semantic-data` `89-voice-conversational-ai` `90-desktop-application-engineering` `91-rag-ai-application-engineering` `92-multi-agent-systems-architecture`
+Security Specialisms: `93-offensive-security-pentest` `94-threat-intelligence-detection` `95-application-product-security`
+Demand & Revenue: `96-performance-paid-media` `97-seo-answer-engine-optimization` `98-social-channel-marketing` `99-lifecycle-email-marketing` `100-sales-enablement-deal-strategy`
 
 All agent files are in `agents/` directory.
+
+## Industry Verticals
+
+Beyond the numbered core, the `verticals/` directory holds industry practices, each agent at the same house-structure
+depth. Route an industry request to the matching folder; a vertical agent pulls in core numbered agents where the two
+meet (a clinic still needs Security, Privacy and Regulatory Affairs from `agents/`). See `verticals/README.md`.
+
+Domains: `game-development/` `gis-geospatial/` `healthcare-clinical/` `spatial-xr/` `legal-practice/`
+`real-estate/` `financial-services/` `aec-built-environment/` `academic-research/` `service-industries/`.
 
 ## Framework Directory
 

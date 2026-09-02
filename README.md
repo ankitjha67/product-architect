@@ -2,7 +2,7 @@
 
 **The most comprehensive open-source product development skill for Claude.**
 
-80 agents · 36 frameworks · Research-first, AI-native, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
+101 agents · 36 frameworks · Research-first, AI-native, depth to the Mariana Trench · Solo founder Day 0 → IPO → public company
 
 > **This is a [Claude Skill](https://docs.anthropic.com/en/docs/agents-and-tools/skills).** Claude reads `SKILL.md`. This README is for human visitors.
 
@@ -13,7 +13,7 @@
 **Product Architect turns Claude into an entire product organization.**
 
 Most AI product advice is one generalist answering everything at surface level. This
-is the opposite: **80 specialized department heads** covering Discovery, PRD,
+is the opposite: **101 specialized department heads** covering Discovery, PRD,
 Engineering, Security, Privacy, Pricing, Growth, RevOps, Legal, Finance, Governance
 and more. Each carries a department-head-depth playbook, routed to your question by a
 context engine that loads only what's relevant.
@@ -30,7 +30,7 @@ Each comes from the agent that owns that domain, cross-checked against the other
 | 🔍 **Research-first** | Before recommending you build anything, it investigates the market and returns a verdict: *"this exists; here are the competitors, refine it"* or *"white-space, and here's why the niche may be empty."* It never fabricates a company, statistic, or URL. |
 | 🧠 **Reasons, doesn't template** | Every agent works through frame → options → evidence → quantified trade-offs → recommendation → risks + the condition that would reverse it. Each carries its own decision framework for its hardest calls. |
 | 🏢 **Enterprise-grade** | Regulated-industry, 1000+ person, multi-region depth: audit trails, SLAs, procurement gauntlets, change management, 3-year TCO. Not just startup advice. |
-| 🤖 **AI-native** | A full LangGraph + RAG engineering stack, plus a concrete LLM/agent application mapped to all 80 departments. |
+| 🤖 **AI-native** | A full LangGraph + RAG engineering stack, plus a concrete LLM/agent application mapped across the departments, and dedicated RAG, multi-agent, and AI-evaluation engineering agents. |
 | ⚖️ **Governed** | A 5-level authority hierarchy (Compliance → Privacy → Security → Finance → Review) resolves conflicts between agents instead of letting them contradict each other. |
 | 💾 **Remembers** | Key Decision Records survive chat compaction. Paste one into a new conversation and pick up exactly where you left off. |
 
@@ -82,7 +82,7 @@ If you're on the free plan, you can still use everything in this repo:
 
 ## What's Inside
 
-### 80 Specialized Agents
+### 101 Specialized Agents + Industry Verticals
 
 Organized by product lifecycle - each operates at department-head depth:
 
@@ -111,13 +111,31 @@ Organized by product lifecycle - each operates at department-head depth:
 | **Regulated Product & Hardware** | 72 Regulatory Affairs & Quality Management · 73 Hardware Engineering & Manufacturing |
 | **Comms & Vendor Risk** | 74 Internal Communications · 75 Third-Party & Vendor Risk |
 | **Expansion, Ops & Insight** | 76 Market Expansion & Country Launch · 77 Design Ops & Research Ops · 78 Accessibility & Inclusive Design · 79 Data Science & Experimentation |
+| **Engineering Platform** | 80 API Platform · 81 Identity & Access · 82 Network · 83 Database Reliability · 84 Embedded, Firmware & IoT · 85 Blockchain & Web3 · 86 Streaming & Real-Time Media · 87 Search & Relevance |
+| **AI & Data Systems** | 88 Knowledge Graph & Semantic Data · 89 Voice & Conversational AI · 90 Desktop Application · 91 RAG & AI Application Engineering · 92 Multi-Agent Systems Architecture |
+| **Security Specialisms** | 93 Offensive Security & Penetration Testing · 94 Threat Intelligence & Detection · 95 Application & Product Security |
+| **Demand & Revenue** | 96 Performance & Paid Media · 97 SEO & Answer-Engine Optimization · 98 Social & Channel Marketing · 99 Lifecycle & Email Marketing · 100 Sales Enablement & Deal Strategy |
+
+### Industry Verticals
+
+Beyond the numbered core, the [`verticals/`](verticals/) tree holds industry practices a full-service agency runs
+alongside the product org, each agent at the same house-structure depth:
+
+| Vertical | Agents |
+|---|---|
+| **Game Development** | Game Designer · Level Designer · Narrative Designer · Economy & Systems Designer · Technical Artist · Game Audio Engineer |
+| **GIS & Geospatial** | Spatial Data Engineer · GeoAI & ML Engineer · Cartography & Visualization · Web GIS Developer · Remote Sensing & Photogrammetry · Geoprocessing & Spatial Analysis |
+| **Healthcare & Clinical** | Clinical Evidence & Informatics · Medical Billing & Coding · Health Systems Strategy · Patient Access & Services · Healthcare Compliance & HIPAA |
+| **Spatial Computing & XR** | XR Interaction Designer · Immersive Experience Developer · Spatial Platform Engineer · XR Production & Content |
+| **Legal Practice** | Client Intake & Matter Management · Document Review & E-Discovery · Legal Billing & Practice Operations · Contract Lifecycle & Drafting |
+| **Real Estate, Financial Services, AEC, Academic Research, Service Industries** | Additional practices, growing |
 
 ### 36 Frameworks
 
 | Framework | What It Does |
 |-----------|-------------|
 | **AI Engineering Stack** | LangGraph agents, RAG (hybrid retrieval, rerank, GraphRAG), evals, guardrails, observability, and the maturity ladder - with Anthropic-native options |
-| **AI Department Playbooks** | How every one of the 64 departments applies LLMs/RAG/agents - a specific use case, pattern, stack, and guardrail per function |
+| **AI Department Playbooks** | How every one of the core departments applies LLMs/RAG/agents - a specific use case, pattern, stack, and guardrail per function |
 | **Enterprise Edge Cases** | What actually derails work in a large org: sponsor departure, reorg, budget cut, approval deadlock, change freeze, legal hold, vendor EOL, conflicting mandates, M&A freeze, scale pathologies. Each with trigger, first move, and structural fix, plus a pre-mortem sweep |
 | **Deep Research Protocol** | End-to-end market existence/novelty engine: exists-vs-novel verdict, citation hygiene, anti-hallucination gate, per-agent depth map |
 | **Founder's Playbook** | Week-by-week from Day 0 with costs, fundraising, IP, legal |
@@ -166,16 +184,16 @@ India · US · EU · UK · Southeast Asia (Singapore, Indonesia, Thailand, Vietn
 
 | Metric | Value |
 |--------|-------|
-| Agents | 80 |
+| Agents | 101 numbered core, plus 17 industry-vertical agents |
 | Frameworks | 36 |
-| Total files | 135 |
-| Total lines | 66,000+ |
+| Total files | 175 |
+| Total lines | 89,000+ |
 | Country compliance deep-dives | 5 (covering 11 countries) |
 | Complete policies drafted | 14 |
 | SOPs with process maps | 24 |
 | Tactical scenario playbooks | 54 (across 31 departments) |
 | Product edge cases (stress-test) | 165 items across 18 failure classes |
-| Organisational edge cases | 1,135 across all 80 agents, plus a 54-entry shared catalogue |
+| Organisational edge cases | 1,313 across all 101 agents, plus a 54-entry shared catalogue |
 | Routing & session edge cases | 7 groups in SMART-LOADER (ambiguity, routing, governance deadlock, research, memory, budget, output integrity) |
 | Salary bands | 5 functions × 6 levels × 2 geographies |
 
@@ -194,7 +212,8 @@ product-architect/
 ├── CHANGELOG.md                 ← Version history (semver, matches SKILL.md)
 ├── LICENSE                      ← MIT
 ├── .github/                     ← CI (validator on every PR), issue & PR templates
-├── agents/                      ← 80 agent files (00-79)
+├── agents/                      ← 101 agent files (00-100)
+├── verticals/                   ← 17 industry-vertical agents (game dev, GIS, healthcare, XR, legal, ...)
 ├── frameworks/                  ← 36 framework files
 ├── references/
 │   ├── compliance/              ← Country deep-dives (5 files)

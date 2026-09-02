@@ -143,6 +143,17 @@ const agentMap = {
   "74": "Internal Communications", "75": "Third-Party & Vendor Risk",
   "76": "Market Expansion", "77": "Design Ops & Research Ops",
   "78": "Accessibility & Inclusive Design", "79": "Data Science & Experimentation",
+  "80": "API Platform Engineering", "81": "Identity & Access Engineering",
+  "82": "Network Engineering", "83": "Database Reliability Engineering",
+  "84": "Embedded, Firmware & IoT", "85": "Blockchain & Web3 Engineering",
+  "86": "Streaming & Real-Time Media", "87": "Search & Relevance Engineering",
+  "88": "Knowledge Graph & Semantic Data", "89": "Voice & Conversational AI",
+  "90": "Desktop Application Engineering", "91": "RAG & AI Application Engineering",
+  "92": "Multi-Agent Systems Architecture", "93": "Offensive Security & Pentest",
+  "94": "Threat Intelligence & Detection", "95": "Application & Product Security",
+  "96": "Performance & Paid Media", "97": "SEO & Answer-Engine Optimization",
+  "98": "Social & Channel Marketing", "99": "Lifecycle & Email Marketing",
+  "100": "Sales Enablement & Deal Strategy",
 };
 
 const quickLinks = [
