@@ -44,6 +44,22 @@ WORKED SHAPE: 4,000 accounts, 25% complete onboarding. If matched-cohort analysi
 difference at $12k average ARR, protected revenue is 1,000 × $12k × 3% = $360k/yr before deflection and services
 offset - against a programme cost of one to three FTEs plus platform. The point is not the number; it is that the
 number is defensible.
+
+TRAINING vs ENABLEMENT - not synonyms, and conflating them mis-scopes the whole programme: TRAINING transfers a
+SKILL to an individual (an admin learns to configure SSO) and is measured by competency; ENABLEMENT equips a ROLE
+or an organisation to succeed at a job-to-be-done (the champion can drive adoption, the partner can implement) and
+is measured by the business outcome that role owns. Training is a module; enablement is a programme wrapped around
+modules - the success plan, the dashboards, the comms, the certification, the community. A team that only ships
+training produces certified individuals inside accounts that still churn; the enablement wrapper is what converts
+individual competence into account outcome.
+
+CHOOSING THE MEASUREMENT DESIGN (strongest to weakest): (1) RANDOMISED HOLDOUT - randomly invite a subset of new
+accounts to the onboarding path, compare 12-month retention; the only design that proves causation, and cheap if
+set up BEFORE launch. (2) DIFFERENCE-IN-DIFFERENCES around a training launch - compare the change in the trained
+group to the change in an untrained comparison over the same period. (3) PROPENSITY-MATCHED COHORTS - match on
+segment, ACV, tenure and prior usage. (4) RAW CORRELATION - report it as correlational and say so. Pick the
+strongest you can afford, and set up the holdout before anyone asks for the number - retrofitting causal evidence
+after a CFO challenges the claim is the moment the programme loses.
 ```
 
 ## 2. Curriculum Architecture
@@ -66,6 +82,16 @@ and it fails for the reason feature tours fail: the learner cannot map it to the
 | Certification | Annual / on demand | Proctored exam (§6) | Credentialed practitioners in the market |
 
 ```
+THE ROLE IS THE UNIT, NOT THE PERSON: build one path per ROLE (admin, end user, developer, sponsor, partner
+consultant), because a single human often wears several and needs different competencies in each. Map each path
+to the role's actual job-to-be-done and certify the outcomes that role owns; a curriculum organised by product
+area instead of by role forces every learner to filter the whole catalogue for the 20% that is theirs, which is
+the discovery failure that kills enrolment (§9). The developer path is the one most often under-built and most
+often the highest-leverage - an integrator who cannot self-serve auth, webhooks and rate limits generates support
+tickets and stalled implementations at a rate no amount of admin training offsets.
+```
+
+```
 MODULE DESIGN DISCIPLINE - every module carries all three or it is content, not education:
 □ ONE learning objective, written as an observable task ("configure SSO with Okta"), never "understand SSO"
 □ ONE assessment that tests the task, not recall of the UI's button names
@@ -73,6 +99,23 @@ MODULE DESIGN DISCIPLINE - every module carries all three or it is content, not 
   a course with no doing is entertainment with a completion certificate
 □ Length: 3-7 min per video segment, 20-45 min per module, onboarding paths under 2 hours total; completion falls
   off a cliff past ~60 minutes of unbroken content.
+
+BLOOM'S TAXONOMY, APPLIED - the objective's verb sets the assessment AND the format, so choose it deliberately:
+REMEMBER/UNDERSTAND (recall a concept) is a doc or a short video with a knowledge check; APPLY/ANALYSE (do the
+task, diagnose a problem) demands a hands-on lab where the learner performs it; EVALUATE/CREATE (design a config,
+choose an architecture) demands a scenario or a project graded against a rubric. THE MISMATCH THAT FAILS SILENTLY:
+writing an APPLY objective ("configure SSO") and assessing it with a REMEMBER item ("which menu holds SSO?") - the
+learner passes without competence and the metric lies. Write every objective as an OBSERVABLE, MEASURABLE verb
+(configure, diagnose, integrate, reconcile), never "understand", "know" or "be familiar with", which cannot be
+assessed and therefore cannot be certified.
+
+SEQUENCING A PATH - a curriculum is a dependency graph, not a playlist: order modules so each prerequisite skill
+precedes the task that needs it, front-load the ONE workflow that produces first value (TTFV, Agent 52) so a
+learner who quits after 20 minutes still got the highest-value skill, and gate advanced modules behind the
+assessment for their prerequisites. THE 80/20 ONBOARDING RULE: the onboarding path teaches only the 3-5 workflows
+that are ~80% of the role's actual usage; everything else is role-mastery content for later. A "complete"
+onboarding path covering every feature is the feature tour again, and its completion falls off the cliff past 60
+minutes.
 ```
 
 ## 3. Content-Format Decision Matrix
@@ -103,6 +146,15 @@ because concepts do not go stale on release day.
   it destroys trust in everything else you publish.
 □ AUDIENCE-SIZE TEST: investment scales with (learners × times used × cost of getting it wrong). 200 admins on a
   compliance-critical task justifies a lab; 40,000 end users on a trivial task justifies a tooltip.
+
+THE MAINTENANCE-DEBT CURVE - content is a LIABILITY the day after it ships, not an asset: every produced hour
+carries an ongoing re-work cost set by how fast the thing it depicts changes. Model the library's total cost as
+build cost PLUS a standing maintenance line (roughly: assets × change-probability-per-release × re-work hours),
+and the picture flips - a large polished-video library on a monthly-changing UI has a maintenance bill that
+eventually exceeds the value of the content, which is why volume is a vanity metric here too (§8). THE DECISION:
+minimise total cost of OWNERSHIP, not cost of production - a cheap doc updated in five minutes beats an expensive
+video re-shot every quarter, and the format matrix above is really a maintenance-debt decision wearing a
+production-cost mask.
 ```
 
 ## 4. The Academy Platform Decision
@@ -125,6 +177,16 @@ NON-NEGOTIABLE PLATFORM REQUIREMENTS - the ones that decide whether §9 is measu
 □ STANDARDS & CREDENTIALS: SCORM/xAPI where you must interoperate; verifiable badges via Credly or Accredible
 □ CATALOGUE MECHANICS: gating (free / paid / partner-only), white-label domain, multi-language (Agent 43) and SEO-visible course pages - an ungated academy is one of the better organic acquisition surfaces you own
 □ ACCESSIBILITY: captions, transcripts, keyboard navigation, WCAG conformance (Agent 05) - also the cheapest way to make video searchable and translatable
+
+BUILD vs BUY - the academy platform is a classic build-vs-buy trap, and BUY wins for almost everyone: the
+customer-education platforms (Skilljar, Intellum, Thought Industries, Northpass, WorkRamp) solve the boring hard
+parts (SSO, SCORM/xAPI, gating, CRM write-back, catalogue SEO, reporting) that are undifferentiated for you and
+would consume an engineering team forever. BUILD only when education IS the product or the learning experience is
+a differentiator you sell - and even then, buy the LMS plumbing and build only the differentiated surface. THE
+HIDDEN COST OF EITHER IS EXIT: completion history, SCORM packages and certification records live inside the
+vendor, so switching cost rises with success. Contract for RAW EXPORT and portability at signature, not renewal
+(§10), and model the exit cost annually with Agent 46 - a platform that reprices per learner as you scale turns
+your success into their leverage.
 ```
 
 ## 5. In-Product Education
@@ -169,6 +231,13 @@ EXAM DESIGN - this is a measurement discipline, not a quiz:
   that good candidates fail. 5 CUT SCORE by a defensible method (modified Angoff with SMEs), not a round number
   someone liked. 6 MULTIPLE FORMS + item rotation, because item banks leak - assume dumps exist, plan refresh.
 □ THE PASS-RATE TEST: a >90% first-attempt pass rate certifies attendance, not competence - healthy programmes sit well below that, and a credential everyone passes is worth what everyone paid.
+□ CERTIFICATION ECONOMICS: exam maintenance is a standing cost (item writing, psychometric review, proctoring
+  seats, multiple-form refresh), so a certification with too few active practitioners cannot sustain itself -
+  below roughly a few thousand candidates the maintenance-per-credential exceeds the ecosystem value. Pricing
+  balances two goals: free maximises volume and ecosystem growth; paid signals value and funds maintenance. The
+  common compromise is free for customers, paid on the open market, free vouchers for committed partners (Agent
+  33). Never price a certification to profit - it is a moat investment, and pricing it as a revenue line
+  suppresses the volume that is the entire point.
 
 DELIVERY & LIFECYCLE:
 - Proctoring tiers: unproctored practice (free) → online proctored (Examity, ProctorU, Honorlock, PSI) → test-centre
@@ -179,6 +248,22 @@ DELIVERY & LIFECYCLE:
   who earn it, which is the entire point.
 - RECERTIFICATION every 12-24 months or on a major release, via a short delta exam rather than a full retake; no
   expiry means your certified population eventually certifies a product that no longer exists.
+
+CERTIFICATION INTEGRITY - a credential is worth exactly what it is hard to fake, so integrity is the product:
+□ PROCTORING matches STAKES, not prestige: unproctored practice (free) for learning; online proctored (Examity,
+  ProctorU, Honorlock, PSI) for a real credential; test-centre (Pearson VUE, Prometric) for high-stakes or
+  regulated. Online proctoring carries privacy and accessibility obligations (biometric checks, room scans,
+  recording retention); clear them with Agents 39 and 05 before launch, or an accommodation complaint becomes a
+  legal matter (§10).
+□ ITEM-BANK LEAKAGE is a WHEN, not an IF: braindump sites appear and identical wrong answers cluster. Plan for it
+  with multiple forms, rotating items, statistical monitoring for anomalous pass patterns, and a published
+  invalidation policy; retire compromised items rather than defending them.
+□ THE INVALIDATION-ON-RELEASE PROBLEM: a major release can invalidate exam content overnight (a renamed feature, a
+  changed admin model). Bind the blueprint to a product version (§8 intake) and treat a domain-affecting release
+  as a trigger for item review, a delta exam and a dated recertification window BEFORE it ships - not after pass
+  rates move for reasons that have nothing to do with competence.
+□ APPEALS AND DEFENSIBILITY: publish an appeals process and keep the cut-score method (modified Angoff)
+  documented, because a challenged result is defended with evidence created long before the complaint (§10).
 ```
 
 ## 7. Scale Levers: Community and Localization
@@ -198,6 +283,27 @@ LOCALIZATION OF EDUCATION (with Agent 43) - tier it, because education localises
   which is a legal and reputational problem, not a quality one
 □ Design for localisation from the start: separate narration scripts, no baked-in on-screen text, modular segments
   so one changed feature does not force a nine-language re-record
+
+THE HIGH-TOUCH-TO-SELF-SERVE LADDER - the scale trajectory every education org must climb, because human-led
+learning does not scale with the customer base: (1) 1:1 CSM/consultant training (highest touch, does not scale,
+right only for the largest accounts and the first design-partner cohort); (2) live cohort webinars (tens per
+session); (3) recorded courses plus assessments (unbounded, async); (4) in-product guidance at the moment of need
+(§5); (5) community-answered (with Agent 54) where peers and the docs carry the long tail. The GOAL is to push
+each learning need to the LOWEST-touch rung that still produces competence, freeing human time for the accounts
+and moments that genuinely need it. A programme stuck on rung 1 is a CSM-time sink wearing an education label.
+
+THE EDUCATION-TO-COMMUNITY BRIDGE (with Agent 54): certification creates practitioners; community retains and
+compounds them. The bridge is deliberate - certified users become community answerers and champions, the top
+recurring community questions become the curriculum backlog (answer once, publish forever), and community events
+become the demand signal for advanced content. A certification programme with no community turns out credentialed
+individuals who never meet each other; the community is what turns a credential into a career identity and a moat.
+
+ACCREDITATION & CONTINUING-EDUCATION CREDIT - a principle, not a quick win: offering CPE/CEU credit for a
+professional body carries real, ongoing obligations (qualified instructors, documented learning objectives,
+attendance verification, records retention, periodic review) and the accreditation can be withdrawn mid-programme
+if they lapse. Do NOT advertise credit before the sponsorship obligations are confirmed and staffed, verify
+current requirements with the accrediting body (they change - confirm, do not assume), and where the obligations
+are heavy, partner with an existing sponsor rather than becoming one (§10).
 ```
 
 ## 8. Content Operations
@@ -212,6 +318,11 @@ AUDIT & RETIRE: a twice-yearly audit that DELETES. Volume is not the goal - a 30
 wrong is worse than an 80-asset library that is right, because learners cannot tell which third. SINGLE SOURCE OF
 TRUTH: reference content lives in docs (Agent 42) and is LINKED from courses, never copied; duplicated reference
 content always diverges, and the copy inside the course is always the stale one.
+THE INTAKE DECISION IS A RACI, NOT A HOPE: at release planning (Agents 04, 41) every GA feature gets a NAMED owner
+for its education decision (NONE / DOC / IN-PRODUCT / MODULE / CERT UPDATE), recorded in the release checklist as
+a blocking item. An UNOWNED decision defaults to "nothing", and the curriculum decays one release at a time until
+an audit finds a third of it teaching a product you no longer ship. The freshness SLA (owner plus review date on
+every asset, last-reviewed date published) is what makes the decay visible before a learner does.
 ```
 
 ## 9. Measurement - Completion Is a Vanity Metric
@@ -221,6 +332,13 @@ THE METRIC LADDER - only the last two rungs are business results: reach → enga
 here) → competency (assessment passed) → BEHAVIOUR CHANGE (the feature actually used in-product) → BUSINESS
 OUTCOME (retention, expansion, deflection). The join that matters is learning data × product telemetry (Agent 38);
 without it you are reporting attendance.
+
+REPORTING ALTITUDE - report the RUNG that matches the audience: to the team, engagement and completion (to fix
+content); to CS and product, behaviour change and adoption delta (to prove the content works); to Finance and the
+board, retention delta, deflection value and services offset in dollars (to defend the budget). Reporting
+completion upward is the single fastest route to being read as content ops and cut first (§10). The join that
+makes the top two rungs possible - learning data joined to product telemetry (Agent 38) - must exist BEFORE the
+content, or the ROI case is structurally unmakeable however good the courses are.
 ```
 
 | Metric | Definition | Target / signal |
@@ -232,6 +350,9 @@ without it you are reporting attendance.
 | Certified-user retention delta | Gross retention of accounts with ≥1 certified admin vs matched accounts | Usually the strongest number the team owns - matched, or it is not a number |
 | Certification volume & pass rate | Exams taken; first-attempt pass rate | Growing volume; pass rate well under 90% (§6) |
 | Content freshness / learner satisfaction | % of assets within review SLA; post-module rating + verbatim | >90% freshness (it protects every other metric); satisfaction is triage data, never the headline |
+| High-touch ratio | Learning hours delivered 1:1 or instructor-led vs self-serve | Falling; a rising ratio means the programme is not scaling (§7) |
+| Time-to-first-competency | Enrolment to first assessment passed, per role | Trend down; the leading indicator that onboarding content actually works |
+| Maintenance-debt load | Standing re-work hours per quarter vs new-content hours | Bounded; if maintenance crowds out new content, the library is too video-heavy for its release cadence (§3) |
 
 ## Decision Framework
 
@@ -268,6 +389,22 @@ has become a permanent subsidy for a fixable defect (report it as UX debt, Agent
 AS MARKETING - a 95% pass rate produces a badge with no labour-market value, no ecosystem effect and no moat, while
 consuming the budget a real programme needed. (5) THE RETENTION CLAIM IS NOT DEFENDED AGAINST SELECTION BIAS (§1),
 so the first sceptical CFO destroys it.
+
+THE CERTIFICATION-INVALIDATED-BY-A-RELEASE DECISION - a major release just changed content a live certification
+tests against; what happens to the already-certified population and the exam?
+1 SCOPE THE DAMAGE: which exam domains and items are affected, and is the change ADDITIVE (new capability) or
+  BREAKING (a removed or reworked workflow)? Additive rarely invalidates; breaking does.
+2 DO NOT SILENTLY INVALIDATE holders - a credential yanked without notice destroys the trust that made it
+  valuable. Announce a dated recertification WINDOW (commonly 60-180 days) with a short DELTA exam covering only
+  the changed domains, not a full retake.
+3 VERSION THE CREDENTIAL: "Certified Admin (v4)" so the market can read what a holder actually proved, and a v3
+  holder is credibly current until the window closes rather than instantly worthless.
+4 FIX THE EXAM BEFORE THE RELEASE, not after: the §8 intake gate should have flagged a domain-affecting release at
+  release planning; if it did not, that is the process failure to fix, because pass rates moving for content
+  reasons corrupt the psychometrics (§6).
+5 REVERSAL: if releases invalidate the blueprint more than about annually, the certification is scoped too tightly
+  to volatile UI - re-scope it toward durable concepts (data model, methodology, governance) that releases do not
+  move, or the recert treadmill will exceed the credential's value.
 ```
 
 ## Enterprise-Grade (regulated / 1000+ employees / multi-region)
@@ -291,6 +428,9 @@ so the first sceptical CFO destroys it.
   in the languages your certified population actually works in (Agent 43). Budget platform licence + production +
   localisation + exam maintenance + the standing re-recording line: content is not a capital asset, it is a
   maintained system with an ongoing cost of ownership.
+□ SANDBOX AND LAB COST AT SCALE: hands-on labs bill cloud per learner-hour, so a popular lab has a variable cost
+  that scales with success - cap idle environments, reap on completion, and budget lab cost as a per-learner line,
+  not a fixed one (Agents 18, 08).
 ```
 
 ## Failure Modes
@@ -307,6 +447,15 @@ so the first sceptical CFO destroys it.
 ⛔ A LIBRARY THAT ONLY GROWS - nothing retired, a third of it wrong, learners unable to tell which third; its twin
    is DUPLICATING DOCS INTO COURSES, where the course copy is always the stale source of truth.
 ⛔ TRAINING BUILT WITHOUT AGENT 17's TICKET DATA - teaching what is easy to film, not what people get stuck on.
+⛔ OBJECTIVES WRITTEN AS "UNDERSTAND X" - unassessable verbs, so competence can never be measured or certified.
+⛔ CONTENT PRICED AS A PROJECT, MAINTENANCE UNFUNDED - the library ages into a liability the moment the release
+   train moves.
+⛔ CERTIFICATION YANKED SILENTLY AFTER A RELEASE - holders' credential invalidated with no window, destroying the
+   trust that made it valuable.
+⛔ CPE/CEU CREDIT ADVERTISED BEFORE SPONSORSHIP OBLIGATIONS ARE STAFFED - an accreditation that can be withdrawn
+   mid-programme.
+⛔ STUCK ON RUNG ONE - all learning delivered 1:1 by CSMs and consultants, so education never scales and reads as
+   a services cost.
 ```
 
 ## 10. Organisational Edge Cases
@@ -384,6 +533,10 @@ Trainer engagement, classification, new-market entry .. agents/22-people-hr.md, 
   them survive a matched-cohort challenge?
 □ Which enterprise contracts already commit us to accessibility, language coverage or record
   retention that the current programme does not meet?
+□ Which certification domains would a domain-affecting release invalidate, and is a delta exam and recert
+  window already scoped for the next major version?
+□ What is the standing maintenance cost of the current library, and is it funded, or was only the build funded?
+□ Which learning need is still delivered 1:1 that could move to a lower-touch rung, and what is blocking the move?
 ```
 
 ## Example
