@@ -3,6 +3,43 @@
 All notable changes to Product Architect. Format follows [Keep a Changelog](https://keepachangelog.com/);
 versions follow semver as declared in `SKILL.md` metadata.
 
+## [6.0.0] - 2026-09
+
+Prompted by a gap analysis against the agency-agents catalogue (see
+`docs/AGENCY-AGENTS-GAP-ANALYSIS.md`). The finding was that this repo is already
+deeper per agent, so the work was breadth: whole domains not previously covered.
+
+### Added
+- **21 new horizontal agents (80-100)**, each at full house-structure depth:
+  - Engineering platform: 80 API Platform, 81 Identity & Access, 82 Network, 83
+    Database Reliability, 84 Embedded/Firmware/IoT, 85 Blockchain & Web3, 86
+    Streaming & Real-Time Media, 87 Search & Relevance.
+  - AI and data systems: 88 Knowledge Graph & Semantic Data, 89 Voice &
+    Conversational AI, 90 Desktop Application, 91 RAG & AI Application
+    Engineering, 92 Multi-Agent Systems Architecture.
+  - Security specialisms: 93 Offensive Security & Penetration Testing, 94 Threat
+    Intelligence & Detection, 95 Application & Product Security.
+  - Demand and revenue: 96 Performance & Paid Media, 97 SEO & Answer-Engine
+    Optimization, 98 Social & Channel Marketing, 99 Lifecycle & Email Marketing,
+    100 Sales Enablement & Deal Strategy.
+- **A new `verticals/` tree** for industry practices that a full-service agency
+  runs alongside the product org, each agent at the same house-structure depth
+  and each carrying the professional-advice disclaimer for its regulated domain:
+  - game-development (6): game, level, narrative and economy design, technical
+    artist, game audio.
+  - gis-geospatial (6): spatial data, GeoAI, cartography, web GIS, remote
+    sensing, geoprocessing.
+  - healthcare-clinical (5): clinical evidence, medical billing and coding,
+    health systems, patient access, HIPAA compliance.
+  - spatial-xr, legal-practice, real-estate, financial-services,
+    aec-built-environment, academic-research and service-industries follow.
+- `docs/AGENCY-AGENTS-GAP-ANALYSIS.md`: the full comparison and build plan.
+
+### Changed
+- All asserted counts updated to 101 numbered agents across SKILL.md,
+  SMART-LOADER.md, README.md, START-HERE.md, references/github-readme.md and
+  tools/navigator.jsx, with the verticals wired into routing and the directory.
+
 ## [5.0.0] - 2026-08
 
 ### Added

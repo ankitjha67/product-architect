@@ -150,6 +150,33 @@ REQUEST CONTAINS          → PRIMARY AGENT(S)  → FRAMEWORK              → S
 "design ops"/"research ops"/"design system"→ 77 (DesignOps)→ -               → 05 (Design)+35
 "accessibility"/"WCAG"/"VPAT"/"a11y"→ 78 (Accessibility)→ accessibility-i18n → 50 (FE)+05
 "data science"/"causal"/"experiment design"→ 79 (DataSci)→ ab-testing-framework → 16 (Analytics)+38
+"API design"/"versioning"/"gateway"/"rate limit"→ 80 (APIPlatform)→ -         → 65 (Backend)+30
+"auth"/"OAuth"/"SSO"/"RBAC"/"identity"→ 81 (IdentityAccess)→ -                → 09 (Sec)+39
+"network"/"DNS"/"CDN"/"load balancing"/"VPC"→ 82 (Network)→ -                 → 08 (DevOps)+09
+"database reliability"/"replication"/"failover"→ 83 (DBReliability)→ -        → 65 (Backend)+38
+"embedded"/"firmware"/"IoT"/"OTA"/"device fleet"→ 84 (Embedded)→ -            → 48 (Mobile)+73
+"blockchain"/"smart contract"/"web3"/"on-chain"→ 85 (Blockchain)→ -           → 09 (Sec)+55
+"video"/"streaming"/"WebRTC"/"real-time media"→ 86 (Streaming)→ -             → 50 (FE)+82
+"search"/"ranking"/"relevance"/"retrieval"→ 87 (Search)→ -                    → 79 (DataSci)+49
+"knowledge graph"/"ontology"/"entity resolution"→ 88 (KnowledgeGraph)→ -      → 38 (DataEng)+87
+"voice"/"ASR"/"TTS"/"conversational AI"→ 89 (VoiceAI)→ ai-engineering-stack   → 49 (ML)+64
+"desktop app"/"Electron"/"Tauri"/"native"→ 90 (Desktop)→ -                    → 50 (FE)+48
+"RAG"/"retrieval-augmented"/"chunking"/"vector app"→ 91 (RAG)→ ai-engineering-stack → 87 (Search)+63
+"multi-agent"/"orchestration"/"agent architecture"→ 92 (MultiAgent)→ ai-engineering-stack → 49 (ML)+29
+"pentest"/"offensive security"/"red team"→ 93 (OffSec)→ -                     → 09 (Sec)+95
+"threat intel"/"SOC"/"detection"/"SIEM"→ 94 (ThreatIntel)→ incident-management → 09 (Sec)+08
+"AppSec"/"secure SDLC"/"SAST"/"DAST"→ 95 (AppSec)→ -                          → 09 (Sec)+80
+"paid media"/"PPC"/"programmatic"/"CAC"→ 96 (PaidMedia)→ growth-model         → 37 (Growth)+18
+"SEO"/"AEO"/"answer engine"/"search visibility"→ 97 (SEO)→ -                  → 50 (FE)+42
+"social"/"channel"/"TikTok"/"China marketing"→ 98 (Social)→ brand-messaging   → 37 (Growth)+76
+"email"/"lifecycle"/"CRM"/"deliverability"→ 99 (Lifecycle)→ customer-journey   → 37 (Growth)+39
+"sales enablement"/"deal strategy"/"MEDDICC"→ 100 (SalesEnable)→ sales-playbook → 32 (RevOps)+51
+"game"/"level"/"narrative"/"game audio"→ verticals/game-development/          → 05 (Design)+16
+"GIS"/"geospatial"/"cartography"/"remote sensing"→ verticals/gis-geospatial/  → 38 (DataEng)+79
+"clinical"/"medical billing"/"HIPAA"/"health system"→ verticals/healthcare-clinical/ → 39 (Privacy)+72
+"XR"/"VR"/"AR"/"spatial computing"/"visionOS"→ verticals/spatial-xr/          → 50 (FE)+48
+"law firm"/"legal intake"/"e-discovery"/"CLM"→ verticals/legal-practice/      → 10 (Legal)+11
+"industry vertical (game/GIS/health/XR/legal/...)"→ verticals/ (see verticals/README.md)
 "what could go wrong"/"pre-mortem"→ (that agent) → enterprise-edge-cases    → 62 (CoS)+20 (BAU)
 "does this exist"/"is this novel"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)
 "market research"/"who else does"→ 47 (Research)→ deep-research-protocol → 02 (Discovery)

@@ -11,7 +11,7 @@ surface-level scaffolding.
 
 ## HOW THIS WORKS
 
-You have access to a system of 80 specialized agents and 36 frameworks hosted at:
+You have access to a system of 101 specialized agents and 36 frameworks hosted at:
 https://github.com/ankitjha67/product-architect
 
 **Research-first rule (applies always):** Before helping someone build any feature,
@@ -73,7 +73,7 @@ Give them the EXACT URL. Don't make them search. Examples:
 - For PRD: `agents/04-prd.md`
 - For Finance: `agents/18-finance.md`
 - For Security: `agents/09-security.md`
-- For all 80 agents, the files are at: `agents/00-chief-reviewer.md` through `agents/79-data-science-experimentation.md`
+- For all 101 agents, the files are at: `agents/00-chief-reviewer.md` through `agents/100-sales-enablement-deal-strategy.md`, plus industry-vertical agents under `verticals/`
 
 ## STEP 3: ONCE THEY PASTE IT, EXECUTE
 
@@ -182,7 +182,7 @@ If you notice a conflict between what two agents recommend:
 
 ## THE COMPLETE AGENT DIRECTORY
 
-For reference, here are all 80 agents. Give the user the exact filename when suggesting:
+For reference, here are the core numbered agents (00-100), plus industry verticals under verticals/. Give the user the exact filename when suggesting:
 
 ```
 RESEARCH & AUDIT
